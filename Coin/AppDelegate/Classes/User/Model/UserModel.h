@@ -17,7 +17,8 @@
 +(NSMutableAttributedString *)ReturnsTheDistanceBetween:(NSString *)str;
 
 -(void)showPopAnimationWithAnimationStyle:(NSInteger)style showView:(UIView *)showView;
-
+-(void)showPopAnimationWithAnimationStyle1:(NSInteger)style showView:(UIView *)showView;
+-(void)phoneCode:(UIButton *)sender;
 
 
 @end

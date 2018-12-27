@@ -39,11 +39,11 @@
 @property (nonatomic, strong) TLTextField *referTF;
 
 
-@property (nonatomic,strong) TLTextField *phoneTf;
+@property (nonatomic,strong) UITextField *phoneTf;
+@property (nonatomic,strong) UITextField *codeTf;
+@property (nonatomic,strong) UITextField *pwdTf;
+@property (nonatomic,strong) UITextField *rePwdTf;
 
-@property (nonatomic,strong) TLTextField *pwdTf;
-
-@property (nonatomic,strong) TLTextField *rePwdTf;
 
 //@property (nonatomic,strong) CLLocationManager *sysLocationManager;
 //
@@ -51,12 +51,12 @@
 @property (nonatomic,copy) NSString *city;
 @property (nonatomic,copy) NSString *area;
 //同意按钮
-@property (nonatomic, strong) UIButton *checkBtn;
+//@property (nonatomic, strong) UIButton *checkBtn;
 
-@property (nonatomic, strong) UIScrollView *contentScrollView;
-
-@property (nonatomic ,strong) UILabel *titlePhpne;
-@property (nonatomic ,strong) UILabel *PhoneCode;
+//@property (nonatomic, strong) UIScrollView *contentScrollView;
+//
+//@property (nonatomic ,strong) UILabel *titlePhpne;
+//@property (nonatomic ,strong) UILabel *PhoneCode;
 @property (nonatomic ,strong) UIImageView *accessoryImageView;
 @property (nonatomic ,strong) UIImageView *pic;
 @property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
@@ -179,18 +179,110 @@
     NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请输入密码"];
     
     for (int i = 0 ; i < 4; i ++) {
-        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, emailRegister.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 50, 50)];
+        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, emailRegister.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60, 50)];
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
         [textField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         textField.font = FONT(14);
 //        self.pwdTf = textField;
         [self.view addSubview:textField];
         
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(30, textField.yy, SCREEN_WIDTH - 50, 1)];
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(30, textField.yy, SCREEN_WIDTH - 60, 1)];
         lineView.backgroundColor = kLineColor;
         [self.view addSubview:lineView];
+        
+        textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        switch (i) {
+            case 0:
+            {
+                self.phoneTf = textField;
+            }
+                break;
+            case 1:
+            {
+                self.codeTf = textField;
+                
+                UIButton *codeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"获取验证码" key:nil] titleColor:kTabbarColor backgroundColor:kClearColor titleFont:13];
+                [codeBtn sizeToFit];
+                codeBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - codeBtn.width - 30, textField.y + 10, codeBtn.width + 30, 30);
+                kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
+                [codeBtn addTarget:self action:@selector(sendCaptcha:) forControlEvents:(UIControlEventTouchUpInside)];
+                [self.view addSubview:codeBtn];
+                
+                textField.frame = CGRectMake(30, emailRegister.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60 - codeBtn.width - 5 , 50);
+                
+            }
+                break;
+            case 2:
+            {
+                self.pwdTf = textField;
+                textField.secureTextEntry = YES;
+                
+            }
+                break;
+            case 3:
+            {
+                self.rePwdTf = textField;
+                textField.secureTextEntry = YES;
+                
+            }
+                break;
+                
+            default:
+                break;
+        }
+        
     }
+    
+    
+    
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(15, self.rePwdTf.yy + 15, SCREEN_WIDTH, 20)];
+    [self.view addSubview:footView];
+    
+    UIButton *gardenBtn =[UIButton buttonWithType:(UIButtonTypeCustom)];
+    [gardenBtn setImage:kImage(@"Combined Shape2") forState:(UIControlStateNormal)];
+    [gardenBtn setImage:kImage(@"Oval Copy2") forState:(UIControlStateSelected)];
+    gardenBtn.frame = CGRectMake(15, 0, 20, 20);
+    [gardenBtn addTarget:self action:@selector(gardenBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    gardenBtn.tag = 504;
+    gardenBtn.selected = YES;
+    [footView addSubview:gardenBtn];
+    
+    
+    UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(40, 0, SCREEN_WIDTH - 50, 20)];
+    titleLbl.font = FONT(12);
+    titleLbl.textColor = kHexColor(@"#999999");
+    NSString *str1 = [LangSwitcher switchLang:@"我已阅读并接受" key:nil];
+    NSString *str2 = [LangSwitcher switchLang:@"《橙Wallet注册协议》" key:nil];
+    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@",str1,str2]];
+    [attriStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(str1.length, str2.length)];
+    titleLbl.attributedText = attriStr;
+    [footView addSubview:titleLbl];
+    
+    
+    UIButton *titleBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    titleBtn.frame = titleLbl.frame;
+    [footView addSubview:titleBtn];
+    titleBtn.tag = 503;
+    [titleBtn addTarget:self action:@selector(addAndreductionButton:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    
+    UIButton *regBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"注册" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:17.0 cornerRadius:5];
+    regBtn.frame = CGRectMake(25, footView.yy + 32, SCREEN_WIDTH - 50, 45);
+    [regBtn addTarget:self action:@selector(goReg) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:regBtn];
+    
+    
 
+}
+
+-(void)gardenBtnClick:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+}
+
+-(void)addAndreductionButton:(UIButton *)sender
+{
+    
 }
 
 - (void)next
@@ -223,27 +315,54 @@
 
 
 #pragma mark - Events
-- (void)sendCaptcha {
+- (void)sendCaptcha:(UIButton *)sender {
     
     if (![self.phoneTf.text isPhoneNum]) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
         return;
     }
-    LangType type = [LangSwitcher currentLangType];
-    NSString *lang;
-    if (type == LangTypeSimple || type == LangTypeTraditional) {
-        lang = @"zh_CN";
-    }else if (type == LangTypeKorean)
-    {
-        lang = @"nil";
-
-
-    }else{
-        lang = @"en";
-
-    }
-    UIViewController *vc = [MSAuthVCFactory simapleVerifyWithType:(MSAuthTypeSlide) language:lang Delegate:self authCode:@"0335" appKey:nil];
-    [self.navigationController pushViewController:vc animated:YES];
+    TLNetworking *http = [TLNetworking new];
+    http.showView = self.view;
+    http.code = CAPTCHA_CODE;
+    http.parameters[@"client"] = @"ios";
+//    http.parameters[@"sessionId"] = sessionId;
+    http.parameters[@"bizType"] = USER_REG_CODE;
+    http.parameters[@"mobile"] = self.phoneTf.text;
+//    http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
+    
+    [http postWithSuccess:^(id responseObject) {
+        
+        [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
+        
+//        [self.captchaView.captchaBtn begin];
+        
+        
+        [[UserModel user] phoneCode:sender];
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败,请检查手机号" key:nil]];
+        
+    }];
+    
+    
+//    LangType type = [LangSwitcher currentLangType];
+//    NSString *lang;
+//    if (type == LangTypeSimple || type == LangTypeTraditional) {
+//        lang = @"zh_CN";
+//    }else if (type == LangTypeKorean)
+//    {
+//        lang = @"nil";
+//
+//
+//    }else{
+//        lang = @"en";
+//
+//    }
+//    UIViewController *vc = [MSAuthVCFactory simapleVerifyWithType:(MSAuthTypeSlide) language:lang Delegate:self authCode:@"0335" appKey:nil];
+//    [self.navigationController pushViewController:vc animated:YES];
 
 }
 
@@ -262,19 +381,19 @@
             http.parameters[@"sessionId"] = sessionId;
             http.parameters[@"bizType"] = USER_REG_CODE;
             http.parameters[@"mobile"] = self.phoneTf.text;
-            http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
+//            http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
             http.parameters[@"sessionId"] = sessionId;
-
+            
             [http postWithSuccess:^(id responseObject) {
-
+                
                 [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
-
+                
                 [self.captchaView.captchaBtn begin];
-
+                
             } failure:^(NSError *error) {
-
+                
                 [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败,请检查手机号" key:nil]];
-
+                
             }];
             
         }
@@ -346,7 +465,7 @@
         return;
     }
     
-    if (!self.captchaView.captchaTf.text) {
+    if (!self.codeTf.text) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
         
         return;
@@ -377,28 +496,28 @@
     http.showView = self.view;
     http.code = USER_REG_CODE;
     http.parameters[@"mobile"] = self.phoneTf.text;
-    NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-    CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    if ([model.code isNotBlank]) {
-        http.parameters[@"countryCode"] = model.code;
-    }else{
-        http.parameters[@"countryCode"] = self.countrys[0].code;
-
-        }
+//    NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
+//    CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//    if ([model.code isNotBlank]) {
+//        http.parameters[@"countryCode"] = model.code;
+//    }else{
+//        http.parameters[@"countryCode"] = self.countrys[0].code;
+//
+//        }
     
 
     http.parameters[@"loginPwd"] = self.pwdTf.text;
 //    http.parameters[@"isRegHx"] = @"0";
-    http.parameters[@"smsCaptcha"] = self.captchaView.captchaTf.text;
+    http.parameters[@"smsCaptcha"] = self.codeTf.text;
     http.parameters[@"kind"] = APP_KIND;
     http.parameters[@"client"] = @"ios";
 
-    if ([self.referTF.text valid]) {
-        
-        http.parameters[@"userReferee"] = self.referTF.text;
-        http.parameters[@"userRefereeKind"] = APP_KIND;
-       
-    }
+//    if ([self.referTF.text valid]) {
+//
+//        http.parameters[@"userReferee"] = self.referTF.text;
+//        http.parameters[@"userRefereeKind"] = APP_KIND;
+//
+//    }
     
     [http postWithSuccess:^(id responseObject) {
         

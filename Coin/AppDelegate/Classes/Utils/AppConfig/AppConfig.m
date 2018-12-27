@@ -40,8 +40,8 @@ void TLLog(NSString *format, ...) {
     
     _runEnv = runEnv;
     
-    self.companyCode = @"CD-TOKEN00018";
-    self.systemCode = @"CD-TOKEN00018";
+    self.companyCode = @"CD-OGC000019";
+    self.systemCode = @"CD-OGC000019";
     self.qiniuDomain = [[NSUserDefaults standardUserDefaults]objectForKey:Get_Seven_Cattle_Address];
     switch (_runEnv) {
             

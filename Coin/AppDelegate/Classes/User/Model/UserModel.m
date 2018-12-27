@@ -35,6 +35,38 @@
     return setString;
 }
 
+-(void)phoneCode:(UIButton *)sender
+{
+    __block NSInteger time = 59;
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(_timer, ^{
+        if(time <= 0){
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [sender setTitle:[LangSwitcher switchLang:@"重新发送" key:nil] forState:UIControlStateNormal];
+                sender.userInteractionEnabled = YES;
+                kViewBorderRadius(sender, 2, 1, kTabbarColor);
+                [sender setTitleColor:kTabbarColor forState:(UIControlStateNormal)];
+            });
+        }else{
+            int seconds = time % 60;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [sender setTitle:[NSString stringWithFormat:@"%@(%.2d)",[LangSwitcher switchLang:@"重新发送" key:nil], seconds] forState:UIControlStateNormal];
+                sender.userInteractionEnabled = NO;
+                [sender setTitleColor:[UIColor grayColor] forState:(UIControlStateNormal)];
+                kViewBorderRadius(sender, 2, 1, [UIColor grayColor]);
+            });
+            time--;
+        }
+    });
+    dispatch_resume(_timer);
+}
 
 - (void)showPopAnimationWithAnimationStyle:(NSInteger)style showView:(UIView *)showView
 {

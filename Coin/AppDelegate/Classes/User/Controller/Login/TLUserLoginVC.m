@@ -31,7 +31,7 @@
 #import <SecurityGuardSDK/JAQ/SecurityVerification.h>
 #import <SVProgressHUD/SVProgressHUD.h>
 #import "AppConfig.h"
-
+#import "TLUserForgetPwdVC.h"
 //腾讯云
 //#import "ChatManager.h"   czy
 //#import "IMModel.h"
@@ -206,51 +206,11 @@
 //    }
 //}
 
-#pragma mark - Init
 
-//- (void)loadData {
-//
-//
-//    //获取国家列表
-//    TLNetworking *net = [TLNetworking new];
-//    net.showView = self.view;
-//    net.code = @"801120";
-//    net.isLocal = YES;
-//    net.ISparametArray = YES;
-//    net.parameters[@"status"] = @"1";
-//    [net postWithSuccess:^(id responseObject) {
-//
-//        self.countrys = [CountryModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//
-//        [self configData];
-//
-//    } failure:^(NSError *error) {
-//
-//    }];
-//
-//
-////    [UIBarButtonItem addRightItemWithTitle:[LangSwitcher switchLang:@"注册" key:nil] titleColor:kTextColor frame:CGRectMake(0, 0, 60, 44) vc:self action:@selector(goReg)];
-//}
 
 - (void)setUpUI {
     
     self.view.backgroundColor = kWhiteColor;
-    
-    
-    
-//    UIImageView *imageView = [[UIImageView alloc] init];
-//    imageView.contentMode = UIViewContentModeScaleToFill;
-//    [self.view addSubview:imageView];
-//    imageView.userInteractionEnabled  = YES;
-//    imageView.image = kImage(@"登录背景");
-//    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.top.mas_equalTo(@(0));
-//        make.left.mas_equalTo(0);
-//        make.bottom.mas_equalTo(0);
-//        make.right.mas_equalTo(0);
-//
-//    }];
     
     UIImageView *logoView = [[UIImageView alloc] init];
     logoView.contentMode = UIViewContentModeScaleToFill;
@@ -290,6 +250,7 @@
     phoneTextField.placeholder = [LangSwitcher switchLang:@"请输入账号" key:nil];
     [phoneTextField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
     phoneTextField.font = FONT(14);
+    phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.phoneTf = phoneTextField;
 
     [backView addSubview:phoneTextField];
@@ -305,13 +266,14 @@
     passWordTextField.font = FONT(14);
     self.pwdTf = passWordTextField;
     [backView addSubview:passWordTextField];
-    
+    passWordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    passWordTextField.secureTextEntry = YES;
     UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 210, SCREEN_WIDTH - 30 - 30, 1)];
     lineView1.backgroundColor = kLineColor;
     [backView addSubview:lineView1];
     
     
-    UIButton *loginBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"登录" key:nil] titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:17.0 cornerRadius:5];
+    UIButton *loginBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"登录" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:17.0 cornerRadius:5];
     loginBtn.frame = CGRectMake(15, passWordTextField.yy + 32, SCREEN_WIDTH - 60, 45);
     [loginBtn addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:loginBtn];
@@ -328,13 +290,19 @@
     UIButton *forgetPwdBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"忘记密码" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:14.0];
     forgetPwdBtn.frame = CGRectMake(registeredBtn.xx, loginBtn.yy + 20, (SCREEN_WIDTH - 80)/2, 20);
     forgetPwdBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtn) forControlEvents:UIControlEventTouchUpInside];
+    [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:forgetPwdBtn];
     
     
 
     
     
+}
+
+-(void)forgetPwdBtnClick
+{
+    TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //- (void)sendCaptcha
