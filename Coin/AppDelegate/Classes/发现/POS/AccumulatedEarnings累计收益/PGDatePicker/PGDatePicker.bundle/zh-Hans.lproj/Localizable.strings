@@ -1,0 +1,22 @@
+/*
+ Localizable.strings
+ 
+ Created by piggybear on 2017/11/4.
+ Copyright © 2017年 piggybear. All rights reserved.
+ */
+
+"yearString" = " ";
+"monthString" = " ";
+"dayString" = "";
+"hourString" = "时";
+"minuteString" = "分";
+"secondString" = "秒";
+"mondayString" = "周一";
+"tuesdayString" = "周二";
+"wednesdayString" = "周三";
+"thursdayString" = "周四";
+"fridayString" = "周五";
+"saturdayString" = "周六";
+"sundayString" = "周日";
+"cancelButtonText" = "";
+"confirmButtonText" = "";
