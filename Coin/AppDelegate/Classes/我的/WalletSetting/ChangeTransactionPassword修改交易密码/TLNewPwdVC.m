@@ -12,7 +12,6 @@
 #import "NSString+Check.h"
 #import "APICodeMacro.h"
 #import "UIBarButtonItem+convience.h"
-#import "ChooseCountryVc.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSString+Extension.h"
 #import "CountryModel.h"
@@ -132,16 +131,7 @@
 }
 - (void)chooseCountry
 {
-    
-    //选择国家 设置区号
-    CoinWeakSelf;
-    ChooseCountryVc *countryVc = [ChooseCountryVc new];
-    countryVc.selectCountry = ^(CountryModel *model) {
-        //更新国家 区号
-        weakSelf.titlePhpne.text = model.chineseName;
-        weakSelf.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-    } ;
-    [self presentViewController:countryVc animated:YES completion:nil];
+
 }
 
 #pragma mark - Events
@@ -153,9 +143,6 @@
         
         return;
     }
-    
-
-    
     LangType type = [LangSwitcher currentLangType];
     NSString *lang;
     if (type == LangTypeSimple || type == LangTypeTraditional) {
@@ -163,8 +150,6 @@
     }else if (type == LangTypeKorean)
     {
         lang = @"nil";
-
-
     }else{
         lang = @"en";
 

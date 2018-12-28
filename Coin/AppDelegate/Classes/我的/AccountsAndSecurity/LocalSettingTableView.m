@@ -116,14 +116,7 @@ static NSString *identifierCell = @"SettingCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    self.group.items = self.group.sections[indexPath.section];
-//
-//    if (self.group.items[indexPath.row].action) {
-//
-//        self.group.items[indexPath.row].action();
-//    }
-//
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.refreshDelegate refreshTableView:self didSelectRowAtIndexPath:indexPath];
     
 }
 

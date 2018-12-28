@@ -30,14 +30,15 @@
     self.delegate = self;
 
     NSArray *titles = @[
-                        [LangSwitcher switchLang:@"发现" key:nil],
-                        [LangSwitcher switchLang:@"资产" key:nil],
+                        [LangSwitcher switchLang:@"投资" key:nil],
+                        [LangSwitcher switchLang:@"交易" key:nil],
+                        [LangSwitcher switchLang:@"钱包" key:nil],
                         [LangSwitcher switchLang:@"我的" key:nil]
                         ];
-    NSArray *VCNames = @[@"HomeVC",@"TLWalletVC", @"TLMineVC"];
+    NSArray *VCNames = @[@"PosMiningVC",@"InvestmentVC",@"TLWalletVC", @"TLMineVC"];
     
-    NSArray *imageNames = @[@"发现", @"icon_wallet_48", @"我的"];
-    NSArray *selectedImageNames = @[@"发现点击",@"资产点击",  @"我的点击"];
+    NSArray *imageNames = @[@"投资（未选中）", @"交易（未选中）", @"钱包（未选中）",@"我的（未选中）"];
+    NSArray *selectedImageNames = @[@"投资（选中）",@"交易（选中）",  @"钱包（选中）",@"我的（选中）"];
     
     for (int i = 0; i < imageNames.count; i++) {
         
@@ -103,7 +104,7 @@
     
     //title颜色
     [tabBarItem setTitleTextAttributes:@{
-                                         NSForegroundColorAttributeName : kAppCustomMainColor
+                                         NSForegroundColorAttributeName : kTabbarColor
                                          } forState:UIControlStateSelected];
     [tabBarItem setTitleTextAttributes:@{
                                          NSForegroundColorAttributeName : [UIColor textColor]

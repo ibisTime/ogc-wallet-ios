@@ -7,7 +7,6 @@
 //
 
 #import "TLUserRegisterVC.h"
-//#import "SGScanningQRCodeVC.h"
 #import <MSAuthSDK/MSAuthVCFactory.h>
 #import <Photos/Photos.h>
 #import "TLNavigationController.h"
@@ -18,7 +17,6 @@
 #import "CaptchaView.h"
 #import "APICodeMacro.h"
 #import "NSString+Check.h"
-#import "ChooseCountryVc.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSString+Extension.h"
 
@@ -32,11 +30,9 @@
 
 
 @interface TLUserRegisterVC ()<CLLocationManagerDelegate,MSAuthProtocol>
-
-@property (nonatomic,strong) CaptchaView *captchaView;
-//昵称
-@property (nonatomic, strong) TLTextField *nickNameTF;
-@property (nonatomic, strong) TLTextField *referTF;
+{
+    UIButton *selectBtn;
+}
 
 
 @property (nonatomic,strong) UITextField *phoneTf;
@@ -59,7 +55,7 @@
 //@property (nonatomic ,strong) UILabel *PhoneCode;
 @property (nonatomic ,strong) UIImageView *accessoryImageView;
 @property (nonatomic ,strong) UIImageView *pic;
-@property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
+//@property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
 
 @end
 
@@ -159,22 +155,30 @@
     
 
     
-    UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(25, 45 , SCREEN_WIDTH - 50, 24) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(24) textColor:kTextColor];
+    UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(30, 45 , SCREEN_WIDTH - 60, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
     nameLabel.text= [LangSwitcher switchLang:@"注册" key:nil];
     [self.view addSubview:nameLabel];
     
     
-    UIButton *phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
-    phoneRegister.frame = CGRectMake(25, nameLabel.yy + 35, 0, 18);
+    UIButton *phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:20];
+    phoneRegister.frame = CGRectMake(30, nameLabel.yy + 30, 0, 25);
+    [phoneRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
     [phoneRegister sizeToFit];
+    phoneRegister.selected = YES;
+    selectBtn = phoneRegister;
     [self.view addSubview:phoneRegister];
     
     
     UIButton *emailRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"邮箱注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
-    emailRegister.frame = CGRectMake(phoneRegister.xx + 35, nameLabel.yy + 35, 0, 18);
+    emailRegister.frame = CGRectMake(phoneRegister.xx + 35, nameLabel.yy + 30, 0, 25);
+    [emailRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
     [emailRegister sizeToFit];
     [self.view addSubview:emailRegister];
     
+    
+    UIView *chooseView = [[UIView alloc]initWithFrame:CGRectMake(phoneRegister.x, phoneRegister.yy + 6, phoneRegister.width, 2)];
+    chooseView.backgroundColor = kTabbarColor;
+    [self.view addSubview:chooseView];
     
     NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请输入密码"];
     
@@ -235,20 +239,20 @@
     
     
     
-    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(15, self.rePwdTf.yy + 15, SCREEN_WIDTH, 20)];
+    UIView *footView = [[UIView alloc]initWithFrame:CGRectMake(30, self.rePwdTf.yy + 21, SCREEN_WIDTH , 12)];
     [self.view addSubview:footView];
     
     UIButton *gardenBtn =[UIButton buttonWithType:(UIButtonTypeCustom)];
     [gardenBtn setImage:kImage(@"Combined Shape2") forState:(UIControlStateNormal)];
     [gardenBtn setImage:kImage(@"Oval Copy2") forState:(UIControlStateSelected)];
-    gardenBtn.frame = CGRectMake(15, 0, 20, 20);
+    gardenBtn.frame = CGRectMake(0, 0, 12, 12);
     [gardenBtn addTarget:self action:@selector(gardenBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
     gardenBtn.tag = 504;
     gardenBtn.selected = YES;
     [footView addSubview:gardenBtn];
     
     
-    UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(40, 0, SCREEN_WIDTH - 50, 20)];
+    UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(16, 0, SCREEN_WIDTH - 50, 12)];
     titleLbl.font = FONT(12);
     titleLbl.textColor = kHexColor(@"#999999");
     NSString *str1 = [LangSwitcher switchLang:@"我已阅读并接受" key:nil];
@@ -267,7 +271,7 @@
     
     
     UIButton *regBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"注册" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:17.0 cornerRadius:5];
-    regBtn.frame = CGRectMake(25, footView.yy + 32, SCREEN_WIDTH - 50, 45);
+    regBtn.frame = CGRectMake(33, footView.yy + 35, SCREEN_WIDTH - 66, 45);
     [regBtn addTarget:self action:@selector(goReg) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:regBtn];
     
@@ -297,21 +301,7 @@
     [self goReg];
 }
 
-//- (void)chooseCountry{
-//
-//    //选择国家 设置区号
-//    CoinWeakSelf;
-//    ChooseCountryVc *countryVc = [ChooseCountryVc new];
-////     countryVc.interCode = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
-//    countryVc.selectCountry = ^(CountryModel *model) {
-//        //更新国家 区号
-//        [self.pic sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]]];
-//
-//        weakSelf.titlePhpne.text = model.chineseName;
-//        weakSelf.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//    } ;
-//    [self presentViewController:countryVc animated:YES completion:nil];
-//}
+
 
 
 #pragma mark - Events
@@ -366,41 +356,40 @@
 
 }
 
--(void)verifyDidFinishedWithResult:(t_verify_reuslt)code Error:(NSError *)error SessionId:(NSString *)sessionId
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (error) {
-            NSLog(@"验证失败 %@", error);
-            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证失败" key:nil]];
-        } else {
-            NSLog(@"验证通过 %@", sessionId);
-            TLNetworking *http = [TLNetworking new];
-            http.showView = self.view;
-            http.code = CAPTCHA_CODE;
-            http.parameters[@"client"] = @"ios";
-            http.parameters[@"sessionId"] = sessionId;
-            http.parameters[@"bizType"] = USER_REG_CODE;
-            http.parameters[@"mobile"] = self.phoneTf.text;
-//            http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
-            http.parameters[@"sessionId"] = sessionId;
-            
-            [http postWithSuccess:^(id responseObject) {
-                
-                [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
-                
-                [self.captchaView.captchaBtn begin];
-                
-            } failure:^(NSError *error) {
-                
-                [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败,请检查手机号" key:nil]];
-                
-            }];
-            
-        }
-        [self.navigationController popViewControllerAnimated:YES];
-        //将sessionid传到经过app服务器做二次验证
-    });
-}
+//-(void)verifyDidFinishedWithResult:(t_verify_reuslt)code Error:(NSError *)error SessionId:(NSString *)sessionId
+//{
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        if (error) {
+//            NSLog(@"验证失败 %@", error);
+//            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证失败" key:nil]];
+//        } else {
+//            NSLog(@"验证通过 %@", sessionId);
+//            TLNetworking *http = [TLNetworking new];
+//            http.showView = self.view;
+//            http.code = CAPTCHA_CODE;
+//            http.parameters[@"client"] = @"ios";
+//            http.parameters[@"sessionId"] = sessionId;
+//            http.parameters[@"bizType"] = USER_REG_CODE;
+//            http.parameters[@"mobile"] = self.phoneTf.text;
+////            http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
+//            http.parameters[@"sessionId"] = sessionId;
+//
+//            [http postWithSuccess:^(id responseObject) {
+//
+//                [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
+//
+//
+//            } failure:^(NSError *error) {
+//
+//                [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败,请检查手机号" key:nil]];
+//
+//            }];
+//
+//        }
+//        [self.navigationController popViewControllerAnimated:YES];
+//        //将sessionid传到经过app服务器做二次验证
+//    });
+//}
 
 //- (void)verifyDidFinishedWithError:(NSError *)error SessionId:(NSString *)sessionId {
 //    dispatch_async(dispatch_get_main_queue(), ^{

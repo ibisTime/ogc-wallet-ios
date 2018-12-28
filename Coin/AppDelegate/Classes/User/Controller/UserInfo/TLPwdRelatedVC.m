@@ -9,7 +9,6 @@
 #import "TLPwdRelatedVC.h"
 #import "CaptchaView.h"
 #import "APICodeMacro.h"
-#import "ChooseCountryVc.h"
 #import "NSString+Check.h"
 #import "CountryModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -363,15 +362,7 @@
 - (void)chooseCountry
 {
     
-    //选择国家 设置区号
-    CoinWeakSelf;
-    ChooseCountryVc *countryVc = [ChooseCountryVc new];
-    countryVc.selectCountry = ^(CountryModel *model) {
-        //更新国家 区号
-        weakSelf.titlePhpne.text = model.chineseName;
-        weakSelf.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-    } ;
-    [self presentViewController:countryVc animated:YES completion:nil];
+    
 }
 
 - (void)sendCaptcha {

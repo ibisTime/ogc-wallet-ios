@@ -18,12 +18,10 @@
 #import "UILabel+Extension.h"
 #import "CurrencyModel.h"
 #import "AccountTf.h"
-#import "ChooseCountryVc.h"
 #import "TLTabBarController.h"
 #import "TLCaptchaView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSString+Extension.h"
-#import "TLUserFindPwdVC.h"
 #import <UMMobClick/MobClick.h>
 #import <SecurityGuardSDK/JAQ/SecurityVerification.h>
 #import <MSAuthSDK/MSAuthVCFactory.h>
@@ -55,11 +53,11 @@
 @property (nonatomic ,strong) TLCaptchaView *captchaView;
 @property (nonatomic ,strong)  UIImageView *pic;
 
-@property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
+//@property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
 
 @property (nonatomic, copy) NSString *code;
 
-@property (nonatomic, strong) CountryModel *model;
+//@property (nonatomic, strong) CountryModel *model;
 
 
 @end
@@ -227,12 +225,17 @@
         
     }];
     
-    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
-    topView.backgroundColor = kTabbarColor;
-    [self.view addSubview:topView];
+//    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
+//    topView.backgroundColor = kTabbarColor;
+//    [self.view addSubview:topView];
     
     
-    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, 200 - 64 + kNavigationBarHeight - 35, SCREEN_WIDTH - 30, 360)];
+    UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 209 - 64 + kNavigationBarHeight)];
+    topImage.image = kImage(@"Mask");
+    [self.view addSubview:topImage];
+    
+    
+    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, 170 - 64 + kNavigationBarHeight - 35, SCREEN_WIDTH - 30, 360)];
     backView.backgroundColor = kWhiteColor;
     backView.layer.cornerRadius=10;
     backView.layer.shadowOpacity = 0.22;// 阴影透明度
@@ -242,11 +245,11 @@
     [self.view addSubview:backView];
     
     
-    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(15, 45, SCREEN_WIDTH - 30 - 30, 24) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(22) textColor:kTextColor];
+    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(20, 45, SCREEN_WIDTH - 30 - 70, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
     promptLabel.text = [LangSwitcher switchLang:@"欢迎回来" key:nil];
     [backView addSubview:promptLabel];
     
-    UITextField *phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(15, 100, SCREEN_WIDTH - 30 - 30, 50)];
+    UITextField *phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 100, SCREEN_WIDTH - 70, 50)];
     phoneTextField.placeholder = [LangSwitcher switchLang:@"请输入账号" key:nil];
     [phoneTextField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
     phoneTextField.font = FONT(14);
@@ -255,12 +258,12 @@
 
     [backView addSubview:phoneTextField];
     
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 150, SCREEN_WIDTH - 30 - 24, 1)];
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(20, 150, SCREEN_WIDTH - 70, 1)];
     lineView.backgroundColor = kLineColor;
     [backView addSubview:lineView];
     
     
-    UITextField *passWordTextField = [[UITextField alloc]initWithFrame:CGRectMake(15, 160, SCREEN_WIDTH - 30 - 30, 50)];
+    UITextField *passWordTextField = [[UITextField alloc]initWithFrame:CGRectMake(20, 160, SCREEN_WIDTH - 70, 50)];
     passWordTextField.placeholder = [LangSwitcher switchLang:@"请输入密码（6~16个字符或字母组成）" key:nil];
     [passWordTextField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
     passWordTextField.font = FONT(14);
@@ -268,13 +271,13 @@
     [backView addSubview:passWordTextField];
     passWordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     passWordTextField.secureTextEntry = YES;
-    UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 210, SCREEN_WIDTH - 30 - 30, 1)];
+    UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(20, 210, SCREEN_WIDTH - 70, 1)];
     lineView1.backgroundColor = kLineColor;
     [backView addSubview:lineView1];
     
     
     UIButton *loginBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"登录" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:17.0 cornerRadius:5];
-    loginBtn.frame = CGRectMake(15, passWordTextField.yy + 32, SCREEN_WIDTH - 60, 45);
+    loginBtn.frame = CGRectMake(15, passWordTextField.yy + 35, SCREEN_WIDTH - 60, 45);
     [loginBtn addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:loginBtn];
     
@@ -394,21 +397,7 @@
 
 #pragma mark - Events
 
-//- (void)chooseCountry{
-//
-//    //选择国家 设置区号
-//    CoinWeakSelf;
-//    ChooseCountryVc *countryVc = [ChooseCountryVc new];
-////    countryVc.interCode = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
-//    countryVc.selectCountry = ^(CountryModel *model) {
-//        //更新国家 区号
-//        self.model = model;
-//        self.code = model.code;
-//        [self.pic sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]]];
-//        weakSelf.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//    } ;
-//    [self presentViewController:countryVc animated:YES completion:nil];
-//}
+
 
 - (void)back {
     
@@ -453,8 +442,8 @@
 
 - (void)findPwd {
     
-    TLUserFindPwdVC *vc = [[TLUserFindPwdVC alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+//    TLUserFindPwdVC *vc = [[TLUserFindPwdVC alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -574,25 +563,18 @@
         //初始化用户信息
         [[TLUser user] setUserInfoWithDict:userInfo];
         //
-        [self dismissViewControllerAnimated:YES completion:nil];
+//        [self dismissViewControllerAnimated:YES completion:nil];
         
         if (self.loginSuccess) {
             
             self.loginSuccess();
         }
         
-        if (self.IsAPPJoin == YES) {
-             [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
-            self.NeedLogin = NO;
-            [self.navigationController popToRootViewControllerAnimated:YES];
-         TLTabBarController*tab   = [[TLTabBarController alloc] init];
+        TLTabBarController*tab   = [[TLTabBarController alloc] init];
         [UIApplication sharedApplication].keyWindow.rootViewController = tab;
-            
-            return ;
-        }
-        self.NeedLogin = NO;
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+//        [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(NSError *error) {
         

@@ -122,6 +122,8 @@
 		1F76697C21D4A34D00006B41 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F76696021D4A34C00006B41 /* README.txt */; };
 		1F76697D21D4A34D00006B41 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76696221D4A34C00006B41 /* libWeChatSDK.a */; };
 		1F76697E21D4A34D00006B41 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F76696321D4A34C00006B41 /* read_me.txt */; };
+		1F76698621D5F56200006B41 /* InvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76698521D5F56200006B41 /* InvestmentVC.m */; };
+		1F76698B21D61D2F00006B41 /* ChangePhoneAndEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76698A21D61D2F00006B41 /* ChangePhoneAndEmailVC.m */; };
 		1F770ED721904D7D00E2889F /* langImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F770ED621904D7D00E2889F /* langImg.png */; };
 		1F770EDA21913CC000E2889F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770ED921913CC000E2889F /* UserModel.m */; };
 		1F770EDD2191738400E2889F /* ToolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770EDC2191738400E2889F /* ToolTextField.m */; };
@@ -401,7 +403,6 @@
 		B83666F6210EC0610065DF18 /* LocalSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B83666F5210EC0610065DF18 /* LocalSettingCell.m */; };
 		B83D1E0C20CE63A2007835DB /* WalletLocalVc.m in Sources */ = {isa = PBXBuildFile; fileRef = B83D1E0B20CE63A2007835DB /* WalletLocalVc.m */; };
 		B83D1E0F20CE7076007835DB /* WalletForwordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B83D1E0E20CE7076007835DB /* WalletForwordVC.m */; };
-		B842D5D520E91AA900891289 /* ChooseCountryVc.m in Sources */ = {isa = PBXBuildFile; fileRef = B842D5D420E91AA900891289 /* ChooseCountryVc.m */; };
 		B85FE46F21287D2300C9F60C /* PayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B85FE46E21287D2300C9F60C /* PayModel.m */; };
 		B8657833214B90D400179EB1 /* DetailSugarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8657832214B90D400179EB1 /* DetailSugarView.m */; };
 		B87B1BCA20D2509E00EF7B8E /* WalletNewFeaturesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B87B1BC920D2509E00EF7B8E /* WalletNewFeaturesVC.m */; };
@@ -427,7 +428,6 @@
 		B88B592C2109B2EF00F20D1B /* ZLGestureLockView.m in Sources */ = {isa = PBXBuildFile; fileRef = B88B59292109B2EF00F20D1B /* ZLGestureLockView.m */; };
 		B88D6C6F20EDF39F0043832C /* TLFastvc.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D6C6E20EDF39F0043832C /* TLFastvc.m */; };
 		B88D6C7220EDF3B50043832C /* TLTransfromVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D6C7120EDF3B50043832C /* TLTransfromVC.m */; };
-		B89783D720F6FB310088C713 /* TLUserFindPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B89783D620F6FB310088C713 /* TLUserFindPwdVC.m */; };
 		B89F07DF211B06E20057E781 /* TLinviteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B89F07DE211B06E20057E781 /* TLinviteVC.m */; };
 		B89F07E2211B07FA0057E781 /* TLMeSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = B89F07E1211B07FA0057E781 /* TLMeSetting.m */; };
 		B8A2436520E5E0F20074DF8F /* TLDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A2436420E5E0F20074DF8F /* TLDataBase.m */; };
@@ -819,6 +819,10 @@
 		1F76696121D4A34C00006B41 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		1F76696221D4A34C00006B41 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		1F76696321D4A34C00006B41 /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
+		1F76698421D5F56200006B41 /* InvestmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentVC.h; sourceTree = "<group>"; };
+		1F76698521D5F56200006B41 /* InvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentVC.m; sourceTree = "<group>"; };
+		1F76698921D61D2F00006B41 /* ChangePhoneAndEmailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePhoneAndEmailVC.h; sourceTree = "<group>"; };
+		1F76698A21D61D2F00006B41 /* ChangePhoneAndEmailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneAndEmailVC.m; sourceTree = "<group>"; };
 		1F770ED621904D7D00E2889F /* langImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = langImg.png; sourceTree = "<group>"; };
 		1F770ED821913CC000E2889F /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		1F770ED921913CC000E2889F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
@@ -1370,8 +1374,6 @@
 		B83D1E0B20CE63A2007835DB /* WalletLocalVc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletLocalVc.m; sourceTree = "<group>"; };
 		B83D1E0D20CE7076007835DB /* WalletForwordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletForwordVC.h; sourceTree = "<group>"; };
 		B83D1E0E20CE7076007835DB /* WalletForwordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletForwordVC.m; sourceTree = "<group>"; };
-		B842D5D320E91AA900891289 /* ChooseCountryVc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseCountryVc.h; sourceTree = "<group>"; };
-		B842D5D420E91AA900891289 /* ChooseCountryVc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseCountryVc.m; sourceTree = "<group>"; };
 		B85FE46D21287D2300C9F60C /* PayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayModel.h; sourceTree = "<group>"; };
 		B85FE46E21287D2300C9F60C /* PayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayModel.m; sourceTree = "<group>"; };
 		B8657831214B90D400179EB1 /* DetailSugarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailSugarView.h; sourceTree = "<group>"; };
@@ -1424,8 +1426,6 @@
 		B88D6C6E20EDF39F0043832C /* TLFastvc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLFastvc.m; sourceTree = "<group>"; };
 		B88D6C7020EDF3B50043832C /* TLTransfromVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLTransfromVC.h; sourceTree = "<group>"; };
 		B88D6C7120EDF3B50043832C /* TLTransfromVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLTransfromVC.m; sourceTree = "<group>"; };
-		B89783D520F6FB310088C713 /* TLUserFindPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLUserFindPwdVC.h; sourceTree = "<group>"; };
-		B89783D620F6FB310088C713 /* TLUserFindPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLUserFindPwdVC.m; sourceTree = "<group>"; };
 		B89F07DD211B06E20057E781 /* TLinviteVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLinviteVC.h; sourceTree = "<group>"; };
 		B89F07DE211B06E20057E781 /* TLinviteVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLinviteVC.m; sourceTree = "<group>"; };
 		B89F07E0211B07FA0057E781 /* TLMeSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMeSetting.h; sourceTree = "<group>"; };
@@ -1665,12 +1665,12 @@
 		1F35825F2187071700F1665B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7AD659EF215F691C002F747E /* MoneyAndTreasureHeadView.h */,
+				7AD659F0215F691C002F747E /* MoneyAndTreasureHeadView.m */,
 				B8DDF880211D29EE0058D19D /* TLMakeMoney.h */,
 				B8DDF881211D29EE0058D19D /* TLMakeMoney.m */,
 				B8DDF883211D2AD10058D19D /* MakeMoneyCell.h */,
 				B8DDF884211D2AD10058D19D /* MakeMoneyCell.m */,
-				7AD659EF215F691C002F747E /* MoneyAndTreasureHeadView.h */,
-				7AD659F0215F691C002F747E /* MoneyAndTreasureHeadView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2215,6 +2215,38 @@
 			path = WechatSDK1.8.2;
 			sourceTree = "<group>";
 		};
+		1F76697F21D5EFB900006B41 /* Trading */ = {
+			isa = PBXGroup;
+			children = (
+				1F3582612187071E00F1665B /* Controller */,
+				1F3582602187071B00F1665B /* Model */,
+				1F35825F2187071700F1665B /* View */,
+				7A2CC671215CAE8E00B27E2D /* AccumulatedEarnings累计收益 */,
+				7A2CC65E215BBB9F00B27E2D /* MyInvestment我的投资详情 */,
+				7A2CC651215B9FA100B27E2D /* Buy购买 */,
+				7A2CC644215B729900B27E2D /* Details */,
+			);
+			path = Trading;
+			sourceTree = "<group>";
+		};
+		1F76698721D61B5D00006B41 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				21A7F2ED1FB2E2F900FAA0A2 /* TLUserForgetPwdVC.h */,
+				21A7F2F11FB2E2F900FAA0A2 /* TLUserForgetPwdVC.m */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		1F76698821D61D0500006B41 /* ChangePhoneAndEmail */ = {
+			isa = PBXGroup;
+			children = (
+				1F76698921D61D2F00006B41 /* ChangePhoneAndEmailVC.h */,
+				1F76698A21D61D2F00006B41 /* ChangePhoneAndEmailVC.m */,
+			);
+			path = ChangePhoneAndEmail;
+			sourceTree = "<group>";
+		};
 		211A34D81FB3F55600FEB71F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2685,16 +2717,18 @@
 			path = Update;
 			sourceTree = "<group>";
 		};
-		216F5B1D206CD9D900F2C832 /* Found */ = {
+		216F5B1D206CD9D900F2C832 /* Investment */ = {
 			isa = PBXGroup;
 			children = (
+				1F76698421D5F56200006B41 /* InvestmentVC.h */,
+				1F76698521D5F56200006B41 /* InvestmentVC.m */,
 				216F5B1E206CD9D900F2C832 /* Controller */,
 				1F35826321870B1700F1665B /* Model */,
 				1F35826221870B1400F1665B /* View */,
 				7A8A5D0E20EA0677002D9A48 /* RedEnvelope */,
 				216F5B54206D005200F2C832 /* POS */,
 			);
-			name = Found;
+			name = Investment;
 			path = "发现";
 			sourceTree = "<group>";
 		};
@@ -2738,13 +2772,6 @@
 		216F5B54206D005200F2C832 /* POS */ = {
 			isa = PBXGroup;
 			children = (
-				1F3582612187071E00F1665B /* Controller */,
-				1F3582602187071B00F1665B /* Model */,
-				1F35825F2187071700F1665B /* View */,
-				7A2CC671215CAE8E00B27E2D /* AccumulatedEarnings累计收益 */,
-				7A2CC65E215BBB9F00B27E2D /* MyInvestment我的投资详情 */,
-				7A2CC651215B9FA100B27E2D /* Buy购买 */,
-				7A2CC644215B729900B27E2D /* Details */,
 			);
 			path = POS;
 			sourceTree = "<group>";
@@ -2793,12 +2820,6 @@
 				21A7F2EE1FB2E2F900FAA0A2 /* TLUserLoginVC.m */,
 				21A7F2EF1FB2E2F900FAA0A2 /* TLUserRegisterVC.h */,
 				21A7F2F21FB2E2F900FAA0A2 /* TLUserRegisterVC.m */,
-				21A7F2ED1FB2E2F900FAA0A2 /* TLUserForgetPwdVC.h */,
-				21A7F2F11FB2E2F900FAA0A2 /* TLUserForgetPwdVC.m */,
-				B842D5D320E91AA900891289 /* ChooseCountryVc.h */,
-				B842D5D420E91AA900891289 /* ChooseCountryVc.m */,
-				B89783D520F6FB310088C713 /* TLUserFindPwdVC.h */,
-				B89783D620F6FB310088C713 /* TLUserFindPwdVC.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2894,8 +2915,9 @@
 				B88B58F32109AEC300F20D1B /* Other */,
 				216F5AF0206CC73D00F2C832 /* Update */,
 				21A7F2D81FB2E2F900FAA0A2 /* User */,
-				216F5B1D206CD9D900F2C832 /* Found */,
-				2E394FA41FB055DE00BA0829 /* Assets */,
+				1F76697F21D5EFB900006B41 /* Trading */,
+				216F5B1D206CD9D900F2C832 /* Investment */,
+				2E394FA41FB055DE00BA0829 /* Wallet */,
 				2E394FAC1FB055DE00BA0829 /* My */,
 				211DE63B1FB58B4B002FCF3D /* Utils */,
 			);
@@ -2903,7 +2925,7 @@
 			path = AppDelegate/Classes;
 			sourceTree = "<group>";
 		};
-		2E394FA41FB055DE00BA0829 /* Assets */ = {
+		2E394FA41FB055DE00BA0829 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
 				7AEF235E2154DCE100BF1DB5 /* Home */,
@@ -2918,7 +2940,7 @@
 				7AEF235B2154C81400BF1DB5 /* AddWallet */,
 				7AEF23562154C3A200BF1DB5 /* Transfer */,
 			);
-			path = Assets;
+			path = Wallet;
 			sourceTree = "<group>";
 		};
 		2E394FA51FB055DE00BA0829 /* AddAdress */ = {
@@ -3655,15 +3677,17 @@
 		7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity */ = {
 			isa = PBXGroup;
 			children = (
-				21C91D7A1FDBCF6B006EDB16 /* Google */,
-				7AEF235A2154C70400BF1DB5 /* Email */,
-				21C91D791FDBCF5B006EDB16 /* Auth实名认证 */,
 				211A34E91FB42F8100FEB71F /* SettingVC.h */,
 				211A34EA1FB42F8100FEB71F /* SettingVC.m */,
 				B83666F1210EAF470065DF18 /* LocalSettingTableView.h */,
 				B83666F2210EAF470065DF18 /* LocalSettingTableView.m */,
 				211A34F21FB430F900FEB71F /* SettingCell.h */,
 				211A34F31FB430F900FEB71F /* SettingCell.m */,
+				1F76698821D61D0500006B41 /* ChangePhoneAndEmail */,
+				1F76698721D61B5D00006B41 /* ChangePassword */,
+				21C91D7A1FDBCF6B006EDB16 /* Google */,
+				7AEF235A2154C70400BF1DB5 /* Email */,
+				21C91D791FDBCF5B006EDB16 /* Auth实名认证 */,
 			);
 			path = AccountsAndSecurity;
 			sourceTree = "<group>";
@@ -4290,7 +4314,6 @@
 				B8BBA64020C7FB4600DC4D5F /* WallAccountHeadView.m in Sources */,
 				1F7668F221D4A32700006B41 /* BTCTransaction.m in Sources */,
 				1F7668FA21D4A32700006B41 /* BTCMnemonic.m in Sources */,
-				B89783D720F6FB310088C713 /* TLUserFindPwdVC.m in Sources */,
 				1F76690421D4A32700006B41 /* BTCPriceSource+Tests.m in Sources */,
 				1F76690E21D4A32700006B41 /* BTCProtocolBuffers.m in Sources */,
 				1F76690A21D4A32700006B41 /* BTCTransactionInput.m in Sources */,
@@ -4353,6 +4376,7 @@
 				1F7668E621D4A32700006B41 /* BTCBlockHeader.m in Sources */,
 				B8FDB704214A824400313EC3 /* MysugarView.m in Sources */,
 				211DE6A01FB58B4C002FCF3D /* TLDatePicker.m in Sources */,
+				1F76698621D5F56200006B41 /* InvestmentVC.m in Sources */,
 				1F76690321D4A32700006B41 /* BTCCurvePoint+Tests.m in Sources */,
 				B8CAA14721158FF200695BC3 /* LPDPhotoPreviewCell.m in Sources */,
 				B8F791A12146495000F5BE45 /* THTranstionCollectionView.m in Sources */,
@@ -4426,6 +4450,7 @@
 				7AD659F1215F691C002F747E /* MoneyAndTreasureHeadView.m in Sources */,
 				1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */,
 				2EA584C71FA813C900C7106C /* main.m in Sources */,
+				1F76698B21D61D2F00006B41 /* ChangePhoneAndEmailVC.m in Sources */,
 				7A2CC6B6215DC88B00B27E2D /* PGDatePicker+DateHourMinute.m in Sources */,
 				B8CAA1502115FC6B00695BC3 /* QuestionListTableView.m in Sources */,
 				B8086535211ED6AC00755158 /* utxoModel.m in Sources */,
@@ -4499,7 +4524,6 @@
 				7A2CC6C7215DC88C00B27E2D /* UIColor+PGHex.m in Sources */,
 				B88B092D20C8F878005C2D2F /* WalletSettingVC.m in Sources */,
 				7A07F80D216C84F30026EB7A /* SCTool.m in Sources */,
-				B842D5D520E91AA900891289 /* ChooseCountryVc.m in Sources */,
 				7A07F82E216CDAC10026EB7A /* InviteEarningsVC.m in Sources */,
 				B88B591A2109AEC400F20D1B /* TLNavigationController.m in Sources */,
 				B8CAA14621158FF200695BC3 /* LPDImagePickerController.m in Sources */,

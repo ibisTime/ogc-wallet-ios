@@ -154,18 +154,18 @@ NSString *const kGoogleAuthClose = @"0";
 
 - (void)refreshLoginTime {
     
-    if (![[TLUser user] checkLogin]) {
-        return;
-    }
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"805083";
-    http.parameters[@"userId"] = [TLUser user].userId;
-    [http postWithSuccess:^(id responseObject) {
-        
-        
-    } failure:^(NSError *error) {
-        
-    }];
+//    if (![[TLUser user] checkLogin]) {
+//        return;
+//    }
+//    TLNetworking *http = [TLNetworking new];
+//    http.code = @"805083";
+//    http.parameters[@"userId"] = [TLUser user].userId;
+//    [http postWithSuccess:^(id responseObject) {
+//        
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
 }
 
 - (void)requestQiniuDomain {
@@ -188,8 +188,6 @@ NSString *const kGoogleAuthClose = @"0";
 
     self.userId = nil;
     self.token = nil;
-    //
-    //
     self.jfAmount = nil;
     self.jfInviteNumber = nil;
     self.localMoney = nil;

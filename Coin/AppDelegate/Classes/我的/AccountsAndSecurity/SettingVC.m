@@ -32,7 +32,9 @@
 #import "TLUserLoginVC.h"
 #import "ZLGestureLockViewController.h"
 #import "LocalSettingTableView.h"
-@interface SettingVC ()
+#import "ChangePhoneAndEmailVC.h"
+
+@interface SettingVC ()<RefreshDelegate>
 
 @property (nonatomic, strong) SettingGroup *group;
 @property (nonatomic, strong) UIButton *loginOutBtn;
@@ -52,17 +54,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    self.navigationController.navigationBar.translucent = YES;
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-//    self.navigationItem.backBarButtonItem = item;
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-//    [self.tableView reloadData];
     [self requestUserInfo];
 
 }
@@ -91,6 +82,7 @@
 
 
     self.tableView = [[LocalSettingTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStyleGrouped];
+    self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     CoinWeakSelf;
     self.tableView.SwitchBlock = ^(NSInteger switchBlock) {
@@ -116,145 +108,47 @@
     
     
 }
-- (void)buttonClick
+
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+            vc.titleString = @"修改交易密码";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            
+        }
+        
+    }
     
+    if (indexPath.section == 2) {
+        if (indexPath.row == 0) {
+            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+            vc.titleString = @"修改邮箱";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (indexPath.row == 1) {
+            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+            vc.titleString = @"修改手机号";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (indexPath.row == 2) {
+            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+            vc.titleString = @"修改登录密码";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }
 }
-//- (void)setGroup {
-//
-//    CoinWeakSelf;
-//
-//    //资金密码
-//    SettingModel *changeTradePwd = [SettingModel new];
-//
-//    changeTradePwd.text = [LangSwitcher switchLang:@"资金密码" key:nil];
-//    [changeTradePwd setAction:^{
-//
-//        TLPwdType pwdType = [[TLUser user].tradepwdFlag isEqualToString:@"0"] ? TLPwdTypeSetTrade: TLPwdTypeTradeReset;
-//
-//        TLPwdRelatedVC *pwdAboutVC = [[TLPwdRelatedVC alloc] initWithType:pwdType];
-//
-//        [weakSelf.navigationController pushViewController:pwdAboutVC animated:YES];
-//
-//    }];
-//
-//
-//    //实名认证
-//    SettingModel *idAuth = [SettingModel new];
-//    idAuth.text = [LangSwitcher switchLang:@"实名认证" key:nil];
-//    self.realNameSettingModel = idAuth;
-//    [idAuth setAction:^{
-//
-//        ZMAuthVC *authVC = [ZMAuthVC new];
-//        authVC.title = [LangSwitcher switchLang:@"实名认证" key:nil];
-//        authVC.success = ^{
-//
-//            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"实名认证成功" key:nil]];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//
-//                [weakSelf.navigationController popViewControllerAnimated:YES];
-//
-//            });
-//        };
-//
-//        [weakSelf.navigationController pushViewController:authVC animated:YES];
-//
-//    }];
-//
-//    //绑定邮箱
-//    SettingModel *bindEmail = [SettingModel new];
-//    bindEmail.text = [LangSwitcher switchLang:@"绑定邮箱" key:nil];
-//    self.emailSettingModel = bindEmail;
-//    [bindEmail setAction:^{
-//
-//        EditEmailVC *editVC = [[EditEmailVC alloc] init];
-//        [editVC setDone:^(NSString *content){
-//
-//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:1];
-//            SettingCell *cell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
-//
-//            cell.rightLabel.text = [[TLUser user].email valid] ? [TLUser user].email: [LangSwitcher switchLang:@"" key:nil];
-//
-//            [weakSelf.tableView reloadData];
-//
-//        }];
-//        //
-//        [weakSelf.navigationController pushViewController:editVC animated:YES];
-//    }];
-//
-//    //修改手机号
-////    SettingModel *changeMobile = [SettingModel new];
-////    changeMobile.text = [LangSwitcher switchLang:@"手机号" key:nil];
-////    changeMobile.subText = [TLUser user].mobile;
-////    [changeMobile setAction:^{
-////
-////        TLChangeMobileVC *changeMobileVC = [[TLChangeMobileVC alloc] init];
-////        [weakSelf.navigationController pushViewController:changeMobileVC animated:YES];
-////
-////    }];
-//
-//    //修改登录密码
-//    SettingModel *changeLoginPwd = [SettingModel new];
-//    if ([TLUser user].loginPwdFlag == 1) {
-//        changeLoginPwd.text = [LangSwitcher switchLang:@"修改登录密码" key:nil];
-//
-//    }else{
-//
-//        changeLoginPwd.text = [LangSwitcher switchLang:@"设置登录密码" key:nil];
-//
-//    }
-//    [changeLoginPwd setAction:^{
-//
-//        TLUserForgetPwdVC *changeLoginPwdVC = [TLUserForgetPwdVC new];
-//
-////        changeLoginPwdVC.success = ^{
-////
-////            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-////
-////                [weakSelf.navigationController popViewControllerAnimated:YES];
-////
-////            });
-////        };
-//
-//        [weakSelf.navigationController pushViewController:changeLoginPwdVC animated:YES];
-//
-//    }];
-//
-//    //谷歌验证
-//    SettingModel *google = [SettingModel new];
-//    google.text = [LangSwitcher switchLang:@"谷歌验证" key:nil];
-//    self.googleAuthSettingModel = google;
-//    [google setAction:^{
-//
-//        //未开启直接进入开启界面，已开启就弹出操作表
-//        if ([TLUser user].isGoogleAuthOpen) {
-//
-//            [weakSelf setGoogleAuth];
-//
-//        } else {
-//
-//            GoogleAuthVC *authVC = [GoogleAuthVC new];
-//            [weakSelf.navigationController pushViewController:authVC animated:YES];
-//        }
-//    }];
-//
-//
-//    //语言设置
-//    SettingModel *languageSetting = [SettingModel new];
-//    languageSetting.text = [LangSwitcher switchLang:@"手势密码" key:nil];
-//    [languageSetting setAction:^{
-//
-//
-//
-//    }];
-//
-//    self.group = [SettingGroup new];
-//    self.group.sections = @[@[changeTradePwd,google], @[changeLoginPwd,languageSetting]];
-//    self.tableView.group = self.group;
-//
-//}
+
+
+
 
 #pragma mark- 退出登录
 

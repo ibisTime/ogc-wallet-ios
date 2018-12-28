@@ -38,10 +38,9 @@
         [self addSubview:_setUpBtn];
         
         
-        NSArray *array = @[@"加入社群",@"帮助中心",@"设置"];
+        NSArray *array = @[@"加入群聊",@"帮助中心",@"设置"];
         for (int i = 0; i < 3; i ++) {
             self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i % 3 * 60 + 20, 20, 20)];
-            
             self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
             self.iconImageView.image = kImage(array[i]);
             [whiteView addSubview:self.iconImageView];

@@ -49,13 +49,16 @@
 //
 //    self.bgIV = bgIV;
     
-    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 135 + kNavigationBarHeight)];
-    topView.backgroundColor = kTabbarColor;
-    [self addSubview:topView];
+//    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 135 + kNavigationBarHeight)];
+//    topView.backgroundColor = kTabbarColor;
+//    [self addSubview:topView];
+    
+    UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
+    topImage.image = kImage(@"Mask");
+    [self addSubview:topImage];
     
     
-    
-    UILabel *titleLab  = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:16.0];
+    UILabel *titleLab  = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:18.0];
     titleLab.frame = CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, 44);
     [self addSubview:titleLab];
     titleLab.textAlignment = NSTextAlignmentCenter;
@@ -81,14 +84,21 @@
 //    CGFloat imgWidth = 66;
 
     self.photoBtn = [UIButton buttonWithTitle:nil titleColor:kAppCustomMainColor backgroundColor:kWhiteColor titleFont:30 cornerRadius:75/2.0];
-    self.photoBtn = [UIButton buttonWithImageName:@"头像" cornerRadius:75/2.0];
+    self.photoBtn = [UIButton buttonWithImageName:@"头像" cornerRadius:58/2.0];
     [self.photoBtn setBackgroundImage:kImage(@"头像") forState:UIControlStateNormal];
     [self.photoBtn addTarget:self action:@selector(selectPhoto:) forControlEvents:UIControlEventTouchUpInside];
     
     self.photoBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     [self addSubview:self.photoBtn];
-    
+    if ([TLUser user].photo)
+    {
+        [self.photoBtn sd_setImageWithURL:[NSURL URLWithString:[[TLUser user].photo convertImageUrl]] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.photoBtn setImage:kImage(@"头像") forState:UIControlStateNormal];
+    }
     
 //    UIImageView *image = [[UIImageView alloc] init];
 //    image.contentMode = UIViewContentModeScaleToFill;
@@ -96,10 +106,10 @@
 //    [self addSubview:image];
     [self.photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.width.equalTo(@75);
-        make.height.equalTo(@75);
-        make.left.equalTo(@(20));
-        make.top.equalTo(@(20 + kNavigationBarHeight));
+        make.width.equalTo(@58);
+        make.height.equalTo(@58);
+        make.left.equalTo(@(35));
+        make.top.equalTo(@(82 - 64 + kNavigationBarHeight));
 
     }];
     
@@ -114,14 +124,16 @@
 //    }];
     
     //昵称
-    self.nameLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:30.0];
+    self.nameLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:22];
     self.nameLbl.userInteractionEnabled = YES;
+    self.nameLbl.text = [TLUser user].loginName;
+    self.nameLbl.font = HGboldfont(22);
     [self addSubview:self.nameLbl];
     [self.nameLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(self.mas_top).offset(25 + kNavigationBarHeight);
-        make.left.equalTo(self.photoBtn.mas_right).offset(20);
-        
+        make.top.equalTo(self.mas_top).offset(87 - 64 + kNavigationBarHeight);
+        make.left.equalTo(self.photoBtn.mas_right).offset(15);
+        make.height.equalTo(@24);
     }];
     UIImageView *phone = [[UIImageView alloc] init];
     phone.image = kImage(@"手机");
@@ -129,76 +141,26 @@
     
     
     [phone mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.nameLbl.mas_left);
-        make.top.equalTo(@(70 + kNavigationBarHeight));
-        make.width.equalTo(@14);
-        make.height.equalTo(@14);
+        make.left.equalTo(self.nameLbl.mas_left).offset(0);
+//        make.top.equalTo(self.nameLbl.mas_bottom).offset(12);
+        make.bottom.equalTo(self.photoBtn.mas_bottom).offset(-6);
+        make.width.equalTo(@9);
+        make.height.equalTo(@12);
 
     }];
     //手机号
-    self.mobileLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:14.0];
     
+    self.mobileLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:14.0];
+    self.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].mobile];
     [self addSubview:self.mobileLbl];
     [self.mobileLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(phone.mas_right).offset(5);
-        make.top.equalTo(@(70 + kNavigationBarHeight));
+        make.left.equalTo(phone.mas_right).offset(4);
+        make.centerY.equalTo(phone.mas_centerY);
         make.height.equalTo(@14);
 
     }];
 
-    //用户等级
-//    self.levelBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"代理人" key:nil]
-//                                   titleColor:kWhiteColor
-//                              backgroundColor:kClearColor
-//                                    titleFont:10.0
-//                                 cornerRadius:1.5];
-//
-//    self.levelBtn.layer.borderWidth = 0.5;
-//    self.levelBtn.layer.borderColor = kWhiteColor.CGColor;
-//    [self.levelBtn setImage:kImage(@"代理人") forState:UIControlStateNormal];
-//    [self.levelBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 2, 0, 0)];
-//    [self.levelBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -4, 0, 0)];
-//    [self addSubview:self.levelBtn];
-//
-//    [self.levelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.left.equalTo(self.nameLbl.mas_right).offset(5);
-//        make.centerY.equalTo(self.nameLbl.mas_centerY);
-//        make.height.equalTo(@15);
-//        make.width.equalTo(@53);
-//
-//    }];
-//
-//    self.levelBtn.hidden = YES;
-    
-    //交易、好评跟信任
-    //    self.dataLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:12.0];
-    //
-    //    [self addSubview:self.dataLbl];
-    //    [self.dataLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-    //
-    //        make.centerX.equalTo(self.photoBtn.mas_centerX);
-    //        make.top.equalTo(self.nameLbl.mas_bottom).offset(15);
-    //
-    //    }];
-
-//    UIButton *integralBtn = [UIButton buttonWithTitle:@"" titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:14];
-//    integralBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//    [titleView addSubview:integralBtn];
-//    self.integralBtn = integralBtn;
-//
-//
-//    NSString *JF = [LangSwitcher switchLang:@"信用积分" key:nil];
-//    NSString *str = [NSString stringWithFormat:@"%@ 0",[LangSwitcher switchLang:@"信用积分" key:nil]];
-//    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-//    [attrStr addAttribute:NSForegroundColorAttributeName
-//                    value:kHexColor(@"#666666")
-//                    range:NSMakeRange(0, JF.length)];
-//    [attrStr addAttribute:NSForegroundColorAttributeName
-//                    value:RGB(0, 126, 246)
-//                    range:NSMakeRange(JF.length, str.length - JF.length)];
-//    [integralBtn setAttributedTitle:attrStr forState:(UIControlStateNormal)];
 
 
 }

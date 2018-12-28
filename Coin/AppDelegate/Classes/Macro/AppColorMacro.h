@@ -16,7 +16,7 @@
 
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-#define kTabbarColor   [UIColor colorWithRed:66.0/255.0 green:92.0/255.0 blue:193.0/255.0 alpha:1]
+#define kTabbarColor   [UIColor colorWithHexString:@"#4064E6"]
 
 //设置字体加粗
 #define HGboldfont(s)  [UIFont fontWithName:@"Helvetica-Bold" size:s]
