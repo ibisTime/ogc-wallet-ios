@@ -118,30 +118,24 @@
     [super viewWillAppear:animated];
     //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     //去掉导航栏底部的黑线
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [self navigationTransparentClearColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }
+
+
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    self.navigationController.navigationBar.translucent = NO;
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:nil];
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.barTintColor = kTabbarColor;
+//    self.navigationItem.backBarButtonItem = item;
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 
@@ -150,14 +144,19 @@
     
 //    self.title = [LangSwitcher switchLang:@"邀请有礼" key:nil];
     [self getShareUrl];
-    UIImageView *bgView = [[UIImageView alloc] init];
-    self.bgView = bgView;
-    bgView.userInteractionEnabled = YES;
-    bgView.contentMode = UIViewContentModeScaleToFill;
 
-    bgView.image = kImage(@"邀请bg");
-    [self.view addSubview:bgView];
-    bgView.frame = CGRectMake(0, -kNavigationBarHeight, kScreenWidth, kScreenHeight);
+//    渐变背景
+    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT + kNavigationBarHeight)];
+    [self.view addSubview:backView];
+    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = backView.bounds;
+    [backView.layer addSublayer:gradientLayer];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(0, 1);
+    gradientLayer.colors = @[(__bridge id)RGB(92, 101, 221).CGColor,
+                             (__bridge id)RGB(90, 63, 200).CGColor];
+    
+    gradientLayer.locations = @[@(0.5f), @(1.0f)];
 
     self.nameLable = [[UILabel alloc]init];
     self.nameLable.text = [LangSwitcher switchLang:@"邀请有礼" key:nil];
@@ -169,6 +168,8 @@
     self.view.backgroundColor  =[UIColor whiteColor];
     [self.view addSubview:self.bouncedView];
     // Do any additional setup after loading the view.
+    
+    [self initUI];
 }
 
 
@@ -185,7 +186,7 @@
         self.h5String = responseObject[@"data"][@"cvalue"];
 
 
-        [self initUI];
+        
         [self initUI1];
     } failure:^(NSError *error) {
         
@@ -196,74 +197,66 @@
 
 - (void)initUI
 {
-    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - kWidth(38), kHeight(kNavigationBarHeight + 16), 76, 103)];
-    iconImage.contentMode = UIViewContentModeScaleToFill;
-    iconImage.image = kImage(@"logoo");
+//    UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - kWidth(38), kHeight(kNavigationBarHeight + 16), 76, 103)];
+//    iconImage.contentMode = UIViewContentModeScaleToFill;
+//    iconImage.image = kImage(@"logoo");
     //    iconImage.backgroundColor = [UIColor redColor];
-    [_bgView addSubview:iconImage];
+//    [_bgView addSubview:iconImage];
+//
+//    UIImageView *titleBackImage = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth(70), kHeight(197 - 64 + kNavigationBarHeight),SCREEN_WIDTH - kWidth(105), kHeight(52))];
+//    titleBackImage.image = kImage(@"文字背景");
+//    [_bgView addSubview:titleBackImage];
+//
+//
+//    UILabel *introduceLabel = [UILabel labelWithFrame:CGRectMake(kWidth(23), kHeight(2), SCREEN_WIDTH - kWidth(186), kHeight(36)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#FFFFFF")];
+//
+//    introduceLabel.text = [LangSwitcher switchLang:@"全球首款跨链生态钱包" key:nil];
+//    [titleBackImage addSubview:introduceLabel];
+//
+//
+    
 
-    UIImageView *titleBackImage = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth(70), kHeight(197 - 64 + kNavigationBarHeight),SCREEN_WIDTH - kWidth(105), kHeight(52))];
-    titleBackImage.image = kImage(@"文字背景");
-    [_bgView addSubview:titleBackImage];
-
-
-    UILabel *introduceLabel = [UILabel labelWithFrame:CGRectMake(kWidth(23), kHeight(2), SCREEN_WIDTH - kWidth(186), kHeight(36)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#FFFFFF")];
-
-    introduceLabel.text = [LangSwitcher switchLang:@"全球首款跨链生态钱包" key:nil];
-    [titleBackImage addSubview:introduceLabel];
-
-
-    UILabel *InviteLinkLabel = [UILabel labelWithFrame:CGRectMake(kWidth(20), kHeight(499), 0, kHeight(16)) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#A2A5C4")];
-    InviteLinkLabel.text = [LangSwitcher switchLang:@"复制您的专属邀请链接" key:nil];
-    [self.bgView addSubview:InviteLinkLabel];
-    [InviteLinkLabel sizeToFit];
-    if (InviteLinkLabel.width >= SCREEN_WIDTH - kWidth(72) - kWidth(40)) {
-        InviteLinkLabel.frame = CGRectMake(kWidth(20), kHeight(499), SCREEN_WIDTH - kWidth(72) - kWidth(40), kHeight(16));
-    }else
-    {
-        InviteLinkLabel.frame = CGRectMake(SCREEN_WIDTH/2 - InviteLinkLabel.width/2 - kWidth(36), kHeight(499), InviteLinkLabel.width, kHeight(16));
-    }
-
-    UIButton *copyButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"复制" key:nil] titleColor:kHexColor(@"#A2A5C4") backgroundColor:kClearColor titleFont:12];
-    copyButton.frame = CGRectMake(InviteLinkLabel.xx + kWidth(12) , kHeight(494), kWidth(60), kHeight(26));
-    kViewBorderRadius(copyButton, 2, 1, kHexColor(@"#A2A5C4"));
-    [copyButton addTarget:self action:@selector(copyButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.bgView addSubview:copyButton];
-
-
-
-    UIImageView *btnBack = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth(-1), SCREEN_HEIGHT - kHeight(91), SCREEN_WIDTH + kWidth(2), kHeight(92))];
-    btnBack.image = kImage(@"1-1");
-    kViewBorderRadius(btnBack, 0.01, 1, kHexColor(@"#00F5FE"));
-    [self.bgView addSubview:btnBack];
-
-    NSArray *nameArray = @[@"保存本地",@"微信",@"朋友圈",@"微博"];
-    NSArray *imgArray = @[@"保存本地 亮色",@"微信 亮色",@"朋友圈 亮色",@"微博 亮色"];
-
-    for (int i = 0; i < 4; i ++) {
-        UIButton *shareBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[i] key:nil] titleColor:kHexColor(@"#05C8DB") backgroundColor:kClearColor titleFont:12];
-        shareBtn.frame = CGRectMake(i % 4 * SCREEN_WIDTH/4, SCREEN_HEIGHT - kHeight(91), SCREEN_WIDTH/4, kHeight(91));
-        [shareBtn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:8 imagePositionBlock:^(UIButton *button) {
-            [button setImage:[UIImage imageNamed:imgArray[i]] forState:(UIControlStateNormal)];
-        }];
-        [shareBtn addTarget:self action:@selector(shareBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        shareBtn.tag = 100 + i;
-        [self.bgView addSubview:shareBtn];
-    }
+    UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(0,  - 64 + kNavigationBarHeight + kHeight(190), SCREEN_WIDTH, kHeight(25)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:kWhiteColor];
+    nameLabel.text = [LangSwitcher switchLang:[TLUser user].mobile key:nil];
+    [self.view addSubview:nameLabel];
+    
+    UILabel *introduceLbl = [UILabel labelWithFrame:CGRectMake(0, nameLabel.yy + kHeight(8), SCREEN_WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kWhiteColor];
+    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入XXX" key:nil];
+    [self.view addSubview:introduceLbl];
+    
+    
+//    UIImageView *btnBack = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth(-1), SCREEN_HEIGHT - kHeight(91), SCREEN_WIDTH + kWidth(2), kHeight(92))];
+//    btnBack.image = kImage(@"1-1");
+//    kViewBorderRadius(btnBack, 0.01, 1, kHexColor(@"#00F5FE"));
+//    [self.view addSubview:btnBack];
+//
+//    NSArray *nameArray = @[@"保存本地",@"微信",@"朋友圈",@"微博"];
+//    NSArray *imgArray = @[@"保存本地 亮色",@"微信 亮色",@"朋友圈 亮色",@"微博 亮色"];
+//
+//    for (int i = 0; i < 4; i ++) {
+//        UIButton *shareBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[i] key:nil] titleColor:kHexColor(@"#05C8DB") backgroundColor:kClearColor titleFont:12];
+//        shareBtn.frame = CGRectMake(i % 4 * SCREEN_WIDTH/4, SCREEN_HEIGHT - kHeight(91), SCREEN_WIDTH/4, kHeight(91));
+//        [shareBtn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:8 imagePositionBlock:^(UIButton *button) {
+//            [button setImage:[UIImage imageNamed:imgArray[i]] forState:(UIControlStateNormal)];
+//        }];
+//        [shareBtn addTarget:self action:@selector(shareBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//        shareBtn.tag = 100 + i;
+//        [self.view addSubview:shareBtn];
+//    }
     
 
 
     UIView *codeView = [UIView new];
-    [self.bgView addSubview:codeView];
+    [self.view addSubview:codeView];
     codeView.backgroundColor = kBackgroundColor;
-    codeView.frame = CGRectMake(SCREEN_WIDTH/2 - kWidth(90), kHeight(230) + kNavigationBarHeight, kWidth(180), kWidth(180));
+    codeView.frame = CGRectMake(SCREEN_WIDTH/2 - kWidth(110), introduceLbl.yy + kHeight(15), kWidth(220), kWidth(220));
     codeView.layer.cornerRadius=5;
     codeView.layer.shadowOpacity = 0.22;// 阴影透明度
     codeView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
     codeView.layer.shadowRadius=3;// 阴影扩散的范围控制
     codeView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
 
-    [self.bgView addSubview:codeView];
+    [self.view addSubview:codeView];
 
 
     //二维码
@@ -293,12 +286,61 @@
     [codeView addSubview:qrIV];
     [qrIV mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(codeView.mas_top).offset(15);
-        make.right.equalTo(codeView.mas_right).offset(-15);
-        make.left.equalTo(codeView.mas_left).offset(15);
-        make.bottom.equalTo(codeView.mas_bottom).offset(-15);
+        make.top.equalTo(codeView.mas_top).offset(kWidth(20));
+        make.right.equalTo(codeView.mas_right).offset(-kWidth(20));
+        make.left.equalTo(codeView.mas_left).offset(kWidth(20));
+        make.bottom.equalTo(codeView.mas_bottom).offset(-kWidth(20));
     }];
+    
+    
+    UILabel *InviteLinkLabel = [UILabel labelWithFrame:CGRectMake(kWidth(20), codeView.yy + kHeight(15), 0, kHeight(22)) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
+    InviteLinkLabel.text = [LangSwitcher switchLang:@"复制您的专属邀请链接" key:nil];
+    [self.view addSubview:InviteLinkLabel];
+    [InviteLinkLabel sizeToFit];
+    if (InviteLinkLabel.width >= SCREEN_WIDTH - kWidth(72) - kWidth(40)) {
+        InviteLinkLabel.frame = CGRectMake(kWidth(20), codeView.yy + kHeight(15), SCREEN_WIDTH - kWidth(72) - kWidth(40), kHeight(22));
+    }else
+    {
+        InviteLinkLabel.frame = CGRectMake(SCREEN_WIDTH/2 - InviteLinkLabel.width/2 - kWidth(36), codeView.yy + kHeight(15), InviteLinkLabel.width, kHeight(22));
+    }
+    
+    UIButton *copyButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"复制" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:12];
+    copyButton.frame = CGRectMake(InviteLinkLabel.xx + kWidth(12) , codeView.yy + kHeight(15), kWidth(60), kHeight(22));
+    kViewBorderRadius(copyButton, 2, 1, kWhiteColor);
+    [copyButton addTarget:self action:@selector(copyButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:copyButton];
+    
+    
+    UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - kHeight(50) - kBottomInsetHeight, SCREEN_WIDTH, kHeight(50) + kBottomInsetHeight)];
+    bottomView.backgroundColor = RGB(90, 61, 200);
+    bottomView.layer.shadowOpacity = 0.22;// 阴影透明度
+    bottomView.layer.shadowColor = kWhiteColor.CGColor;// 阴影的颜色
+    bottomView.layer.shadowRadius=3;// 阴影扩散的范围控制
+    bottomView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
+//    bottomView
+    
+    [self.view addSubview:bottomView];
 
+    
+//    UIView *liView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.2)];
+//    liView.backgroundColor = kWhiteColor;
+//    [bottomView addSubview:liView];
+    
+//    CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//    gradientLayer.frame = bottomView.bounds;
+//    [bottomView.layer addSublayer:gradientLayer];
+//    gradientLayer.startPoint = CGPointMake(0, 1);
+//    gradientLayer.endPoint = CGPointMake(1, 1);
+//    gradientLayer.colors = @[(__bridge id)kHexColor(@"#657FFF").CGColor,
+//                             (__bridge id)kHexColor(@"#4D30C5").CGColor];
+//    gradientLayer.locations = @[@(0.5f), @(1.0f)];
+    
+    
+    UIButton *downloadBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"下载至本地" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16];
+    downloadBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH, kHeight(50));
+    [bottomView addSubview:downloadBtn];
+    
+    
 }
 
 

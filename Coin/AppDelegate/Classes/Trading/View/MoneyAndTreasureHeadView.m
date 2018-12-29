@@ -51,7 +51,7 @@
 
         UIButton *eyesButton = [UIButton buttonWithTitle:@"BTC" titleColor:kHexColor(@"#FFFFFF") backgroundColor:kClearColor titleFont:32];
         eyesButton.frame = CGRectMake(15, nameLabel.yy + 6, kScreenWidth - 30, 45);
-        [eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {
+        [eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:11 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"眼睛") forState:(UIControlStateNormal)];
             [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
         }];

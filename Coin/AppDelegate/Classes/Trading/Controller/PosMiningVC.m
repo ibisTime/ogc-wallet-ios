@@ -18,6 +18,10 @@
 #import "PosMyInvestmentDetailsVC.h"
 #import "MoneyAndTreasureHeadView.h"
 @interface PosMiningVC ()<RefreshDelegate>
+{
+    UIButton *selectBtn;
+    UIView *lineView;
+}
 
 //
 @property (nonatomic, strong) TLPlaceholderView *placeholderView;
@@ -58,14 +62,7 @@
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
@@ -82,6 +79,36 @@
     MoneyAndTreasureHeadView *headView = [[MoneyAndTreasureHeadView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
     self.headView = headView;
     [self.view addSubview:headView];
+    
+    NSArray *btnArray = @[@"BTC",@"USDT"];
+    for (int i = 0; i < 2; i ++) {
+        UIButton *btn = [UIButton buttonWithTitle:btnArray[i] titleColor:kHexColor(@"#999999") backgroundColor:kClearColor titleFont:16];
+        btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 200 - 64, SCREEN_WIDTH/2, 45);
+        [btn setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
+        if (i == 0) {
+            btn.selected = YES;
+            selectBtn = btn;
+        }
+        btn.tag = 100 + i;
+        [btn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        [self.view addSubview:btn];
+    }
+    
+    lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2/2 - 27.5, 200 - 64 + 45 - 3, 55, 3)];
+    lineView.backgroundColor = kTabbarColor;
+    kViewRadius(lineView, 1.5);
+    [self.view addSubview:lineView];
+}
+
+-(void)BtnClick:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    selectBtn.selected = !selectBtn.selected;
+    selectBtn = sender;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        lineView.frame = CGRectMake(SCREEN_WIDTH/2/2 - 27.5 + (sender.tag - 100)*SCREEN_WIDTH/2 , 200 - 64 + 45 - 3, 55, 3);
+    }];
 }
 
 -(void)navigativeView
@@ -270,7 +297,7 @@
     
     if (!_tableView) {
         
-        _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 200 - 64 + kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - (200 - 64 + kNavigationBarHeight)) style:UITableViewStylePlain];
+        _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 200 - 64 + kNavigationBarHeight + 45, SCREEN_WIDTH, SCREEN_HEIGHT - (200 - 64 + kNavigationBarHeight - 45)) style:UITableViewStylePlain];
 
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;

@@ -41,6 +41,10 @@
 //我的收益
 #import "MyIncomeVC.h"
 
+#import "TLQrCodeVC.h"
+
+#import "MyFriendViewController.h"
+
 @interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -167,14 +171,16 @@
             break;
         case 1:
         {
-            
+            MyFriendViewController *vc = [MyFriendViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
         {
-            TLinviteVC *settingVC = [TLinviteVC new];
-            settingVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:settingVC animated:YES];
+            TLQrCodeVC *vc = [TLQrCodeVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 3:
