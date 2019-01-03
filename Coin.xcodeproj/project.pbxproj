@@ -130,13 +130,21 @@
 		1F76699821DC880A00006B41 /* SetUpTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699721DC880A00006B41 /* SetUpTableView.m */; };
 		1F76699F21DCB30400006B41 /* InvestmentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699E21DCB30400006B41 /* InvestmentTableView.m */; };
 		1F7669A221DCB3BA00006B41 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */; };
-		1F7669E621DCC36700006B41 /* btg_pop_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7669D921DCC36600006B41 /* btg_pop_bg.png */; };
-		1F7669E721DCC36700006B41 /* btg_pop_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7669DA21DCC36600006B41 /* btg_pop_bg@2x.png */; };
-		1F7669E821DCC36700006B41 /* btg_pop_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7669DB21DCC36600006B41 /* btg_pop_bg@3x.png */; };
-		1F7669E921DCC36700006B41 /* SJChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E021DCC36600006B41 /* SJChartLineView.m */; };
-		1F7669EA21DCC36700006B41 /* SJCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E121DCC36600006B41 /* SJCircleView.m */; };
-		1F7669EB21DCC36700006B41 /* SJLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E321DCC36600006B41 /* SJLineChart.m */; };
-		1F7669EC21DCC36700006B41 /* SJAxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E521DCC36600006B41 /* SJAxisView.m */; };
+		1F7669F921DDA5BF00006B41 /* UIColor+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F121DDA5BE00006B41 /* UIColor+Extra.m */; };
+		1F7669FA21DDA5BF00006B41 /* BrokenChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F421DDA5BE00006B41 /* BrokenChartView.m */; };
+		1F7669FB21DDA5BF00006B41 /* SmoothChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F621DDA5BE00006B41 /* SmoothChartView.m */; };
+		1F7669FC21DDA5BF00006B41 /* UIBezierPath+curved.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F721DDA5BE00006B41 /* UIBezierPath+curved.m */; };
+		1F7669FF21DDDA8400006B41 /* InvestmentBuyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669FE21DDDA8400006B41 /* InvestmentBuyCell.m */; };
+		1F766A0221DDDFDB00006B41 /* PayWayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A0121DDDFDB00006B41 /* PayWayCell.m */; };
+		1F766A0A21DDE8D700006B41 /* OrderRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A0921DDE8D700006B41 /* OrderRecordVC.m */; };
+		1F766A0D21DDE8ED00006B41 /* OrderRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A0C21DDE8ED00006B41 /* OrderRecordTableView.m */; };
+		1F766A1021DDE9C800006B41 /* OrderRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A0F21DDE9C800006B41 /* OrderRecordCell.m */; };
+		1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A1521DDF42F00006B41 /* PayTreasureVC.m */; };
+		1F766A1F21DDF69E00006B41 /* PayTreasureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A1E21DDF69E00006B41 /* PayTreasureView.m */; };
+		1F766A2621DE09B300006B41 /* BnakCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2521DE09B300006B41 /* BnakCardVC.m */; };
+		1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2821DE09C000006B41 /* BnakCardView.m */; };
+		1F766A2F21DE0F0B00006B41 /* PayFailureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2E21DE0F0B00006B41 /* PayFailureVC.m */; };
+		1F766A3221DE0F1D00006B41 /* PayFailureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A3121DE0F1D00006B41 /* PayFailureView.m */; };
 		1F770ED721904D7D00E2889F /* langImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F770ED621904D7D00E2889F /* langImg.png */; };
 		1F770EDA21913CC000E2889F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770ED921913CC000E2889F /* UserModel.m */; };
 		1F770EDD2191738400E2889F /* ToolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770EDC2191738400E2889F /* ToolTextField.m */; };
@@ -848,17 +856,36 @@
 		1F76699E21DCB30400006B41 /* InvestmentTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentTableView.m; sourceTree = "<group>"; };
 		1F7669A021DCB3BA00006B41 /* InvestmentHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InvestmentHeadCell.h; path = ../../../../../../Documents/InvestmentHeadCell.h; sourceTree = "<group>"; };
 		1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InvestmentHeadCell.m; path = ../../../../../../Documents/InvestmentHeadCell.m; sourceTree = "<group>"; };
-		1F7669D921DCC36600006B41 /* btg_pop_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btg_pop_bg.png; sourceTree = "<group>"; };
-		1F7669DA21DCC36600006B41 /* btg_pop_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btg_pop_bg@2x.png"; sourceTree = "<group>"; };
-		1F7669DB21DCC36600006B41 /* btg_pop_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btg_pop_bg@3x.png"; sourceTree = "<group>"; };
-		1F7669DD21DCC36600006B41 /* SJAxisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAxisView.h; sourceTree = "<group>"; };
-		1F7669DF21DCC36600006B41 /* SJLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJLineChart.h; sourceTree = "<group>"; };
-		1F7669E021DCC36600006B41 /* SJChartLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJChartLineView.m; sourceTree = "<group>"; };
-		1F7669E121DCC36600006B41 /* SJCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJCircleView.m; sourceTree = "<group>"; };
-		1F7669E221DCC36600006B41 /* SJChartLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChartLineView.h; sourceTree = "<group>"; };
-		1F7669E321DCC36600006B41 /* SJLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJLineChart.m; sourceTree = "<group>"; };
-		1F7669E421DCC36600006B41 /* SJCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJCircleView.h; sourceTree = "<group>"; };
-		1F7669E521DCC36600006B41 /* SJAxisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAxisView.m; sourceTree = "<group>"; };
+		1F7669F021DDA5BE00006B41 /* UIColor+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extra.h"; sourceTree = "<group>"; };
+		1F7669F121DDA5BE00006B41 /* UIColor+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extra.m"; sourceTree = "<group>"; };
+		1F7669F321DDA5BE00006B41 /* SmoothChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothChartView.h; sourceTree = "<group>"; };
+		1F7669F421DDA5BE00006B41 /* BrokenChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrokenChartView.m; sourceTree = "<group>"; };
+		1F7669F521DDA5BE00006B41 /* UIBezierPath+curved.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+curved.h"; sourceTree = "<group>"; };
+		1F7669F621DDA5BE00006B41 /* SmoothChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmoothChartView.m; sourceTree = "<group>"; };
+		1F7669F721DDA5BE00006B41 /* UIBezierPath+curved.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBezierPath+curved.m"; sourceTree = "<group>"; };
+		1F7669F821DDA5BE00006B41 /* BrokenChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrokenChartView.h; sourceTree = "<group>"; };
+		1F7669FD21DDDA8400006B41 /* InvestmentBuyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentBuyCell.h; sourceTree = "<group>"; };
+		1F7669FE21DDDA8400006B41 /* InvestmentBuyCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentBuyCell.m; sourceTree = "<group>"; };
+		1F766A0021DDDFDB00006B41 /* PayWayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayWayCell.h; sourceTree = "<group>"; };
+		1F766A0121DDDFDB00006B41 /* PayWayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayWayCell.m; sourceTree = "<group>"; };
+		1F766A0821DDE8D700006B41 /* OrderRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordVC.h; sourceTree = "<group>"; };
+		1F766A0921DDE8D700006B41 /* OrderRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderRecordVC.m; sourceTree = "<group>"; };
+		1F766A0B21DDE8ED00006B41 /* OrderRecordTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordTableView.h; sourceTree = "<group>"; };
+		1F766A0C21DDE8ED00006B41 /* OrderRecordTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderRecordTableView.m; sourceTree = "<group>"; };
+		1F766A0E21DDE9C800006B41 /* OrderRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordCell.h; sourceTree = "<group>"; };
+		1F766A0F21DDE9C800006B41 /* OrderRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderRecordCell.m; sourceTree = "<group>"; };
+		1F766A1421DDF42F00006B41 /* PayTreasureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayTreasureVC.h; sourceTree = "<group>"; };
+		1F766A1521DDF42F00006B41 /* PayTreasureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayTreasureVC.m; sourceTree = "<group>"; };
+		1F766A1D21DDF69E00006B41 /* PayTreasureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayTreasureView.h; sourceTree = "<group>"; };
+		1F766A1E21DDF69E00006B41 /* PayTreasureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayTreasureView.m; sourceTree = "<group>"; };
+		1F766A2421DE09B300006B41 /* BnakCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BnakCardVC.h; path = ../../../../../../../../Documents/BnakCardVC.h; sourceTree = "<group>"; };
+		1F766A2521DE09B300006B41 /* BnakCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BnakCardVC.m; path = ../../../../../../../../Documents/BnakCardVC.m; sourceTree = "<group>"; };
+		1F766A2721DE09C000006B41 /* BnakCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BnakCardView.h; sourceTree = "<group>"; };
+		1F766A2821DE09C000006B41 /* BnakCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BnakCardView.m; sourceTree = "<group>"; };
+		1F766A2D21DE0F0B00006B41 /* PayFailureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayFailureVC.h; sourceTree = "<group>"; };
+		1F766A2E21DE0F0B00006B41 /* PayFailureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayFailureVC.m; sourceTree = "<group>"; };
+		1F766A3021DE0F1D00006B41 /* PayFailureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayFailureView.h; sourceTree = "<group>"; };
+		1F766A3121DE0F1D00006B41 /* PayFailureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayFailureView.m; sourceTree = "<group>"; };
 		1F770ED621904D7D00E2889F /* langImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = langImg.png; sourceTree = "<group>"; };
 		1F770ED821913CC000E2889F /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		1F770ED921913CC000E2889F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
@@ -2308,11 +2335,16 @@
 		1F76699A21DCB2D400006B41 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F7669F221DDA5BE00006B41 /* CXMChartView */,
+				1F7669EF21DDA5BE00006B41 /* UIColor */,
 				1F76699D21DCB30400006B41 /* InvestmentTableView.h */,
 				1F76699E21DCB30400006B41 /* InvestmentTableView.m */,
 				1F7669A021DCB3BA00006B41 /* InvestmentHeadCell.h */,
 				1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */,
-				1F7669D721DCC36600006B41 /* LineChart折线图 */,
+				1F7669FD21DDDA8400006B41 /* InvestmentBuyCell.h */,
+				1F7669FE21DDDA8400006B41 /* InvestmentBuyCell.m */,
+				1F766A0021DDDFDB00006B41 /* PayWayCell.h */,
+				1F766A0121DDDFDB00006B41 /* PayWayCell.m */,
 			);
 			name = View;
 			path = "New Group";
@@ -2334,46 +2366,154 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		1F7669D721DCC36600006B41 /* LineChart折线图 */ = {
+		1F7669EF21DDA5BE00006B41 /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
-				1F7669D821DCC36600006B41 /* Resource */,
-				1F7669DC21DCC36600006B41 /* Views */,
+				1F7669F021DDA5BE00006B41 /* UIColor+Extra.h */,
+				1F7669F121DDA5BE00006B41 /* UIColor+Extra.m */,
 			);
-			path = "LineChart折线图";
+			path = UIColor;
 			sourceTree = "<group>";
 		};
-		1F7669D821DCC36600006B41 /* Resource */ = {
+		1F7669F221DDA5BE00006B41 /* CXMChartView */ = {
 			isa = PBXGroup;
 			children = (
-				1F7669D921DCC36600006B41 /* btg_pop_bg.png */,
-				1F7669DA21DCC36600006B41 /* btg_pop_bg@2x.png */,
-				1F7669DB21DCC36600006B41 /* btg_pop_bg@3x.png */,
+				1F7669F321DDA5BE00006B41 /* SmoothChartView.h */,
+				1F7669F621DDA5BE00006B41 /* SmoothChartView.m */,
+				1F7669F421DDA5BE00006B41 /* BrokenChartView.m */,
+				1F7669F521DDA5BE00006B41 /* UIBezierPath+curved.h */,
+				1F7669F721DDA5BE00006B41 /* UIBezierPath+curved.m */,
+				1F7669F821DDA5BE00006B41 /* BrokenChartView.h */,
 			);
-			path = Resource;
+			path = CXMChartView;
 			sourceTree = "<group>";
 		};
-		1F7669DC21DCC36600006B41 /* Views */ = {
+		1F766A0321DDE89A00006B41 /* OrderRecord */ = {
 			isa = PBXGroup;
 			children = (
-				1F7669DD21DCC36600006B41 /* SJAxisView.h */,
-				1F7669DE21DCC36600006B41 /* SJLineChart */,
-				1F7669E521DCC36600006B41 /* SJAxisView.m */,
+				1F766A0721DDE8B600006B41 /* Controller */,
+				1F766A0621DDE8B400006B41 /* Model */,
+				1F766A0421DDE8AE00006B41 /* View */,
 			);
-			path = Views;
+			path = OrderRecord;
 			sourceTree = "<group>";
 		};
-		1F7669DE21DCC36600006B41 /* SJLineChart */ = {
+		1F766A0421DDE8AE00006B41 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1F7669DF21DCC36600006B41 /* SJLineChart.h */,
-				1F7669E021DCC36600006B41 /* SJChartLineView.m */,
-				1F7669E121DCC36600006B41 /* SJCircleView.m */,
-				1F7669E221DCC36600006B41 /* SJChartLineView.h */,
-				1F7669E321DCC36600006B41 /* SJLineChart.m */,
-				1F7669E421DCC36600006B41 /* SJCircleView.h */,
+				1F766A0B21DDE8ED00006B41 /* OrderRecordTableView.h */,
+				1F766A0C21DDE8ED00006B41 /* OrderRecordTableView.m */,
+				1F766A0E21DDE9C800006B41 /* OrderRecordCell.h */,
+				1F766A0F21DDE9C800006B41 /* OrderRecordCell.m */,
 			);
-			path = SJLineChart;
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F766A0621DDE8B400006B41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F766A0721DDE8B600006B41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A0821DDE8D700006B41 /* OrderRecordVC.h */,
+				1F766A0921DDE8D700006B41 /* OrderRecordVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F766A1121DDF3C800006B41 /* Pay */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A2A21DE0EE200006B41 /* PayFailure */,
+				1F766A2121DE098400006B41 /* BnakCard */,
+				1F766A2021DE096300006B41 /* PayTreasure */,
+			);
+			path = Pay;
+			sourceTree = "<group>";
+		};
+		1F766A1221DDF3E300006B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A1D21DDF69E00006B41 /* PayTreasureView.h */,
+				1F766A1E21DDF69E00006B41 /* PayTreasureView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F766A1321DDF3E500006B41 /* Contoller */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A1421DDF42F00006B41 /* PayTreasureVC.h */,
+				1F766A1521DDF42F00006B41 /* PayTreasureVC.m */,
+			);
+			path = Contoller;
+			sourceTree = "<group>";
+		};
+		1F766A2021DE096300006B41 /* PayTreasure */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A1321DDF3E500006B41 /* Contoller */,
+				1F766A1221DDF3E300006B41 /* View */,
+			);
+			path = PayTreasure;
+			sourceTree = "<group>";
+		};
+		1F766A2121DE098400006B41 /* BnakCard */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A2321DE099800006B41 /* Controller */,
+				1F766A2221DE099700006B41 /* View */,
+			);
+			path = BnakCard;
+			sourceTree = "<group>";
+		};
+		1F766A2221DE099700006B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A2721DE09C000006B41 /* BnakCardView.h */,
+				1F766A2821DE09C000006B41 /* BnakCardView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F766A2321DE099800006B41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A2421DE09B300006B41 /* BnakCardVC.h */,
+				1F766A2521DE09B300006B41 /* BnakCardVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F766A2A21DE0EE200006B41 /* PayFailure */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A2C21DE0EF600006B41 /* Controller */,
+				1F766A2B21DE0EF500006B41 /* View */,
+			);
+			path = PayFailure;
+			sourceTree = "<group>";
+		};
+		1F766A2B21DE0EF500006B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A3021DE0F1D00006B41 /* PayFailureView.h */,
+				1F766A3121DE0F1D00006B41 /* PayFailureView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F766A2C21DE0EF600006B41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F766A2D21DE0F0B00006B41 /* PayFailureVC.h */,
+				1F766A2E21DE0F0B00006B41 /* PayFailureVC.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		211A34D81FB3F55600FEB71F /* View */ = {
@@ -2849,6 +2989,8 @@
 		216F5B1D206CD9D900F2C832 /* Investment */ = {
 			isa = PBXGroup;
 			children = (
+				1F766A1121DDF3C800006B41 /* Pay */,
+				1F766A0321DDE89A00006B41 /* OrderRecord */,
 				1F76699C21DCB2D900006B41 /* Controller */,
 				1F76699B21DCB2D600006B41 /* Model */,
 				1F76699A21DCB2D400006B41 /* View */,
@@ -4151,14 +4293,11 @@
 			files = (
 				7A2CC6C2215DC88C00B27E2D /* PGDatePicker.bundle in Resources */,
 				1F76697C21D4A34D00006B41 /* README.txt in Resources */,
-				1F7669E621DCC36700006B41 /* btg_pop_bg.png in Resources */,
 				1F76696921D4A34D00006B41 /* MSADefaultImages.bundle in Resources */,
 				B8CAA14321158FF200695BC3 /* LPDImagePickerController.bundle in Resources */,
-				1F7669E721DCC36700006B41 /* btg_pop_bg@2x.png in Resources */,
 				B88B59172109AEC400F20D1B /* country.plist in Resources */,
 				B819BAAA20C6DD7800CEEC5E /* LaunchScreen.storyboard in Resources */,
 				1F76696621D4A34D00006B41 /* MSADefaultLocale.bundle in Resources */,
-				1F7669E821DCC36700006B41 /* btg_pop_bg@3x.png in Resources */,
 				2EFFE6AA1FF4829100BFCC40 /* Localizable.strings in Resources */,
 				7A2CC6D4215DC89200B27E2D /* LICENSE in Resources */,
 				2EB9495B1FDF6B1A00CE4B94 /* SimplifiedCode.txt in Resources */,
@@ -4298,7 +4437,6 @@
 				211A34F11FB430DB00FEB71F /* SettingModel.m in Sources */,
 				216F5B40206CD9DA00F2C832 /* TLBannerView.m in Sources */,
 				21A7F3181FB2E2F900FAA0A2 /* TLUserRegisterVC.m in Sources */,
-				1F7669E921DCC36700006B41 /* SJChartLineView.m in Sources */,
 				7A2CC65D215BA4E100B27E2D /* PosBuyIntroduceCell.m in Sources */,
 				B82D3878211BD4A50053A2E4 /* TLQrCodeVC.m in Sources */,
 				216F5B3A206CD9DA00F2C832 /* CountInfoModel.m in Sources */,
@@ -4306,6 +4444,7 @@
 				1F76690D21D4A32700006B41 /* BTCAddress.m in Sources */,
 				211CEF151FCBBF90000FB0C4 /* SortBar.m in Sources */,
 				B89F07E2211B07FA0057E781 /* TLMeSetting.m in Sources */,
+				1F7669FA21DDA5BF00006B41 /* BrokenChartView.m in Sources */,
 				7A07F80C216C84F30026EB7A /* SCPieChartDataItem.m in Sources */,
 				215979761FB84CC70029F177 /* BillDetailCell.m in Sources */,
 				7A2CC6B8215DC88C00B27E2D /* PGDatePicker+Logic.m in Sources */,
@@ -4344,6 +4483,7 @@
 				7AAF0312214F8C35008507FF /* IntegralVC.m in Sources */,
 				7A8A5D2520EA301E002D9A48 /* RedEnvelopeShoreVC.m in Sources */,
 				B8C2057620CF9FFD00952765 /* WalletAdressTableView.m in Sources */,
+				1F766A3221DE0F1D00006B41 /* PayFailureView.m in Sources */,
 				1F76697821D4A34D00006B41 /* aestab.c in Sources */,
 				211DE6BC1FB58B4C002FCF3D /* NSString+Extension.m in Sources */,
 				B88D6C6F20EDF39F0043832C /* TLFastvc.m in Sources */,
@@ -4354,7 +4494,6 @@
 				B8CA0D6A21081B850015A19D /* AssetPwdView.m in Sources */,
 				1F76692721D4A32700006B41 /* BTCData+Tests.m in Sources */,
 				7A2CC6BC215DC88C00B27E2D /* PGDatePicker+MonthDayHourMinute.m in Sources */,
-				1F7669EA21DCC36700006B41 /* SJCircleView.m in Sources */,
 				21A7F3161FB2E2F900FAA0A2 /* TLUserLoginVC.m in Sources */,
 				211A34EB1FB42F8100FEB71F /* SettingVC.m in Sources */,
 				211DE6C51FB58B4C002FCF3D /* HttpRequestService.m in Sources */,
@@ -4418,7 +4557,6 @@
 				B8DB9EC3214F8A220091276E /* H5DrtailVC.m in Sources */,
 				B8F63EE020D3809700556150 /* LocalBillDetailTableView.m in Sources */,
 				1F76691021D4A32700006B41 /* BTCMerkleTree.m in Sources */,
-				1F7669EB21DCC36700006B41 /* SJLineChart.m in Sources */,
 				1F76698F21D771A800006B41 /* MyFriendViewController.m in Sources */,
 				7AABEAFE2149127200283BC7 /* BouncedPasteView.m in Sources */,
 				7A2CC674215CAECF00B27E2D /* AccumulatedEarningsVC.m in Sources */,
@@ -4472,6 +4610,7 @@
 				B8086538211F19BF00755158 /* TLBillBTCVC.m in Sources */,
 				211DE6A11FB58B4C002FCF3D /* TLTimeButton.m in Sources */,
 				211A34F71FB4328800FEB71F /* SettingTableView.m in Sources */,
+				1F766A0A21DDE8D700006B41 /* OrderRecordVC.m in Sources */,
 				211DE6B01FB58B4C002FCF3D /* UILable+convience.m in Sources */,
 				B8CAA13F21158FF200695BC3 /* LPDVideoPlayerController.m in Sources */,
 				7A2CC6BD215DC88C00B27E2D /* PGDatePicker+MonthDayHourMinuteSecond.m in Sources */,
@@ -4518,6 +4657,7 @@
 				1F76696C21D4A34D00006B41 /* unzip.c in Sources */,
 				7A8A5DD120EAA2DE002D9A48 /* InvitationView.m in Sources */,
 				1F76696D21D4A34D00006B41 /* zip.c in Sources */,
+				1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */,
 				B8CA7D4920CBA22800A0E93C /* WalletImportVC.m in Sources */,
 				B83666F6210EC0610065DF18 /* LocalSettingCell.m in Sources */,
 				1F76690B21D4A32700006B41 /* BTCCurrencyConverter+Tests.m in Sources */,
@@ -4545,6 +4685,7 @@
 				B83604132125581A0089CC17 /* TLtakeMoneyModel.m in Sources */,
 				21C91D801FDBCFB6006EDB16 /* ZMAuthResultVC.m in Sources */,
 				211DE6A41FB58B4C002FCF3D /* TLPickerTextField.m in Sources */,
+				1F766A1F21DDF69E00006B41 /* PayTreasureView.m in Sources */,
 				1F7668F621D4A32700006B41 /* BTCScript+Tests.m in Sources */,
 				1F76696F21D4A34D00006B41 /* mztools.c in Sources */,
 				7A07F821216CB4910026EB7A /* GlobalRevenueListCell.m in Sources */,
@@ -4555,6 +4696,7 @@
 				B8C2057020CF984900952765 /* WalletDelectVC.m in Sources */,
 				211DE6AD1FB58B4C002FCF3D /* TLAlert.m in Sources */,
 				B8CAA11A2115693A00695BC3 /* TLQusertionVC.m in Sources */,
+				1F7669FB21DDA5BF00006B41 /* SmoothChartView.m in Sources */,
 				7A2CC6C1215DC88C00B27E2D /* PGDatePicker+YearAndMonth.m in Sources */,
 				21205CFD1FCD61D6003C6C7C /* CustomShareView.m in Sources */,
 				B8CAA13C21158FF200695BC3 /* UIImage+MyBundle.m in Sources */,
@@ -4606,6 +4748,7 @@
 				7A8A5D1520EA076C002D9A48 /* RedEnvelopeVC.m in Sources */,
 				21A7F35E1FB2EBAA00FAA0A2 /* CurrencyModel.m in Sources */,
 				B88D6C7220EDF3B50043832C /* TLTransfromVC.m in Sources */,
+				1F766A1021DDE9C800006B41 /* OrderRecordCell.m in Sources */,
 				1F76696E21D4A34D00006B41 /* ioapi.c in Sources */,
 				211DE6A61FB58B4C002FCF3D /* TLTextView.m in Sources */,
 				B8DC39D1214B9FEA002E62E7 /* NewHtmlVC.m in Sources */,
@@ -4621,7 +4764,6 @@
 				B8DB9EB4214F6A730091276E /* RedIntroduceTB.m in Sources */,
 				B8CAA14421158FF200695BC3 /* LPDImageManager.m in Sources */,
 				211DE6C41FB58B4C002FCF3D /* HttpSign.m in Sources */,
-				1F7669EC21DCC36700006B41 /* SJAxisView.m in Sources */,
 				B8D9290F20EA58290026A3DF /* ChangeLocalMoneyVC.m in Sources */,
 				7A8A5DC020EA6977002D9A48 /* CustomActionSheet.m in Sources */,
 				1F7667F421D0B44700006B41 /* MyCell1.m in Sources */,
@@ -4669,11 +4811,16 @@
 				7A40B11A217EF15F004B9830 /* UITableView+XSAnimationKit.m in Sources */,
 				7A2CC664215BBC2900B27E2D /* PosMyInvestmentDetailsVC.m in Sources */,
 				B8F63EE320D397B000556150 /* WalletLocalWebVC.m in Sources */,
+				1F766A2F21DE0F0B00006B41 /* PayFailureVC.m in Sources */,
+				1F7669F921DDA5BF00006B41 /* UIColor+Extra.m in Sources */,
 				2129FE6F1FDFBAA3009DA374 /* ChangeLoginPwdVC.m in Sources */,
+				1F7669FF21DDDA8400006B41 /* InvestmentBuyCell.m in Sources */,
 				211A532F1FBFE4CF00CC6294 /* RateDescCell.m in Sources */,
 				B8DB9EB1214F68E70091276E /* TLRedintroduceVC.m in Sources */,
 				1F76692221D4A32700006B41 /* BTCPaymentMethodRequest.m in Sources */,
 				7A07F805216C84F30026EB7A /* SCChart.m in Sources */,
+				1F7669FC21DDA5BF00006B41 /* UIBezierPath+curved.m in Sources */,
+				1F766A2621DE09B300006B41 /* BnakCardVC.m in Sources */,
 				7A8A5DC620EA6FE7002D9A48 /* UIView+Extension.m in Sources */,
 				7A8A5DCB20EA7EB8002D9A48 /* GetTheCell.m in Sources */,
 				7A3821BD20EABD1300D6B636 /* GetTheTableView.m in Sources */,
@@ -4703,6 +4850,7 @@
 				B8A2436520E5E0F20074DF8F /* TLDataBase.m in Sources */,
 				7A07F809216C84F30026EB7A /* SCGenericChart.m in Sources */,
 				7A07F7E5216C7C200026EB7A /* MyInconmeHeadCell.m in Sources */,
+				1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */,
 				1F7668F921D4A32700006B41 /* BTCScriptMachine.m in Sources */,
 				2EE361551FFE182800A5C3EB /* RespHandler.m in Sources */,
 				7A8A5D3520EA3E5A002D9A48 /* SendVC.m in Sources */,
@@ -4722,6 +4870,7 @@
 				7A2CC6B7215DC88C00B27E2D /* PGDatePicker+DateHourMinuteSecond.m in Sources */,
 				211DE6A21FB58B4C002FCF3D /* TLCaptchaView.m in Sources */,
 				211DE6B71FB58B4C002FCF3D /* UIBarButtonItem+convience.m in Sources */,
+				1F766A0D21DDE8ED00006B41 /* OrderRecordTableView.m in Sources */,
 				211DE6B41FB58B4C002FCF3D /* UIColor+Extension.m in Sources */,
 				7A2CC6D5215DC89200B27E2D /* PGPickerColumnCell.m in Sources */,
 				2120A8FC1FD51DF800B03DB0 /* UITabBar+Badge.m in Sources */,
@@ -4738,6 +4887,7 @@
 				211A34F01FB430DB00FEB71F /* SettingGroup.m in Sources */,
 				B8B15C2020CA752900F13220 /* CurrencyTitleModel.m in Sources */,
 				216F5B5A206D02DC00F2C832 /* PosMiningVC.m in Sources */,
+				1F766A0221DDDFDB00006B41 /* PayWayCell.m in Sources */,
 				1F76680121D1FEC500006B41 /* MyCell2.m in Sources */,
 				B8CAA14821158FF200695BC3 /* LPDQuoteImagesView.m in Sources */,
 				7A40B11E217EF884004B9830 /* ZJAnimationPopView.m in Sources */,

@@ -7,16 +7,30 @@
 //
 
 #import "InvestmentVC.h"
-//折线图
-#import "SJAxisView.h"
-#import "SJChartLineView.h"
-#import "SJLineChart.h"
-@interface InvestmentVC ()
-//折线图
-@property (nonatomic, strong) SJLineChart *lineChart;
+#import "InvestmentTableView.h"
+#import "OrderRecordVC.h"
+@interface InvestmentVC ()<RefreshDelegate>
+
+@property (nonatomic , strong)InvestmentTableView *tableView;
+
+
 @end
 
 @implementation InvestmentVC
+
+
+- (InvestmentTableView *)tableView {
+    
+    if (!_tableView) {
+        
+        _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - 50 - kTabBarHeight) style:UITableViewStylePlain];
+        
+        _tableView.refreshDelegate = self;
+        _tableView.backgroundColor = kBackgroundColor;
+        //        [self.view addSubview:_tableView];
+    }
+    return _tableView;
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -36,24 +50,42 @@
     self.titleText.text = [LangSwitcher switchLang:@"BTC交易区" key:nil];
     self.titleText.font = FONT(18);
     self.navigationItem.titleView = self.titleText;
-    [self createIncomeChartLineView];
+    
+    
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -10;
+//    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+    [self.RightButton setTitle:[LangSwitcher switchLang:@"订单" key:nil] forState:(UIControlStateNormal)];
+    [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    
+    [self.view addSubview:self.tableView];
+    
+    
+    UIButton *bottomBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"买入" key:nil] titleColor:kWhiteColor backgroundColor:kHexColor(@"#FA7D0E") titleFont:16];
+    bottomBtn.frame = CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - 50 - kTabBarHeight, SCREEN_WIDTH, 50);
+    [bottomBtn addTarget:self action:@selector(bottomBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    [self.view addSubview:bottomBtn];
+}
+
+-(void)myRecodeClick
+{
+    OrderRecordVC *vc = [OrderRecordVC new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)bottomBtnClick
+{
+    OrderRecordVC *vc = [OrderRecordVC new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 
-/**创建“收益走势”图*/
--(void)createIncomeChartLineView{
-    
-    self.lineChart = [[SJLineChart alloc] initWithFrame:CGRectMake(0  , 10, SCREEN_WIDTH , 200)];
-    // 设置折线图属性
-    _lineChart.xScaleMarkLEN = 60;// 可以不设，会根据视图的宽度自适应,设置后如果折线图的宽度大于视图宽度，折线图可以滑动
-//    self.lineChart.title = @"七日收益比"; // 折线图名称
-    self.lineChart.maxValue = 0.5;   // 最大值
-    self.lineChart.yMarkTitles = @[@"0.0",@"0.1",@"0.2",@"0.3",@"0.4",@"0.5"];
-    [self.lineChart setXMarkTitlesAndValues:@[@{@"item":@"1.1",@"count":@(0.30)},@{@"item":@"1.1",@"count":@(0.40)},@{@"item":@"1.1",@"count":@(0.40)},@{@"item":@"1.1",@"count":@(0.00)},@{@"item":@"1.1",@"count":@(0.20)},@{@"item":@"1.1",@"count":@(0.40)},@{@"item":@"1.1",@"count":@(0.20)}] titleKey:@"item" valueKey:@"count"];
-    [self.lineChart mapping];
-    [self.view addSubview:_lineChart];
-    
-}
 
 
 
