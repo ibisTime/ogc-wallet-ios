@@ -76,14 +76,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"LOADDATA" object:nil];
     [self navigativeView];
 
-    MoneyAndTreasureHeadView *headView = [[MoneyAndTreasureHeadView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
+    MoneyAndTreasureHeadView *headView = [[MoneyAndTreasureHeadView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, 240 - 64 + kNavigationBarHeight)];
     self.headView = headView;
     [self.view addSubview:headView];
     
     NSArray *btnArray = @[@"BTC",@"USDT"];
     for (int i = 0; i < 2; i ++) {
         UIButton *btn = [UIButton buttonWithTitle:btnArray[i] titleColor:kHexColor(@"#999999") backgroundColor:kClearColor titleFont:16];
-        btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 200 - 64, SCREEN_WIDTH/2, 45);
+        btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 240 - 64, SCREEN_WIDTH/2, 45);
         [btn setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
         if (i == 0) {
             btn.selected = YES;
@@ -94,7 +94,7 @@
         [self.view addSubview:btn];
     }
     
-    lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2/2 - 27.5, 200 - 64 + 45 - 3, 55, 3)];
+    lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2/2 - 27.5, 240 - 64 + 45 - 3, 55, 3)];
     lineView.backgroundColor = kTabbarColor;
     kViewRadius(lineView, 1.5);
     [self.view addSubview:lineView];
@@ -107,7 +107,7 @@
     selectBtn = sender;
     
     [UIView animateWithDuration:0.3 animations:^{
-        lineView.frame = CGRectMake(SCREEN_WIDTH/2/2 - 27.5 + (sender.tag - 100)*SCREEN_WIDTH/2 , 200 - 64 + 45 - 3, 55, 3);
+        lineView.frame = CGRectMake(SCREEN_WIDTH/2/2 - 27.5 + (sender.tag - 100)*SCREEN_WIDTH/2 , 240 - 64 + 45 - 3, 55, 3);
     }];
 }
 
@@ -138,6 +138,7 @@
 {
     PosMyInvestmentDetailsVC *VC = [PosMyInvestmentDetailsVC new];
     VC.dataDic = self.dataDic;
+    VC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:VC animated:YES];
 
 }
@@ -297,7 +298,7 @@
     
     if (!_tableView) {
         
-        _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 200 - 64 + kNavigationBarHeight + 45, SCREEN_WIDTH, SCREEN_HEIGHT - (200 - 64 + kNavigationBarHeight - 45)) style:UITableViewStylePlain];
+        _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 240 - 64 + kNavigationBarHeight + 45, SCREEN_WIDTH, SCREEN_HEIGHT - (240 - 64 + kNavigationBarHeight - 45)) style:UITableViewStylePlain];
 
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;
@@ -318,6 +319,7 @@
         TLMoneyDeailVC *money = [TLMoneyDeailVC new];
         money.moneyModel = self.Moneys[indexPath.row];
         money.currencys = self.currencys;
+        money.hidesBottomBarWhenPushed = YES;
 //        money.title = [LangSwitcher switchLang:@"理财产品详情" key:nil];
         [self.navigationController pushViewController:money animated:YES];
     }

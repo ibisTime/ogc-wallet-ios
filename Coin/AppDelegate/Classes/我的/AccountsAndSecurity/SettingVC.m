@@ -10,7 +10,6 @@
 #import "IdAuthVC.h"
 #import "ZMAuthVC.h"
 #import "TLChangeMobileVC.h"
-#import "TLPwdRelatedVC.h"
 #import "TLUserForgetPwdVC.h"
 #import "HTMLStrVC.h"
 #import "TLTabBarController.h"

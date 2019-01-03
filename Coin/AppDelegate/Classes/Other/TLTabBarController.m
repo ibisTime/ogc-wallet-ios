@@ -14,6 +14,7 @@
 #import "AppConfig.h"
 #import "AppColorMacro.h"
 #import "NSBundle+Language.h"
+#import "InvestmentVC.h"
 @interface TLTabBarController ()<UITabBarControllerDelegate>
 
 @property (nonatomic, assign) NSInteger currentIndex;
@@ -137,6 +138,10 @@
     
     NSInteger idx = tabBarController.selectedIndex;
     
+    
+    
+    
+    
     if ([AppConfig config].isUploadCheck) {
         
 //        //判断点击的Controller是不是需要登录，如果是，那就登录
@@ -158,18 +163,6 @@
         
     } else {
         
-        //判断点击的Controller是不是需要登录，如果是，那就登录
-//        if((idx == 1 || idx == 2) && ![TLUser user].isLogin) {
-//
-//            TLUserLoginVC *loginVC = [TLUserLoginVC new];
-//
-//            loginVC.loginSuccess = ^{
-//
-//                weakSelf.selectedIndex = idx;
-//
-//            };
-//
-
         
         if((idx == 0) && ![TLUser user].isLogin) {
             

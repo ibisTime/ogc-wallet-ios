@@ -46,6 +46,23 @@
 
 @implementation WallAccountVC
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self navigationTransparentClearColor];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self navigationwhiteColor];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+}
+
 - (void)viewDidLoad {
     
   
@@ -53,26 +70,28 @@
     [super viewDidLoad];
     self.view.backgroundColor = kWhiteColor;
 
-//    [self initHeadView];
+    [self initHeadView];
     [self initTableView];
-//    [self initBottonView];
+    [self initBottonView];
     self.titleText.text = [LangSwitcher switchLang:@"账单" key:nil];
+    self.titleText.textColor = kWhiteColor;
     self.navigationItem.titleView = self.titleText;
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -10;
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    [self.RightButton setTitle:[LangSwitcher switchLang:@"筛选" key:nil] forState:(UIControlStateNormal)];
-    [self.RightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
+    
+//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    negativeSpacer.width = -10;
+//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+//    [self.RightButton setTitle:[LangSwitcher switchLang:@"筛选" key:nil] forState:(UIControlStateNormal)];
+//    [self.RightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
     //获取账单
     [self requestBillList];
 
     // Do any additional setup after loading the view.
 }
 
--(void)rightButtonClick
-{
-    [self.filterPicker show];
-}
+//-(void)rightButtonClick
+//{
+//    [self.filterPicker show];
+//}
 
 #pragma mark - Init
 - (FilterView *)filterPicker {
@@ -126,29 +145,26 @@
 - (void)initTableView {
     
     self.tableView = [[BillTableView alloc]
-                      initWithFrame:CGRectMake(0, 0, kScreenWidth, SCREEN_HEIGHT - kNavigationBarHeight)
+                      initWithFrame:CGRectMake(0, self.headView.yy , kScreenWidth, SCREEN_HEIGHT - self.headView.yy - kNavigationBarHeight - 45)
                       style:UITableViewStyleGrouped];
    
-//    self.tableView.backgroundColor = kNavBarBackgroundColor;
+    self.tableView.backgroundColor = kWhiteColor;
     self.tableView.refreshDelegate = self;
 
     self.tableView.defaultNoDataImage = kImage(@"暂无订单");
     self.tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无明细" key:nil];
     [self.view addSubview:self.tableView];
     CoinWeakSelf;
-//    self.tableView.addBlock = ^{
-//        [weakSelf clickFilter];
-//    };
+    self.tableView.addBlock = ^{
+        [weakSelf clickFilter];
+    };
     
 }
 
-
 #pragma mark - Events
-//- (void)clickFilter{
-//    
-//    
-//    
-//}
+- (void)clickFilter{
+    [self.filterPicker show];
+}
 
 #pragma mark - Data
 - (void)requestBillList {
@@ -241,130 +257,101 @@
     [self.tableView endRefreshingWithNoMoreData_tl];
 }
 
-//- (void)initHeadView{
-//    UIView *top = [[UIView alloc] init];
-//    [self.view addSubview:top];
-//    top.backgroundColor = kHexColor(@"#0848DF");
-//
-//    [top mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view.mas_top);
-//
-//        make.left.equalTo(self.view.mas_left);
-//        make.right.equalTo(self.view.mas_right);
-//        make.height.equalTo(@(60));
-//    }];
-//
-//    WallAccountHeadView *headView = [[WallAccountHeadView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 110)];
-//    self.headView = headView;
-//    [self.view addSubview:headView];
-//
-//    if (self.currency) {
-//        headView.currency  = self.currency;
-//    }
-//
-//}
+- (void)initHeadView{
 
-//- (void)initBottonView{
-//    UIView *bottomView  = [[UIView alloc] init];
-//    self.bottomViw = bottomView;
-//    bottomView.backgroundColor = [UIColor redColor];
-//    bottomView.frame = CGRectMake(0, SCREEN_HEIGHT - 60 - kNavigationBarHeight, SCREEN_WIDTH, 60);
-//    [self.view addSubview:bottomView];
-//
-//    bottomView.backgroundColor = kWhiteColor;
-//    bottomView.layer.cornerRadius=5;
-//    bottomView.layer.shadowOpacity = 0.22;// 阴影透明度
-//    bottomView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-//    bottomView.layer.shadowRadius=3;// 阴影扩散的范围控制
-//    bottomView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
-//    //底部操作按钮
-//
-//    NSArray *textArr = @[
-//                         [LangSwitcher switchLang:@"收款" key:nil],
-//                         [LangSwitcher switchLang:@"转账" key:nil]
-//                         ];
-//    NSArray *imgArr = @[@"充币", @"提币"];
-//
-//
-//    for (int i = 0; i < 2; i ++) {
-//        UIButton *btn = [UIButton buttonWithTitle:textArr[i] titleColor:kTextColor backgroundColor:kClearColor titleFont:12.0];
-//        [btn addTarget:self action:@selector(btnClickCurreny:) forControlEvents:UIControlEventTouchUpInside];
-//        btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, 60);
-//        [btn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:3 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(imgArr[i]) forState:UIControlStateNormal];
-//        }];
-//        btn.tag = 201806+i;
-//        [bottomView addSubview:btn];
-//    }
-//
-//    UIView *vLine = [[UIView alloc] init];
-//
-//    vLine.backgroundColor = kLineColor;
-//
-//    [self.bottomViw addSubview:vLine];
-//    vLine.frame =CGRectMake(SCREEN_WIDTH/2, 0, 0.5, 60);
-//
-//}
+    WallAccountHeadView *headView = [[WallAccountHeadView alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight, kScreenWidth, 84 - 64 + kNavigationBarHeight - 10 + 110)];
+    self.headView = headView;
+    [self.view addSubview:headView];
 
-//- (void)btnClickCurreny: (UIButton *)btn{
-//    NSInteger tag = btn.tag-201806;
-//    RechargeCoinVC *coinVC = [RechargeCoinVC new];
-//
-//    switch (tag) {
-//        case 0:
-//            coinVC.currency = self.currency;
-//            [self.navigationController pushViewController:coinVC animated:YES];
-//            break;
-//        case 1:
-//            [self clickWithdrawWithCurrency:self.currency];
-//
-//            break;
-//
-//        default:
-//            break;
-//    }
-//
-//}
 
-//- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
-//
-//    CoinWeakSelf;
-////    实名认证成功后，判断是否设置资金密码
-//    if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-//
-//        TLPwdType pwdType = TLPwdTypeSetTrade;
-//        TLPwdRelatedVC *pwdRelatedVC = [[TLPwdRelatedVC alloc] initWithType:pwdType];
-//        pwdRelatedVC.isWallet = YES;
-//        pwdRelatedVC.success = ^{
-//
-//            [weakSelf clickWithdrawWithCurrency:currencyModel];
-//        };
-//        [self.navigationController pushViewController:pwdRelatedVC animated:YES];
-//        return ;
-//
-//    }
-//
-//    WithdrawalsCoinVC *coinVC = [WithdrawalsCoinVC new];
-//    coinVC.currency = currencyModel;
-//    [self.navigationController pushViewController:coinVC animated:YES];
-//}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 }
+
+- (void)initBottonView{
+    UIView *bottomView  = [[UIView alloc] init];
+    self.bottomViw = bottomView;
+    bottomView.backgroundColor = [UIColor redColor];
+    bottomView.frame = CGRectMake(0, SCREEN_HEIGHT - 45 - kNavigationBarHeight, SCREEN_WIDTH, 45);
+    [self.view addSubview:bottomView];
+
+    bottomView.backgroundColor = kWhiteColor;
+    bottomView.layer.cornerRadius=5;
+    bottomView.layer.shadowOpacity = 0.22;// 阴影透明度
+    bottomView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
+    bottomView.layer.shadowRadius=3;// 阴影扩散的范围控制
+    bottomView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
+    //底部操作按钮
+
+    NSArray *textArr = @[
+                         [LangSwitcher switchLang:@"转入" key:nil],
+                         [LangSwitcher switchLang:@"转出" key:nil]
+                         ];
+    NSArray *imgArr = @[@"转入", @"转出"];
+
+
+    for (int i = 0; i < 2; i ++) {
+        UIButton *btn = [UIButton buttonWithTitle:textArr[i] titleColor:kTextColor backgroundColor:kClearColor titleFont:12.0];
+        [btn addTarget:self action:@selector(btnClickCurreny:) forControlEvents:UIControlEventTouchUpInside];
+        btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, 45);
+        [btn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:3 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(imgArr[i]) forState:UIControlStateNormal];
+        }];
+        btn.tag = 201806+i;
+        [bottomView addSubview:btn];
+    }
+
+    UIView *vLine = [[UIView alloc] init];
+
+    vLine.backgroundColor = kLineColor;
+
+    [self.bottomViw addSubview:vLine];
+    vLine.frame =CGRectMake(SCREEN_WIDTH/2, 0, 0.5, 45);
+
+}
+
+- (void)btnClickCurreny: (UIButton *)btn{
+    NSInteger tag = btn.tag-201806;
+    RechargeCoinVC *coinVC = [RechargeCoinVC new];
+
+    switch (tag) {
+        case 0:
+            coinVC.currency = self.currency;
+            [self.navigationController pushViewController:coinVC animated:YES];
+            break;
+        case 1:
+            [self clickWithdrawWithCurrency:self.currency];
+
+            break;
+
+        default:
+            break;
+    }
+
+}
+
+- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
+
+    CoinWeakSelf;
+//    实名认证成功后，判断是否设置资金密码
+    if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+
+        
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"设置交易密码";
+        [self.navigationController pushViewController:vc animated:YES];
+        return ;
+
+    }
+
+    WithdrawalsCoinVC *coinVC = [WithdrawalsCoinVC new];
+    coinVC.currency = currencyModel;
+    [self.navigationController pushViewController:coinVC animated:YES];
+}
+
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    CoinWeakSelf;
-    
-    //    NSInteger tag = (sender.tag - 1200)%100;
-    
-//    BillModel *currencyModel = self.bills[indexPath.row];
     BillDetailVC *billVC = [BillDetailVC new];
     billVC.bill =  self.bills[indexPath.row];
-//    billVC.accountNumber = currencyModel.accountNumber;
-//    billVC.billType = BillTypeAll;
     [self.navigationController pushViewController:billVC animated:YES];
     
     

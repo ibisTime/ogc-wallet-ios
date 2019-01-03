@@ -27,7 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-
+    [self navigationSetDefault];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 
@@ -36,6 +36,7 @@
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [self navigationwhiteColor];
 //    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 
@@ -46,7 +47,9 @@
     [super viewDidLoad];
 
 
-    self.title = [LangSwitcher switchLang:@"我的投资详情" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"我的投资详情" key:nil];
+    self.titleText.textColor = kWhiteColor;
+    self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData:@[@"0",@"1",@"2"]];
     [self totalAmount];
@@ -58,7 +61,7 @@
     self.tableView.backgroundColor = kBackgroundColor;
 
 
-    headView = [[PosMyInvestmentHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160 - 64)];
+    headView = [[PosMyInvestmentHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210)];
     headView.backgroundColor = kTabbarColor;
     headView.dataDic = self.dataDic;
     [headView.earningsButton addTarget:self action:@selector(earningsButtonClick) forControlEvents:(UIControlEventTouchUpInside)];

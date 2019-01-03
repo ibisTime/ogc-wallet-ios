@@ -127,6 +127,16 @@
 		1F76698F21D771A800006B41 /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76698E21D771A800006B41 /* MyFriendViewController.m */; };
 		1F76699221D771C700006B41 /* MyFriendTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699121D771C700006B41 /* MyFriendTableView.m */; };
 		1F76699521D771E200006B41 /* MyFriendCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699421D771E200006B41 /* MyFriendCellCell.m */; };
+		1F76699821DC880A00006B41 /* SetUpTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699721DC880A00006B41 /* SetUpTableView.m */; };
+		1F76699F21DCB30400006B41 /* InvestmentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699E21DCB30400006B41 /* InvestmentTableView.m */; };
+		1F7669A221DCB3BA00006B41 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */; };
+		1F7669E621DCC36700006B41 /* btg_pop_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7669D921DCC36600006B41 /* btg_pop_bg.png */; };
+		1F7669E721DCC36700006B41 /* btg_pop_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7669DA21DCC36600006B41 /* btg_pop_bg@2x.png */; };
+		1F7669E821DCC36700006B41 /* btg_pop_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7669DB21DCC36600006B41 /* btg_pop_bg@3x.png */; };
+		1F7669E921DCC36700006B41 /* SJChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E021DCC36600006B41 /* SJChartLineView.m */; };
+		1F7669EA21DCC36700006B41 /* SJCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E121DCC36600006B41 /* SJCircleView.m */; };
+		1F7669EB21DCC36700006B41 /* SJLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E321DCC36600006B41 /* SJLineChart.m */; };
+		1F7669EC21DCC36700006B41 /* SJAxisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669E521DCC36600006B41 /* SJAxisView.m */; };
 		1F770ED721904D7D00E2889F /* langImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F770ED621904D7D00E2889F /* langImg.png */; };
 		1F770EDA21913CC000E2889F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770ED921913CC000E2889F /* UserModel.m */; };
 		1F770EDD2191738400E2889F /* ToolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770EDC2191738400E2889F /* ToolTextField.m */; };
@@ -832,6 +842,23 @@
 		1F76699121D771C700006B41 /* MyFriendTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendTableView.m; sourceTree = "<group>"; };
 		1F76699321D771E200006B41 /* MyFriendCellCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFriendCellCell.h; sourceTree = "<group>"; };
 		1F76699421D771E200006B41 /* MyFriendCellCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendCellCell.m; sourceTree = "<group>"; };
+		1F76699621DC880A00006B41 /* SetUpTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetUpTableView.h; sourceTree = "<group>"; };
+		1F76699721DC880A00006B41 /* SetUpTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUpTableView.m; sourceTree = "<group>"; };
+		1F76699D21DCB30400006B41 /* InvestmentTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentTableView.h; sourceTree = "<group>"; };
+		1F76699E21DCB30400006B41 /* InvestmentTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentTableView.m; sourceTree = "<group>"; };
+		1F7669A021DCB3BA00006B41 /* InvestmentHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InvestmentHeadCell.h; path = ../../../../../../Documents/InvestmentHeadCell.h; sourceTree = "<group>"; };
+		1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InvestmentHeadCell.m; path = ../../../../../../Documents/InvestmentHeadCell.m; sourceTree = "<group>"; };
+		1F7669D921DCC36600006B41 /* btg_pop_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btg_pop_bg.png; sourceTree = "<group>"; };
+		1F7669DA21DCC36600006B41 /* btg_pop_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btg_pop_bg@2x.png"; sourceTree = "<group>"; };
+		1F7669DB21DCC36600006B41 /* btg_pop_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btg_pop_bg@3x.png"; sourceTree = "<group>"; };
+		1F7669DD21DCC36600006B41 /* SJAxisView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAxisView.h; sourceTree = "<group>"; };
+		1F7669DF21DCC36600006B41 /* SJLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJLineChart.h; sourceTree = "<group>"; };
+		1F7669E021DCC36600006B41 /* SJChartLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJChartLineView.m; sourceTree = "<group>"; };
+		1F7669E121DCC36600006B41 /* SJCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJCircleView.m; sourceTree = "<group>"; };
+		1F7669E221DCC36600006B41 /* SJChartLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChartLineView.h; sourceTree = "<group>"; };
+		1F7669E321DCC36600006B41 /* SJLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJLineChart.m; sourceTree = "<group>"; };
+		1F7669E421DCC36600006B41 /* SJCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJCircleView.h; sourceTree = "<group>"; };
+		1F7669E521DCC36600006B41 /* SJAxisView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAxisView.m; sourceTree = "<group>"; };
 		1F770ED621904D7D00E2889F /* langImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = langImg.png; sourceTree = "<group>"; };
 		1F770ED821913CC000E2889F /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		1F770ED921913CC000E2889F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
@@ -1784,8 +1811,6 @@
 		1F358B3E218ADFDA00F1665B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B8BBA63E20C7FB4600DC4D5F /* WallAccountHeadView.h */,
-				B8BBA63F20C7FB4600DC4D5F /* WallAccountHeadView.m */,
 				B8F63ED520D362DA00556150 /* WalletLocalBillTableView.h */,
 				B8F63ED620D362DA00556150 /* WalletLocalBillTableView.m */,
 				B8F63ED820D3639900556150 /* LocalBillCell.h */,
@@ -2269,6 +2294,88 @@
 			path = MyFriend;
 			sourceTree = "<group>";
 		};
+		1F76699921DCB2B700006B41 /* Abandoned */ = {
+			isa = PBXGroup;
+			children = (
+				216F5B1E206CD9D900F2C832 /* Controller */,
+				1F35826321870B1700F1665B /* Model */,
+				1F35826221870B1400F1665B /* View */,
+				7A8A5D0E20EA0677002D9A48 /* RedEnvelope */,
+			);
+			path = Abandoned;
+			sourceTree = "<group>";
+		};
+		1F76699A21DCB2D400006B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F76699D21DCB30400006B41 /* InvestmentTableView.h */,
+				1F76699E21DCB30400006B41 /* InvestmentTableView.m */,
+				1F7669A021DCB3BA00006B41 /* InvestmentHeadCell.h */,
+				1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */,
+				1F7669D721DCC36600006B41 /* LineChart折线图 */,
+			);
+			name = View;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		1F76699B21DCB2D600006B41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F76699C21DCB2D900006B41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F76698421D5F56200006B41 /* InvestmentVC.h */,
+				1F76698521D5F56200006B41 /* InvestmentVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7669D721DCC36600006B41 /* LineChart折线图 */ = {
+			isa = PBXGroup;
+			children = (
+				1F7669D821DCC36600006B41 /* Resource */,
+				1F7669DC21DCC36600006B41 /* Views */,
+			);
+			path = "LineChart折线图";
+			sourceTree = "<group>";
+		};
+		1F7669D821DCC36600006B41 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1F7669D921DCC36600006B41 /* btg_pop_bg.png */,
+				1F7669DA21DCC36600006B41 /* btg_pop_bg@2x.png */,
+				1F7669DB21DCC36600006B41 /* btg_pop_bg@3x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		1F7669DC21DCC36600006B41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1F7669DD21DCC36600006B41 /* SJAxisView.h */,
+				1F7669DE21DCC36600006B41 /* SJLineChart */,
+				1F7669E521DCC36600006B41 /* SJAxisView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1F7669DE21DCC36600006B41 /* SJLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				1F7669DF21DCC36600006B41 /* SJLineChart.h */,
+				1F7669E021DCC36600006B41 /* SJChartLineView.m */,
+				1F7669E121DCC36600006B41 /* SJCircleView.m */,
+				1F7669E221DCC36600006B41 /* SJChartLineView.h */,
+				1F7669E321DCC36600006B41 /* SJLineChart.m */,
+				1F7669E421DCC36600006B41 /* SJCircleView.h */,
+			);
+			path = SJLineChart;
+			sourceTree = "<group>";
+		};
 		211A34D81FB3F55600FEB71F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2742,13 +2849,10 @@
 		216F5B1D206CD9D900F2C832 /* Investment */ = {
 			isa = PBXGroup;
 			children = (
-				1F76698421D5F56200006B41 /* InvestmentVC.h */,
-				1F76698521D5F56200006B41 /* InvestmentVC.m */,
-				216F5B1E206CD9D900F2C832 /* Controller */,
-				1F35826321870B1700F1665B /* Model */,
-				1F35826221870B1400F1665B /* View */,
-				7A8A5D0E20EA0677002D9A48 /* RedEnvelope */,
-				216F5B54206D005200F2C832 /* POS */,
+				1F76699C21DCB2D900006B41 /* Controller */,
+				1F76699B21DCB2D600006B41 /* Model */,
+				1F76699A21DCB2D400006B41 /* View */,
+				1F76699921DCB2B700006B41 /* Abandoned */,
 			);
 			name = Investment;
 			path = "发现";
@@ -2789,13 +2893,6 @@
 				216F5B43206CDA3600F2C832 /* DetailWebView.m */,
 			);
 			path = Web;
-			sourceTree = "<group>";
-		};
-		216F5B54206D005200F2C832 /* POS */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = POS;
 			sourceTree = "<group>";
 		};
 		21A7F2D81FB2E2F900FAA0A2 /* User */ = {
@@ -3329,6 +3426,8 @@
 			children = (
 				B89F07E0211B07FA0057E781 /* TLMeSetting.h */,
 				B89F07E1211B07FA0057E781 /* TLMeSetting.m */,
+				1F76699621DC880A00006B41 /* SetUpTableView.h */,
+				1F76699721DC880A00006B41 /* SetUpTableView.m */,
 				2EB949521FDE6D6D00CE4B94 /* LangChooseVC.h */,
 				2EB949531FDE6D6D00CE4B94 /* LangChooseVC.m */,
 				B8D9290D20EA58290026A3DF /* ChangeLocalMoneyVC.h */,
@@ -3413,10 +3512,10 @@
 			children = (
 				7A2CC662215BBC2900B27E2D /* PosMyInvestmentDetailsVC.h */,
 				7A2CC663215BBC2900B27E2D /* PosMyInvestmentDetailsVC.m */,
-				7A2CC665215BBC6B00B27E2D /* PosMyInvestmentDetailsTableView.h */,
-				7A2CC666215BBC6B00B27E2D /* PosMyInvestmentDetailsTableView.m */,
 				7A2CC668215BBCEA00B27E2D /* PosMyInvestmentHeadView.h */,
 				7A2CC669215BBCEA00B27E2D /* PosMyInvestmentHeadView.m */,
+				7A2CC665215BBC6B00B27E2D /* PosMyInvestmentDetailsTableView.h */,
+				7A2CC666215BBC6B00B27E2D /* PosMyInvestmentDetailsTableView.m */,
 				7A2CC66E215C9E3B00B27E2D /* PosMyInvestmentModel.h */,
 				7A2CC66F215C9E3B00B27E2D /* PosMyInvestmentModel.m */,
 				7A2CC66B215BC5B900B27E2D /* PosMyInvestmentDetailsCell.h */,
@@ -3751,6 +3850,8 @@
 				7AEF235F2154E26700BF1DB5 /* details详情 */,
 				B8BBA63B20C7F6FC00DC4D5F /* WallAccountVC.h */,
 				B8BBA63C20C7F6FC00DC4D5F /* WallAccountVC.m */,
+				B8BBA63E20C7FB4600DC4D5F /* WallAccountHeadView.h */,
+				B8BBA63F20C7FB4600DC4D5F /* WallAccountHeadView.m */,
 				2159795E1FB81CC40029F177 /* BillTableView.h */,
 				2159795F1FB81CC40029F177 /* BillTableView.m */,
 				215979651FB81D230029F177 /* BillCell.h */,
@@ -4050,11 +4151,14 @@
 			files = (
 				7A2CC6C2215DC88C00B27E2D /* PGDatePicker.bundle in Resources */,
 				1F76697C21D4A34D00006B41 /* README.txt in Resources */,
+				1F7669E621DCC36700006B41 /* btg_pop_bg.png in Resources */,
 				1F76696921D4A34D00006B41 /* MSADefaultImages.bundle in Resources */,
 				B8CAA14321158FF200695BC3 /* LPDImagePickerController.bundle in Resources */,
+				1F7669E721DCC36700006B41 /* btg_pop_bg@2x.png in Resources */,
 				B88B59172109AEC400F20D1B /* country.plist in Resources */,
 				B819BAAA20C6DD7800CEEC5E /* LaunchScreen.storyboard in Resources */,
 				1F76696621D4A34D00006B41 /* MSADefaultLocale.bundle in Resources */,
+				1F7669E821DCC36700006B41 /* btg_pop_bg@3x.png in Resources */,
 				2EFFE6AA1FF4829100BFCC40 /* Localizable.strings in Resources */,
 				7A2CC6D4215DC89200B27E2D /* LICENSE in Resources */,
 				2EB9495B1FDF6B1A00CE4B94 /* SimplifiedCode.txt in Resources */,
@@ -4194,6 +4298,7 @@
 				211A34F11FB430DB00FEB71F /* SettingModel.m in Sources */,
 				216F5B40206CD9DA00F2C832 /* TLBannerView.m in Sources */,
 				21A7F3181FB2E2F900FAA0A2 /* TLUserRegisterVC.m in Sources */,
+				1F7669E921DCC36700006B41 /* SJChartLineView.m in Sources */,
 				7A2CC65D215BA4E100B27E2D /* PosBuyIntroduceCell.m in Sources */,
 				B82D3878211BD4A50053A2E4 /* TLQrCodeVC.m in Sources */,
 				216F5B3A206CD9DA00F2C832 /* CountInfoModel.m in Sources */,
@@ -4218,6 +4323,7 @@
 				7A2CC670215C9E3B00B27E2D /* PosMyInvestmentModel.m in Sources */,
 				B8CAA14521158FF200695BC3 /* LPDPhotoArrangeCVlLayout.m in Sources */,
 				B8DB9EB7214F6AA90091276E /* RedintrodeceVC.m in Sources */,
+				1F76699F21DCB30400006B41 /* InvestmentTableView.m in Sources */,
 				B8BBA5FB20C780FA00DC4D5F /* PlatformCell.m in Sources */,
 				1F76697521D4A34D00006B41 /* sha1.c in Sources */,
 				211A53221FBFE3A100CC6294 /* RateDescVC.m in Sources */,
@@ -4248,6 +4354,7 @@
 				B8CA0D6A21081B850015A19D /* AssetPwdView.m in Sources */,
 				1F76692721D4A32700006B41 /* BTCData+Tests.m in Sources */,
 				7A2CC6BC215DC88C00B27E2D /* PGDatePicker+MonthDayHourMinute.m in Sources */,
+				1F7669EA21DCC36700006B41 /* SJCircleView.m in Sources */,
 				21A7F3161FB2E2F900FAA0A2 /* TLUserLoginVC.m in Sources */,
 				211A34EB1FB42F8100FEB71F /* SettingVC.m in Sources */,
 				211DE6C51FB58B4C002FCF3D /* HttpRequestService.m in Sources */,
@@ -4311,6 +4418,7 @@
 				B8DB9EC3214F8A220091276E /* H5DrtailVC.m in Sources */,
 				B8F63EE020D3809700556150 /* LocalBillDetailTableView.m in Sources */,
 				1F76691021D4A32700006B41 /* BTCMerkleTree.m in Sources */,
+				1F7669EB21DCC36700006B41 /* SJLineChart.m in Sources */,
 				1F76698F21D771A800006B41 /* MyFriendViewController.m in Sources */,
 				7AABEAFE2149127200283BC7 /* BouncedPasteView.m in Sources */,
 				7A2CC674215CAECF00B27E2D /* AccumulatedEarningsVC.m in Sources */,
@@ -4513,6 +4621,7 @@
 				B8DB9EB4214F6A730091276E /* RedIntroduceTB.m in Sources */,
 				B8CAA14421158FF200695BC3 /* LPDImageManager.m in Sources */,
 				211DE6C41FB58B4C002FCF3D /* HttpSign.m in Sources */,
+				1F7669EC21DCC36700006B41 /* SJAxisView.m in Sources */,
 				B8D9290F20EA58290026A3DF /* ChangeLocalMoneyVC.m in Sources */,
 				7A8A5DC020EA6977002D9A48 /* CustomActionSheet.m in Sources */,
 				1F7667F421D0B44700006B41 /* MyCell1.m in Sources */,
@@ -4570,10 +4679,12 @@
 				7A3821BD20EABD1300D6B636 /* GetTheTableView.m in Sources */,
 				1F76697721D4A34D00006B41 /* pwd2key.c in Sources */,
 				211CEF141FCBBF90000FB0C4 /* SelectScrollView.m in Sources */,
+				1F7669A221DCB3BA00006B41 /* InvestmentHeadCell.m in Sources */,
 				B8E08BED212594FF00348AD4 /* TLMoneyDeailVC.m in Sources */,
 				7A07F837216DAA8D0026EB7A /* MyIncomeModel.m in Sources */,
 				B80D54CB210C84CA005303D5 /* APPLanguage.m in Sources */,
 				B8CAA14921158FF200695BC3 /* LPDPhotoPickerController.m in Sources */,
+				1F76699821DC880A00006B41 /* SetUpTableView.m in Sources */,
 				B8D938D22116C85200B2AA88 /* QuestionDetail.m in Sources */,
 				1F7668ED21D4A32700006B41 /* BTCProtocolSerialization+Tests.m in Sources */,
 				B8CAA13B21158FF200695BC3 /* LPDPhotoPreviewController.m in Sources */,

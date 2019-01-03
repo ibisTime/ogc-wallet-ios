@@ -223,10 +223,9 @@ typedef enum : NSUInteger {
             //中心化划转
             if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
                 
-                TLPwdType pwdType = TLPwdTypeSetTrade;
-                TLPwdRelatedVC *pwdRelatedVC = [[TLPwdRelatedVC alloc] initWithType:pwdType];
-                pwdRelatedVC.isWallet = YES;
-                [self.navigationController pushViewController:pwdRelatedVC animated:YES];
+                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+                vc.titleString = @"设置交易密码";
+                [self.navigationController pushViewController:vc animated:YES];
                 return ;
             }
             if ([self.numberTextField.text isBlank]) {

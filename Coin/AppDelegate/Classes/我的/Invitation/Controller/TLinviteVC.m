@@ -9,7 +9,6 @@
 #import "TLinviteVC.h"
 #import "TLQrCodeVC.h"
 #import "RedEnvelopeVC.h"
-#import "TLPwdRelatedVC.h"
 #import "UIButton+SGImagePosition.h"
 #import "PoliteInstructionsVC.h"
 #import "NewHtmlVC.h"

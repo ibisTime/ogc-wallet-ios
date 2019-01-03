@@ -64,13 +64,9 @@
 
 - (void)setTrade:(UIButton *)btn {
     
-    TLPwdRelatedVC *tradeVC = [[TLPwdRelatedVC alloc] initWithType:TLPwdTypeTradeReset];
-    tradeVC.success = ^() {
-        
-        btn.hidden = YES;
-        
-    };
-    [self.navigationController pushViewController:tradeVC animated:YES];
+    TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+    vc.titleString = @"修改交易密码";
+    [self.navigationController pushViewController:vc animated:YES];
     
     
 }

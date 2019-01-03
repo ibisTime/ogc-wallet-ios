@@ -23,7 +23,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(20, 7, SCREEN_WIDTH - 40, 150)];
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, 320)];
         whiteView.backgroundColor = kWhiteColor;
         whiteView.layer.cornerRadius=10;
         whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
@@ -33,67 +33,63 @@
         [self addSubview:whiteView];
         
         
-        nameLabel = [UILabel labelWithFrame:CGRectMake(10, 12, SCREEN_WIDTH - 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:RGB(54, 73, 198)];
-        nameLabel.text = @"比特币资产(BTC)";
-        [whiteView addSubview:nameLabel];
-        
-        priceLabel = [UILabel labelWithFrame:CGRectMake(10, 44, SCREEN_WIDTH - 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(20) textColor:[UIColor blackColor]];
-        priceLabel.text = @"1.00023";
-        [whiteView addSubview:priceLabel];
         
         
-        UILabel *freezeLabel = [UILabel labelWithFrame:CGRectMake(10, 76, 0, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
-        freezeLabel.text = @"冻结1.00BTC";
-        [freezeLabel sizeToFit];
-        freezeLabel.frame = CGRectMake(10, 76, freezeLabel.width, 20);
-        [whiteView addSubview:freezeLabel];
         
-        UILabel *availableLabel = [UILabel labelWithFrame:CGRectMake(freezeLabel.xx + 15, 76, SCREEN_WIDTH - 40 - freezeLabel.xx - 25, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
-        availableLabel.text = @"可用1.00BTC";
-        [whiteView addSubview:availableLabel];
-        
-        
-        iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 70 - 40, 27.5, 50, 50)];
-        iconImg.image = kImage(@"以太币图标");
-        [whiteView addSubview:iconImg];
-        
-        
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 105, SCREEN_WIDTH - 40, 1)];
-        lineView.backgroundColor = kLineColor;
-        [whiteView addSubview:lineView];
-        
-        
-        NSArray *nameArray = @[@"转入",@"转出",@"账单"];
-        NSArray *imageArray = @[@"账单", @"账单",@"账单"];
         for (int i = 0; i < 3; i ++) {
-            UIButton *allAssetsBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[i] key:nil] titleColor:[UIColor blackColor] backgroundColor:kClearColor titleFont:13];
-            allAssetsBtn.frame = CGRectMake(i % 3 * (SCREEN_WIDTH - 40)/3, 105, (SCREEN_WIDTH - 40)/3, 45);
-            [allAssetsBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:6 imagePositionBlock:^(UIButton *button) {
-                [button setImage:kImage(imageArray[i]) forState:(UIControlStateNormal)];
-            }];
-            [whiteView addSubview:allAssetsBtn];
-
-            if (i == 0) {
-                UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 40)/3 - 0.5, 117.5, 1, 20)];
+            
+            
+            _backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            _backButton.frame = CGRectMake(0, i % 3 * 100, SCREEN_WIDTH - 30, 100);
+            [_backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            _backButton.tag = 100 + i;
+            [whiteView addSubview:_backButton];
+            
+            
+            iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 30 + i % 3 * 100, 40, 40)];
+            iconImg.image = kImage(@"BTC");
+            [whiteView addSubview:iconImg];
+            
+            nameLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 23.5 + i % 3 * 100, SCREEN_WIDTH - 23.5 - 45, 21) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:kHexColor(@"#333333")];
+            nameLabel.text = @"BTC";
+            [whiteView addSubview:nameLabel];
+            
+            
+            UILabel *freezeLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, nameLabel.yy + 4 + i % 3 * 100, 0, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTextColor2];
+            freezeLabel.text = @"冻结1.00BTC";
+            [freezeLabel sizeToFit];
+            freezeLabel.frame = CGRectMake(iconImg.xx + 12, nameLabel.yy + 4, freezeLabel.width, 12);
+            [whiteView addSubview:freezeLabel];
+            
+            UILabel *availableLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, freezeLabel.yy + 4, SCREEN_WIDTH - iconImg.xx - 12 - 30 - 15, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTextColor2];
+            availableLabel.text = @"可用1.00BTC";
+            [whiteView addSubview:availableLabel];
+            
+            
+            priceLabel = [UILabel labelWithFrame:CGRectMake(freezeLabel.xx + 10, 34.5 + i % 3 * 100, SCREEN_WIDTH - freezeLabel.xx - 30 - 15 - 10, 21) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(15) textColor:[UIColor blackColor]];
+            priceLabel.text = @"1.00023BTC";
+            priceLabel.centerY = freezeLabel.centerY;
+            [whiteView addSubview:priceLabel];
+        
+            if (i != 2) {
+                UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 100 + i % 3 * 100, SCREEN_WIDTH - 30, 1)];
                 lineView.backgroundColor = kLineColor;
                 [whiteView addSubview:lineView];
-                self.intoBtn = allAssetsBtn;
             }
             
-            if (i == 1) {
-                UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 40)/3*2 - 0.5, 117.5, 1, 20)];
-                lineView.backgroundColor = kLineColor;
-                [whiteView addSubview:lineView];
-                self.rollOutBtn = allAssetsBtn;
-            }
-            if (i == 2) {
-                self.billBtn = allAssetsBtn;
-            }
+            
+            
+            
         }
         
         
     }
     return self;
+}
+
+-(void)backButtonClick:(UIButton *)sender
+{
+    [_delegate MyAsstesButton:sender];
 }
 
 

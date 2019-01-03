@@ -70,7 +70,7 @@
 #import <MJExtension/MJExtension.h>
 #import "TableViewAnimationKitHeaders.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-
+#import "TLUserForgetPwdVC.h"
 #import "ZJAnimationPopView.h"
 
 #import "FoundationHeader.h"

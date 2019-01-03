@@ -12,7 +12,6 @@
 #import "RechargeCoinVC.h"
 //#import "TLTextField.h"
 #import "AssetPwdView.h"
-#import "TLPwdRelatedVC.h"
 #import "NSString+Check.h"
 #import "PayModel.h"
 

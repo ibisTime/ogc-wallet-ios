@@ -21,7 +21,7 @@
 //        [self addSubview:backImage];
 
         
-        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 200 - 64 + kNavigationBarHeight)];
+        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 240 - 64 + kNavigationBarHeight)];
         [self addSubview:backView];
         
         
@@ -51,21 +51,36 @@
 
         UIButton *eyesButton = [UIButton buttonWithTitle:@"BTC" titleColor:kHexColor(@"#FFFFFF") backgroundColor:kClearColor titleFont:32];
         eyesButton.frame = CGRectMake(15, nameLabel.yy + 6, kScreenWidth - 30, 45);
+        NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
+        if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
+            eyesButton.selected = YES;
+            [eyesButton setTitle:@"**** BTC" forState:(UIControlStateNormal)];
+        }else
+        {
+            [eyesButton setTitle:@"0.00 BTC" forState:(UIControlStateNormal)];
+            eyesButton.selected = NO;
+        }
         [eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:11 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"眼睛") forState:(UIControlStateNormal)];
             [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
         }];
 
-        NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
-        if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
-            eyesButton.selected = YES;
-        }else
-        {
-            eyesButton.selected = NO;
-        }
+        
         [eyesButton addTarget:self action:@selector(eyesButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
         self.eyesButton = eyesButton;
         [self addSubview:eyesButton];
+        
+        
+        NSArray *earningsNameAry = @[@"昨日收益",@"累计收益"];
+        for (int i = 0; i < 2; i ++) {
+            UILabel *earningsName = [UILabel labelWithFrame:CGRectMake(i%2*SCREEN_WIDTH/2, eyesButton.yy + 20, SCREEN_WIDTH/2, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
+            earningsName.text = [LangSwitcher switchLang:earningsNameAry[i] key:nil];
+            [self addSubview:earningsName];
+            
+            UILabel *earningsPrice = [UILabel labelWithFrame:CGRectMake(i%2*SCREEN_WIDTH/2, earningsName.yy + 3, SCREEN_WIDTH/2, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(16) textColor:kWhiteColor];
+            earningsPrice.text = @"0.00 BTC";
+            [self addSubview:earningsPrice];
+        }
     }
     return self;
 }
@@ -91,10 +106,10 @@
     {
 
         if ([totalInvest floatValue] > 10000) {
-            [self.eyesButton setTitle:[NSString stringWithFormat:@"≈ %.2f%@ BTC",[totalInvest floatValue]/10000,[LangSwitcher switchLang:@"万" key:nil]] forState:(UIControlStateNormal)];
+            [self.eyesButton setTitle:[NSString stringWithFormat:@"%.2f%@ BTC",[totalInvest floatValue]/10000,[LangSwitcher switchLang:@"万" key:nil]] forState:(UIControlStateNormal)];
         }else
         {
-            [self.eyesButton setTitle:[NSString stringWithFormat:@"≈ %@ BTC",totalInvest] forState:(UIControlStateNormal)];
+            [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ BTC",totalInvest] forState:(UIControlStateNormal)];
         }
     }
 
@@ -118,12 +133,7 @@
     }else
     {
 
-        if ([totalInvest floatValue] > 10000) {
-            [self.eyesButton setTitle:[NSString stringWithFormat:@"≈ %.2f%@ BTC",[totalInvest floatValue]/10000,[LangSwitcher switchLang:@"万" key:nil]] forState:(UIControlStateNormal)];
-        }else
-        {
-            [self.eyesButton setTitle:[NSString stringWithFormat:@"≈ %@ BTC",totalInvest] forState:(UIControlStateNormal)];
-        }
+        [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ BTC",totalInvest] forState:(UIControlStateNormal)];
     }
 
     [self.eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {

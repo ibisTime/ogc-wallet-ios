@@ -22,7 +22,6 @@
 
 #import "MnemonicUtil.h"
 #import "UIBarButtonItem+convience.h"
-#import "TLPwdRelatedVC.h"
 #import "HTMLStrVC.h"
 #import "HomeFindModel.h"
 

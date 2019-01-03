@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CurrencyModel.h"
+
+
+@protocol MyAsstesDelegate <NSObject>
+
+-(void)MyAsstesButton:(UIButton *)sender;
+
+@end
+
 @interface MyAsstesCell : UITableViewCell
 
+@property (nonatomic, assign) id <MyAsstesDelegate> delegate;
 
 @property (nonatomic, strong) CurrencyModel *platform;
 
-@property (nonatomic , strong)UIButton *intoBtn;
-
-@property (nonatomic , strong)UIButton *rollOutBtn;
-
-@property (nonatomic , strong)UIButton *billBtn;
+@property (nonatomic , strong)UIButton *backButton;
 
 @end

@@ -116,7 +116,7 @@
 -(MyAssetsHeadView *)headView
 {
     if (!_headView) {
-        _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kStatusBarHeight + 250)];
+        _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 87 - 64 + kNavigationBarHeight - 10 + 180)];
     }
     return _headView;
 }
@@ -281,11 +281,21 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight + 253, kScreenWidth, kScreenHeight-kStatusBarHeight - 253) style:UITableViewStyleGrouped];
+    self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, self.headView.yy, kScreenWidth, kScreenHeight- kNavigationBarHeight - self.headView.yy) style:UITableViewStyleGrouped];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0);
     self.tableView.backgroundColor = kWhiteColor;
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
+}
+
+-(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
+{
+    WallAccountVC *accountVC= [[WallAccountVC alloc] init];
+//    accountVC.currency = model;
+    accountVC.hidesBottomBarWhenPushed = YES;
+//    accountVC.title = model.currency;
+//    accountVC.billType = CurrentTypeAll;
+    [self.navigationController pushViewController:accountVC animated:YES];
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
@@ -310,21 +320,21 @@
     }
 }
 
+
+
+
+
+
+
 - (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
     
     CoinWeakSelf;
     //    实名认证成功后，判断是否设置资金密码
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
         
-        TLPwdType pwdType = TLPwdTypeSetTrade;
-        TLPwdRelatedVC *pwdRelatedVC = [[TLPwdRelatedVC alloc] initWithType:pwdType];
-        pwdRelatedVC.isWallet = YES;
-        pwdRelatedVC.success = ^{
-            
-            [weakSelf clickWithdrawWithCurrency:currencyModel];
-        };
-        pwdRelatedVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:pwdRelatedVC animated:YES];
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"设置交易密码";
+        [weakSelf.navigationController pushViewController:vc animated:YES];
         return ;
         
     }

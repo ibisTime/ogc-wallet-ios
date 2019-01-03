@@ -14,12 +14,10 @@
 #import "MySugarPacketsVC.h"
 
 #import "CurrencyModel.h"
-#import "TLPwdRelatedVC.h"
 #import "AssetPwdView.h"
 #import "UIButton+Custom.h"
 #import "UIButton+EnLargeEdge.h"
 #import "HTMLStrVC.h"
-#import "TLPwdRelatedVC.h"
 #import "AddAccoutMoneyVc.h"
 #import "FilterView.h"
 #import "TLRedintroduceVC.h"
@@ -149,8 +147,8 @@
         
         weakSelf.pwdView.hidden = YES;
 
-        TLPwdRelatedVC *vc  = [[TLPwdRelatedVC alloc] initWithType:TLPwdTypeTradeReset];
-
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"修改交易密码";
         [weakSelf.navigationController pushViewController:vc animated:YES];
         
         
@@ -253,18 +251,9 @@
 -(void)SendRedEnvelopeButton:(NSInteger)tag currency:(NSString *)currency type:(NSString *)type count:(NSString *)count sendNum:(NSString *)sendNum greeting:(NSString *)greeting
 {
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-        TLPwdType pwdType = TLPwdTypeSetTrade;
-        TLPwdRelatedVC *pwdRelatedVC = [[TLPwdRelatedVC alloc] initWithType:pwdType];
-        
-        pwdRelatedVC.isWallet = YES;
-        pwdRelatedVC.success = ^{
-            
-            [self GiveAnyRequestAndCurrency:currency type:type count:count sendNum:sendNum greeting:greeting];
-
-            
-        };
-        
-        [self.navigationController pushViewController:pwdRelatedVC animated:YES];
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"设置交易密码";
+        [self.navigationController pushViewController:vc animated:YES];
         return;
     }else{
         [self GiveAnyRequestAndCurrency:currency type:type count:count sendNum:sendNum greeting:greeting];

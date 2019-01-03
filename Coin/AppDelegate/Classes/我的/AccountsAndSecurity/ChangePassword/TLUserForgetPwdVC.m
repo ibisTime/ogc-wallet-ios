@@ -83,7 +83,7 @@
                 [codeBtn addTarget:self action:@selector(sendCaptcha:) forControlEvents:(UIControlEventTouchUpInside)];
                 [self.view addSubview:codeBtn];
                 
-                textField.frame = CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30, 50);
+                textField.frame = CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30 - codeBtn.width - 10, 50);
                 
             }
                 break;

@@ -10,7 +10,7 @@
 //V
 #import "MyAsstesCell.h"
 //#import "AccountMoneyCellTableViewCell.h"
-@interface PlatformTableView()<UITableViewDelegate, UITableViewDataSource>
+@interface PlatformTableView()<UITableViewDelegate, UITableViewDataSource,MyAsstesDelegate>
 {
     NSMutableArray *arr;
 }
@@ -38,40 +38,40 @@ static NSString *MyAsstes = @"MyAsstesCell";
 #pragma mark - UITableViewDataSource;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.platforms.count;
+    return 1;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyAsstesCell *cell = [tableView dequeueReusableCellWithIdentifier:MyAsstes forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.platform = self.platforms[indexPath.row];
-    [cell.intoBtn addTarget:self action:@selector(intoBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.intoBtn.tag = indexPath.row;
+
+    cell.delegate = self;
     
-    [cell.rollOutBtn addTarget:self action:@selector(rollOutBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.rollOutBtn.tag = indexPath.row;
     
-    [cell.billBtn addTarget:self action:@selector(billBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.billBtn.tag = indexPath.row;
     return cell;
     
 }
 
--(void)intoBtnClick:(UIButton *)sender
+-(void)MyAsstesButton:(UIButton *)sender
 {
-    [self.refreshDelegate refreshTableView:self setCurrencyModel:self.platforms[sender.tag] setTitle:@"转入"];
+    [self.refreshDelegate refreshTableViewButtonClick:self button:sender selectRowAtIndex:sender.tag];
 }
 
--(void)rollOutBtnClick:(UIButton *)sender
-{
-    [self.refreshDelegate refreshTableView:self setCurrencyModel:self.platforms[sender.tag] setTitle:@"转出"];
-}
-
--(void)billBtnClick:(UIButton *)sender
-{
-    [self.refreshDelegate refreshTableView:self setCurrencyModel:self.platforms[sender.tag] setTitle:@"账单"];
-}
+//-(void)intoBtnClick:(UIButton *)sender
+//{
+//    [self.refreshDelegate refreshTableView:self setCurrencyModel:self.platforms[sender.tag] setTitle:@"转入"];
+//}
+//
+//-(void)rollOutBtnClick:(UIButton *)sender
+//{
+//    [self.refreshDelegate refreshTableView:self setCurrencyModel:self.platforms[sender.tag] setTitle:@"转出"];
+//}
+//
+//-(void)billBtnClick:(UIButton *)sender
+//{
+//    [self.refreshDelegate refreshTableView:self setCurrencyModel:self.platforms[sender.tag] setTitle:@"账单"];
+//}
 
 //设置cell可编辑状态
 //-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -146,7 +146,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 160;
+    return 320;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

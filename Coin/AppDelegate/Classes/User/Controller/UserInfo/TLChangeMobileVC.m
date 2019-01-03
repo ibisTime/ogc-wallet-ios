@@ -8,7 +8,6 @@
 
 #import "TLChangeMobileVC.h"
 
-#import "TLPwdRelatedVC.h"
 
 #import "TLCaptchaView.h"
 #import "TLTextField.h"
@@ -23,7 +22,6 @@
 
 @property (nonatomic,strong) TLTextField *phoneTf;
 @property (nonatomic,strong) TLCaptchaView *captchaView;
-//@property (nonatomic,strong) TLTextField *tradePwdTf;
 
 @end
 
@@ -93,13 +91,9 @@
 
 - (void)setTrade:(UIButton *)btn {
 
-    TLPwdRelatedVC *tradeVC = [[TLPwdRelatedVC alloc] initWithType:TLPwdTypeTradeReset];
-    tradeVC.success = ^() {
-        
-        btn.hidden = YES;
-        
-    };
-    [self.navigationController pushViewController:tradeVC animated:YES];
+    TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+    vc.titleString = @"修改交易密码";
+    [self.navigationController pushViewController:vc animated:YES];
 
 
 }

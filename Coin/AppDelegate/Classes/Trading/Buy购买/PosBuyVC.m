@@ -86,12 +86,9 @@
     self.pwdView.forgetBlock = ^{
         weakSelf.pwdView.hidden = YES;
         weakSelf.view2.hidden = YES;
-        TLPwdRelatedVC *vc  = [[TLPwdRelatedVC alloc] initWithType:TLPwdTypeTradeReset];
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"修改交易密码";
         [weakSelf.navigationController pushViewController:vc animated:YES];
-        vc.success = ^{
-            weakSelf.pwdView.hidden = NO;
-            weakSelf.view2.hidden = NO;
-        };
 
     };
     pwdView.hidden = YES;
@@ -273,12 +270,9 @@
 {
 
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-        TLPwdType pwdType = TLPwdTypeSetTrade;
-        TLPwdRelatedVC *pwdRelatedVC = [[TLPwdRelatedVC alloc] initWithType:pwdType];
-        pwdRelatedVC.isWallet = NO;
-        pwdRelatedVC.success = ^{
-        };
-        [self.navigationController pushViewController:pwdRelatedVC animated:YES];
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"设置交易密码";
+        [self.navigationController pushViewController:vc animated:YES];
 
 
     }else
