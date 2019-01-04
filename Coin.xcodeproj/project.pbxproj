@@ -145,6 +145,7 @@
 		1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2821DE09C000006B41 /* BnakCardView.m */; };
 		1F766A2F21DE0F0B00006B41 /* PayFailureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2E21DE0F0B00006B41 /* PayFailureVC.m */; };
 		1F766A3221DE0F1D00006B41 /* PayFailureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A3121DE0F1D00006B41 /* PayFailureView.m */; };
+		1F766A3521DEFBB100006B41 /* PaymentInstructionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A3421DEFBB100006B41 /* PaymentInstructionsView.m */; };
 		1F770ED721904D7D00E2889F /* langImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F770ED621904D7D00E2889F /* langImg.png */; };
 		1F770EDA21913CC000E2889F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770ED921913CC000E2889F /* UserModel.m */; };
 		1F770EDD2191738400E2889F /* ToolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770EDC2191738400E2889F /* ToolTextField.m */; };
@@ -886,6 +887,8 @@
 		1F766A2E21DE0F0B00006B41 /* PayFailureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayFailureVC.m; sourceTree = "<group>"; };
 		1F766A3021DE0F1D00006B41 /* PayFailureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayFailureView.h; sourceTree = "<group>"; };
 		1F766A3121DE0F1D00006B41 /* PayFailureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayFailureView.m; sourceTree = "<group>"; };
+		1F766A3321DEFBB100006B41 /* PaymentInstructionsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentInstructionsView.h; sourceTree = "<group>"; };
+		1F766A3421DEFBB100006B41 /* PaymentInstructionsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentInstructionsView.m; sourceTree = "<group>"; };
 		1F770ED621904D7D00E2889F /* langImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = langImg.png; sourceTree = "<group>"; };
 		1F770ED821913CC000E2889F /* UserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		1F770ED921913CC000E2889F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
@@ -2345,6 +2348,8 @@
 				1F7669FE21DDDA8400006B41 /* InvestmentBuyCell.m */,
 				1F766A0021DDDFDB00006B41 /* PayWayCell.h */,
 				1F766A0121DDDFDB00006B41 /* PayWayCell.m */,
+				1F766A3321DEFBB100006B41 /* PaymentInstructionsView.h */,
+				1F766A3421DEFBB100006B41 /* PaymentInstructionsView.m */,
 			);
 			name = View;
 			path = "New Group";
@@ -4594,6 +4599,7 @@
 				B8CAA13E21158FF200695BC3 /* UIView+HandyValue.m in Sources */,
 				211DE6AB1FB58B4C002FCF3D /* TLTableView.m in Sources */,
 				1F7668F421D4A32700006B41 /* BTCTransaction+Tests.m in Sources */,
+				1F766A3521DEFBB100006B41 /* PaymentInstructionsView.m in Sources */,
 				7A07F80B216C84F30026EB7A /* SCPieChart.m in Sources */,
 				7A2CC654215BA06600B27E2D /* PosBuyVC.m in Sources */,
 				1F76692821D4A32700006B41 /* BTCFancyEncryptedMessage+Tests.m in Sources */,

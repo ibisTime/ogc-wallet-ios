@@ -40,14 +40,7 @@
     self.titleText.font = FONT(18);
     self.titleText.textColor = kWhiteColor;
     self.navigationItem.titleView = self.titleText;
-    
-    
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -10;
-    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    [self.RightButton setTitle:[LangSwitcher switchLang:@"取消订单" key:nil] forState:(UIControlStateNormal)];
-    [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
+
     
     PayFailureView *backView = [[PayFailureView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
     [self.view addSubview:backView];

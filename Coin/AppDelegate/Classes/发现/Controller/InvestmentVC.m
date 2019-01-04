@@ -9,10 +9,12 @@
 #import "InvestmentVC.h"
 #import "InvestmentTableView.h"
 #import "OrderRecordVC.h"
+#import "PaymentInstructionsView.h"
 @interface InvestmentVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)InvestmentTableView *tableView;
 
+@property (nonatomic , strong)PaymentInstructionsView *promptView;
 
 @end
 
@@ -37,6 +39,9 @@
     //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -47,19 +52,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleText.text = [LangSwitcher switchLang:@"BTC交易区" key:nil];
-    self.titleText.font = FONT(18);
-    self.navigationItem.titleView = self.titleText;
     
     
     
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -10;
-//    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    [self.RightButton setTitle:[LangSwitcher switchLang:@"订单" key:nil] forState:(UIControlStateNormal)];
-    [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
     
+    [self CustomNavigation];
     
     [self.view addSubview:self.tableView];
     
@@ -69,7 +66,31 @@
     [bottomBtn addTarget:self action:@selector(bottomBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     
     [self.view addSubview:bottomBtn];
+    
+    
+    _promptView = [[PaymentInstructionsView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH - 40, 210)];
+    _promptView.backgroundColor = kWhiteColor;
+    [_promptView.IkonwBtn addTarget:self action:@selector(promptIkonwBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    kViewRadius(_promptView, 4);
+    [self.view addSubview:_promptView];
+    
+    
 }
+
+-(void)CustomNavigation
+{
+    self.titleText.text = [LangSwitcher switchLang:@"BTC交易区" key:nil];
+    self.titleText.font = FONT(18);
+    self.navigationItem.titleView = self.titleText;
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+    [self.RightButton setTitle:[LangSwitcher switchLang:@"订单" key:nil] forState:(UIControlStateNormal)];
+    [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
+}
+
+
 
 -(void)myRecodeClick
 {
@@ -78,11 +99,19 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
--(void)bottomBtnClick
+-(void)promptIkonwBtnClick
 {
     OrderRecordVC *vc = [OrderRecordVC new];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+    
+    [[UserModel user].cusPopView dismiss];
+}
+
+
+-(void)bottomBtnClick
+{
+    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
 }
 
 

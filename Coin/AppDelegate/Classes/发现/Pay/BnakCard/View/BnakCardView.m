@@ -63,8 +63,13 @@
         
         
         UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth(13.5), lineView.yy + kHeight(17), kWidth(48), kHeight(24))];
-        iconImage.image = kImage(@"");
+        iconImage.image = kImage(@"详情-支付背景");
         [backView addSubview:iconImage];
+        
+        UIImageView *nameImage = [[UIImageView alloc]initWithFrame:CGRectMake(kWidth(14), iconImage.height/2 - kHeight(6.5), kWidth(16), kHeight(13))];
+        nameImage.image = kImage(@"银行卡-详情");
+        [iconImage addSubview:nameImage];
+        
         
         UIButton *copyBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"一键复制" key:nil] titleColor:kHexColor(@"#4064E6") backgroundColor:kClearColor titleFont:14];
         copyBtn.frame = CGRectMake(SCREEN_WIDTH, lineView.yy + kHeight(15.5), 0, kHeight(20));

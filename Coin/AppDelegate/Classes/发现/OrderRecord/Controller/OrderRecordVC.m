@@ -10,6 +10,7 @@
 #import "OrderRecordTableView.h"
 #import "PayTreasureVC.h"
 #import "BnakCardVC.h"
+#import "PayFailureVC.h"
 @interface OrderRecordVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)OrderRecordTableView *tableView;
@@ -62,6 +63,10 @@
     }
     if (indexPath.row == 1) {
         BnakCardVC *vc = [BnakCardVC new];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 2) {
+        PayFailureVC *vc = [PayFailureVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
