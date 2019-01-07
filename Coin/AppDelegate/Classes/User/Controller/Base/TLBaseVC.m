@@ -71,8 +71,8 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
+    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1"];
+    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1"];
     self.navigationItem.backBarButtonItem = item;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 

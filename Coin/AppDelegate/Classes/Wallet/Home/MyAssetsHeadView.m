@@ -64,21 +64,21 @@
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
-    if ([[TLUser user].localMoney isEqualToString:@"USD"])
-    {
-        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f USD", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
-//        allPriceLbl.text = @"（USD）";
-    }
-    else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
-    {
-        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f KRW", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
-//        allPriceLbl.text = @"（KRW）";
-    }
-    else
-    {
-        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f CNY", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
-//        allPriceLbl.text = @"（CNY）";
-    }
+//    if ([[TLUser user].localMoney isEqualToString:@"USD"])
+//    {
+//        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f USD", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
+////        allPriceLbl.text = @"（USD）";
+//    }
+//    else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
+//    {
+//        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f KRW", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
+////        allPriceLbl.text = @"（KRW）";
+//    }
+//    else
+//    {
+//        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f CNY", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
+////        allPriceLbl.text = @"（CNY）";
+//    }
 }
 
 @end

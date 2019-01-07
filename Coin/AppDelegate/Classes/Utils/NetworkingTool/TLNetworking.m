@@ -22,12 +22,11 @@
     [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     manager.requestSerializer.timeoutInterval = 15.0;
     NSSet *set = manager.responseSerializer.acceptableContentTypes;
-    
     set = [set setByAddingObject:@"text/plain"];
     set = [set setByAddingObject:@"text/html"];
     set = [set setByAddingObject:@"text/html"];
     manager.responseSerializer.acceptableContentTypes = set;
-   manager.responseSerializer.acceptableContentTypes = [set setByAddingObject:@"text/plain"];
+    manager.responseSerializer.acceptableContentTypes = [set setByAddingObject:@"text/plain"];
     
     return manager;
 }
@@ -79,8 +78,8 @@
     if(self.showView){
     
         [TLProgressHUD show];
+        
 //        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
-   
         //动画效果
 //        [SVProgressHUD setDefaultAnimationType:(SVProgressHUDAnimationTypeFlat)];
         

@@ -18,9 +18,12 @@
 
 @interface MyAsstesCell : UITableViewCell
 
+
+@property (nonatomic , strong)UIView *whiteView;
+
 @property (nonatomic, assign) id <MyAsstesDelegate> delegate;
 
-@property (nonatomic, strong) CurrencyModel *platform;
+@property (nonatomic, strong) NSMutableArray <CurrencyModel *>*platforms;
 
 @property (nonatomic , strong)UIButton *backButton;
 

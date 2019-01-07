@@ -44,6 +44,7 @@
 #import "TLQrCodeVC.h"
 
 #import "MyFriendViewController.h"
+#import "MyBankCardVC.h"
 
 @interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate>
 
@@ -230,6 +231,13 @@
         case 5:
         {
             TLMeSetting *vc = [[TLMeSetting alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 6:
+        {
+            MyBankCardVC *vc = [[MyBankCardVC alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }

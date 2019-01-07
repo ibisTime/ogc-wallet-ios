@@ -60,9 +60,7 @@ static NSString *identifierCell = @"BillListCell";
 
 
     cell = [tableView dequeueReusableCellWithIdentifier:identifierCell forIndexPath:indexPath];
-//    if (indexPath.row == 3) {
-//        cell.backgroundColor = [UIColor redColor];
-//    }
+
     cell.billModel = self.bills[indexPath.row];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

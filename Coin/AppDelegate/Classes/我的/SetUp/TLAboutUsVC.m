@@ -26,9 +26,6 @@
 @property (nonatomic, strong) UILabel *phoneNumber;
 @property (nonatomic, strong) UIImageView *bgImage;
 
-@property (nonatomic, strong) UIButton *backButton;
-
-@property (nonatomic, strong) UILabel *nameLable;
 
 @property (nonatomic, strong)  UIView *line;
 
@@ -37,79 +34,32 @@
 @end
 
 @implementation TLAboutUsVC
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    //去掉导航栏底部的黑线
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
 }
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:nil];
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setShadowImage:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nameLable = [[UILabel alloc]init];
-    self.nameLable.text = [LangSwitcher switchLang:@"关于我们" key:nil];
-    self.nameLable.textAlignment = NSTextAlignmentCenter;
-    self.nameLable.font = Font(16);
-    self.nameLable.textColor = kTextBlack;
-    self.navigationItem.titleView = self.nameLable;
+    
+    self.titleText.text = [LangSwitcher switchLang:@"关于我们" key:nil];
+    self.navigationItem.titleView = self.titleText;
 //    self.title = [LangSwitcher switchLang:@"关于我们" key:nil];
     [self setUpUI];
-    [self initTop];
 
     [self addLayout];
     [self data];
     
 }
 
-- (void)initTop
-{
-    
-//    self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    self.backButton.frame = CGRectMake(15, kStatusBarHeight+5, 40, 40);
-//    [self.backButton setImage:kImage(@"返回1-1") forState:(UIControlStateNormal)];
-//    [self.backButton addTarget:self action:@selector(buttonClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    [self.bgImage addSubview:self.backButton];
-//    self.nameLable = [[UILabel alloc]initWithFrame:CGRectMake(54, kStatusBarHeight+5, kScreenWidth - 108, 44)];
-//    self.nameLable.text = [LangSwitcher switchLang:@"关于我们" key:nil];
-//    self.nameLable.textAlignment = NSTextAlignmentCenter;
-//    self.nameLable.font = Font(16);
-//    self.nameLable.textColor = kTextBlack;
-//    [self.bgImage addSubview:self.nameLable];
 
-}
-
-- (void)buttonClick
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 //
 - (void)data {

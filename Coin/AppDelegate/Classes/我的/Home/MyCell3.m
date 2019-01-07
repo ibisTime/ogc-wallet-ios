@@ -14,7 +14,7 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, 180)];
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, 240)];
         whiteView.backgroundColor = kWhiteColor;
         whiteView.layer.cornerRadius=10;
         whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
@@ -38,22 +38,27 @@
         [self addSubview:_setUpBtn];
         
         
-        NSArray *array = @[@"加入群聊",@"帮助中心",@"设置"];
-        for (int i = 0; i < 3; i ++) {
-            self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i % 3 * 60 + 20, 20, 20)];
+        _bankCardBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _bankCardBtn.frame = CGRectMake(20, 180, SCREEN_WIDTH, 60);
+        [self addSubview:_bankCardBtn];
+        
+        
+        NSArray *array = @[@"加入群聊",@"帮助中心",@"设置",@"我的银行卡"];
+        for (int i = 0; i < 4; i ++) {
+            self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i % array.count * 60 + 20, 20, 20)];
             self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
             self.iconImageView.image = kImage(array[i]);
             [whiteView addSubview:self.iconImageView];
             
             //右边箭头
-            self.accessoryImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 40 - 15 - 7, i % 3 * 60 + 24, 7, 12)];
+            self.accessoryImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 40 - 15 - 7, i % array.count * 60 + 24, 7, 12)];
             self.accessoryImageView.image = [UIImage imageNamed:@"更多-灰色"];
             [whiteView addSubview:self.accessoryImageView];
             
             //
             self.titleLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:15.0];
             self.titleLbl.text = [LangSwitcher switchLang:array[i] key:nil];
-            self.titleLbl.frame = CGRectMake(self.iconImageView.xx + 10, i % 3 * 60, SCREEN_WIDTH - self.iconImageView.xx - 40 - 35, 60);
+            self.titleLbl.frame = CGRectMake(self.iconImageView.xx + 10, i % array.count * 60, SCREEN_WIDTH - self.iconImageView.xx - 40 - 35, 60);
             [whiteView addSubview:self.titleLbl];
         
         }
@@ -66,6 +71,10 @@
         UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(self.iconImageView.xx + 10, 119.5 , SCREEN_WIDTH - 40 - self.iconImageView.xx - 10, 1)];
         line1.backgroundColor = kLineColor;
         [whiteView addSubview:line1];
+        
+        UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(self.iconImageView.xx + 10, 179.5 , SCREEN_WIDTH - 40 - self.iconImageView.xx - 10, 1)];
+        line2.backgroundColor = kLineColor;
+        [whiteView addSubview:line2];
         
     }
     return self;

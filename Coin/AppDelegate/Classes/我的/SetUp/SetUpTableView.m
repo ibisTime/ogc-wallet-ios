@@ -32,16 +32,16 @@ static NSString *identifierCell = @"SettingCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    if (section == 0) {
-        return 5;
-    }
+//    if (section == 0) {
+//        return 5;
+//    }
     
-    return 1;
+    return 3;
     
 }
 
@@ -59,15 +59,9 @@ static NSString *identifierCell = @"SettingCell";
     cell.switchHidden = YES;
     //    cell.iconImageView.hidden = YES;
     
-    NSArray *nameArray1 = @[@"平台介绍",@"用户协议",@"隐私条款",@"法律申明",@"费率说明"];
-    if (indexPath.section == 0) {
-        cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
-    }
+    NSArray *nameArray1 = @[@"语言",@"本地货币",@"版本更新"];
+    cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
     
-    NSArray *nameArray2 = @[@"帮助中心"];
-    if (indexPath.section == 1) {
-        cell.titleLbl.text = [LangSwitcher switchLang:nameArray2[indexPath.row] key:nil];
-    }
     
    
     cell.titleLbl.textColor = kTextColor;
@@ -101,7 +95,7 @@ static NSString *identifierCell = @"SettingCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 10;
+    return 0.01;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -111,7 +105,7 @@ static NSString *identifierCell = @"SettingCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 0.1;
+    return 0.01;
 }
 
 @end

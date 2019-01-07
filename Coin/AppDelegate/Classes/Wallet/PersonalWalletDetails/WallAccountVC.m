@@ -42,6 +42,8 @@
 @property (nonatomic, strong) UIButton *billBtn;
 @property (nonatomic , strong) UIScrollView *contentScrollView;
 
+@property (nonatomic , strong)NSArray *dataArray;
+
 @end
 
 @implementation WallAccountVC
@@ -77,6 +79,7 @@
     self.titleText.textColor = kWhiteColor;
     self.navigationItem.titleView = self.titleText;
     
+    [self ckey];
 //    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
 //    negativeSpacer.width = -10;
 //    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
@@ -100,30 +103,37 @@
         
         CoinWeakSelf;
         
-        NSArray *textArr = @[[LangSwitcher switchLang:@"全部" key:nil],
-                             [LangSwitcher switchLang:@"充币" key:nil],
-                             [LangSwitcher switchLang:@"提币" key:nil],
-                             [LangSwitcher switchLang:@"取现手续费" key:nil],
-                             [LangSwitcher switchLang:@"红包退回" key:nil],
-                             [LangSwitcher switchLang:@"抢红包" key:nil],
-                             [LangSwitcher switchLang:@"发红包" key:nil],
-                             [LangSwitcher switchLang:@"量化理财投资" key:nil],
-                             [LangSwitcher switchLang:@"量化理财还款" key:nil],
-                             [LangSwitcher switchLang:@"积分抽奖" key:nil]
-                             ];
+//        NSArray *textArr = @[[LangSwitcher switchLang:@"全部" key:nil],
+//                             [LangSwitcher switchLang:@"充币" key:nil],
+//                             [LangSwitcher switchLang:@"提币" key:nil],
+//                             [LangSwitcher switchLang:@"取现手续费" key:nil],
+//                             [LangSwitcher switchLang:@"红包退回" key:nil],
+//                             [LangSwitcher switchLang:@"抢红包" key:nil],
+//                             [LangSwitcher switchLang:@"发红包" key:nil],
+//                             [LangSwitcher switchLang:@"量化理财投资" key:nil],
+//                             [LangSwitcher switchLang:@"量化理财还款" key:nil],
+//                             [LangSwitcher switchLang:@"积分抽奖" key:nil]
+//                             ];
+//
+//        NSArray *typeArr = @[@"",
+//                             @"charge",
+//                             @"withdraw",
+//                             @"withdrawfee",
+//                             @"redpacket_back",
+//                             @"sendredpacket_in",
+//                             @"sendredpacket_out",
+//                             @"lhlc_invest",
+//                             @"lhlc_repay",
+//                             @"jf_lottery_in"
+//
+//                             ];
+        NSMutableArray *textArr = [NSMutableArray array];
+        NSMutableArray *typeArr = [NSMutableArray array];
         
-        NSArray *typeArr = @[@"",
-                             @"charge",
-                             @"withdraw",
-                             @"withdrawfee",
-                             @"redpacket_back",
-                             @"sendredpacket_in",
-                             @"sendredpacket_out",
-                             @"lhlc_invest",
-                             @"lhlc_repay",
-                             @"jf_lottery_in"
-
-                             ];
+        for (int i = 0; i < self.dataArray.count; i ++) {
+            [textArr addObject:[LangSwitcher switchLang:self.dataArray[i][@"dvalue"] key:nil]];
+            [typeArr addObject:self.dataArray[i][@"dkey"]];
+        }
         
         
         _filterPicker = [[FilterView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
@@ -153,12 +163,30 @@
 
     self.tableView.defaultNoDataImage = kImage(@"暂无订单");
     self.tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无明细" key:nil];
+    
     [self.view addSubview:self.tableView];
     CoinWeakSelf;
     self.tableView.addBlock = ^{
         [weakSelf clickFilter];
     };
     
+}
+
+-(void)ckey
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630036";
+    
+    http.parameters[@"parentKey"] = @"jour_biz_type_user";
+    
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.dataArray = responseObject[@"data"];
+        
+        //        [self shoreButtonClick];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - Events
@@ -172,32 +200,32 @@
     //--//
     __weak typeof(self) weakSelf = self;
     
-    NSString *bizType = @"";
-    
-    if (self.billType == CurrentTypeRecharge) {
-        
-        bizType = @"charge";
-        
-    } else if (self.billType == CurrentTypeWithdraw) {
-        
-        bizType = @"withdraw";
-        
-    } else if (self.billType == CurrentTypeFrozen) {
-        
-        bizType = @"";
-    }
-    
+//    NSString *bizType = @"";
+//
+//    if (self.billType == CurrentTypeRecharge) {
+//
+//        bizType = @"charge";
+//
+//    } else if (self.billType == CurrentTypeWithdraw) {
+//
+//        bizType = @"withdraw";
+//
+//    } else if (self.billType == CurrentTypeFrozen) {
+//
+//        bizType = @"";
+//    }
+//
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     
     helper.tableView = self.tableView;
     self.helper = helper;
     
-    helper.code = @"802524";
+    helper.code = @"802320";
     helper.start = 1;
     helper.limit = 10;
     
-    helper.parameters[@"bizType"] = bizType;
-    helper.parameters[@"kind"] = self.billType == CurrentTypeFrozen ? @"1": @"0";
+//    helper.parameters[@"bizType"] = bizType;
+//    helper.parameters[@"kind"] = self.billType == CurrentTypeFrozen ? @"1": @"0";
     
     helper.parameters[@"accountNumber"] = self.currency.accountNumber;
     
@@ -261,6 +289,7 @@
 
     WallAccountHeadView *headView = [[WallAccountHeadView alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight, kScreenWidth, 84 - 64 + kNavigationBarHeight - 10 + 110)];
     self.headView = headView;
+    headView.currency = self.currency;
     [self.view addSubview:headView];
 
 

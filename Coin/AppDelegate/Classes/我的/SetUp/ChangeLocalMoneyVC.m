@@ -24,93 +24,37 @@
 @end
 
 @implementation ChangeLocalMoneyVC
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+- (void)viewWillAppear:(BOOL)animated
+{
+    //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+}
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-}
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+- (void)viewWillDisappear:(BOOL)animated
+{
     [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.nameLable = [[UILabel alloc]init];
-    self.nameLable.text = [LangSwitcher switchLang:@"本地货币" key:nil];
-    self.nameLable.textAlignment = NSTextAlignmentCenter;
-    self.nameLable.font = Font(16);
-    self.nameLable.textColor = kTextBlack;
-    self.navigationItem.titleView = self.nameLable;
-//    self.title = ;
+    
+    
+    self.titleText.text = [LangSwitcher switchLang:@"本地货币" key:nil];
+    self.navigationItem.titleView = self.titleText;
     self.models = [[NSMutableArray alloc] init];
     
-    self.bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    self.bgImage.contentMode = UIViewContentModeScaleToFill;
-    self.bgImage.userInteractionEnabled = YES;
-    self.bgImage.image = kImage(@"我的 背景");
-    [self.view  addSubview:self.bgImage];
-    
-//    [self.bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(UIEdgeInsetsZero);
-//    }];
-    //
-//    self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    self.backButton.frame = CGRectMake(15, kStatusBarHeight + 30, 40, 40);
-//    [self.backButton setImage:kImage(@"返回1-1") forState:(UIControlStateNormal)];
-//    [self.backButton addTarget:self action:@selector(buttonClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    [self.bgImage addSubview:self.backButton];
-//    self.nameLable = [[UILabel alloc]initWithFrame:CGRectMake(54, kStatusBarHeight+5, kScreenWidth - 108, 44)];
-//    self.nameLable.text = [LangSwitcher switchLang:@"选择货币" key:nil];
-//    self.nameLable.textAlignment = NSTextAlignmentCenter;
-//    self.nameLable.font = Font(16);
-//    self.nameLable.textColor = kTextBlack;
-//    [self.bgImage addSubview:self.nameLable];
 
-    self.langChooseTV = [[UITableView alloc] initWithFrame:CGRectMake(15, kNavigationBarHeight + 30, kScreenWidth-15, kHeight(175)) style:UITableViewStylePlain];
+    self.langChooseTV = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStylePlain];
     self.langChooseTV.rowHeight = 55;
-    [self.bgImage addSubview:self.langChooseTV];
+    [self.view addSubview:self.langChooseTV];
     self.langChooseTV.delegate = self;
     self.langChooseTV.dataSource = self;
     self.langChooseTV.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    [self.langChooseTV adjustsContentInsets];
     __weak typeof(self) weakself = self;
-    //
-//    TLDataBase *db = [TLDataBase sharedManager];
-//
-//    if ([db.dataBase open]) {
-//        NSString *sql = [NSString stringWithFormat:@"SELECT MoneyType FROM THAWallet WHERE userId = '%@'",[TLUser user].userId];
-//       FMResultSet *set =   [db.dataBase executeQuery:sql];
-//        while ([set next]) {
-//
-//            self.type = [set stringForColumn:@"MoneyType"];
-//        }
-//
-//    }
-//
-//    [db.dataBase close];
-//    [[NSUserDefaults standardUserDefaults] setObject:self.type forKey:KLocalMoney];
    self.type =   [[NSUserDefaults standardUserDefaults] objectForKey:KLocalMoney];
     SettingModel *simpleModel = [[SettingModel alloc] init];
-    //    simpleModel.text = [LangSwitcher switchLang:@"简体中文" key:nil];
+
     simpleModel.text = @"CNY";
     
     simpleModel.isSelect = [simpleModel.text isEqualToString:self.type];
@@ -133,18 +77,18 @@
         
     }];
     
-    SettingModel *tridationModel1 = [[SettingModel alloc] init];
-    //    tridationModel.text = [LangSwitcher switchLang:@"繁体中文" key:nil];
-    tridationModel1.text = @"KRW";
+//    SettingModel *tridationModel1 = [[SettingModel alloc] init];
+//    //    tridationModel.text = [LangSwitcher switchLang:@"繁体中文" key:nil];
+//    tridationModel1.text = @"KRW";
+//
+//    tridationModel1.isSelect = [tridationModel1.text isEqualToString:self.type];
+//    [tridationModel1 setAction:^{
+//
+//        [weakself langType:LangTypeKorean];
+//
+//    }];
     
-    tridationModel1.isSelect = [tridationModel1.text isEqualToString:self.type];
-    [tridationModel1 setAction:^{
-        
-        [weakself langType:LangTypeKorean];
-        
-    }];
-    
-    [self.models addObjectsFromArray:@[simpleModel,tridationModel,tridationModel1]];
+    [self.models addObjectsFromArray:@[simpleModel,tridationModel]];
 
 }
 - (void)buttonClick
@@ -235,13 +179,15 @@
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCellId"];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
-        
+        cell.backgroundColor = kWhiteColor;
         UIView *line = [[UIView alloc] init];
         line.backgroundColor = kLineColor;
         [cell addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@0.7);
-            make.left.bottom.right.equalTo(cell);
+            make.left.equalTo(@15);
+            make.right.equalTo(@15);
+            make.bottom.equalTo(@0);
         }];
         
         
@@ -256,19 +202,17 @@
     if (settingModel.isSelect) {
         
         UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 14, 11)];
-        iv.contentMode = UIViewContentModeScaleToFill;
         //        iv.backgroundColor = [UIColor orangeColor];
         [cell addSubview:iv];
         iv.image = [UIImage imageNamed:@"打勾"];
         [iv mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.equalTo(cell.mas_centerY);
             make.right.equalTo(cell.mas_right).offset(-20);
-            make.height.width.mas_equalTo(20);
         }];
         
     }else{
         
-        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+        UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 14, 11)];
         //        iv.backgroundColor = [UIColor orangeColor];
         [cell addSubview:iv];
         iv.image = [UIImage imageNamed:@""];

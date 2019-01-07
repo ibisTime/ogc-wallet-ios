@@ -12,36 +12,27 @@
 #import "MakeMoneyCell.h"
 @interface TLMakeMoney()<UITableViewDelegate, UITableViewDataSource>
 
-
 @end
 @implementation TLMakeMoney
 static NSString *identifierCell = @"MakeMoneyCell";
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
-    
     if (self = [super initWithFrame:frame style:style]) {
-        
         self.dataSource = self;
         self.delegate = self;
         self.backgroundColor = kBackgroundColor;
-        
         [self registerClass:[MakeMoneyCell class] forCellReuseIdentifier:identifierCell];
-
-
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
-
-        
     }
-    
     return self;
 }
 
 #pragma mark - UITableViewDataSource
-
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     return self.Moneys.count;
@@ -59,9 +50,7 @@ static NSString *identifierCell = @"MakeMoneyCell";
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 0) {
-//        return 160 - 64 + kNavigationBarHeight;
-//    }
+
     return 155;
 }
 

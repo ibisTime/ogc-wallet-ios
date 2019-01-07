@@ -31,6 +31,8 @@
 
 -(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title;
 
+
+
 @end
 
 @interface  TLTableView: UITableView

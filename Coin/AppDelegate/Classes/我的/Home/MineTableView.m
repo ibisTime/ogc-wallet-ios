@@ -83,6 +83,9 @@ static NSString *Cell3 = @"MyCell3";
     cell.helpCentenBtn.tag = 104;
     [cell.setUpBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
     cell.setUpBtn.tag = 105;
+    [cell.bankCardBtn  addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    cell.bankCardBtn.tag = 106;
+    
     return cell;
 }
 
@@ -113,7 +116,7 @@ static NSString *Cell3 = @"MyCell3";
     if (indexPath.section == 1) {
         return 120;
     }
-    return 180;
+    return 320;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

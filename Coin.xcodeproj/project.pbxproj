@@ -155,6 +155,9 @@
 		1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BED2180953B0078B945 /* SGQRCodeScanningView.m */; };
 		1F816BF82180953D0078B945 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BEE2180953B0078B945 /* UIImage+ImageSize.m */; };
 		1F816BF92180953D0078B945 /* SGQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BF02180953C0078B945 /* SGQRCodeHelperTool.m */; };
+		1FC390EE21E328840070E153 /* MyBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390ED21E328840070E153 /* MyBankCardVC.m */; };
+		1FC390F121E349FA0070E153 /* MyBankCardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F021E349FA0070E153 /* MyBankCardTableView.m */; };
+		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
 		211A34D71FB3F51400FEB71F /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34D61FB3F51400FEB71F /* MineHeaderView.m */; };
 		211A34DB1FB4083300FEB71F /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DA1FB4083300FEB71F /* MineTableView.m */; };
 		211A34DE1FB4245D00FEB71F /* MineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DD1FB4245D00FEB71F /* MineCell.m */; };
@@ -908,6 +911,12 @@
 		1F816BF12180953C0078B945 /* SGQRCodeScanManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanManager.h; sourceTree = "<group>"; };
 		1F816BF22180953C0078B945 /* SGQRCodeHelperTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeHelperTool.h; sourceTree = "<group>"; };
 		1F816BF32180953D0078B945 /* SGQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
+		1FC390EC21E328840070E153 /* MyBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardVC.h; sourceTree = "<group>"; };
+		1FC390ED21E328840070E153 /* MyBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardVC.m; sourceTree = "<group>"; };
+		1FC390EF21E349FA0070E153 /* MyBankCardTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardTableView.h; sourceTree = "<group>"; };
+		1FC390F021E349FA0070E153 /* MyBankCardTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardTableView.m; sourceTree = "<group>"; };
+		1FC390F221E34A230070E153 /* MyBankCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardCell.h; sourceTree = "<group>"; };
+		1FC390F321E34A230070E153 /* MyBankCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardCell.m; sourceTree = "<group>"; };
 		211A34D51FB3F51400FEB71F /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
 		211A34D61FB3F51400FEB71F /* MineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineHeaderView.m; sourceTree = "<group>"; };
 		211A34D91FB4083300FEB71F /* MineTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTableView.h; sourceTree = "<group>"; };
@@ -2521,6 +2530,35 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1FC390E921E328520070E153 /* MyBankCard */ = {
+			isa = PBXGroup;
+			children = (
+				1FC390EB21E3286C0070E153 /* Controller */,
+				1FC390EA21E3286A0070E153 /* View */,
+			);
+			path = MyBankCard;
+			sourceTree = "<group>";
+		};
+		1FC390EA21E3286A0070E153 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FC390EF21E349FA0070E153 /* MyBankCardTableView.h */,
+				1FC390F021E349FA0070E153 /* MyBankCardTableView.m */,
+				1FC390F221E34A230070E153 /* MyBankCardCell.h */,
+				1FC390F321E34A230070E153 /* MyBankCardCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FC390EB21E3286C0070E153 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1FC390EC21E328840070E153 /* MyBankCardVC.h */,
+				1FC390ED21E328840070E153 /* MyBankCardVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		211A34D81FB3F55600FEB71F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3229,6 +3267,7 @@
 			children = (
 				7A2CC6372159E0E900B27E2D /* Home */,
 				7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity */,
+				1FC390E921E328520070E153 /* MyBankCard */,
 				1F76698C21D7715400006B41 /* MyFriend */,
 				7A2CC63A2159E35000B27E2D /* Invitation */,
 				7AEF23572154C51D00BF1DB5 /* JoinMine */,
@@ -4773,6 +4812,7 @@
 				B8D9290F20EA58290026A3DF /* ChangeLocalMoneyVC.m in Sources */,
 				7A8A5DC020EA6977002D9A48 /* CustomActionSheet.m in Sources */,
 				1F7667F421D0B44700006B41 /* MyCell1.m in Sources */,
+				1FC390EE21E328840070E153 /* MyBankCardVC.m in Sources */,
 				B8CAA14221158FF200695BC3 /* LPDPhotoArrangeCell.m in Sources */,
 				7A2CC6C3215DC88C00B27E2D /* PGDatePicker.m in Sources */,
 				2ED651CF200F34280065A1B0 /* TLCoinWithdrawOrderCell.m in Sources */,
@@ -4877,6 +4917,7 @@
 				211DE6A21FB58B4C002FCF3D /* TLCaptchaView.m in Sources */,
 				211DE6B71FB58B4C002FCF3D /* UIBarButtonItem+convience.m in Sources */,
 				1F766A0D21DDE8ED00006B41 /* OrderRecordTableView.m in Sources */,
+				1FC390F121E349FA0070E153 /* MyBankCardTableView.m in Sources */,
 				211DE6B41FB58B4C002FCF3D /* UIColor+Extension.m in Sources */,
 				7A2CC6D5215DC89200B27E2D /* PGPickerColumnCell.m in Sources */,
 				2120A8FC1FD51DF800B03DB0 /* UITabBar+Badge.m in Sources */,
@@ -4910,6 +4951,7 @@
 				1F76690C21D4A32700006B41 /* BTC256.m in Sources */,
 				7A2CC6B3215DC88B00B27E2D /* PGDatePicker+Date.m in Sources */,
 				7A2CC6B9215DC88C00B27E2D /* PGDatePicker+MinuteAndSecond.m in Sources */,
+				1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */,
 				7AE970582175C23B0066B66C /* TLMoneyDeailWebViewCell.m in Sources */,
 				1F76691A21D4A32700006B41 /* BTCKeychain+Tests.m in Sources */,
 				1F76699221D771C700006B41 /* MyFriendTableView.m in Sources */,

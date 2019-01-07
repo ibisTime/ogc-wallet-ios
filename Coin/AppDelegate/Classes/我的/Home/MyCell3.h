@@ -20,5 +20,5 @@
 @property (nonatomic , strong)UIButton *communityBtn;
 @property (nonatomic , strong)UIButton *helpCentenBtn;
 @property (nonatomic , strong)UIButton *setUpBtn;
-
+@property (nonatomic , strong)UIButton *bankCardBtn;
 @end

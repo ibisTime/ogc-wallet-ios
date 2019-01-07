@@ -291,7 +291,7 @@
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
 {
     WallAccountVC *accountVC= [[WallAccountVC alloc] init];
-//    accountVC.currency = model;
+    accountVC.currency = self.AssetsListModel[index - 100];
     accountVC.hidesBottomBarWhenPushed = YES;
 //    accountVC.title = model.currency;
 //    accountVC.billType = CurrentTypeAll;
@@ -327,7 +327,6 @@
 
 
 - (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
-    
     CoinWeakSelf;
     //    实名认证成功后，判断是否设置资金密码
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
@@ -482,7 +481,7 @@
     [self.tableView addRefreshAction:^{
         
         [CoinUtil refreshOpenCoinList:^{
-            
+        
             //    获取公告列表
 //            [weakSelf requestRateList];
             //    获取本地存储私钥钱包
@@ -602,16 +601,16 @@
 - (void)queryCenterTotalAmount {
     
     TLNetworking *http = [TLNetworking new];
-    http.code = @"802503";
+    http.code = @"802301";
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"token"] = [TLUser user].token;
     
     [http postWithSuccess:^(id responseObject) {
         
         self.headView.dataDic = responseObject[@"data"];
-        self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+        self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self.tableView reloadData];
-        self.AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+        self.AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self.tableView endRefreshHeader];
     } failure:^(NSError *error) {
         

@@ -174,13 +174,7 @@
     self.qrIV = qrIV;
     NSString *address ;
     
-    if (self.currency.symbol) {
-        address = self.currency.address;
-    }else{
-        address = self.currency.coinAddress;
-
-        
-    }
+    address = self.currency.address;
     CoinModel * coin = [CoinUtil getCoinModel:self.currency.currency.length > 0 ? self.currency.currency : self.currency.symbol];
 
     [qrIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -292,13 +286,8 @@
     UILabel *addressLbl = [UILabel labelWithBackgroundColor:kHexColor(@"#FDFEFF") textColor:kTextColor font:14.0];
     addressLbl.numberOfLines = 0;
     NSString *address ;
-    if (self.currency.symbol) {
-        address = self.currency.address;
-    }else{
-        address = self.currency.coinAddress;
-        
-        
-    }
+    address = self.currency.address;
+    
     addressLbl.text = [NSString stringWithFormat:@"%@", address];
     [self.view addSubview:addressLbl];
     addressLbl.numberOfLines = 0;
@@ -416,13 +405,14 @@
     
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     NSString *address ;
-    if (self.currency.symbol) {
-        address = self.currency.address;
-    }else{
-        address = self.currency.coinAddress;
-        
-        
-    }
+    address = self.currency.address;
+//    if (self.currency.symbol) {
+//
+//    }else{
+//        address = self.currency.coinAddress;
+//
+//
+//    }
     pasteBoard.string = address;
     
     if (pasteBoard == nil) {

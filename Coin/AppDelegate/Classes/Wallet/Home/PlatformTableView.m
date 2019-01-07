@@ -47,7 +47,9 @@ static NSString *MyAsstes = @"MyAsstesCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     cell.delegate = self;
-    
+    if (self.platforms.count > 0) {
+        cell.platforms = self.platforms;
+    }
     
     return cell;
     
@@ -145,13 +147,15 @@ static NSString *MyAsstes = @"MyAsstesCell";
 //}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    return 320;
+    if (self.platforms.count> 0) {
+        return self.platforms.count * 100 + 20;
+    }
+    return 0.01;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 0.1;
+    return 0.01;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -161,7 +165,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 0.1;
+    return 0.01;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

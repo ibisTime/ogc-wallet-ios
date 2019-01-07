@@ -41,7 +41,7 @@
 
         
         
-        _nameLabel = [UILabel labelWithFrame:CGRectMake(self.iconIV.xx + 15, 12.5, SCREEN_WIDTH - self.iconIV.xx - 15, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:[UIColor blackColor]];
+        _nameLabel = [UILabel labelWithFrame:CGRectMake(self.iconIV.xx + 15, 12.5, 0, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:[UIColor blackColor]];
         [self addSubview:_nameLabel];
         
         //
@@ -109,39 +109,30 @@
                                                 coin:billModel.currency];
     CGFloat money = [countStr doubleValue];
 
-
 //    CoinModel *coin = [CoinUtil getCoinModel:billModel.currency];
     if (money > 0) {
         
-        moneyStr = [NSString stringWithFormat:@"+%@ %@",countStr , billModel.currency];
+//        moneyStr = [NSString stringWithFormat:@"+%@ %@",countStr , billModel.currency];
         self.moneyLbl.textColor = kHexColor(@"#47D047");
 
-        self.iconIV.image = kImage(@"转出");
-        self.nameLabel.text = [LangSwitcher switchLang:[LangSwitcher switchLang:@"支出" key:nil] key:nil];
+        self.iconIV.image = kImage(@"充值");
+        self.nameLabel.text = [LangSwitcher switchLang:@"充值" key:nil];
 
 //        [self.iconIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic2 convertImageUrl]]];
 
-    } else if (money <= 0) {
+    } else {
         self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
 
-        moneyStr = [NSString stringWithFormat:@"%@ %@", countStr, billModel.currency];
+//        moneyStr = [NSString stringWithFormat:@"%@ %@", countStr, billModel.currency];
 
-        self.iconIV.image = kImage(@"转入");
-        self.nameLabel.text = [LangSwitcher switchLang:[LangSwitcher switchLang:@"收款" key:nil] key:nil];
+        self.iconIV.image = kImage(@"转  出");
+        self.nameLabel.text = [LangSwitcher switchLang:@"转出" key:nil];
     }
-    self.moneyLbl.text = moneyStr;
     [self.nameLabel sizeToFit];
+    
     self.nameLabel.frame =  CGRectMake(self.iconIV.xx + 15, 12.5, self.nameLabel.width, 20);
     
     self.moneyLbl.frame = CGRectMake(self.nameLabel.xx + 10, 12.5, SCREEN_WIDTH - self.nameLabel.xx - 25, 20);
-//    [self.moneyLbl sizeToFit];
-//    self.moneyLbl.frame = CGRectMake(SCREEN_WIDTH - 15 - self.moneyLbl.frame.size.width, 15, self.moneyLbl.frame.size.width, 15);
-    
-    
-//    self.nameLabel.frame = CGRectMake(60, 12.5, SCREEN_WIDTH - 60 - 22 - self.moneyLbl.frame.size.width, 0);
-//    [self.nameLabel sizeToFit];
-
-//    self.dayLbl.text = [_billModel.createDatetime convertDateWithFormat:[NSString stringWithFormat:@"dd%@",[LangSwitcher switchLang:[NSString stringWithFormat:@"日"] key:nil]]];
     self.dayLbl.text = [_billModel.createDatetime convertRedDate];
 
     self.detailLbl.text = billModel.bizNote;

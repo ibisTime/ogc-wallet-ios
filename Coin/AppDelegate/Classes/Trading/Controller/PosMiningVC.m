@@ -55,9 +55,8 @@
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-
 }
+
 
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
@@ -66,7 +65,8 @@
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 
     [self.view addSubview:self.tableView];
@@ -303,9 +303,6 @@
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;
 //        [self.view addSubview:_tableView];
-
-        
-
     }
     return _tableView;
 }
