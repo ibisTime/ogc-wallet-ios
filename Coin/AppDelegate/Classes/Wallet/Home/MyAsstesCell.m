@@ -111,7 +111,7 @@
         iconImg.image = kImage(@"BTC");
         [whiteView addSubview:iconImg];
         
-        nameLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 23.5 + i % platforms.count * 100, SCREEN_WIDTH - 23.5 - 45, 21) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:kHexColor(@"#333333")];
+        nameLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 23.5 + i % platforms.count * 100, SCREEN_WIDTH - 23.5 - 45, 21) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];
         nameLabel.text = model.currency;
         [whiteView addSubview:nameLabel];
         
@@ -120,20 +120,20 @@
         
         
         
-        freezeLabel.text = [NSString stringWithFormat:@"%@%.8f%@",[LangSwitcher switchLang:@"冻结" key:nil],[frozenAmount doubleValue],model.currency];
+        freezeLabel.text = [NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"冻结" key:nil],frozenAmount,model.currency];
         [freezeLabel sizeToFit];
         freezeLabel.frame = CGRectMake(iconImg.xx + 12, nameLabel.yy + 4, freezeLabel.width, 12);
         [whiteView addSubview:freezeLabel];
         
         UILabel *availableLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, freezeLabel.yy + 4, SCREEN_WIDTH - iconImg.xx - 12 - 30 - 15, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTextColor2];
-        availableLabel.text = [NSString stringWithFormat:@"%@%.8f%@",[LangSwitcher switchLang:@"可用" key:nil],[available doubleValue],model.currency];
+        availableLabel.text = [NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"可用" key:nil],available,model.currency];
         [whiteView addSubview:availableLabel];
         
         
         
         
         
-        priceLabel = [UILabel labelWithFrame:CGRectMake(freezeLabel.xx + 10, 34.5 + i % platforms.count * 100, SCREEN_WIDTH - freezeLabel.xx - 30 - 15 - 10, 21) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(15) textColor:[UIColor blackColor]];
+        priceLabel = [UILabel labelWithFrame:CGRectMake(freezeLabel.xx + 10, 34.5 + i % platforms.count * 100, SCREEN_WIDTH - freezeLabel.xx - 30 - 15 - 10, 21) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(16) textColor:[UIColor blackColor]];
         priceLabel.text = [NSString stringWithFormat:@"%.8f%@",[amount doubleValue],model.currency];
         priceLabel.centerY = freezeLabel.centerY;
         [whiteView addSubview:priceLabel];
@@ -143,10 +143,6 @@
             lineView.backgroundColor = kLineColor;
             [whiteView addSubview:lineView];
         }
-        
-        
-        
-        
     }
 }
 

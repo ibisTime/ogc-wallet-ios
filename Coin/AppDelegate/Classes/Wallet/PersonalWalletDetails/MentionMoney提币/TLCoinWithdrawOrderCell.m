@@ -154,21 +154,21 @@
     _withdrawModel = withdrawModel;
    
     
-    NSString *countStr = [CoinUtil convertToRealCoin: _withdrawModel.amountString
+    NSString *countStr = [CoinUtil convertToRealCoin: _withdrawModel.amount
                                                 coin:_withdrawModel.currency];
     
-    NSString *normalCountStr = [NSString stringWithFormat:@"提币金额：%@ %@",countStr,_withdrawModel.currency];
+    NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"提币金额" key:nil],countStr,_withdrawModel.currency];
     self.coinCountLbl.attributedText = [self attrStrLeftLen:5 str:normalCountStr];
     
     //
     NSString *feeStr = [CoinUtil convertToRealCoin: _withdrawModel.feeString
                                              coin:_withdrawModel.currency];
     
-    NSString *feeNormalStr =  [NSString stringWithFormat:@"手续费：%@ %@",feeStr,_withdrawModel.currency];
+    NSString *feeNormalStr =  [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"手续费" key:nil],feeStr,_withdrawModel.currency];
     self.feelbl.attributedText = [self attrStrLeftLen:4 str:feeNormalStr];
     
     //
-    NSString *toAddressStr = [NSString stringWithFormat:@"提币地址：%@",_withdrawModel.payCardNo];
+    NSString *toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"提币地址" key:nil],_withdrawModel.payCardNo];
     self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];;
     
     //

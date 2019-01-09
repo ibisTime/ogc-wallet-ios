@@ -41,10 +41,22 @@ static NSString *identifierCell = @"SettingCell";
     if (section == 0) {
         return 2;
     }
-    if (section == 0) {
+    if (section == 1) {
+        if ([TLUser isBlankString:[TLUser user].email] == YES) {
+            return 3;
+        }else
+        {
+            return 2;
+        }
+    }
+     if ([TLUser isBlankString:[TLUser user].email] == YES)
+     {
+         return 2;
+     }else
+    {
         return 3;
     }
-    return 3;
+    
     
 }
 
@@ -72,11 +84,40 @@ static NSString *identifierCell = @"SettingCell";
     }
     
     NSArray *nameArray2 = @[@"身份认证",@"谷歌验证",@"绑定邮箱"];
+    if ([TLUser isBlankString:[TLUser user].email] == YES) {
+        nameArray2 = @[@"身份认证",@"谷歌验证",@"绑定邮箱"];
+    }else
+    {
+        nameArray2 = @[@"身份认证",@"谷歌验证"];
+    }
     if (indexPath.section == 1) {
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray2[indexPath.row] key:nil];
+
+        if (indexPath.row == 0) {
+            if ([TLUser isBlankString:[TLUser user].idNo] == NO)
+            {
+                cell.arrowHidden = YES;
+                cell.rightLabel.hidden = NO;
+                cell.rightLabel.text = [LangSwitcher switchLang:@"已完成" key:nil];
+            }
+            else
+            {
+                cell.rightLabel.hidden = YES;
+                cell.arrowHidden = NO;
+            }
+        }
     }
     
-    NSArray *nameArray3 = @[@"修改邮箱",@"修改手机号",@"修改登录密码"];
+    
+    
+    NSArray *nameArray3;
+    
+    if ([TLUser isBlankString:[TLUser user].email] == NO) {
+        nameArray3 = @[@"修改邮箱",@"修改手机号",@"修改登录密码"];
+    }else
+    {
+        nameArray3 = @[@"修改手机号",@"修改登录密码"];
+    }
     if (indexPath.section == 2) {
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray3[indexPath.row] key:nil];
     }

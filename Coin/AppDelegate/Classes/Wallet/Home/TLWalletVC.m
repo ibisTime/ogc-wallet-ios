@@ -281,7 +281,7 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, self.headView.yy, kScreenWidth, kScreenHeight- kNavigationBarHeight - self.headView.yy) style:UITableViewStyleGrouped];
+    self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, self.headView.yy - 5, kScreenWidth, kScreenHeight- kNavigationBarHeight - self.headView.yy + 5) style:UITableViewStyleGrouped];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0);
     self.tableView.backgroundColor = kWhiteColor;
     self.tableView.refreshDelegate = self;

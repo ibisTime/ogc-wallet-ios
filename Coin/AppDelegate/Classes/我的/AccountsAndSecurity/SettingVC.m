@@ -21,19 +21,23 @@
 #import "SettingModel.h"
 #import "SettingTableView.h"
 #import "SettingCell.h"
-#import "AppMacro.h"
 #import "APICodeMacro.h"
 #import "EditEmailVC.h"
-#import "TLAlert.h"
-#import "NSString+Check.h"
-#import "TLProgressHUD.h"
 #import "LangChooseVC.h"
 #import "TLUserLoginVC.h"
 #import "ZLGestureLockViewController.h"
 #import "LocalSettingTableView.h"
 #import "ChangePhoneAndEmailVC.h"
-
-@interface SettingVC ()<RefreshDelegate>
+#import "ZQFaceAuthEngine.h"
+#import "ZQOCRScanEngine.h"
+#import "TLUploadManager.h"
+#import "BindingEmailVC.h"
+@interface SettingVC ()<RefreshDelegate,ZQFaceAuthDelegate,ZQOcrScanDelegate>{
+    NSString *str1;
+    NSString *str2;
+    NSString *str3;
+    
+}
 
 @property (nonatomic, strong) SettingGroup *group;
 @property (nonatomic, strong) UIButton *loginOutBtn;
@@ -54,14 +58,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self requestUserInfo];
-
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-
-
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setShadowImage:nil];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 
@@ -121,33 +124,171 @@
     
     if (indexPath.section == 1) {
         if (indexPath.row == 0) {
+            if ([TLUser isBlankString:[TLUser user].idNo] == YES)
+            {
+                ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
+                engine.delegate = self;
+                engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+                engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+                [engine startOcrScanIdCardInViewController:self];
+            }
             
+        }
+        if (indexPath.row == 1) {
+            GoogleAuthVC *vc = [GoogleAuthVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (indexPath.row == 2) {
+            
+            BindingEmailVC *vc = [BindingEmailVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
     }
     
     if (indexPath.section == 2) {
-        if (indexPath.row == 0) {
-            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-            vc.titleString = @"修改邮箱";
-            [self.navigationController pushViewController:vc animated:YES];
+        
+        if ([TLUser isBlankString:[TLUser user].email] == YES) {
+            if (indexPath.row == 0) {
+                ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+                vc.titleString = @"修改手机号";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (indexPath.row == 1) {
+                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+                vc.titleString = @"修改登录密码";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }else
+        {
+            if (indexPath.row == 0) {
+                
+                ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+                vc.titleString = @"修改邮箱";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (indexPath.row == 1) {
+                ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+                vc.titleString = @"修改手机号";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if (indexPath.row == 2) {
+                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+                vc.titleString = @"修改登录密码";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }
-        if (indexPath.row == 1) {
-            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-            vc.titleString = @"修改手机号";
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        if (indexPath.row == 2) {
-            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-            vc.titleString = @"修改登录密码";
-            [self.navigationController pushViewController:vc animated:YES];
-        }
+        
+        
         
     }
 }
 
 
+#pragma mark - ZQFaceAuthDelegate
+- (void)faceAuthFinishedWithResult:(ZQFaceAuthResult)result UserInfo:(id)userInfo{
+    
+    UIImage * livingPhoto = [userInfo objectForKey:@"livingPhoto"];
+    
+    if(result  == ZQFaceAuthResult_Done && livingPhoto !=nil){
+        TLUploadManager *manager = [TLUploadManager manager];
+        NSData *imgData = UIImageJPEGRepresentation(livingPhoto, 0.6);
+        manager.imgData = imgData;
+        manager.image = livingPhoto;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            str3 = key;
+            TLNetworking *http = [TLNetworking new];
+            http.showView = self.view;
+            http.code = @"805197";
+            http.parameters[@"userId"] = [TLUser user].userId;
+            http.parameters[@"frontImage"] = str1;
+            http.parameters[@"backImage"] = str2;
+            http.parameters[@"faceImage"] = str3;
+            //
+            [http postWithSuccess:^(id responseObject) {
+                [TLAlert alertWithMsg:[LangSwitcher switchLang:@"实名认证成功" key:nil]];
+                [self requesUserInfoWithResponseObject];
+            } failure:^(NSError *error) {
+                
+            }];
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+}
 
+- (void)requesUserInfoWithResponseObject {
+    
+    //1.获取用户信息
+    if ([TLUser user].isLogin == NO) {
+        return;
+    }
+    TLNetworking *http = [TLNetworking new];
+    //    http.showView = self.view;
+    http.code = USER_INFO;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        NSDictionary *userInfo = responseObject[@"data"];
+        //保存用户信息
+        [[TLUser user] saveUserInfo:userInfo];
+        //初始化用户信息
+        [[TLUser user] setUserInfoWithDict:userInfo];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)faceAuthFinishedWithResult:(NSInteger)result userInfo:(id)userInfo
+{
+    NSLog(@"Swift authFinish");
+}
+
+- (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
+{
+    NSLog(@"OC OCR Finish");
+    UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
+    UIImage *portrait = [userInfo objectForKey:@"portrait"];
+    UIImage *backcard = [userInfo objectForKey:@"backcard"];
+    if(result  == ZQFaceAuthResult_Done && frontcard != nil && portrait != nil && backcard !=nil)
+    {
+        NSData *imgData = UIImageJPEGRepresentation(frontcard, 0.6);
+        NSData *imgData1 = UIImageJPEGRepresentation(backcard, 0.6);
+        //进行上传
+        TLUploadManager *manager = [TLUploadManager manager];
+        
+        manager.imgData = imgData;
+        manager.image = frontcard;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            
+            str1 = key;
+            //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+            TLUploadManager *manager1 = [TLUploadManager manager];
+            
+            manager1.imgData = imgData1;
+            manager1.image = backcard;
+            [manager1 getTokenShowView:self.view succes:^(NSString *key) {
+                
+                str2 = key;
+                ZQFaceAuthEngine * engine = [[ZQFaceAuthEngine alloc]init];
+                engine.delegate = self;
+                engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+                engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+                [engine startFaceAuthInViewController:self];
+                //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+                
+            } failure:^(NSError *error) {
+                
+            }];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    
+}
 
 #pragma mark- 退出登录
 

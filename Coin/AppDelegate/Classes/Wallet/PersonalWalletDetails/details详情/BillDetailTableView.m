@@ -36,7 +36,7 @@ static NSString *identifierCell = @"BillDetailCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return 6;
     
 }
 
@@ -46,6 +46,7 @@ static NSString *identifierCell = @"BillDetailCell";
     NSArray *textArr = @[
                          [LangSwitcher switchLang:@"变动前金额" key:nil],
                           [LangSwitcher switchLang:@"变动后金额" key:nil],
+                         [LangSwitcher switchLang:@"手续费用" key:nil],
                           [LangSwitcher switchLang:@"变动时间" key:nil],
                           [LangSwitcher switchLang:@"明细状态" key:nil],
                           [LangSwitcher switchLang:@"明细摘要" key:nil],
@@ -53,23 +54,23 @@ static NSString *identifierCell = @"BillDetailCell";
     
     NSString *dateStr = [_bill.createDatetime convertToDetailDate];
     
-    NSString *postAmount = [CoinUtil convertToRealCoin:_bill.postAmountString coin:_bill.currency];
-    
-    NSString *preAmount = [CoinUtil convertToRealCoin:_bill.preAmountString coin:_bill.currency];
+    NSString *postAmount = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:_bill.postAmountString coin:_bill.currency],_bill.currency];
+    NSString *preAmount = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:_bill.preAmountString coin:_bill.currency],_bill.currency];
     NSString *getBizName;
-    if ([TLUser isBlankString:_bill.getBizName] == YES) {
-        getBizName = _bill.bizNote;
-    }else
-    {
-        getBizName = _bill.getBizName;
-    }
-    NSArray *rightArr = @[preAmount, postAmount, dateStr, _bill.getStatusName, getBizName];
+    getBizName = _bill.bizNote;
+//    if ([TLUser isBlankString:_bill.getBizName] == YES) {
+//
+//    }else
+//    {
+//        getBizName = _bill.getBizName;
+//    }
+//     _bill.getStatusName
+    NSArray *rightArr = @[preAmount,postAmount,@"",@"",@"",getBizName];
     
     cell.titleLbl.text = [NSString stringWithFormat:@"%@",textArr[indexPath.row]];
-//    [LangSwitcher switchLang:textArr[indexPath.row] key:nil];
+
     
     cell.rightLabel.text = rightArr[indexPath.row];
-//    [LangSwitcher switchLang:rightArr[indexPath.row] key:nil] ;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.titleLbl.frame = CGRectMake(15, 18, 0, 14);
     [cell.titleLbl sizeToFit];
@@ -89,6 +90,9 @@ static NSString *identifierCell = @"BillDetailCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    if (cell.rightLabel.yy + 18 < 50) {
+        return 50;
+    }
     return cell.rightLabel.yy + 18;
 }
 

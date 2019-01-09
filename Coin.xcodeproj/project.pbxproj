@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F1BFFFD21E49391000BEBD3 /* Resource.bundle */; };
+		1F1B000621E49392000BEBD3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFE21E49391000BEBD3 /* opencv2.framework */; };
+		1F1B000721E49392000BEBD3 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFF21E49391000BEBD3 /* libjpeg.a */; };
+		1F1B000821E49392000BEBD3 /* libZQPlusFaceu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */; };
+		1F1B000E21E49BF6000BEBD3 /* BindingEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3921880B4C00F1665B /* UsdtClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3821880B4C00F1665B /* UsdtClient.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
@@ -538,6 +543,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1B000121E49391000BEBD3 /* ZQFaceAuthEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQFaceAuthEngine.h; sourceTree = "<group>"; };
+		1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZQPlusFaceu.a; sourceTree = "<group>"; };
+		1F1B000321E49391000BEBD3 /* ZQFaceDataDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQFaceDataDefine.h; sourceTree = "<group>"; };
+		1F1B000421E49391000BEBD3 /* ZQOCRScanEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQOCRScanEngine.h; sourceTree = "<group>"; };
+		1F1B000C21E49BF6000BEBD3 /* BindingEmailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingEmailVC.h; sourceTree = "<group>"; };
+		1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingEmailVC.m; sourceTree = "<group>"; };
+		1F1BFFFD21E49391000BEBD3 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
+		1F1BFFFE21E49391000BEBD3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		1F1BFFFF21E49391000BEBD3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
 		1F35826421870D8C00F1665B /* NewHelpCentetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHelpCentetVC.m; sourceTree = "<group>"; };
 		1F35826521870D8E00F1665B /* NewHelpCentetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpCentetVC.h; sourceTree = "<group>"; };
 		1F358B3721880B4B00F1665B /* UsdtClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsdtClient.h; sourceTree = "<group>"; };
@@ -1687,6 +1701,7 @@
 				7AAF0373215269F6008507FF /* SystemConfiguration.framework in Frameworks */,
 				7AAF0372215269ED008507FF /* CoreLocation.framework in Frameworks */,
 				21C91D981FDBD7E4006EDB16 /* CoreMotion.framework in Frameworks */,
+				1F1B000721E49392000BEBD3 /* libjpeg.a in Frameworks */,
 				1F76696821D4A34D00006B41 /* SGMain.framework in Frameworks */,
 				7AAF0370215269D8008507FF /* CFNetwork.framework in Frameworks */,
 				1F76692A21D4A32700006B41 /* libcrypto.a in Frameworks */,
@@ -1696,9 +1711,11 @@
 				2EFFE6B31FF6287D00BFCC40 /* UserNotifications.framework in Frameworks */,
 				1F76697D21D4A34D00006B41 /* libWeChatSDK.a in Frameworks */,
 				211C050C1FC6715B00E51FCF /* libsqlite3.tbd in Frameworks */,
+				1F1B000621E49392000BEBD3 /* opencv2.framework in Frameworks */,
 				1F76696521D4A34D00006B41 /* SecurityGuardSDK.framework in Frameworks */,
 				211C05121FC6717300E51FCF /* libstdc++.6.tbd in Frameworks */,
 				211C05111FC6717300E51FCF /* libstdc++.6.0.9.tbd in Frameworks */,
+				1F1B000821E49392000BEBD3 /* libZQPlusFaceu.a in Frameworks */,
 				2EFFE6B51FF6289600BFCC40 /* libsqlite3.0.tbd in Frameworks */,
 				FB49ABC88B6B7FFBB19DF11D /* Pods_Coin.framework in Frameworks */,
 			);
@@ -1707,6 +1724,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1B000021E49391000BEBD3 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				1F1B000121E49391000BEBD3 /* ZQFaceAuthEngine.h */,
+				1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */,
+				1F1B000321E49391000BEBD3 /* ZQFaceDataDefine.h */,
+				1F1B000421E49391000BEBD3 /* ZQOCRScanEngine.h */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		1F1B000921E49BB8000BEBD3 /* BindingEmail */ = {
+			isa = PBXGroup;
+			children = (
+				1F1B000B21E49BD2000BEBD3 /* Controller */,
+				1F1B000A21E49BD1000BEBD3 /* View */,
+			);
+			path = BindingEmail;
+			sourceTree = "<group>";
+		};
+		1F1B000A21E49BD1000BEBD3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F1B000B21E49BD2000BEBD3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F1B000C21E49BF6000BEBD3 /* BindingEmailVC.h */,
+				1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1F1BFFFB21E49391000BEBD3 /* OCR */ = {
+			isa = PBXGroup;
+			children = (
+				1F1BFFFC21E49391000BEBD3 /* OpenCV */,
+				1F1B000021E49391000BEBD3 /* Lib */,
+			);
+			path = OCR;
+			sourceTree = "<group>";
+		};
+		1F1BFFFC21E49391000BEBD3 /* OpenCV */ = {
+			isa = PBXGroup;
+			children = (
+				1F1BFFFD21E49391000BEBD3 /* Resource.bundle */,
+				1F1BFFFE21E49391000BEBD3 /* opencv2.framework */,
+				1F1BFFFF21E49391000BEBD3 /* libjpeg.a */,
+			);
+			path = OpenCV;
+			sourceTree = "<group>";
+		};
 		1F35825D2186D43300F1665B /* BTC */ = {
 			isa = PBXGroup;
 			children = (
@@ -3328,6 +3400,7 @@
 		2EA584B61FA813C900C7106C /* Coin */ = {
 			isa = PBXGroup;
 			children = (
+				1F1BFFFB21E49391000BEBD3 /* OCR */,
 				1F76692C21D4A34C00006B41 /* ValidationSDK */,
 				1F76695D21D4A34C00006B41 /* WechatSDK1.8.2 */,
 				1F76680221D4A32600006B41 /* DataBtc */,
@@ -3993,6 +4066,7 @@
 				211A34F31FB430F900FEB71F /* SettingCell.m */,
 				1F76698821D61D0500006B41 /* ChangePhoneAndEmail */,
 				1F76698721D61B5D00006B41 /* ChangePassword */,
+				1F1B000921E49BB8000BEBD3 /* BindingEmail */,
 				21C91D7A1FDBCF6B006EDB16 /* Google */,
 				7AEF235A2154C70400BF1DB5 /* Email */,
 				21C91D791FDBCF5B006EDB16 /* Auth实名认证 */,
@@ -4351,6 +4425,7 @@
 				1F76696B21D4A34D00006B41 /* LICENSE.txt in Resources */,
 				1F76696721D4A34D00006B41 /* yw_1222_0335.jpg in Resources */,
 				7A40B101217CAEA8004B9830 /* Assets.xcassets in Resources */,
+				1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */,
 				1F76697E21D4A34D00006B41 /* read_me.txt in Resources */,
 				2EB9495C1FDF6B1A00CE4B94 /* TraditionalCode.txt in Resources */,
 			);
@@ -4939,6 +5014,7 @@
 				B8CAA14821158FF200695BC3 /* LPDQuoteImagesView.m in Sources */,
 				7A40B11E217EF884004B9830 /* ZJAnimationPopView.m in Sources */,
 				1F76697921D4A34D00006B41 /* entropy.c in Sources */,
+				1F1B000E21E49BF6000BEBD3 /* BindingEmailVC.m in Sources */,
 				7AFBAE31216DD32A006CF464 /* MyIncomeTopModel.m in Sources */,
 				B8CF2CC821214A8800055706 /* CommentTableView.m in Sources */,
 				4C2438252066C2F1003B35F3 /* TopSegmentUtil.m in Sources */,
@@ -5129,6 +5205,7 @@
 					"$(PROJECT_DIR)/Coin/Classes/Utils/common/common_ios_1.5.2/normal",
 					"$(PROJECT_DIR)/Coin/ValidationSDK",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Coin/OCR/OpenCV",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "/Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/Macro/CoinPrefixHeader.pch";
@@ -5147,6 +5224,8 @@
 					"$(PROJECT_DIR)/Coin/WechatSDK1.8.2",
 					"$(PROJECT_DIR)/Coin/AppDelegate/Classes/Utils/DataBtc/include-ios/lib-ios",
 					"$(PROJECT_DIR)/Coin/DataBtc/include-ios/lib-ios",
+					"$(PROJECT_DIR)/Coin/OCR/OpenCV",
+					"$(PROJECT_DIR)/Coin/OCR/Lib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -5287,6 +5366,7 @@
 					"$(PROJECT_DIR)/Coin/Classes/Utils/common/common_ios_1.5.2/normal",
 					"$(PROJECT_DIR)/Coin/ValidationSDK",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Coin/OCR/OpenCV",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "/Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/Macro/CoinPrefixHeader.pch";
@@ -5305,6 +5385,8 @@
 					"$(PROJECT_DIR)/Coin/WechatSDK1.8.2",
 					"$(PROJECT_DIR)/Coin/AppDelegate/Classes/Utils/DataBtc/include-ios/lib-ios",
 					"$(PROJECT_DIR)/Coin/DataBtc/include-ios/lib-ios",
+					"$(PROJECT_DIR)/Coin/OCR/OpenCV",
+					"$(PROJECT_DIR)/Coin/OCR/Lib",
 				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",

@@ -226,7 +226,7 @@
     
 //    helper.parameters[@"bizType"] = bizType;
 //    helper.parameters[@"kind"] = self.billType == CurrentTypeFrozen ? @"1": @"0";
-    
+    helper.parameters[@"type"] = @"0";
     helper.parameters[@"accountNumber"] = self.currency.accountNumber;
     
     //    helper.parameters[@"channelType"] = @"C";

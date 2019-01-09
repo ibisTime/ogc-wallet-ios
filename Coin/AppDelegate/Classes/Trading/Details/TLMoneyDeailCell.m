@@ -22,29 +22,31 @@
 
         NSArray *nameArray = @[@"起购日",@"产品起息",@"产品结期"];
         for ( int i = 0; i < 3; i ++) {
-            UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake(i%3 * kScreenWidth/3 + kScreenWidth/3/2 - 10, 16, 20, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(11) textColor:kHexColor(@"#666666")];
+            UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake(i%3 * kScreenWidth/3 + kScreenWidth/3/2 - 9, 20, 18, 18) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(11) textColor:kHexColor(@"#666666")];
             numberLabel.text = [NSString stringWithFormat:@"%d",i + 1];
             kViewBorderRadius(numberLabel, 10, 1, kHexColor(@"#666666"));
             numberLabel.tag = 222 + i;
             [self addSubview:numberLabel];
 
-            UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(10 + i % 3 *kScreenWidth/3, 46, kScreenWidth/3 - 20, 13) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(12) textColor:kHexColor(@"#666666")];
+            UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(10 + i % 3 *kScreenWidth/3, numberLabel.yy + 8, kScreenWidth/3 - 20, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#666666")];
             nameLabel.text = [LangSwitcher switchLang:nameArray[i] key:nil];
             nameLabel.tag = 333 + i;
             [self addSubview:nameLabel];
 
 
-            UILabel *timeLabel = [UILabel labelWithFrame:CGRectMake(10 + i % 3 *kScreenWidth/3, 61, kScreenWidth/3 - 20, 12) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#666666")];
+            UILabel *timeLabel = [UILabel labelWithFrame:CGRectMake(10 + i % 3 *kScreenWidth/3, nameLabel.yy + 3, kScreenWidth/3 - 20, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#666666")];
 //            timeLabel.text = @"2018/9/24";
             timeLabel.tag = 111 + i;
             [self addSubview:timeLabel];
 
         }
-        lineImage1 = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/6 + 25, 25, kScreenWidth/3 - 50, 2)];
+        
+        
+        lineImage1 = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/6 + 25, 29, kScreenWidth/3 - 50, 2)];
         lineImage1.image = kImage(@"线 灰色");
         [self addSubview:lineImage1];
 
-        lineImage2 = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/6 + 25 + kScreenWidth/3, 25, kScreenWidth/3 - 50, 2)];
+        lineImage2 = [[UIImageView alloc]initWithFrame:CGRectMake(kScreenWidth/6 + 25 + kScreenWidth/3, 29, kScreenWidth/3 - 50, 2)];
         lineImage2.image = kImage(@"线 灰色");
         [self addSubview:lineImage2];
 

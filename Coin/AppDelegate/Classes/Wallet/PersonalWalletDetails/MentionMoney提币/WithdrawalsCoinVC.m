@@ -121,11 +121,14 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     UILabel *symbolBlance = [UILabel labelWithBackgroundColor:kClearColor textColor:RGB(54, 73, 198) font:13];
     [self.view addSubview:symbolBlance];
-    NSString *leftAmount = [self.currency.amountString subNumber:self.currency.frozenAmountString];
     
-    NSString *currentCurrency = self.currency.currency;
-    symbolBlance.text = [NSString stringWithFormat:@"%@ %@",[CoinUtil convertToRealCoin:leftAmount coin:currentCurrency],currentCurrency];
+//    NSString *leftAmount = [self.currency.amountString subNumber:self.currency.frozenAmountString];
+//    NSString *currentCurrency = self.currency.currency;
+//    symbolBlance.text = [NSString stringWithFormat:@"%@ %@",[CoinUtil convertToRealCoin:leftAmount coin:currentCurrency],currentCurrency];
 
+    NSString *leftAmount = [self.currency.amount subNumber:self.currency.frozenAmount];
+    symbolBlance.text = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:leftAmount coin:self.currency.currency],self.currency.currency];
+    
     [symbolBlance mas_makeConstraints:^(MASConstraintMaker *make) {
 
         make.top.equalTo(self.view.mas_top).offset(0);
@@ -204,64 +207,64 @@ typedef NS_ENUM(NSInteger, AddressType) {
         [self.view addSubview:lineView];
     }
     
-    UIView *backView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 160, SCREEN_WIDTH, 130)];
-    backView1.backgroundColor = kWhiteColor;
-    [self.view addSubview:backView1];
+//    UIView *backView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 160, SCREEN_WIDTH, 130)];
+//    backView1.backgroundColor = kWhiteColor;
+//    [self.view addSubview:backView1];
     
 
-    UILabel *absenteeismLbl = [UILabel labelWithFrame:CGRectMake(15, 160, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
-    absenteeismLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
-    [absenteeismLbl sizeToFit];
-    absenteeismLbl.frame = CGRectMake(15, 160, absenteeismLbl.width, 50);
-    [self.view addSubview:absenteeismLbl];
-    
-    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(absenteeismLbl.xx + 10, 15 + 160 + 2, SCREEN_WIDTH - absenteeismLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:RGB(246, 246, 246) font:FONT(11) textColor:RGB(207, 207, 207)];
-    promptLabel.text = [LangSwitcher switchLang:@"  旷工费将在可用余额中扣除，余额不足将从转账金额扣除" key:nil];
-    kViewRadius(promptLabel, 2);
-    [self.view addSubview:promptLabel];
-    
-
-    UISlider *slider = [UISlider new];
-    self.slider = slider;
-    [self.view addSubview:slider];
-    slider.maximumValue = 1.0;
-    slider.minimumValue = 0;
-    slider.thumbTintColor = kHexColor(@"#1B61F0");
-    slider.minimumTrackTintColor = kHexColor(@"#1B61F0");
-    slider.maximumTrackTintColor = kHexColor(@"#DDE6F9");
-    slider.value = 0.5;
-    [slider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-    [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@15);
-        make.top.equalTo(promptLabel.mas_bottom).offset(30);
-        make.width.equalTo(@(kScreenWidth-30));
-        make.height.equalTo(@(20));
-    }];
-    
-    UILabel * solw = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
-    solw.text = [LangSwitcher switchLang:@"慢" key:nil];
-    UILabel * fast = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
-    fast.text = [LangSwitcher switchLang:@"快" key:nil];
-    UILabel * blanceFree = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
-    self.blanceFree = blanceFree;
-//    blanceFree.text = [LangSwitcher switchLang:@"" key:nil];
-    
-    [self.view addSubview:solw];
-    [self.view addSubview:blanceFree];
-    [self.view addSubview:fast];
-    
-    [solw mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@15);
-        make.top.equalTo(slider.mas_bottom).offset(15);
-        
-        
-    }];
-    [fast mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(@-15);
-        make.top.equalTo(slider.mas_bottom).offset(15);
-        
-        
-    }];
+//    UILabel *absenteeismLbl = [UILabel labelWithFrame:CGRectMake(15, 160, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
+//    absenteeismLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
+//    [absenteeismLbl sizeToFit];
+//    absenteeismLbl.frame = CGRectMake(15, 160, absenteeismLbl.width, 50);
+//    [self.view addSubview:absenteeismLbl];
+//
+//    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(absenteeismLbl.xx + 10, 15 + 160 + 2, SCREEN_WIDTH - absenteeismLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:RGB(246, 246, 246) font:FONT(11) textColor:RGB(207, 207, 207)];
+//    promptLabel.text = [LangSwitcher switchLang:@"  旷工费将在可用余额中扣除，余额不足将从转账金额扣除" key:nil];
+//    kViewRadius(promptLabel, 2);
+//    [self.view addSubview:promptLabel];
+//
+//
+//    UISlider *slider = [UISlider new];
+//    self.slider = slider;
+//    [self.view addSubview:slider];
+//    slider.maximumValue = 1.0;
+//    slider.minimumValue = 0;
+//    slider.thumbTintColor = kHexColor(@"#1B61F0");
+//    slider.minimumTrackTintColor = kHexColor(@"#1B61F0");
+//    slider.maximumTrackTintColor = kHexColor(@"#DDE6F9");
+//    slider.value = 0.5;
+//    [slider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
+//    [slider mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(@15);
+//        make.top.equalTo(promptLabel.mas_bottom).offset(30);
+//        make.width.equalTo(@(kScreenWidth-30));
+//        make.height.equalTo(@(20));
+//    }];
+//
+//    UILabel * solw = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
+//    solw.text = [LangSwitcher switchLang:@"慢" key:nil];
+//    UILabel * fast = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
+//    fast.text = [LangSwitcher switchLang:@"快" key:nil];
+//    UILabel * blanceFree = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
+//    self.blanceFree = blanceFree;
+////    blanceFree.text = [LangSwitcher switchLang:@"" key:nil];
+//
+//    [self.view addSubview:solw];
+//    [self.view addSubview:blanceFree];
+//    [self.view addSubview:fast];
+//
+//    [solw mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(@15);
+//        make.top.equalTo(slider.mas_bottom).offset(15);
+//
+//
+//    }];
+//    [fast mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(@-15);
+//        make.top.equalTo(slider.mas_bottom).offset(15);
+//
+//
+//    }];
     
     //确认付币
     UIButton *confirmPayBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确认提币" key:nil]
@@ -275,7 +278,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     [confirmPayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 
         make.left.equalTo(@(15));
-        make.top.equalTo(backView1.mas_bottom).offset(50);
+        make.top.equalTo(backView.mas_bottom).offset(100);
         make.right.equalTo(@(-15));
         make.height.equalTo(@50);
 
@@ -548,7 +551,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     TLNetworking *http = [TLNetworking new];
     
-    http.code = @"802750";
+    http.code = @"802350";
     http.showView = self.view;
     http.parameters[@"accountNumber"] = self.currency.accountNumber;
     http.parameters[@"amount"] = [CoinUtil convertToSysCoin:self.tranAmountTF.text
@@ -663,6 +666,18 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     self.minerFeeTF.text = [NSString stringWithFormat:@"%@ %@", [CoinUtil convertToRealCoin:self.withdrawFee coin:self.currency.currency], self.currency.currency];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.view endEditing:YES];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 

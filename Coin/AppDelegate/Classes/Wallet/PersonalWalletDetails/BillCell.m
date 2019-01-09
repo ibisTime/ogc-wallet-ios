@@ -112,7 +112,7 @@
 //    CoinModel *coin = [CoinUtil getCoinModel:billModel.currency];
     if (money > 0) {
         
-//        moneyStr = [NSString stringWithFormat:@"+%@ %@",countStr , billModel.currency];
+        moneyStr = [NSString stringWithFormat:@"+%@ %@",countStr , billModel.currency];
         self.moneyLbl.textColor = kHexColor(@"#47D047");
 
         self.iconIV.image = kImage(@"充值");
@@ -123,7 +123,7 @@
     } else {
         self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
 
-//        moneyStr = [NSString stringWithFormat:@"%@ %@", countStr, billModel.currency];
+        moneyStr = [NSString stringWithFormat:@"%@ %@", countStr, billModel.currency];
 
         self.iconIV.image = kImage(@"转  出");
         self.nameLabel.text = [LangSwitcher switchLang:@"转出" key:nil];
@@ -131,8 +131,9 @@
     [self.nameLabel sizeToFit];
     
     self.nameLabel.frame =  CGRectMake(self.iconIV.xx + 15, 12.5, self.nameLabel.width, 20);
-    
+    self.moneyLbl.text = moneyStr;
     self.moneyLbl.frame = CGRectMake(self.nameLabel.xx + 10, 12.5, SCREEN_WIDTH - self.nameLabel.xx - 25, 20);
+    
     self.dayLbl.text = [_billModel.createDatetime convertRedDate];
 
     self.detailLbl.text = billModel.bizNote;

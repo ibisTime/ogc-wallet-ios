@@ -427,7 +427,7 @@
     else
     {
         
-        NSString *leftAmount = [model.amountString subNumber:model.frozenAmountString];
+        NSString *leftAmount = [model.amount subNumber:model.frozenAmount];
         NSString *money = [CoinUtil convertToRealCoin:leftAmount coin:model.currency];
         self.leftAmount.text = [NSString stringWithFormat:@"%@:  %@ %@",[LangSwitcher switchLang:@"可用余额" key:nil],money,model.currency];
         

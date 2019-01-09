@@ -296,7 +296,7 @@
     {
         [self.headerView.photoBtn setImage:kImage(@"头像") forState:UIControlStateNormal];
     }
-    self.headerView.nameLbl.text = [TLUser user].mobile;
+    self.headerView.nameLbl.text = [TLUser user].nickname;
     NSRange rang = NSMakeRange(3, 4);
     UITapGestureRecognizer *ta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNickName)];
     [self.headerView.nameLbl addGestureRecognizer:ta];

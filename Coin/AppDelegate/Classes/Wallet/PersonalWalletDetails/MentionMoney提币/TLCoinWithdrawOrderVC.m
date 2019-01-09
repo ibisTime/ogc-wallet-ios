@@ -33,13 +33,14 @@
 {
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     if (self.isFirst) {
         self.isFirst = NO;
         
@@ -70,12 +71,12 @@
     [self.view addSubview:tableView];
     self.orderTableView = tableView;
     self.orderTableView.allowsSelection = NO;
-    self.orderTableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无订单" key:nil];
-//    self.orderTableView.placeHolderView = [TLPlaceholderView placeholderViewWithImgAndText:[LangSwitcher switchLang:@"暂无订单" key:nil]];
+    self.orderTableView.defaultNoDataImage = kImage(@"暂无订单");
+    self.orderTableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无明细" key:nil];
 
     //
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-    helper.code = @"802755";
+    helper.code = @"802355";
     helper.parameters[@"applyUser"] = [TLUser user].userId;
     helper.parameters[@"token"] = [TLUser user].token;
     helper.parameters[@"currency"] = self.coin;

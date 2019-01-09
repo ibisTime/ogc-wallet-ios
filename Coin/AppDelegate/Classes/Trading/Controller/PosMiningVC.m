@@ -156,8 +156,7 @@
 }
 
 //总收益
--(void)totalAmount
-{
+-(void)totalAmount{
     TLNetworking *http = [TLNetworking new];
     http.code = @"625527";
     http.showView = self.view;
@@ -187,7 +186,7 @@
     helper.tableView = self.tableView;
     [helper modelClass:[TLtakeMoneyModel class]];
     [self.tableView addRefreshAction:^{
-        [weakSelf totalAmount];
+//        [weakSelf totalAmount];
         [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
             //去除没有的币种
             weakSelf.Moneys = objs;

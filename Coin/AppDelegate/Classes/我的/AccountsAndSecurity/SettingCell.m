@@ -48,14 +48,14 @@
         }];
         self.accessoryImageView.image = [UIImage imageNamed:@"更多-灰色"];
         
-        self.rightLabel = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:14.0];
-        
+        self.rightLabel = [UILabel labelWithBackgroundColor:kClearColor textColor:kTabbarColor font:12.0];
+        self.rightLabel.hidden = YES;
         self.rightLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:self.rightLabel];
         [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             
-            make.right.equalTo(self.accessoryImageView.mas_left).offset(-10);
-            make.centerY.equalTo(@0);
+            make.right.equalTo(self.contentView.mas_right).offset(-15);
+            make.centerY.equalTo(self.contentView.mas_centerY);
             
         }];
         

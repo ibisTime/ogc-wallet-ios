@@ -490,8 +490,8 @@
     UILabel *money = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#A75E02") font:17];
     CoinModel *coin = [CoinUtil getCoinModel:plat.currency];
     
-    NSString *leftAmount = [CoinUtil convertToRealCoin:plat.amountString coin:coin.symbol];
-    NSString *rightAmount = [CoinUtil convertToRealCoin:plat.frozenAmountString coin:coin.symbol];
+    NSString *leftAmount = [CoinUtil convertToRealCoin:plat.amount coin:coin.symbol];
+    NSString *rightAmount = [CoinUtil convertToRealCoin:plat.frozenAmount coin:coin.symbol];
     NSString *ritAmount = [leftAmount subNumber:rightAmount];
     if ([_type isEqualToString:@"0"]) {
         money.text = [NSString stringWithFormat:@"%f%@",[_count floatValue]*[_sendNum floatValue],plat.currency];
@@ -601,8 +601,8 @@
     _currency = platform.currency;
     CoinModel *coin = [CoinUtil getCoinModel:platform.currency];
 
-    NSString *leftAmount = [CoinUtil convertToRealCoin:platform.amountString coin:coin.symbol];
-    NSString *rightAmount = [CoinUtil convertToRealCoin:platform.frozenAmountString coin:coin.symbol];
+    NSString *leftAmount = [CoinUtil convertToRealCoin:platform.amount coin:coin.symbol];
+    NSString *rightAmount = [CoinUtil convertToRealCoin:platform.frozenAmount coin:coin.symbol];
     NSString *ritAmount = [leftAmount subNumber:rightAmount];
     alltotalLabel.text = [NSString stringWithFormat:@"%@%@ %.3f",[LangSwitcher switchLang:@"个人账户余额" key:nil],platform.currency,[ritAmount floatValue]];
 //    alltotalLabel.frame = CGRectMake(0,kHeight(430+40) , 0, kHeight(16));

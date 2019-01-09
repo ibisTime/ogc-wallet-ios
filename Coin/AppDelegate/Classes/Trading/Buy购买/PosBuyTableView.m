@@ -106,9 +106,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 60;
+        return 50;
     }
-    return 300;
+    return 345;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -120,9 +120,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 
-    if (section == 1) {
-        return 5;
-    }
+    
     return 0.01;
 }
 
@@ -149,24 +147,24 @@
         UIButton *gardenBtn =[UIButton buttonWithType:(UIButtonTypeCustom)];
         [gardenBtn setImage:kImage(@"Combined Shape2") forState:(UIControlStateNormal)];
         [gardenBtn setImage:kImage(@"Oval Copy2") forState:(UIControlStateSelected)];
-        gardenBtn.frame = CGRectMake(15, 0, 40, 40);
+        gardenBtn.frame = CGRectMake(15, 20, 15, 15);
         [gardenBtn addTarget:self action:@selector(gardenBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
         gardenBtn.tag = 504;
         gardenBtn.selected = YES;
         [footView addSubview:gardenBtn];
 
 
-        UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(55, 11, SCREEN_WIDTH - 70, 0)];
-        titleLbl.font = FONT(12);
-        titleLbl.textColor = kHexColor(@"#999999");
+        UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(44, 20, SCREEN_WIDTH - 44 - 15, 0)];
+        titleLbl.font = FONT(14);
+        titleLbl.textColor = kHexColor(@"#333333");
         titleLbl.numberOfLines = 0;
 
-        NSString *str1 = [LangSwitcher switchLang:@"我已经仔细阅读" key:nil];
-        NSString *str2 = [LangSwitcher switchLang:@"《Theia钱包理财产品服务协议》" key:nil];
-        NSString *str3 = [LangSwitcher switchLang:@"同意协议中的有关条款。充分了解银行和自身的权利和义务。" key:nil];
-        NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@，%@",str1,str2,str3]];
-        [attriStr addAttribute:NSForegroundColorAttributeName value:kHexColor(@"#3D76FF") range:NSMakeRange(str1.length, str2.length)];
-        titleLbl.attributedText = attriStr;
+//        NSString *str1 = [LangSwitcher switchLang:@"我已经仔细阅读" key:nil];
+//        NSString *str2 = [LangSwitcher switchLang:@"《Theia钱包理财产品服务协议》" key:nil];
+//        NSString *str3 = [LangSwitcher switchLang:@"同意协议中的有关条款。充分了解银行和自身的权利和义务。" key:nil];
+//        NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@，%@",str1,str2,str3]];
+//        [attriStr addAttribute:NSForegroundColorAttributeName value:kHexColor(@"#3D76FF") range:NSMakeRange(str1.length, str2.length)];
+        titleLbl.attributedText = [UserModel ReturnsTheDistanceBetween:[LangSwitcher switchLang:@"我已经仔细阅读《xxx钱包理财产品服务协议》，同意协议中的有关条款。充分了解银行和自身的权利和义务" key:nil]];
         [titleLbl sizeToFit];
         [footView addSubview:titleLbl];
 

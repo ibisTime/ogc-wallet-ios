@@ -126,7 +126,7 @@
     //昵称
     self.nameLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:22];
     self.nameLbl.userInteractionEnabled = YES;
-    self.nameLbl.text = [TLUser user].loginName;
+    self.nameLbl.text = [TLUser user].nickname;
     self.nameLbl.font = HGboldfont(22);
     [self addSubview:self.nameLbl];
     [self.nameLbl mas_makeConstraints:^(MASConstraintMaker *make) {

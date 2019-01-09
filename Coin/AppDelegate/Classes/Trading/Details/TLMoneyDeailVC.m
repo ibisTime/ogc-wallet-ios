@@ -34,7 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-
+    [self navigationTransparentClearColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 
@@ -45,19 +45,19 @@
     [super viewWillDisappear:animated];
     //    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-
+    [self navigationwhiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 
 - (void)initTableView {
-    self.tableView = [[TLMoneyDetailsTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50 ) style:(UITableViewStyleGrouped)];
+    self.tableView = [[TLMoneyDetailsTableView alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:(UITableViewStyleGrouped)];
     self.tableView.refreshDelegate = self;
     self.tableView.backgroundColor = kBackgroundColor;
     self.tableView.moneyModel = self.moneyModel;
     [self.view addSubview:self.tableView];
 
-    TLMoneyDetailsHeadView *headView = [[TLMoneyDetailsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 235 - 64 + kNavigationBarHeight)];
+    TLMoneyDetailsHeadView *headView = [[TLMoneyDetailsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 250 - 64 + kNavigationBarHeight)];
     headView.backgroundColor = RGB(41, 127, 237);
     self.tableView.tableHeaderView = headView;
     self.headView = headView;
@@ -95,14 +95,14 @@
 
 -(void)refreshTableView:(TLTableView *)refreshTableview scrollView:(UIScrollView *)scroll
 {
-    CGFloat height = (235 - 64 + kNavigationBarHeight);
+    CGFloat height = (250 - 64 + kNavigationBarHeight);
 ////    导航栏
-//    if (self.tableView.contentOffset.y <= (235 - 64)) {
-//        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:9/255.0 green:90/255.0 blue:221/255.0 alpha:self.tableView.contentOffset.y / (235 - 64)]] forBarMetrics:UIBarMetricsDefault];
-//    }else
-//    {
-//        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:9/255.0 green:90/255.0 blue:221/255.0 alpha:1]] forBarMetrics:UIBarMetricsDefault];
-//    }
+    if (self.tableView.contentOffset.y <= (250 - kNavigationBarHeight)) {
+        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:64/255.0 green:100/255.0 blue:230/255.0 alpha:self.tableView.contentOffset.y / (250 - kNavigationBarHeight)]] forBarMetrics:UIBarMetricsDefault];
+    }else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:kTabbarColor] forBarMetrics:UIBarMetricsDefault];
+    }
 //
 //    // 获取到tableView偏移量
     CGFloat Offset_y = scroll.contentOffset.y;
@@ -119,17 +119,17 @@
 }
 
 
-//-(UIImage *)imageWithBgColor:(UIColor *)color {
-//
-//    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-//    UIGraphicsBeginImageContext(rect.size);
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextSetFillColorWithColor(context, [color CGColor]);
-//    CGContextFillRect(context, rect);
-//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//    return image;
-//}
+-(UIImage *)imageWithBgColor:(UIColor *)color {
+
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 
 - (void)viewDidLoad {
@@ -138,38 +138,55 @@
     [self initTableView];
 
     UILabel *nameLable = [[UILabel alloc]init];
-    nameLable.text = self.moneyModel.name;
     nameLable.textAlignment = NSTextAlignmentCenter;
     nameLable.font = Font(18);
     nameLable.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = nameLable;
 
+    switch ([LangSwitcher currentLangType]) {
+        case LangTypeEnglish:
+            nameLable.text = self.moneyModel.nameEn;
+            
+            break;
+        case LangTypeKorean:
+            nameLable.text = self.moneyModel.nameKo;
+            
+            break;
+        case LangTypeSimple:
+            nameLable.text = self.moneyModel.nameZhCn;
+            
+            break;
+            
+        default:
+            break;
+    }
 
 
-    UIButton *continBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"购买" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:18];
-    [continBtn setBackgroundImage:kImage(@"Rectangle 3") forState:(UIControlStateNormal)];
+    UIButton *continBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"购买" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16];
+    continBtn.backgroundColor = kTabbarColor;
+//    [continBtn setBackgroundImage:kImage(@"Rectangle 3") forState:(UIControlStateNormal)];
     continBtn.frame = CGRectMake(0, SCREEN_HEIGHT - 50 - kNavigationBarHeight, SCREEN_WIDTH, 50);
     [continBtn addTarget:self action:@selector(continBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
-    continBtn.hidden = YES;
+//    continBtn.hidden = YES;
     [self.view addSubview:continBtn];
 
 
-    NSString *avilAmount = [CoinUtil convertToRealCoin:self.moneyModel.avilAmount coin:self.moneyModel.symbol];
-    NSString *increAmount = [CoinUtil convertToRealCoin:self.moneyModel.increAmount coin:self.moneyModel.symbol];
-    if ([avilAmount floatValue] / [increAmount floatValue] < 1 || [avilAmount floatValue] == 0 || [increAmount floatValue] == 0) {
-        continBtn.hidden = YES;
-        self.tableView.frame = CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT);
-    }else if(![self.moneyModel.status isEqualToString:@"5"])
-    {
-        continBtn.hidden = YES;
-        self.tableView.frame = CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT );
-    }else
-    {
-        continBtn.hidden = NO;
-        self.tableView.frame = CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - 50);
-    }
-
-    [self LoadData];
+//    NSString *avilAmount = [CoinUtil convertToRealCoin:self.moneyModel.avilAmount coin:self.moneyModel.symbol];
+//    NSString *increAmount = [CoinUtil convertToRealCoin:self.moneyModel.increAmount coin:self.moneyModel.symbol];
+//    if ([avilAmount floatValue] / [increAmount floatValue] < 1 || [avilAmount floatValue] == 0 || [increAmount floatValue] == 0) {
+//        continBtn.hidden = YES;
+//        self.tableView.frame = CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT);
+//    }else if(![self.moneyModel.status isEqualToString:@"5"])
+//    {
+//        continBtn.hidden = YES;
+//        self.tableView.frame = CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT );
+//    }else
+//    {
+//        continBtn.hidden = NO;
+//        self.tableView.frame = CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - 50);
+//    }
+//
+//    [self LoadData];
 }
 
 

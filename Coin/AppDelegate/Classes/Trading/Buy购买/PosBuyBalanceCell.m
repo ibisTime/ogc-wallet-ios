@@ -14,17 +14,28 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(25, 0, kScreenWidth - 140, 60) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(13) textColor:kHexColor(@"#666666")];
+        
+        
+        
+        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 0, kScreenWidth - 15 - 64 - 25, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kHexColor(@"#333333")];
         self.nameLabel = nameLabel;
 
         [self addSubview:nameLabel];
 
 
-        UIButton *intoButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"转入资金" key:nil] titleColor:kHexColor(@"#0064FF") backgroundColor:kClearColor titleFont:13];
+        UIButton *intoButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"转入资金" key:nil] titleColor:kHexColor(@"#3C5CD1") backgroundColor:kClearColor titleFont:12];
         self.intoButton = intoButton;
-        intoButton.frame = CGRectMake(kScreenWidth - 100, 15, 85, 30);
-        kViewBorderRadius(intoButton, 15, 1, kHexColor(@"#0064FF"));
+        intoButton.frame = CGRectMake(kScreenWidth - 15 - 64, 12, 64, 26);
+        kViewBorderRadius(intoButton, 2, 1, kHexColor(@"#3C5CD1"));
         [self addSubview:intoButton];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
+        lineView.backgroundColor = kLineColor;
+        [self addSubview:lineView];
+        
+        UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH, 1)];
+        lineView1.backgroundColor = kLineColor;
+        [self addSubview:lineView1];
     }
     return self;
 }
@@ -33,21 +44,21 @@
 {
 //    NSString *text = currencys.amountString;
 
-    NSString *name = [LangSwitcher switchLang:@"可用余额:" key:nil];
+//    NSString *name = [LangSwitcher switchLang:@"可用余额:" key:nil];
 //    currencys.currency];
 
-    NSString *leftAmount = [CoinUtil convertToRealCoin:currencys.amountString coin:currencys.currency];
-    NSString *rightAmount = [CoinUtil convertToRealCoin:currencys.frozenAmountString coin:currencys.currency];
+    NSString *leftAmount = [CoinUtil convertToRealCoin:currencys.amount coin:currencys.currency];
+    NSString *rightAmount = [CoinUtil convertToRealCoin:currencys.frozenAmount coin:currencys.currency];
     NSString *ritAmount = [leftAmount subNumber:rightAmount];
-    NSString *str1 = [NSString stringWithFormat:@" %.2f ",[ritAmount doubleValue]];
+//    NSString *str1 = [NSString stringWithFormat:@" %.2f ",[ritAmount doubleValue]];
 
 
-    NSString *str = [NSString stringWithFormat:@"%@ %@ %@",[LangSwitcher switchLang:@"可用余额:" key:nil],str1,currencys.currency];
+//    NSString *str = [NSString stringWithFormat:@"%@ %@ %@",[LangSwitcher switchLang:@"可用余额:" key:nil],str1,currencys.currency];
 
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:str];
-    UIFont *font = [UIFont systemFontOfSize:20];
-    [attrString addAttribute:NSFontAttributeName value:font range:NSMakeRange(name.length,str1.length)];
-    self.nameLabel.attributedText = attrString;
+//    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:str];
+//    UIFont *font = [UIFont systemFontOfSize:20];
+//    [attrString addAttribute:NSFontAttributeName value:font range:NSMakeRange(name.length,str1.length)];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"可用余额" key:nil],ritAmount,currencys.currency];
 
 }
 

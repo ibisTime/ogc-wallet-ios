@@ -58,8 +58,8 @@
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
         //    标注区
-        isOrOpen[0] = YES;
-        self.selectSxtion = 0;
+//        isOrOpen[0] = YES;
+//        self.selectSxtion = 0;
     }
 
     return self;
@@ -80,9 +80,9 @@
     if (section == 0 || section == 1) {
         return 1;
     }
-    if (isOrOpen[section] == NO) {
-        return 0;
-    }
+//    if (isOrOpen[section] == NO) {
+//        return 0;
+//    }
     return 1;
 }
 
@@ -126,9 +126,10 @@
                     break;
             }
             [_cell1.web.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-
+            
             [_cell1 setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
+        _cell1.web.tag = 0;
         return _cell1;
     }
 
@@ -158,6 +159,7 @@
 
             [_cell2 setSelectionStyle:UITableViewCellSelectionStyleNone];
         }
+    
         return _cell2;
     }
 
@@ -209,6 +211,7 @@
             default:
                 break;
         }
+        
         [cell.web.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -230,28 +233,28 @@
 {
     if ([keyPath isEqualToString:@"contentSize"]) {
         //通过JS代码获取webview的内容高度
-        if (self.selectSxtion == 2) {
+//        if (self.selectSxtion == 2) {
 //            if (webViewHeight1 == 0) {
 
-                webViewHeight1 = [[_cell1.web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
-                _cell1.web.frame = CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight1);
+            webViewHeight1 = [[_cell1.web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
+            _cell1.web.frame = CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight1);
 
 //            }
-        }
-        if (self.selectSxtion == 3) {
+//        }
+//        if (self.selectSxtion == 3) {
 //            if (webViewHeight2 == 0) {
                 webViewHeight2 = [[_cell2.web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
                 _cell2.web.frame = CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight2);
 
 //            }
-        }
-        if (self.selectSxtion == 4) {
+//        }
+//        if (self.selectSxtion == 4) {
 //            if (webViewHeight3 == 0) {
                 webViewHeight3 = [[cell.web stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
                 cell.web.frame = CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight3);
 
 //            }
-        }
+//        }
         [self reloadData];
     }
 }
@@ -265,7 +268,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 90;
+        return 102;
     }
     if (indexPath.section == 1) {
         return 143;
@@ -293,7 +296,7 @@
         return 10;
     }
     if (section > 1) {
-        return 60;
+        return 41;
     }
     return 0.01;
 }
@@ -315,39 +318,41 @@
     if (section > 1) {
 
         UIView *headView = [[UIView alloc]init];
-        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
-        backView.backgroundColor = kWhiteColor;
+//        headView.backgroundColor = [UIColor blackColor];
+        
+        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 1, SCREEN_WIDTH, 40)];
+        backView.backgroundColor = kWhiteColor;;
         [headView addSubview:backView];
         NSArray *nameArray = @[@"购买属性",@"赎回属性",@"说明书"];
         UIButton *headButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[section - 2] key:nil] titleColor:kHexColor(@"#464646") backgroundColor:kClearColor titleFont:16];
         headButton.titleLabel.font = HGboldfont(16);
-        headButton.frame = CGRectMake(15, 0, SCREEN_WIDTH - 45, 60);
-        [headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        headButton.frame = CGRectMake(15, 0, SCREEN_WIDTH - 45, 40);
+//        [headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
         headButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         headButton.tag = section;
-        [headView addSubview:headButton];
+        [backView addSubview:headButton];
 
-        UIImageView *youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 22, 24, 7, 12)];
-        youImage.image = kImage(@"更多-灰色");
-        [headView addSubview:youImage];
-        if (isOrOpen[section] == NO) {
-            [UIView animateWithDuration:0.5 animations:^{
-
-
-                youImage.transform=CGAffineTransformMakeRotation(0*M_PI/180);
-            }];
-        }else
-        {
-            [UIView animateWithDuration:0.5 animations:^{
-
-                youImage.transform=CGAffineTransformMakeRotation(90*M_PI/180);
-            }];
-
-        }
-
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, SCREEN_WIDTH - 30, 1)];
-        lineView.backgroundColor = kLineColor;
-        [headView addSubview:lineView];
+//        UIImageView *youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 22, 24, 7, 12)];
+//        youImage.image = kImage(@"更多-灰色");
+//        [headView addSubview:youImage];
+//        if (isOrOpen[section] == NO) {
+//            [UIView animateWithDuration:0.5 animations:^{
+//
+//
+//                youImage.transform=CGAffineTransformMakeRotation(0*M_PI/180);
+//            }];
+//        }else
+//        {
+//            [UIView animateWithDuration:0.5 animations:^{
+//
+//                youImage.transform=CGAffineTransformMakeRotation(90*M_PI/180);
+//            }];
+//
+//        }
+//
+//        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, SCREEN_WIDTH - 30, 1)];
+//        lineView.backgroundColor = kLineColor;
+//        [headView addSubview:lineView];
 
         return headView;
 
@@ -357,23 +362,23 @@
 
 
 
--(void)headButtonClick:(UIButton *)sender
-{
-    if (isOrOpen[sender.tag] == YES) {
-        isOrOpen[sender.tag] = NO;
-        self.selectSxtion = 0;
-    }else
-    {
-        isOrOpen[sender.tag] = YES;
-        self.selectSxtion = sender.tag;
-
-    }
-    [self reloadData];
+//-(void)headButtonClick:(UIButton *)sender
+//{
+//    if (isOrOpen[sender.tag] == YES) {
+//        isOrOpen[sender.tag] = NO;
+//        self.selectSxtion = 0;
+//    }else
+//    {
+//        isOrOpen[sender.tag] = YES;
+//        self.selectSxtion = sender.tag;
+//
+//    }
+//    [self reloadData];
 //    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:sender.tag];
 //    [self reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 
 
-}
+//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

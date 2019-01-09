@@ -56,13 +56,14 @@
     // Do any additional setup after loading the view.
     [self initTableView];
 
-    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(kScreenWidth/2-60, 0, 120, 50)];
-    titleText.textAlignment = NSTextAlignmentCenter;
-    titleText.backgroundColor = [UIColor clearColor];
-    titleText.textColor=kTextColor;
-    [titleText setFont:[UIFont systemFontOfSize:17.0]];
-    [titleText setText:[LangSwitcher switchLang:@"购买" key:nil]];
-    self.navigationItem.titleView=titleText;
+//    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(kScreenWidth/2-60, 0, 120, 50)];
+//    titleText.textAlignment = NSTextAlignmentCenter;
+//    titleText.backgroundColor = [UIColor clearColor];
+//    titleText.textColor=kTextColor;
+//    [titleText setFont:[UIFont systemFontOfSize:17.0]];
+//    [titleText setText:[LangSwitcher switchLang:@"购买" key:nil]];
+    self.titleText.text = [LangSwitcher switchLang:@"购买" key:nil];
+    self.navigationItem.titleView=self.titleText;
 
     UIButton *continBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"购买" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:18];
     [continBtn setBackgroundImage:kImage(@"Rectangle 3") forState:(UIControlStateNormal)];
@@ -206,6 +207,7 @@
         
         self.tableView.dataDic = responseObject[@"data"];
         self.dataDic = responseObject[@"data"];
+        
         [self.tableView reloadData];
 
     } failure:^(NSError *error) {
@@ -218,48 +220,28 @@
 - (void)getMySyspleList {
 
     CoinWeakSelf;
-    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-    if (![TLUser user].isLogin) {
-        return;
-    }
-    [TLProgressHUD show];
-    helper.code = @"802503";
-    helper.parameters[@"userId"] = [TLUser user].userId;
-    helper.parameters[@"token"] = [TLUser user].token;
-    helper.isList = YES;
-    helper.isCurrency = YES;
-    [helper modelClass:[CurrencyModel class]];
-    [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-        //去除没有的币种
-        NSMutableArray <CurrencyModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-        [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-
-            CurrencyModel *currencyModel = (CurrencyModel *)obj;
-            //                if ([[CoinUtil shouldDisplayCoinArray] indexOfObject:currencyModel.currency ] != NSNotFound ) {
-
-            [shouldDisplayCoins addObject:currencyModel];
-            //                }
-            //查询总资产
-        }];
-
-        //
-        weakSelf.currencys = shouldDisplayCoins;
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"802301";
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    
+    [http postWithSuccess:^(id responseObject) {
+        
+        weakSelf.currencys = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+//        self.AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         for (int i = 0; i < self.currencys.count; i++) {
-
+            //
             if ([self.moneyModel.symbol isEqualToString:self.currencys[i].currency]) {
                 self.currencyModel = self.currencys[i];
+                self.tableView.currencys = self.currencyModel;
             }
         }
-        weakSelf.tableView.currencys = self.currencyModel;
-        [TLProgressHUD dismiss];
         [weakSelf.tableView reloadData];
-
     } failure:^(NSError *error) {
-        [TLProgressHUD dismiss];
-
+        
     }];
-
-
 
 }
 
@@ -309,19 +291,10 @@
     if (self.currencys.count == 0) {
         return;
     }
-    NSString *leftAmount = [CoinUtil convertToRealCoin:self.currencyModel.amountString coin:self.currencyModel.currency];
-    NSString *rightAmount = [CoinUtil convertToRealCoin:self.currencyModel.frozenAmountString coin:self.currencyModel.currency];
+    NSString *leftAmount = [CoinUtil convertToRealCoin:self.currencyModel.amount coin:self.currencyModel.currency];
+    NSString *rightAmount = [CoinUtil convertToRealCoin:self.currencyModel.frozenAmount coin:self.currencyModel.currency];
     NSString *ritAmount = [leftAmount subNumber:rightAmount];
-    NSString *str1 = [NSString stringWithFormat:@" %.2f ",[ritAmount doubleValue]];
 
-
-    NSString *increAmount1 = [CoinUtil convertToRealCoin:self.moneyModel.increAmount coin:self.moneyModel.symbol];
-
-
-//    if ([increAmount1 floatValue] * number > [str1 floatValue]) {
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"余额不足,请充值" key:nil]];
-//        return;
-//    }
 
     [self.view endEditing:YES];
     //确认购买
@@ -684,12 +657,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.translucent = YES;
+//    self.navigationController.navigationBar.translucent = YES;
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationItem.backBarButtonItem = item;
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    self.navigationItem.backBarButtonItem = item;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 
 
@@ -699,16 +672,16 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    self.navigationController.navigationBar.translucent = NO;
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:nil];
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.barTintColor = kTabbarColor;
+//    self.navigationItem.backBarButtonItem = item;
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-//    [self.pwdView.password clearText];
+    [self.pwdView.password clearText];
     [self.pwdView.password.textField resignFirstResponder];
 
 }

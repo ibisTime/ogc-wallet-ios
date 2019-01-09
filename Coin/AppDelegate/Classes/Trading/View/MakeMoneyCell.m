@@ -48,33 +48,33 @@
     [self addSubview:lineView];
 
     self.nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#464646") font:15];
-    self.nameLab.frame = CGRectMake(15, 25, 0, 15);
+    self.nameLab.frame = CGRectMake(15, 10, 0, 45);
     [self addSubview:self.nameLab];
 
     self.stateLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#FF6400") font:13];
-    self.stateLab.frame = CGRectMake(15, 25, 0, 15);
+    self.stateLab.frame = CGRectMake(15, 10, 0, 45);
     [self addSubview:self.stateLab];
 
     UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 55, kScreenWidth - 30, 1)];
     lineView1.backgroundColor = kLineColor;
     [self addSubview:lineView1];
 
+    
     for (int i = 0; i < 3; i ++) {
-        UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake( 10 + i % 3 * kScreenWidth/3, 75, kScreenWidth/3 - 20, 30) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(24) textColor:kHexColor(@"#FF6400")];
+        UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake( 10 + i % 3 * kScreenWidth/3, lineView1.yy + 35, kScreenWidth/3 - 20, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:kTabbarColor];
         if ( i != 0) {
-            numberLabel.font = Font(18);
-            numberLabel.textColor = kHexColor(@"#464646");
+            numberLabel.textColor = kHexColor(@"#333333");
         }
         numberLabel.tag = 1000 + i;
         [self addSubview:numberLabel];
 
-        UILabel *contactLabel = [UILabel labelWithFrame:CGRectMake(10 + i %3 *kScreenWidth/3, 112, kScreenWidth/3 - 20, 13) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#999999")];
+        UILabel *contactLabel = [UILabel labelWithFrame:CGRectMake(10 + i %3 *kScreenWidth/3, numberLabel.yy + 5, kScreenWidth/3 - 20, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#999999")];
         NSArray *textArray = @[@"预期年化收益",@"产品期限",@"剩余额度"];
         contactLabel.text = [LangSwitcher switchLang:textArray[i] key:nil];
         [self addSubview:contactLabel];
 
 
-        UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(kScreenWidth/3 + i %3*kScreenWidth/3, 75, 1, 50)];
+        UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(kScreenWidth/3 + i %3*kScreenWidth/3, lineView1.yy + 33.5, 1, 55)];
         lineV.backgroundColor = kLineColor;
         [self addSubview:lineV];
 
@@ -85,16 +85,15 @@
 
 
     UIView *backLineView = [[UIView alloc]init];
-    backLineView.backgroundColor = RGB(230, 240, 254);
+    backLineView.backgroundColor = kHexColor(@"#E6E6E6");
     [self addSubview:backLineView];
 
     [backLineView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_bottom).offset(0);
         make.left.equalTo(self.mas_left).offset(0);
         //        make.right.equalTo(self.mas_right).offset(-30);
-        make.height.equalTo(@2);
+        make.height.equalTo(@3);
         make.width.equalTo(@(kScreenWidth));
-
     }];
 
     UIView *blueView = [UIView new];
@@ -164,8 +163,8 @@
         self.stateLab.textColor = kHexColor(@"#FF6400");
     }
     [self.stateLab sizeToFit];
-    self.stateLab.frame = CGRectMake(kScreenWidth - 15 - self.stateLab.frame.size.width, 26, self.stateLab.frame.size.width, 13);
-    self.nameLab.frame = CGRectMake(15, 25, kScreenWidth - self.stateLab.frame.size.width - 40 , 15);
+    self.stateLab.frame = CGRectMake(kScreenWidth - 15 - self.stateLab.frame.size.width, 10, self.stateLab.frame.size.width, 45);
+    self.nameLab.frame = CGRectMake(15, 10, kScreenWidth - self.stateLab.frame.size.width - 40 , 45);
 
     UILabel *label1 = [self viewWithTag:1000];
     UILabel *label2 = [self viewWithTag:1001];

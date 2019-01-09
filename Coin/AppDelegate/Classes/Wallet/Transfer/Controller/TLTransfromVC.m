@@ -183,7 +183,7 @@ typedef enum : NSUInteger {
             
             self.totalFree.text = [NSString stringWithFormat:@"%@ %@",[LangSwitcher switchLang:@"本次划转手续费为" key:nil],[NSString stringWithFormat:@"%@ %@", [CoinUtil convertToRealCoin:currentCoin.withdrawFeeString coin:self.tableView.model.currency], self.tableView.model.currency]];
 
-            NSString *leftAmount = [self.tableView.model.amountString subNumber:self.tableView.model.frozenAmountString];
+            NSString *leftAmount = [self.tableView.model.amount subNumber:self.tableView.model.frozenAmount];
             NSString *money = [CoinUtil convertToRealCoin:leftAmount coin:self.tableView.model.currency];
             leftAmountLabel.text = [NSString stringWithFormat:@"%@:  %@ %@",[LangSwitcher switchLang:@"可用余额" key:nil],money,self.tableView.model.currency];
 //            NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:0];
@@ -205,7 +205,7 @@ typedef enum : NSUInteger {
         }
         //    全部
         if (index == 101) {
-            NSString *leftAmount = [self.tableView.model.amountString subNumber:self.tableView.model.frozenAmountString];
+            NSString *leftAmount = [self.tableView.model.amount subNumber:self.tableView.model.frozenAmount];
             CoinModel *currentCoin = [CoinUtil getCoinModel:self.tableView.model.currency];
 
             if ([[CoinUtil convertToRealCoin:leftAmount coin:self.tableView.model.currency] floatValue] > [[CoinUtil convertToRealCoin:currentCoin.withdrawFeeString coin:self.tableView.model.currency] floatValue]) {
@@ -274,7 +274,7 @@ typedef enum : NSUInteger {
             
             CoinModel *currentCoin = [CoinUtil getCoinModel:self.tableView.model.currency];
             self.totalFree.text = [NSString stringWithFormat:@"%@ %@",[LangSwitcher switchLang:@"本次划转手续费为" key:nil],[NSString stringWithFormat:@"%@ %@", [CoinUtil convertToRealCoin:currentCoin.withdrawFeeString coin:self.tableView.model.currency], self.tableView.model.currency]];
-            NSString *leftAmount = [self.tableView.model.amountString subNumber:self.tableView.model.frozenAmountString];
+            NSString *leftAmount = [self.tableView.model.amount subNumber:self.tableView.model.frozenAmount];
             NSString *money = [CoinUtil convertToRealCoin:leftAmount coin:self.tableView.model.currency];
             leftAmountLabel.text = [NSString stringWithFormat:@"%@:  %@ %@",[LangSwitcher switchLang:@"可用余额" key:nil],money,self.tableView.model.currency];
             self.numberTextField.text = @"";

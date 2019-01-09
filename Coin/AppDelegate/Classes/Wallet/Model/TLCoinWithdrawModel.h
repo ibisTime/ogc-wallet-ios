@@ -9,7 +9,7 @@
 #import "TLBaseModel.h"
 
 @interface TLCoinWithdrawModel : TLBaseModel
-
+@property (nonatomic, copy) NSString *amount;
 @property (nonatomic, copy) NSString *amountString;
 @property (nonatomic, copy) NSString *currency; //币种
 @property (nonatomic, copy) NSString *status;

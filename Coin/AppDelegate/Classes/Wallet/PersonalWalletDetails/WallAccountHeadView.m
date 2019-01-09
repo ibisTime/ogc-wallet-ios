@@ -145,6 +145,7 @@
     CoinModel *coin = [CoinUtil getCoinModel:currency.currency];
 
     [self.bgIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
+    
     NSString *leftAmount = [currency.amount subNumber:currency.frozenAmount];
     self.currentLbl.text = currency.currency;
     

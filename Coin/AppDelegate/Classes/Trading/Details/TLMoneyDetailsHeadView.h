@@ -14,5 +14,5 @@
 
 @property (nonatomic , strong)TLtakeMoneyModel *moneyModel;
 
-@property (nonatomic , strong)UIImageView *backImage;
+@property (nonatomic , strong)UIView *backImage;
 @end

@@ -242,8 +242,8 @@
 //    }
     
     
-    NSString *leftAmount = [CoinUtil convertToRealCoin:platform.amountString coin:platform.currency];
-    NSString *rightAmount = [CoinUtil convertToRealCoin:platform.frozenAmountString coin:platform.currency];
+    NSString *leftAmount = [CoinUtil convertToRealCoin:platform.amount coin:platform.currency];
+    NSString *rightAmount = [CoinUtil convertToRealCoin:platform.frozenAmount coin:platform.currency];
     NSString *ritAmount = [leftAmount subNumber:rightAmount];
     
     

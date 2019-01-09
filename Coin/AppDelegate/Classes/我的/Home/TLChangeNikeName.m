@@ -23,9 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = kBackgroundColor;
+    
     self.title = [LangSwitcher switchLang:@"修改昵称" key:nil];
-    self.contentTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 45) leftTitle:[LangSwitcher switchLang:@"昵称" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请填写昵称" key:nil]];
+    self.contentTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 50) leftTitle:[LangSwitcher switchLang:@"昵称" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请填写昵称" key:nil]];
     self.contentTf.delegate = self;
+    self.contentTf.backgroundColor = kWhiteColor;
     self.contentTf.text = [self.text valid] ? self.text: @"";
     [self.contentTf addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];//注意：textFied没有textFieldDidChanged代理方法，但是有UITextFieldTextDidChangeNotification通知，这里添加通知方法，textView有textFieldDidChanged代理方法，下面用法一样
     
@@ -72,9 +76,8 @@
     }
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-    http.code = @"805075";
+    http.code = @"805082";
     http.parameters[@"userId"] = [TLUser user].userId;
-    http.parameters[@"token"] = [TLUser user].token;
     http.parameters[@"nickname"] = self.contentTf.text;
     [http postWithSuccess:^(id responseObject) {
         
