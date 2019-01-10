@@ -11,6 +11,7 @@
 #import "PosMyInvestmentModel.h"
 #import "PosMyInvestmentHeadView.h"
 #import "AccumulatedEarningsVC.h"
+#import "FinancialDetailsVC.h"
 @interface PosMyInvestmentDetailsVC ()<RefreshDelegate>
 {
     PosMyInvestmentHeadView *headView;
@@ -101,6 +102,12 @@
 -(void)earningsButtonClick
 {
     AccumulatedEarningsVC *vc = [AccumulatedEarningsVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FinancialDetailsVC *vc = [FinancialDetailsVC new];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

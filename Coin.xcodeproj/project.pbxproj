@@ -12,6 +12,8 @@
 		1F1B000721E49392000BEBD3 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFF21E49391000BEBD3 /* libjpeg.a */; };
 		1F1B000821E49392000BEBD3 /* libZQPlusFaceu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */; };
 		1F1B000E21E49BF6000BEBD3 /* BindingEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */; };
+		1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */; };
+		1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3921880B4C00F1665B /* UsdtClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3821880B4C00F1665B /* UsdtClient.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
@@ -549,6 +551,10 @@
 		1F1B000421E49391000BEBD3 /* ZQOCRScanEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQOCRScanEngine.h; sourceTree = "<group>"; };
 		1F1B000C21E49BF6000BEBD3 /* BindingEmailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingEmailVC.h; sourceTree = "<group>"; };
 		1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingEmailVC.m; sourceTree = "<group>"; };
+		1F1B001021E5EF26000BEBD3 /* FinancialDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinancialDetailsVC.h; sourceTree = "<group>"; };
+		1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinancialDetailsVC.m; sourceTree = "<group>"; };
+		1F1B001321E5EF36000BEBD3 /* FinancialDetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinancialDetailsView.h; sourceTree = "<group>"; };
+		1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinancialDetailsView.m; sourceTree = "<group>"; };
 		1F1BFFFD21E49391000BEBD3 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 		1F1BFFFE21E49391000BEBD3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		1F1BFFFF21E49391000BEBD3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
@@ -1758,6 +1764,17 @@
 				1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		1F1B000F21E5EEF7000BEBD3 /* Detalis */ = {
+			isa = PBXGroup;
+			children = (
+				1F1B001021E5EF26000BEBD3 /* FinancialDetailsVC.h */,
+				1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */,
+				1F1B001321E5EF36000BEBD3 /* FinancialDetailsView.h */,
+				1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */,
+			);
+			path = Detalis;
 			sourceTree = "<group>";
 		};
 		1F1BFFFB21E49391000BEBD3 /* OCR */ = {
@@ -3104,11 +3121,11 @@
 		216F5B1D206CD9D900F2C832 /* Investment */ = {
 			isa = PBXGroup;
 			children = (
-				1F766A1121DDF3C800006B41 /* Pay */,
-				1F766A0321DDE89A00006B41 /* OrderRecord */,
 				1F76699C21DCB2D900006B41 /* Controller */,
 				1F76699B21DCB2D600006B41 /* Model */,
 				1F76699A21DCB2D400006B41 /* View */,
+				1F766A1121DDF3C800006B41 /* Pay */,
+				1F766A0321DDE89A00006B41 /* OrderRecord */,
 				1F76699921DCB2B700006B41 /* Abandoned */,
 			);
 			name = Investment;
@@ -3769,6 +3786,7 @@
 		7A2CC65E215BBB9F00B27E2D /* MyInvestment我的投资详情 */ = {
 			isa = PBXGroup;
 			children = (
+				1F1B000F21E5EEF7000BEBD3 /* Detalis */,
 				7A2CC662215BBC2900B27E2D /* PosMyInvestmentDetailsVC.h */,
 				7A2CC663215BBC2900B27E2D /* PosMyInvestmentDetailsVC.m */,
 				7A2CC668215BBCEA00B27E2D /* PosMyInvestmentHeadView.h */,
@@ -4690,6 +4708,7 @@
 				7AABEAF82148ED4D00283BC7 /* UIButton+SGImagePosition.m in Sources */,
 				1F76692421D4A32700006B41 /* BTCEncryptedMessage.m in Sources */,
 				7A8A5D2F20EA3C09002D9A48 /* MySugarPacketsVC.m in Sources */,
+				1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */,
 				B87BF1D3211426C300DD5C05 /* Migration.m in Sources */,
 				2ED651CC200F32BC0065A1B0 /* TLCoinWithdrawModel.m in Sources */,
 				1F76691F21D4A32700006B41 /* BTCPaymentMethod.m in Sources */,
@@ -4760,6 +4779,7 @@
 				B88B092720C8E371005C2D2F /* JoinMineCell.m in Sources */,
 				2120D8A31FCEE1DE00712600 /* HourPickerView.m in Sources */,
 				1F76697421D4A34D00006B41 /* fileenc.c in Sources */,
+				1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */,
 				1F816BF92180953D0078B945 /* SGQRCodeHelperTool.m in Sources */,
 				1F76692321D4A32700006B41 /* BTCBlockchainInfo+Tests.m in Sources */,
 				7A2CC6BA215DC88C00B27E2D /* PGDatePicker+MonthDay.m in Sources */,

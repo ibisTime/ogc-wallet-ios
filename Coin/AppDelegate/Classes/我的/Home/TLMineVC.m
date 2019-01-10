@@ -46,7 +46,7 @@
 #import "MyFriendViewController.h"
 #import "MyBankCardVC.h"
 
-@interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate>
+@interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate,ZDKHelpCenterConversationsUIDelegate,ZDKHelpCenterDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 //头部
@@ -193,39 +193,46 @@
             break;
         case 4:
         {
-//            [ZDKZendesk initializeWithAppId: @"71d2ca9aba0cccc12deebfbdd352fbae8c53cd8999dd10bc"
-//                                   clientId: @"mobile_sdk_client_7af3526c83d0c1999bc3"
-//                                 zendeskUrl: @"https://thachainhelp.zendesk.com"];
-//
-//            id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
-//            [[ZDKZendesk instance] setIdentity:userIdentity];
-//
-//            [ZDKCoreLogger setEnabled:YES];
-//            [ZDKSupport initializeWithZendesk:[ZDKZendesk instance]];
-//            LangType type = [LangSwitcher currentLangType];
-//            NSString *lan;
-//            if (type == LangTypeSimple || type == LangTypeTraditional) {
-//                lan = @"zh-cn";
-//            }else if (type == LangTypeKorean)
-//            {
-//                lan = @"ko";
-//            }else{
-//                lan = @"en-us";
-//            }
-//            [ZDKSupport instance].helpCenterLocaleOverride = lan;
-//            [ZDKLocalization localizedStringWithKey:lan];
-//            ZDKHelpCenterUiConfiguration *hcConfig = [ZDKHelpCenterUiConfiguration new];
-//            [ZDKTheme  currentTheme].primaryColor = [UIColor redColor];
-//            UIViewController<ZDKHelpCenterDelegate>*helpCenter  =  [ ZDKHelpCenterUi buildHelpCenterOverviewWithConfigs :@[hcConfig]];
-//            self.navigationController.navigationBar.translucent = YES;
-//            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//            self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-//            self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//            self.navigationItem.backBarButtonItem = item;
-//            [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],
-//                                                                              NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
-//            helpCenter.uiDelegate = self;
-//            [self.navigationController pushViewController:helpCenter animated:YES];
+            [ZDKZendesk initializeWithAppId: @"71d2ca9aba0cccc12deebfbdd352fbae8c53cd8999dd10bc"
+                                   clientId: @"mobile_sdk_client_7af3526c83d0c1999bc3"
+                                 zendeskUrl: @"https://thachainhelp.zendesk.com"];
+            
+            id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
+            [[ZDKZendesk instance] setIdentity:userIdentity];
+            
+            [ZDKCoreLogger setEnabled:YES];
+            [ZDKSupport initializeWithZendesk:[ZDKZendesk instance]];
+            
+            
+            LangType type = [LangSwitcher currentLangType];
+            NSString *lan;
+            if (type == LangTypeSimple || type == LangTypeTraditional) {
+                lan = @"zh-cn";
+            }else if (type == LangTypeKorean)
+            {
+                lan = @"ko";
+            }else{
+                lan = @"en-us";
+            }
+            [ZDKSupport instance].helpCenterLocaleOverride = lan;
+            [ZDKLocalization localizedStringWithKey:lan];
+            
+            
+            ZDKHelpCenterUiConfiguration *hcConfig  =  [ ZDKHelpCenterUiConfiguration  new];
+            [ZDKTheme  currentTheme].primaryColor  = [UIColor redColor];
+            UIViewController<ZDKHelpCenterDelegate>*helpCenter  =  [ ZDKHelpCenterUi  buildHelpCenterOverviewWithConfigs :@[hcConfig]];
+            
+            self.navigationController.navigationBar.translucent = YES;
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+            self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+            self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+            self.navigationItem.backBarButtonItem = item;
+            [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],
+                                                                              NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            helpCenter.uiDelegate = self;
+            helpCenter.hidesBottomBarWhenPushed=YES;
+            [self.navigationController  pushViewController:helpCenter animated:YES];
         }
             break;
         case 5:
@@ -266,6 +273,16 @@
         };
     }
     return _imagePicker;
+}
+
+-(ZDKContactUsVisibility)active {
+    return ZDKContactUsVisibilityArticleListOnly;
+}
+
+
+- (ZDKNavBarConversationsUIType) navBarConversationsUIType
+{
+    return ZDKNavBarConversationsUITypeLocalizedLabel;
 }
 
 //- (void)addNotification
