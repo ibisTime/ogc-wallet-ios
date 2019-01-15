@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InvestmentBuyCell : UITableViewCell
+@interface InvestmentBuyCell : UITableViewCell<UITextFieldDelegate>
+
+@property (nonatomic , assign)CGFloat price;
+@property (nonatomic , strong)UITextField *amountField;
+
+@property (nonatomic , strong)UITextField *numberField;
 
 @end

@@ -283,6 +283,8 @@ NSString *const kGoogleAuthClose = @"0";
     return YES;
 }
 
+
+
 - (void)updateUserInfo {
     
     [self updateUserInfoWithNotification:YES];

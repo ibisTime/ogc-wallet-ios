@@ -7,7 +7,11 @@
 //
 
 #import "TLTableView.h"
-
+#import "InvestmentModel.h"
 @interface InvestmentTableView : TLTableView
+
+@property (nonatomic , strong)NSMutableArray <InvestmentModel *>*models;
+
+@property (nonatomic , assign)CGFloat price;
 
 @end

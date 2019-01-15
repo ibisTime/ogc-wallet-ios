@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F11E70221EDBD4A006C8DB4 /* InvestmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */; };
+		1F11E70521EDCCB2006C8DB4 /* OrderRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70421EDCCB2006C8DB4 /* OrderRecordModel.m */; };
 		1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F1BFFFD21E49391000BEBD3 /* Resource.bundle */; };
 		1F1B000621E49392000BEBD3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFE21E49391000BEBD3 /* opencv2.framework */; };
 		1F1B000721E49392000BEBD3 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFF21E49391000BEBD3 /* libjpeg.a */; };
@@ -546,6 +548,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F11E70021EDBD4A006C8DB4 /* InvestmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentModel.h; sourceTree = "<group>"; };
+		1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentModel.m; sourceTree = "<group>"; };
+		1F11E70321EDCCB2006C8DB4 /* OrderRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordModel.h; sourceTree = "<group>"; };
+		1F11E70421EDCCB2006C8DB4 /* OrderRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderRecordModel.m; sourceTree = "<group>"; };
 		1F1B000121E49391000BEBD3 /* ZQFaceAuthEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQFaceAuthEngine.h; sourceTree = "<group>"; };
 		1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libZQPlusFaceu.a; sourceTree = "<group>"; };
 		1F1B000321E49391000BEBD3 /* ZQFaceDataDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQFaceDataDefine.h; sourceTree = "<group>"; };
@@ -2459,6 +2465,8 @@
 		1F76699B21DCB2D600006B41 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F11E70021EDBD4A006C8DB4 /* InvestmentModel.h */,
+				1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2518,6 +2526,8 @@
 		1F766A0621DDE8B400006B41 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F11E70321EDCCB2006C8DB4 /* OrderRecordModel.h */,
+				1F11E70421EDCCB2006C8DB4 /* OrderRecordModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4616,6 +4626,7 @@
 				21A7F3151FB2E2F900FAA0A2 /* TLChangeMobileVC.m in Sources */,
 				7A07F804216C84F30026EB7A /* SCBarChart.m in Sources */,
 				211DE6AC1FB58B4C002FCF3D /* TLPageDataHelper.m in Sources */,
+				1F11E70221EDBD4A006C8DB4 /* InvestmentModel.m in Sources */,
 				7A2CC67A215CD45300B27E2D /* AccumulatedEarningsCell.m in Sources */,
 				B8CAA13D21158FF200695BC3 /* LPDAssetCell.m in Sources */,
 				1F76690721D4A32700006B41 /* BTCAssetAddress.m in Sources */,
@@ -4690,6 +4701,7 @@
 				B8657833214B90D400179EB1 /* DetailSugarView.m in Sources */,
 				B87BF1CD2113F53F00DD5C05 /* DataBaseModel.m in Sources */,
 				21A7F3241FB2E2F900FAA0A2 /* CaptchaView.m in Sources */,
+				1F11E70521EDCCB2006C8DB4 /* OrderRecordModel.m in Sources */,
 				B8BBA5FA20C780FA00DC4D5F /* PlatformTableView.m in Sources */,
 				2EE950C61FB05B5900429257 /* TLMineVC.m in Sources */,
 				7A3821C020EACD8B00D6B636 /* SendTableView.m in Sources */,

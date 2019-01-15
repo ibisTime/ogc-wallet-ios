@@ -7,7 +7,8 @@
 //
 
 #import "TLTableView.h"
-
+#import "OrderRecordModel.h"
 @interface OrderRecordTableView : TLTableView
 
+@property (nonatomic , strong)NSMutableArray <OrderRecordModel *>*models;
 @end

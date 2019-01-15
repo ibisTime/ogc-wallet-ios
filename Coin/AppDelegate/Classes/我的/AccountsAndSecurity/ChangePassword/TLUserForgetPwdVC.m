@@ -156,6 +156,8 @@
         
     }];
 }
+
+
 - (void)changePwd {
     if ([self.phoneTf.text isBlank]) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
@@ -206,8 +208,33 @@
     
     http.parameters[@"kind"] = APP_KIND;
     [http postWithSuccess:^(id responseObject) {
+        
+        [self requesUserInfoWithResponseObject];
+        
+        
+    } failure:^(NSError *error) {
+
+    }];
+}
+
+
+- (void)requesUserInfoWithResponseObject {
+    
+    //1.获取用户信息
+    if ([TLUser user].isLogin == NO) {
+        return;
+    }
+    TLNetworking *http = [TLNetworking new];
+    http.code = USER_INFO;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        NSDictionary *userInfo = responseObject[@"data"];
+        //保存用户信息
+        [[TLUser user] saveUserInfo:userInfo];
+        //初始化用户信息
+        [[TLUser user] setUserInfoWithDict:userInfo];
         [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改成功" key:nil]];
-        [[TLUser user] updateUserInfo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self.navigationController popViewControllerAnimated:YES];
@@ -215,7 +242,7 @@
         });
         
     } failure:^(NSError *error) {
-
+        
     }];
 }
 

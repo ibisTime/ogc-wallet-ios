@@ -9,7 +9,9 @@
 #import "InvestmentBuyCell.h"
 
 @implementation InvestmentBuyCell
-
+{
+    BOOL isHaveDian;
+}
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -28,12 +30,18 @@
         amountField.placeholder = [LangSwitcher switchLang:@"请输入买人金额" key:nil];
         [amountField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         amountField.font = FONT(14);
+        amountField.tag = 10000;
+        self.amountField = amountField;
+        amountField.delegate = self;
         amountField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(amounttextFieldTextDidChangeOneCI:) name:UITextFieldTextDidChangeNotification
+                                                  object:amountField];
         [amountBox addSubview:amountField];
         
         
         UILabel *amountunit = [UILabel labelWithFrame:CGRectMake(amountField.xx + 15, 0, 40, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#333333")];
         amountunit.text = [LangSwitcher switchLang:@"CNY" key:nil];
+        
         [amountBox addSubview:amountunit];
         
         
@@ -52,6 +60,11 @@
         [numberField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         numberField.font = FONT(14);
         numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        numberField.tag = 10001;
+        numberField.delegate = self;
+        self.numberField = numberField;
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(numbertextFieldTextDidChangeOneCI:) name:UITextFieldTextDidChangeNotification
+                                                  object:numberField];
         [numberBox addSubview:numberField];
         
         
@@ -70,13 +83,98 @@
         poundageLbl.attributedText = poundageAttrStr;
         [self addSubview:poundageLbl];
         
-        
-        
-        
-        
-        
     }
     return self;
 }
+
+
+-(void)amounttextFieldTextDidChangeOneCI:(NSNotification *)notification
+{
+    
+    UITextField *textfield=[notification object];
+    NSLog(@"ssssss %@",textfield.text);
+    self.numberField.text = [NSString stringWithFormat:@"%.8f",[textfield.text floatValue]/self.price];
+}
+
+
+-(void)numbertextFieldTextDidChangeOneCI:(NSNotification *)notification
+{
+    
+    UITextField *textfield=[notification object];
+    NSLog(@"ssssss %@",textfield.text);
+    self.amountField.text = [NSString stringWithFormat:@"%.2f",[textfield.text floatValue]*self.price];
+}
+
+
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+        if ([textField.text rangeOfString:@"."].location==NSNotFound) {
+            isHaveDian=NO;
+        }
+        if ([string length]>0)
+        {
+            unichar single=[string characterAtIndex:0];//当前输入的字符
+            if ((single >='0' && single<='9') || single=='.')//数据格式正确
+            {
+                if([textField.text length]==0){
+                    if(single == '.'){
+                        [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                        return NO;
+                    }
+                }
+                if (single=='.')
+                {
+                    if(!isHaveDian)//text中还没有小数点
+                    {
+                        isHaveDian=YES;
+                        return YES;
+                    }else
+                    {
+                        
+                        [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                        return NO;
+                    }
+                }
+                
+                return YES;
+            }else{
+                [textField.text stringByReplacingCharactersInRange:range withString:@""];
+                return NO;
+            }
+        }else
+        {
+            return YES;
+        }
+//    }else if (textField.tag == 10001)
+//    {
+//        if ([string length]>0) {
+//            unichar single=[string characterAtIndex:0];
+//            if ((single >='0' && single<='9')) {
+//                return YES;
+//            }else
+//            {
+//                return NO;
+//            }
+//        }else
+//        {
+//            return YES;
+//        }
+//
+//    }
+//    else
+//    {
+//        return YES;
+//    }
+}
+
+
+
+-(void)setPrice:(CGFloat)price
+{
+    _price = price;
+}
+
 
 @end

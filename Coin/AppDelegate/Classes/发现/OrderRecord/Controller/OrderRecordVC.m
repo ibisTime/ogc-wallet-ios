@@ -11,9 +11,12 @@
 #import "PayTreasureVC.h"
 #import "BnakCardVC.h"
 #import "PayFailureVC.h"
+#import "OrderRecordModel.h"
 @interface OrderRecordVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)OrderRecordTableView *tableView;
+
+@property (nonatomic , strong)NSMutableArray <OrderRecordModel *>*models;
 
 @end
 
@@ -51,9 +54,67 @@
     self.titleText.text = [LangSwitcher switchLang:@"订单记录" key:nil];
     self.titleText.font = FONT(18);
     self.navigationItem.titleView = self.titleText;
-    
+    [self LoadData];
     [self.view addSubview:self.tableView];
 }
+
+-(void)LoadData
+{
+    __weak typeof(self) weakSelf = self;
+    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+    helper.tableView = self.tableView;
+    helper.code = @"625287";
+    helper.parameters[@"userId"] = [TLUser user].userId;
+    [helper modelClass:[OrderRecordModel class]];
+    
+    [self.tableView addRefreshAction:^{
+        
+        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.models = objs;
+            
+            weakSelf.tableView.models = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+            
+            [weakSelf addPlaceholderView];
+            
+        }];
+    }];
+    
+    [self.tableView beginRefreshing];
+    
+    [self.tableView addLoadMoreAction:^{
+        
+        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.models = objs;
+            
+            weakSelf.tableView.models = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+            
+            [weakSelf addPlaceholderView];
+            
+        }];
+        
+    }];
+    
+    [self.tableView endRefreshingWithNoMoreData_tl];
+}
+
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

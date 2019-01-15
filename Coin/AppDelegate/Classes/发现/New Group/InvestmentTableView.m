@@ -57,12 +57,18 @@
     if (indexPath.section == 0) {
         InvestmentHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentHead forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (self.models.count > 0) {
+            cell.models = self.models;
+        }
         return cell;
     }
     
     if (indexPath.section == 1) {
         InvestmentBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentBuy forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (_price != 0) {
+            cell.price = _price;
+        }
         return cell;
     }
     

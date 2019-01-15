@@ -115,9 +115,17 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-            vc.titleString = @"修改交易密码";
-            [self.navigationController pushViewController:vc animated:YES];
+            if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+                vc.titleString = @"设置交易密码";
+                [self.navigationController pushViewController:vc animated:YES];
+            }else
+            {
+                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+                vc.titleString = @"修改交易密码";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
         }
         
     }

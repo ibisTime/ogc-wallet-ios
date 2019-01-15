@@ -10,11 +10,17 @@
 #import "InvestmentTableView.h"
 #import "OrderRecordVC.h"
 #import "PaymentInstructionsView.h"
+#import "InvestmentModel.h"
 @interface InvestmentVC ()<RefreshDelegate>
+{
+    CGFloat price;
+}
 
 @property (nonatomic , strong)InvestmentTableView *tableView;
 
 @property (nonatomic , strong)PaymentInstructionsView *promptView;
+
+@property (nonatomic , strong)NSMutableArray <InvestmentModel *>*models;
 
 @end
 
@@ -68,7 +74,8 @@
     kViewRadius(_promptView, 4);
     [self.view addSubview:_promptView];
     
-    
+    [self loadData];
+    [self loadDataPrice];
 }
 
 -(void)CustomNavigation
@@ -95,22 +102,123 @@
 
 -(void)promptIkonwBtnClick
 {
-    OrderRecordVC *vc = [OrderRecordVC new];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
     
-    [[UserModel user].cusPopView dismiss];
+    
+    UITextField *textField1 = [self.view viewWithTag:10000];
+    UITextField *textField2 = [self.view viewWithTag:10001];
+    
+    if ([textField1.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入购买金额" key:nil]];
+        return ;
+    }
+    
+    if ([textField2.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入购买数量" key:nil]];
+        return ;
+    }
+    
+    CoinWeakSelf;
+    TLNetworking *http = [[TLNetworking alloc] init];
+    http.showView = weakSelf.view;
+    http.code = @"625270";
+    http.parameters[@"count"] = textField2.text;
+    http.parameters[@"receiveType"] = @"0";
+    http.parameters[@"tradeAmount"] = textField1.text;
+    http.parameters[@"tradeCurrency"] = @"BTC";
+    http.parameters[@"tradePrice"] = @(price);
+    http.parameters[@"userId"] = [TLUser user].userId;
+    [http postWithSuccess:^(id responseObject) {
+        
+        OrderRecordVC *vc = [OrderRecordVC new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        [[UserModel user].cusPopView dismiss];
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+    
+    
 }
 
-
+//购买
 -(void)bottomBtnClick
 {
-    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
+//    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
+    if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"设置交易密码";
+        [self.navigationController pushViewController:vc animated:YES];
+    }else
+    {
+        [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
+    }
+    
+    
+    
+    
 }
 
+-(void)loadData
+{
+    CoinWeakSelf;
+    TLNetworking *http = [[TLNetworking alloc] init];
+    
+    http.showView = weakSelf.view;
+    http.code = @"650200";
+    http.parameters[@"period"] = @"0";
+    
+    NSDate *currentDate = [NSDate date];//获取当前时间，日期
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    
+    NSDate* theDate;
+    NSTimeInterval oneDay = 24*60*60*1;
+    theDate = [currentDate initWithTimeIntervalSinceNow:-oneDay*30];
+    NSString *dateString1 = [dateFormatter stringFromDate:theDate];
+    http.parameters[@"startDatetime"] = dateString1;
+    http.parameters[@"endDatetime"] = dateString;
+    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"type"] = @"0";
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.models = [InvestmentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.tableView.models = self.models;
+        [self.tableView reloadData];
+        
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+}
 
-
-
+-(void)loadDataPrice
+{
+    CoinWeakSelf;
+    TLNetworking *http = [[TLNetworking alloc] init];
+    
+    http.showView = weakSelf.view;
+    http.code = @"650201";
+    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"type"] = @"0";
+    [http postWithSuccess:^(id responseObject) {
+        
+//        self.models = [InvestmentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        self.tableView.models = self.models;
+//        [self.tableView reloadData];
+        price = [responseObject[@"data"][@"price"] floatValue];
+        self.tableView.price = price;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+        
+    }];
+}
 
 
 @end
