@@ -19,6 +19,9 @@
 {
     UIButton *selectBtn;
     UIView *lineView;
+    
+    NSInteger selectTag;
+    
 }
 
 @end
@@ -34,7 +37,7 @@
         [self registerClass:[InvestmentHeadCell class] forCellReuseIdentifier:InvestmentHead];
         [self registerClass:[InvestmentBuyCell class] forCellReuseIdentifier:InvestmentBuy];
         [self registerClass:[PayWayCell class] forCellReuseIdentifier:PayWay];
-        
+        selectTag = 100;
     }
     
     return self;
@@ -105,11 +108,21 @@
         for (int i = 0; i < 2; i ++) {
             UIButton *btn = [UIButton buttonWithTitle:btnArray[i] titleColor:kHexColor(@"#999999") backgroundColor:kWhiteColor titleFont:16];
             btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 10, SCREEN_WIDTH/2, 45);
-            [btn setTitleColor:kHexColor(@"#FA7D0E") forState:(UIControlStateSelected)];
+           
+            
             if (i == 0) {
-                btn.selected = YES;
-                selectBtn = btn;
+                if (selectTag == 100) {
+                    [btn setTitleColor:kHexColor(@"#4064E6") forState:(UIControlStateNormal)];
+                }
+                
             }
+            
+            if (i == 1) {
+                if (selectTag == 101) {
+                    [btn setTitleColor:kHexColor(@"#FA7D0E") forState:(UIControlStateNormal)];
+                }
+            }
+            
             btn.tag = 100 + i;
             [btn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
             [headView addSubview:btn];
@@ -119,8 +132,14 @@
         bottomLine.backgroundColor = kLineColor;
         [headView addSubview:bottomLine];
         
-        lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2/2 - 20, 55 - 3, 40, 3)];
-        lineView.backgroundColor = kHexColor(@"#FA7D0E");
+        lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2/2 - 20 + (selectTag - 100)*SCREEN_WIDTH/2, 55 - 3, 40, 3)];
+        if (selectTag == 100) {
+            lineView.backgroundColor = kHexColor(@"#4064E6");
+        }else
+        {
+            lineView.backgroundColor = kHexColor(@"#FA7D0E");
+        }
+        
         kViewRadius(lineView, 1.5);
         [headView addSubview:lineView];
         
@@ -136,6 +155,17 @@
 -(void)BtnClick:(UIButton *)sender
 {
     
+    selectTag = sender.tag;
+    
+    [self reloadData];
+    
+//    if (sender.tag == 100) {
+//        [sender setTitleColor:kHexColor(@"#FA7D0E") forState:(UIControlStateNormal)];
+//    }
+    
+//    sender.selected = !sender.selected;
+//    selectBtn.selected = !selectBtn.selected;
+//    selectBtn = sender;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

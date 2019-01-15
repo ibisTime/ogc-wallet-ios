@@ -8,6 +8,7 @@
 
 #import "MyBankCardVC.h"
 #import "MyBankCardTableView.h"
+#import "BindingBankCardVC.h"
 @interface MyBankCardVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)MyBankCardTableView *tableView;
@@ -58,7 +59,8 @@
 
 -(void)myRecodeClick
 {
-    
+    BindingBankCardVC *vc = [BindingBankCardVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

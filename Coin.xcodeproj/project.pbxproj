@@ -165,6 +165,7 @@
 		1FC390EE21E328840070E153 /* MyBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390ED21E328840070E153 /* MyBankCardVC.m */; };
 		1FC390F121E349FA0070E153 /* MyBankCardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F021E349FA0070E153 /* MyBankCardTableView.m */; };
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
+		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
 		211A34D71FB3F51400FEB71F /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34D61FB3F51400FEB71F /* MineHeaderView.m */; };
 		211A34DB1FB4083300FEB71F /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DA1FB4083300FEB71F /* MineTableView.m */; };
 		211A34DE1FB4245D00FEB71F /* MineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DD1FB4245D00FEB71F /* MineCell.m */; };
@@ -937,6 +938,8 @@
 		1FC390F021E349FA0070E153 /* MyBankCardTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardTableView.m; sourceTree = "<group>"; };
 		1FC390F221E34A230070E153 /* MyBankCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardCell.h; sourceTree = "<group>"; };
 		1FC390F321E34A230070E153 /* MyBankCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardCell.m; sourceTree = "<group>"; };
+		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
+		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
 		211A34D51FB3F51400FEB71F /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
 		211A34D61FB3F51400FEB71F /* MineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineHeaderView.m; sourceTree = "<group>"; };
 		211A34D91FB4083300FEB71F /* MineTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTableView.h; sourceTree = "<group>"; };
@@ -2644,6 +2647,8 @@
 			children = (
 				1FC390EC21E328840070E153 /* MyBankCardVC.h */,
 				1FC390ED21E328840070E153 /* MyBankCardVC.m */,
+				1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */,
+				1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4628,6 +4633,7 @@
 				1F76692521D4A32700006B41 /* BTC256+Tests.m in Sources */,
 				21C91D7D1FDBCF9C006EDB16 /* ZMAuthVC.m in Sources */,
 				1F76690921D4A32700006B41 /* NS+BTCBase58.m in Sources */,
+				1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */,
 				B8CA0D6A21081B850015A19D /* AssetPwdView.m in Sources */,
 				1F76692721D4A32700006B41 /* BTCData+Tests.m in Sources */,
 				7A2CC6BC215DC88C00B27E2D /* PGDatePicker+MonthDayHourMinute.m in Sources */,
