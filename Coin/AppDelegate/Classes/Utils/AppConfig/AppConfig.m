@@ -48,7 +48,7 @@ void TLLog(NSString *format, ...) {
         case RunEnvTest: {
 //            self.qiniuDomain = @"http://pajvine9a.bkt.clouddn.com";
 //            http://m.thatest.hichengdai.com/api
-            self.addr = @"http://m.thatest.hichengdai.com/api";
+            self.addr = @"http://120.26.6.213:6801";
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info";

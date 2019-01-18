@@ -81,6 +81,7 @@
     helper.code = @"805914";
     helper.parameters[@"userId"] = [TLUser user].userId;
     helper.parameters[@"date"] = date;
+    helper.parameters[@"currency"] = self.symbol;
     helper.isCurrency = YES;
     helper.tableView = self.tableView;
     [helper modelClass:[AccumulatedEarningsModel class]];

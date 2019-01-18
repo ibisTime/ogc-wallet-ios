@@ -106,12 +106,13 @@
     }];
 }
 
-- (void)click:(UITapGestureRecognizer *)gesture{
-
-//    NSLog(@"====%d",gesture.view.tag);//label的tag
-    AccumulatedEarningsVC *vc = [AccumulatedEarningsVC new];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//- (void)click:(UITapGestureRecognizer *)gesture{
+//
+////    NSLog(@"====%d",gesture.view.tag);//label的tag
+//    AccumulatedEarningsVC *vc = [AccumulatedEarningsVC new];
+//
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
