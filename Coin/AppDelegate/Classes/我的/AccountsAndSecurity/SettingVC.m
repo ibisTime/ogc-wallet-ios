@@ -32,6 +32,7 @@
 #import "ZQOCRScanEngine.h"
 #import "TLUploadManager.h"
 #import "BindingEmailVC.h"
+#import "MyBankCardVC.h"
 @interface SettingVC ()<RefreshDelegate,ZQFaceAuthDelegate,ZQOcrScanDelegate>{
     NSString *str1;
     NSString *str2;
@@ -143,12 +144,30 @@
             
         }
         if (indexPath.row == 1) {
-            GoogleAuthVC *vc = [GoogleAuthVC new];
-            [self.navigationController pushViewController:vc animated:YES];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"暂无" key:nil]];
+            return;
+//            GoogleAuthVC *vc = [GoogleAuthVC new];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
         if (indexPath.row == 2) {
+            if ([TLUser isBlankString:[TLUser user].email] == YES) {
+                BindingEmailVC *vc = [BindingEmailVC new];
+                vc.titleStr = @"绑定邮箱";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
             
-            BindingEmailVC *vc = [BindingEmailVC new];
+        }
+        if (indexPath.row == 3) {
+            if ([TLUser isBlankString:[TLUser user].mobile] == YES)
+            {
+                BindingEmailVC *vc = [BindingEmailVC new];
+                vc.titleStr = @"绑定手机号";
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }
+        
+        if (indexPath.row == 4) {
+            MyBankCardVC *vc = [[MyBankCardVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }
         
@@ -156,35 +175,28 @@
     
     if (indexPath.section == 2) {
         
-        if ([TLUser isBlankString:[TLUser user].email] == YES) {
-            if (indexPath.row == 0) {
-                ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-                vc.titleString = @"修改手机号";
-                [self.navigationController pushViewController:vc animated:YES];
+        if (indexPath.row == 0) {
+            if ([TLUser isBlankString:[TLUser user].email] == YES) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"未绑定邮箱,请前去绑定" key:nil]];
+                return;
             }
-            if (indexPath.row == 1) {
-                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-                vc.titleString = @"修改登录密码";
-                [self.navigationController pushViewController:vc animated:YES];
+            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+            vc.titleString = @"修改邮箱";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (indexPath.row == 1) {
+            if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"未绑定手机号,请前去绑定" key:nil]];
+                return;
             }
-        }else
-        {
-            if (indexPath.row == 0) {
-                
-                ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-                vc.titleString = @"修改邮箱";
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            if (indexPath.row == 1) {
-                ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-                vc.titleString = @"修改手机号";
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            if (indexPath.row == 2) {
-                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-                vc.titleString = @"修改登录密码";
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+            vc.titleString = @"修改手机号";
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if (indexPath.row == 2) {
+            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+            vc.titleString = @"修改登录密码";
+            [self.navigationController pushViewController:vc animated:YES];
         }
         
         

@@ -43,14 +43,12 @@
 
     
     PayFailureView *backView = [[PayFailureView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
+    backView.models = self.models;
     [self.view addSubview:backView];
     
 }
 
--(void)myRecodeClick
-{
-    
-}
+
 /*
 #pragma mark - Navigation
 

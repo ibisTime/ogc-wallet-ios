@@ -23,8 +23,8 @@
 
 @property (nonatomic ,strong) UIView *view1;
 
-
 @end
+
 @implementation AssetPwdView
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -63,7 +63,7 @@
     [self addSubview:whiteView];
     
     whiteView.frame = CGRectMake(24, kHeight(194), kScreenWidth - 48, kHeight(240));
-    
+    kViewRadius(whiteView, 8);
     whiteView.backgroundColor = kWhiteColor;
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [exitBtn setBackgroundImage:kImage(@"红包 删除") forState:UIControlStateNormal];

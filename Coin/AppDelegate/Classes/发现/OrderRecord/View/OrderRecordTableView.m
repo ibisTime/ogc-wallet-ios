@@ -38,7 +38,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 12;
+    return self.models.count;
     
 }
 
@@ -48,8 +48,10 @@
     OrderRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderRecord forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.row = indexPath.row % 4;
-    
+    cell.models = self.models[indexPath.row];
+//    if (cell.dataArray.count > 0) {
+//        cell.dataArray = self.dataArray;
+//    }
     return cell;
     
 }

@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PayWayCell : UITableViewCell
-
+@property (nonatomic , strong)NSDictionary *payWayDic;
+@property (nonatomic , strong)UILabel *nameLabel;
+@property (nonatomic , strong)UIButton *payBtn;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "TLTableView.h"
-
+#import "MyFriendModel.h"
 @interface MyFriendTableView : TLTableView
 
+@property (nonatomic , strong)NSMutableArray <MyFriendModel *>*models;
 @end

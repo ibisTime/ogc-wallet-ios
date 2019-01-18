@@ -144,14 +144,14 @@
     NSString *expectIncome = [CoinUtil convertToRealCoin2:model.expectIncome setScale:4 coin:model.productInfo[@"symbol"]];
 
 //
-    if ([expectIncome floatValue] > 10000) {
-
-        self.numberLabel.text = [NSString stringWithFormat:@"%.4f%@%@",[expectIncome floatValue]/10000,model.productInfo[@"symbol"],[LangSwitcher switchLang:@"万" key:nil]];
-
-    }else
-    {
+//    if ([expectIncome floatValue] > 10000) {
+//
+//        self.numberLabel.text = [NSString stringWithFormat:@"%.4f%@%@",[expectIncome floatValue]/10000,model.productInfo[@"symbol"],[LangSwitcher switchLang:@"万" key:nil]];
+//
+//    }else
+//    {
         self.numberLabel.text = [NSString stringWithFormat:@"%@%@",expectIncome,model.productInfo[@"symbol"]];
-    }
+//    }
 
     [self.numberLabel sizeToFit];
 

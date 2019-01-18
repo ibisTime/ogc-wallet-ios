@@ -179,7 +179,7 @@
 "手机号码格式不正确" = "mobile number format is incorrect ";
 "请输入正确的验证码" = "Please enter the verification code";
 "修改成功" = "modified successfully";
-"绑定手机号" = "The verification code has been sent. Please check it";
+"绑定手机号" = "Bind mobile phone number";
 "绑定" = "The binding";
 "请输入密码" = "Password";
 "确认密码" = "Confirm password";

@@ -9,7 +9,14 @@
 #import "PosMyInvestmentHeadView.h"
 
 @implementation PosMyInvestmentHeadView
-
+{
+    UILabel *btcTotalInvest;
+    UILabel *btcTotalIncome;
+    
+    UILabel *usdtTotalInvest;
+    UILabel *usdtTotalIncome;
+    
+}
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -46,7 +53,12 @@
             allPrice.text = [LangSwitcher switchLang:@"0.00" key:nil];
             [self addSubview:allPrice];
             
-            
+            if (i == 0) {
+                btcTotalInvest = allPrice;
+            }else
+            {
+                usdtTotalInvest = allPrice;
+            }
             
             UIButton *earningsButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"累计收益" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:12];
             self.earningsButton = earningsButton;
@@ -55,6 +67,9 @@
             [self.earningsButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:4 imagePositionBlock:^(UIButton *button) {
                 [button setImage:kImage(@"更多白色") forState:(UIControlStateNormal)];
             }];
+            [self.earningsButton addTarget:self action:@selector(earningsButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            
+            self.earningsButton.tag = 100 + i;
             [self addSubview:earningsButton];
             
             
@@ -62,99 +77,48 @@
             earningsPrice.text = [LangSwitcher switchLang:@"0.00" key:nil];
             [self addSubview:earningsPrice];
             
-            
+            if (i == 0) {
+                btcTotalIncome = earningsPrice;
+            }else
+            {
+                usdtTotalIncome = earningsPrice;
+            }
             
             self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
             self.backButton.frame = CGRectMake(78 + (SCREEN_WIDTH - 78)/2, 0 + i %2 * 105, SCREEN_WIDTH/2, 105);
+            self.backButton.tag = 100 + i;
+            [self.backButton addTarget:self action:@selector(earningsButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
             [self addSubview:self.backButton];
-            
-//            UILabel *peiceLabel = [UILabel labelWithFrame:CGRectMake(0 + i %2 * SCREEN_WIDTH/2,  47, SCREEN_WIDTH/2, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(30) textColor:kWhiteColor];
-//
-//            peiceLabel.tag = 1212 + i;
-//
-//            if (i == 0) {
-//                peiceLabel.frame = CGRectMake(SCREEN_WIDTH/4 - peiceLabel.frame.size.width/2,  40, peiceLabel.frame.size.width, 30);
-//
-//                UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(peiceLabel.frame.origin.x, 15 , peiceLabel.frame.size.width, 18) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:kWhiteColor];
-//                nameLabel.text = [LangSwitcher switchLang:@"投资总资产" key:nil];
-//                self.nameLabel = nameLabel;
-//                nameLabel.alpha = 0.6;
-//                [self addSubview:nameLabel];
-//
-//
-//            }else
-//            {
-//                peiceLabel.frame = CGRectMake(SCREEN_WIDTH/4*3 - peiceLabel.frame.size.width/2,  40, peiceLabel.frame.size.width, 30);
-//
-//
-//
-//
-//            }
 
-//            [self addSubview:peiceLabel];
         }
 
     }
     return self;
 }
 
-
+-(void)earningsButtonClick:(UIButton *)sender
+{
+    [_delegate PosMyInvestmentButton:sender.tag  - 100];
+}
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
     NSLog(@"%@",dataDic);
-//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//    NSString *totalInvest = [CoinUtil convertToRealCoin2:  [numberFormatter stringFromNumber:dataDic[@"totalInvest"]] setScale:4 coin:@"BTC"];
-//
-//    UILabel *label1 = [self viewWithTag:1212];
-//
-//    NSString *label1Str = [NSString stringWithFormat:@"%@ (BTC)",totalInvest];
-//
-//    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:label1Str];
-//    [attrString addAttribute:NSFontAttributeName value:FONT(15) range:NSMakeRange(label1Str.length - 5,5)];
-//    label1.attributedText = attrString;
-//
-//    [label1 sizeToFit];
-//
-//    if (label1.frame.size.width > SCREEN_WIDTH/2 - 20) {
-//        label1.frame = CGRectMake(10,  40, SCREEN_WIDTH/2 - 20, 30);
-//    }else
-//    {
-//        label1.frame = CGRectMake(SCREEN_WIDTH/4 - label1.frame.size.width/2,  40, label1.frame.size.width, 30);
-//    }
-//
-//
-//    self.nameLabel.frame = CGRectMake(label1.frame.origin.x, 15 , SCREEN_WIDTH/2 - label1.frame.origin.x - 10, 18);
-//
-//
-//
-//
-//    NSNumberFormatter *numberFormatter1 = [[NSNumberFormatter alloc] init];
-//    NSString *totalIncome = [CoinUtil convertToRealCoin2:[numberFormatter1 stringFromNumber:dataDic[@"totalIncome"]] setScale:4 coin:@"BTC"];
-//
-//    UILabel *label2 = [self viewWithTag:1213];
-//    NSString *label2Str = [NSString stringWithFormat:@"%@ (BTC)",totalIncome];
-//    NSMutableAttributedString *attrString1 = [[NSMutableAttributedString alloc] initWithString:label2Str];
-//    [attrString1 addAttribute:NSFontAttributeName value:FONT(15) range:NSMakeRange(label2Str.length - 5,5)];
-//    label2.attributedText = attrString1;
-//    [label2 sizeToFit];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    NSString *usdtTotalIncomeStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic[@"usdtTotalIncome"]] setScale:4 coin:@"USDT"];
+    usdtTotalIncome.text = usdtTotalIncomeStr;
 
+    NSString *usdtTotalInvestStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic[@"usdtTotalInvest"]] setScale:4 coin:@"USDT"];
+    usdtTotalInvest.text = usdtTotalInvestStr;
 
-//    if (label2.frame.size.width > SCREEN_WIDTH/2 - 20) {
-//        label2.frame = CGRectMake(10 + SCREEN_WIDTH/2,  40, SCREEN_WIDTH/2 - 20, 30);
-//    }else
-//    {
-//        label2.frame = CGRectMake(SCREEN_WIDTH/4*3 - label2.frame.size.width/2,  40, label2.frame.size.width, 30);
-//    }
+    
+    NSString *btcTotalIncomeStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic[@"btcTotalIncome"]] setScale:4 coin:@"BTC"];
+    btcTotalIncome.text = btcTotalIncomeStr;
 
-
-//    self.earningsButton.frame = CGRectMake(label2.frame.origin.x, 15 , SCREEN_WIDTH - label2.frame.origin.x - 10, 18);
-//    [self.earningsButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:4 imagePositionBlock:^(UIButton *button) {
-//        [button setImage:kImage(@"更多白色") forState:(UIControlStateNormal)];
-//    }];
-
-
-
+    
+    NSString *btcTotalInvestStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic[@"btcTotalInvest"]] setScale:4 coin:@"BTC"];
+    btcTotalInvest.text = btcTotalInvestStr;
+    
 }
 
 @end

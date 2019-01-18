@@ -40,7 +40,7 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return self.models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -50,7 +50,9 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
     MyFriendCellCell *cell = [tableView dequeueReusableCellWithIdentifier:MyFriendCell forIndexPath:indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    if (self.models.count > 0) {
+        cell.model = self.models[indexPath.row];
+    }
     return cell;
 }
 

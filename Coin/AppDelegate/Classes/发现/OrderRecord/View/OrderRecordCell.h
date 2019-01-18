@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OrderRecordModel.h"
 @interface OrderRecordCell : UITableViewCell
 
 @property (nonatomic , strong)UIImageView *headImg;
+
+@property (nonatomic , strong)NSArray *dataArray;
 
 @property (nonatomic , strong)UILabel *nameLbl;
 
@@ -21,5 +23,7 @@
 @property (nonatomic , strong)UILabel *stateLbl2;
 
 @property (nonatomic , assign)NSInteger row;
+
+@property (nonatomic , strong)OrderRecordModel *models;
 
 @end

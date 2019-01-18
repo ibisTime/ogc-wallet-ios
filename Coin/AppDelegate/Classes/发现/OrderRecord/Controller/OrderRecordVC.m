@@ -12,8 +12,11 @@
 #import "BnakCardVC.h"
 #import "PayFailureVC.h"
 #import "OrderRecordModel.h"
+#import "SellDetalisVC.h"
 @interface OrderRecordVC ()<RefreshDelegate>
-
+{
+    NSArray *dataArray;
+}
 @property (nonatomic , strong)OrderRecordTableView *tableView;
 
 @property (nonatomic , strong)NSMutableArray <OrderRecordModel *>*models;
@@ -54,8 +57,22 @@
     self.titleText.text = [LangSwitcher switchLang:@"订单记录" key:nil];
     self.titleText.font = FONT(18);
     self.navigationItem.titleView = self.titleText;
+    [self ckey];
     [self LoadData];
     [self.view addSubview:self.tableView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"InvestmentLoadData" object:nil];
+}
+
+
+- (void)InfoNotificationAction:(NSNotification *)notification
+{
+    [self LoadData];
+}
+
+#pragma mark -- 删除通知
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"InvestmentLoadData" object:nil];
 }
 
 -(void)LoadData
@@ -115,21 +132,54 @@
     [self.tableView endRefreshingWithNoMoreData_tl];
 }
 
+-(void)ckey
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630036";
+    
+    http.parameters[@"parentKey"] = @"accept_order_status";
+    
+    [http postWithSuccess:^(id responseObject) {
+//        [self LoadData];
+        self.tableView.dataArray = responseObject[@"data"];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row  == 0) {
-        PayTreasureVC *vc = [PayTreasureVC new];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (indexPath.row == 1) {
-        BnakCardVC *vc = [BnakCardVC new];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (indexPath.row == 2) {
+    OrderRecordModel *model = self.models[indexPath.row];
+    if ([model.status isEqualToString:@"0"]) {
+        if ([model.type isEqualToString:@"0"]) {
+            if ([model.receiveType isEqualToString:@"1"]) {
+                PayTreasureVC *vc = [PayTreasureVC new];
+                vc.models = model;
+                
+                [self.navigationController pushViewController:vc animated:YES];
+            }else
+            {
+                BnakCardVC *vc = [BnakCardVC new];
+                vc.models = model;
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }else
+        {
+            SellDetalisVC *vc = [SellDetalisVC new];
+            vc.models = model;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }else
+    {
         PayFailureVC *vc = [PayFailureVC new];
+        vc.models = model;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

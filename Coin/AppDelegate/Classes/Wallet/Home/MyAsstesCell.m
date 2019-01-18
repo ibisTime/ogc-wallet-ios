@@ -96,6 +96,7 @@
         
         
         NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
+        
         NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
         NSString *available = [amount subNumber:frozenAmount];
         
@@ -108,7 +109,8 @@
         
         
         iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 30 + i % platforms.count * 100, 40, 40)];
-        iconImg.image = kImage(@"BTC");
+        CoinModel *coin = [CoinUtil getCoinModel:model.currency];
+        [iconImg sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
         [whiteView addSubview:iconImg];
         
         nameLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 23.5 + i % platforms.count * 100, SCREEN_WIDTH - 23.5 - 45, 21) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];

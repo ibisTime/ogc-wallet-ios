@@ -45,7 +45,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -54,37 +54,75 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        InvestmentHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentHead forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (self.models.count > 0) {
-            cell.models = self.models;
-        }
-        return cell;
-    }
+//    if (indexPath.section == 0) {
+//        InvestmentHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentHead forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        if (self.models.count > 0) {
+//            cell.models = self.models;
+//        }
+//        return cell;
+//    }
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         InvestmentBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentBuy forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (_price != 0) {
             cell.price = _price;
         }
+        cell.Rate = self.Rate;
         return cell;
     }
     
     PayWayCell *cell = [tableView dequeueReusableCellWithIdentifier:PayWay forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
     
+    if (_indexBtnTag == 0)
+    {
+        cell.payWayDic = self.payWayDic;
+        [cell.payBtn addTarget:self action:@selector(payBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    }else
+    {
+        cell.nameLabel.text = @"收款方式";
+        if ([TLUser isBlankString:self.PaymentMethods] == YES) {
+            [cell.payBtn setTitle:@"请选择收款方式" forState:(UIControlStateNormal)];
+        }else
+        {
+            NSString *number;
+            if (self.PaymentMethods.length > 4) {
+                number = [self.PaymentMethods substringFromIndex:self.PaymentMethods.length - 4];
+            }else
+            {
+                number = self.PaymentMethods;
+            }
+            
+            [cell.payBtn setTitle:[NSString stringWithFormat:@"尾号为%@银行卡",number] forState:(UIControlStateNormal)];
+        }
+        
+        [cell.payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"") forState:(UIControlStateNormal)];
+        }];
+        [cell.payBtn addTarget:self action:@selector(payBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.refreshDelegate refreshTableView:self didSelectRowAtIndexPath:indexPath];
+}
+
+-(void)payBtnClick
+{
+    [self.refreshDelegate refreshTableViewButtonClick:self button:nil selectRowAtIndex:10000];
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+//    if (indexPath.section == 0) {
+//        return 220;
+//    }
     if (indexPath.section == 0) {
-        return 220;
-    }
-    if (indexPath.section == 1) {
         return 176;
     }
     
@@ -94,10 +132,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     
-    if (section == 1) {
+    if (section == 0) {
         return 55;
     }
-    if (section == 2) {
+    if (section == 1) {
         return 10;
     }
     
@@ -106,7 +144,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    if (section == 1) {
+    if (section == 0) {
         
         UIView *headView = [UIView new];
         
@@ -145,13 +183,8 @@
         {
             lineView.backgroundColor = kHexColor(@"#FA7D0E");
         }
-        
         kViewRadius(lineView, 1.5);
         [headView addSubview:lineView];
-        
-        
-        
-        
         return headView;
     }
     
@@ -162,7 +195,7 @@
 {
     
     selectTag = sender.tag;
-    
+    [self.refreshDelegate refreshTableViewButtonClick:self button:sender selectRowAtIndex:sender.tag - 100];
     [self reloadData];
     
 //    if (sender.tag == 100) {
@@ -183,6 +216,5 @@
     
     return [UIView new];
 }
-
 
 @end

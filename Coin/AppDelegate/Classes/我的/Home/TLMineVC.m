@@ -318,7 +318,13 @@
     UITapGestureRecognizer *ta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNickName)];
     [self.headerView.nameLbl addGestureRecognizer:ta];
     
-    self.headerView.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].mobile];
+    if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
+        self.headerView.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].email];
+    }else
+    {
+        self.headerView.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].mobile];
+    }
+    
     self.headerView.levelBtn.hidden = [[TLUser user].level isEqualToString:kLevelOrdinaryTraders] ? YES : NO;
     [self.headerView.mobileLbl sizeToFit];
     

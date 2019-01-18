@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PosMyInvestmentModel.h"
 @interface FinancialDetailsView : UIView
 
+
+@property (nonatomic , strong)PosMyInvestmentModel *model;
 @end

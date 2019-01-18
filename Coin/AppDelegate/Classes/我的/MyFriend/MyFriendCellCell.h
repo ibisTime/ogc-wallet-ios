@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyFriendModel.h"
 @interface MyFriendCellCell : UITableViewCell
+
+@property (nonatomic , strong)MyFriendModel *model;
 
 @property (nonatomic , strong)UIImageView *headImg;
 

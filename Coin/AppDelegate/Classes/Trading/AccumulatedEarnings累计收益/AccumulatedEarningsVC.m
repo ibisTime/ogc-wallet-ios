@@ -78,7 +78,7 @@
 {
     CoinWeakSelf;
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-    helper.code = @"802525";
+    helper.code = @"805914";
     helper.parameters[@"userId"] = [TLUser user].userId;
     helper.parameters[@"date"] = date;
     helper.isCurrency = YES;

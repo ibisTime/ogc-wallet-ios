@@ -92,6 +92,7 @@
         [weakSelf.navigationController pushViewController:vc animated:YES];
 
     };
+    kViewRadius(pwdView, 8);
     pwdView.hidden = YES;
     pwdView.frame = self.view.bounds;
     UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
@@ -228,9 +229,8 @@
     
     [http postWithSuccess:^(id responseObject) {
         
-        weakSelf.currencys = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        
-//        self.AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        weakSelf.currencys = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+
         for (int i = 0; i < self.currencys.count; i++) {
             //
             if ([self.moneyModel.symbol isEqualToString:self.currencys[i].currency]) {

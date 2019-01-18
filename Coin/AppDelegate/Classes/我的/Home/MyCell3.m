@@ -14,7 +14,7 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, 240)];
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, 180)];
         whiteView.backgroundColor = kWhiteColor;
         whiteView.layer.cornerRadius=10;
         whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
@@ -38,13 +38,10 @@
         [self addSubview:_setUpBtn];
         
         
-        _bankCardBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _bankCardBtn.frame = CGRectMake(20, 180, SCREEN_WIDTH, 60);
-        [self addSubview:_bankCardBtn];
         
         
-        NSArray *array = @[@"加入群聊",@"帮助中心",@"设置",@"我的银行卡"];
-        for (int i = 0; i < 4; i ++) {
+        NSArray *array = @[@"加入群聊",@"帮助中心",@"设置"];
+        for (int i = 0; i < 3; i ++) {
             self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i % array.count * 60 + 20, 20, 20)];
             self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
             self.iconImageView.image = kImage(array[i]);
@@ -72,9 +69,7 @@
         line1.backgroundColor = kLineColor;
         [whiteView addSubview:line1];
         
-        UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(self.iconImageView.xx + 10, 179.5 , SCREEN_WIDTH - 40 - self.iconImageView.xx - 10, 1)];
-        line2.backgroundColor = kLineColor;
-        [whiteView addSubview:line2];
+        
         
     }
     return self;

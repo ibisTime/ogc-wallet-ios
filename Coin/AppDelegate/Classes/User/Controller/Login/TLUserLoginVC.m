@@ -302,6 +302,8 @@
     
 }
 
+//HTMLTypeRegProtocol
+
 -(void)forgetPwdBtnClick
 {
     TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];

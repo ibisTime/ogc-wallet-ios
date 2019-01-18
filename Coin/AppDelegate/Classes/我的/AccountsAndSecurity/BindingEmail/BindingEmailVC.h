@@ -10,4 +10,6 @@
 
 @interface BindingEmailVC : TLBaseVC
 
+
+@property (nonatomic , strong)NSString *titleStr;
 @end

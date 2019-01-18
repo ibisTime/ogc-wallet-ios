@@ -422,13 +422,7 @@
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     NSString *address ;
     address = self.currency.address;
-//    if (self.currency.symbol) {
-//
-//    }else{
-//        address = self.currency.coinAddress;
-//
-//
-//    }
+
     pasteBoard.string = address;
     
     if (pasteBoard == nil) {

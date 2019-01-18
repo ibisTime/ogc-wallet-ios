@@ -13,9 +13,6 @@
 
 @interface SettingCell ()
 
-
-
-
 @end
 
 @implementation SettingCell
@@ -67,7 +64,7 @@
             make.left.equalTo(self.iconImageView.mas_right).offset(20);
             
             make.centerY.equalTo(self.contentView.mas_centerY);
-            make.right.lessThanOrEqualTo(self.accessoryImageView.mas_left);
+            make.right.lessThanOrEqualTo(self.rightLabel.mas_right).offset(10);
         }];
         //开关
         UISwitch *sw = [[UISwitch alloc] init];

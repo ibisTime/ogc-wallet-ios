@@ -43,6 +43,7 @@
     
     
     FinancialDetailsView *backView = [[FinancialDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
+    backView.model = self.model;
     [self.view addSubview:backView];
     
 }

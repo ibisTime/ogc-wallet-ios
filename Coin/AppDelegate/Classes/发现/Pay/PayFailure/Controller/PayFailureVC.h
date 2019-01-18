@@ -7,7 +7,7 @@
 //
 
 #import "TLBaseVC.h"
-
+#import "OrderRecordModel.h"
 @interface PayFailureVC : TLBaseVC
-
+@property (nonatomic , strong)OrderRecordModel *models;
 @end

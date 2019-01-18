@@ -13,5 +13,8 @@
 @property (nonatomic , strong)NSMutableArray <InvestmentModel *>*models;
 
 @property (nonatomic , assign)CGFloat price;
-
+@property (nonatomic , strong)NSDictionary *payWayDic;
+@property (nonatomic , assign)NSInteger indexBtnTag;
+@property (nonatomic , copy)NSString *PaymentMethods;
+@property (nonatomic , copy)NSString *Rate;
 @end

@@ -9,7 +9,9 @@
 #import "PayWayCell.h"
 
 @implementation PayWayCell
-
+{
+   
+}
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -26,11 +28,11 @@
         nameLabel.text = [LangSwitcher switchLang:@"支付方式" key:nil];
         [backView addSubview:nameLabel];
         
-        UIButton *payBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"支付宝" key:nil] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:14];
-        payBtn.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2 - 34, 50);
-        payBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-        [backView addSubview:payBtn];
-        [payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+        _payBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"支付宝" key:nil] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:14];
+        _payBtn.frame = CGRectMake(SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2 - 34, 50);
+        _payBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+        [backView addSubview:_payBtn];
+        [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"支付宝支付") forState:(UIControlStateNormal)];
         }];
         
@@ -49,6 +51,23 @@
         
     }
     return self;
+}
+
+-(void)setPayWayDic:(NSDictionary *)payWayDic
+{
+    if ([payWayDic[@"name"] isEqualToString:@"支付宝"]) {
+        [_payBtn setTitle:[LangSwitcher switchLang:@"支付宝" key:nil] forState:(UIControlStateNormal)];
+        [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"支付宝支付") forState:(UIControlStateNormal)];
+        }];
+    }else
+    {
+        [_payBtn setTitle:[LangSwitcher switchLang:@"银行卡" key:nil] forState:(UIControlStateNormal)];
+        [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"银行卡支付") forState:(UIControlStateNormal)];
+        }];
+    }
+    
 }
 
 @end

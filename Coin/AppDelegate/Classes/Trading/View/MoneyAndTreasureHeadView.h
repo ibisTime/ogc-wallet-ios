@@ -10,6 +10,8 @@
 
 
 @interface MoneyAndTreasureHeadView : UIView
+@property (nonatomic , strong)NSString *symbol;
 @property (nonatomic , strong)NSDictionary *dataDic;
+@property (nonatomic , strong)NSDictionary *dataDic1;
 @property (nonatomic , strong)UIButton *eyesButton;
 @end

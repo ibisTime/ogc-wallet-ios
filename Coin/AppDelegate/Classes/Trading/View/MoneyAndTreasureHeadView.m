@@ -11,6 +11,13 @@
 @implementation MoneyAndTreasureHeadView
 {
     NSDictionary *dic;
+    UILabel *earningsPrice1;
+    UILabel *earningsPrice2;
+    NSString *symbolStr;
+    
+    NSString *totalInvest;
+    NSString *TotalIncome;
+    NSString *TotalInvest;
 }
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -54,10 +61,10 @@
         NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
         if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
             eyesButton.selected = YES;
-            [eyesButton setTitle:@"**** BTC" forState:(UIControlStateNormal)];
+            [eyesButton setTitle:@"--" forState:(UIControlStateNormal)];
         }else
         {
-            [eyesButton setTitle:@"0.00 BTC" forState:(UIControlStateNormal)];
+            [eyesButton setTitle:@"--" forState:(UIControlStateNormal)];
             eyesButton.selected = NO;
         }
         [eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:11 imagePositionBlock:^(UIButton *button) {
@@ -78,8 +85,16 @@
             [self addSubview:earningsName];
             
             UILabel *earningsPrice = [UILabel labelWithFrame:CGRectMake(i%2*SCREEN_WIDTH/2, earningsName.yy + 3, SCREEN_WIDTH/2, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(16) textColor:kWhiteColor];
-            earningsPrice.text = @"0.00 BTC";
+            earningsPrice.text = @"--";
             [self addSubview:earningsPrice];
+            
+            if (i == 0) {
+                earningsPrice1 = earningsPrice;
+                
+            }else
+            {
+                earningsPrice2 = earningsPrice;
+            }
         }
     }
     return self;
@@ -95,53 +110,105 @@
         [[NSUserDefaults standardUserDefaults]setObject:@"张眼" forKey:@"eyesWhetherhide"];
     }
 
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    NSString *str = [numberFormatter stringFromNumber:dic[@"totalInvest"]];
-    NSString *totalInvest = [CoinUtil convertToRealCoin1:str coin:@"BTC"];
+    
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//    NSString *str = [numberFormatter stringFromNumber:dic[@"totalInvest"]];
+//    totalInvest = [CoinUtil convertToRealCoin2:str setScale:4 coin:symbolStr];
     //    self.eyesButton.backgroundColor = [UIColor redColor];
     NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
     if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
-        [self.eyesButton setTitle:@"**** BTC" forState:(UIControlStateNormal)];
+        [self.eyesButton setTitle:[NSString stringWithFormat:@"**** %@",symbolStr] forState:(UIControlStateNormal)];
+        earningsPrice1.text = [NSString stringWithFormat:@"**** %@",symbolStr];
+        earningsPrice2.text = [NSString stringWithFormat:@"**** %@",symbolStr];
     }else
     {
-
-        if ([totalInvest floatValue] > 10000) {
-            [self.eyesButton setTitle:[NSString stringWithFormat:@"%.2f%@ BTC",[totalInvest floatValue]/10000,[LangSwitcher switchLang:@"万" key:nil]] forState:(UIControlStateNormal)];
-        }else
-        {
-            [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ BTC",totalInvest] forState:(UIControlStateNormal)];
-        }
+        [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ %@",TotalInvest,symbolStr] forState:(UIControlStateNormal)];
+        earningsPrice1.text = [NSString stringWithFormat:@"%@ %@",totalInvest,symbolStr];
+        earningsPrice2.text = [NSString stringWithFormat:@"%@ %@",TotalIncome,symbolStr];
     }
-
     [self.eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {
-        [button setImage:kImage(@"眼睛") forState:(UIControlStateNormal)];
+        [button setImage:kImage(@"张眼") forState:(UIControlStateNormal)];
         [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
     }];
+}
+
+-(void)setSymbol:(NSString *)symbol
+{
+    symbolStr = symbol;
 }
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
     dic = dataDic;
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    NSString *str = [numberFormatter stringFromNumber:dataDic[@"totalInvest"]];
-    NSString *totalInvest = [CoinUtil convertToRealCoin2:str setScale:4 coin:@"BTC"];
-    //    self.eyesButton.backgroundColor = [UIColor redColor];
+    NSString *str = [numberFormatter stringFromNumber:dataDic[@"yesterdayIncome"]];
+    totalInvest = [CoinUtil convertToRealCoin2:str setScale:4 coin:symbolStr];
+    
 
+    
+    
+    
     NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
     if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
-        [self.eyesButton setTitle:@"**** BTC" forState:(UIControlStateNormal)];
+        
+        earningsPrice1.text = [NSString stringWithFormat:@"**** %@",symbolStr];
+    }else
+    {
+        earningsPrice1.text = [NSString stringWithFormat:@"%@ %@",totalInvest,symbolStr];
+    }
+
+
+
+
+}
+
+
+-(void)setDataDic1:(NSDictionary *)dataDic1
+{
+//    dic = dataDic;
+    
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    NSString *usdtTotalIncomeStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic1[@"usdtTotalIncome"]] setScale:4 coin:@"USDT"];
+//    usdtTotalIncome.text = usdtTotalIncomeStr;
+    
+    NSString *usdtTotalInvestStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic1[@"usdtTotalInvest"]] setScale:4 coin:@"USDT"];
+//    usdtTotalInvest.text = usdtTotalInvestStr;
+    
+    
+    NSString *btcTotalIncomeStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic1[@"btcTotalIncome"]] setScale:4 coin:@"BTC"];
+//    btcTotalIncome.text = btcTotalIncomeStr;
+    
+    
+    NSString *btcTotalInvestStr = [CoinUtil convertToRealCoin2: [numberFormatter stringFromNumber:dataDic1[@"btcTotalInvest"]] setScale:4 coin:@"BTC"];
+//    btcTotalInvest.text = btcTotalInvestStr;
+
+    if ([symbolStr isEqualToString:@"BTC"]) {
+        TotalIncome = btcTotalIncomeStr;
+        TotalInvest = btcTotalInvestStr;
+    }else
+    {
+        TotalIncome = usdtTotalIncomeStr;
+        TotalInvest = usdtTotalInvestStr;
+    }
+    
+    NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
+    if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
+        [self.eyesButton setTitle:[NSString stringWithFormat:@"**** %@",symbolStr] forState:(UIControlStateNormal)];
+
+        earningsPrice1.text = [NSString stringWithFormat:@"**** %@",symbolStr];
+        earningsPrice2.text = [NSString stringWithFormat:@"**** %@",symbolStr];
     }else
     {
 
-        [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ BTC",totalInvest] forState:(UIControlStateNormal)];
+        [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ %@",TotalInvest,symbolStr] forState:(UIControlStateNormal)];
+        earningsPrice2.text = [NSString stringWithFormat:@"%@ %@",TotalIncome,symbolStr];
     }
-
+    
     [self.eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {
         [button setImage:kImage(@"张眼") forState:(UIControlStateNormal)];
         [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
     }];
-
-
 }
 
 @end

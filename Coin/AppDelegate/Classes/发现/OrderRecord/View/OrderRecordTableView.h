@@ -11,4 +11,7 @@
 @interface OrderRecordTableView : TLTableView
 
 @property (nonatomic , strong)NSMutableArray <OrderRecordModel *>*models;
+
+@property (nonatomic , strong)NSArray *dataArray;
+
 @end

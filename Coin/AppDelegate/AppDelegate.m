@@ -77,6 +77,22 @@
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
     
+    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
+    if ([TLUser isBlankString:lang] == YES) {
+        NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+        NSString *languageName = [appLanguages objectAtIndex:0];
+        
+        if ([languageName hasPrefix:@"zh-Hans"]) {
+            [LangSwitcher changLangType:LangTypeSimple];
+        }
+        else
+        {
+            [LangSwitcher changLangType:LangTypeEnglish];
+        }
+    }
+    
+    
+    
     //    配置七牛地址
     [self GetSevenCattleAddress];
     //配置键盘
@@ -154,7 +170,7 @@
 -(void)GetSevenCattleAddress
 {
     TLNetworking *http = [TLNetworking new];
-    http.code = USER_CKEY_CVALUE;
+    http.code = @"630047";
     http.parameters[SYS_KEY] = @"qiniu_domain";
     [http postWithSuccess:^(id responseObject) {
         

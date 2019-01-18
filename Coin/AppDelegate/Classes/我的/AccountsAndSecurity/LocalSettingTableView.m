@@ -22,7 +22,6 @@ static NSString *identifierCell = @"SettingCell";
         
         self.dataSource = self;
         self.delegate = self;
-//        self.backgroundColor = kWhiteColor;
         [self registerClass:[SettingCell class] forCellReuseIdentifier:identifierCell];
     }
     
@@ -42,21 +41,10 @@ static NSString *identifierCell = @"SettingCell";
         return 2;
     }
     if (section == 1) {
-        if ([TLUser isBlankString:[TLUser user].email] == YES) {
-            return 3;
-        }else
-        {
-            return 2;
-        }
+        return 5;
     }
-     if ([TLUser isBlankString:[TLUser user].email] == YES)
-     {
-         return 2;
-     }else
-    {
-        return 3;
-    }
-    
+
+    return 3;
     
 }
 
@@ -65,10 +53,6 @@ static NSString *identifierCell = @"SettingCell";
     
     SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell];
     
-//    self.group.items = self.group.sections[indexPath.section];
-//    SettingModel *settingModel = self.group.items[indexPath.row];
-    
-//    CoinWeakSelf;
     cell.SwitchBlock = ^(NSInteger switchBlock) {
         if (self.SwitchBlock) {
             self.SwitchBlock(switchBlock);
@@ -83,13 +67,8 @@ static NSString *identifierCell = @"SettingCell";
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
     }
     
-    NSArray *nameArray2 = @[@"身份认证",@"谷歌验证",@"绑定邮箱"];
-    if ([TLUser isBlankString:[TLUser user].email] == YES) {
-        nameArray2 = @[@"身份认证",@"谷歌验证",@"绑定邮箱"];
-    }else
-    {
-        nameArray2 = @[@"身份认证",@"谷歌验证"];
-    }
+    NSArray *nameArray2 = @[@"身份认证",@"谷歌验证",@"绑定邮箱",@"绑定手机号",@"我的银行卡"];
+
     if (indexPath.section == 1) {
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray2[indexPath.row] key:nil];
 
@@ -106,22 +85,43 @@ static NSString *identifierCell = @"SettingCell";
                 cell.arrowHidden = NO;
             }
         }
+        if (indexPath.row == 2) {
+            if ([TLUser isBlankString:[TLUser user].email] == NO)
+            {
+                cell.arrowHidden = YES;
+                cell.rightLabel.hidden = NO;
+                cell.rightLabel.text = [TLUser user].email;
+            }
+            else
+            {
+                cell.rightLabel.hidden = YES;
+                cell.arrowHidden = NO;
+            }
+        }
+        if (indexPath.row == 3) {
+            if ([TLUser isBlankString:[TLUser user].mobile] == NO)
+            {
+                cell.arrowHidden = YES;
+                cell.rightLabel.hidden = NO;
+                cell.rightLabel.text = [TLUser user].mobile;
+            }
+            else
+            {
+                cell.rightLabel.hidden = YES;
+                cell.arrowHidden = NO;
+            }
+        }
     }
     
     
     
     NSArray *nameArray3;
-    
-    if ([TLUser isBlankString:[TLUser user].email] == NO) {
-        nameArray3 = @[@"修改邮箱",@"修改手机号",@"修改登录密码"];
-    }else
-    {
-        nameArray3 = @[@"修改手机号",@"修改登录密码"];
-    }
+    nameArray3 = @[@"修改邮箱",@"修改手机号",@"修改登录密码"];
+
     if (indexPath.section == 2) {
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray3[indexPath.row] key:nil];
     }
-//    cell.arrowHidden = NO;
+
     cell.titleLbl.textColor = kTextColor;
     cell.titleLbl.font = Font(15.0);
     [cell.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {

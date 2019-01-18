@@ -32,6 +32,9 @@
 @interface TLUserRegisterVC ()<CLLocationManagerDelegate,MSAuthProtocol>
 {
     UIButton *selectBtn;
+    UIView *chooseView;
+    UIButton *phoneRegister;
+    UIButton *emailRegister;
 }
 
 
@@ -160,23 +163,27 @@
     [self.view addSubview:nameLabel];
     
     
-    UIButton *phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:20];
+    phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:20];
     phoneRegister.frame = CGRectMake(30, nameLabel.yy + 30, 0, 25);
     [phoneRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
     [phoneRegister sizeToFit];
     phoneRegister.selected = YES;
     selectBtn = phoneRegister;
+    [phoneRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
+    phoneRegister.tag = 100;
     [self.view addSubview:phoneRegister];
     
     
-    UIButton *emailRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"邮箱注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
+    emailRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"邮箱注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
     emailRegister.frame = CGRectMake(phoneRegister.xx + 35, nameLabel.yy + 30, 0, 25);
     [emailRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
     [emailRegister sizeToFit];
+    [emailRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
+    emailRegister.tag = 101;
     [self.view addSubview:emailRegister];
     
     
-    UIView *chooseView = [[UIView alloc]initWithFrame:CGRectMake(phoneRegister.x, phoneRegister.yy + 6, phoneRegister.width, 2)];
+    chooseView = [[UIView alloc]initWithFrame:CGRectMake(phoneRegister.x, phoneRegister.yy + 6, phoneRegister.width, 2)];
     chooseView.backgroundColor = kTabbarColor;
     [self.view addSubview:chooseView];
     
@@ -279,6 +286,23 @@
 
 }
 
+-(void)phoneAndEmailRegister:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    selectBtn.selected = !selectBtn.selected;
+    selectBtn = sender;
+    [UIView animateWithDuration:0.3 animations:^{
+        chooseView.frame = CGRectMake(sender.x, sender.yy + 6, sender.width, 2);
+    }];
+    if (sender.tag == 100) {
+        self.phoneTf.placeholder = [LangSwitcher switchLang:@"请输入手机号" key:nil];
+    }
+    else
+    {
+        self.phoneTf.placeholder = [LangSwitcher switchLang:@"请输入邮箱" key:nil];
+    }
+}
+
 -(void)gardenBtnClick:(UIButton *)sender
 {
     sender.selected = !sender.selected;
@@ -286,7 +310,9 @@
 
 -(void)addAndreductionButton:(UIButton *)sender
 {
-    
+    HTMLStrVC *vc = [HTMLStrVC new];
+    vc.type = HTMLTypeRegProtocol;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)next
@@ -307,152 +333,79 @@
 #pragma mark - Events
 - (void)sendCaptcha:(UIButton *)sender {
     
-    if (![self.phoneTf.text isPhoneNum]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-        return;
+    if (selectBtn.tag == 100) {
+        if (![self.phoneTf.text isPhoneNum]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+            return;
+        }
+    }else
+    {
+        if (![self.phoneTf.text isPhoneNum]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            return;
+        }
     }
+    
+    
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-    http.code = CAPTCHA_CODE;
+    
+    
+    
+    if (selectBtn.tag == 100) {
+        http.code = CAPTCHA_CODE;
+        http.parameters[@"mobile"] = self.phoneTf.text;
+        http.parameters[@"bizType"] = USER_REG_CODE;
+    }else
+    {
+        http.code = @"630093";
+        http.parameters[@"email"] = self.phoneTf.text;
+        http.parameters[@"bizType"] = @"805043";
+    }
+    
     http.parameters[@"client"] = @"ios";
-//    http.parameters[@"sessionId"] = sessionId;
-    http.parameters[@"bizType"] = USER_REG_CODE;
-    http.parameters[@"mobile"] = self.phoneTf.text;
-//    http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
+    
+   
     
     [http postWithSuccess:^(id responseObject) {
         
         [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
-        
-//        [self.captchaView.captchaBtn begin];
-        
-        
         [[UserModel user] phoneCode:sender];
         
         
         
     } failure:^(NSError *error) {
         
-        [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败,请检查手机号" key:nil]];
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败" key:nil]];
         
     }];
     
-    
-//    LangType type = [LangSwitcher currentLangType];
-//    NSString *lang;
-//    if (type == LangTypeSimple || type == LangTypeTraditional) {
-//        lang = @"zh_CN";
-//    }else if (type == LangTypeKorean)
-//    {
-//        lang = @"nil";
-//
-//
-//    }else{
-//        lang = @"en";
-//
-//    }
-//    UIViewController *vc = [MSAuthVCFactory simapleVerifyWithType:(MSAuthTypeSlide) language:lang Delegate:self authCode:@"0335" appKey:nil];
-//    [self.navigationController pushViewController:vc animated:YES];
 
 }
 
-//-(void)verifyDidFinishedWithResult:(t_verify_reuslt)code Error:(NSError *)error SessionId:(NSString *)sessionId
-//{
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        if (error) {
-//            NSLog(@"验证失败 %@", error);
-//            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证失败" key:nil]];
-//        } else {
-//            NSLog(@"验证通过 %@", sessionId);
-//            TLNetworking *http = [TLNetworking new];
-//            http.showView = self.view;
-//            http.code = CAPTCHA_CODE;
-//            http.parameters[@"client"] = @"ios";
-//            http.parameters[@"sessionId"] = sessionId;
-//            http.parameters[@"bizType"] = USER_REG_CODE;
-//            http.parameters[@"mobile"] = self.phoneTf.text;
-////            http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
-//            http.parameters[@"sessionId"] = sessionId;
-//
-//            [http postWithSuccess:^(id responseObject) {
-//
-//                [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
-//
-//
-//            } failure:^(NSError *error) {
-//
-//                [TLAlert alertWithError:[LangSwitcher switchLang:@"发送失败,请检查手机号" key:nil]];
-//
-//            }];
-//
-//        }
-//        [self.navigationController popViewControllerAnimated:YES];
-//        //将sessionid传到经过app服务器做二次验证
-//    });
-//}
 
-//- (void)verifyDidFinishedWithError:(NSError *)error SessionId:(NSString *)sessionId {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        if (error) {
-//            NSLog(@"验证失败 %@", error);
-//        } else {
-//            NSLog(@"验证通过 %@", sessionId);
-//        }
-//        [self.navigationController popViewControllerAnimated:YES];
-//        //将sessionid传到经过app服务器做二次验证
-//    });
-//}
 
-//- (void)loadData{
-//    TLNetworking *net = [TLNetworking new];
-//    net.showView = self.view;
-//    net.code = @"801120";
-//    net.isLocal = YES;
-//    net.ISparametArray = YES;
-//    net.parameters[@"status"] = @"1";
-//    [net postWithSuccess:^(id responseObject) {
-//
-//        NSLog(@"%@",responseObject);
-//
-//        self.countrys = [CountryModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//
-//        for (int i = 0; i < self.countrys.count; i++) {
-//
-//            CountryModel *model = self.countrys[i];
-//            NSString *code =[TLUser user].interCode;
-//            if (code == model.interCode) {
-//                NSString *url = [model.pic convertImageUrl];
-//                [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//                self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//            }
-//        }
-//
-//        [self configData];
-//
-//    } failure:^(NSError *error) {
-//
-//        [self configData];
-//
-//    }];
-//
-//
-//
-//}
+
 - (void)goReg {
+
     
-//    if (![self.nickNameTF.text valid]) {
-//
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请设置你的昵称" key:nil]];
-//
-//        return ;
-//    }
-    
-    if (![self.phoneTf.text isPhoneNum]) {
-        
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-        
-        return;
+    if (selectBtn.tag == 100) {
+        if (![self.phoneTf.text isPhoneNum]) {
+            
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+            
+            return;
+        }
+    }else
+    {
+        if (![self.phoneTf.text isPhoneNum]) {
+            
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            
+            return;
+        }
     }
+    
     
     if (!self.codeTf.text) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
@@ -472,41 +425,28 @@
         return;
         
     }
-    
-//    if (!self.checkBtn.selected) {
-//
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请同意《注册协议》" key:nil]];
-//        return ;
-//    }
+
 
     [self.view endEditing:YES];
 
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-    http.code = USER_REG_CODE;
-    http.parameters[@"mobile"] = self.phoneTf.text;
-//    NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-//    CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//    if ([model.code isNotBlank]) {
-//        http.parameters[@"countryCode"] = model.code;
-//    }else{
-//        http.parameters[@"countryCode"] = self.countrys[0].code;
-//
-//        }
     
-
-    http.parameters[@"loginPwd"] = self.pwdTf.text;
-//    http.parameters[@"isRegHx"] = @"0";
-    http.parameters[@"smsCaptcha"] = self.codeTf.text;
+    if (selectBtn.tag == 100) {
+        http.code = USER_REG_CODE;
+        http.parameters[@"mobile"] = self.phoneTf.text;
+        http.parameters[@"loginPwd"] = self.pwdTf.text;
+        http.parameters[@"smsCaptcha"] = self.codeTf.text;
+    }else
+    {
+        http.code = @"805043";
+        http.parameters[@"email"] = self.phoneTf.text;
+        http.parameters[@"loginPwd"] = self.pwdTf.text;
+        http.parameters[@"captcha"] = self.codeTf.text;
+    }
+    
     http.parameters[@"kind"] = APP_KIND;
     http.parameters[@"client"] = @"ios";
-
-//    if ([self.referTF.text valid]) {
-//
-//        http.parameters[@"userReferee"] = self.referTF.text;
-//        http.parameters[@"userRefereeKind"] = APP_KIND;
-//
-//    }
     
     [http postWithSuccess:^(id responseObject) {
         
@@ -515,10 +455,6 @@
         NSString *token = responseObject[@"data"][@"token"];
         NSString *userId = responseObject[@"data"][@"userId"];
         [MobClick profileSignInWithPUID:userId];
-        //保存用户账号和密码
-//        [[TLUser user] saveUserName:self.phoneTf.text pwd:self.pwdTf.text];
-        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
             //获取用户信息
             TLNetworking *http = [TLNetworking new];
@@ -540,12 +476,7 @@
                 TLTabBarController *ta = [[TLTabBarController alloc] init];
                 
                 [UIApplication sharedApplication].keyWindow.rootViewController = ta;
-                //dismiss 掉
-//                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
-//                [self.navigationController popToRootViewControllerAnimated:YES];
-                
-
             } failure:^(NSError *error) {
                 
             }];

@@ -7,7 +7,9 @@
 //
 
 #import "TLBaseVC.h"
-
+#import "PosMyInvestmentModel.h"
 @interface FinancialDetailsVC : TLBaseVC
+
+@property (nonatomic , strong)PosMyInvestmentModel *model;
 
 @end

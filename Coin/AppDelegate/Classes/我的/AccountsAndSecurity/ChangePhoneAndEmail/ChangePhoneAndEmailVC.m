@@ -72,6 +72,14 @@
             case 0:
             {
                 self.phoneTf = textField;
+                if ([_titleString isEqualToString:@"修改手机号"]) {
+                    textField.text = [TLUser user].mobile;
+                    textField.enabled = YES;
+                }else
+                {
+                    textField.text = [TLUser user].email;
+                    textField.enabled = YES;
+                }
             }
                 break;
             case 1:
@@ -83,6 +91,7 @@
                 codeBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - codeBtn.width - 30, textField.y + 10, codeBtn.width + 30, 30);
                 kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
                 [codeBtn addTarget:self action:@selector(sendCaptcha:) forControlEvents:(UIControlEventTouchUpInside)];
+                codeBtn.tag = 100;
                 [self.view addSubview:codeBtn];
                 
                 textField.frame = CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30 - codeBtn.width - 10, 50);
@@ -125,59 +134,163 @@
 
 #pragma mark - Events
 - (void)sendCaptcha:(UIButton *)sender {
-    if (![self.phoneTf.text isPhoneNum]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-        return;
-    }
-    TLNetworking *http = [TLNetworking new];
-    http.showView = self.view;
-    http.code = CAPTCHA_CODE;
-    http.parameters[@"client"] = @"ios";
-    //    http.parameters[@"sessionId"] = sessionId;
-    http.parameters[@"bizType"] = USER_FIND_PWD_CODE;
-    http.parameters[@"mobile"] = self.phoneTf.text;
-    //    http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
     
-    [http postWithSuccess:^(id responseObject) {
+    if ([_titleString isEqualToString:@"修改手机号"]) {
         
-        [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
-        [[UserModel user] phoneCode:sender];
-        //        [self.captchaView.captchaBtn begin];
+        if (sender.tag != 100) {
+            if (![self.pwdTf.text isPhoneNum]) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+                return;
+            }
+        }
         
-    } failure:^(NSError *error) {
+        TLNetworking *http = [TLNetworking new];
         
-    }];
+        http.showView = self.view;
+        http.code = CAPTCHA_CODE;
+        http.parameters[@"client"] = @"ios";
+        http.parameters[@"bizType"] = @"805061";
+        if (sender.tag == 100) {
+            http.parameters[@"mobile"] = self.phoneTf.text;
+        }else
+        {
+            http.parameters[@"mobile"] = self.pwdTf.text;
+        }
+        
+        
+        [http postWithSuccess:^(id responseObject) {
+            
+            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
+            [[UserModel user] phoneCode:sender];
+            //        [self.captchaView.captchaBtn begin];
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }else
+    {
+        if (sender.tag != 100) {
+            if (![self.pwdTf.text isPhoneNum]) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+                return;
+            }
+        }
+        TLNetworking *http = [TLNetworking new];
+        http.showView = self.view;
+        http.code = @"630093";
+        http.parameters[@"client"] = @"ios";
+        if (sender.tag == 100) {
+            http.parameters[@"email"] = self.phoneTf.text;
+        }else
+        {
+            http.parameters[@"email"] = self.pwdTf.text;
+        }
+        http.parameters[@"bizType"] = @"805070";
+        
+        [http postWithSuccess:^(id responseObject) {
+            
+            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
+            [[UserModel user] phoneCode:sender];
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    
+    
+    
 }
 - (void)changePwd {
-    if ([self.phoneTf.text isBlank]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-        return;
+    
+    if ([_titleString isEqualToString:@"修改手机号"]) {
+        if ([self.phoneTf.text isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+            return;
+        }
+        if ([self.codeTf.text  isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
+            return;
+        }
+        if ([self.pwdTf.text isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入新手机号" key:nil]];
+            return;
+        }
+        if ([self.rePwdTf.text isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"输入的新手机号验证码" key:nil]];
+            return;
+        }
+    }else
+    {
+        if ([self.phoneTf.text isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            return;
+        }
+        if ([self.codeTf.text  isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
+            return;
+        }
+        if ([self.pwdTf.text isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入新邮箱" key:nil]];
+            return;
+        }
+        if ([self.rePwdTf.text isBlank]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"输入的新邮箱验证码" key:nil]];
+            return;
+        }
     }
-    if ([self.codeTf.text  isBlank]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
-        return;
-    }
-    if ([self.pwdTf.text isBlank]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入密码" key:nil]];
-        return;
-    }
-    if (![self.pwdTf.text isEqualToString:self.rePwdTf.text]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"输入的密码不一致" key:nil]];
-        return;
-    }
+    
     
     [self.view endEditing:YES];
     
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-    http.code = USER_FIND_PWD_CODE;
-    http.parameters[@"mobile"] = self.phoneTf.text;
-    http.parameters[@"smsCaptcha"] = self.codeTf.text;
-    http.parameters[@"newLoginPwd"] = self.pwdTf.text;
+    
+    
+    if ([_titleString isEqualToString:@"修改手机号"]) {
+        http.code = @"805061";
+        http.parameters[@"oldMobile"] = self.phoneTf.text;
+        http.parameters[@"oldSmsCaptcha"] = self.codeTf.text;
+        http.parameters[@"newMobile"] = self.pwdTf.text;
+        http.parameters[@"newSmsCaptcha"] = self.rePwdTf.text;
+    }else
+    {
+        http.code = @"805070";
+        http.parameters[@"oldEmail"] = self.phoneTf.text;
+        http.parameters[@"oldSmsCaptcha"] = self.codeTf.text;
+        http.parameters[@"newEmail"] = self.pwdTf.text;
+        http.parameters[@"newSmsCaptcha"] = self.rePwdTf.text;
+    }
+    
+    http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"kind"] = APP_KIND;
     [http postWithSuccess:^(id responseObject) {
+        
+        [self requesUserInfoWithResponseObject];
+        
+       
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)requesUserInfoWithResponseObject {
+    
+    //1.获取用户信息
+    if ([TLUser user].isLogin == NO) {
+        return;
+    }
+    TLNetworking *http = [TLNetworking new];
+    http.code = USER_INFO;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        NSDictionary *userInfo = responseObject[@"data"];
+        //保存用户信息
+        [[TLUser user] saveUserInfo:userInfo];
+        //初始化用户信息
+        [[TLUser user] setUserInfoWithDict:userInfo];
         [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改成功" key:nil]];
-        [[TLUser user] updateUserInfo];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self.navigationController popViewControllerAnimated:YES];
@@ -188,7 +301,5 @@
         
     }];
 }
-
-
 
 @end

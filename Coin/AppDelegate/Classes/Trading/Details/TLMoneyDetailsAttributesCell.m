@@ -45,13 +45,13 @@
 //    label2.text = [NSString stringWithFormat:@"认购币种：%@",moneyModel.symbol]
 
     NSString *amount = [CoinUtil convertToRealCoin:moneyModel.amount coin:moneyModel.symbol];
-    if ([amount floatValue] > 10000) {
-        label3.text = [NSString stringWithFormat:@"%@%.2f%@ %@",[LangSwitcher switchLang:@"产品总额度：" key:nil],[amount floatValue]/10000,[LangSwitcher switchLang:@"万" key:nil],moneyModel.symbol];
-    }
-    else
-    {
+//    if ([amount floatValue] > 10000) {
+//        label3.text = [NSString stringWithFormat:@"%@%.2f%@ %@",[LangSwitcher switchLang:@"产品总额度：" key:nil],[amount floatValue]/10000,[LangSwitcher switchLang:@"万" key:nil],moneyModel.symbol];
+//    }
+//    else
+//    {
         label3.text = [NSString stringWithFormat:@"%@%.2f %@",[LangSwitcher switchLang:@"产品总额度：" key:nil],[amount floatValue],moneyModel.symbol];
-    }
+//    }
 
 }
 

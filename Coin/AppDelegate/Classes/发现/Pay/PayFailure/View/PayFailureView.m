@@ -9,7 +9,12 @@
 #import "PayFailureView.h"
 #define WIDTH (SCREEN_WIDTH - kWidth(30))
 @implementation PayFailureView
-
+{
+    UIButton *stateBtn;
+    UILabel *priceLbl;
+    UILabel *allPriceLbl;
+    UILabel *stateLbl;
+}
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -27,10 +32,7 @@
         backView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
         [self addSubview:backView];
         
-        UIButton *stateBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"已取消" key:nil] titleColor:kHexColor(@"#333333 ") backgroundColor:kClearColor titleFont:17];
-        [stateBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
-            [stateBtn setImage:kImage(@"已取消-详情") forState:(UIControlStateNormal)];
-        }];
+        stateBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"已取消" key:nil] titleColor:kHexColor(@"#333333 ") backgroundColor:kClearColor titleFont:17];
         stateBtn.frame = CGRectMake(0, kHeight(25), WIDTH, kHeight(24));
         [backView addSubview:stateBtn];
         
@@ -38,17 +40,17 @@
 
         
         
-        UILabel *priceLbl = [UILabel labelWithFrame:CGRectMake(0, stateBtn.yy + kHeight(18), WIDTH, kHeight(23)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(25) textColor:[UIColor blackColor]];
-        priceLbl.text = [LangSwitcher switchLang:@"买入 0.3456577BTC" key:nil];
+        priceLbl = [UILabel labelWithFrame:CGRectMake(0, stateBtn.yy + kHeight(18), WIDTH, kHeight(23)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(25) textColor:[UIColor blackColor]];
+        
         [backView addSubview:priceLbl];
         
-        UILabel *allPriceLbl = [UILabel labelWithFrame:CGRectMake(0, priceLbl.yy + kHeight(14), WIDTH, kHeight(16)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kTabbarColor];
-        allPriceLbl.text = [LangSwitcher switchLang:@"总价 ¥100" key:nil];
+        allPriceLbl = [UILabel labelWithFrame:CGRectMake(0, priceLbl.yy + kHeight(14), WIDTH, kHeight(16)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kTabbarColor];
+        
         [backView addSubview:allPriceLbl];
         
         
-        UILabel *stateLbl = [UILabel labelWithFrame:CGRectMake(0, allPriceLbl.yy + kHeight(22), WIDTH, kHeight(12)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
-        stateLbl.text = [LangSwitcher switchLang:@"用户已取消订单" key:nil];
+        stateLbl = [UILabel labelWithFrame:CGRectMake(0, allPriceLbl.yy + kHeight(22), WIDTH, kHeight(12)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
+        
         [backView addSubview:stateLbl];
         
         
@@ -76,6 +78,7 @@
             
             UILabel *contentLbl = [UILabel labelWithFrame:CGRectMake(nameLabel.xx + 10, 0, WIDTH  - kWidth(29) - nameLabel.xx - 10, kHeight(50)) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#333333")];
             contentLbl.text = contentArray[i];
+            contentLbl.tag = 100 + i;
             [bottomIV addSubview:contentLbl];
             
             UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight(50) - 1, WIDTH - kWidth(29), 1)];
@@ -93,5 +96,75 @@
     return self;
 }
 
+-(void)setModels:(OrderRecordModel *)models
+{
+    
+    UILabel *label1 = [self viewWithTag:100];
+    UILabel *label2 = [self viewWithTag:101];
+    UILabel *label3 = [self viewWithTag:102];
+    UILabel *label4 = [self viewWithTag:103];
+    
+    label1.text = models.code;
+    if ([models.type isEqualToString:@"0"]) {
+        label2.text = [LangSwitcher switchLang:@"买入" key:nil];
+    }else
+    {
+        label2.text = [LangSwitcher switchLang:@"卖出" key:nil];
+    }
+    label3.text = [NSString stringWithFormat:@"¥%@",models.tradeAmount];
+    label4.text = [models.createDatetime convertToDetailDate];
+    
+    NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:@"BTC"];
+    if ([models.type isEqualToString:@"0"]) {
+        priceLbl.text = [NSString stringWithFormat:@"%@ %@BTC",[LangSwitcher switchLang:@"买入" key:nil],leftAmount];
+    }else
+    {
+        priceLbl.text = [NSString stringWithFormat:@"%@ %@BTC",[LangSwitcher switchLang:@"卖出" key:nil],leftAmount];
+    }
+    allPriceLbl.text = [NSString stringWithFormat:@"%@ ¥%@",[LangSwitcher switchLang:@"总价" key:nil],models.tradeAmount];
+    
+    
+    if ([models.status isEqualToString:@"5"]) {
+        [stateBtn setTitle:[LangSwitcher switchLang:@"已超时" key:nil] forState:(UIControlStateNormal)];
+        [stateBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [stateBtn setImage:kImage(@"已超时-详情") forState:(UIControlStateNormal)];
+        }];
+        stateLbl.text = [LangSwitcher switchLang:@"未在规定时间内完成付款，订单已被关闭" key:nil];
+        
+    }
+    if (([models.status isEqualToString:@"3"] || [models.status isEqualToString:@"4"])) {
+        [stateBtn setTitle:[LangSwitcher switchLang:@"已取消" key:nil] forState:(UIControlStateNormal)];
+        [stateBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [stateBtn setImage:kImage(@"已取消-详情") forState:(UIControlStateNormal)];
+        }];
+        
+        if ([models.status isEqualToString:@"3"]) {
+            stateLbl.text = [LangSwitcher switchLang:@"用户已取消订单" key:nil];
+        }else
+        {
+            stateLbl.text = [LangSwitcher switchLang:@"平台已取消订单" key:nil];
+        }
+    }
+    
+    if (([models.status isEqualToString:@"1"] || [models.status isEqualToString:@"2"]))
+    {
+        
+        if ([models.status isEqualToString:@"1"]) {
+            [stateBtn setTitle:[LangSwitcher switchLang:@"已支付" key:nil] forState:(UIControlStateNormal)];
+             stateLbl.text = [LangSwitcher switchLang:@"已完成支付，等待审核" key:nil];
+        }else
+        {
+            [stateBtn setTitle:[LangSwitcher switchLang:@"已完成" key:nil] forState:(UIControlStateNormal)];
+             stateLbl.text = [LangSwitcher switchLang:@"币已转入您的钱包账户，交易完成" key:nil];
+        }
+        [stateBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [stateBtn setImage:kImage(@"已完成-详情") forState:(UIControlStateNormal)];
+        }];
+        
+       
+        
+        
+    }
+}
 
 @end

@@ -11,6 +11,10 @@
 
 #define WIDTH (SCREEN_WIDTH - kWidth(30))
 @implementation FinancialDetailsView
+{
+    UILabel *nameLbl;
+    UILabel *stateLbl;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -34,13 +38,13 @@
         
         
         
-        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, kHeight(35), WIDTH, kHeight(25)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:[UIColor blackColor]];
+        nameLbl = [UILabel labelWithFrame:CGRectMake(0, kHeight(35), WIDTH, kHeight(25)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:[UIColor blackColor]];
         nameLbl.text = [LangSwitcher switchLang:@"币币加BTC第一期" key:nil];
         [backView addSubview:nameLbl];
         
         
         
-        UILabel *stateLbl = [UILabel labelWithFrame:CGRectMake(0, nameLbl.yy + kHeight(10), WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#F59218")];
+        stateLbl = [UILabel labelWithFrame:CGRectMake(0, nameLbl.yy + kHeight(10), WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#F59218")];
         stateLbl.text = [LangSwitcher switchLang:@"购买成功" key:nil];
         [backView addSubview:stateLbl];
         
@@ -53,7 +57,7 @@
         
         
         NSArray *nameArray = @[@"合约编号",@"交易时间",@"产品期限",@"年收益率",@"购买金额",@"总收益",@"起息时间",@"到期时间"];
-        NSArray *contentArray = @[@"208900232346890",@"018-12-12 11:03:22",@"24个月",@"10.4%",@"1000.009BTC",@"100.009BTC",@"2018-12-12",@"2018-12-12"];
+//        NSArray *contentArray = @[@"208900232346890",@"018-12-12 11:03:22",@"24个月",@"10.4%",@"1000.009BTC",@"100.009BTC",@"2018-12-12",@"2018-12-12"];
         for (int i = 0; i < nameArray.count; i ++) {
             
             
@@ -70,7 +74,8 @@
             
             
             UILabel *contentLbl = [UILabel labelWithFrame:CGRectMake(nameLabel.xx + 10, 0, WIDTH  - kWidth(29) - nameLabel.xx - 10, kHeight(20)) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#333333")];
-            contentLbl.text = contentArray[i];
+//            contentLbl.text = contentArray[i];
+            contentLbl.tag = 100 + i;
             [bottomIV addSubview:contentLbl];
             
             
@@ -83,6 +88,70 @@
         
     }
     return self;
+}
+
+-(void)setModel:(PosMyInvestmentModel *)model
+{
+    
+    switch ([LangSwitcher currentLangType]) {
+        case LangTypeEnglish:
+            nameLbl.text = model.productInfo[@"nameEn"];
+
+            break;
+
+        case LangTypeSimple:
+            nameLbl.text = model.productInfo[@"nameZhCn"];
+
+            break;
+            
+        default:
+            break;
+    }
+    if ([model.status integerValue] == 0) {
+        
+        stateLbl.text = [LangSwitcher switchLang:@"已申购" key:nil];
+    }else if ([model.status integerValue] == 1)
+    {
+        
+        stateLbl.text = [LangSwitcher switchLang:@"已持有" key:nil];
+        
+    }else if ([model.status integerValue] == 2)
+    {
+        
+        stateLbl.text = [LangSwitcher switchLang:@"已回款" key:nil];
+    }else if ([model.status integerValue] == 3)
+    {
+        stateLbl.text = [LangSwitcher switchLang:@"募集失败" key:nil];
+    }
+    UILabel *label1 = [self viewWithTag:100];
+    UILabel *label2 = [self viewWithTag:101];
+    UILabel *label3 = [self viewWithTag:102];
+    UILabel *label4 = [self viewWithTag:103];
+    UILabel *label5 = [self viewWithTag:104];
+    UILabel *label6 = [self viewWithTag:105];
+    UILabel *label7 = [self viewWithTag:106];
+    UILabel *label8 = [self viewWithTag:107];
+    
+    label1.text = model.code;
+    label2.text = [model.createDatetime convertToDetailDate];
+    
+    label3.text = [NSString stringWithFormat:@"%@%@",model.productInfo[@"limitDays"],[LangSwitcher switchLang:@"天" key:nil]];
+    
+    NSString *str = [NSString stringWithFormat:@"%.2f%%",[model.productInfo[@"expectYield"] floatValue]*100];
+
+    label4.text = str;
+    
+    NSString *avmount = [CoinUtil convertToRealCoin1:model.investAmount coin:model.productInfo[@"symbol"]];
+    NSString *shareStr2 = [NSString stringWithFormat:@"%@%@",avmount,model.productInfo[@"symbol"]];
+    label5.text = shareStr2;
+    
+    NSString *expectIncome = [CoinUtil convertToRealCoin2:model.expectIncome setScale:8 coin:model.productInfo[@"symbol"]];
+    label6.text = [NSString stringWithFormat:@"%@%@",expectIncome,model.productInfo[@"symbol"]];
+    
+    label7.text = [model.productInfo[@"incomeDatetime"] convertToDetailDate];
+    
+    label8.text = [model.productInfo[@"arriveDatetime"] convertToDetailDate];
+//    @"合约编号",@"交易时间",@"产品期限",@"年收益率",@"购买金额",@"总收益",@"起息时间",@"到期时间"
 }
 
 

@@ -73,6 +73,13 @@
             case 0:
             {
                 self.phoneTf = textField;
+                if ([TLUser isBlankString:[TLUser user].mobile] == NO) {
+                     self.phoneTf.text = [TLUser user].mobile;
+                }else
+                {
+                     self.phoneTf.text = [TLUser user].email;
+                }
+                self.phoneTf.enabled = YES;
             }
                 break;
             case 1:
@@ -126,7 +133,15 @@
     }
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-    http.code = CAPTCHA_CODE;
+    if ([TLUser isBlankString:[TLUser user].mobile] == NO) {
+        http.code = CAPTCHA_CODE;
+        http.parameters[@"mobile"] = self.phoneTf.text;
+    }else
+    {
+        http.code = @"630093";
+        http.parameters[@"email"] = self.phoneTf.text;
+    }
+    
     http.parameters[@"client"] = @"ios";
 //    http.parameters[@"sessionId"] = sessionId;
     if ([self.titleString isEqualToString:@"修改登录密码"]) {
@@ -143,7 +158,7 @@
     
     
     
-    http.parameters[@"mobile"] = self.phoneTf.text;
+    
 //    http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];
     
     [http postWithSuccess:^(id responseObject) {
@@ -182,6 +197,8 @@
     http.showView = self.view;
     
     if ([self.titleString isEqualToString:@"修改登录密码"]) {
+        
+        
         http.code = USER_FIND_PWD_CODE;
         http.parameters[@"mobile"] = self.phoneTf.text;
         http.parameters[@"smsCaptcha"] = self.codeTf.text;
@@ -189,6 +206,19 @@
     }
     if ([self.titleString isEqualToString:@"设置交易密码"]) {
         http.code = @"805066";
+        
+        if (self.pwdTf.text.length != 6) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
+            return;
+        }
+        NSString *regex = @"[0-9]";
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+        
+        if ([predicate evaluateWithObject:self.pwdTf.text] == NO) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
+            return;
+        }
         
         http.parameters[@"userId"] =[TLUser user].userId;
 //        http.parameters[@"mobile"] = self.phoneTf.text;
@@ -198,11 +228,19 @@
     
     if ([self.titleString isEqualToString:@"修改交易密码"]) {
         http.code = @"805067";
+        if (self.pwdTf.text.length != 6) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
+            return;
+        }
+
+        if ([self isNumber:self.pwdTf.text] == NO) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
+            return;
+        }
         
         http.parameters[@"userId"] =[TLUser user].userId;
-        //        http.parameters[@"mobile"] = self.phoneTf.text;
         http.parameters[@"smsCaptcha"] = self.codeTf.text;
-        http.parameters[@"newLoginPwd"] = self.pwdTf.text;
+        http.parameters[@"newTradePwd"] = self.pwdTf.text;
     }
     
     
@@ -216,6 +254,24 @@
 
     }];
 }
+
+- (BOOL)isNumber:(NSString *)strValue
+{
+    if (strValue == nil || [strValue length] <= 0)
+    {
+        return NO;
+    }
+    
+    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet];
+    NSString *filtered = [[strValue componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    
+    if (![strValue isEqualToString:filtered])
+    {
+        return NO;
+    }
+    return YES;
+}
+
 
 
 - (void)requesUserInfoWithResponseObject {

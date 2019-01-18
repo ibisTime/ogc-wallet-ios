@@ -11,6 +11,7 @@
 @implementation InvestmentBuyCell
 {
     BOOL isHaveDian;
+    UILabel *poundageLbl;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -74,19 +75,26 @@
         [numberBox addSubview:numberunit];
         
         
-        UILabel *poundageLbl = [UILabel labelWithFrame:CGRectMake(15, 140,SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
-        NSString *poundage = [LangSwitcher switchLang:@"交易手续费：" key:nil];
-        NSString *poundagePrice = [LangSwitcher switchLang:@"0.5%" key:nil];
-        NSString *poundageAll = [NSString stringWithFormat:@"%@%@",poundage,poundagePrice];
-        NSMutableAttributedString *poundageAttrStr = [[NSMutableAttributedString alloc] initWithString:poundageAll];
-        [poundageAttrStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(poundage.length,poundageAll.length - poundage.length)];
-        poundageLbl.attributedText = poundageAttrStr;
+        poundageLbl = [UILabel labelWithFrame:CGRectMake(15, 140,SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
+        
         [self addSubview:poundageLbl];
         
     }
     return self;
 }
 
+-(void)setRate:(NSString *)Rate
+{
+    if ([Rate floatValue] > 0) {
+        NSString *poundage = [LangSwitcher switchLang:@"交易手续费：" key:nil];
+        NSString *poundagePrice = [NSString stringWithFormat:@"%@%%",Rate];
+        NSString *poundageAll = [NSString stringWithFormat:@"%@%@",poundage,poundagePrice];
+        NSMutableAttributedString *poundageAttrStr = [[NSMutableAttributedString alloc] initWithString:poundageAll];
+        [poundageAttrStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(poundage.length,poundageAll.length - poundage.length)];
+        poundageLbl.attributedText = poundageAttrStr;
+    }
+    
+}
 
 -(void)amounttextFieldTextDidChangeOneCI:(NSNotification *)notification
 {

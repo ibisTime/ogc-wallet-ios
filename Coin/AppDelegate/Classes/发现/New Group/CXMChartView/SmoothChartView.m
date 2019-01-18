@@ -145,6 +145,7 @@
     
     float height= LABLE_HEIGHT/arrY.count;
 
+
     for (NSInteger i=0; i<6; i++) {
         
         UILabel *label = (UILabel*)[self viewWithTag:4000+i];
@@ -163,18 +164,12 @@
         layer6.textColor = kHexColor(@"#B3B3B3");
         [self addSubview:layer6];
 
-//        CATextLayer *layer6 = [CATextLayer layer];
-//        layer6.frame = CGRectMake(-30,LABLE_HEIGHT-(i*height)-6, 25, 20);
-//        layer6.string = [NSString stringWithFormat:@"%@",_arrY[i]];
-//        layer6.fontSize = 12;
-//        layer6.alignmentMode = kCAAlignmentRight;
-//        layer6.foregroundColor = [[UIColor colorFromHexCode:@"999999"] CGColor];
-//        [layerY addSublayer:layer6];
+
     
     }
 }
 //画图
--(void)drawSmoothViewWithArrayX:(NSArray*)pathX andArrayY:(NSArray*)pathY andScaleX:(float)X{
+-(void)drawSmoothViewWithArrayX:(NSArray*)pathX andArrayY:(NSArray*)pathY andScaleX:(float)X andScalemax:(float)max andScalemin:(float)min{
 
     [_bottomLayer removeFromSuperlayer];
     [self makeBottomlayer];
@@ -196,16 +191,15 @@
     
     
     //X轴和Y轴的倍率
-    CGFloat BLX = (LABLE_WIDTH-15)/X;
-    
-    CGFloat BLY = LABLE_HEIGHT/5*4/[[_arrY lastObject] floatValue];
+//    CGFloat BLX = (LABLE_WIDTH-15)/X;
+//
+    CGFloat BLY = LABLE_HEIGHT/5*4/X;
     
     for (int i= 0; i< pathY.count; i++) {
         
-        CGFloat X = 10 + i % pathY.count * (SCREEN_WIDTH - 75)/pathY.count;
-        CGFloat Y = LABLE_HEIGHT/5*4 - [pathY[i] floatValue]*BLY;//(VIEW_HEIGHT - LABLE_HEIGHT)/2是指图表在背景大图的的height
-        
-        //NSLog(@"space==%lf",VIEW_HEIGHT - LABLE_HEIGHT);
+        CGFloat X = 15 + i % pathY.count * (SCREEN_WIDTH - 80)/pathY.count;
+        CGFloat Y = BLY * (max - [pathY[i] floatValue]);//(VIEW_HEIGHT - LABLE_HEIGHT)/2是指图表在背景大图的的height
+
         point = CGPointMake(X, Y);
 
         [_pointArr addObject:[NSValue valueWithCGPoint:point]];
@@ -249,7 +243,7 @@
     [gradientLayer removeFromSuperlayer];
     
     gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, LABLE_WIDTH - 45, 149 - LABLE_HEIGHT/5);
+    gradientLayer.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 80), 149 - LABLE_HEIGHT/5);
     gradientLayer.colors =@[(__bridge id)[UIColor colorWithRed:151/255.0 green:64/255.0 blue:230/255.0 alpha:0.4].CGColor,(__bridge id)[UIColor colorWithRed:240/255.0 green:252/255.0 blue:254/255.0 alpha:0.4].CGColor];
     
 //    151,64,230
@@ -258,7 +252,7 @@
     
    // NSLog(@"Y====%lf",[[_pointArr firstObject] CGPointValue].y);
 
-    CGPoint firstPoint = CGPointMake([[_pointArr firstObject] CGPointValue].x,LABLE_HEIGHT - LABLE_HEIGHT/5) ;
+    CGPoint firstPoint = CGPointMake([[_pointArr firstObject] CGPointValue].x ,LABLE_HEIGHT - LABLE_HEIGHT/5) ;
 
     CGPoint lastPoint =  [[_pointArr lastObject] CGPointValue];
     
@@ -272,7 +266,7 @@
     gradientPath = [gradientPath smoothedPathWithGranularity:20];
     
     CGPoint endPoint = lastPoint;
-    endPoint = CGPointMake(endPoint.x , SCREEN_WIDTH - 30 - 45);
+    endPoint = CGPointMake(endPoint.x , (SCREEN_WIDTH - 80));
     [gradientPath addLineToPoint:endPoint];
     
     CAShapeLayer *arc = [CAShapeLayer layer];

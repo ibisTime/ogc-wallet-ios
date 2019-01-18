@@ -71,7 +71,8 @@
 
     [self.view addSubview:self.tableView];
 
-    [self getMyCurrencyList];
+    [self getMyCurrencyList:@"BTC"];
+//    [self totalAmount:@"BTC"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"LOADDATA" object:nil];
     [self navigativeView];
@@ -109,18 +110,20 @@
     [UIView animateWithDuration:0.3 animations:^{
         lineView.frame = CGRectMake(SCREEN_WIDTH/2/2 - 27.5 + (sender.tag - 100)*SCREEN_WIDTH/2 , 240 - 64 + 45 - 3, 55, 3);
     }];
+    
+    if (selectBtn.tag == 100) {
+        
+        [self getMyCurrencyList:@"BTC"];
+//        [self totalAmount:@"BTC"];
+    }else
+    {
+        [self getMyCurrencyList:@"USDT"];
+//        [self totalAmount:@"USDT"];
+    }
 }
 
 -(void)navigativeView
 {
-//    self.title = [LangSwitcher switchLang:@"量化理财" key:nil];
-
-//    UILabel *nameLable = [[UILabel alloc]init];
-//    nameLable.text = [LangSwitcher switchLang:@"币加宝" key:nil];
-//    nameLable.textAlignment = NSTextAlignmentCenter;
-//    nameLable.font = Font(18);
-//    nameLable.textColor = [UIColor whiteColor];
-//    self.navigationItem.titleView = nameLable;
     self.titleText.text = [LangSwitcher switchLang:@"币加宝" key:nil];
     self.titleText.font = Font(18);
     self.titleText.textColor = kWhiteColor;
@@ -145,8 +148,16 @@
 
 #pragma mark -- 接收到通知
 - (void)InfoNotificationAction:(NSNotification *)notification{
-    [self getMyCurrencyList];
-    [self totalAmount];
+    
+    
+    if (selectBtn.tag == 100) {
+        [self getMyCurrencyList:@"BTC"];
+//        [self totalAmount:@"BTC"];
+    }else
+    {
+        [self getMyCurrencyList:@"USDT"];
+//        [self totalAmount:@"USDT"];
+    }
 }
 
 #pragma mark -- 删除通知
@@ -156,12 +167,16 @@
 }
 
 //总收益
--(void)totalAmount{
+-(void)totalAmount:(NSString *)symbol{
+    
+    self.headView.symbol = symbol;
+    
     TLNetworking *http = [TLNetworking new];
-    http.code = @"625527";
+    http.code = @"625529";
     http.showView = self.view;
+    http.parameters[@"symbol"] = symbol;
     http.parameters[@"userId"]  = [TLUser user].userId;
-
+    
     [http postWithSuccess:^(id responseObject) {
 
         self.dataDic = responseObject[@"data"];
@@ -171,60 +186,106 @@
     } failure:^(NSError *error) {
 
     }];
+    
+    
+    TLNetworking *http1 = [TLNetworking new];
+    http1.code = @"625527";
+    http1.showView = self.view;
+    http1.parameters[@"userId"]  = [TLUser user].userId;
+    
+    [http1 postWithSuccess:^(id responseObject) {
+        
+        self.headView.dataDic1 = responseObject[@"data"];
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+    
 }
 
-- (void)getMyCurrencyList {
+- (void)getMyCurrencyList:(NSString *)symbol {
 
     CoinWeakSelf;
 
-    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-
-    helper.code = @"625510";
-    helper.parameters[@"userId"] = [TLUser user].userId;
-    helper.parameters[@"status"] = @"appDisplay";
-    helper.isCurrency = YES;
-    helper.tableView = self.tableView;
-    [helper modelClass:[TLtakeMoneyModel class]];
-    [self.tableView addRefreshAction:^{
-//        [weakSelf totalAmount];
-        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-            //去除没有的币种
-            weakSelf.Moneys = objs;
-            weakSelf.tableView.Moneys = objs;
-            [weakSelf.tableView reloadData_tl];
-
-        } failure:^(NSError *error) {
-
-        }];
-
-
-
-    }];
-
-    [self.tableView beginRefreshing];
-
-    [self.tableView addLoadMoreAction:^{
-        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-
-            if (weakSelf.tl_placeholderView.superview != nil) {
-
-                [weakSelf removePlaceholderView];
+    
+    [CoinUtil refreshOpenCoinList:^{
+        
+        TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+        
+        helper.code = @"625510";
+        helper.parameters[@"userId"] = [TLUser user].userId;
+        helper.parameters[@"status"] = @"appDisplay";
+        helper.parameters[@"symbol"] = symbol;
+        helper.isCurrency = YES;
+        helper.tableView = self.tableView;
+        [helper modelClass:[TLtakeMoneyModel class]];
+        
+        
+        
+        [self.tableView addRefreshAction:^{
+            //        [weakSelf totalAmount];
+            if (selectBtn.tag == 100) {
+                
+                [weakSelf totalAmount:@"BTC"];
+            }else
+            {
+                
+                [weakSelf totalAmount:@"USDT"];
             }
-
-
-            weakSelf.Moneys = objs;
-            weakSelf.tableView.Moneys = objs;
-            //        weakSelf.tableView.bills = objs;
-            [weakSelf.tableView reloadData_tl];
-
-        } failure:^(NSError *error) {
-
-            [weakSelf addPlaceholderView];
-
+            //        [self totalAmount:@"BTC"];
+            [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+                //去除没有的币种
+                weakSelf.Moneys = objs;
+                weakSelf.tableView.Moneys = objs;
+                [weakSelf.tableView reloadData_tl];
+                
+            } failure:^(NSError *error) {
+                [weakSelf.tableView endRefreshHeader];
+            }];
+            
+            
+            
         }];
+        
+        
+        
+        
+        [self.tableView beginRefreshing];
+        
+        [self.tableView addLoadMoreAction:^{
+            [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+                
+                if (weakSelf.tl_placeholderView.superview != nil) {
+                    
+                    [weakSelf removePlaceholderView];
+                }
+                
+                
+                weakSelf.Moneys = objs;
+                weakSelf.tableView.Moneys = objs;
+                //        weakSelf.tableView.bills = objs;
+                [weakSelf.tableView reloadData_tl];
+                
+            } failure:^(NSError *error) {
+                
+                [weakSelf addPlaceholderView];
+                
+            }];
+        }];
+        
+        [self.tableView endRefreshingWithNoMoreData_tl];
+        
+        
+    } failure:^{
+        
     }];
-
-    [self.tableView endRefreshingWithNoMoreData_tl];
+    
+    
+    
 
 }
 
@@ -297,7 +358,7 @@
     
     if (!_tableView) {
         
-        _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 240 - 64 + kNavigationBarHeight + 45, SCREEN_WIDTH, SCREEN_HEIGHT - (240 - 64 + kNavigationBarHeight - 45)) style:UITableViewStylePlain];
+        _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 240 - 64 + kNavigationBarHeight + 45, SCREEN_WIDTH, SCREEN_HEIGHT - (240 - 64 + kNavigationBarHeight - 45) - kTabBarHeight) style:UITableViewStylePlain];
 
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;

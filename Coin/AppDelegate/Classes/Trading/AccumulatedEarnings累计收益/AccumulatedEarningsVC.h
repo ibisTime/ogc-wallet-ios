@@ -10,4 +10,6 @@
 
 @interface AccumulatedEarningsVC : TLBaseVC
 
+@property (nonatomic , copy)NSString *symbol;
+
 @end

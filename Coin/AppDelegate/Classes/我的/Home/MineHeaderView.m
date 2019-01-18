@@ -151,7 +151,12 @@
     //手机号
     
     self.mobileLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:14.0];
-    self.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].mobile];
+    if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
+        self.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].email];
+    }else
+    {
+        self.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].mobile];
+    }
     [self addSubview:self.mobileLbl];
     [self.mobileLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         

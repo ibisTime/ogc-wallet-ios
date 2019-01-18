@@ -12,7 +12,7 @@
 #import "PosMyInvestmentHeadView.h"
 #import "AccumulatedEarningsVC.h"
 #import "FinancialDetailsVC.h"
-@interface PosMyInvestmentDetailsVC ()<RefreshDelegate>
+@interface PosMyInvestmentDetailsVC ()<RefreshDelegate,PosMyInvestmentDelegate>
 {
     PosMyInvestmentHeadView *headView;
 }
@@ -53,7 +53,7 @@
     self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData:@[@"0",@"1",@"2"]];
-    [self totalAmount];
+    
 }
 
 - (void)initTableView {
@@ -65,14 +65,29 @@
     headView = [[PosMyInvestmentHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210)];
     headView.backgroundColor = kTabbarColor;
     headView.dataDic = self.dataDic;
-    [headView.earningsButton addTarget:self action:@selector(earningsButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
-    [headView.backButton addTarget:self action:@selector(earningsButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
+    headView.delegate = self;
     self.tableView.tableHeaderView = headView;
     [self.view addSubview:self.tableView];
 
     
 
 }
+
+-(void)PosMyInvestmentButton:(NSInteger)tag
+{
+    if (tag == 0) {
+        AccumulatedEarningsVC *vc = [AccumulatedEarningsVC new];
+        vc.symbol = @"BTC";
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else
+    {
+        AccumulatedEarningsVC *vc = [AccumulatedEarningsVC new];
+        vc.symbol = @"USDT";
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 
 -(void)totalAmount
 {
@@ -98,16 +113,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-//累计收益
--(void)earningsButtonClick
-{
-    AccumulatedEarningsVC *vc = [AccumulatedEarningsVC new];
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FinancialDetailsVC *vc = [FinancialDetailsVC new];
+    vc.model = self.model[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -187,6 +197,9 @@
     [helper modelClass:[PosMyInvestmentModel class]];
 
     [self.tableView addRefreshAction:^{
+        
+        [weakSelf totalAmount];
+        
         [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
             NSMutableArray <PosMyInvestmentModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
             [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol PosMyInvestmentDelegate <NSObject>
+
+-(void)PosMyInvestmentButton:(NSInteger )tag;
+
+@end
 
 @interface PosMyInvestmentHeadView : UIView
+
+@property (nonatomic, assign) id <PosMyInvestmentDelegate> delegate;
 
 @property (nonatomic , strong)UIButton *earningsButton;
 

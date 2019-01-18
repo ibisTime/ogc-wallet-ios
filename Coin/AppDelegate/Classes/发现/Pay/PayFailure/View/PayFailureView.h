@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OrderRecordModel.h"
 @interface PayFailureView : UIView
-
+@property (nonatomic , strong)OrderRecordModel *models;
 @end

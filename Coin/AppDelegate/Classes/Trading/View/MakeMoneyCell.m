@@ -175,13 +175,13 @@
 
     NSString *avilAmount = [CoinUtil convertToRealCoin1:model.avilAmount coin:coin.symbol];
 
-    if ([avilAmount floatValue] > 10000) {
-        label3.text = [NSString stringWithFormat:@"%.2f%@%@",[avilAmount floatValue]/10000,model.symbol,[LangSwitcher switchLang:@"万" key:nil]];
-    }
-    else
-    {
+//    if ([avilAmount floatValue] > 10000) {
+//        label3.text = [NSString stringWithFormat:@"%.2f%@%@",[avilAmount floatValue]/10000,model.symbol,[LangSwitcher switchLang:@"万" key:nil]];
+//    }
+//    else
+//    {
         label3.text = [NSString stringWithFormat:@"%@%@",avilAmount,model.symbol];
-    }
+//    }
 
 
 

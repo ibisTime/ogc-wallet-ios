@@ -10,7 +10,7 @@
 
 @interface PosMyInvestmentModel : NSObject
 
-
+@property (nonatomic , copy)NSString *limitDays;
 @property (nonatomic , copy)NSString *status;
 @property (nonatomic , copy)NSString *incomeBtc;
 @property (nonatomic , copy)NSString *investAmountBtc;

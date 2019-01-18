@@ -31,6 +31,6 @@
  *  pathY :纵坐标数据源
  *  X:X轴需要切割的份数
  */
--(void)drawSmoothViewWithArrayX:(NSArray*)pathX andArrayY:(NSArray*)pathY andScaleX:(float)X;
+-(void)drawSmoothViewWithArrayX:(NSArray*)pathX andArrayY:(NSArray*)pathY andScaleX:(float)X andScalemax:(float)max andScalemin:(float)min;
 
 @end
