@@ -99,6 +99,12 @@
                 break;
             case 2:
             {
+                if ([self.titleString isEqualToString:@"设置交易密码"]) {
+                    textField.keyboardType = UIKeyboardTypeNumberPad;
+                }
+                if ([self.titleString isEqualToString:@"修改交易密码"]) {
+                    textField.keyboardType = UIKeyboardTypeNumberPad;
+                }
                 self.pwdTf = textField;
                 textField.secureTextEntry = YES;
                 
@@ -106,6 +112,12 @@
                 break;
             case 3:
             {
+                if ([self.titleString isEqualToString:@"设置交易密码"]) {
+                    textField.keyboardType = UIKeyboardTypeNumberPad;
+                }
+                if ([self.titleString isEqualToString:@"修改交易密码"]) {
+                    textField.keyboardType = UIKeyboardTypeNumberPad;
+                }
                 self.rePwdTf = textField;
                 textField.secureTextEntry = YES;
                 
@@ -211,14 +223,14 @@
             [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
             return;
         }
-        NSString *regex = @"[0-9]";
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-        
-        if ([predicate evaluateWithObject:self.pwdTf.text] == NO) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
-            return;
-        }
+//        NSString *regex = @"[0-9]";
+//
+//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//
+//        if ([predicate evaluateWithObject:self.pwdTf.text] == YES) {
+//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
+//            return;
+//        }
         
         http.parameters[@"userId"] =[TLUser user].userId;
 //        http.parameters[@"mobile"] = self.phoneTf.text;
@@ -262,7 +274,7 @@
         return NO;
     }
     
-    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet];
+    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789"] invertedSet];
     NSString *filtered = [[strValue componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
     
     if (![strValue isEqualToString:filtered])

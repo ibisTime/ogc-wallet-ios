@@ -85,7 +85,8 @@
         cell.nameLabel.text = @"收款方式";
         if ([TLUser isBlankString:self.PaymentMethods] == YES) {
             [cell.payBtn setTitle:@"请选择收款方式" forState:(UIControlStateNormal)];
-        }else
+        }
+        else
         {
             NSString *number;
             if (self.PaymentMethods.length > 4) {

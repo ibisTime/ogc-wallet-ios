@@ -60,11 +60,17 @@
         [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"支付宝支付") forState:(UIControlStateNormal)];
         }];
-    }else
+    }else if([payWayDic[@"name"] isEqualToString:@"支付宝"])
     {
         [_payBtn setTitle:[LangSwitcher switchLang:@"银行卡" key:nil] forState:(UIControlStateNormal)];
         [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"银行卡支付") forState:(UIControlStateNormal)];
+        }];
+    }else
+    {
+        [_payBtn setTitle:[LangSwitcher switchLang:@"" key:nil] forState:(UIControlStateNormal)];
+        [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"") forState:(UIControlStateNormal)];
         }];
     }
     

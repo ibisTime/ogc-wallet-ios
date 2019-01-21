@@ -182,6 +182,9 @@
         [_bottomBtn setTitle:[LangSwitcher switchLang:@"买入" key:nil] forState:(UIControlStateNormal)];
         textField1.text = @"";
         textField2.text = @"";
+        self.tableView.price =  buyPrice;
+        self.tableView.Rate = buyFeeRate;
+        
     }else
     {
         indexBtnTag = index;
@@ -189,6 +192,8 @@
         [_bottomBtn setTitle:[LangSwitcher switchLang:@"卖出" key:nil] forState:(UIControlStateNormal)];
         textField1.text = @"";
         textField2.text = @"";
+        self.tableView.price =  sellerPrice;
+        self.tableView.Rate = sellerFeeRate;
     }
     self.tableView.indexBtnTag = indexBtnTag;
     [self.tableView reloadData];
@@ -332,9 +337,12 @@
     [http postWithSuccess:^(id responseObject) {
         
         self.payWayArray = responseObject[@"data"];
-        self.payWayDic = self.payWayArray[0];
+        if (self.payWayArray.count > 0) {
+            self.payWayDic = self.payWayArray[0];
+        }
         self.tableView.payWayDic = self.payWayDic;
         [self.tableView reloadData];
+        
     } failure:^(NSError *error) {
         
     }];
@@ -346,6 +354,7 @@
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
         TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
         vc.titleString = @"设置交易密码";
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else
     {
@@ -386,8 +395,8 @@
         NSMutableArray *arrayX = [NSMutableArray array];
         NSMutableArray *arrayY = [NSMutableArray array];
         if (_models.count == 1) {
-            [arrayX addObjectsFromArray:@[@"1",@"2",@"3"]];
-            [arrayY addObjectsFromArray:@[_models[0].price,_models[0].price,_models[0].price]];
+            [arrayX addObjectsFromArray:@[@"1",@"2"]];
+            [arrayY addObjectsFromArray:@[_models[0].price,_models[0].price]];
         }else
         {
             
