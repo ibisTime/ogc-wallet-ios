@@ -12,4 +12,6 @@
 
 @property (nonatomic, copy) NSString *coin;
 
+@property (nonatomic , copy)NSString *titleString;
+
 @end

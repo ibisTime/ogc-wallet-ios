@@ -9,7 +9,6 @@
 #import "TLTransfromVC.h"
 #import "CustomLayoutWallet.h"
 #import "THTranstionCollectionView.h"
-#import "TLPwdRelatedVC.h"
 #import "MnemonicUtil.h"
 #import "utxoModel.h"
 
@@ -238,11 +237,11 @@ typedef enum : NSUInteger {
                     return;
                 }
             }
-            [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入资金密码" key:nil]
+            [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
                                 msg:@""
                          confirmMsg:[LangSwitcher switchLang:@"确定" key:nil]
                           cancleMsg:[LangSwitcher switchLang:@"取消" key:nil]
-                        placeHolder:[LangSwitcher switchLang:@"请输入资金密码" key:nil]
+                        placeHolder:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
                               maker:self cancle:^(UIAlertAction *action)
             {
             } confirm:^(UIAlertAction *action, UITextField *textField) {

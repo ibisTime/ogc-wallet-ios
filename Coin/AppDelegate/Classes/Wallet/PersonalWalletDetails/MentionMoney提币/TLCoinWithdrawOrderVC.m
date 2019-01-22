@@ -64,7 +64,7 @@
     
     [super viewDidLoad];
     self.isFirst  = YES;
-    self.title = [LangSwitcher switchLang:@"提币订单" key:nil];
+    self.title = self.titleString;
     
     TLTableView *tableView = [TLTableView tableViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)
                                                     delegate:self dataSource:self];

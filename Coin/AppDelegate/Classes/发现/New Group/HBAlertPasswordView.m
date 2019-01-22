@@ -74,7 +74,7 @@
         [self addSubview:priceLabel];
         
         UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(0, priceLabel.yy + 30, BGViewW, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
-        promptLabel.text = @"请输入资金密码";
+        promptLabel.text = @"请输入交易密码";
         [self addSubview:promptLabel];
 //        UIView *downLineView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - kButtonHeight - 1, BGViewW, 1)];
 //        downLineView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];

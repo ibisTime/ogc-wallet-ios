@@ -55,7 +55,7 @@
 - (void)initSubviews {
     
     
-    NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请输入密码"];
+    NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请确认密码"];
     for (int i = 0 ; i < 4; i ++) {
         UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30, 50)];
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
@@ -79,6 +79,7 @@
                 {
                      self.phoneTf.text = [TLUser user].email;
                 }
+                
                 self.phoneTf.enabled = YES;
             }
                 break;
@@ -94,7 +95,7 @@
                 [self.view addSubview:codeBtn];
                 
                 textField.frame = CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30 - codeBtn.width - 10, 50);
-                
+                textField.keyboardType = UIKeyboardTypeNumberPad;
             }
                 break;
             case 2:
@@ -210,6 +211,10 @@
     
     if ([self.titleString isEqualToString:@"修改登录密码"]) {
         
+        if (self.pwdTf.text.length < 6 || self.pwdTf.text.length > 16) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为6~16个字符或数字组成" key:nil]];
+            return;
+        }
         
         http.code = USER_FIND_PWD_CODE;
         http.parameters[@"mobile"] = self.phoneTf.text;
@@ -223,17 +228,11 @@
             [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
             return;
         }
-//        NSString *regex = @"[0-9]";
-//
-//        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-//
-//        if ([predicate evaluateWithObject:self.pwdTf.text] == YES) {
-//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
-//            return;
-//        }
-        
+        if ([self isNumber:self.pwdTf.text] == NO) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"支付密码为6位数数字" key:nil]];
+            return;
+        }
         http.parameters[@"userId"] =[TLUser user].userId;
-//        http.parameters[@"mobile"] = self.phoneTf.text;
         http.parameters[@"smsCaptcha"] = self.codeTf.text;
         http.parameters[@"tradePwd"] = self.pwdTf.text;
     }

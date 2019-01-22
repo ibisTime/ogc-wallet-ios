@@ -77,12 +77,13 @@ static NSString *identifierCell = @"SettingCell";
             {
                 cell.arrowHidden = YES;
                 cell.rightLabel.hidden = NO;
-                cell.rightLabel.text = [LangSwitcher switchLang:@"已完成" key:nil];
+                cell.rightLabel.text = [LangSwitcher switchLang:@"已认证" key:nil];
             }
             else
             {
-                cell.rightLabel.hidden = YES;
-                cell.arrowHidden = NO;
+                cell.arrowHidden = YES;
+                cell.rightLabel.hidden = NO;
+                cell.rightLabel.text = [LangSwitcher switchLang:@"未认证" key:nil];
             }
         }
         if (indexPath.row == 2) {

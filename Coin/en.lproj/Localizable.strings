@@ -49,7 +49,7 @@
 "Theia星球" = "Planet Theia";
 "余币宝" = "Yubibao";
 "实名认证" = "real-name authentication";
-"实名认证成功, 请设置资金密码" = "Success of real-name authentication , Please set up the fund password";
+"实名认证成功, 请设置交易密码" = "Success of real-name authentication , Please set up the fund password";
 "实名认证成功" = "Success of real-name authentication";
 "全部" = "all";
 //"冲币" = "";
@@ -81,7 +81,7 @@
 "转账成功" = "Transfer success";
 "转账失败" = "Transfer failure";
 "粘贴内容为空" = "Paste content is empty";
-"请输入资金密码" = "Enter the capital cipher";
+"请输入交易密码" = "Enter the capital cipher";
 "提币申请提交成功" = "The successful submission of the application for the currency";
 "内部转账成功" = "Internal transfer success";
 "可用余额" = "Available balance";
@@ -222,9 +222,9 @@
 
 "暂无地址" = "No address";
 "请输入标签" = "Please enter label";
-"向认证账户提现将不再输入资金密码、谷歌验证码" = "Withdrawal to the authentication account will no longer enter the fund password, Google verification code";
+"向认证账户提现将不再输入交易密码、谷歌验证码" = "Withdrawal to the authentication account will no longer enter the fund password, Google verification code";
 "账户与安全" = "Account and Privacy";
-"资金密码" = "Capital Password";
+"交易密码" = "Capital Password";
 "语言设置" = "Language Settings";
 "退出登录" = "Log out";
 "退出登录?" = "Log out?";
@@ -310,9 +310,9 @@
 "每人获得金额随机" = "Each user will get random allocated amount";
 //"持有总量" = "total";
 "暂无可用货币" = "No currency available";
-"设置资金密码" = "set the funding password";
-"输入资金密码" = "Please input the funding password";
-"修改资金密码" = "set the fund password";
+"设置交易密码" = "set the funding password";
+"输入交易密码" = "Please input the funding password";
+"修改交易密码" = "set the fund password";
 "资产" = "Assets";
 "闪兑" = "Instant swap";
 "一键划转" = "Smart transfer";
@@ -397,7 +397,7 @@
 "谷歌验证码" = "Verification code";
 
 "将该账户设置为认证账户" = "Set this account as an authentication account";
-"向认证账户提现不再输入资金密码、谷歌验证码" = "withdraw the funds to the authentication account and no longer input the fund password, Google verification code";
+"向认证账户提现不再输入交易密码、谷歌验证码" = "withdraw the funds to the authentication account and no longer input the fund password, Google verification code";
 "修改邮箱" = "modify the mailbox";
 "绑定成功" = "binding success";
 "邮箱验证码" = "mailbox verification code";
@@ -508,8 +508,7 @@
 "请输入手机号码" = "Please input your mobile number";
 "修改昵称" =  "NickName";
 "请输入昵称" = "Please input a nickname";
-"资金密码不能低于6位数" = "The fund password cannot be lower than 6 digits
-";
+"交易密码不能低于6位数" = "The fund password cannot be lower than 6 digits";
 "提示" = "tip";
 "真实姓名" = "real name";
 "内容" = "content";
@@ -553,7 +552,7 @@
 
 "红包退回" = "Gift retrieved";
 "抢红包" = "Gift received";
-"资金密码错误" = "Money Password Error";
+"交易密码错误" = "Money Password Error";
 "币种列表" = "Currency";
 //"抢红包" = "Grab a red envelope";
 "请输入交易密码" = "Please enter the trading password.";
@@ -615,7 +614,7 @@
 "新钱包创建成功" = "New wallet created successfully";
 "烈建议您在使用钱包前做好备份，导出[助记词]存储到安全的地方。然后开始尝试转入小额资金启用" = "we highly recommend your write the Mnemonic words(Backup Phrase)on paper and keep it in a safe place,anynoe get it can access or spend your assets.Also get start with a small amount of assents";
 "备份钱包" = "Backup Now";
-"请输入资金密码" = "Please inPut Capital password";
+"请输入交易密码" = "Please inPut Capital password";
 "如何备份钱包?" = "How to back up wallet?";
 "Theia用户可以通过邀请制收取徒弟，并根据任务引导来教育徒弟，从而获得算力。另外，徒弟使用Theia钱包购买量化理财或余币宝，师父可获得徒弟一定比例的收益奖励" = "Global Master and Apprentice Initiative: Theia Users can receive apprentice through the invitation system, and instruct apprentice according to the task, thus obtain the calculation force. In addition, the apprentice uses Theia Wallet to purchase quantitative financial products or Yubibao, masters can obtain a certain percentage of the Apprentice reward.";
 "Theia Wallet为用户提供多种类型的优质理财产品，用户可以使用比特币、以太坊等数字货币购买理财产品而获得收益" = "Theia Wallet provides users with a variety of quality management products, users can use Bitcoin, Ethernet and other digital currencies to buy money products and gain income.";

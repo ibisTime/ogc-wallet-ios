@@ -8,7 +8,6 @@
 
 #import "PosBuyVC.h"
 #import "PosBuyTableView.h"
-#import "TLPwdRelatedVC.h"
 #import "RechargeCoinVC.h"
 #import "PayModel.h"
 #import "AssetPwdView.h"

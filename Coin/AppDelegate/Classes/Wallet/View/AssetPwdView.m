@@ -77,10 +77,10 @@
     
     UILabel *sureLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:20];
     if (self.isPay == YES) {
-        sureLab.text = [LangSwitcher switchLang:@"请输入支付密码" key:nil];
+        sureLab.text = [LangSwitcher switchLang:@"请输入交易密码" key:nil];
 
     }else{
-        sureLab.text = [LangSwitcher switchLang:@"请输入资金密码" key:nil];
+        sureLab.text = [LangSwitcher switchLang:@"请输入交易密码" key:nil];
 
     }
     [whiteView addSubview:sureLab];

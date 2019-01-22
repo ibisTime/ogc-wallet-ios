@@ -7,7 +7,6 @@
 //
 
 #import "BindMobileVC.h"
-#import "TLPwdRelatedVC.h"
 #import "TLCaptchaView.h"
 
 #import "APICodeMacro.h"

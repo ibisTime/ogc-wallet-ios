@@ -71,6 +71,8 @@ typedef NS_ENUM(NSInteger, AddressType) {
 //    self.title = [LangSwitcher switchLang:@"提币" key:nil];
     self.title = [LangSwitcher switchLang:@"转出" key:nil];
     self.view.backgroundColor = kBackgroundColor;
+    
+    
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -10;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
@@ -83,17 +85,18 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
 }
 
-- (BOOL)navigationShouldPopOnBackButton {
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    return NO;
-}
+//- (BOOL)navigationShouldPopOnBackButton {
+//
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//
+//    return NO;
+//}
 
 -(void)rightButtonClick
 {
     TLCoinWithdrawOrderVC *withdrawOrderVC = [[TLCoinWithdrawOrderVC alloc] init];
     withdrawOrderVC.coin = self.currency.currency;
+    withdrawOrderVC.titleString = [LangSwitcher switchLang:@"转出订单" key:nil];
     [self.navigationController pushViewController:withdrawOrderVC animated:YES];
 }
 
@@ -394,11 +397,11 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
     }
     
-    [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入资金密码" key:nil]
+    [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
                         msg:@""
                  confirmMsg:[LangSwitcher switchLang:@"确定" key:nil]
                   cancleMsg:[LangSwitcher switchLang:@"取消" key:nil]
-                placeHolder:[LangSwitcher switchLang:@"请输入资金密码" key:nil]
+                placeHolder:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
                       maker:self cancle:^(UIAlertAction *action) {
         
     } confirm:^(UIAlertAction *action, UITextField *textField) {
@@ -528,7 +531,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
         
         if (![pwd valid]) {
             
-            [TLAlert alertWithInfo:@"请输入资金密码"];
+            [TLAlert alertWithInfo:@"请输入交易密码"];
             return ;
         }
     }
@@ -603,6 +606,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+    
 }
 
 

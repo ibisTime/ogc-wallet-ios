@@ -278,7 +278,6 @@
 		216F5B5A206D02DC00F2C832 /* PosMiningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 216F5B59206D02DC00F2C832 /* PosMiningVC.m */; };
 		21A7F3121FB2E2F900FAA0A2 /* BindMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A7F2E41FB2E2F900FAA0A2 /* BindMobileVC.m */; };
 		21A7F3131FB2E2F900FAA0A2 /* TLAccountSetBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A7F2E51FB2E2F900FAA0A2 /* TLAccountSetBaseVC.m */; };
-		21A7F3141FB2E2F900FAA0A2 /* TLPwdRelatedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A7F2E61FB2E2F900FAA0A2 /* TLPwdRelatedVC.m */; };
 		21A7F3151FB2E2F900FAA0A2 /* TLChangeMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A7F2E81FB2E2F900FAA0A2 /* TLChangeMobileVC.m */; };
 		21A7F3161FB2E2F900FAA0A2 /* TLUserLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A7F2EE1FB2E2F900FAA0A2 /* TLUserLoginVC.m */; };
 		21A7F3171FB2E2F900FAA0A2 /* TLUserForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21A7F2F11FB2E2F900FAA0A2 /* TLUserForgetPwdVC.m */; };
@@ -1185,10 +1184,8 @@
 		21A7F2E31FB2E2F900FAA0A2 /* TLChangeMobileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChangeMobileVC.h; sourceTree = "<group>"; };
 		21A7F2E41FB2E2F900FAA0A2 /* BindMobileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindMobileVC.m; sourceTree = "<group>"; };
 		21A7F2E51FB2E2F900FAA0A2 /* TLAccountSetBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountSetBaseVC.m; sourceTree = "<group>"; };
-		21A7F2E61FB2E2F900FAA0A2 /* TLPwdRelatedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPwdRelatedVC.m; sourceTree = "<group>"; };
 		21A7F2E81FB2E2F900FAA0A2 /* TLChangeMobileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChangeMobileVC.m; sourceTree = "<group>"; };
 		21A7F2E91FB2E2F900FAA0A2 /* BindMobileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindMobileVC.h; sourceTree = "<group>"; };
-		21A7F2EA1FB2E2F900FAA0A2 /* TLPwdRelatedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPwdRelatedVC.h; sourceTree = "<group>"; };
 		21A7F2EB1FB2E2F900FAA0A2 /* TLAccountSetBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountSetBaseVC.h; sourceTree = "<group>"; };
 		21A7F2ED1FB2E2F900FAA0A2 /* TLUserForgetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserForgetPwdVC.h; sourceTree = "<group>"; };
 		21A7F2EE1FB2E2F900FAA0A2 /* TLUserLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserLoginVC.m; sourceTree = "<group>"; };
@@ -3398,8 +3395,6 @@
 				21A7F2E41FB2E2F900FAA0A2 /* BindMobileVC.m */,
 				21A7F2EB1FB2E2F900FAA0A2 /* TLAccountSetBaseVC.h */,
 				21A7F2E51FB2E2F900FAA0A2 /* TLAccountSetBaseVC.m */,
-				21A7F2EA1FB2E2F900FAA0A2 /* TLPwdRelatedVC.h */,
-				21A7F2E61FB2E2F900FAA0A2 /* TLPwdRelatedVC.m */,
 				2129FE6D1FDFBAA3009DA374 /* ChangeLoginPwdVC.h */,
 				2129FE6E1FDFBAA3009DA374 /* ChangeLoginPwdVC.m */,
 			);
@@ -4982,7 +4977,6 @@
 				1F7667F121D08BC300006B41 /* FoundHeadView.m in Sources */,
 				7A2CC6BB215DC88C00B27E2D /* PGDatePicker+MonthDayHour.m in Sources */,
 				211DE6B61FB58B4C002FCF3D /* UIView+Extension.m in Sources */,
-				21A7F3141FB2E2F900FAA0A2 /* TLPwdRelatedVC.m in Sources */,
 				7A07F811216CAAEA0026EB7A /* MyInconmeCell.m in Sources */,
 				7AE970522170C4970066B66C /* InviteEarningsModel.m in Sources */,
 				B88B092720C8E371005C2D2F /* JoinMineCell.m in Sources */,

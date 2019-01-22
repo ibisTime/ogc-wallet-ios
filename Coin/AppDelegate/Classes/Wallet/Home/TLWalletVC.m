@@ -13,7 +13,6 @@
 #import "RechargeCoinVC.h"
 #import "WithdrawalsCoinVC.h"
 #import "BillVC.h"
-#import "TLPwdRelatedVC.h"
 #import "RateDescVC.h"
 #import "ZMAuthVC.h"
 #import <CDCommon/UIScrollView+TLAdd.h>

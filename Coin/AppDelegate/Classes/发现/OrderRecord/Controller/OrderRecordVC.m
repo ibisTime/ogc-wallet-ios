@@ -157,7 +157,6 @@
             if ([model.receiveType isEqualToString:@"1"]) {
                 PayTreasureVC *vc = [PayTreasureVC new];
                 vc.models = model;
-                
                 [self.navigationController pushViewController:vc animated:YES];
             }else
             {

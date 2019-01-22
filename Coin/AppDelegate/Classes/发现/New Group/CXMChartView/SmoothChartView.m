@@ -197,9 +197,16 @@
     
     for (int i= 0; i< pathY.count; i++) {
         
-        CGFloat X = 15 + i % pathY.count * (SCREEN_WIDTH - 80)/pathY.count;
-        CGFloat Y = BLY * (max - [pathY[i] floatValue]);//(VIEW_HEIGHT - LABLE_HEIGHT)/2是指图表在背景大图的的height
+//        CGFloat X = i % pathY.count * ((SCREEN_WIDTH - 100)/pathY.count + (SCREEN_WIDTH - 100)/pathY.count );
+        CGFloat X = 15 + i * (SCREEN_WIDTH - 80)/(pathY.count - 1);
+        CGFloat Y =  BLY * (max - [pathY[i] floatValue]);//(VIEW_HEIGHT - LABLE_HEIGHT)/2是指图表在背景大图的的height
 
+        
+        
+        
+        
+        
+        
         point = CGPointMake(X, Y);
 
         [_pointArr addObject:[NSValue valueWithCGPoint:point]];

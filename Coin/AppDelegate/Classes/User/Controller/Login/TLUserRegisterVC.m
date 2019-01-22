@@ -35,6 +35,7 @@
     UIView *chooseView;
     UIButton *phoneRegister;
     UIButton *emailRegister;
+    BOOL isReading;
 }
 
 
@@ -80,6 +81,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
+    [self.view endEditing:YES];
 }
 
 
@@ -93,7 +95,7 @@
     self.view.backgroundColor = kWhiteColor;
     [self setUpUI];
 //    [self loadData];
-
+    isReading = NO;
 
 }
 
@@ -187,7 +189,7 @@
     chooseView.backgroundColor = kTabbarColor;
     [self.view addSubview:chooseView];
     
-    NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请输入密码"];
+    NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请确认密码"];
     
     for (int i = 0 ; i < 4; i ++) {
         UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, emailRegister.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60, 50)];
@@ -306,6 +308,7 @@
 -(void)gardenBtnClick:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+    isReading = !isReading;
 }
 
 -(void)addAndreductionButton:(UIButton *)sender
@@ -332,6 +335,12 @@
 
 #pragma mark - Events
 - (void)sendCaptcha:(UIButton *)sender {
+    
+   
+    if (isReading == NO) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"清先阅读并接受《橙Wallet注册协议》" key:nil]];
+        return;
+    }
     
     if (selectBtn.tag == 100) {
         if (![self.phoneTf.text isPhoneNum]) {
@@ -410,6 +419,11 @@
     if (!self.codeTf.text) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
         
+        return;
+    }
+    
+    if (self.pwdTf.text.length < 6 || self.pwdTf.text.length > 16) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为6~16个字符或数字组成" key:nil]];
         return;
     }
     

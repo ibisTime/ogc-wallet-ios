@@ -72,6 +72,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
+    [self.view endEditing:YES];
 }
 
 - (void)viewDidLoad {
@@ -295,11 +296,6 @@
     forgetPwdBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:forgetPwdBtn];
-    
-    
-
-    
-    
 }
 
 //HTMLTypeRegProtocol
@@ -307,6 +303,7 @@
 -(void)forgetPwdBtnClick
 {
     TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+    vc.titleString = @"修改交易密码";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

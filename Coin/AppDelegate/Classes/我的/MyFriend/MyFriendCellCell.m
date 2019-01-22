@@ -39,7 +39,7 @@
         self.headImg.image = kImage(@"头像");
     }else
     {
-        [self.headImg sd_setImageWithURL:[NSURL URLWithString:model.photo]];
+        [self.headImg sd_setImageWithURL:[NSURL URLWithString:[model.photo convertImageUrl]]];
     }
     
 }

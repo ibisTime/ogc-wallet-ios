@@ -85,6 +85,7 @@
                 [self.view addSubview:codeBtn];
                 
                 textField.frame = CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30 - codeBtn.width - 10, 50);
+                textField.keyboardType = UIKeyboardTypeNumberPad;
                 
             }
                 break;
