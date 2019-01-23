@@ -78,11 +78,12 @@
     
     if (_indexBtnTag == 0)
     {
+        cell.nameLabel.text = [LangSwitcher switchLang:@"支付方式" key:nil];
         cell.payWayDic = self.payWayDic;
         [cell.payBtn addTarget:self action:@selector(payBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     }else
     {
-        cell.nameLabel.text = @"收款方式";
+        cell.nameLabel.text = [LangSwitcher switchLang:@"收款方式" key:nil];
         if ([TLUser isBlankString:self.PaymentMethods] == YES) {
             [cell.payBtn setTitle:@"请选择收款方式" forState:(UIControlStateNormal)];
         }
@@ -96,7 +97,7 @@
                 number = self.PaymentMethods;
             }
             
-            [cell.payBtn setTitle:[NSString stringWithFormat:@"尾号为%@银行卡",number] forState:(UIControlStateNormal)];
+            [cell.payBtn setTitle:[NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"尾号为" key:nil],number,[LangSwitcher switchLang:@"银行卡" key:nil]] forState:(UIControlStateNormal)];
         }
         
         [cell.payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {

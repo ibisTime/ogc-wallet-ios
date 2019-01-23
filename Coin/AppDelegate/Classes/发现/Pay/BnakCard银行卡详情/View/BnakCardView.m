@@ -190,7 +190,7 @@
     
     if (pasteBoard == nil) {
         
-        [TLAlert alertWithError:@"复制失败, 请重新复制"];
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil]];
         
     } else {
         
@@ -228,7 +228,7 @@
     UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
     pasteBoard.string = str;
     if (pasteBoard == nil) {
-        [TLAlert alertWithError:@"复制失败, 请重新复制"];
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil]];
     } else {
         [TLAlert alertWithSucces:[LangSwitcher switchLang:@"复制成功" key:nil]];
     }

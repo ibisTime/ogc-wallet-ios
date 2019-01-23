@@ -180,6 +180,8 @@
         indexBtnTag = index;
         [_bottomBtn setBackgroundColor:kTabbarColor forState:(UIControlStateNormal)];
         [_bottomBtn setTitle:[LangSwitcher switchLang:@"买入" key:nil] forState:(UIControlStateNormal)];
+        textField1.placeholder = [LangSwitcher switchLang:@"请输入买入金额" key:nil];
+        textField2.placeholder = [LangSwitcher switchLang:@"请输入买入数量" key:nil];
         textField1.text = @"";
         textField2.text = @"";
         self.tableView.price =  buyPrice;
@@ -192,6 +194,8 @@
         [_bottomBtn setTitle:[LangSwitcher switchLang:@"卖出" key:nil] forState:(UIControlStateNormal)];
         textField1.text = @"";
         textField2.text = @"";
+        textField1.placeholder = [LangSwitcher switchLang:@"请输入卖出金额" key:nil];
+        textField2.placeholder = [LangSwitcher switchLang:@"请输入卖出数量" key:nil];
         self.tableView.price =  sellerPrice;
         self.tableView.Rate = sellerFeeRate;
     }
@@ -285,8 +289,8 @@
     UITextField *textField1 = [self.view viewWithTag:10000];
     UITextField *textField2 = [self.view viewWithTag:10001];
     
-    if ([textField1.text floatValue] == 0) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买金额必须大于0" key:nil]];
+    if ([textField1.text floatValue] < 100) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买金额必须大于100" key:nil]];
         return ;
     }
     
@@ -339,8 +343,9 @@
         self.payWayArray = responseObject[@"data"];
         if (self.payWayArray.count > 0) {
             self.payWayDic = self.payWayArray[0];
+            self.tableView.payWayDic = self.payWayDic;
         }
-        self.tableView.payWayDic = self.payWayDic;
+        
         [self.tableView reloadData];
         
     } failure:^(NSError *error) {

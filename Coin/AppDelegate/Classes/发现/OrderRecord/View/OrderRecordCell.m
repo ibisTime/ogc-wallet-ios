@@ -90,7 +90,7 @@
         [_countDownTimer invalidate];
         _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownAction) userInfo:nil repeats:YES];
         
-        _stateLbl.text = [NSString stringWithFormat:@"剩余付款时间：%d分%d秒",minutes,seconds];
+        _stateLbl.text = [NSString stringWithFormat:@"%@%d分%d秒",[LangSwitcher switchLang:@"剩余付款时间：" key:nil],minutes,seconds];
         secondsCountDown =minutes*60 + seconds;
         _stateLbl.font = FONT(12);
         _stateLbl.textColor = kHexColor(@"#0EC55B");

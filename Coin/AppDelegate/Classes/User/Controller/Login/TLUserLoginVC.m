@@ -211,20 +211,6 @@
     
     self.view.backgroundColor = kWhiteColor;
     
-    UIImageView *logoView = [[UIImageView alloc] init];
-    logoView.contentMode = UIViewContentModeScaleToFill;
-    [self.view addSubview:logoView];
-    
-    
-    logoView.image = kImage(@"logo");
-    [logoView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.left.right.mas_equalTo(@(0));
-//        make.centerX.mas_equalTo(imageView.mas_centerX);
-//        make.width.mas_equalTo(@108);
-        make.height.mas_equalTo(@(200 - 64 + kNavigationBarHeight));
-        
-    }];
     
 //    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
 //    topView.backgroundColor = kTabbarColor;
@@ -235,6 +221,11 @@
     topImage.image = kImage(@"Mask");
     [self.view addSubview:topImage];
     
+    
+    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40,  kStatusBarHeight + 20, 80, 70)];
+    logoView.contentMode = UIViewContentModeScaleToFill;
+    [topImage addSubview:logoView];
+    logoView.image = kImage(@"邀请-logo");
     
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, 170 - 64 + kNavigationBarHeight - 35, SCREEN_WIDTH - 30, 360)];
     backView.backgroundColor = kWhiteColor;

@@ -130,7 +130,7 @@
         }
         
     }
-    UIButton *changePwdBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确 定" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16.0 cornerRadius:5];
+    UIButton *changePwdBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确定" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16.0 cornerRadius:5];
     changePwdBtn.frame = CGRectMake(15, self.rePwdTf.yy + 66, SCREEN_WIDTH - 30, 48);
     [changePwdBtn addTarget:self action:@selector(changePwd) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:changePwdBtn];

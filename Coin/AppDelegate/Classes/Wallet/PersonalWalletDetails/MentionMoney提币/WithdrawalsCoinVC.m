@@ -29,6 +29,9 @@ typedef NS_ENUM(NSInteger, AddressType) {
 };
 
 @interface WithdrawalsCoinVC ()
+{
+    UILabel *poundageLabel;
+}
 
 //可用余额
 @property (nonatomic, strong) TLTextField *balanceTF;
@@ -210,64 +213,42 @@ typedef NS_ENUM(NSInteger, AddressType) {
         [self.view addSubview:lineView];
     }
     
-//    UIView *backView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 160, SCREEN_WIDTH, 130)];
-//    backView1.backgroundColor = kWhiteColor;
-//    [self.view addSubview:backView1];
+    UIView *backView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 160, SCREEN_WIDTH, 102)];
+    backView1.backgroundColor = kWhiteColor;
+    [self.view addSubview:backView1];
     
 
-//    UILabel *absenteeismLbl = [UILabel labelWithFrame:CGRectMake(15, 160, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
-//    absenteeismLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
-//    [absenteeismLbl sizeToFit];
-//    absenteeismLbl.frame = CGRectMake(15, 160, absenteeismLbl.width, 50);
-//    [self.view addSubview:absenteeismLbl];
-//
-//    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(absenteeismLbl.xx + 10, 15 + 160 + 2, SCREEN_WIDTH - absenteeismLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:RGB(246, 246, 246) font:FONT(11) textColor:RGB(207, 207, 207)];
-//    promptLabel.text = [LangSwitcher switchLang:@"  旷工费将在可用余额中扣除，余额不足将从转账金额扣除" key:nil];
-//    kViewRadius(promptLabel, 2);
-//    [self.view addSubview:promptLabel];
-//
-//
-//    UISlider *slider = [UISlider new];
-//    self.slider = slider;
-//    [self.view addSubview:slider];
-//    slider.maximumValue = 1.0;
-//    slider.minimumValue = 0;
-//    slider.thumbTintColor = kHexColor(@"#1B61F0");
-//    slider.minimumTrackTintColor = kHexColor(@"#1B61F0");
-//    slider.maximumTrackTintColor = kHexColor(@"#DDE6F9");
-//    slider.value = 0.5;
-//    [slider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-//    [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(@15);
-//        make.top.equalTo(promptLabel.mas_bottom).offset(30);
-//        make.width.equalTo(@(kScreenWidth-30));
-//        make.height.equalTo(@(20));
-//    }];
-//
-//    UILabel * solw = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
-//    solw.text = [LangSwitcher switchLang:@"慢" key:nil];
-//    UILabel * fast = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
-//    fast.text = [LangSwitcher switchLang:@"快" key:nil];
-//    UILabel * blanceFree = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
-//    self.blanceFree = blanceFree;
-////    blanceFree.text = [LangSwitcher switchLang:@"" key:nil];
-//
-//    [self.view addSubview:solw];
-//    [self.view addSubview:blanceFree];
-//    [self.view addSubview:fast];
-//
-//    [solw mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(@15);
-//        make.top.equalTo(slider.mas_bottom).offset(15);
-//
-//
-//    }];
-//    [fast mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.right.equalTo(@-15);
-//        make.top.equalTo(slider.mas_bottom).offset(15);
-//
-//
-//    }];
+    UILabel *absenteeismLbl = [UILabel labelWithFrame:CGRectMake(15, 0, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
+    absenteeismLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
+    [absenteeismLbl sizeToFit];
+    absenteeismLbl.frame = CGRectMake(15, 0, absenteeismLbl.width, 50);
+    [backView1 addSubview:absenteeismLbl];
+
+    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(absenteeismLbl.xx + 10, 15 + 2, SCREEN_WIDTH - absenteeismLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:RGB(246, 246, 246) font:FONT(11) textColor:RGB(207, 207, 207)];
+    promptLabel.text = [LangSwitcher switchLang:@"  旷工费将在可用余额中扣除，余额不足将从转账金额扣除" key:nil];
+    kViewRadius(promptLabel, 2);
+    [backView1 addSubview:promptLabel];
+
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 210, SCREEN_WIDTH, 1)];
+    lineView.backgroundColor = kLineColor;
+    [self.view addSubview:lineView];
+    
+    UILabel *poundageNameLbl = [UILabel labelWithFrame:CGRectMake(15, 51, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
+    poundageNameLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
+    [poundageNameLbl sizeToFit];
+    poundageNameLbl.frame = CGRectMake(15, 51, poundageNameLbl.width, 50);
+    [backView1 addSubview:poundageNameLbl];
+    
+    
+    
+    
+    poundageLabel = [UILabel labelWithFrame:CGRectMake(poundageNameLbl.xx + 10, 15 +51 + 2, SCREEN_WIDTH - poundageNameLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTabbarColor];
+    CoinModel *currentCoin = [CoinUtil getCoinModel:self.currency.currency];
+    
+    self.withdrawFee = currentCoin.withdrawFeeString;
+    
+    poundageLabel.text = [NSString stringWithFormat:@"%@ %@", [CoinUtil convertToRealCoin:self.withdrawFee coin:self.currency.currency], self.currency.currency];
+    [backView1 addSubview:poundageLabel];
     
     //确认付币
     UIButton *confirmPayBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确认提币" key:nil]
@@ -281,7 +262,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     [confirmPayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
 
         make.left.equalTo(@(15));
-        make.top.equalTo(backView.mas_bottom).offset(100);
+        make.top.equalTo(backView1.mas_bottom).offset(100);
         make.right.equalTo(@(-15));
         make.height.equalTo(@50);
 
@@ -531,7 +512,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
         
         if (![pwd valid]) {
             
-            [TLAlert alertWithInfo:@"请输入交易密码"];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入交易密码" key:nil]];
             return ;
         }
     }
@@ -664,11 +645,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 #pragma mark- 获取手续费
 - (void)setWithdrawFee {
     
-    CoinModel *currentCoin = [CoinUtil getCoinModel:self.currency.currency];
     
-    self.withdrawFee = currentCoin.withdrawFeeString;
-    
-    self.minerFeeTF.text = [NSString stringWithFormat:@"%@ %@", [CoinUtil convertToRealCoin:self.withdrawFee coin:self.currency.currency], self.currency.currency];
     
 }
 

@@ -301,22 +301,7 @@
     shareUrl = [NSString stringWithFormat:@"%@/luckDraw/luckDraw.html?userId=%@&lang=%@",self.h5String,[TLUser user].userId,lang];
     NewHtmlVC  *h5 = [NewHtmlVC new];
     h5.h5string = shareUrl;
-//    [self sinaShare];
-//    [TLWXManager shareSinaWeiboWithText:@"theia" image:self.bgImage.image];
-//    [TLWXManager wxShareWebPageWithScene:WXSceneSession
-//                                   title:@"theia"
-//                                    desc:lang
-//                                     url:self.h5String];
-//    [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
-//
-//        if (isSuccess) {
-//
-//            [TLAlert alertWithSucces:@"分享成功"];
-//        } else {
-//
-//            [TLAlert alertWithError:@"分享失败"];
-//        }
-//    };
+
     
     [self.navigationController pushViewController:h5 animated:YES];
     

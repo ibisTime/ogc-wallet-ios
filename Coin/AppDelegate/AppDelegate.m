@@ -105,7 +105,7 @@
     [self configWeibo];
 
     //配置友盟统计
-    [self configUManalytics];
+//    [self configUManalytics];
     [self configZendSdk];
 
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;

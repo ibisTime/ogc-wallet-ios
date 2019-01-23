@@ -208,6 +208,22 @@
 {
 
     
+    
+    UIImageView *iconImageView = [[UIImageView alloc] init];
+    iconImageView.image = [UIImage imageNamed:@"邀请-logo"];
+    [backView  addSubview:iconImageView];
+//    self.iconImageView.layer.cornerRadius = 10;
+//    self.iconImageView.layer.masksToBounds = YES;
+    [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(backView.mas_top).offset(157.5);
+        make.width.mas_equalTo(@(kHeight(100)));
+        make.height.mas_equalTo(@(kHeight(100)));
+        
+        make.centerX.equalTo(backView.mas_centerX);
+        
+    }];
+    
 
     UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(0,   kNavigationBarHeight + kHeight(190), SCREEN_WIDTH, kHeight(25)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:kWhiteColor];
     nameLabel.text = [LangSwitcher switchLang:[TLUser user].mobile key:nil];

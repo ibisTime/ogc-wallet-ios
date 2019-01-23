@@ -99,7 +99,7 @@
     pasteBoard.string = address;
     if (pasteBoard == nil) {
         [self.view addSubview:self.showView];
-        [self.showView setTitle:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil] forState:UIControlStateNormal];
+        [self.showView setTitle:[LangSwitcher switchLang:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil] key:nil] forState:UIControlStateNormal];
         self.showView.hidden = NO;
         [self.showView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.tableView.mas_centerX);

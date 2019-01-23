@@ -40,7 +40,7 @@
         
         
         
-        NSArray *array = @[@"加入群聊",@"帮助中心",@"设置"];
+        NSArray *array = @[@"加入社群",@"帮助中心",@"设置"];
         for (int i = 0; i < 3; i ++) {
             self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i % array.count * 60 + 20, 20, 20)];
             self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;

@@ -350,7 +350,7 @@
     }else
     {
         if (![self.phoneTf.text isPhoneNum]) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
             return;
         }
     }
@@ -409,7 +409,7 @@
     {
         if (![self.phoneTf.text isPhoneNum]) {
             
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
             
             return;
         }

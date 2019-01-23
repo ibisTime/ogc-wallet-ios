@@ -57,7 +57,7 @@
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, kHeight(56)/2, BGViewW, 12)];
         titleLabel.font = FONT(12);
-        titleLabel.text = @"卖出BTC";
+        titleLabel.text = [NSString stringWithFormat:@"%@BTC",[LangSwitcher switchLang:@"卖出" key:nil]];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = kTextColor2;
         [self addSubview:titleLabel];
@@ -74,7 +74,7 @@
         [self addSubview:priceLabel];
         
         UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(0, priceLabel.yy + 30, BGViewW, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
-        promptLabel.text = @"请输入交易密码";
+        promptLabel.text = [LangSwitcher switchLang:@"请输入交易密码" key:nil];
         [self addSubview:promptLabel];
 //        UIView *downLineView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - kButtonHeight - 1, BGViewW, 1)];
 //        downLineView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
@@ -83,7 +83,7 @@
         // 取消按钮
         UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         cancelButton.frame = CGRectMake(0, BGViewH - 50, BGViewW / 2, 50);
-        [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+        [cancelButton setTitle:[LangSwitcher switchLang:@"取消" key:nil] forState:UIControlStateNormal];
         [cancelButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
         cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -92,7 +92,7 @@
         // 确定按钮
         UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
         sureButton.frame = CGRectMake(cancelButton.xx, BGViewH - 50, BGViewW / 2, 50);
-        [sureButton setTitle:@"确定" forState:UIControlStateNormal];
+        [sureButton setTitle:[LangSwitcher switchLang:@"确定" key:nil] forState:UIControlStateNormal];
         [sureButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
         sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [sureButton addTarget:self action:@selector(sureButtonAction) forControlEvents:UIControlEventTouchUpInside];

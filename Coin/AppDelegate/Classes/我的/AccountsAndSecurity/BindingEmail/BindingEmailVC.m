@@ -96,7 +96,7 @@
         }
         
     }
-    UIButton *changePwdBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确 定" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16.0 cornerRadius:5];
+    UIButton *changePwdBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确定" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16.0 cornerRadius:5];
     changePwdBtn.frame = CGRectMake(15, self.codeTf.yy + 66, SCREEN_WIDTH - 30, 48);
     [changePwdBtn addTarget:self action:@selector(changePwd) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:changePwdBtn];
@@ -110,7 +110,7 @@
     
     if ([self.titleStr isEqualToString:@"绑定邮箱"]) {
         if (![self.phoneTf.text isPhoneNum]) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
             return;
         }
         TLNetworking *http = [TLNetworking new];
@@ -159,7 +159,7 @@
     
     if ([self.phoneTf.text isBlank]) {
         if ([self.titleStr isEqualToString:@"绑定邮箱"]) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邮箱" key:nil]];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
             return;
         }else
         {

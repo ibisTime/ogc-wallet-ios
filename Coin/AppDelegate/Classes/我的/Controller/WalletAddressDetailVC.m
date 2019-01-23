@@ -158,7 +158,7 @@
     
     if (pasteBoard == nil) {
         
-        [TLAlert alertWithError:@"复制失败, 请重新复制"];
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil]];
         
     } else {
         
@@ -178,7 +178,7 @@
     
     if (pasteBoard == nil) {
         
-        [TLAlert alertWithError:@"复制失败, 请重新复制"];
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil]];
         
     } else {
         

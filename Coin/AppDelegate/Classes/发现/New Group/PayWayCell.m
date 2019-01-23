@@ -26,6 +26,7 @@
         
         UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH/2 - 15, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#666666")];
         nameLabel.text = [LangSwitcher switchLang:@"支付方式" key:nil];
+        self.nameLabel = nameLabel;
         [backView addSubview:nameLabel];
         
         _payBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"支付宝" key:nil] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:14];
@@ -43,7 +44,7 @@
         [backView addSubview:youImg];
         
         UILabel *instructionsLbl = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
-        instructionsLbl.text = [LangSwitcher switchLang:@"说明：单笔交易限额5万人民币" key:nil];
+        instructionsLbl.text = [LangSwitcher switchLang:@"说明：单笔交易限额50000" key:nil];
         [self addSubview:instructionsLbl];
         
         
@@ -60,7 +61,7 @@
         [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"支付宝支付") forState:(UIControlStateNormal)];
         }];
-    }else if([payWayDic[@"name"] isEqualToString:@"支付宝"])
+    }else if([payWayDic[@"name"] isEqualToString:@"银行卡"])
     {
         [_payBtn setTitle:[LangSwitcher switchLang:@"银行卡" key:nil] forState:(UIControlStateNormal)];
         [_payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {

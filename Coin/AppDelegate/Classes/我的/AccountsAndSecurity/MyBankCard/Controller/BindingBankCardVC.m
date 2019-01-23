@@ -72,7 +72,7 @@
         
         
         UITextField *nameTextFid = [[UITextField alloc]initWithFrame:CGRectMake(nameLabel.xx + 20, i% 4 * 55, SCREEN_WIDTH - nameLabel.xx - 20 - 30, 55)];
-        nameTextFid.placeholder = [LangSwitcher switchLang:@"请输入密码（6~16个字符或字母组成）" key:nil];
+//        nameTextFid.placeholder = [LangSwitcher switchLang:@"请输入密码（6~16个字符或字母组成）" key:nil];
         [nameTextFid setValue:FONT(15) forKeyPath:@"_placeholderLabel.font"];
         nameTextFid.font = FONT(15);
         nameTextFid.tag = 1000 + i;
@@ -133,7 +133,7 @@
         }];
     };
     [LEEAlert alert].config
-    .LeeTitle(@"选择")
+    .LeeTitle([LangSwitcher switchLang:@"选择" key:nil])
     .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
     .LeeCustomView(view)
     .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))

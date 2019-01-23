@@ -144,7 +144,7 @@
             
         }
         if (indexPath.row == 1) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"暂无" key:nil]];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"暂未开放" key:nil]];
             return;
 //            GoogleAuthVC *vc = [GoogleAuthVC new];
 //            [self.navigationController pushViewController:vc animated:YES];

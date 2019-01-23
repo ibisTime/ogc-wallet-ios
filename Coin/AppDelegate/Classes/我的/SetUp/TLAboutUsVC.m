@@ -65,10 +65,10 @@
 - (void)data {
     
     
-    self.iconImageView.image = [UIImage imageNamed:@"Group 3"];
+    self.iconImageView.image = [UIImage imageNamed:@"版本-logo"];
     self.versionLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"%@  V%@",[LangSwitcher switchLang:@"版本号" key:nil],[NSString appVersionString]] key:nil];
 //    self.versionLbl.text = [LangSwitcher switchLang:@"钱包是一款全新的数字货币钱包" key:nil];
-    self.versionLbl2.text = [NSString stringWithFormat:@"2018%@",[LangSwitcher switchLang:@"Theia版权所有" key:nil]];
+    self.versionLbl2.text = [NSString stringWithFormat:@"2019%@",[LangSwitcher switchLang:@"橙Wallet版权所有" key:nil]];
 //    self.versionLbl3.text = [LangSwitcher switchLang:@"服务时间:  9:00 - 18:00 " key:nil];
 //    self.banQuanLbl.text = [LangSwitcher switchLang:@"联系电话" key:nil];
 //    self.phoneNumber.text = [LangSwitcher switchLang:@"0571-8765650" key:nil];
@@ -187,8 +187,8 @@
     [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(self.bgImage.mas_top).offset(157.5);
-        make.width.mas_equalTo(@(kHeight(116)));
-        make.height.mas_equalTo(@(kHeight(156)));
+        make.width.mas_equalTo(@(kHeight(120)));
+        make.height.mas_equalTo(@(kHeight(120)));
 
         make.centerX.equalTo(self.bgImage.mas_centerX);
         

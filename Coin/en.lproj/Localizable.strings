@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  Coin
-
-  Created by  tianlei on 2017/12/28.
-  Copyright © 2017年  tianlei. All rights reserved.
-*/
+/*
+ Localizable.strings
+ Coin
+ 
+ Created by  tianlei on 2017/12/28.
+ Copyright © 2017年  tianlei. All rights reserved.
+ */
 
 "Theia " = "Theia";
 "创建钱包" = "Create Wallet";
@@ -49,7 +49,7 @@
 "Theia星球" = "Planet Theia";
 "余币宝" = "Yubibao";
 "实名认证" = "real-name authentication";
-"实名认证成功, 请设置交易密码" = "Success of real-name authentication , Please set up the fund password";
+"实名认证成功, 请设置资金密码" = "Success of real-name authentication , Please set up the fund password";
 "实名认证成功" = "Success of real-name authentication";
 "全部" = "all";
 //"冲币" = "";
@@ -81,7 +81,7 @@
 "转账成功" = "Transfer success";
 "转账失败" = "Transfer failure";
 "粘贴内容为空" = "Paste content is empty";
-"请输入交易密码" = "Enter the capital cipher";
+"请输入资金密码" = "Enter the capital cipher";
 "提币申请提交成功" = "The successful submission of the application for the currency";
 "内部转账成功" = "Internal transfer success";
 "可用余额" = "Available balance";
@@ -113,7 +113,6 @@
 "设量" = "Quantity";
 "修改头像成功" = "Modified avatar successfully";
 "绑定邮箱" = "Binding Mailbox";
-"完成" = "complete";
 "邮箱" = "email";
 "请输入您的邮箱" = "Enter your email address";
 "请输入邮箱" = "Please enter email";
@@ -139,7 +138,7 @@
 "复制成功" = "replicated ";
 "复制成功!" = "replicated!";
 "复制您的专属邀请链接" = "Copy your exclusive invitation link";
-"敬请期待!" = "Stay tuned";
+"敬请期待!" = "Stay tuned!";
 "交易流水" = "Deal bills";
 "保存本地" = "Save Image";
 "暂无流水" = "No bills";
@@ -222,9 +221,9 @@
 
 "暂无地址" = "No address";
 "请输入标签" = "Please enter label";
-"向认证账户提现将不再输入交易密码、谷歌验证码" = "Withdrawal to the authentication account will no longer enter the fund password, Google verification code";
+"向认证账户提现将不再输入资金密码、谷歌验证码" = "Withdrawal to the authentication account will no longer enter the fund password, Google verification code";
 "账户与安全" = "Account and Privacy";
-"交易密码" = "Capital Password";
+"资金密码" = "Capital Password";
 "语言设置" = "Language Settings";
 "退出登录" = "Log out";
 "退出登录?" = "Log out?";
@@ -286,7 +285,7 @@
 "交易记录" = "Transactions";
 "重新获取" = "Retrieved";
 "加载失败" = "Load error";
-"发红包" = "Gift sent";
+"发红包" = "Send";
 "塞进红包" = "PREPARE RED PACKET";
 "红包个数" = "Quantity";
 "red_package_sub_total" = "Token amount";
@@ -310,16 +309,16 @@
 "每人获得金额随机" = "Each user will get random allocated amount";
 //"持有总量" = "total";
 "暂无可用货币" = "No currency available";
-"设置交易密码" = "set the funding password";
-"输入交易密码" = "Please input the funding password";
-"修改交易密码" = "set the fund password";
+"设置资金密码" = "set the funding password";
+"输入资金密码" = "Please input the funding password";
+"修改资金密码" = "set the fund password";
 "资产" = "Assets";
 "闪兑" = "Instant swap";
 "一键划转" = "Smart transfer";
 "个人账户" = "Platform Account";
 "私钥钱包" = "Private Key Wallet ";
 "首创玩法" = "Global Master and Apprentice Initiative";
-"量化理财" = "Quantitative Finance";
+"量化理财" = "Wealth";
 "账户与安全" = "Account and Security";
 "本地货币" = "Local currency";
 "切换货币" = "Switch currency";
@@ -329,20 +328,17 @@
 "中国" = "China";
 "共收到红包" = "Gifts received in total";
 "请输入手机号" = "Enter mobile number";
-"忘记密码" = "forgot password";
+"忘记密码" = "Forget your password";
 "我的红包记录" = "My gift record";
 "红包记录" = "Gift record";
 "红包说明及常见问题" = "Gift rules & FAQ";
-"忘记密码?" = "Forgot?";
+"忘记密码?" = "Forget your password?";
 "还没账号?" = "No account yet?";
 "立即注册" = "Register now";
-"发红包" = "Send red packet";
 "不能为空" = "must not be null";
 "请输入数量" = "Enter number";
-"不能为空" = "must not be null";
 "改为普通红包" = "changed to ordinary red packets";
 "改为拼手气红包" = "changed to a lucky red packetsl";
-"不能为空" = "must not be null";
 "个" = "";
 "常见问题帮助" = "FAQ help";
 "年" = "";
@@ -391,13 +387,13 @@
 "注册失败" = "registration failed";
 "提币地址" = "withdraw address";
 "短信验证码" = "verification code";
-"验证码" = "verification code";
+"验证码" = "Code";
 "密码" = "Password";
 "注册!" = "Registered!";
 "谷歌验证码" = "Verification code";
 
 "将该账户设置为认证账户" = "Set this account as an authentication account";
-"向认证账户提现不再输入交易密码、谷歌验证码" = "withdraw the funds to the authentication account and no longer input the fund password, Google verification code";
+"向认证账户提现不再输入资金密码、谷歌验证码" = "withdraw the funds to the authentication account and no longer input the fund password, Google verification code";
 "修改邮箱" = "modify the mailbox";
 "绑定成功" = "binding success";
 "邮箱验证码" = "mailbox verification code";
@@ -501,14 +497,14 @@
 "暂无发送记录" = "No record sent";
 "来自" = "from";
 "发送成功,请扫描二维码抢红包" = "Successfully sent, please scan the QR code to get the red packet";
-"发红包" = "Red package";
 "认证成功" = "authentication success";
 "是否下载并安装支付宝完成认证?" = "Download and Install Alipay to complete the certification?";
 "好的" = "confirm";
 "请输入手机号码" = "Please input your mobile number";
 "修改昵称" =  "NickName";
 "请输入昵称" = "Please input a nickname";
-"交易密码不能低于6位数" = "The fund password cannot be lower than 6 digits";
+"资金密码不能低于6位数" = "The fund password cannot be lower than 6 digits
+";
 "提示" = "tip";
 "真实姓名" = "real name";
 "内容" = "content";
@@ -552,7 +548,7 @@
 
 "红包退回" = "Gift retrieved";
 "抢红包" = "Gift received";
-"交易密码错误" = "Money Password Error";
+"资金密码错误" = "Money Password Error";
 "币种列表" = "Currency";
 //"抢红包" = "Grab a red envelope";
 "请输入交易密码" = "Please enter the trading password.";
@@ -614,13 +610,13 @@
 "新钱包创建成功" = "New wallet created successfully";
 "烈建议您在使用钱包前做好备份，导出[助记词]存储到安全的地方。然后开始尝试转入小额资金启用" = "we highly recommend your write the Mnemonic words(Backup Phrase)on paper and keep it in a safe place,anynoe get it can access or spend your assets.Also get start with a small amount of assents";
 "备份钱包" = "Backup Now";
-"请输入交易密码" = "Please inPut Capital password";
+"请输入资金密码" = "Please inPut Capital password";
 "如何备份钱包?" = "How to back up wallet?";
 "Theia用户可以通过邀请制收取徒弟，并根据任务引导来教育徒弟，从而获得算力。另外，徒弟使用Theia钱包购买量化理财或余币宝，师父可获得徒弟一定比例的收益奖励" = "Global Master and Apprentice Initiative: Theia Users can receive apprentice through the invitation system, and instruct apprentice according to the task, thus obtain the calculation force. In addition, the apprentice uses Theia Wallet to purchase quantitative financial products or Yubibao, masters can obtain a certain percentage of the Apprentice reward.";
 "Theia Wallet为用户提供多种类型的优质理财产品，用户可以使用比特币、以太坊等数字货币购买理财产品而获得收益" = "Theia Wallet provides users with a variety of quality management products, users can use Bitcoin, Ethernet and other digital currencies to buy money products and gain income.";
 "余币宝是Theia Wallet旗下的数字货币增值服务和活期数字货币管理服务产品。特点是操作简便、低门槛、零手续费、可随取随用，让您更灵活的管理数字资产" = "Yubibao is the digital currency value-added service and demand digital money managemen service product of Theia wallet. It is easy to operate, has low threshold, without handling fees,  and are available with access, so that you can manage your digital assets with more flexibility.";
 "版本号" = "Current version";
-"Theia版权所有" = "Theia All rights reserved";
+"橙Wallet版权所有" = "橙Wallet All rights reserved";
 "发数字货币红包、查收发记录和提现" = "Send a digital currency in red envelope,check the receive records and cash the balance";
 "师徒教育玩法、双向奖励机制" = "Two-way incentive mechanism,master and apprentice orientation";
 "低风险、高收益、定期理财产品" = "Regular financial product,Low risk high return";
@@ -686,7 +682,7 @@
 "发红包邀请好友" = "Send out gifts to invite friends";
 "点击生成邀请海报并截图给好友" = "Click to generate invitation, take a screenshot and sent it to your friends";
 "扫描二维码领取奖励" = "Scan QR code to get rewards";
-"邀请好友" = "Invite friend";
+"邀请好友" = "Invite";
 "注册Theia钱包" = "Register for Theia Wallet";
 "我的理财" = "My finance";
 "购买金额" = "Purchase amount";
@@ -696,7 +692,7 @@
 "邀请您使用Theia钱包" = "inviting you to try out Theia Wallet";
 "购买成功" = "Purchase successful";
 "购买" = "Purchase";
-
+"注：" = "note：";
 "合约编号" = "Contract number";
 "交易时间" = "Trasaction time";
 "产品期限" = "Subscription period";
@@ -774,7 +770,7 @@
 "加载完成" = "Load completed";
 "加载失败" = "Load failed";
 "全部加载完成" = "No more data to be loaded";
-"【Theia是全球首款跨链生态钱包，同时支持BTC、ETH、TUSD等多币数字货币储存。注册即送10积分，千万BTC/ETH/WAN矿山，等您来挖】" = "Theia is the world’s first cross-chain profit sharing wallet, which supports multi-crypto-asset management, including BTC, ETH and TUSD. Register and get 10 points, and you’ll have chance to draw a prize from ¥10,000,000 RMB worth of prize pool (BTC, ETH and WAN).";
+"【Theia是一站式数字资产管理平台，同时支持BTC、ETH、TUSD等多币数字货币储存。注册即送10积分，千万BTC/ETH/WAN矿山，等您来挖】" = "Theia is the world’s first cross-chain profit sharing wallet, which supports multi-crypto-asset management, including BTC, ETH and TUSD. Register and get 10 points, and you’ll have chance to draw a prize from ¥10,000,000 RMB worth of prize pool (BTC, ETH and WAN).";
 "请留下您的联系方式（推荐邮箱)" = "Please leave your contact info (email address is highly recommended)";
 "保存二维码" = "Save QR code";
 "信用积分" = "Credit";
@@ -788,7 +784,7 @@
 "不存在的红包类型" = "Nonexistent gift type";
 "红包错误，请联系管理员" = "Gift error, please contact admin";
 "红包已过期，下次记得早点来" = "Gift has expired, remember to open it sooner next time";
-"全球首款跨链生态钱包" = "THEIA CROSS-CHAIN PROFIT SHARING WALLET";
+//"一站式数字资产管理平台" = "THEIA CROSS-CHAIN PROFIT SHARING WALLET";
 "您已成功邀请" = "You have successfully welcomed";
 "名用户" = "users";
 "感谢您的付出!" = "Thank you for your effort!";
@@ -829,8 +825,8 @@
 "选择币种" = "Please select coin type";
 
 
-"我的投资" = "My Investment";
-"币加宝" = "Quantitative Finance";
+"我的投资" = "My Record";
+"币加宝" = "Theia Wealth";
 "投资总额" = "Total amount of investment";
 "预期年化收益" = "Anticipated annualized return";
 "剩余额度：" = "Remaining quota：";
@@ -889,4 +885,151 @@
 "广播失败" = "Broadcast failed";
 "《Theia钱包理财产品服务协议》" = "《T&C》";
 "请输入正确地址" = "Incorrect address";
+
+
+"拍照" = "Take a photo";
+"选中照片" = "Select a photo";
+"量化理财投资" = "Wealth";
+"量化理财还款" = "Repay";
+"待对账" = "to verify accounting records";
+"当前红包类型" = "Current type";
+"更多精彩" = "More";
+"游戏类" = "Games";
+"工具类" = "Tools";
+"资讯类" = "News";
+"开始" = "Start";
+"身份认证" = "ID authentication";
+"账号安全" = "Account security";
+"身份验证未完成" = "ID authentication not compelete";
+"身份验证已完成" = "ID authentication is compelete";
+"个人钱包" = "Personal wallet";
+"回到首页" = "Back to home";
+
+"创建私钥钱包" = "Create";
+"登录个人账号" = "Log in";
+"创建个人账号" = "Create";
+
+"导入助记词" = "Import";
+"手机登录" = "Log in via phone";
+"邮箱登录" = "Log in via Email";
+"请输入您的手机号码" = "Please enter your phone number";
+"请输入您的邮箱账号" = "Please enter your email address";
+"手机注册" = "Phone registration";
+"邮箱注册" = "Email registration";
+"注册Theia个人账户" = "Register Theia Personal Account";
+"登录Theia个人账户" = "Log in";
+"输入登录密码" = "Enter passord";
+"确认登录密码" = "Confirm password";
+"请输入账号登录密码" = "Enter passord";
+"请确认账号登录密码" = "Confirm password";
+"密码位数为8~25位(字母+数字)" = "Passwords must be 8~25 digits (letter + number)";
+"密码中包含小写字母" = "Password contains lowercase letters";
+"密码中包含大写字母" = "Password contains uppercase letters";
+"密码格式错误" = "Password format error";
+
+"安全级别" = "Security Level";
+"低" = "Low";
+"中" = "Average";
+"高" = "High";
+"资金密码为6位数" = "The fund password is 6 digits";
+"请输入资金密码" = "Please enter your fund password";
+"请确认资金密码" = "Please confirm your fund password";
+"请输入邮箱号" = "Please enter your email address";
+"请输入账号登录密码" = "Please enter password";
+"请确认账号登录密码" = "Please confirm password";
+"资金密码为6位数" = "The fund password must be 6 digits ";
+"确认资金密码" = "Confirm the fund password";
+"密码不一致" = "Inconsistent password";
+"请输入账号资金密码" = "Please enter fund password";
+"请确认账号资金密码" = "Please confirm fund password";
+"完成注册" = "Complete registration";
+"手机找回" = "Retrieve phone";
+"邮箱找回" = "Retrieve email";
+"请输入您的邮箱账号" = "Please enter your email address";
+"请输入邮箱号" = "Please enter your email address";
+"密码位数至少为8数" = "Password must be at least 8 digits long";
+"找回成功" = "Retrieve successfully";
+"密码为8~25为数字加字母" = "Passwords must be 8~25 digits (letter + number)";
+"两次输入密码必须一致" = "Password must be consistent";
+"选择国家和地区" = "Select a country/region";
+"搜索" = "Search";
+"设置交易密码" = "Set trading password";
+"输入交易密码" = "Enter trading password";
+"密码为6位以上数字或字母" = "Password must be more than 6 digits(letters or numbers)";
+"确认交易密码" = "Confirm Transaction Password";
+"密码，用户解锁钱包和法币" = "With this password, user can unlock wallet and fiat";
+"交易密码为本地密码，请妥善保管，丢失将无法找回" = "The transaction password is a local password, please keep it safe. If you lose it, you will not be able to retrieve it.";
+"可通过删除私钥钱包重新导入助记词设置新密码" = "You can re-import the mnemonic by deleting the private key wallet to set a new password.";
+"隐私服务协议及条款" = "Privacy Service Agreement and Terms";
+"备份钱包助记词" = "Backup wallet mnemonic";
+"已为您创建BTC,ETH,WAN等N个主链币种钱包地址" = "We have created multi addresses of BTC, ETH, WAN and other public chain tokens for you ";
+"Theia钱包支持一套助记词管理多个主链币种钱包地址" = "Theia wallet supports managing multiple wallet addresses of different public chain tokens with one set of mnemonic";
+"稍候备份" = "Backup later";
+"开始备份" = "Start backup";
+"请按顺序 " = "Please follow the order ";
+"抄写下方四个助记词" = "Copy the four mnemonics below";
+
+"请按顺序 抄写下方四个助记词" = "Please follow the order Copy the four mnemonics below";
+//"抄写下方四个助记词" = "Copy the four mnemonics below";
+
+"(共三页)" = "(Three pages)";
+"共三页" = "Three pages";
+"我知道了" = "Got it";
+"请勿截图保存助记词" = "Don't take screenshots to save mnemonics";
+"获得助记词等于掌控资产所有权" = "Getting mnemonics is equal to controlling asset ownership";
+"以防被盗" = "In case of being stolen";
+"妥善保管" = "Keep it safe";
+"切勿丢失" = "Don't lose it";
+"钱包助记词备份成功！" = "Wallet mnemonic backup success!";
+"检测到您的剪切板内包含助记词,是否导入" = "Detected that your clipboard contains mnemonics, whether to import";
+"否" = "No";
+"是" = "Yes";
+"开始恢复" = "Start recovering";
+"请在下方表格中输入12个助记词以恢复钱包，在每个助记词输入完成后按“空格”键可以跳转到下个单词" = "Please enter 12 mnemonics in the table below to restore the wallet. Press the “space” button after each mnemonic is entered to jump to the next word.";
+"恢复助记词钱包" = "Recovery mnemonic wallet";
+"您还未创建私钥钱包,无法使用一键划转功能" = "You have not created a private key wallet and cannot use one-click transfer";
+"您还未登录，是否前去登录" = "You haven't logged in, log in now?";
+"未登录" = "Not logged in";
+"密码为6位数数字" = "Password must be 6-digit number";
+"介绍" = "Introduction";
+"攻略" = "Guide";
+
+"选择照片" = "Choose photos";
+
+"开始游戏" = "Start";
+
+"Theia的私钥钱包是一款多链钱包，便捷的管理你的所有链上资产，私钥本地保存，安全可靠。" = "Theia's private key wallet is a multi-chain wallet that conveniently manages all your digital assets; the private key is saved locally, safe and reliable.";
+"便捷的资产管理，绝对安全的“存入即冷”托管模式。个人钱包还提供了稳定的资产理财方案和趣味应用" = "Convenient asset management, secure custody with cold storage . Personal wallets also provide  stable financial services and fun APPs";
+"正在紧张开发中..." = "Being under intese development...";
+"敬请期待!" = "Stay tuned!";
+"通讯录" = "Contacts";
+"评分" = "Score";
+"下载量" = "Downloads";
+"成交量" = "Volume";
+"开始游戏" = "Start playing";
+"展开" = "More";
+"身份认证已完成" = "ID authentication is completed";
+"身份认证未完成" = "ID authentication is not completed";
+"向左滑动，迅速打开" = "Slide left to open";
+"充币、提币功能" = "Deposit and withdraw";
+"分享红包" = "Share Red Envelopes";
+"请输入您的密码" = "Please enter your password";
+"请确认您的密码" = "Please confirm your password";
+"注册新用户" = "Register";
+"忘记密码" = "Forgot your password";
+"确认密码" = "Confirm Password";
+"密码不一致，请重新输入" = "Inconsistent password, please re-enter";
+"重置密码成功" = "Reset password successfully";
+"用户不存在，请先注册" = "The user does not exist, please register first";
+"作者" = "Author";
+"还请登录后进行操作" = "Please also log in after the operation";
+"验证码已通过邮件的形式发送到您的邮箱里" = "The verification code has been sent to your mailbox";
+"验证码已通过短信的形式发送到135****6254手机上" = "The verification code has been sent to the 135****6254 phone via SMS";
+"手机格式错误" = "Phone format error";
+"邮箱格式错误" = "Mailbox Format error";
+"账号创建成功" = "Account created successfully";
+"恭喜您开启THEIA一站式数字资产管理之路" = "Congratulations on starting managing digital assets with Theia!";
+"一站式数字资产管理平台" = "One-stop Digital asset management platform";
+"请将您抄下的12个助记词按照正确的顺序输入" = "Please send your copy of 12 mnemonic input words in the correct order";
+"私钥账户未创建，显示部分资产" = "Private key account not created, part of the asset is displayed";
 

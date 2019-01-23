@@ -125,7 +125,7 @@
         number = models.receiveSubbranch;
     }
     
-    label5.text = [NSString stringWithFormat:@"%@ (尾号为：%@)",models.receiveBank,number];
+    label5.text = [NSString stringWithFormat:@"%@ (%@%@)",models.receiveBank,[LangSwitcher switchLang:@"尾号为：" key:nil],number];
     
     
     NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:@"BTC"];

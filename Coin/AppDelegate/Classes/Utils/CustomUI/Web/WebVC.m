@@ -176,11 +176,11 @@
     [TLProgressHUD dismiss];
     if (!error) {
         
-        [TLAlert alertWithInfo:@"保存成功"];
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"保存成功!" key:nil]];
 
     } else {
         
-        [TLAlert alertWithInfo:@"保存失败"];
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"保存失败!" key:nil]];
 
     }
     

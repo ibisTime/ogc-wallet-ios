@@ -115,7 +115,7 @@
 //        NSLog(@"assetURL = %@, error = %@", assetURL, error);
         lib = nil;
         [SVProgressHUD setMinimumDismissTimeInterval:2];
-        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        [SVProgressHUD showSuccessWithStatus:[LangSwitcher switchLang:@"保存成功!" key:nil]];
         
     }];
 }
