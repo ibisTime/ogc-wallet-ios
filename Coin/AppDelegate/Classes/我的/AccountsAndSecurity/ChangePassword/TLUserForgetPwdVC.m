@@ -301,7 +301,14 @@
         [[TLUser user] saveUserInfo:userInfo];
         //初始化用户信息
         [[TLUser user] setUserInfoWithDict:userInfo];
-        [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改成功" key:nil]];
+        
+        if ([self.titleString isEqualToString:@"设置交易密码"]) {
+            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"设置成功" key:nil]];
+        }else
+        {
+            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改成功" key:nil]];
+        }
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self.navigationController popViewControllerAnimated:YES];

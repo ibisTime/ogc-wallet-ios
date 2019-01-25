@@ -31,6 +31,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 @interface WithdrawalsCoinVC ()
 {
     UILabel *poundageLabel;
+    CGFloat cvalue;
 }
 
 //可用余额
@@ -203,7 +204,8 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     self.tranAmountTF.keyboardType = UIKeyboardTypeDecimalPad;
 
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(amounttextFieldTextDidChangeOneCI:) name:UITextFieldTextDidChangeNotification
+                                              object:self.tranAmountTF];
     [self.view addSubview:self.tranAmountTF];
     
     
@@ -219,13 +221,13 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
 
     UILabel *absenteeismLbl = [UILabel labelWithFrame:CGRectMake(15, 0, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
-    absenteeismLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
+    absenteeismLbl.text = [LangSwitcher switchLang:@"手续费" key:nil];
     [absenteeismLbl sizeToFit];
     absenteeismLbl.frame = CGRectMake(15, 0, absenteeismLbl.width, 50);
     [backView1 addSubview:absenteeismLbl];
 
     UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(absenteeismLbl.xx + 10, 15 + 2, SCREEN_WIDTH - absenteeismLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:RGB(246, 246, 246) font:FONT(11) textColor:RGB(207, 207, 207)];
-    promptLabel.text = [LangSwitcher switchLang:@"  旷工费将在可用余额中扣除，余额不足将从转账金额扣除" key:nil];
+    promptLabel.text = [LangSwitcher switchLang:@"  手续费将在可用余额中扣除，余额不足将从转账金额扣除" key:nil];
     kViewRadius(promptLabel, 2);
     [backView1 addSubview:promptLabel];
 
@@ -267,9 +269,33 @@ typedef NS_ENUM(NSInteger, AddressType) {
         make.height.equalTo(@50);
 
     }];
+    [self loadData];
 
     self.confirmBtn = confirmPayBtn;
 }
+
+-(void)amounttextFieldTextDidChangeOneCI:(NSNotification *)notification
+{
+    
+    UITextField *textfield=[notification object];
+    NSLog(@"ssssss %@",textfield.text);
+    poundageLabel.text = [NSString stringWithFormat:@"%.8f %@",[textfield.text floatValue]*cvalue,self.currency.currency];
+}
+
+-(void)loadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630047";
+    http.showView = self.view;
+    http.parameters[SYS_KEY] = @"withdraw_fee";
+    [http postWithSuccess:^(id responseObject) {
+        cvalue = [responseObject[@"data"][@"cvalue"] floatValue];
+//        poundageLabel.text =
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 -(void)valueChange:(UISlider *)slider
 {

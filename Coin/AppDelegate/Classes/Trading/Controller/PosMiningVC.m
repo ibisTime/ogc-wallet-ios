@@ -21,6 +21,7 @@
 {
     UIButton *selectBtn;
     UIView *lineView;
+    NSInteger isRefresh;
 }
 
 //
@@ -80,7 +81,7 @@
     MoneyAndTreasureHeadView *headView = [[MoneyAndTreasureHeadView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, 240 - 64 + kNavigationBarHeight)];
     self.headView = headView;
     [self.view addSubview:headView];
-    
+    isRefresh = 0;
     NSArray *btnArray = @[@"BTC",@"USDT"];
     for (int i = 0; i < 2; i ++) {
         UIButton *btn = [UIButton buttonWithTitle:btnArray[i] titleColor:kHexColor(@"#999999") backgroundColor:kClearColor titleFont:16];
@@ -103,6 +104,11 @@
 
 -(void)BtnClick:(UIButton *)sender
 {
+    
+    if (isRefresh == 1) {
+        return;
+    }
+    
     sender.selected = !sender.selected;
     selectBtn.selected = !selectBtn.selected;
     selectBtn = sender;
@@ -212,7 +218,7 @@
     CoinWeakSelf;
 
     
-    [CoinUtil refreshOpenCoinList:^{
+    isRefresh = 1;
         
         TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
         
@@ -242,9 +248,10 @@
                 weakSelf.Moneys = objs;
                 weakSelf.tableView.Moneys = objs;
                 [weakSelf.tableView reloadData_tl];
-                
+                isRefresh = 0;
             } failure:^(NSError *error) {
                 [weakSelf.tableView endRefreshHeader];
+                isRefresh = 0;
             }];
             
             
@@ -257,32 +264,43 @@
         [self.tableView beginRefreshing];
         
         [self.tableView addLoadMoreAction:^{
-            [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            
+            
+            [CoinUtil refreshOpenCoinList:^{
                 
-                if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
                     
-                    [weakSelf removePlaceholderView];
-                }
+                    if (weakSelf.tl_placeholderView.superview != nil) {
+                        
+                        [weakSelf removePlaceholderView];
+                    }
+                    
+                    
+                    weakSelf.Moneys = objs;
+                    weakSelf.tableView.Moneys = objs;
+                    //        weakSelf.tableView.bills = objs;
+                    [weakSelf.tableView reloadData_tl];
+                    
+                } failure:^(NSError *error) {
+                    
+                    [weakSelf addPlaceholderView];
+                    
+                }];
                 
-                
-                weakSelf.Moneys = objs;
-                weakSelf.tableView.Moneys = objs;
-                //        weakSelf.tableView.bills = objs;
-                [weakSelf.tableView reloadData_tl];
-                
-            } failure:^(NSError *error) {
-                
-                [weakSelf addPlaceholderView];
+            } failure:^{
                 
             }];
+            
+            
+            
         }];
         
         [self.tableView endRefreshingWithNoMoreData_tl];
         
         
-    } failure:^{
-        
-    }];
+    
     
     
     

@@ -46,7 +46,7 @@
     [self getShareUrl];
 
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth/2-75, kStatusBarHeight+5, 150, 44)];
-    label.text = [LangSwitcher switchLang:@"Theia红包" key:nil];
+    label.text = [LangSwitcher switchLang:@"橙Wallet红包" key:nil];
     label.textColor = kTextBlack;
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:18];

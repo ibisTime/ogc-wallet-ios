@@ -114,7 +114,7 @@
         [backView addSubview:promptBtn];
         
         
-        UIButton *completeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"我已完成付款" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:18];
+        UIButton *completeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"请付款" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:18];
         completeBtn.frame = CGRectMake(kWidth(15), promptBtn.yy + kHeight(18.5), WIDTH - kWidth(30), kHeight(45));
         kViewRadius(completeBtn, 10);
         self.completeBtn = completeBtn;

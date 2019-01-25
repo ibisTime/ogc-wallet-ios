@@ -380,6 +380,7 @@
     [http postWithSuccess:^(id responseObject) {
         [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改头像成功" key:nil]];
         [TLUser user].photo = key;
+        [self requesUserInfoWithResponseObject];
         [[TLUser user] updateUserInfoWithNotification:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:kUserInfoChange object:nil];
     } failure:^(NSError *error) {

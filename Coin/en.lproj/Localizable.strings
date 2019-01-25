@@ -6,7 +6,6 @@
  Copyright © 2017年  tianlei. All rights reserved.
  */
 
-"Theia " = "Theia";
 "创建钱包" = "Create Wallet";
 "导入钱包" = "Import wallet";
 "我已阅读并同意服务及隐私条款" = "Agree on Terms of Service and Privacy Policy";
@@ -46,7 +45,6 @@
 "空投统计" = "";
 "商业应用" = "Business Application";
 "币生币" = "coin to coin";
-"Theia星球" = "Planet Theia";
 "余币宝" = "Yubibao";
 "实名认证" = "real-name authentication";
 "实名认证成功, 请设置资金密码" = "Success of real-name authentication , Please set up the fund password";
@@ -117,7 +115,6 @@
 "请输入您的邮箱" = "Enter your email address";
 "请输入邮箱" = "Please enter email";
 "请输入验证码" = "Enter code";
-"Theia钱包" = "Theia Wallet";
 "钱包是一款全新的数字货币钱包" = "Wallet is a brand new digital money wallet";
 "为你提高安全丶便捷的一站式管理方案" = "Improve your safety and convenient one-stop management plan";
 "服务时间" = "Service time : AM 9:00 - PM 6:00 ";
@@ -126,7 +123,7 @@
 "修改交易密码" = "Change transaction password";
 "导出私钥" = "to export the private key";
 "请输入交易密码" = "Set the trading password";
-"注意!  Theia不储存用户密码,   无法提供找回或重置功能。  如果忘记密码,   用户只能通过自己备份的钱包私钥,   重新导入后设置新密码" = "Attention!Theia't store a user's password, retrieve or reset function can not be provided.Such as package forgot password, the user only through their own backup wallet private key, to set a new password after import";
+"注意!  橙Wallet不储存用户密码,   无法提供找回或重置功能。  如果忘记密码,   用户只能通过自己备份的钱包私钥,   重新导入后设置新密码" = "Attention!橙Wallet't store a user's password, retrieve or reset function can not be provided.Such as package forgot password, the user only through their own backup wallet private key, to set a new password after import";
 "请确认交易密码" = "Please confirm the transaction password";
 "密码输入错误" = "Two input passwords inconsistent";
 "交易密码修改成功" = "Password modified successfully";
@@ -342,14 +339,12 @@
 "个" = "";
 "常见问题帮助" = "FAQ help";
 "年" = "";
-"Theia红包说明" = "Instruction for Theia gifts";
 "不能为空" = "must not be null";
 "我发出的" = "Sent";
 "积分抽奖" = "Wheel of fortune using points";
 "分享" = "share";
 "私钥账户" = "Private Key Wallet";
 "提币数量" = "Amount";
-"Theia红包" = "Theia gifts";
 "手续费将在提币金额中扣除" = "The withdraw fee will be deducted from the cash amount";
 "我要增加信用积分" = "I would like to increase credit";
 "个人账户中存入数字货币是增加信用积分最快的方式" = "The quickest way to increase credit is to put cryptocurrency in platform account";
@@ -427,7 +422,7 @@
 "泄露助记词将导致资产丢失，请认真抄写，切勿截屏" = "Leaking the mnemonic will result in the loss of assets, please y copy carefully, do not screen";
 "钱包导入失败" = "wallet import failed";
 "请记下您的钱包助记词并保存到安全的地方" = "Please remember your wallet mnemonic";
-"钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。Theia不存储用户助记词，无法提供找回功能。" = "Theia wallet mnemonic is used to restore the wallet assets. With the mnemonic, you can completely control the wallet assets. Please keep it safe. If you lose your mnemonic, you will lose your wallet assets. Theia does not store user mnemonics and cannot provide a retrieval function.";
+"钱包助记词用于恢复钱包资产，拥有助记词即可完全控制钱包资产，请务必妥善保管，丢失助记词即丢失钱包资产。橙Wallet不存储用户助记词，无法提供找回功能。" = "橙Wallet wallet mnemonic is used to restore the wallet assets. With the mnemonic, you can completely control the wallet assets. Please keep it safe. If you lose your mnemonic, you will lose your wallet assets. Theia does not store user mnemonics and cannot provide a retrieval function.";
 "请输入备份的钱包助记词（12个英文单词），按空格分离" = "Please input the backup wallet mnemonic (12 English words), separated by space";
 "根据你记下的助记词，顺序点击，验证你备份的记助词正确无误" = "According to the mnemonics you wrote down, click in the order to verify that the backup mnemonics you made are correct.";
 "密码修改成功" = "password modified successfully";

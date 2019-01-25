@@ -56,7 +56,7 @@
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=kTextColor;
     [titleText setFont:[UIFont systemFontOfSize:17.0]];
-    [titleText setText:[LangSwitcher switchLang:@"Theia红包说明" key:nil]];
+    [titleText setText:[LangSwitcher switchLang:@"橙Wallet红包说明" key:nil]];
     self.navigationItem.titleView=titleText;
     self.view.backgroundColor = kWhiteColor;
 

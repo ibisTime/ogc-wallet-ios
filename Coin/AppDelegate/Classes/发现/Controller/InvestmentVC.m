@@ -30,6 +30,10 @@
     UILabel *buyingLbl;
     UILabel *titleLbl;
     NSInteger indexBtnTag;
+    
+    NSString *type;
+    
+    NSInteger isRefresh;
 }
 
 @property (nonatomic, strong) NSTimer *timer;
@@ -152,10 +156,10 @@
     [_promptView.IkonwBtn addTarget:self action:@selector(promptIkonwBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     kViewRadius(_promptView, 4);
     [self.view addSubview:_promptView];
-    
+    type = @"0";
     CoinWeakSelf;
     [self.tableView addRefreshAction:^{
-        [weakSelf loadData];
+        [weakSelf loadData:type];
         [weakSelf loadDataPrice];
         [weakSelf payWay];
         
@@ -197,6 +201,8 @@
         textField2.text = @"";
         self.tableView.price =  buyPrice;
         self.tableView.Rate = buyFeeRate;
+        type = @"0";
+        [self loadData:type];
         
     }else
     {
@@ -209,6 +215,8 @@
         textField2.placeholder = [LangSwitcher switchLang:@"请输入卖出数量" key:nil];
         self.tableView.price =  sellerPrice;
         self.tableView.Rate = sellerFeeRate;
+        type = @"1";
+        [self loadData:type];
     }
     self.tableView.indexBtnTag = indexBtnTag;
     [self.tableView reloadData];
@@ -378,7 +386,7 @@
     }
 }
 
--(void)loadData
+-(void)loadData:(NSString *)type
 {
     CoinWeakSelf;
     TLNetworking *http = [[TLNetworking alloc] init];
@@ -402,7 +410,7 @@
     http.parameters[@"endDatetime"] = dateString;
     http.parameters[@"symbol"] = @"BTC";
     http.parameters[@"userId"] = [TLUser user].userId;
-    http.parameters[@"type"] = @"0";
+    http.parameters[@"type"] = type;
     [http postWithSuccess:^(id responseObject) {
         
         self.models = [InvestmentModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];

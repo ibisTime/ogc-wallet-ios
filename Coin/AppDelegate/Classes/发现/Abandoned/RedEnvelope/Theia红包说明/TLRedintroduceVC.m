@@ -81,41 +81,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor =  kWhiteColor;
-//    self.title = [LangSwitcher switchLang:@"Theia红包说明" key:nil];
-//    UIButton *_backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    _backButton.frame = CGRectMake(10, 20, 0, 44);
-//    [_backButton setTitle:[LangSwitcher switchLang:@"" key:nil] forState:(UIControlStateNormal)];
-//    _backButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-//    _backButton.titleLabel.font = Font(14);
-//    [_backButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-//    [_backButton setImage:kImage(@"返回1-1") forState:UIControlStateNormal];
-//    [_backButton addTarget:self action:@selector(backbuttonClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    UIButton *titleButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    titleButton.frame = CGRectMake(20,20, 120, 44);
-//    [titleButton setTitle:[LangSwitcher switchLang:@"Theia红包说明" key:nil] forState:(UIControlStateNormal)];
-//    titleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-//    titleButton.titleLabel.font = Font(16);
-//    [titleButton setTitleColor:kTextBlack forState:(UIControlStateNormal)];
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_backButton];
-//
-//    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(kScreenWidth/2-60, 0, 120, 50)];
-//    titleText.textAlignment = NSTextAlignmentCenter;
-//    titleText.backgroundColor = [UIColor clearColor];
-//
-//    titleText.textColor=kTextColor;
-//
-//    [titleText setFont:[UIFont systemFontOfSize:17.0]];
-//
-//    [titleText setText:[LangSwitcher switchLang:@"Theia红包说明" key:nil]];
-//
-//    self.navigationItem.titleView=titleText;
+
 
     UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(kScreenWidth/2-60, 0, 120, 50)];
     titleText.textAlignment = NSTextAlignmentCenter;
     titleText.backgroundColor = [UIColor clearColor];
     titleText.textColor=kTextColor;
     [titleText setFont:[UIFont systemFontOfSize:17.0]];
-    [titleText setText:[LangSwitcher switchLang:@"Theia红包说明" key:nil]];
+    [titleText setText:[LangSwitcher switchLang:@"橙Wallet红包说明" key:nil]];
     self.navigationItem.titleView=titleText;
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headView;

@@ -266,8 +266,6 @@
     
      address = [NSString stringWithFormat:@"%@?inviteCode=%@&lang=%@",self.h5String,[TLUser user].userId,lang];
 
-//    self.bouncedView.informationLabel.attributedText = [self ReturnsTheDistanceBetween:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"【Theia是全球首款跨链生态钱包，同时支持BTC、ETH、TUSD等多币数字货币储存。注册即送10积分，千万BTC/ETH/WAN矿山，等您来挖】" key:nil],address]];
-
 
 
     

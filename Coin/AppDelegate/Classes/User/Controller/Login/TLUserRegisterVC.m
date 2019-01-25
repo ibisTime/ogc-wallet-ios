@@ -95,7 +95,7 @@
     self.view.backgroundColor = kWhiteColor;
     [self setUpUI];
 //    [self loadData];
-    isReading = NO;
+    isReading = YES;
 
 }
 
@@ -257,7 +257,7 @@
     gardenBtn.frame = CGRectMake(0, 0, 12, 12);
     [gardenBtn addTarget:self action:@selector(gardenBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
     gardenBtn.tag = 504;
-    gardenBtn.selected = YES;
+    gardenBtn.selected = NO;
     [footView addSubview:gardenBtn];
     
     
@@ -337,10 +337,7 @@
 - (void)sendCaptcha:(UIButton *)sender {
     
    
-    if (isReading == NO) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"清先阅读并接受《橙Wallet注册协议》" key:nil]];
-        return;
-    }
+    
     
     if (selectBtn.tag == 100) {
         if (![self.phoneTf.text isPhoneNum]) {
@@ -397,6 +394,10 @@
 
 - (void)goReg {
 
+    if (isReading == NO) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请先阅读并接受《橙Wallet注册协议》" key:nil]];
+        return;
+    }
     
     if (selectBtn.tag == 100) {
         if (![self.phoneTf.text isPhoneNum]) {

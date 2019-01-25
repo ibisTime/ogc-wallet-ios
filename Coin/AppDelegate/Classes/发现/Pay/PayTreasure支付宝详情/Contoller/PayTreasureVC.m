@@ -59,7 +59,49 @@
 
 -(void)completeBtnClick
 {
-    [self complete:@"625273"];
+//    [self complete:@"625273"];
+    
+    
+    NSString *imageUrl = self.models.pic;
+    imageUrl  = [imageUrl convertImageUrl];
+    CIDetector*detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:@{ CIDetectorAccuracy : CIDetectorAccuracyHigh }];
+    UIImageView *newImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    
+    [newImage sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        CGImageRef ref = newImage.image.CGImage;
+        //2. 扫描获取的特征组
+        NSArray *features = [detector featuresInImage:[CIImage imageWithCGImage:ref]];
+        //3. 获取扫描结果
+        if (features.count>0) {
+            CIQRCodeFeature *feature = [features objectAtIndex:0];
+            NSString *scannedResult = feature.messageString;
+            
+            if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:scannedResult]]) {
+                
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"alipayqr://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=%@",scannedResult]]];
+                
+                
+                [TLAlert alertWithTitle:[LangSwitcher switchLang:@"支付提醒" key:nil] msg:[LangSwitcher switchLang:@"是否已成功支付" key:nil] confirmMsg:[LangSwitcher switchLang:@"支付完成" key:nil] cancleMsg:[LangSwitcher switchLang:@"前去支付" key:nil] cancle:^(UIAlertAction *action) {
+                    
+                    
+                    [self completeBtnClick];
+                    
+                } confirm:^(UIAlertAction *action) {
+                    [self complete:@"625273"];
+                }];
+                
+                
+//                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.scannedResult]];
+            }else{
+                [TLAlert alertWithInfo:@"请先下载支付宝App"];
+                return ;
+            }
+        }else{
+            [TLAlert alertWithInfo:@"收款码识别失败"];
+        }
+    }];
+    
+    
 }
 
 -(void)myRecodeClick

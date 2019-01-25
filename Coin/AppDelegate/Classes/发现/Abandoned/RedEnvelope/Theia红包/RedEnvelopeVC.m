@@ -91,12 +91,6 @@
     self.navigationItem.titleView=titleText;
     
 
-//    UIView *vie = [UIView new];
-//    [vie addSubview:tit];
-//    tit.frame = vie.bounds;
-//    tit.text = [LangSwitcher switchLang:@"Theia红包" key:nil];
-
-//    self.navigationItem.titleView = [[UIView alloc] initWithFrame:CGRectMake(100, 10, 120, 44)];
 
 
     _sendView = [[SendRedEnvelopeView alloc]initWithFrame:CGRectMake(0, - kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT + kNavigationBarHeight)];
