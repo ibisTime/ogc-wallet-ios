@@ -32,6 +32,8 @@
     NSInteger indexBtnTag;
 }
 
+@property (nonatomic, strong) NSTimer *timer;
+
 @property (nonatomic , strong)InvestmentTableView *tableView;
 @property (nonatomic , strong)PaymentInstructionsView *promptView;
 @property (nonatomic , strong)UIButton *bottomBtn;
@@ -113,11 +115,20 @@
     //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(testTimerDeallo) userInfo:nil repeats:YES];
 }
+
+-(void)testTimerDeallo
+{
+    [self loadDataPrice];
+}
+
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
+    [self.timer invalidate];
 }
 
 - (void)viewDidLoad {
@@ -436,7 +447,7 @@
     CoinWeakSelf;
     TLNetworking *http = [[TLNetworking alloc] init];
     
-    http.showView = weakSelf.view;
+//    http.showView = weakSelf.view;
     http.code = @"650201";
     http.parameters[@"symbol"] = @"BTC";
     http.parameters[@"type"] = @"0";

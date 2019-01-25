@@ -18,6 +18,8 @@
 //systemCode = "CD-OGC000019";
 //type = 0;
 //userId = U20181228133231683443414;
+@property (nonatomic , copy)NSString *icon;
+@property (nonatomic , copy)NSString *background;
 @property (nonatomic , copy)NSString *isDefault;
 @property (nonatomic , copy)NSString *bankCode;
 @property (nonatomic , copy)NSString *bankName;

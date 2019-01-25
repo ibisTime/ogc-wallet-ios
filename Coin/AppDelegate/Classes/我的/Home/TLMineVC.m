@@ -193,9 +193,10 @@
             break;
         case 4:
         {
-            [ZDKZendesk initializeWithAppId: @"71d2ca9aba0cccc12deebfbdd352fbae8c53cd8999dd10bc"
-                                   clientId: @"mobile_sdk_client_7af3526c83d0c1999bc3"
-                                 zendeskUrl: @"https://thachainhelp.zendesk.com"];
+
+            [ZDKZendesk initializeWithAppId: @"572a044301abb3cec5bc7efba47802dc225375622ee399eb"
+                                   clientId: @"mobile_sdk_client_1315e07d5bbe64e76b61"
+                                 zendeskUrl: @"https://chengwallethelp.zendesk.com"];
             
             id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
             [[ZDKZendesk instance] setIdentity:userIdentity];

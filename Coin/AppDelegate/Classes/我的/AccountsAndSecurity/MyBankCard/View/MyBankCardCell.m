@@ -12,14 +12,16 @@
 {
     UILabel *bankNameLbl;
     UILabel *bankNumberLbl;
+    UIImageView *backImage;
+    UIImageView *iconImg;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        UIImageView *backImage = [[UIImageView alloc]initWithFrame:CGRectMake(15, 13, SCREEN_WIDTH - 30, 160)];
-        backImage.image = kImage(@"邮政银行");
+        backImage = [[UIImageView alloc]initWithFrame:CGRectMake(15, 13, SCREEN_WIDTH - 30, 160)];
+//        backImage.image = kImage(@"邮政银行");
         [self addSubview:backImage];
         
         UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(24, 24, 40, 40)];
@@ -28,8 +30,8 @@
         [backImage addSubview:bottomView];
         
         
-        UIImageView *iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(8.5, 8.5, 23, 23)];
-        iconImg.image = kImage(@"邮政银行");
+        iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(8.5, 8.5, 23, 23)];
+//        iconImg.image = kImage(@"邮政银行");
         [bottomView addSubview:iconImg];
         
         bankNameLbl = [UILabel labelWithFrame:CGRectMake(bottomView.xx + 12, 24, SCREEN_WIDTH - 115, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kWhiteColor];
@@ -72,6 +74,9 @@
 
 -(void)setModels:(MyBankCardModel *)models
 {
+    
+    [backImage sd_setImageWithURL:[NSURL URLWithString:[models.background convertImageUrl]]];
+    [iconImg sd_setImageWithURL:[NSURL URLWithString:[models.icon convertImageUrl]]];
     bankNameLbl.text = models.bankName;
     NSString *number;
     if (models.bankcardNumber.length > 4) {

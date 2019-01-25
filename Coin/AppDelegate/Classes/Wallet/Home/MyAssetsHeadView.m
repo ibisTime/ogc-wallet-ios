@@ -54,7 +54,14 @@
         
         
         allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, allAssetsBtn.yy + 20, SCREEN_WIDTH - 80, 32) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(32) textColor:kTabbarColor];
-        allAssetsLbl.text = @"≈0.00 CNY";
+         if ([[TLUser user].localMoney isEqualToString:@"USD"])
+         {
+             allAssetsLbl.text = @"≈0.00 USD";
+         }else
+         {
+             allAssetsLbl.text = @"≈0.00 CNY";
+         }
+        
         [whiteView addSubview:allAssetsLbl];
         
         
