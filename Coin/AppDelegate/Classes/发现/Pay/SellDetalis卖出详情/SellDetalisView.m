@@ -118,11 +118,11 @@
     label4.text = [models.createDatetime convertToDetailDate];
     
     NSString *number;
-    if (models.receiveSubbranch.length > 4) {
-        number = [models.receiveSubbranch substringFromIndex:models.receiveSubbranch.length - 4];
+    if (models.receiveCardNo.length > 4) {
+        number = [models.receiveCardNo substringFromIndex:models.receiveCardNo.length - 4];
     }else
     {
-        number = models.receiveSubbranch;
+        number = models.receiveCardNo;
     }
     
     label5.text = [NSString stringWithFormat:@"%@ (%@%@)",models.receiveBank,[LangSwitcher switchLang:@"尾号为：" key:nil],number];

@@ -31,7 +31,6 @@ typedef NS_ENUM(NSInteger, AddressType) {
 @interface WithdrawalsCoinVC ()
 {
     UILabel *poundageLabel;
-    CGFloat cvalue;
 }
 
 //可用余额
@@ -204,8 +203,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     self.tranAmountTF.keyboardType = UIKeyboardTypeDecimalPad;
 
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(amounttextFieldTextDidChangeOneCI:) name:UITextFieldTextDidChangeNotification
-                                              object:self.tranAmountTF];
+    
     [self.view addSubview:self.tranAmountTF];
     
     
@@ -236,7 +234,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     [self.view addSubview:lineView];
     
     UILabel *poundageNameLbl = [UILabel labelWithFrame:CGRectMake(15, 51, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
-    poundageNameLbl.text = [LangSwitcher switchLang:@"旷工费" key:nil];
+    poundageNameLbl.text = [LangSwitcher switchLang:@"手续费" key:nil];
     [poundageNameLbl sizeToFit];
     poundageNameLbl.frame = CGRectMake(15, 51, poundageNameLbl.width, 50);
     [backView1 addSubview:poundageNameLbl];
@@ -245,11 +243,18 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     
     poundageLabel = [UILabel labelWithFrame:CGRectMake(poundageNameLbl.xx + 10, 15 +51 + 2, SCREEN_WIDTH - poundageNameLbl.xx - 25, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTabbarColor];
-    CoinModel *currentCoin = [CoinUtil getCoinModel:self.currency.currency];
     
-    self.withdrawFee = currentCoin.withdrawFeeString;
     
-    poundageLabel.text = [NSString stringWithFormat:@"%@ %@", [CoinUtil convertToRealCoin:self.withdrawFee coin:self.currency.currency], self.currency.currency];
+    
+    if ([self.currency.currency isEqualToString:@"BTC"]) {
+        [self AcquisitionFeeCurrency:@"btc_withdraw_fee"];
+    }else
+    {
+        [self AcquisitionFeeCurrency:@"usdt_withdraw_fee"];
+    }
+    
+    
+    
     [backView1 addSubview:poundageLabel];
     
     //确认付币
@@ -269,37 +274,26 @@ typedef NS_ENUM(NSInteger, AddressType) {
         make.height.equalTo(@50);
 
     }];
-    [self loadData];
 
     self.confirmBtn = confirmPayBtn;
 }
 
--(void)amounttextFieldTextDidChangeOneCI:(NSNotification *)notification
-{
-    
-    UITextField *textfield=[notification object];
-    NSLog(@"ssssss %@",textfield.text);
-    poundageLabel.text = [NSString stringWithFormat:@"%.8f %@",[textfield.text floatValue]*cvalue,self.currency.currency];
-}
 
--(void)loadData
+-(void)AcquisitionFeeCurrency:(NSString *)currency
 {
     TLNetworking *http = [TLNetworking new];
     http.code = @"630047";
-    http.showView = self.view;
-    http.parameters[SYS_KEY] = @"withdraw_fee";
+    http.parameters[SYS_KEY] = currency;
     [http postWithSuccess:^(id responseObject) {
-        cvalue = [responseObject[@"data"][@"cvalue"] floatValue];
-//        poundageLabel.text =
+        
+        
+        self.withdrawFee = responseObject[@"data"][@"cvalue"];
+        poundageLabel.text = [NSString stringWithFormat:@"%@ %@", responseObject[@"data"][@"cvalue"], self.currency.currency];
+        
+        
     } failure:^(NSError *error) {
         
     }];
-}
-
-
--(void)valueChange:(UISlider *)slider
-{
-    
 }
 
 -(void)click

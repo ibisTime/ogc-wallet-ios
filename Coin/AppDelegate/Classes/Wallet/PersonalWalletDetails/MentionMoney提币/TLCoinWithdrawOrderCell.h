@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) TLCoinWithdrawModel *withdrawModel;
 
+@property (nonatomic , copy)NSString *titleString;
+
 @end

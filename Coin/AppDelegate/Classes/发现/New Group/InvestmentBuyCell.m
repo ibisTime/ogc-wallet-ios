@@ -87,7 +87,7 @@
 {
     if ([Rate floatValue] > 0) {
         NSString *poundage = [LangSwitcher switchLang:@"交易手续费：" key:nil];
-        NSString *poundagePrice = [NSString stringWithFormat:@"%@%%",Rate];
+        NSString *poundagePrice = [NSString stringWithFormat:@"%@",Rate];
         NSString *poundageAll = [NSString stringWithFormat:@"%@%@",poundage,poundagePrice];
         NSMutableAttributedString *poundageAttrStr = [[NSMutableAttributedString alloc] initWithString:poundageAll];
         [poundageAttrStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(poundage.length,poundageAll.length - poundage.length)];

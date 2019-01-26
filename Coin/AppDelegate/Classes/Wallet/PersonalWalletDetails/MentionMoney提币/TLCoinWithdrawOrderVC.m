@@ -72,11 +72,18 @@
     self.orderTableView = tableView;
     self.orderTableView.allowsSelection = NO;
     self.orderTableView.defaultNoDataImage = kImage(@"暂无订单");
+    
     self.orderTableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无明细" key:nil];
 
     //
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-    helper.code = @"802355";
+    if ([_titleString isEqualToString:[LangSwitcher switchLang:@"收款订单" key:nil]]) {
+        helper.code = @"802345";
+    }else
+    {
+        helper.code = @"802355";
+    }
+    
     helper.parameters[@"applyUser"] = [TLUser user].userId;
     helper.parameters[@"token"] = [TLUser user].token;
     helper.parameters[@"currency"] = self.coin;
@@ -148,6 +155,7 @@
         cell = [[TLCoinWithdrawOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
 
     }
+    cell.titleString = self.titleString;
     cell.withdrawModel = self.orders[indexPath.row];
     return cell;
 }

@@ -132,10 +132,10 @@
         [_timeLbl sizeToFit];
         _timeLbl.frame = CGRectMake(60, 43.5, _timeLbl.width, 11);
         if ([models.status isEqualToString:@"1"]) {
-            _stateLbl2.text = @"已支付";
+            _stateLbl2.text = [LangSwitcher switchLang:@"已支付" key:nil];
         }else
         {
-            _stateLbl2.text = @"已完成";
+            _stateLbl2.text = [LangSwitcher switchLang:@"已完成" key:nil];
         }
         
         _stateLbl2.frame = CGRectMake(_timeLbl.xx, 40, SCREEN_WIDTH - _timeLbl.xx- 15, 15);
@@ -147,16 +147,21 @@
         self.headImg.image = kImage(@"已取消-订单");
         
         if ([models.type isEqualToString:@"0"]) {
-            _nameLbl.text = @"买入";
+            _nameLbl.text = [LangSwitcher switchLang:@"买入" key:nil];
         }else
         {
-            _nameLbl.text = @"卖出";
+            _nameLbl.text = [LangSwitcher switchLang:@"卖出" key:nil];
         }
         [_nameLbl sizeToFit];
         _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
-        _stateLbl.text = @"用户取消订单";
+        if ([models.status isEqualToString:@"3"]) {
+            _stateLbl.text = [LangSwitcher switchLang:@"用户取消订单" key:nil];
+        }else
+        {
+            _stateLbl.text = [LangSwitcher switchLang:@"平台取消订单" key:nil];
+        }
         _stateLbl.font = FONT(12);
         _stateLbl.textColor = kHexColor(@"#999999");
         

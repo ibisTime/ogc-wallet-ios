@@ -40,7 +40,25 @@
     [self initTableView];
     //
     [self initHeaderView];
+    [self loadData];
     
+}
+
+
+-(void)loadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630036";
+    
+    http.parameters[@"parentKey"] = @"jour_status";
+    
+    [http postWithSuccess:^(id responseObject) {
+        //        [self LoadData];
+        self.tableView.dataArray = responseObject[@"data"];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - Init

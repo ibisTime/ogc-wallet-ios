@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) BillModel *bill;
 
+@property (nonatomic, strong)NSArray *dataArray;
+
 @end

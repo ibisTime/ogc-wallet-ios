@@ -234,8 +234,13 @@
 //            break;
 //        }
         case HTMLTypeQuantitativeFinance: {
-            ckey = [NSString stringWithFormat:@"pop_protocol_%@",[APPLanguage currentLanguage].currentLange];
-
+//            ckey = [NSString stringWithFormat:@"pop_protocol_%@",[APPLanguage currentLanguage].currentLange];
+            if ([[APPLanguage currentLanguage].currentLange hasPrefix:@"ZH"]) {
+                ckey = @"pop_protocol";
+            }else
+            {
+                ckey = @"pop_protocol_en";
+            }
             name = [LangSwitcher switchLang:@"量化理财" key:nil];
             self.nameLable.text = name;
             break;

@@ -36,7 +36,7 @@ static NSString *identifierCell = @"BillDetailCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 6;
+    return 5;
     
 }
 
@@ -46,7 +46,6 @@ static NSString *identifierCell = @"BillDetailCell";
     NSArray *textArr = @[
                          [LangSwitcher switchLang:@"变动前金额" key:nil],
                           [LangSwitcher switchLang:@"变动后金额" key:nil],
-                         [LangSwitcher switchLang:@"手续费用" key:nil],
                           [LangSwitcher switchLang:@"变动时间" key:nil],
                           [LangSwitcher switchLang:@"明细状态" key:nil],
                           [LangSwitcher switchLang:@"明细摘要" key:nil],
@@ -58,14 +57,18 @@ static NSString *identifierCell = @"BillDetailCell";
     NSString *preAmount = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:_bill.preAmountString coin:_bill.currency],_bill.currency];
     NSString *getBizName;
     getBizName = _bill.bizNote;
-//    if ([TLUser isBlankString:_bill.getBizName] == YES) {
-//
-//    }else
-//    {
-//        getBizName = _bill.getBizName;
-//    }
-//     _bill.getStatusName
-    NSArray *rightArr = @[preAmount,postAmount,@"",@"",@"",getBizName];
+    NSString *status = @"";
+    if (self.dataArray.count > 0) {
+        for (int i = 0; i < self.dataArray.count; i ++) {
+            if ([_bill.status isEqualToString:self.dataArray[i][@"dkey"]]) {
+                status = self.dataArray[i][@"dvalue"];
+            }
+        }
+    }
+    
+    NSString *createDatetime = [_bill.createDatetime convertToDetailDate];
+
+    NSArray *rightArr = @[preAmount,postAmount,createDatetime,status,getBizName];
     
     cell.titleLbl.text = [NSString stringWithFormat:@"%@",textArr[indexPath.row]];
 

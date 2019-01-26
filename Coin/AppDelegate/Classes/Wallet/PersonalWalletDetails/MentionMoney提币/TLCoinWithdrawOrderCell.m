@@ -15,6 +15,9 @@
 #import "NSString+Date.h"
 
 @interface TLCoinWithdrawOrderCell()
+{
+    NSString *str;
+}
 
 //提现金额
 @property (nonatomic, strong) UILabel *coinCountLbl;
@@ -149,6 +152,11 @@
 
 }
 
+-(void)setTitleString:(NSString *)titleString
+{
+    str = titleString;
+}
+
 - (void)setWithdrawModel:(TLCoinWithdrawModel *)withdrawModel {
     
     _withdrawModel = withdrawModel;
@@ -157,8 +165,19 @@
     NSString *countStr = [CoinUtil convertToRealCoin: _withdrawModel.amount
                                                 coin:_withdrawModel.currency];
     
-    NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"提币金额" key:nil],countStr,_withdrawModel.currency];
-    self.coinCountLbl.attributedText = [self attrStrLeftLen:5 str:normalCountStr];
+    if ([_titleString isEqualToString:[LangSwitcher switchLang:@"收款订单" key:nil]]) {
+        NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"收款金额" key:nil],countStr,_withdrawModel.currency];
+        self.coinCountLbl.attributedText = [self attrStrLeftLen:5 str:normalCountStr];
+        NSString *toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"地址" key:nil],_withdrawModel.payCardNo];
+        self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];;
+    }else
+    {
+        NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"提币金额" key:nil],countStr,_withdrawModel.currency];
+        self.coinCountLbl.attributedText = [self attrStrLeftLen:5 str:normalCountStr];
+        NSString *toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"提币地址" key:nil],_withdrawModel.payCardNo];
+        self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];;
+    }
+    
     
     //
     NSString *feeStr = [CoinUtil convertToRealCoin: _withdrawModel.feeString
@@ -168,8 +187,7 @@
     self.feelbl.attributedText = [self attrStrLeftLen:4 str:feeNormalStr];
     
     //
-    NSString *toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"提币地址" key:nil],_withdrawModel.payCardNo];
-    self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];;
+    
     
     //
     self.statusLbl.text = [_withdrawModel statusName];

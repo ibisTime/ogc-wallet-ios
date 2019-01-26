@@ -94,6 +94,8 @@
         OrderRecordVC *vc = [OrderRecordVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+        textField1.text = @"";
+        textField2.text = @"";
         [[UserModel user].cusPopView dismiss];
     } failure:^(NSError *error) {
         
@@ -144,7 +146,7 @@
     indexBtnTag = 0;
     self.tableView.indexBtnTag = 0;
     [self makeSmoothChartView];
-//    kHexColor(@"#FA7D0E")
+
     _bottomBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"买入" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16];
     _bottomBtn.frame = CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - 50 - kTabBarHeight, SCREEN_WIDTH, 50);
     [_bottomBtn addTarget:self action:@selector(bottomBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
@@ -308,6 +310,8 @@
     UITextField *textField1 = [self.view viewWithTag:10000];
     UITextField *textField2 = [self.view viewWithTag:10001];
     
+
+    
     if ([textField1.text floatValue] < 100) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买金额必须大于100" key:nil]];
         return ;
@@ -334,12 +338,20 @@
             OrderRecordVC *vc = [OrderRecordVC new];
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
+            textField1.text = @"";
+            textField2.text = @"";
             [[UserModel user].cusPopView dismiss];
         } failure:^(NSError *error) {
             
         }];
     }else
     {
+        
+        if ([TLUser isBlankString:self.bankModel.code] == YES) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
+            return ;
+        }
+        
         [[UserModel user].cusPopView dismiss];
         self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ BTC",textField2.text];
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.passWordView];
@@ -382,6 +394,34 @@
         [self.navigationController pushViewController:vc animated:YES];
     }else
     {
+        
+        
+        
+        UITextField *textField1 = [self.view viewWithTag:10000];
+        UITextField *textField2 = [self.view viewWithTag:10001];
+        
+        
+        
+        if ([textField1.text floatValue] < 100) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买金额必须大于100" key:nil]];
+            return ;
+        }
+        
+        if ([textField2.text floatValue] == 0) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
+            return ;
+        }
+        if (indexBtnTag == 0) {
+            
+        }else
+        {
+            
+            if ([TLUser isBlankString:self.bankModel.code] == YES) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
+                return ;
+            }
+        }
+        
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.promptView];
     }
 }
