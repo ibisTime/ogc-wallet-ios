@@ -83,15 +83,15 @@
 {
     
     
+//    if (indexPath.row == 0) {
+//        LangChooseVC *vc = [LangChooseVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
     if (indexPath.row == 0) {
-        LangChooseVC *vc = [LangChooseVC new];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (indexPath.row == 1) {
         ChangeLocalMoneyVC *vc = [ChangeLocalMoneyVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 2) {
+    if (indexPath.row == 1) {
         TLAboutUsVC *vc = [TLAboutUsVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }

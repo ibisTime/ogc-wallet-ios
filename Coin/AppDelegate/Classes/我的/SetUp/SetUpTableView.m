@@ -41,7 +41,7 @@ static NSString *identifierCell = @"SettingCell";
 //        return 5;
 //    }
     
-    return 3;
+    return 2;
     
 }
 
@@ -59,7 +59,7 @@ static NSString *identifierCell = @"SettingCell";
     cell.switchHidden = YES;
     //    cell.iconImageView.hidden = YES;
     
-    NSArray *nameArray1 = @[@"语言",@"本地货币",@"版本更新"];
+    NSArray *nameArray1 = @[@"本地货币",@"版本更新"];
     cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
     
     

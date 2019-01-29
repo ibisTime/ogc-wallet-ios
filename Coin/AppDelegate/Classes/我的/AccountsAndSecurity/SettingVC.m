@@ -143,13 +143,13 @@
             }
             
         }
+//        if (indexPath.row == 1) {
+//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"暂未开放" key:nil]];
+//            return;
+////            GoogleAuthVC *vc = [GoogleAuthVC new];
+////            [self.navigationController pushViewController:vc animated:YES];
+//        }
         if (indexPath.row == 1) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"暂未开放" key:nil]];
-            return;
-//            GoogleAuthVC *vc = [GoogleAuthVC new];
-//            [self.navigationController pushViewController:vc animated:YES];
-        }
-        if (indexPath.row == 2) {
             if ([TLUser isBlankString:[TLUser user].email] == YES) {
                 BindingEmailVC *vc = [BindingEmailVC new];
                 vc.titleStr = @"绑定邮箱";
@@ -157,7 +157,7 @@
             }
             
         }
-        if (indexPath.row == 3) {
+        if (indexPath.row == 2) {
             if ([TLUser isBlankString:[TLUser user].mobile] == YES)
             {
                 BindingEmailVC *vc = [BindingEmailVC new];
@@ -166,7 +166,7 @@
             }
         }
         
-        if (indexPath.row == 4) {
+        if (indexPath.row == 3) {
             MyBankCardVC *vc = [[MyBankCardVC alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
         }

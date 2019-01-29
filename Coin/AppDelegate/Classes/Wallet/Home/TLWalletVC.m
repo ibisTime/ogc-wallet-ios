@@ -292,8 +292,6 @@
     WallAccountVC *accountVC= [[WallAccountVC alloc] init];
     accountVC.currency = self.AssetsListModel[index - 100];
     accountVC.hidesBottomBarWhenPushed = YES;
-//    accountVC.title = model.currency;
-//    accountVC.billType = CurrentTypeAll;
     [self.navigationController pushViewController:accountVC animated:YES];
 }
 
@@ -342,124 +340,11 @@
     [self.navigationController pushViewController:coinVC animated:YES];
 }
 
-
-
-//#pragma mark -- 点击加号按钮
-//- (void)addCurrent{
-//
-//    AddAccoutMoneyVc *monyVc = [[AddAccoutMoneyVc alloc] init];
-//    monyVc.PersonalWallet = 100;
-//    [self.navigationController pushViewController:monyVc animated:YES];
-//}
-
-
-
-
 - (void)addNotification {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userlogin) name:kUserLoginNotification object:nil];
 }
 
-//更新数据库
-//- (void)saveLocalWallet{
-//    NSString *totalcount;
-//    TLDataBase *data = [TLDataBase sharedManager];
-//    if ([data.dataBase open]) {
-//        NSString *sql = [NSString stringWithFormat:@"SELECT next from THALocal lo, THAUser th where lo.walletId = th.walletId  and th.userId = '%@'",[TLUser user].userId];
-//        FMResultSet *set = [data.dataBase executeQuery:sql];
-//        while ([set next]) {
-//
-//            totalcount = [set stringForColumn:@"next"];
-//     }
-//        [set close];
-//    }
-//    [data.dataBase close];
-//    if ([totalcount integerValue] == self.coins.count) {
-//        //判断是否新加并且删除了币种
-//        NSMutableArray *symbolArr = [NSMutableArray array];
-//        NSString *totalcount;
-//        TLDataBase *data = [TLDataBase sharedManager];
-//
-//        if ([data.dataBase open]) {
-//
-//            NSString *sql = [NSString stringWithFormat:@"SELECT symbol from THALocal lo, THAUser th where lo.walletId = th.walletId  and th.userId = '%@'",[TLUser user].userId];
-//            FMResultSet *set = [data.dataBase executeQuery:sql];
-//            while ([set next]) {
-//
-//                totalcount = [set stringForColumn:@"symbol"];
-//                [symbolArr addObject:totalcount];
-//            }
-//            [set close];
-//        }
-//        [data.dataBase close];
-//
-//        for (int i = 0; i < self.coins.count; i++) {
-//
-////            for (NSString *symbol in symbolArr) {
-//                if ([symbolArr containsObject:self.coins[i].symbol]) {
-//
-//                }else{
-//                    //存在不同的币种 更新本地币种表
-//                    TLDataBase *db = [TLDataBase sharedManager];
-//
-//                    if ([db.dataBase open]) {
-//                        NSString *Sql2 =[NSString stringWithFormat:@"delete from THALocal WHERE walletId = (SELECT walletId from THAUser where userId='%@')",[TLUser user].userId];
-//
-//                        BOOL sucess2  = [db.dataBase executeUpdate:Sql2];
-//                        NSLog(@"更新自选表%d",sucess2);
-//                    }
-//                    [db.dataBase close];
-//
-//
-//                    for (int i = 0; i < self.coins.count; i++) {
-//
-//                        CoinModel *model = self.coins[i];
-//                        TLDataBase *dateBase = [TLDataBase sharedManager];
-//                        if ([dateBase.dataBase open]) {
-//
-//                            BOOL sucess = [dateBase.dataBase executeUpdate:@"INSERT INTO  THALocal(walletId,symbol,type,status,cname,unit,pic1,withdrawFeeString,withfrawFee,orderNo,ename,icon,pic2,pic3,address,IsSelect,next) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",model.walletId,model.symbol,model.type,model.status,model.cname,model.unit,model.pic1,model.withdrawFeeString,model.withfrawFee,model.orderNo,model.ename,model.icon,model.pic2,model.pic3,model.address,[NSNumber numberWithBool:YES],[NSString stringWithFormat:@"%ld",self.coins.count]];
-//
-//                            NSLog(@"插入币种表%d",sucess);
-//                        }
-//                        [dateBase.dataBase close];
-//                    }
-//
-//
-//                }
-////            }
-//
-//        }
-//        [self queryTotalAllAmount];
-//        return;
-//    }else {
-//
-//        TLDataBase *db = [TLDataBase sharedManager];
-//
-//        if ([db.dataBase open]) {
-//            NSString *Sql2 =[NSString stringWithFormat:@"delete from THALocal WHERE walletId = (SELECT walletId from THAUser where userId='%@')",[TLUser user].userId];
-//
-//            BOOL sucess2  = [db.dataBase executeUpdate:Sql2];
-//            NSLog(@"更新自选表%d",sucess2);
-//        }
-//        [db.dataBase close];
-//
-//    for (int i = 0; i < self.coins.count; i++) {
-//
-//        CoinModel *model = self.coins[i];
-//        TLDataBase *dateBase = [TLDataBase sharedManager];
-//        if ([dateBase.dataBase open]) {
-//
-//            BOOL sucess = [dateBase.dataBase executeUpdate:@"INSERT INTO  THALocal(walletId,symbol,type,status,cname,unit,pic1,withdrawFeeString,withfrawFee,orderNo,ename,icon,pic2,pic3,address,IsSelect,next) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",model.walletId,model.symbol,model.type,model.status,model.cname,model.unit,model.pic1,model.withdrawFeeString,model.withfrawFee,model.orderNo,model.ename,model.icon,model.pic2,model.pic3,model.address,[NSNumber numberWithBool:YES],[NSString stringWithFormat:@"%ld",self.coins.count]];
-//
-//            NSLog(@"插入币种表%d",sucess);
-//        }
-//        [dateBase.dataBase close];
-//    }
-//
-//    //插入币种表
-//    [self queryTotalAllAmount];
-//     }
-//}
 
 #pragma mark -- 个人钱包列表网络请求
 - (void)getMyCurrencyList {

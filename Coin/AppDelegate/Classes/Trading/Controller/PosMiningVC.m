@@ -120,11 +120,9 @@
     if (selectBtn.tag == 100) {
         
         [self getMyCurrencyList:@"BTC"];
-//        [self totalAmount:@"BTC"];
     }else
     {
         [self getMyCurrencyList:@"USDT"];
-//        [self totalAmount:@"USDT"];
     }
 }
 
@@ -207,10 +205,6 @@
     } failure:^(NSError *error) {
         
     }];
-    
-    
-    
-    
 }
 
 - (void)getMyCurrencyList:(NSString *)symbol {
@@ -219,158 +213,66 @@
 
     
     isRefresh = 1;
+    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+    
+    helper.code = @"625510";
+    helper.parameters[@"userId"] = [TLUser user].userId;
+    helper.parameters[@"status"] = @"appDisplay";
+    helper.parameters[@"symbol"] = symbol;
+    helper.isCurrency = YES;
+    helper.tableView = self.tableView;
+    [helper modelClass:[TLtakeMoneyModel class]];
+    [self.tableView addRefreshAction:^{
+        //        [weakSelf totalAmount];
+        if (selectBtn.tag == 100) {
+            
+            [weakSelf totalAmount:@"BTC"];
+        }else
+        {
+            
+            [weakSelf totalAmount:@"USDT"];
+        }
+        //        [self totalAmount:@"BTC"];
+        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            //去除没有的币种
+            weakSelf.Moneys = objs;
+            weakSelf.tableView.Moneys = objs;
+            [weakSelf.tableView reloadData_tl];
+            isRefresh = 0;
+        } failure:^(NSError *error) {
+            [weakSelf.tableView endRefreshHeader];
+            isRefresh = 0;
+        }];
+    }];
+    [self.tableView beginRefreshing];
+    [self.tableView addLoadMoreAction:^{
         
-        TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-        
-        helper.code = @"625510";
-        helper.parameters[@"userId"] = [TLUser user].userId;
-        helper.parameters[@"status"] = @"appDisplay";
-        helper.parameters[@"symbol"] = symbol;
-        helper.isCurrency = YES;
-        helper.tableView = self.tableView;
-        [helper modelClass:[TLtakeMoneyModel class]];
         
         
-        
-        [self.tableView addRefreshAction:^{
-            //        [weakSelf totalAmount];
-            if (selectBtn.tag == 100) {
+        [CoinUtil refreshOpenCoinList:^{
+            
+            
+            [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
                 
-                [weakSelf totalAmount:@"BTC"];
-            }else
-            {
+                if (weakSelf.tl_placeholderView.superview != nil) {
+                    
+                    [weakSelf removePlaceholderView];
+                }
                 
-                [weakSelf totalAmount:@"USDT"];
-            }
-            //        [self totalAmount:@"BTC"];
-            [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-                //去除没有的币种
+                
                 weakSelf.Moneys = objs;
                 weakSelf.tableView.Moneys = objs;
+                //        weakSelf.tableView.bills = objs;
                 [weakSelf.tableView reloadData_tl];
-                isRefresh = 0;
+                
             } failure:^(NSError *error) {
-                [weakSelf.tableView endRefreshHeader];
-                isRefresh = 0;
+                [weakSelf addPlaceholderView];
             }];
-            
-            
-            
+        } failure:^{
         }];
-        
-        
-        
-        
-        [self.tableView beginRefreshing];
-        
-        [self.tableView addLoadMoreAction:^{
-            
-            
-            
-            [CoinUtil refreshOpenCoinList:^{
-                
-                
-                [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-                    
-                    if (weakSelf.tl_placeholderView.superview != nil) {
-                        
-                        [weakSelf removePlaceholderView];
-                    }
-                    
-                    
-                    weakSelf.Moneys = objs;
-                    weakSelf.tableView.Moneys = objs;
-                    //        weakSelf.tableView.bills = objs;
-                    [weakSelf.tableView reloadData_tl];
-                    
-                } failure:^(NSError *error) {
-                    
-                    [weakSelf addPlaceholderView];
-                    
-                }];
-                
-            } failure:^{
-                
-            }];
-            
-            
-            
-        }];
-        
-        [self.tableView endRefreshingWithNoMoreData_tl];
-        
-        
-    
-    
-    
-    
-
+    }];
+    [self.tableView endRefreshingWithNoMoreData_tl];
 }
-
-//-(void)getMyCurrencyList
-//{
-//    CoinWeakSelf;
-//    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-//    helper.code = @"625510";
-//    helper.parameters[@"userId"] = [TLUser user].userId;
-//    helper.parameters[@"status"] = @"appDisplay";
-//
-//
-//    helper.isCurrency = YES;
-//    helper.tableView = self.tableView;
-//    [helper modelClass:[TLtakeMoneyModel class]];
-//
-//    [self.tableView addRefreshAction:^{
-//        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-//            NSMutableArray <TLtakeMoneyModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                TLtakeMoneyModel *model = (TLtakeMoneyModel *)obj;
-//                [shouldDisplayCoins addObject:model];
-//            }];
-////            weakSelf.model = shouldDisplayCoins;
-////            weakSelf.tableView.model = shouldDisplayCoins;
-////            [weakSelf.tableView reloadData_tl];
-//
-//            weakSelf.Moneys = shouldDisplayCoins;
-//            [weakSelf.tableView.Moneys removeAllObjects];
-//            [weakSelf.tableView reloadData];
-//            weakSelf.tableView.Moneys = shouldDisplayCoins;
-//            //        weakSelf.tableView.bills = objs;
-//            [weakSelf.tableView reloadData_tl];
-//        } failure:^(NSError *error) {
-//
-//        }];
-//    }];
-//    [self.tableView addLoadMoreAction:^{
-//
-//        helper.parameters[@"userId"] = [TLUser user].userId;
-//        helper.parameters[@"status"] = @"appDisplay";
-//        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-//            NSLog(@" ==== %@",objs);
-//            NSMutableArray <TLtakeMoneyModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//
-//                TLtakeMoneyModel *model = (TLtakeMoneyModel *)obj;
-//                [shouldDisplayCoins addObject:model];
-//            }];
-//            weakSelf.Moneys = shouldDisplayCoins;
-//
-//            weakSelf.tableView.Moneys = shouldDisplayCoins;
-//            //        weakSelf.tableView.bills = objs;
-//            [weakSelf.tableView reloadData_tl];
-//
-//        } failure:^(NSError *error) {
-//        }];
-//    }];
-//    [self.tableView beginRefreshing];
-//}
-
-
-
-
-
-
-
 
 - (TLMakeMoney *)tableView {
     
@@ -380,13 +282,9 @@
 
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;
-//        [self.view addSubview:_tableView];
     }
     return _tableView;
 }
-
-
-
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -395,7 +293,6 @@
         money.moneyModel = self.Moneys[indexPath.row];
         money.currencys = self.currencys;
         money.hidesBottomBarWhenPushed = YES;
-//        money.title = [LangSwitcher switchLang:@"理财产品详情" key:nil];
         [self.navigationController pushViewController:money animated:YES];
     }
     

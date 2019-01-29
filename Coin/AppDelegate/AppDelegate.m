@@ -53,12 +53,7 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    //    [NSThread sleepForTimeInterval:2];
-    
 
-
-    //服务器环境7
 //    研发
 //    [AppConfig config].runEnv = RunEnvDev;
 //    测试
@@ -67,29 +62,26 @@
 //    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
     [AppConfig config].isChecking = NO;
-#warning  //pods 更新后会导致wan币转账失败
-//    [AppConfig config].isUploadCheck = YES;
+
     self.respHandler = [[RespHandler alloc] init];
-    
-//    [MobClick profileSignInWithPUID:@"UserID"];
-//    [MobClick profileSignInWithPUID:@"UserID" provider:@"WB"];
+
     [NBNetworkConfig config].respDelegate = self.respHandler;
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
     
-    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
-    if ([TLUser isBlankString:lang] == YES) {
-        NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-        NSString *languageName = [appLanguages objectAtIndex:0];
-        
-        if ([languageName hasPrefix:@"zh-Hans"]) {
-            [LangSwitcher changLangType:LangTypeSimple];
-        }
-        else
-        {
-            [LangSwitcher changLangType:LangTypeEnglish];
-        }
-    }
+//    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
+//    if ([TLUser isBlankString:lang] == YES) {
+//        NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+//        NSString *languageName = [appLanguages objectAtIndex:0];
+//
+//        if ([languageName hasPrefix:@"zh-Hans"]) {
+//            [LangSwitcher changLangType:LangTypeSimple];
+//        }
+//        else
+//        {
+//            [LangSwitcher changLangType:LangTypeEnglish];
+//        }
+//    }
     
     
     
@@ -98,53 +90,21 @@
     //配置键盘
     [self configIQKeyboard];
 
-    [[TLWXManager manager] registerApp];
-    [WeiboSDK registerApp:@"947817370"];
-    [WeiboSDK enableDebugMode:YES];
-
-    [self configWeibo];
-
-    //配置友盟统计
-//    [self configUManalytics];
-    [self configZendSdk];
-
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    //UIStatusBarStyleLightContent状态栏字体白色 UIStatusBarStyleDefault黑色
 
     //配置根控制器
     [self configRootViewController];
     [LangSwitcher startWithTraditional];
-    
-    //初始化为繁体
-    //初始化数据库
-//    if ([[TLDataBase sharedManager].dataBase open]) {
-////        [ [TLDataBase sharedManager].dataBase executeUpdate:@"UPDATE THAWallet SET userId='China'"];
-//        NSLog(@"数据库打开成功");
-//    }
     
     //退出登录消息通知
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loginOut)
                                                  name:kUserLoginOutNotification
                                                object:nil];
-    //用户登录消息通知
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(userLogin) name:kUserLoginNotification
-                                               object:nil];
-    
-
         
         
-        [[TLUser user] updateUserInfo];
-        // 登录时间变更到，didBecomeActive中
-        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification
+    [[TLUser user] updateUserInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification
                                                             object:nil];
-        
-
-    
-   
-    
-//czy    [[IMAPlatform sharedInstance] configOnAppLaunchWithOptions:launchOptions];
     
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -152,11 +112,7 @@
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
     });
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//
-//        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-//
-//    });
+
 
 
     //
@@ -184,122 +140,13 @@
     }];
 }
 
-- (void)configWeibo
-{
-    
-    
-}
-
-- (void)configZendSdk
-{
-//    [ ZDKCoreLogger  setEnabled :YES ];
-//    [ ZDKCoreLogger  setLogLevel :ZDKLogLevelDebug ];
-//    [ZDKZendesk initializeWithAppId: @"71d2ca9aba0cccc12deebfbdd352fbae8c53cd8999dd10bc"
-//                           clientId: @"mobile_sdk_client_7af3526c83d0c1999bc3"
-//                         zendeskUrl: @"https://thachainhelp.zendesk.com"];
-//    id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
-//    [[ZDKZendesk instance] setIdentity:userIdentity];8
-//
-//    [ZDKSupport initializeWithZendesk: [ZDKZendesk instance]];
-    
-//    [ZDKLocalization localizedStringWithKey:@"en"];
-    // //hc/en-us
-//    [ZDKSupport initializeWithZendesk: [ZDKZendesk instance]];
-//                         zendeskUrl: @"https://hzcl.zendesk.com/hc/ko"];
-//    ZDKRequest
-  
-}
-
-//- (void)configUManalytics{
-//    
-//    @try{
-////        UMConfigInstance.appKey = @"5b73d999f29d9825200001db";//研发
-//        UMConfigInstance.appKey = @"5b73b2e68f4a9d21830002fd";//正式
-//
-//      //一般是这样写，用于友盟后台的渠道统计，当然苹果也不会有其他渠道，写死就好
-//        UMConfigInstance.channelId = @""; //渠道区分
-////        UMConfigInstance.channelId = @"facebook"; //渠道区分
-////        UMConfigInstance.channelId = @"biyongbao"; //渠道区分
-//
-//        UMConfigInstance.ePolicy =SEND_INTERVAL; //上传模式，这种为最小间隔发送90S，也可按照要求选择其他上传模式。也可不设置，在友盟后台修改。
-//        [MobClick startWithConfigure:UMConfigInstance];//开启SDK
-//        
-//        NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey: @"CFBundleShortVersionString"];
-//        [MobClick setAppVersion:version];
-////        [MobClick setLogEnabled:YES];
-//    }
-//    @catch(NSException *exception) {
-//        NSLog(@"exception:%@", exception);
-//    }
-//    @finally {
-//        
-//    }
-//
-//}
-#pragma mark- 上传推送 token
-//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-//
-//czy
-//    [[IMAPlatform sharedInstance] configOnAppRegistAPNSWithDeviceToken:deviceToken];
-//
-//}
-
-
-
-// 用户重新登录需要重新，需要重新调用此方法监听czy
-//- (void)kvoUnReadMsgToChangeTabbar {
-//
-//    //这里监听主要是为了，tabbar上的消息提示, 和icon上的图标
-//    // 此处有坑， [IMAPlatform sharedInstance].conversationMgr 切换账户是会销毁
-//    self.chatKVOCtrl = [FBKVOController controllerWithObserver:self];
-//    [self.chatKVOCtrl observe:[IMAPlatform sharedInstance].conversationMgr
-//                        keyPath:@"unReadMessageCount"
-//                        options:NSKeyValueObservingOptionNew
-//                          block:^(id observer, id object, NSDictionary *change) {
-//
-//                              NSInteger count =  [IMAPlatform sharedInstance].conversationMgr.unReadMessageCount;
-//
-//                              int location = 4;
-//                              if (count > 0) {
-//
-//                                  [[self rootTabBarController].tabBar showBadgeOnItemIndex:location];
-//
-//                              } else {
-//
-//                                  [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-//                                  [[self rootTabBarController].tabBar hideBadgeOnItemIndex:location];
-//
-//                              }
-//
-//                          }];
-//
-//}
-//
-//
-
 #pragma mark- 退出登录
 - (void)loginOut {
-    //user 退出
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:KWalletWord];
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:KWalletPrivateKey];
-//    [[NSUserDefaults standardUserDefaults] removeObjectForKey:KWalletAddress];
+
     [[TLUser user] loginOut];
     
-    //退出登录
-//    [[IMAPlatform sharedInstance] logout:^{
-//
-//czy
-//    } fail:^(int code, NSString *msg) {
-//
-//
-//    }];
-
-    //
     
     UITabBarController *tabbarContrl = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-//    if ([tabbarContrl isKindOfClass:[TLUpdateVC class]]) {
-//        return;
-//    }
     if ([tabbarContrl isKindOfClass:[UINavigationController class]]) {
         return;
     }
@@ -307,10 +154,6 @@
         return;
     }
     TLTabBarController *tab = [[TLTabBarController alloc] init];
-    
-//    tabbarContrl.selectedIndex = 2;
-//    [tabbarContrl.tabBar hideBadgeOnItemIndex:4];
-    //应用外数量为0
     TLUserLoginVC *login = [TLUserLoginVC new];
     
 //
@@ -321,28 +164,10 @@
         self.window.rootViewController = tab;
 
     };
-//    TLTabBarController *tab = [TLTabBarController new];
-//    [UIApplication sharedApplication].keyWindow.rootViewController = na;
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
 }
 
-
-#pragma mark - 用户登录
-- (void)userLogin {
-    
-    
-    //zendesk czy
-//    ZDKAnonymousIdentity *identity = [ZDKAnonymousIdentity new];
-//    identity.name = [TLUser user].nickname;
-//    identity.email = [NSString stringWithFormat:@"%@",[TLUser user].email];
-//    [ZDKConfig instance].userIdentity = identity;
-//
-//    // 重新登录的时候要重新，配置一下
-//    [self kvoUnReadMsgToChangeTabbar];
-//    [[ChatManager sharedManager] loginIM];
-    
-}
 
 - (UITabBarController *)rootTabBarController {
     
@@ -381,10 +206,6 @@
     [self.window makeKeyAndVisible];
     if ([TLUser user].isLogin == NO) {
         TLUserLoginVC *updateVC = [[TLUserLoginVC alloc] init];
-//        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:updateVC];
-//        na.isLanch = YES;
-//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLanch"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
         TLNavigationController *na = [[TLNavigationController alloc] initWithRootViewController:updateVC];
         if ([TLUser user].checkLogin == NO) {
             
@@ -458,20 +279,9 @@
     if([TLUser user].isLogin) {
 
       [[TLUser user] changLoginTime];
-//czy      [[IMAPlatform sharedInstance] configOnAppDidBecomeActive];
 
     }
-//    if (self.IsEnterBack == YES) {
-//        if ([TLUser user].isLogin==NO) {
-//            
-//            TLUserLoginVC *login = [TLUserLoginVC new];
-//            TLNavigationController *na = [[TLNavigationController alloc] initWithRootViewController:login];
-//            self.IsEnterBack = NO;
-//            login.IsAPPJoin = YES;
-//            self.window.rootViewController = na;
-//            
-//        }
-//    }
+
     
     
     
@@ -510,12 +320,6 @@
         bgTaskID = UIBackgroundTaskInvalid;
     }];
     
-    
-//    if([[TLUser user] checkLogin]) {
-//
-//        [[IMAPlatform sharedInstance] configOnAppEnterBackground];
-//
-//    } czy
     
 }
 

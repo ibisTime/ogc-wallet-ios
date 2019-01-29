@@ -41,7 +41,7 @@ static NSString *identifierCell = @"SettingCell";
         return 2;
     }
     if (section == 1) {
-        return 5;
+        return 4;
     }
 
     return 3;
@@ -67,7 +67,7 @@ static NSString *identifierCell = @"SettingCell";
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
     }
     
-    NSArray *nameArray2 = @[@"身份认证",@"谷歌验证",@"绑定邮箱",@"绑定手机号",@"我的银行卡"];
+    NSArray *nameArray2 = @[@"身份认证",@"绑定邮箱",@"绑定手机号",@"我的银行卡"];
 
     if (indexPath.section == 1) {
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray2[indexPath.row] key:nil];
@@ -86,7 +86,7 @@ static NSString *identifierCell = @"SettingCell";
                 cell.rightLabel.text = [LangSwitcher switchLang:@"未认证" key:nil];
             }
         }
-        if (indexPath.row == 2) {
+        if (indexPath.row == 1) {
             if ([TLUser isBlankString:[TLUser user].email] == NO)
             {
                 cell.arrowHidden = YES;
@@ -99,7 +99,7 @@ static NSString *identifierCell = @"SettingCell";
                 cell.arrowHidden = NO;
             }
         }
-        if (indexPath.row == 3) {
+        if (indexPath.row == 2) {
             if ([TLUser isBlankString:[TLUser user].mobile] == NO)
             {
                 cell.arrowHidden = YES;

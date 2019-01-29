@@ -467,6 +467,7 @@
         
         [self.view endEditing:YES];
         
+        
         NSString *token = responseObject[@"data"][@"token"];
         NSString *userId = responseObject[@"data"][@"userId"];
         [MobClick profileSignInWithPUID:userId];
