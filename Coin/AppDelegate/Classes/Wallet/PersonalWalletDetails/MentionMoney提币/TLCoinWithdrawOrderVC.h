@@ -10,8 +10,8 @@
 
 @interface TLCoinWithdrawOrderVC : TLBaseVC
 
-@property (nonatomic, copy) NSString *coin;
-
+//@property (nonatomic, copy) NSString *coin;
+@property (nonatomic, strong) CurrencyModel *currency;
 @property (nonatomic , copy)NSString *titleString;
 
 @end

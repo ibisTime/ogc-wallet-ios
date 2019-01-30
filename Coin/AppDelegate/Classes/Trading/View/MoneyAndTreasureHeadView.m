@@ -10,12 +10,12 @@
 
 @implementation MoneyAndTreasureHeadView
 {
-    NSDictionary *dic;
+//    NSDictionary *dic;
     UILabel *earningsPrice1;
     UILabel *earningsPrice2;
     NSString *symbolStr;
     
-    NSString *totalInvest;
+    NSString *YesterdayInvest;
     NSString *TotalIncome;
     NSString *TotalInvest;
 }
@@ -123,7 +123,7 @@
     }else
     {
         [self.eyesButton setTitle:[NSString stringWithFormat:@"%@ %@",TotalInvest,symbolStr] forState:(UIControlStateNormal)];
-        earningsPrice1.text = [NSString stringWithFormat:@"%@ %@",totalInvest,symbolStr];
+        earningsPrice1.text = [NSString stringWithFormat:@"%@ %@",YesterdayInvest,symbolStr];
         earningsPrice2.text = [NSString stringWithFormat:@"%@ %@",TotalIncome,symbolStr];
     }
     [self.eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {
@@ -139,13 +139,15 @@
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
-    dic = dataDic;
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    NSString *str = [numberFormatter stringFromNumber:dataDic[@"yesterdayIncome"]];
-    totalInvest = [CoinUtil convertToRealCoin2:str setScale:4 coin:symbolStr];
-    
+//    dic = dataDic;
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//    NSInteger Invest = [dataDic[@"yesterdayIncome"] integerValue];
+//    NSString *str = [numberFormatter stringFromNumber:dataDic[@"yesterdayIncome"]];
+//    totalInvest = [CoinUtil convertToRealCoin2:str setScale:4 coin:symbolStr];
+//    NSNumber Invest = [dataDic[@"yesterdayIncome"] integerValue];
 
-    
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    YesterdayInvest = [CoinUtil convertToRealCoin2: dataDic[@"yesterdayIncome"] setScale:4 coin:@"USDT"];
     
     
     NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
@@ -154,7 +156,7 @@
         earningsPrice1.text = [NSString stringWithFormat:@"**** %@",symbolStr];
     }else
     {
-        earningsPrice1.text = [NSString stringWithFormat:@"%@ %@",totalInvest,symbolStr];
+        earningsPrice1.text = [NSString stringWithFormat:@"%@ %@",YesterdayInvest,symbolStr];
     }
 
 

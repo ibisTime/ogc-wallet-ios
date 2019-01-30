@@ -55,9 +55,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 //    研发
-//    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvDev;
 //    测试
-    [AppConfig config].runEnv = RunEnvTest;
+//    [AppConfig config].runEnv = RunEnvTexrst;
 //    正式
 //    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
@@ -93,7 +93,7 @@
 
     //配置根控制器
     [self configRootViewController];
-    [LangSwitcher startWithTraditional];
+//    [LangSwitcher startWithTraditional];
     
     //退出登录消息通知
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -112,13 +112,7 @@
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
     });
-
-
-
-    //
     return YES;
-    
-    
 }
 
 

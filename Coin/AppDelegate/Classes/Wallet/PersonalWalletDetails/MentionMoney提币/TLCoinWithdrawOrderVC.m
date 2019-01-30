@@ -22,7 +22,7 @@
 @property (nonatomic,strong) NSMutableArray <TLCoinWithdrawModel *>*orders;
 @property (nonatomic,assign) BOOL isFirst;
 
-
+@property (nonatomic , strong)NSArray *dataArray;
 @end
 
 @implementation TLCoinWithdrawOrderVC
@@ -60,13 +60,35 @@
     
 }
 
+-(void)ckey
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630036";
+    
+    if ([_titleString isEqualToString:[LangSwitcher switchLang:@"收款订单" key:nil]]) {
+         http.parameters[@"parentKey"] = @"charge_status";
+    }else
+    {
+         http.parameters[@"parentKey"] = @"withdraw_status";
+    }
+   
+    
+    [http postWithSuccess:^(id responseObject) {
+        //        [self LoadData];
+        self.dataArray = responseObject[@"data"];
+        [self.orderTableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     self.isFirst  = YES;
     self.title = self.titleString;
     
-    TLTableView *tableView = [TLTableView tableViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)
+    TLTableView *tableView = [TLTableView tableViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                     delegate:self dataSource:self];
     [self.view addSubview:tableView];
     self.orderTableView = tableView;
@@ -75,25 +97,31 @@
     
     self.orderTableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无明细" key:nil];
 
+    
+//    [self ckey];
+    
     //
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     if ([_titleString isEqualToString:[LangSwitcher switchLang:@"收款订单" key:nil]]) {
         helper.code = @"802345";
+        
     }else
     {
         helper.code = @"802355";
+//        helper.parameters[@"applyUser"] = [TLUser user].userId;
     }
     
-    helper.parameters[@"applyUser"] = [TLUser user].userId;
+    helper.parameters[@"accountNumber"] = self.currency.accountNumber;
+//
     helper.parameters[@"token"] = [TLUser user].token;
-    helper.parameters[@"currency"] = self.coin;
+    
     helper.tableView = self.orderTableView;
     [helper modelClass:[TLCoinWithdrawModel class]];
     
     //
     __weak typeof(self) weakSelf = self;
     [self.orderTableView addRefreshAction:^{
-        
+        [weakSelf ckey];
         [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
             
             
@@ -133,8 +161,8 @@
 //
 //}
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 90;
 }
 
 #pragma mark- dasource
@@ -155,8 +183,13 @@
         cell = [[TLCoinWithdrawOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
 
     }
+    cell.backgroundColor = kWhiteColor;
     cell.titleString = self.titleString;
+    if (self.dataArray.count > 0) {
+        cell.dataArray = self.dataArray;
+    }
     cell.withdrawModel = self.orders[indexPath.row];
+    
     return cell;
 }
 

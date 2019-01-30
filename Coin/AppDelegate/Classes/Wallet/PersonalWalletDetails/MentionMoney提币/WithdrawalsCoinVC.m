@@ -69,9 +69,6 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-//    self.title = [LangSwitcher switchLang:@"提币" key:nil];
     self.title = [LangSwitcher switchLang:@"转出" key:nil];
     self.view.backgroundColor = kBackgroundColor;
     
@@ -98,7 +95,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 -(void)rightButtonClick
 {
     TLCoinWithdrawOrderVC *withdrawOrderVC = [[TLCoinWithdrawOrderVC alloc] init];
-    withdrawOrderVC.coin = self.currency.currency;
+    withdrawOrderVC.currency = self.currency;
     withdrawOrderVC.titleString = [LangSwitcher switchLang:@"转出订单" key:nil];
     [self.navigationController pushViewController:withdrawOrderVC animated:YES];
 }

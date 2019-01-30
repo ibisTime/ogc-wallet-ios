@@ -78,7 +78,7 @@
 -(void)rightButtonClick
 {
     TLCoinWithdrawOrderVC *withdrawOrderVC = [[TLCoinWithdrawOrderVC alloc] init];
-    withdrawOrderVC.coin = self.currency.currency;
+    withdrawOrderVC.currency = self.currency;
     withdrawOrderVC.titleString = [LangSwitcher switchLang:@"收款订单" key:nil];
     [self.navigationController pushViewController:withdrawOrderVC animated:YES];
 }

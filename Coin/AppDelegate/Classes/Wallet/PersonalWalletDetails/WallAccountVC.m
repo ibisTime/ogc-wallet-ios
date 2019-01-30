@@ -176,7 +176,7 @@
     TLNetworking *http = [TLNetworking new];
     http.code = @"630036";
     
-    http.parameters[@"parentKey"] = @"jour_biz_type_user";
+    http.parameters[@"parentKey"] = @"app_jour_biz_type_user";
     
     [http postWithSuccess:^(id responseObject) {
         

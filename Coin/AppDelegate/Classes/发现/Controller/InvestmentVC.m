@@ -18,6 +18,14 @@
 #import "MyBankCardVC.h"
 #import "MyBankCardModel.h"
 #import "HBAlertPasswordView.h"
+
+#import "SellDetalisVC.h"
+
+#import "BnakCardVC.h"
+
+#import "PayTreasureVC.h"
+#import "OrderRecordModel.h"
+
 @interface InvestmentVC ()<RefreshDelegate,HBAlertPasswordViewDelegate>
 {
     CGFloat sellerPrice;
@@ -57,9 +65,8 @@
 -(HBAlertPasswordView *)passWordView
 {
     if (!_passWordView) {
-        _passWordView = [[HBAlertPasswordView alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT/2 - 590/2/2, SCREEN_WIDTH - 30, 590/2)];
-        _passWordView.backgroundColor = kWhiteColor;
-        kViewRadius(_passWordView, 8);
+        _passWordView = [[HBAlertPasswordView alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT/2 - 590/2/2 - 100, SCREEN_WIDTH - 30, 590/2 + 200)];
+        
         _passWordView.delegate = self;
     }
     return _passWordView;
@@ -91,12 +98,29 @@
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"tradePwd"] = password;
     [http postWithSuccess:^(id responseObject) {
-        OrderRecordVC *vc = [OrderRecordVC new];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        
+        CoinWeakSelf;
+        TLNetworking *http1 = [[TLNetworking alloc] init];
+        http1.showView = weakSelf.view;
+        http1.code = @"625286";
+        http1.parameters[@"code"] = responseObject[@"data"][@"code"];
+        [http1 postWithSuccess:^(id responseObject) {
+            
+            SellDetalisVC *vc = [SellDetalisVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.models = [OrderRecordModel mj_objectWithKeyValues:responseObject[@"data"]];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
         textField1.text = @"";
         textField2.text = @"";
         [[UserModel user].cusPopView dismiss];
+        
     } failure:^(NSError *error) {
         
     }];
@@ -335,9 +359,36 @@
         http.parameters[@"tradePrice"] = @(buyPrice);
         http.parameters[@"userId"] = [TLUser user].userId;
         [http postWithSuccess:^(id responseObject) {
-            OrderRecordVC *vc = [OrderRecordVC new];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
+            
+            
+            CoinWeakSelf;
+            TLNetworking *http1 = [[TLNetworking alloc] init];
+            http1.showView = weakSelf.view;
+            http1.code = @"625286";
+            http1.parameters[@"code"] = responseObject[@"data"][@"code"];
+            [http1 postWithSuccess:^(id responseObject) {
+                
+                if ([_payWayDic[@"name"] isEqualToString:@"支付宝"]) {
+                    PayTreasureVC *vc = [PayTreasureVC new];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    vc.models = [OrderRecordModel mj_objectWithKeyValues:responseObject[@"data"]];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }else
+                {
+                    BnakCardVC *vc = [BnakCardVC new];
+                    vc.hidesBottomBarWhenPushed = YES;
+                    vc.models = [OrderRecordModel mj_objectWithKeyValues:responseObject[@"data"]];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+
+                
+            } failure:^(NSError *error) {
+                
+            }];
+            
+            
+            
+            
             textField1.text = @"";
             textField2.text = @"";
             [[UserModel user].cusPopView dismiss];
@@ -354,6 +405,7 @@
         
         [[UserModel user].cusPopView dismiss];
         self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ BTC",textField2.text];
+//        _passWordView.frame = CGRectMake(15, SCREEN_HEIGHT/2 - 590/2/2 - 100, SCREEN_WIDTH - 30, 590/2);
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.passWordView];
         
 
@@ -437,16 +489,19 @@
     
     NSDate *currentDate = [NSDate date];//获取当前时间，日期
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8]];
+    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:currentDate];
     
-    NSDate* theDate;
-    NSTimeInterval oneDay = 24*60*60*1;
+
+    NSTimeInterval time =  24 * 60 * 60 * 29;
+    NSDate * lastYear = [currentDate dateByAddingTimeInterval:-time];
+    //转化为字符串
+    NSString * startDate = [dateFormatter stringFromDate:lastYear];
+
+
     
-    theDate = [currentDate initWithTimeIntervalSinceNow:-oneDay*30];
-    NSString *dateString1 = [dateFormatter stringFromDate:theDate];
-    
-    http.parameters[@"startDatetime"] = dateString1;
+    http.parameters[@"startDatetime"] = startDate;
     http.parameters[@"endDatetime"] = dateString;
     http.parameters[@"symbol"] = @"BTC";
     http.parameters[@"userId"] = [TLUser user].userId;
@@ -487,6 +542,9 @@
         
     }];
 }
+
+
+
 
 
 //买入价   卖出价

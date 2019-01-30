@@ -16,7 +16,7 @@
 @property (nonatomic, copy) NSString *feeString;//手续费
 @property (nonatomic, copy) NSString *applyDatetime; //申请时间
 @property (nonatomic, copy) NSString *payCardNo; //提币到哪个账户
-
+@property (nonatomic, copy) NSString *payDatetime;
 - (NSString *)statusName;
 
 @end

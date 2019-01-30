@@ -116,6 +116,7 @@
     http.showView = weakSelf.view;
     http.code = code;
     http.parameters[@"code"] = self.models.code;
+    
     http.parameters[@"userId"] = [TLUser user].userId;
     [http postWithSuccess:^(id responseObject) {
         if ([code isEqualToString:@"625273"]) {

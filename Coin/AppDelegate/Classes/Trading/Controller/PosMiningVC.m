@@ -56,6 +56,7 @@
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self requesUserInfoWithResponseObject];
 }
 
 
@@ -150,6 +151,28 @@
 
 }
 
+- (void)requesUserInfoWithResponseObject {
+    
+    //1.获取用户信息
+    if ([TLUser user].isLogin == NO) {
+        return;
+    }
+    TLNetworking *http = [TLNetworking new];
+    http.code = USER_INFO;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        NSDictionary *userInfo = responseObject[@"data"];
+        //保存用户信息
+        [[TLUser user] saveUserInfo:userInfo];
+        //初始化用户信息
+        [[TLUser user] setUserInfoWithDict:userInfo];
+    
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 #pragma mark -- 接收到通知
 - (void)InfoNotificationAction:(NSNotification *)notification{
     
@@ -183,7 +206,7 @@
     
     [http postWithSuccess:^(id responseObject) {
 
-        self.dataDic = responseObject[@"data"];
+//        self.dataDic = responseObject[@"data"];
         self.headView.dataDic = responseObject[@"data"];
         [self.tableView reloadData];
 
@@ -269,6 +292,7 @@
                 [weakSelf addPlaceholderView];
             }];
         } failure:^{
+            
         }];
     }];
     [self.tableView endRefreshingWithNoMoreData_tl];

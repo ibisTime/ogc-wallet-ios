@@ -12,7 +12,7 @@
 #import "TLProgressHUD.h"
 
 #import <SVProgressHUD/SVProgressHUD.h>
-
+#import "TLUserLoginVC.h"
 @implementation TLNetworking
 
 + (AFHTTPSessionManager *)HTTPSessionManager
@@ -196,6 +196,14 @@
           
           if (failure) {
               failure(responseObject);
+          }
+          
+          
+          if ([responseObject[@"errorInfo"] isEqualToString:[LangSwitcher switchLang:@"您的账号已被拉入黑名单" key:nil]]) {
+              [TLAlert alertWithTitle:nil message: [LangSwitcher switchLang:@"您的账号已被拉入黑名单" key:nil] confirmAction:^{
+                  [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginOutNotification
+                                                                      object:nil];
+              }];
           }
           
           if ([responseObject[@"errorCode"] isEqual:@"4"]) {

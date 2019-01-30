@@ -135,13 +135,13 @@
         if (indexPath.row == 0) {
             if ([TLUser isBlankString:[TLUser user].idNo] == YES)
             {
+                
                 ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
                 engine.delegate = self;
                 engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
                 engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
                 [engine startOcrScanIdCardInViewController:self];
             }
-            
         }
 //        if (indexPath.row == 1) {
 //            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"暂未开放" key:nil]];
@@ -204,21 +204,77 @@
     }
 }
 
+- (void)faceAuthFinishedWithResult:(NSInteger)result userInfo:(id)userInfo
+{
+    NSLog(@"Swift authFinish");
+}
+
+- (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
+{
+    NSLog(@"OC OCR Finish");
+    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    
+    UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
+    UIImage *portrait = [userInfo objectForKey:@"portrait"];
+    UIImage *backcard = [userInfo objectForKey:@"backcard"];
+    if(result  == ZQFaceAuthResult_Done && frontcard != nil && portrait != nil && backcard !=nil)
+    {
+        NSData *imgData = UIImageJPEGRepresentation(frontcard, 0.6);
+        NSData *imgData1 = UIImageJPEGRepresentation(backcard, 0.6);
+        //进行上传
+        [TLProgressHUD show];
+        TLUploadManager *manager = [TLUploadManager manager];
+        
+        manager.imgData = imgData;
+        manager.image = frontcard;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            
+            str1 = key;
+            //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+            [TLProgressHUD show];
+            TLUploadManager *manager1 = [TLUploadManager manager];
+            
+            manager1.imgData = imgData1;
+            manager1.image = backcard;
+            [manager1 getTokenShowView:self.view succes:^(NSString *key) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+                str2 = key;
+                ZQFaceAuthEngine * engine = [[ZQFaceAuthEngine alloc]init];
+                engine.delegate = self;
+                engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+                engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+                [engine startFaceAuthInViewController:self];
+                //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+                
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            }];
+        } failure:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+        }];
+    }else
+    {
+        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    }
+    
+}
 
 #pragma mark - ZQFaceAuthDelegate
 - (void)faceAuthFinishedWithResult:(ZQFaceAuthResult)result UserInfo:(id)userInfo{
     
     UIImage * livingPhoto = [userInfo objectForKey:@"livingPhoto"];
-    
+    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
     if(result  == ZQFaceAuthResult_Done && livingPhoto !=nil){
+        [TLProgressHUD show];
         TLUploadManager *manager = [TLUploadManager manager];
         NSData *imgData = UIImageJPEGRepresentation(livingPhoto, 0.6);
         manager.imgData = imgData;
         manager.image = livingPhoto;
         [manager getTokenShowView:self.view succes:^(NSString *key) {
             str3 = key;
+            
             TLNetworking *http = [TLNetworking new];
-            http.showView = self.view;
+//            http.showView = self.view;
             http.code = @"805197";
             http.parameters[@"userId"] = [TLUser user].userId;
             http.parameters[@"frontImage"] = str1;
@@ -228,22 +284,23 @@
             [http postWithSuccess:^(id responseObject) {
                 [TLAlert alertWithMsg:[LangSwitcher switchLang:@"实名认证成功" key:nil]];
                 [self requesUserInfoWithResponseObject];
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
             } failure:^(NSError *error) {
-                
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
             }];
             
         } failure:^(NSError *error) {
-            
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
         }];
+    }else
+    {
+        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
     }
 }
 
 - (void)requesUserInfoWithResponseObject {
     
     //1.获取用户信息
-    if ([TLUser user].isLogin == NO) {
-        return;
-    }
     TLNetworking *http = [TLNetworking new];
     //    http.showView = self.view;
     http.code = USER_INFO;
@@ -256,59 +313,13 @@
         //初始化用户信息
         [[TLUser user] setUserInfoWithDict:userInfo];
         
-        
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         
     }];
 }
 
-- (void)faceAuthFinishedWithResult:(NSInteger)result userInfo:(id)userInfo
-{
-    NSLog(@"Swift authFinish");
-}
 
-- (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
-{
-    NSLog(@"OC OCR Finish");
-    UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
-    UIImage *portrait = [userInfo objectForKey:@"portrait"];
-    UIImage *backcard = [userInfo objectForKey:@"backcard"];
-    if(result  == ZQFaceAuthResult_Done && frontcard != nil && portrait != nil && backcard !=nil)
-    {
-        NSData *imgData = UIImageJPEGRepresentation(frontcard, 0.6);
-        NSData *imgData1 = UIImageJPEGRepresentation(backcard, 0.6);
-        //进行上传
-        TLUploadManager *manager = [TLUploadManager manager];
-        
-        manager.imgData = imgData;
-        manager.image = frontcard;
-        [manager getTokenShowView:self.view succes:^(NSString *key) {
-            
-            str1 = key;
-            //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
-            TLUploadManager *manager1 = [TLUploadManager manager];
-            
-            manager1.imgData = imgData1;
-            manager1.image = backcard;
-            [manager1 getTokenShowView:self.view succes:^(NSString *key) {
-                
-                str2 = key;
-                ZQFaceAuthEngine * engine = [[ZQFaceAuthEngine alloc]init];
-                engine.delegate = self;
-                engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
-                engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
-                [engine startFaceAuthInViewController:self];
-                //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
-                
-            } failure:^(NSError *error) {
-                
-            }];
-        } failure:^(NSError *error) {
-            
-        }];
-    }
-    
-}
 
 #pragma mark- 退出登录
 

@@ -750,7 +750,7 @@ typedef enum : NSUInteger {
 - (void)clickRecord:(UIButton *)sender {
     
     TLCoinWithdrawOrderVC *withdrawOrderVC = [[TLCoinWithdrawOrderVC alloc] init];
-    withdrawOrderVC.coin = self.currency.currency;
+    withdrawOrderVC.currency = self.currency;
     [self.navigationController pushViewController:withdrawOrderVC animated:YES];
 
 }

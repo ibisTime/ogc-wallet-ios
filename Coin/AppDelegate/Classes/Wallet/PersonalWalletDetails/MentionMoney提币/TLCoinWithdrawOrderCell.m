@@ -17,6 +17,7 @@
 @interface TLCoinWithdrawOrderCell()
 {
     NSString *str;
+    NSArray *dataAry;
 }
 
 //提现金额
@@ -44,20 +45,16 @@
     
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
+        self.backgroundColor = kWhiteColor;
+        
         self.coinCountLbl = [UILabel labelWithFrame:CGRectZero
                                       textAligment:NSTextAlignmentLeft
                                    backgroundColor:[UIColor whiteColor]
                                               font:[UIFont systemFontOfSize:14]
                                          textColor:[UIColor textColor]];
+        self.coinCountLbl.frame = CGRectMake(10, 10, SCREEN_WIDTH/2, 20);
         [self.contentView addSubview:self.coinCountLbl];
         
-        //
-//        self.coinTypelbl = [UILabel labelWithFrame:CGRectZero
-//                                      textAligment:NSTextAlignmentLeft
-//                                   backgroundColor:[UIColor whiteColor]
-//                                              font:[UIFont systemFontOfSize:14]
-//                                         textColor:[UIColor themeColor]];
-//        [self.contentView addSubview:self.coinTypelbl];
         
         //
         self.feelbl = [UILabel labelWithFrame:CGRectZero
@@ -65,22 +62,25 @@
                                    backgroundColor:[UIColor whiteColor]
                                               font:[UIFont systemFontOfSize:14]
                                          textColor:[UIColor textColor]];
+        self.feelbl.frame = CGRectMake(10, 35, SCREEN_WIDTH/2 - 10, 20);
         [self.contentView addSubview:self.feelbl];
         
         //状态
         self.statusLbl = [UILabel labelWithFrame:CGRectZero
-                                 textAligment:NSTextAlignmentLeft
+                                 textAligment:NSTextAlignmentRight
                               backgroundColor:[UIColor whiteColor]
                                          font:[UIFont systemFontOfSize:14]
                                     textColor:[UIColor themeColor]];
+        self.statusLbl.frame = CGRectMake(SCREEN_WIDTH/2, 10, SCREEN_WIDTH/2 - 10, 20);
         [self.contentView addSubview:self.statusLbl];
         
         //
         self.applyTimeLbl = [UILabel labelWithFrame:CGRectZero
-                                    textAligment:NSTextAlignmentLeft
+                                    textAligment:NSTextAlignmentRight
                                  backgroundColor:[UIColor whiteColor]
                                             font:[UIFont systemFontOfSize:14]
                                        textColor:[UIColor textColor]];
+        self.applyTimeLbl.frame =  CGRectMake(SCREEN_WIDTH/2, 35, SCREEN_WIDTH/2 - 10, 20);
         [self.contentView addSubview:self.applyTimeLbl];
         
         //提币到哪个地址
@@ -91,6 +91,7 @@
                                           textColor:[UIColor textColor]];
         [self.contentView addSubview:self.toAddressLbl];
         self.toAddressLbl.numberOfLines = 0;
+        self.toAddressLbl.frame =  CGRectMake(10, 60, SCREEN_WIDTH - 20, 20);
         self.toAddressLbl.lineBreakMode = NSLineBreakByCharWrapping;
         
         //
@@ -106,51 +107,51 @@
         }];
         
         
-        [self addLayout];
+//        [self addLayout];
     }
     return self;
     
 }
 
-- (void)addLayout {
-    
-    //左边
-    [self.coinCountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.mas_left).offset(10);
-        make.top.equalTo(self.contentView.mas_top).offset(10);
-    }];
-    
-    [self.feelbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.coinCountLbl.mas_left);
-        make.top.equalTo(self.coinCountLbl.mas_bottom).offset(10);
-        
-    }];
-    
-    //右边
-    [self.statusLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.right.equalTo(self.contentView.mas_right).offset(-10);
-        make.top.equalTo(self.coinCountLbl.mas_top);
-        
-    }];
-    
-    [self.applyTimeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.right.equalTo(self.statusLbl.mas_right);
-        make.top.equalTo(self.statusLbl.mas_bottom).offset(10);
-    }];
-    
-    [self.toAddressLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.equalTo(self.feelbl.mas_left);
-        make.right.equalTo(self.statusLbl.mas_right);
-        make.top.equalTo(self.applyTimeLbl.mas_bottom).offset(10);
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
-
-    }];
-
-}
+//- (void)addLayout {
+//
+//    //左边
+//    [self.coinCountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.contentView.mas_left).offset(10);
+//        make.top.equalTo(self.contentView.mas_top).offset(10);
+//    }];
+//
+//    [self.feelbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.coinCountLbl.mas_left);
+//        make.top.equalTo(self.coinCountLbl.mas_bottom).offset(10);
+//
+//    }];
+//
+//    //右边
+//    [self.statusLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.right.equalTo(self.contentView.mas_right).offset(-10);
+//        make.top.equalTo(self.coinCountLbl.mas_top);
+//
+//    }];
+//
+//    [self.applyTimeLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.right.equalTo(self.statusLbl.mas_right);
+//        make.top.equalTo(self.statusLbl.mas_bottom).offset(10);
+//    }];
+//
+//    [self.toAddressLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.equalTo(self.feelbl.mas_left);
+//        make.right.equalTo(self.statusLbl.mas_right);
+//        make.top.equalTo(self.applyTimeLbl.mas_bottom).offset(10);
+//        make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
+//
+//    }];
+//
+//}
 
 -(void)setTitleString:(NSString *)titleString
 {
@@ -165,19 +166,35 @@
     NSString *countStr = [CoinUtil convertToRealCoin: _withdrawModel.amount
                                                 coin:_withdrawModel.currency];
     
-    if ([_titleString isEqualToString:[LangSwitcher switchLang:@"收款订单" key:nil]]) {
+    if ([str isEqualToString:[LangSwitcher switchLang:@"收款订单" key:nil]]) {
         NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"收款金额" key:nil],countStr,_withdrawModel.currency];
         self.coinCountLbl.attributedText = [self attrStrLeftLen:5 str:normalCountStr];
-        NSString *toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"地址" key:nil],_withdrawModel.payCardNo];
-        self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];;
+        NSString *toAddressStr;
+        if ([TLUser isBlankString:withdrawModel.payCardNo] == YES) {
+            toAddressStr = [NSString stringWithFormat:@"%@：",[LangSwitcher switchLang:@"地址" key:nil]];
+        }else
+        {
+            toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"地址" key:nil],withdrawModel.payCardNo];
+        }
+        
+        self.toAddressLbl.attributedText = [self attrStrLeftLen:3 str:toAddressStr];;
+         self.applyTimeLbl.text = [NSString stringWithFormat:@"%@",[_withdrawModel.payDatetime convertToDetailDate]];
     }else
     {
-        NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"提币金额" key:nil],countStr,_withdrawModel.currency];
+        NSString *normalCountStr = [NSString stringWithFormat:@"%@：%@ %@",[LangSwitcher switchLang:@"转出金额" key:nil],countStr,_withdrawModel.currency];
         self.coinCountLbl.attributedText = [self attrStrLeftLen:5 str:normalCountStr];
-        NSString *toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"提币地址" key:nil],_withdrawModel.payCardNo];
-        self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];;
+        NSString *toAddressStr;
+//        = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"转出地址" key:nil],withdrawModel.payCardNo];
+        
+        if ([TLUser isBlankString:withdrawModel.payCardNo] == YES) {
+            toAddressStr = [NSString stringWithFormat:@"%@：",[LangSwitcher switchLang:@"转出地址" key:nil]];
+        }else
+        {
+            toAddressStr = [NSString stringWithFormat:@"%@：%@",[LangSwitcher switchLang:@"转出地址" key:nil],withdrawModel.payCardNo];
+        }
+        self.toAddressLbl.attributedText = [self attrStrLeftLen:5 str:toAddressStr];
+         self.applyTimeLbl.text = [NSString stringWithFormat:@"%@",[_withdrawModel.applyDatetime convertToDetailDate]];
     }
-    
     
     //
     NSString *feeStr = [CoinUtil convertToRealCoin: _withdrawModel.feeString
@@ -190,8 +207,15 @@
     
     
     //
-    self.statusLbl.text = [_withdrawModel statusName];
-    self.applyTimeLbl.text = [NSString stringWithFormat:@"%@",[_withdrawModel.applyDatetime convertToDetailDate]];
+    for (int i = 0; i < dataAry.count; i ++) {
+        if ([dataAry[i][@"dkey"] isEqualToString:withdrawModel.status]) {
+            self.statusLbl.text = dataAry[i][@"dvalue"];
+        }
+    }
+    
+    
+    
+   
     
 }
 
@@ -202,6 +226,11 @@
     
     return attrStr;
     
+}
+
+-(void)setDataArray:(NSArray *)dataArray
+{
+    dataAry = dataArray;
 }
 
 @end

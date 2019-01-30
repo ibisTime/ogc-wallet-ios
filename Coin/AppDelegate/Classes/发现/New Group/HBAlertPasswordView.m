@@ -51,6 +51,15 @@
 //        self.BGView = BGView;
 //        BGView.center = self.center;
         
+        
+        
+        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 30, 590/2)];
+        backView.backgroundColor = kWhiteColor;
+        kViewRadius(backView, 8);
+        [self addSubview:backView];
+        
+        
+        
         CGFloat BGViewW = (SCREEN_WIDTH - 30);
         CGFloat BGViewH = 590/2;
         // 请输入安全密码的Label

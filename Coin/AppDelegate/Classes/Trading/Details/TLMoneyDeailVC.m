@@ -88,9 +88,32 @@
 -(void)continBtnClick
 {
 
-    PosBuyVC *vc= [PosBuyVC new];
-    vc.moneyModel = self.moneyModel;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    TLNetworking *http = [[TLNetworking alloc] init];
+    http.showView = self.view;
+    http.code = @"625513";
+    http.parameters[@"productCode"] = self.moneyModel.code;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        if ([responseObject[@"data"][@"max"]  integerValue] == 0) {
+            [TLAlert alertWithMsg:[LangSwitcher switchLang:@"购买已达上限" key:nil]];
+            return;
+        }
+        
+        PosBuyVC *vc= [PosBuyVC new];
+        vc.moneyModel = self.moneyModel;
+        
+        
+        [self.navigationController pushViewController:vc animated:YES];
+
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+    
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview scrollView:(UIScrollView *)scroll

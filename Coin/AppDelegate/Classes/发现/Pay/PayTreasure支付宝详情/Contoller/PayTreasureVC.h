@@ -11,4 +11,6 @@
 @interface PayTreasureVC : TLBaseVC
 
 @property (nonatomic , strong)OrderRecordModel *models;
+
+
 @end
