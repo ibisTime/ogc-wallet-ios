@@ -70,6 +70,7 @@
             cell.price = _price;
         }
         cell.Rate = self.Rate;
+        cell.balance = self.balance;
         return cell;
     }
     

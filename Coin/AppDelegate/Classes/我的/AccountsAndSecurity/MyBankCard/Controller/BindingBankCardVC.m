@@ -19,17 +19,20 @@
 
 @implementation BindingBankCardVC
 
-- (void)viewWillAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
-    //去掉透明后导航栏下边的黑边
+    
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+-(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

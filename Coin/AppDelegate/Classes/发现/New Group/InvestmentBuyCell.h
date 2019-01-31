@@ -15,4 +15,5 @@
 
 @property (nonatomic , strong)UITextField *numberField;
 @property (nonatomic , copy)NSString *Rate;
+@property (nonatomic , strong)NSString *balance;
 @end

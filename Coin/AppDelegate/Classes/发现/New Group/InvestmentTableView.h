@@ -17,4 +17,5 @@
 @property (nonatomic , assign)NSInteger indexBtnTag;
 @property (nonatomic , copy)NSString *PaymentMethods;
 @property (nonatomic , copy)NSString *Rate;
+@property (nonatomic , copy)NSString *balance;
 @end

@@ -120,145 +120,6 @@
     return _headView;
 }
 
-//-(void)PageDisplayLoading
-//{
-//
-//    TLDataBase *dataBase = [TLDataBase sharedManager];
-//    NSString *word;
-//    NSString *btcadd;
-//    NSString *pwd;
-//    //   获取一键划转币种列表
-//    if ([dataBase.dataBase open]) {
-//        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics,btcaddress,PwdKey  from THAUser where userId = '%@'",[TLUser user].userId];
-//        //        [sql appendString:[TLUser user].userId];
-//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//        while ([set next])
-//        {
-//            word = [set stringForColumn:@"Mnemonics"];
-//            btcadd = [set stringForColumn:@"btcaddress"];
-//            pwd = [set stringForColumn:@"PwdKey"];
-//
-//        }
-//        [set close];
-//    }
-//    [dataBase.dataBase close];
-//    //    [self queryTotalAmount];
-//    if (word != nil && word.length > 0) {
-//        BOOL isBuild = [[NSUserDefaults standardUserDefaults] boolForKey:KISBuild];
-//        //判断是否是创建或者导入钱包之后返回的
-//        if (isBuild == YES) {
-//            //            获取本地数据库私钥币种列表
-//            [self saveLocalWalletData];
-//            //            判断是否更新
-//            [self saveLocalWallet];
-//            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:KISBuild];
-//        }
-//        //        [self getMyCeurrencyList];
-//        //1.7.0版本升级适配
-////        if (btcadd != nil && btcadd.length > 0 && pwd !=nil) {
-////            return;
-////        }
-//
-//        NSArray *words = [word componentsSeparatedByString:@" "];
-//        //这里第一次进行BTC的私钥和地址创建 存到用户表里面 和币种表
-//        BTCMnemonic *mnemonic =  [MnemonicUtil importMnemonic:words];
-//        if ([AppConfig config].runEnv == 0) {
-//            mnemonic.keychain.network = [BTCNetwork mainnet];
-//
-//        }else{
-//            mnemonic.keychain.network = [BTCNetwork testnet];
-//        }
-//        NSLog(@"Seed=%@", BTCHexFromData(mnemonic.seed));
-//        NSLog(@"Mnemonic=%@", mnemonic.words);
-//        NSLog(@"btc_privateKey=%@", [MnemonicUtil getBtcPrivateKey:mnemonic]);
-//        NSString *btc_private = [MnemonicUtil getBtcPrivateKey:mnemonic];
-//
-//        NSString *btc_address = [MnemonicUtil getBtcAddress:mnemonic];
-//        //助记词存在 新增btc地址
-//        TLDataBase *data = [TLDataBase sharedManager];
-//        if ([data.dataBase open]) {
-//
-//            NSString *sql = [NSString stringWithFormat:@"UPDATE THAUser SET btcaddress = '%@',btcprivate = '%@' WHERE userId='%@'",btc_address,btc_private,[TLUser user].userId];
-//            NSString *sql1 = [NSString stringWithFormat:@"UPDATE THALocal SET address = '%@' WHERE walletId = (SELECT walletId from THAUser where userId='%@') and symbol = '%@' ",btc_address,[TLUser user].userId,@"BTC"];
-//            BOOL sucess = [data.dataBase executeUpdate:sql];
-//            BOOL sucess1 = [data.dataBase executeUpdate:sql1];
-//
-//            NSLog(@"更新自选状态%d",sucess);
-//            NSLog(@"更新自选状态%d",sucess1);
-//            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:KIS170];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//        }
-//        [data.dataBase close];
-//
-//        if (pwd==nil ) {
-//            TLDataBase *data = [TLDataBase sharedManager];
-//            if ([data.dataBase open]) {
-//
-//                NSString *sql = [NSString stringWithFormat:@"UPDATE THAUser SET PwdKey = '%@' WHERE userId='%@'",@"888888",[TLUser user].userId];
-//
-//                BOOL sucess = [data.dataBase executeUpdate:sql];
-//
-//                NSLog(@"更新自选状态%d",sucess);
-//
-//            }
-//            [data.dataBase close];
-//
-//        }
-//
-//    }else{
-//
-//
-//        if (self.isBulid == YES) {
-//            if (self.tableView.mj_header.isRefreshing) {
-//                return;
-//            }
-//            //从私钥钱包子界面返回
-//            [self switchWithTager:0];
-//        }
-//    }
-//}
-//
-//-(void)addUSDT
-//{
-//    NSString *btcadd;
-//
-////    NSString *pwd;
-//    //   获取一键划转币种列表
-//    TLDataBase *dataBase = [TLDataBase sharedManager];
-//    if ([dataBase.dataBase open]) {
-//        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics,btcaddress,PwdKey  from THAUser where userId = '%@'",[TLUser user].userId];
-//        //        [sql appendString:[TLUser user].userId];
-//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//        while ([set next])
-//        {
-//            btcadd = [set stringForColumn:@"btcaddress"];
-//        }
-//        [set close];
-//    }
-//    [dataBase.dataBase close];
-//
-//    NSString *usdtadd;
-//    if ([dataBase.dataBase open]) {
-//        NSString *sql = [NSString stringWithFormat:@"SELECT address  from THALocal where userId = '%@ and symbol = '%@''",[TLUser user].userId,@"USDT"];
-//        //        [sql appendString:[TLUser user].userId];
-//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//        while ([set next])
-//        {
-//            usdtadd = [set stringForColumn:@"address"];
-//        }
-//        [set close];
-//    }
-//    if ([TLUser isBlankString:usdtadd] == YES){
-//        TLDataBase *data = [TLDataBase sharedManager];
-//        if ([data.dataBase open]) {
-//
-//            NSString *sql2 = [NSString stringWithFormat:@"UPDATE THALocal SET address = '%@' WHERE walletId = (SELECT walletId from THAUser where userId='%@') and symbol = '%@' ",btcadd,[TLUser user].userId,@"USDT"];
-//            BOOL sucess2 = [data.dataBase executeUpdate:sql2];
-//            NSLog(@"%d",sucess2);
-//        }
-//        [data.dataBase close];
-//    }
-//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -350,55 +211,12 @@
 - (void)getMyCurrencyList {
     
     CoinWeakSelf;
-    
-//    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-//    if (![TLUser user].isLogin) {
-//        return;
-//    }
-//    helper.code = @"802504";
-//    helper.parameters[@"userId"] = [TLUser user].userId;
-//    helper.parameters[@"token"] = [TLUser user].token;
-//    helper.isList = YES;
-//    helper.isCurrency = YES;
-//    helper.tableView = self.tableView;
-//    [helper modelClass:[CurrencyModel class]];
     [self.tableView addRefreshAction:^{
         
         [CoinUtil refreshOpenCoinList:^{
-        
-            //    获取公告列表
-//            [weakSelf requestRateList];
-            //    获取本地存储私钥钱包
-//            [weakSelf saveLocalWalletData];
-            //   监测是否需要更新新币种
-//            [weakSelf saveLocalWallet];
-            //   个人钱包余额查询
+
             [weakSelf queryCenterTotalAmount];
-            //   获取私钥钱包
-//            [weakSelf queryTotalAllAmount];
-            
-//            [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-//
-//                //去除没有的币种
-//                NSMutableArray <CurrencyModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//                [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                    CurrencyModel *currencyModel = (CurrencyModel *)obj;
-//                    [shouldDisplayCoins addObject:currencyModel];
-//                    //查询总资产
-//                }];
-////                if (self.switchTager == 1) {
-////                    weakSelf.tableView.platforms = shouldDisplayCoins;
-////                }
-//
-//                weakSelf.tableView.platforms = shouldDisplayCoins;
-//                weakSelf.AssetsListModel = shouldDisplayCoins;
-//                [weakSelf.tableView reloadData_tl];
-//
-//            } failure:^(NSError *error) {
-//
-//                [weakSelf.tableView endRefreshingWithNoMoreData_tl];
-//
-//            }];
+
         } failure:^{
             [weakSelf.tableView endRefreshHeader];
         }];
@@ -406,72 +224,6 @@
     [self.tableView beginRefreshing];
 }
 
-
-//- (void)saveLocalWalletData{
-////    if (self.coins.count > 0) {
-////        return;
-////    }
-//    NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
-//    NSMutableArray *temp = arr.mutableCopy;
-//    TLDataBase *db = [TLDataBase sharedManager];
-//    for (int i = 0; i < temp.count; i++) {
-//        NSString *symbol;
-//
-//        CoinModel *model = temp[i];
-////        symbol = model.symbol;
-////
-//        if ([model.type isEqualToString:@"0"]) {
-//            if ([model.symbol isEqualToString:@"BTC"] || [model.symbol isEqualToString:@"USDT"]) {
-//                symbol = @"btc";
-//            }
-//            if ([model.symbol isEqualToString:@"ETH"]) {
-//                symbol = @"eth";
-//            }
-//            if ([model.symbol isEqualToString:@"WAN"]) {
-//                symbol = @"wan";
-//            }
-//        }else if ([model.type isEqualToString:@"1"])
-//        {
-//
-//            symbol = @"eth";
-//        }
-//        else
-//        {
-//            symbol = @"wan";
-//        }
-//
-//    if ([db.dataBase open]) {
-//
-//        NSString *sql = [NSString stringWithFormat:@"SELECT %@address,walletId from THAUser where userId = '%@'",symbol,[TLUser user].userId];
-//        FMResultSet *set =  [db.dataBase executeQuery:sql];
-//
-//        while ([set next]) {
-//        CoinModel *coin  = arr[i];
-//        coin.address = [set stringForColumn:[NSString stringWithFormat:@"%@address",symbol]];
-//        coin.walletId = [NSString stringWithFormat:@"%d",[set intForColumn:@"walletId"]];
-//        }
-//        [set close];
-//    }
-//    [db.dataBase close];
-//    }
-//    self.coins = arr;
-//}
-
-//- (void)loadSum{
-//    if ([[TLUser user].localMoney isEqualToString:@"USD"]) {
-//        self.headerView.cnyAmountLbl.text = [NSString stringWithFormat:@"￥ %.2f",[self.headerView.LocalMoney.text doubleValue] + [self.headerView.privateMoney.text doubleValue]] ;
-//    }else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
-//    {
-//  self.headerView.cnyAmountLbl.text = [NSString stringWithFormat:@"₩ %.2f",[self.headerView.LocalMoney.text doubleValue] + [self.headerView.privateMoney.text doubleValue]] ;
-//
-//    }
-//    else{
-//  self.headerView.cnyAmountLbl.text = [NSString stringWithFormat:@"¥ %.2f",[self.headerView.LocalMoney.text doubleValue] + [self.headerView.privateMoney.text doubleValue]] ;
-//
-//    }
-//    [self.headerView setNeedsDisplay];
-//
-//}
 
 #pragma mark - Events
 
@@ -501,33 +253,6 @@
         [self.tableView endRefreshHeader];
     }];
 }
-
-//获取公告列表
-//- (void)requestRateList {
-//
-//    CoinWeakSelf;
-//    TLPageDataHelper *help = [[TLPageDataHelper alloc] init];
-//    help.parameters[@"channelType"] = @4;
-//    help.parameters[@"toSystemCode"] = [AppConfig config].systemCode;
-//    help.parameters[@"fromSystemCode"] = [AppConfig config].systemCode;
-//        help.parameters[@"start"] = @"1";
-//    help.parameters[@"status"] = @"1";
-//    help.parameters[@"limit"] = @"10";
-//    help.code = @"804040";
-//    help.isUploadToken = NO;
-//    [help modelClass:[RateModel class]];
-//    [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
-//        if (objs.count == 0) {
-////            [weakSelf.headerView tapClick:nil];
-//        }
-//        weakSelf.rates = objs;
-//        if (objs.count > 0) {
-////            weakSelf.headerView.usdRate = weakSelf.rates[0].smsTitle;
-//        }
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
 
 
 @end

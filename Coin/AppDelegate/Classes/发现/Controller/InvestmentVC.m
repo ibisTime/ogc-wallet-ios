@@ -25,7 +25,8 @@
 
 #import "PayTreasureVC.h"
 #import "OrderRecordModel.h"
-
+#import "CurrencyModel.h"
+#import "MyBankCardModel.h"
 @interface InvestmentVC ()<RefreshDelegate,HBAlertPasswordViewDelegate>
 {
     CGFloat sellerPrice;
@@ -43,7 +44,7 @@
     
     NSInteger isRefresh;
 }
-
+@property (nonatomic, strong) NSMutableArray <CurrencyModel *>*platforms;
 @property (nonatomic, strong) NSTimer *timer;
 
 @property (nonatomic , strong)InvestmentTableView *tableView;
@@ -58,6 +59,8 @@
 @property (nonatomic , strong)NSDictionary *payWayDic;
 
 @property (nonatomic , strong)HBAlertPasswordView *passWordView;
+
+@property (nonatomic , strong)NSMutableArray <MyBankCardModel *>*bankCardModels;
 @end
 
 @implementation InvestmentVC
@@ -127,6 +130,26 @@
 //    self.passwordLabel.text = [NSString stringWithFormat:@"输入的密码为:%@", password];
 }
 
+- (void)queryCenterTotalAmount {
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"802301";
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    
+    [http postWithSuccess:^(id responseObject) {
+        
+//        self.headView.dataDic = responseObject[@"data"];
+//        self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+//        [self.tableView reloadData];
+        self.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+//        [self.tableView endRefreshHeader];
+    } failure:^(NSError *error) {
+        
+        [self.tableView endRefreshHeader];
+    }];
+}
+
 - (InvestmentTableView *)tableView {
     
     if (!_tableView) {
@@ -146,6 +169,7 @@
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(testTimerDeallo) userInfo:nil repeats:YES];
+    [self queryCenterTotalAmount];
 }
 
 -(void)testTimerDeallo
@@ -190,6 +214,8 @@
         [weakSelf payWay];
         
     }];
+    
+    [self bankCard];
     [self.tableView beginRefreshing];
     
 }
@@ -227,7 +253,12 @@
         textField2.text = @"";
         self.tableView.price =  buyPrice;
         self.tableView.Rate = buyFeeRate;
+        self.tableView.balance = @"";
         type = @"0";
+//        UILabel *label1 = [self.view viewWithTag:1000];
+//        UILabel *label2 = [self.view viewWithTag:1001];
+//        label2.hidden = YES;
+        
         [self loadData:type];
         
     }else
@@ -242,10 +273,65 @@
         self.tableView.price =  sellerPrice;
         self.tableView.Rate = sellerFeeRate;
         type = @"1";
+//        UILabel *label1 = [self.view viewWithTag:1000];
+//        UILabel *label2 = [self.view viewWithTag:1001];
+//        label2.hidden = NO;
+        for (int i = 0; i < self.platforms.count; i ++) {
+            CurrencyModel *model = self.platforms[i];
+            
+            if ([model.currency isEqualToString:@"BTC"]) {
+                NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
+                
+                NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
+                NSString *available = [amount subNumber:frozenAmount];
+                
+                self.tableView.balance = available;
+                
+//                NSString *poundage = [LangSwitcher switchLang:@"可用余额：" key:nil];
+//                NSString *poundagePrice = [NSString stringWithFormat:@"%@%@",available,model.currency];
+//                NSString *poundageAll = [NSString stringWithFormat:@"%@%@",poundage,poundagePrice];
+//                NSMutableAttributedString *poundageAttrStr = [[NSMutableAttributedString alloc] initWithString:poundageAll];
+//                [poundageAttrStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(poundage.length,poundageAll.length - poundage.length)];
+//                label1.attributedText = poundageAttrStr;
+            }
+        }
+        
+        
         [self loadData:type];
     }
     self.tableView.indexBtnTag = indexBtnTag;
     [self.tableView reloadData];
+}
+
+-(void)bankCard
+{
+    __weak typeof(self) weakSelf = self;
+    TLNetworking *http = [[TLNetworking alloc] init];
+    http.showView = weakSelf.view;
+    
+    http.code = @"802031";
+    http.parameters[@"status"] = @"0";
+    http.parameters[@"type"] = @"0";
+    http.parameters[@"userId"] = [TLUser user].userId;
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.bankCardModels = [MyBankCardModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        if (self.bankCardModels.count > 0) {
+            for (int i = 0; i < self.bankCardModels.count; i ++) {
+                MyBankCardModel *model = self.bankCardModels[i];
+                if ([model.isDefault isEqualToString:@"1"]) {
+                    weakSelf.bankModel = model;
+                    weakSelf.tableView.PaymentMethods = model.bankcardNumber;
+                    [weakSelf.tableView reloadData];
+                }
+                
+            }
+        }
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath

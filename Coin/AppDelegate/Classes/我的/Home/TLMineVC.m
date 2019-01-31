@@ -194,9 +194,9 @@
         case 4:
         {
 
-            [ZDKZendesk initializeWithAppId: @"572a044301abb3cec5bc7efba47802dc225375622ee399eb"
-                                   clientId: @"mobile_sdk_client_1315e07d5bbe64e76b61"
-                                 zendeskUrl: @"https://chengwallethelp.zendesk.com"];
+            [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
+                                   clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
+                                 zendeskUrl: @"https://moorebit.zendesk.com"];
             
             id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
             [[ZDKZendesk instance] setIdentity:userIdentity];

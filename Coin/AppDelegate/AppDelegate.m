@@ -57,7 +57,7 @@
 //    研发
     [AppConfig config].runEnv = RunEnvDev;
 //    测试
-//    [AppConfig config].runEnv = RunEnvTexrst;
+//    [AppConfig config].runEnv = RunEnvTest;
 //    正式
 //    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());

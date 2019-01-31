@@ -486,6 +486,7 @@
     self.view2.hidden = YES;
     self.pwdView.hidden = NO;
     self.pwdView.password.textField.enabled = YES;
+    [self.pwdView.password.textField becomeFirstResponder];
     CoinWeakSelf;
 
     self.pwdView.passwordBlock = ^(NSString *password) {
