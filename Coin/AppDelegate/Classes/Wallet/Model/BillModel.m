@@ -22,14 +22,14 @@
     return propertyName;
 }
 
-+(NSDictionary *)mj_objectClassInArray
-{
-    return @{
-              @"vin" : [utxoModel class],
-              @"vout" : [utxoModel class]
-             };
-    
-}
+//+(NSDictionary *)mj_objectClassInArray
+//{
+//    return @{
+//              @"vin" : [utxoModel class],
+//              @"vout" : [utxoModel class]
+//             };
+//
+//}
 
 - (NSString *)getStatusName {
     

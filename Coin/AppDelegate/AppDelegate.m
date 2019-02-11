@@ -69,31 +69,34 @@
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
     
-//    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
-//    if ([TLUser isBlankString:lang] == YES) {
-//        NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
-//        NSString *languageName = [appLanguages objectAtIndex:0];
-//
-//        if ([languageName hasPrefix:@"zh-Hans"]) {
-//            [LangSwitcher changLangType:LangTypeSimple];
-//        }
-//        else
-//        {
-//            [LangSwitcher changLangType:LangTypeEnglish];
-//        }
-//    }
-    
-    
-    
     //    配置七牛地址
     [self GetSevenCattleAddress];
     //配置键盘
     [self configIQKeyboard];
 
+    
 
+    
+//    配置语言   默认中文
+    [LangSwitcher changLangType:LangTypeSimple];
+    //    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
+    //    if ([TLUser isBlankString:lang] == YES) {
+    //        NSArray *appLanguages = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppleLanguages"];
+    //        NSString *languageName = [appLanguages objectAtIndex:0];
+    //
+    //        if ([languageName hasPrefix:@"zh-Hans"]) {
+    //            [LangSwitcher changLangType:LangTypeSimple];
+    //        }
+    //        else
+    //        {
+    //            [LangSwitcher changLangType:LangTypeEnglish];
+    //        }
+    //    }
+//    [LangSwitcher startWithTraditional];
+    
+    
     //配置根控制器
     [self configRootViewController];
-//    [LangSwitcher startWithTraditional];
     
     //退出登录消息通知
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -276,9 +279,6 @@
 
     }
 
-    
-    
-    
     if ([TLUser user].isLogin == YES) {
         //验证手势密码
         
@@ -331,6 +331,8 @@
     NSString *document = [path objectAtIndex:0];
     return[document stringByAppendingPathComponent:@"THAWallet.sqlite"];
 }
+
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     return [WeiboSDK handleOpenURL:url delegate:self];

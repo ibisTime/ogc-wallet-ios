@@ -25,8 +25,6 @@
 #import "QRCodeVC.h"
 #import "BuildWalletMineVC.h"
 #import "CountryModel.h"
-#import "TLFastvc.h"
-#import "TLTransfromVC.h"
 //#import "BuildLocalHomeView.h"
 #import "WalletImportVC.h"
 #import "HTMLStrVC.h"
@@ -38,10 +36,7 @@
 #import "MnemonicUtil.h"
 #import "BTCKeychain.h"
 #import "BillModel.h"
-#import "WalletForwordVC.h"
 #import "AssetsHeadView.h"
-
-
 #import "MyAssetsHeadView.h"
 
 

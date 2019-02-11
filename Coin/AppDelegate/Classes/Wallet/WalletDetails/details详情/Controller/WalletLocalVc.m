@@ -17,7 +17,6 @@
 #import "NSString+Check.h"
 #import "FilterView.h"
 #import "UIBarButtonItem+convience.h"
-#import "WalletForwordVC.h"
 #import "WalletLocalBillTableView.h"
 #import "LocalBillDetailVC.h"
 #import "TLBillBTCVC.h"
@@ -466,7 +465,7 @@
             [self.navigationController pushViewController:coinVC animated:YES];
             break;
         case 1:
-            [self clickWithdrawWithCurrency:self.currency];
+//            [self clickWithdrawWithCurrency:self.currency];
 
             break;
             
@@ -476,12 +475,12 @@
     
 }
 
-- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
-    
-    WalletForwordVC *coinVC = [WalletForwordVC new];
-    coinVC.currency = currencyModel;
-    [self.navigationController pushViewController:coinVC animated:YES];
-}
+//- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
+//
+//    WalletForwordVC *coinVC = [WalletForwordVC new];
+//    coinVC.currency = currencyModel;
+//    [self.navigationController pushViewController:coinVC animated:YES];
+//}
 
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
