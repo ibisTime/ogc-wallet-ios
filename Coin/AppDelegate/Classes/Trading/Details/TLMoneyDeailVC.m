@@ -62,6 +62,8 @@
     self.tableView.tableHeaderView = headView;
     self.headView = headView;
     self.headView.moneyModel = self.moneyModel;
+    
+    [self LoadData];
 }
 
 

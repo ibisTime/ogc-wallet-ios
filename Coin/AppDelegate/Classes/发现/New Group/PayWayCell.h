@@ -12,4 +12,7 @@
 @property (nonatomic , strong)NSDictionary *payWayDic;
 @property (nonatomic , strong)UILabel *nameLabel;
 @property (nonatomic , strong)UIButton *payBtn;
+
+//最大额度
+@property (nonatomic , copy)NSString *biggestLimit;
 @end

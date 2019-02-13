@@ -76,7 +76,9 @@
     
     PayWayCell *cell = [tableView dequeueReusableCellWithIdentifier:PayWay forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    if ([TLUser isBlankString:self.biggestLimit] == NO) {
+        cell.biggestLimit = self.biggestLimit;
+    }
     if (_indexBtnTag == 0)
     {
         cell.nameLabel.text = [LangSwitcher switchLang:@"支付方式" key:nil];

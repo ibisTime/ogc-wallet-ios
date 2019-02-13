@@ -294,7 +294,7 @@
 -(void)forgetPwdBtnClick
 {
     TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-    vc.titleString = @"修改交易密码";
+    vc.titleString = @"修改登录密码";
     [self.navigationController pushViewController:vc animated:YES];
 }
 

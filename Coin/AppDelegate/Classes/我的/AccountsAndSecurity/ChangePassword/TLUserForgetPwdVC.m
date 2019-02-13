@@ -146,13 +146,15 @@
     }
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-    if ([TLUser isBlankString:[TLUser user].mobile] == NO) {
-        http.code = CAPTCHA_CODE;
-        http.parameters[@"mobile"] = self.phoneTf.text;
-    }else
-    {
+    
+    if ([self.phoneTf.text hasPrefix:@"@"]) {
         http.code = @"630093";
         http.parameters[@"email"] = self.phoneTf.text;
+        
+    }else
+    {
+        http.code = CAPTCHA_CODE;
+        http.parameters[@"mobile"] = self.phoneTf.text;
     }
     
     http.parameters[@"client"] = @"ios";
@@ -289,6 +291,12 @@
     
     //1.获取用户信息
     if ([TLUser user].isLogin == NO) {
+        [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改成功" key:nil]];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        });
         return;
     }
     TLNetworking *http = [TLNetworking new];

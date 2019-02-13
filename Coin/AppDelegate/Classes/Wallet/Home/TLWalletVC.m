@@ -98,6 +98,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    [self queryCenterTotalAmount];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

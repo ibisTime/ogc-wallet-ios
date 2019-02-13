@@ -71,7 +71,7 @@
     UILabel *label13 = [self viewWithTag:113];
     label11.text = [NSString stringWithFormat:@"%@",[moneyModel.startDatetime convertDate]];
     label12.text = [NSString stringWithFormat:@"%@",[moneyModel.incomeDatetime convertDate]];
-    label13.text = [NSString stringWithFormat:@"%@",[moneyModel.arriveDatetime convertDate]];
+    label13.text = [NSString stringWithFormat:@"%@",[moneyModel.repayDatetime convertDate]];
 
     if ([moneyModel.timeStatus isEqualToString:@"0"]) {
         kViewBorderRadius(label22, 10, 1, kHexColor(@"#666666"));

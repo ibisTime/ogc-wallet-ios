@@ -77,7 +77,7 @@ static NSString *identifierCell = @"SettingCell";
             {
                 cell.arrowHidden = YES;
                 cell.rightLabel.hidden = NO;
-                cell.rightLabel.text = [LangSwitcher switchLang:@"已认证" key:nil];
+                cell.rightLabel.text = [TLUser user].realName;
             }
             else
             {
@@ -86,12 +86,21 @@ static NSString *identifierCell = @"SettingCell";
                 cell.rightLabel.text = [LangSwitcher switchLang:@"未认证" key:nil];
             }
         }
+        NSRange rang = NSMakeRange(3, 4);
+
         if (indexPath.row == 1) {
             if ([TLUser isBlankString:[TLUser user].email] == NO)
             {
                 cell.arrowHidden = YES;
                 cell.rightLabel.hidden = NO;
-                cell.rightLabel.text = [TLUser user].email;
+
+                
+                if ([TLUser user].email.length>10) {
+                    cell.rightLabel.text =[[TLUser user].email stringByReplacingCharactersInRange:rang withString:@"****"];
+                }else
+                {
+                    cell.rightLabel.text = [TLUser user].email;
+                }
             }
             else
             {
@@ -104,7 +113,7 @@ static NSString *identifierCell = @"SettingCell";
             {
                 cell.arrowHidden = YES;
                 cell.rightLabel.hidden = NO;
-                cell.rightLabel.text = [TLUser user].mobile;
+                cell.rightLabel.text = [[TLUser user].mobile stringByReplacingCharactersInRange:rang withString:@"****"];
             }
             else
             {

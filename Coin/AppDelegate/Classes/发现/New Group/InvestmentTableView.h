@@ -11,11 +11,19 @@
 @interface InvestmentTableView : TLTableView
 
 @property (nonatomic , strong)NSMutableArray <InvestmentModel *>*models;
-
+//余额
 @property (nonatomic , assign)CGFloat price;
+//支付防水
 @property (nonatomic , strong)NSDictionary *payWayDic;
+//选择买入  卖出
 @property (nonatomic , assign)NSInteger indexBtnTag;
+//收款银行
 @property (nonatomic , copy)NSString *PaymentMethods;
+//手续费
 @property (nonatomic , copy)NSString *Rate;
+//余额
 @property (nonatomic , copy)NSString *balance;
+//最大额度
+@property (nonatomic , copy)NSString *biggestLimit;
+
 @end

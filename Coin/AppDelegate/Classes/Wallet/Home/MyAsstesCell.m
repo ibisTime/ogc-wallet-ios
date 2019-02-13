@@ -23,15 +23,6 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     return self;
 }
@@ -42,30 +33,6 @@
 }
 
 
-//-(void)setPlatform:(CurrencyModel *)platform
-//{
-////    cname
-//    CoinModel *coin = [CoinUtil getCoinModel:platform.currency];
-//
-//    NSString *name;
-//    LangType type = [LangSwitcher currentLangType];
-////    NSString *lan;
-//    if (type == LangTypeSimple || type == LangTypeTraditional) {
-//        name = coin.cname;
-//    }else
-//    {
-//        name = coin.ename;
-//    }
-//
-//    nameLabel.text = [NSString stringWithFormat:@"%@(%@)",name,platform.currency];
-//    [iconImg sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
-//    NSString *leftAmount = [CoinUtil convertToRealCoin:platform.amountString coin:platform.currency];
-//    NSString *rightAmount = [CoinUtil convertToRealCoin:platform.frozenAmountString coin:platform.currency];
-//    NSString *ritAmount = [leftAmount subNumber:rightAmount];
-//    priceLabel.text = [NSString stringWithFormat:@"%@",ritAmount];
-//
-//
-//}
 
 
 -(void)setPlatforms:(NSMutableArray<CurrencyModel *> *)platforms
@@ -86,15 +53,6 @@
     for (int i = 0; i < platforms.count; i ++) {
         
         CurrencyModel *model = platforms[i];
-        
-//        冻结
-//        NSString *frozenAmountString = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
-////        余额
-//        NSString *amountString = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
-////        可用
-//        CGFloat available = [amountString floatValue] - [frozenAmountString floatValue];
-        
-        
         NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
         
         NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
@@ -136,7 +94,7 @@
         
         
         priceLabel = [UILabel labelWithFrame:CGRectMake(freezeLabel.xx + 10, 34.5 + i % platforms.count * 100, SCREEN_WIDTH - freezeLabel.xx - 30 - 15 - 10, 21) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(16) textColor:[UIColor blackColor]];
-        priceLabel.text = [NSString stringWithFormat:@"%.8f%@",[amount doubleValue],model.currency];
+        priceLabel.text = [NSString stringWithFormat:@"%@%@",amount,model.currency];
         priceLabel.centerY = freezeLabel.centerY;
         [whiteView addSubview:priceLabel];
         

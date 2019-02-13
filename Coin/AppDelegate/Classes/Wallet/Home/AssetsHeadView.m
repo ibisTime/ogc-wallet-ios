@@ -43,13 +43,6 @@
         _announcementLbl.frame = CGRectMake(_announcementImage.xx + 10, 0, kScreenWidth-100, kHeight(40));
         UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(announcement)];
         [_announcementLbl addGestureRecognizer:tap1];
-//        [_announcementLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(_announcementImage.mas_right).offset(10);
-//            make.centerY.equalTo(_whiteView.mas_centerY);
-//            make.width.equalTo(@(kScreenWidth-100));
-//        }];
-//        [_announcementLbl sizeToFit];
-        
         //右箭头
         _announcementDeleteBtn = [[UIImageView alloc] initWithImage:kImage(@"关闭")];
         UITapGestureRecognizer *leftSwipe = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDeleteClick)];
@@ -97,15 +90,6 @@
         [self addSubview:_allAssetsPriceLabel];
         _allAssetsPriceLabel.frame = CGRectMake(19, kHeight(40) + 28, SCREEN_WIDTH, 18);
 
-        
-//        [self.allLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//            make.top.equalTo(equivalentBtn.mas_bottom).offset(5);
-//            make.left.equalTo(equivalentBtn.mas_left);
-//            make.height.equalTo(@25);
-//
-//        }];
-//        self.allLabel.hidden = YES;
         
         _eyesBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_eyesBtn setImage:[UIImage imageNamed:@"眼睛"] forState:(UIControlStateNormal)];
@@ -213,22 +197,14 @@
         [self addSubview:text];
         
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        self.addButton = addButton;
         addButton.frame = CGRectMake(SCREEN_WIDTH - 40, _bgIV.yy + 10, 30, 30);
         [addButton setImage:kImage(@"增加") forState:UIControlStateNormal];
         [addButton addTarget:self action:@selector(addCurrent) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:addButton];
-//        [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.equalTo(self.titleView.mas_top).offset(4);
-//
-//            make.right.equalTo(self.view.mas_right).offset(-15);
-//            make.width.height.equalTo(@20);
-//        }];
         
     }
     return self;
 }
-
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
@@ -236,55 +212,37 @@
     if ([eyes isEqualToString:@"1"]) {
         if ([TLUser user].localMoney) {
             if ([[TLUser user].localMoney isEqualToString:@"CNY"] ) {
-                
                 _allAssetsPriceLabel.text = @"¥****";
                 self.priceLabel.text = @"¥****";
-                
             }else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
             {
                 _allAssetsPriceLabel.text = @"₩****";
                 self.priceLabel.text = @"₩****";
-                
             }
             else{
                 _allAssetsPriceLabel.text = @"$****";
                 self.priceLabel.text = @"$****";
-                
-                
             }
         }else{
-            
             _allAssetsPriceLabel.text = @"¥****";
             self.priceLabel.text = @"¥****";
-            
         }
     }else
     {
-//        NSString *cnyStr;
         if ([[TLUser user].localMoney isEqualToString:@"USD"]) {
-//            cnyStr = [NSString stringWithFormat:@"%.2f", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
             _allAssetsPriceLabel.text = [NSString stringWithFormat:@"$ %.2f", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
             _priceLabel.text = [NSString stringWithFormat:@"$ %.2f", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
         } else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
         {
-//            cnyStr = [NSString stringWithFormat:@"%.2f", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
             _allAssetsPriceLabel.text = [NSString stringWithFormat:@"₩ %.2f", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
             _priceLabel.text = [NSString stringWithFormat:@"₩ %.2f", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
-            
-            
         }
-        
         else{
-            
-//            cnyStr = [NSString stringWithFormat:@"%.2f", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
             _allAssetsPriceLabel.text = [NSString stringWithFormat:@"¥ %.2f", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
             _priceLabel.text = [NSString stringWithFormat:@"¥ %.2f", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
             
         }
     }
-    
-//    [self setNSMutableAttributedStringLbl:personalPriceLbl setText:cnyStr];
-//    [self notice];
 }
 
 -(void)accountNameBtnClick

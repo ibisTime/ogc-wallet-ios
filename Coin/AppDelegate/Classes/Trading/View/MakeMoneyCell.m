@@ -147,15 +147,7 @@
     if ([model.status isEqualToString:@"4"]) {
         self.stateLab.textColor = kTabbarColor;
     }
-    if ([model.status isEqualToString:@"7"]) {
-        if ([model.incomeFlag isEqualToString:@"0"])
-        {
-            self.stateLab.text = [LangSwitcher switchLang:@"已售罄" key:nil];
-        }else
-        {
-            self.stateLab.text = [LangSwitcher switchLang:@"计息中" key:nil];
-        }
-    }
+    
     if ([model.status isEqualToString:@"8"]) {
         self.stateLab.textColor = [UIColor grayColor];
     }else

@@ -20,5 +20,5 @@
 @property (nonatomic , strong)NSString *loginName;
 @property (nonatomic , strong)NSString *nickname;
 @property (nonatomic , strong)NSString *photo;
-
+@property (nonatomic , strong)NSString *createDatetime;
 @end

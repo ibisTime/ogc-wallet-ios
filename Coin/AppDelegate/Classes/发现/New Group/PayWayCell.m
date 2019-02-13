@@ -10,7 +10,7 @@
 
 @implementation PayWayCell
 {
-   
+    UILabel *instructionsLbl;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -43,8 +43,8 @@
         youImg.image = kImage(@"更多-灰色");
         [backView addSubview:youImg];
         
-        UILabel *instructionsLbl = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
-        instructionsLbl.text = [LangSwitcher switchLang:@"说明：单笔交易限额50000" key:nil];
+        instructionsLbl = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
+        instructionsLbl.text = [LangSwitcher switchLang:@"说明：单笔交易限额0.00" key:nil];
         [self addSubview:instructionsLbl];
         
         
@@ -52,6 +52,17 @@
         
     }
     return self;
+}
+
+-(void)setBiggestLimit:(NSString *)biggestLimit
+{
+    if ([biggestLimit floatValue] > 10000) {
+        instructionsLbl.text = [NSString stringWithFormat:@"说明：单笔交易限额%.f万元",[biggestLimit floatValue]/10000];
+    }else
+    {
+        instructionsLbl.text = [NSString stringWithFormat:@"说明：单笔交易限额%@元",biggestLimit];
+    }
+    
 }
 
 -(void)setPayWayDic:(NSDictionary *)payWayDic

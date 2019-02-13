@@ -318,12 +318,17 @@
     NSRange rang = NSMakeRange(3, 4);
     UITapGestureRecognizer *ta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNickName)];
     [self.headerView.nameLbl addGestureRecognizer:ta];
-    
     if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
-        self.headerView.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].email];
+        if ([TLUser user].email.length>10) {
+            self.headerView.mobileLbl.text =[[TLUser user].email stringByReplacingCharactersInRange:rang withString:@"****"];
+        }else
+        {
+            self.headerView.mobileLbl.text = [TLUser user].email;
+        }
+        
     }else
     {
-        self.headerView.mobileLbl.text = [NSString stringWithFormat:@"%@", [TLUser user].mobile];
+        self.headerView.mobileLbl.text = [[TLUser user].mobile stringByReplacingCharactersInRange:rang withString:@"****"];
     }
     
     self.headerView.levelBtn.hidden = [[TLUser user].level isEqualToString:kLevelOrdinaryTraders] ? YES : NO;

@@ -43,6 +43,11 @@
     NSString *type;
     
     NSInteger isRefresh;
+//    最大额度
+    NSString *accept_order_max_cny_amount;
+//    最小额度
+    NSString *accept_order_min_cny_amount;
+    
 }
 @property (nonatomic, strong) NSMutableArray <CurrencyModel *>*platforms;
 @property (nonatomic, strong) NSTimer *timer;
@@ -139,9 +144,6 @@
     
     [http postWithSuccess:^(id responseObject) {
         
-//        self.headView.dataDic = responseObject[@"data"];
-//        self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
-//        [self.tableView reloadData];
         self.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
 //        [self.tableView endRefreshHeader];
     } failure:^(NSError *error) {
@@ -177,8 +179,6 @@
     [self loadDataPrice];
 }
 
-
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
@@ -212,6 +212,7 @@
         [weakSelf loadData:type];
         [weakSelf loadDataPrice];
         [weakSelf payWay];
+        [weakSelf ScopeOfPurchase];
         
     }];
     
@@ -255,10 +256,7 @@
         self.tableView.Rate = buyFeeRate;
         self.tableView.balance = @"";
         type = @"0";
-//        UILabel *label1 = [self.view viewWithTag:1000];
-//        UILabel *label2 = [self.view viewWithTag:1001];
-//        label2.hidden = YES;
-        
+
         [self loadData:type];
         
     }else
@@ -273,9 +271,7 @@
         self.tableView.price =  sellerPrice;
         self.tableView.Rate = sellerFeeRate;
         type = @"1";
-//        UILabel *label1 = [self.view viewWithTag:1000];
-//        UILabel *label2 = [self.view viewWithTag:1001];
-//        label2.hidden = NO;
+
         for (int i = 0; i < self.platforms.count; i ++) {
             CurrencyModel *model = self.platforms[i];
             
@@ -287,12 +283,7 @@
                 
                 self.tableView.balance = available;
                 
-//                NSString *poundage = [LangSwitcher switchLang:@"可用余额：" key:nil];
-//                NSString *poundagePrice = [NSString stringWithFormat:@"%@%@",available,model.currency];
-//                NSString *poundageAll = [NSString stringWithFormat:@"%@%@",poundage,poundagePrice];
-//                NSMutableAttributedString *poundageAttrStr = [[NSMutableAttributedString alloc] initWithString:poundageAll];
-//                [poundageAttrStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(poundage.length,poundageAll.length - poundage.length)];
-//                label1.attributedText = poundageAttrStr;
+
             }
         }
         
@@ -329,6 +320,32 @@
         }
         
         
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+//购买范围
+-(void)ScopeOfPurchase
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"600115";
+    http.parameters[@"type"] = @"accept_rule";
+    [http postWithSuccess:^(id responseObject) {
+        
+        NSArray *dataArray = responseObject[@"data"];
+        for (int i = 0; i < dataArray.count ; i ++) {
+            if ([dataArray[i][@"ckey"] isEqualToString:@"accept_order_max_cny_amount"]) {
+                self.tableView.biggestLimit = dataArray[i][@"cvalue"];
+                accept_order_max_cny_amount = dataArray[i][@"cvalue"];
+            }
+            if ([dataArray[i][@"ckey"] isEqualToString:@"accept_order_min_cny_amount"]) {
+
+                accept_order_min_cny_amount = dataArray[i][@"cvalue"];
+            }
+            
+        }
+        [self.tableView reloadData];
     } failure:^(NSError *error) {
         
     }];
@@ -422,11 +439,14 @@
     
 
     
-    if ([textField1.text floatValue] < 100) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买金额必须大于100" key:nil]];
+    if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
+        [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
         return ;
     }
-    
+    if ([textField1.text floatValue] > [accept_order_max_cny_amount floatValue]) {
+        [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额不得大于" key:nil],accept_order_max_cny_amount]];
+        return ;
+    }
     if ([textField2.text floatValue] == 0) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
         return ;
@@ -483,15 +503,12 @@
         }];
     }else
     {
-        
         if ([TLUser isBlankString:self.bankModel.code] == YES) {
             [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
             return ;
         }
-        
         [[UserModel user].cusPopView dismiss];
         self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ BTC",textField2.text];
-//        _passWordView.frame = CGRectMake(15, SCREEN_HEIGHT/2 - 590/2/2 - 100, SCREEN_WIDTH - 30, 590/2);
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.passWordView];
         
 
@@ -500,6 +517,8 @@
 
 }
 
+
+//支付方式
 -(void)payWay
 {
     TLNetworking *http = [[TLNetworking alloc] init];
@@ -540,11 +559,14 @@
         
         
         
-        if ([textField1.text floatValue] < 100) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买金额必须大于100" key:nil]];
+        if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
+            [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
             return ;
         }
-        
+        if ([textField1.text floatValue] > [accept_order_max_cny_amount floatValue]) {
+            [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额不得大于" key:nil],accept_order_max_cny_amount]];
+            return ;
+        }
         if ([textField2.text floatValue] == 0) {
             [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
             return ;
