@@ -129,7 +129,7 @@
 
 -(void)navigativeView
 {
-    self.titleText.text = [LangSwitcher switchLang:@"币加宝" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"Moore量化" key:nil];
     self.titleText.font = Font(18);
     self.titleText.textColor = kWhiteColor;
     self.navigationItem.titleView = self.titleText;
@@ -176,14 +176,12 @@
 #pragma mark -- 接收到通知
 - (void)InfoNotificationAction:(NSNotification *)notification{
     
-    
     if (selectBtn.tag == 100) {
         [self getMyCurrencyList:@"BTC"];
 //        [self totalAmount:@"BTC"];
     }else
     {
         [self getMyCurrencyList:@"USDT"];
-//        [self totalAmount:@"USDT"];
     }
 }
 

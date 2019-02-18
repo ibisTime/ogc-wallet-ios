@@ -36,7 +36,7 @@ static NSString *identifierCell = @"BillDetailCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 5;
+    return 4;
     
 }
 
@@ -47,7 +47,6 @@ static NSString *identifierCell = @"BillDetailCell";
                          [LangSwitcher switchLang:@"变动前金额" key:nil],
                           [LangSwitcher switchLang:@"变动后金额" key:nil],
                           [LangSwitcher switchLang:@"变动时间" key:nil],
-                          [LangSwitcher switchLang:@"明细状态" key:nil],
                           [LangSwitcher switchLang:@"明细摘要" key:nil],
                          ];
     
@@ -68,7 +67,7 @@ static NSString *identifierCell = @"BillDetailCell";
     
     NSString *createDatetime = [_bill.createDatetime convertToDetailDate];
 
-    NSArray *rightArr = @[preAmount,postAmount,createDatetime,status,getBizName];
+    NSArray *rightArr = @[preAmount,postAmount,createDatetime,getBizName];
     
     cell.titleLbl.text = [NSString stringWithFormat:@"%@",textArr[indexPath.row]];
 

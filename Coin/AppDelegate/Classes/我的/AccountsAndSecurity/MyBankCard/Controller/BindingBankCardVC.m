@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleText.text = [LangSwitcher switchLang:@"绑定银行卡" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"绑定我的收款方式" key:nil];
     self.navigationItem.titleView = self.titleText;
     [self initView];
     [self loadData];
@@ -63,14 +63,15 @@
 
 -(void)initView
 {
-    NSArray *nameArray = @[@"持卡人",@"银行",@"开户支行",@"银行卡号"];
-    NSArray *placArray = @[@"持卡人",@"银行名称",@"开户支行",@"银行卡号"];
+    NSArray *nameArray = @[@"姓名",@"收款方式",@"收款账号",@"收款账号"];
+    NSArray *placArray = @[@"请输入姓名",@"请选择收款方式",@"请输入收款账号",@"请输入收款账号"];
     
-    for (int i = 0; i < 4; i ++) {
-        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, i% 4 * 55, 0, 55) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:kTextBlack];
+    for (int i = 0; i < nameArray.count; i ++) {
+        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, i% 4 * 55, 70, 55) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:kTextBlack];
         nameLabel.text = [LangSwitcher switchLang:nameArray[i] key:nil];
-        [nameLabel sizeToFit];
-        nameLabel.frame = CGRectMake(15, i% 4 * 55, nameLabel.width, 55);
+//        [nameLabel sizeToFit];
+        nameLabel.tag = 100 + i;
+//        nameLabel.frame = CGRectMake(15, i% 4 * 55, nameLabel.width, 55);
         [self.view addSubview:nameLabel];
         
         
@@ -84,6 +85,7 @@
         
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, i% 4 * 55 + 54, SCREEN_WIDTH - 30, 1)];
+        lineView.tag = 10000 + i;
         lineView.backgroundColor = kLineColor;
         [self.view addSubview:lineView];
         
@@ -101,6 +103,13 @@
             chooseBankCardBtn.frame = CGRectMake(SCREEN_WIDTH - 30 - 9, 55, 39, 55);
             [self.view addSubview:chooseBankCardBtn];
         }
+        
+        if (i == 3) {
+            nameLabel.hidden = YES;
+            nameTextFid.hidden = YES;
+            lineView.hidden = YES;
+        }
+        
         
     }
     
@@ -130,9 +139,30 @@
             SelectedListModel *model = array[0];
 
             bankCardDic = dataArray[model.sid];
-            UITextField *textField2 = [self.view viewWithTag:1001];
-            textField2.text = bankCardDic[@"bankName"];
-            
+            UITextField *textField1 = [self.view viewWithTag:1001];
+            textField1.text = bankCardDic[@"bankName"];
+            UILabel *label2 = [self.view viewWithTag:102];
+            UILabel *label3 = [self.view viewWithTag:103];
+            UITextField *textField2 = [self.view viewWithTag:1002];
+            UITextField *textField3 = [self.view viewWithTag:1003];
+            UIView *lineView = [self.view viewWithTag:10003];
+            if ([bankCardDic[@"bankName"] isEqualToString:@"支付宝"]) {
+                
+                label2.text = @"收款账号";
+                textField2.placeholder = @"请输入收款账号";
+                label3.hidden = YES;
+                textField3.hidden = YES;
+                lineView.hidden = YES;
+            }else
+            {
+                label2.text = @"开户支行";
+                textField2.placeholder = @"请输入开户支行";
+                label3.hidden = NO;
+                textField3.hidden = NO;
+                lineView.hidden = NO;
+                label3.text = @"收款账号";
+                textField3.placeholder = @"请输入收款账号";
+            }
         }];
     };
     [LEEAlert alert].config
@@ -155,22 +185,32 @@
     UITextField *textField4 = [self.view viewWithTag:1003];
     
     if ([textField1.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入持卡人" key:nil]];
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入姓名" key:nil]];
         return ;
     }
     
     if ([textField2.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行" key:nil]];
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择收款方式" key:nil]];
         return ;
     }
-    if ([textField3.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入开户支行" key:nil]];
-        return ;
+    if ([bankCardDic[@"bankName"] isEqualToString:@"支付宝"]) {
+        if ([textField3.text isEqualToString:@""]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入收款账号" key:nil]];
+            return ;
+        }
+    }else
+    {
+        if ([textField3.text isEqualToString:@""]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入开户支行" key:nil]];
+            return ;
+        }
+        if ([textField4.text isEqualToString:@""]) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入银行卡号" key:nil]];
+            return ;
+        }
     }
-    if ([textField4.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入银行卡号" key:nil]];
-        return ;
-    }
+    
+    
     
     CoinWeakSelf;
     TLNetworking *http = [[TLNetworking alloc] init];
@@ -181,8 +221,16 @@
     http.parameters[@"realName"] = textField1.text;
     http.parameters[@"bankCode"] = bankCardDic[@"bankCode"];
     http.parameters[@"bankName"] = bankCardDic[@"bankName"];
-    http.parameters[@"bankcardNumber"] = textField4.text;
-    http.parameters[@"subbranch"] = textField3.text;
+    
+    if ([bankCardDic[@"bankName"] isEqualToString:@"支付宝"]) {
+        http.parameters[@"subbranch"] = @"支付宝";
+        http.parameters[@"bankcardNumber"] = textField3.text;
+    }else
+    {
+        http.parameters[@"subbranch"] = textField3.text;
+        http.parameters[@"bankcardNumber"] = textField4.text;
+    }
+    
     http.parameters[@"type"] =@"0";
     http.parameters[@"userId"] = [TLUser user].userId;
     [http postWithSuccess:^(id responseObject) {

@@ -15,4 +15,5 @@
 
 //最大额度
 @property (nonatomic , copy)NSString *biggestLimit;
+@property (nonatomic , copy)NSString *smallLimit;
 @end

@@ -33,7 +33,7 @@
     NSArray *titles = @[
                         [LangSwitcher switchLang:@"投资" key:nil],
                         [LangSwitcher switchLang:@"交易" key:nil],
-                        [LangSwitcher switchLang:@"钱包" key:nil],
+                        [LangSwitcher switchLang:@"资产" key:nil],
                         [LangSwitcher switchLang:@"我的" key:nil]
                         ];
     NSArray *VCNames = @[@"PosMiningVC",@"InvestmentVC",@"TLWalletVC", @"TLMineVC"];

@@ -67,7 +67,7 @@ static NSString *identifierCell = @"SettingCell";
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
     }
     
-    NSArray *nameArray2 = @[@"身份认证",@"绑定邮箱",@"绑定手机号",@"我的银行卡"];
+    NSArray *nameArray2 = @[@"身份认证",@"绑定邮箱",@"绑定手机号",@"我的收款方式"];
 
     if (indexPath.section == 1) {
         cell.titleLbl.text = [LangSwitcher switchLang:nameArray2[indexPath.row] key:nil];

@@ -14,6 +14,7 @@
     UILabel *bankNumberLbl;
     UIImageView *backImage;
     UIImageView *iconImg;
+    UILabel *bankTypeLbl;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -39,7 +40,7 @@
         [backImage addSubview:bankNameLbl];
         
         
-        UILabel *bankTypeLbl = [UILabel labelWithFrame:CGRectMake(bottomView.xx + 12, bankNameLbl.yy + 1, SCREEN_WIDTH - 115, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
+        bankTypeLbl = [UILabel labelWithFrame:CGRectMake(bottomView.xx + 12, bankNameLbl.yy + 1, SCREEN_WIDTH - 115, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
         bankTypeLbl.text = [LangSwitcher switchLang:@"银行卡" key:nil];
         [backImage addSubview:bankTypeLbl];
         
@@ -78,6 +79,12 @@
     [backImage sd_setImageWithURL:[NSURL URLWithString:[models.background convertImageUrl]]];
     [iconImg sd_setImageWithURL:[NSURL URLWithString:[models.icon convertImageUrl]]];
     bankNameLbl.text = models.bankName;
+    if ([models.bankName isEqualToString:@"支付宝"]) {
+        bankTypeLbl.text = @"";
+    }else
+    {
+        bankTypeLbl.text = @"银行卡";
+    }
     NSString *number;
     if (models.bankcardNumber.length > 4) {
         number = [models.bankcardNumber substringFromIndex:models.bankcardNumber.length - 4];

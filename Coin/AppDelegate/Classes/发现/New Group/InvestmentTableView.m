@@ -78,6 +78,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if ([TLUser isBlankString:self.biggestLimit] == NO) {
         cell.biggestLimit = self.biggestLimit;
+        cell.smallLimit = self.smallLimit;
     }
     if (_indexBtnTag == 0)
     {
@@ -87,20 +88,25 @@
     }else
     {
         cell.nameLabel.text = [LangSwitcher switchLang:@"收款方式" key:nil];
-        if ([TLUser isBlankString:self.PaymentMethods] == YES) {
+        if ([TLUser isBlankString:self.bankModel.bankcardNumber] == YES) {
             [cell.payBtn setTitle:@"请选择收款方式" forState:(UIControlStateNormal)];
         }
         else
         {
             NSString *number;
-            if (self.PaymentMethods.length > 4) {
-                number = [self.PaymentMethods substringFromIndex:self.PaymentMethods.length - 4];
+            if (self.bankModel.bankcardNumber.length > 4) {
+                number = [self.bankModel.bankcardNumber substringFromIndex:self.bankModel.bankcardNumber.length - 4];
             }else
             {
-                number = self.PaymentMethods;
+                number = self.bankModel.bankcardNumber;
+            }
+            if ([self.bankModel.bankName isEqualToString:@"支付宝"]) {
+                [cell.payBtn setTitle:[NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"支付宝" key:nil],[LangSwitcher switchLang:@"尾号为" key:nil],number] forState:(UIControlStateNormal)];
+            }else
+            {
+                [cell.payBtn setTitle:[NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"银行卡" key:nil],[LangSwitcher switchLang:@"尾号为" key:nil],number] forState:(UIControlStateNormal)];
             }
             
-            [cell.payBtn setTitle:[NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"尾号为" key:nil],number,[LangSwitcher switchLang:@"银行卡" key:nil]] forState:(UIControlStateNormal)];
         }
         
         [cell.payBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {

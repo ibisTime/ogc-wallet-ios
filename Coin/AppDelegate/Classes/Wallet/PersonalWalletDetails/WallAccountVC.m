@@ -222,17 +222,9 @@
     helper.code = @"802320";
     helper.start = 1;
     helper.limit = 10;
-    
-//    helper.parameters[@"bizType"] = bizType;
-//    helper.parameters[@"kind"] = self.billType == CurrentTypeFrozen ? @"1": @"0";
     helper.parameters[@"type"] = @"0";
     helper.parameters[@"accountNumber"] = self.currency.accountNumber;
-    
-    //    helper.parameters[@"channelType"] = @"C";
-    //    helper.parameters[@"status"] = @"";
-    
-    //0 刚生成待回调，1 已回调待对账，2 对账通过, 3 对账不通过待调账,4 已调账,9,无需对账
-    //pageDataHelper.parameters[@"status"] = [ZHUser user].token;
+
     
     [helper modelClass:[BillModel class]];
     

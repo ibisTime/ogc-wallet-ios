@@ -128,7 +128,6 @@
     switch ([LangSwitcher currentLangType]) {
         case LangTypeEnglish:
             self.nameLab.text = self.model.nameEn;
-
             break;
         case LangTypeKorean:
             self.nameLab.text = self.model.nameKo;
@@ -136,23 +135,28 @@
             break;
         case LangTypeSimple:
             self.nameLab.text = self.model.nameZhCn;
-
             break;
-
         default:
             break;
     }
 
     self.stateLab.text = [LangSwitcher switchLang:model.statusStr key:nil];
-    if ([model.status isEqualToString:@"4"]) {
-        self.stateLab.textColor = kTabbarColor;
-    }
+   
     
-    if ([model.status isEqualToString:@"8"]) {
-        self.stateLab.textColor = [UIColor grayColor];
-    }else
+    if ([model.status isEqualToString:@"10"]) {
+        self.stateLab.textColor = kHexColor(@"999999");
+    }else if([model.status isEqualToString:@"9"])
+    {
+        self.stateLab.textColor = [UIColor redColor];
+    }else if([model.status isEqualToString:@"4"])
     {
         self.stateLab.textColor = kHexColor(@"#FF6400");
+    }else if([model.status isEqualToString:@"5"])
+    {
+        self.stateLab.textColor = kHexColor(@"#0EC55B");
+    }else
+    {
+        self.stateLab.textColor = kTabbarColor;
     }
     [self.stateLab sizeToFit];
     self.stateLab.frame = CGRectMake(kScreenWidth - 15 - self.stateLab.frame.size.width, 10, self.stateLab.frame.size.width, 45);

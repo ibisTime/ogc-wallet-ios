@@ -27,13 +27,20 @@
 #import "OrderRecordModel.h"
 #import "CurrencyModel.h"
 #import "MyBankCardModel.h"
-@interface InvestmentVC ()<RefreshDelegate,HBAlertPasswordViewDelegate>
+#import "ZQFaceAuthEngine.h"
+#import "ZQOCRScanEngine.h"
+#import "TLUploadManager.h"
+@interface InvestmentVC ()<RefreshDelegate,HBAlertPasswordViewDelegate,ZQFaceAuthDelegate,ZQOcrScanDelegate>
 {
     CGFloat sellerPrice;
     NSString *sellerFeeRate;
     CGFloat buyPrice;
     NSString *buyFeeRate;
     
+    
+    NSString *str1;
+    NSString *str2;
+    NSString *str3;
     
     UILabel *sellLbl;
     UILabel *buyingLbl;
@@ -238,7 +245,7 @@
             CoinWeakSelf
             vc.returnValueBlock = ^(MyBankCardModel *model) {
                 weakSelf.bankModel = model;
-                weakSelf.tableView.PaymentMethods = weakSelf.bankModel.bankcardNumber;
+                weakSelf.tableView.bankModel = weakSelf.bankModel;
                 [weakSelf.tableView reloadData];
             };
             [self.navigationController pushViewController:vc animated:YES];
@@ -282,12 +289,8 @@
                 NSString *available = [amount subNumber:frozenAmount];
                 
                 self.tableView.balance = available;
-                
-
             }
         }
-        
-        
         [self loadData:type];
     }
     self.tableView.indexBtnTag = indexBtnTag;
@@ -312,14 +315,12 @@
                 MyBankCardModel *model = self.bankCardModels[i];
                 if ([model.isDefault isEqualToString:@"1"]) {
                     weakSelf.bankModel = model;
-                    weakSelf.tableView.PaymentMethods = model.bankcardNumber;
+                    weakSelf.tableView.bankModel = model;
                     [weakSelf.tableView reloadData];
                 }
                 
             }
         }
-        
-        
     } failure:^(NSError *error) {
         
     }];
@@ -340,7 +341,7 @@
                 accept_order_max_cny_amount = dataArray[i][@"cvalue"];
             }
             if ([dataArray[i][@"ckey"] isEqualToString:@"accept_order_min_cny_amount"]) {
-
+                self.tableView.smallLimit = dataArray[i][@"cvalue"];
                 accept_order_min_cny_amount = dataArray[i][@"cvalue"];
             }
             
@@ -364,7 +365,7 @@
             CoinWeakSelf
             vc.returnValueBlock = ^(MyBankCardModel *model) {
                 weakSelf.bankModel = model;
-                weakSelf.tableView.PaymentMethods = weakSelf.bankModel.bankcardNumber;
+                weakSelf.tableView.bankModel = weakSelf.bankModel;
                 [weakSelf.tableView reloadData];
             };
             [self.navigationController pushViewController:vc animated:YES];
@@ -504,7 +505,7 @@
     }else
     {
         if ([TLUser isBlankString:self.bankModel.code] == YES) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择收款方式" key:nil]];
             return ;
         }
         [[UserModel user].cusPopView dismiss];
@@ -543,47 +544,66 @@
 //购买
 -(void)bottomBtnClick
 {
-//    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
-    if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-        vc.titleString = @"设置交易密码";
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([TLUser isBlankString:[TLUser user].idNo] == YES)
+    {
+
+        [TLAlert alertWithTitle:@"提示" msg:@"您还为完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+            
+        } confirm:^(UIAlertAction *action) {
+            ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
+            engine.delegate = self;
+            engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+            engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+            [engine startOcrScanIdCardInViewController:self];
+        }];
+        
     }else
     {
-        
-        
-        
-        UITextField *textField1 = [self.view viewWithTag:10000];
-        UITextField *textField2 = [self.view viewWithTag:10001];
-        
-        
-        
-        if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
-            [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
-            return ;
-        }
-        if ([textField1.text floatValue] > [accept_order_max_cny_amount floatValue]) {
-            [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额不得大于" key:nil],accept_order_max_cny_amount]];
-            return ;
-        }
-        if ([textField2.text floatValue] == 0) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
-            return ;
-        }
-        if (indexBtnTag == 0) {
-            
+        if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+            vc.titleString = @"设置交易密码";
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }else
         {
             
-            if ([TLUser isBlankString:self.bankModel.code] == YES) {
-                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
+            
+            
+            UITextField *textField1 = [self.view viewWithTag:10000];
+            UITextField *textField2 = [self.view viewWithTag:10001];
+            
+            
+            
+            if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
+                [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
                 return ;
             }
+            if ([textField1.text floatValue] > [accept_order_max_cny_amount floatValue]) {
+                [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额不得大于" key:nil],accept_order_max_cny_amount]];
+                return ;
+            }
+            if ([textField2.text floatValue] == 0) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
+                return ;
+            }
+            if (indexBtnTag == 0) {
+                
+            }else
+            {
+                
+                if ([TLUser isBlankString:self.bankModel.code] == YES) {
+                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
+                    return ;
+                }
+            }
+            
+            [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.promptView];
         }
-        
-        [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.promptView];
     }
+    
+//    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
+    
 }
 
 -(void)loadData:(NSString *)type
@@ -742,5 +762,123 @@
     rightView.backgroundColor = kWhiteColor;
     [self.view addSubview:rightView];
 }
+
+
+- (void)faceAuthFinishedWithResult:(NSInteger)result userInfo:(id)userInfo
+{
+    NSLog(@"Swift authFinish");
+}
+
+- (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
+{
+    NSLog(@"OC OCR Finish");
+    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    
+    UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
+    UIImage *portrait = [userInfo objectForKey:@"portrait"];
+    UIImage *backcard = [userInfo objectForKey:@"backcard"];
+    if(result  == ZQFaceAuthResult_Done && frontcard != nil && portrait != nil && backcard !=nil)
+    {
+        NSData *imgData = UIImageJPEGRepresentation(frontcard, 0.6);
+        NSData *imgData1 = UIImageJPEGRepresentation(backcard, 0.6);
+        //进行上传
+        [TLProgressHUD show];
+        TLUploadManager *manager = [TLUploadManager manager];
+        
+        manager.imgData = imgData;
+        manager.image = frontcard;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            
+            str1 = key;
+            //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+            [TLProgressHUD show];
+            TLUploadManager *manager1 = [TLUploadManager manager];
+            
+            manager1.imgData = imgData1;
+            manager1.image = backcard;
+            [manager1 getTokenShowView:self.view succes:^(NSString *key) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+                str2 = key;
+                ZQFaceAuthEngine * engine = [[ZQFaceAuthEngine alloc]init];
+                engine.delegate = self;
+                engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+                engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+                [engine startFaceAuthInViewController:self];
+                //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+                
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            }];
+        } failure:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+        }];
+    }else
+    {
+        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    }
+    
+}
+
+#pragma mark - ZQFaceAuthDelegate
+- (void)faceAuthFinishedWithResult:(ZQFaceAuthResult)result UserInfo:(id)userInfo{
+    
+    UIImage * livingPhoto = [userInfo objectForKey:@"livingPhoto"];
+    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    if(result  == ZQFaceAuthResult_Done && livingPhoto !=nil){
+        [TLProgressHUD show];
+        TLUploadManager *manager = [TLUploadManager manager];
+        NSData *imgData = UIImageJPEGRepresentation(livingPhoto, 0.6);
+        manager.imgData = imgData;
+        manager.image = livingPhoto;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            str3 = key;
+            
+            TLNetworking *http = [TLNetworking new];
+            //            http.showView = self.view;
+            http.code = @"805197";
+            http.parameters[@"userId"] = [TLUser user].userId;
+            http.parameters[@"frontImage"] = str1;
+            http.parameters[@"backImage"] = str2;
+            http.parameters[@"faceImage"] = str3;
+            //
+            [http postWithSuccess:^(id responseObject) {
+                [TLAlert alertWithMsg:[LangSwitcher switchLang:@"实名认证成功" key:nil]];
+                [self requesUserInfoWithResponseObject];
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            }];
+            
+        } failure:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+        }];
+    }else
+    {
+        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    }
+}
+
+- (void)requesUserInfoWithResponseObject {
+    
+    //1.获取用户信息
+    TLNetworking *http = [TLNetworking new];
+    //    http.showView = self.view;
+    http.code = USER_INFO;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        NSDictionary *userInfo = responseObject[@"data"];
+        //保存用户信息
+        [[TLUser user] saveUserInfo:userInfo];
+        //初始化用户信息
+        [[TLUser user] setUserInfoWithDict:userInfo];
+        
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
 
 @end

@@ -67,6 +67,7 @@
         
         
         iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 30 + i % platforms.count * 100, 40, 40)];
+//        kViewRadius(iconImg, 20);
         CoinModel *coin = [CoinUtil getCoinModel:model.currency];
         [iconImg sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
         [whiteView addSubview:iconImg];

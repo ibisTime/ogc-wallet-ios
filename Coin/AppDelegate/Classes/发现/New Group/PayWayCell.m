@@ -56,13 +56,18 @@
 
 -(void)setBiggestLimit:(NSString *)biggestLimit
 {
-    if ([biggestLimit floatValue] > 10000) {
-        instructionsLbl.text = [NSString stringWithFormat:@"说明：单笔交易限额%.f万元",[biggestLimit floatValue]/10000];
-    }else
-    {
-        instructionsLbl.text = [NSString stringWithFormat:@"说明：单笔交易限额%@元",biggestLimit];
-    }
-    
+    _biggestLimit = biggestLimit;
+}
+
+-(void)setSmallLimit:(NSString *)smallLimit
+{
+//    if ([_biggestLimit floatValue] > 10000) {
+//        instructionsLbl.text = [NSString stringWithFormat:@"说明：单笔交易限额范围%@ ~ %.f万元",smallLimit,[_biggestLimit floatValue]/10000];
+//    }
+//    else
+//    {
+        instructionsLbl.text = [NSString stringWithFormat:@"说明：单笔交易限额范围%@ ~ %@元",smallLimit,_biggestLimit];
+//    }
 }
 
 -(void)setPayWayDic:(NSDictionary *)payWayDic

@@ -8,6 +8,7 @@
 
 #import "TLTableView.h"
 #import "InvestmentModel.h"
+#import "MyBankCardModel.h"
 @interface InvestmentTableView : TLTableView
 
 @property (nonatomic , strong)NSMutableArray <InvestmentModel *>*models;
@@ -18,12 +19,15 @@
 //选择买入  卖出
 @property (nonatomic , assign)NSInteger indexBtnTag;
 //收款银行
-@property (nonatomic , copy)NSString *PaymentMethods;
+@property (nonatomic , strong)MyBankCardModel *bankModel;
 //手续费
 @property (nonatomic , copy)NSString *Rate;
 //余额
 @property (nonatomic , copy)NSString *balance;
 //最大额度
 @property (nonatomic , copy)NSString *biggestLimit;
+
+@property (nonatomic , copy)NSString *smallLimit;
+
 
 @end

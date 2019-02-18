@@ -90,10 +90,11 @@
 -(void)setMoneyModel:(TLtakeMoneyModel *)moneyModel
 {
 
-    NSString *str = [NSString stringWithFormat:@"+%.4f%%",[moneyModel.expectYield floatValue]*100];
+    NSString *str = [NSString stringWithFormat:@"+%.2f%%",[moneyModel.expectYield floatValue]*100];
     NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:str];
     UIFont *font = [UIFont systemFontOfSize:24];
-    [attrString addAttribute:NSFontAttributeName value:font range:NSMakeRange(str.length - 6,6)];
+    [attrString addAttribute:NSFontAttributeName value:font range:NSMakeRange(str.length - 4,4
+                                                                              )];
     self.priceLabel.attributedText = attrString;
 
     UILabel *label1 = [self viewWithTag:1000];
