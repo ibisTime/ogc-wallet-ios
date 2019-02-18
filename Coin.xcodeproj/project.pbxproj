@@ -19,6 +19,7 @@
 		1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
+		1F4731C6221A92CB007B5908 /* 1080的副本.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4731C5221A92C9007B5908 /* 1080的副本.png */; };
 		1F5F8BBA21CCC7C900A7D0F2 /* AssetsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F8BB921CCC7C900A7D0F2 /* AssetsHeadView.m */; };
 		1F709D712181E51E002D1CC4 /* UIView+Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F709D6E2181E51D002D1CC4 /* UIView+Banner.m */; };
 		1F709D722181E51E002D1CC4 /* HW3DBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F709D6F2181E51D002D1CC4 /* HW3DBannerView.m */; };
@@ -576,6 +577,7 @@
 		1F35826521870D8E00F1665B /* NewHelpCentetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpCentetVC.h; sourceTree = "<group>"; };
 		1F358B3B218ABC4500F1665B /* USDTRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTRecordModel.h; sourceTree = "<group>"; };
 		1F358B3C218ABC4500F1665B /* USDTRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTRecordModel.m; sourceTree = "<group>"; };
+		1F4731C5221A92C9007B5908 /* 1080的副本.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1080的副本.png"; sourceTree = "<group>"; };
 		1F5F8BB821CCC7C900A7D0F2 /* AssetsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetsHeadView.h; sourceTree = "<group>"; };
 		1F5F8BB921CCC7C900A7D0F2 /* AssetsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetsHeadView.m; sourceTree = "<group>"; };
 		1F709D6D2181E51C002D1CC4 /* HW3DBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HW3DBannerView.h; sourceTree = "<group>"; };
@@ -3551,6 +3553,7 @@
 				2E394FA31FB0546E00BA0829 /* Classes */,
 				7A40B100217CAEA6004B9830 /* Assets.xcassets */,
 				2EA584C51FA813C900C7106C /* Info.plist */,
+				1F4731C5221A92C9007B5908 /* 1080的副本.png */,
 				B8DAD14920E2208B00AF4CD4 /* InfoPlist.strings */,
 				2EE361351FFB7D4500A5C3EB /* README.md */,
 				1F770ED621904D7D00E2889F /* langImg.png */,
@@ -4545,6 +4548,7 @@
 				7A40B101217CAEA8004B9830 /* Assets.xcassets in Resources */,
 				1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */,
 				1F76697E21D4A34D00006B41 /* read_me.txt in Resources */,
+				1F4731C6221A92CB007B5908 /* 1080的副本.png in Resources */,
 				2EB9495C1FDF6B1A00CE4B94 /* TraditionalCode.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

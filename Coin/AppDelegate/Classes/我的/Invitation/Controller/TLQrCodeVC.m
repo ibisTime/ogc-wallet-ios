@@ -230,7 +230,7 @@
     [backView addSubview:nameLabel];
     
     UILabel *introduceLbl = [UILabel labelWithFrame:CGRectMake(0, nameLabel.yy + kHeight(8), SCREEN_WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kWhiteColor];
-    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入橙Wallet" key:nil];
+    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入MooreBit" key:nil];
     [backView addSubview:introduceLbl];
     
     
