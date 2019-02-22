@@ -37,7 +37,6 @@
     NSString *str1;
     NSString *str2;
     NSString *str3;
-    
 }
 
 @property (nonatomic, strong) SettingGroup *group;
@@ -45,8 +44,6 @@
 //@property (nonatomic, strong) SettingTableView *tableView;
 @property (nonatomic, strong) LocalSettingTableView *tableView;
 
-
-//
 @property (nonatomic, strong) SettingModel *realNameSettingModel;
 @property (nonatomic, strong) SettingModel *emailSettingModel;
 @property (nonatomic, strong) SettingModel *googleAuthSettingModel;
@@ -212,7 +209,8 @@
 - (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
 {
     NSLog(@"OC OCR Finish");
-    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.labelText = @"即将进入活体识别";
     
     UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
     UIImage *portrait = [userInfo objectForKey:@"portrait"];
@@ -263,7 +261,8 @@
 - (void)faceAuthFinishedWithResult:(ZQFaceAuthResult)result UserInfo:(id)userInfo{
     
     UIImage * livingPhoto = [userInfo objectForKey:@"livingPhoto"];
-    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.labelText = @"正在认证中";
     if(result  == ZQFaceAuthResult_Done && livingPhoto !=nil){
         [TLProgressHUD show];
         TLUploadManager *manager = [TLUploadManager manager];

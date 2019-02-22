@@ -73,7 +73,15 @@
 
     [self.view addSubview:self.tableView];
 
+    
+    
+        
     [self getMyCurrencyList:@"BTC"];
+        
+    
+    
+    
+    
 //    [self totalAmount:@"BTC"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"LOADDATA" object:nil];
@@ -266,32 +274,27 @@
         }];
     }];
     [self.tableView beginRefreshing];
+    
     [self.tableView addLoadMoreAction:^{
         
-        
-        
-        [CoinUtil refreshOpenCoinList:^{
+        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
             
             
-            [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-                
-                if (weakSelf.tl_placeholderView.superview != nil) {
-                    
-                    [weakSelf removePlaceholderView];
-                }
-                
-                
-                weakSelf.Moneys = objs;
-                weakSelf.tableView.Moneys = objs;
-                //        weakSelf.tableView.bills = objs;
-                [weakSelf.tableView reloadData_tl];
-                
-            } failure:^(NSError *error) {
-                [weakSelf addPlaceholderView];
-            }];
-        } failure:^{
+            weakSelf.Moneys = objs;
+            weakSelf.tableView.Moneys = objs;
+            //        weakSelf.tableView.bills = objs;
+            [weakSelf.tableView reloadData_tl];
             
+        } failure:^(NSError *error) {
+            [weakSelf addPlaceholderView];
         }];
+        
+        
     }];
     [self.tableView endRefreshingWithNoMoreData_tl];
 }

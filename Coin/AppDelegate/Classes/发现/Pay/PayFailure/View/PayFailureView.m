@@ -111,7 +111,7 @@
     {
         label2.text = [LangSwitcher switchLang:@"卖出" key:nil];
     }
-    label3.text = [NSString stringWithFormat:@"¥%@",models.tradeAmount];
+    label3.text = [NSString stringWithFormat:@"¥%@",models.tradePrice];
     label4.text = [models.createDatetime convertToDetailDate];
     
     NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:@"BTC"];

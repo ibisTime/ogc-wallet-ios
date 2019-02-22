@@ -603,7 +603,6 @@
     }
     
 //    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
-    
 }
 
 -(void)loadData:(NSString *)type
@@ -622,15 +621,18 @@
     NSString *dateString = [dateFormatter stringFromDate:currentDate];
     
 
-    NSTimeInterval time =  24 * 60 * 60 * 29;
-    NSDate * lastYear = [currentDate dateByAddingTimeInterval:-time];
+    NSTimeInterval starttime =  24 * 60 * 60 * 30;
+    NSTimeInterval endtime =  24 * 60 * 60 * 1;
+    NSDate * startYear = [currentDate dateByAddingTimeInterval:-starttime];
     //转化为字符串
-    NSString * startDate = [dateFormatter stringFromDate:lastYear];
+    NSString * startDate = [dateFormatter stringFromDate:startYear];
 
-
+    NSDate * endYear = [currentDate dateByAddingTimeInterval:endtime];
+    //转化为字符串
+    NSString * endDate = [dateFormatter stringFromDate:endYear];
     
     http.parameters[@"startDatetime"] = startDate;
-    http.parameters[@"endDatetime"] = dateString;
+    http.parameters[@"endDatetime"] = endDate;
     http.parameters[@"symbol"] = @"BTC";
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"type"] = type;
@@ -641,12 +643,13 @@
         
         NSMutableArray *arrayX = [NSMutableArray array];
         NSMutableArray *arrayY = [NSMutableArray array];
-        if (_models.count == 1) {
+        if (_models.count == 1)
+        {
             [arrayX addObjectsFromArray:@[@"1",@"2"]];
             [arrayY addObjectsFromArray:@[_models[0].price,_models[0].price]];
-        }else
+        }
+        else
         {
-            
             for (int i = 0; i < _models.count; i ++) {
                 if (i <= 30) {
                     [arrayX addObject:@(i + 1)];
@@ -733,6 +736,10 @@
     }];
 }
 
+
+
+
+
 -(void)makeSmoothChartView{
     
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 220)];
@@ -758,9 +765,9 @@
     [_smoothView refreshChartAnmition];
     [self.view addSubview:topView];
     
-    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 40, 50, 40, 149)];
-    rightView.backgroundColor = kWhiteColor;
-    [self.view addSubview:rightView];
+//    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 40, 50, 40, 149)];
+//    rightView.backgroundColor = kWhiteColor;
+//    [self.view addSubview:rightView];
 }
 
 
@@ -772,7 +779,10 @@
 - (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
 {
     NSLog(@"OC OCR Finish");
-    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.labelText = @"即将进入活体识别";
+//    [SVProgressHUD showInfoWithStatus:@"正在认证中"];
     
     UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
     UIImage *portrait = [userInfo objectForKey:@"portrait"];
@@ -812,18 +822,19 @@
         } failure:^(NSError *error) {
             [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
         }];
-    }else
+    }
+    else
     {
         [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
     }
-    
 }
 
 #pragma mark - ZQFaceAuthDelegate
 - (void)faceAuthFinishedWithResult:(ZQFaceAuthResult)result UserInfo:(id)userInfo{
     
     UIImage * livingPhoto = [userInfo objectForKey:@"livingPhoto"];
-    [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.labelText = @"正在认证中";
     if(result  == ZQFaceAuthResult_Done && livingPhoto !=nil){
         [TLProgressHUD show];
         TLUploadManager *manager = [TLUploadManager manager];

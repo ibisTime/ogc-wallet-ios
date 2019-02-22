@@ -55,9 +55,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 //    研发
-    [AppConfig config].runEnv = RunEnvDev;
+//    [AppConfig config].runEnv = RunEnvDev;
 //    测试
-//    [AppConfig config].runEnv = RunEnvTest;
+    [AppConfig config].runEnv = RunEnvTest;
 //    正式
 //    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
@@ -73,10 +73,6 @@
     [self GetSevenCattleAddress];
     //配置键盘
     [self configIQKeyboard];
-
-    
-
-    
 //    配置语言   默认中文
     [LangSwitcher changLangType:LangTypeSimple];
     //    NSString *lang = [[NSUserDefaults standardUserDefaults] objectForKey:@"LANG"];
@@ -133,6 +129,12 @@
         [AppConfig config].qiniuDomain = [NSString stringWithFormat:@"http://%@", responseObject[@"data"][@"cvalue"]];
         
     } failure:^(NSError *error) {
+        
+    }];
+    
+    [CoinUtil refreshOpenCoinList:^{
+        
+    } failure:^{
         
     }];
 }
