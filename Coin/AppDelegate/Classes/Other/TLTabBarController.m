@@ -36,7 +36,7 @@
                         [LangSwitcher switchLang:@"资产" key:nil],
                         [LangSwitcher switchLang:@"我的" key:nil]
                         ];
-    NSArray *VCNames = @[@"PosMiningVC",@"InvestmentVC",@"TLWalletVC", @"TLMineVC"];
+    NSArray *VCNames = @[@"PosMiningVC",@"InvestMentAllVC",@"TLWalletVC", @"TLMineVC"];
     
     NSArray *imageNames = @[@"投资（未选中）", @"交易（未选中）", @"钱包（未选中）",@"我的（未选中）"];
     NSArray *selectedImageNames = @[@"投资（选中）",@"交易（选中）",  @"钱包（选中）",@"我的（选中）"];

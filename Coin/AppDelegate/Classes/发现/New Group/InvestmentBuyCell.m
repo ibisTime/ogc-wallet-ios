@@ -13,6 +13,7 @@
     BOOL isHaveDian;
     UILabel *poundageLbl;
     UILabel *poundageLbl1;
+    UILabel *numberunit;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -71,8 +72,8 @@
         
         
         
-        UILabel *numberunit = [UILabel labelWithFrame:CGRectMake(numberField.xx + 15, 0, 40, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#333333")];
-        numberunit.text = [LangSwitcher switchLang:@"BTC" key:nil];
+        numberunit = [UILabel labelWithFrame:CGRectMake(numberField.xx + 15, 0, 40, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#333333")];
+//        numberunit.text = [LangSwitcher switchLang:@"BTC" key:nil];
         [numberBox addSubview:numberunit];
         
         
@@ -91,6 +92,11 @@
         
     }
     return self;
+}
+
+-(void)setSymbol:(NSString *)symbol
+{
+    numberunit.text = symbol;
 }
 
 -(void)setRate:(NSString *)Rate

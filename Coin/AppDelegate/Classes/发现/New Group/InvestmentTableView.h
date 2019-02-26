@@ -11,6 +11,8 @@
 #import "MyBankCardModel.h"
 @interface InvestmentTableView : TLTableView
 
+
+@property (nonatomic , copy)NSString *symbol;
 @property (nonatomic , strong)NSMutableArray <InvestmentModel *>*models;
 //余额
 @property (nonatomic , assign)CGFloat price;

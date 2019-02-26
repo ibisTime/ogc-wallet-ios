@@ -9,5 +9,5 @@
 #import "TLBaseVC.h"
 
 @interface OrderRecordVC : TLBaseVC
-
+@property (nonatomic , copy)NSString *symbol;
 @end

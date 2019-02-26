@@ -1,12 +1,12 @@
 //
-//  InvestmentVC.m
+//  USDTInvestmentVC.m
 //  Coin
 //
-//  Created by 郑勤宝 on 2018/12/28.
-//  Copyright © 2018 chengdai. All rights reserved.
+//  Created by 郑勤宝 on 2019/2/25.
+//  Copyright © 2019 chengdai. All rights reserved.
 //
 
-#import "InvestmentVC.h"
+#import "USDTInvestmentVC.h"
 #import "InvestmentTableView.h"
 #import "OrderRecordVC.h"
 #import "PaymentInstructionsView.h"
@@ -30,7 +30,7 @@
 #import "ZQFaceAuthEngine.h"
 #import "ZQOCRScanEngine.h"
 #import "TLUploadManager.h"
-@interface InvestmentVC ()<RefreshDelegate,HBAlertPasswordViewDelegate,ZQFaceAuthDelegate,ZQOcrScanDelegate>
+@interface USDTInvestmentVC ()<RefreshDelegate,HBAlertPasswordViewDelegate,ZQFaceAuthDelegate,ZQOcrScanDelegate>
 {
     CGFloat sellerPrice;
     NSString *sellerFeeRate;
@@ -50,9 +50,9 @@
     NSString *type;
     
     NSInteger isRefresh;
-//    最大额度
+    //    最大额度
     NSString *accept_order_max_cny_amount;
-//    最小额度
+    //    最小额度
     NSString *accept_order_min_cny_amount;
     
 }
@@ -73,9 +73,11 @@
 @property (nonatomic , strong)HBAlertPasswordView *passWordView;
 
 @property (nonatomic , strong)NSMutableArray <MyBankCardModel *>*bankCardModels;
+
+
 @end
 
-@implementation InvestmentVC
+@implementation USDTInvestmentVC
 
 -(HBAlertPasswordView *)passWordView
 {
@@ -139,7 +141,7 @@
     } failure:^(NSError *error) {
         
     }];
-//    self.passwordLabel.text = [NSString stringWithFormat:@"输入的密码为:%@", password];
+    //    self.passwordLabel.text = [NSString stringWithFormat:@"输入的密码为:%@", password];
 }
 
 - (void)queryCenterTotalAmount {
@@ -152,7 +154,7 @@
     [http postWithSuccess:^(id responseObject) {
         
         self.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
-//        [self.tableView endRefreshHeader];
+        //        [self.tableView endRefreshHeader];
     } failure:^(NSError *error) {
         
         [self.tableView endRefreshHeader];
@@ -164,7 +166,7 @@
     if (!_tableView) {
         
         _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - 50 - kTabBarHeight - 220) style:UITableViewStyleGrouped];
-        _tableView.symbol = @"BTC";
+        _tableView.symbol = @"USDT";
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;
         //        [self.view addSubview:_tableView];
@@ -200,8 +202,8 @@
     indexBtnTag = 0;
     self.tableView.indexBtnTag = 0;
     [self makeSmoothChartView];
-
-    _bottomBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"买入BTC" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16];
+    
+    _bottomBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"买入USDT" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16];
     _bottomBtn.frame = CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - 50 - kTabBarHeight, SCREEN_WIDTH, 50);
     [_bottomBtn addTarget:self action:@selector(bottomBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:_bottomBtn];
@@ -253,7 +255,7 @@
     }else if (index == 0) {
         indexBtnTag = index;
         [_bottomBtn setBackgroundColor:kTabbarColor forState:(UIControlStateNormal)];
-        [_bottomBtn setTitle:[LangSwitcher switchLang:@"买入BTC" key:nil] forState:(UIControlStateNormal)];
+        [_bottomBtn setTitle:[LangSwitcher switchLang:@"买入USDT" key:nil] forState:(UIControlStateNormal)];
         textField1.placeholder = [LangSwitcher switchLang:@"请输入买入金额" key:nil];
         textField2.placeholder = [LangSwitcher switchLang:@"请输入买入数量" key:nil];
         textField1.text = @"";
@@ -262,14 +264,14 @@
         self.tableView.Rate = buyFeeRate;
         self.tableView.balance = @"";
         type = @"0";
-
+        
         [self loadData:type];
         
     }else
     {
         indexBtnTag = index;
         [_bottomBtn setBackgroundColor:kHexColor(@"#FA7D0E") forState:(UIControlStateNormal)];
-        [_bottomBtn setTitle:[LangSwitcher switchLang:@"卖出BTC" key:nil] forState:(UIControlStateNormal)];
+        [_bottomBtn setTitle:[LangSwitcher switchLang:@"卖出USDT" key:nil] forState:(UIControlStateNormal)];
         textField1.text = @"";
         textField2.text = @"";
         textField1.placeholder = [LangSwitcher switchLang:@"请输入卖出金额" key:nil];
@@ -277,11 +279,11 @@
         self.tableView.price =  sellerPrice;
         self.tableView.Rate = sellerFeeRate;
         type = @"1";
-
+        
         for (int i = 0; i < self.platforms.count; i ++) {
             CurrencyModel *model = self.platforms[i];
             
-            if ([model.currency isEqualToString:@"BTC"]) {
+            if ([model.currency isEqualToString:@"USDT"]) {
                 NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
                 
                 NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
@@ -408,7 +410,6 @@
 
 
 
-
 // 买卖
 -(void)promptIkonwBtnClick
 {
@@ -416,7 +417,7 @@
     UITextField *textField1 = [self.view viewWithTag:10000];
     UITextField *textField2 = [self.view viewWithTag:10001];
     
-
+    
     
     if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
         [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
@@ -465,7 +466,7 @@
                     vc.models = [OrderRecordModel mj_objectWithKeyValues:responseObject[@"data"]];
                     [self.navigationController pushViewController:vc animated:YES];
                 }
-
+                
                 
             } failure:^(NSError *error) {
                 
@@ -487,13 +488,13 @@
             return ;
         }
         [[UserModel user].cusPopView dismiss];
-        self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ BTC",textField2.text];
+        self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ USDT",textField2.text];
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.passWordView];
         
-
+        
     }
     
-
+    
 }
 
 
@@ -503,7 +504,7 @@
     TLNetworking *http = [[TLNetworking alloc] init];
     http.showView = self.view;
     http.code = @"802034";
-    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"symbol"] = @"USDT";
     
     [http postWithSuccess:^(id responseObject) {
         
@@ -525,7 +526,7 @@
     
     if ([TLUser isBlankString:[TLUser user].idNo] == YES)
     {
-
+        
         [TLAlert alertWithTitle:@"提示" msg:@"您还为完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
             
         } confirm:^(UIAlertAction *action) {
@@ -580,7 +581,7 @@
         }
     }
     
-//    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
+    //    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
 }
 
 -(void)loadData:(NSString *)type
@@ -598,20 +599,20 @@
     [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:currentDate];
     
-
+    
     NSTimeInterval starttime =  24 * 60 * 60 * 30;
     NSTimeInterval endtime =  24 * 60 * 60 * 1;
     NSDate * startYear = [currentDate dateByAddingTimeInterval:-starttime];
     //转化为字符串
     NSString * startDate = [dateFormatter stringFromDate:startYear];
-
+    
     NSDate * endYear = [currentDate dateByAddingTimeInterval:endtime];
     //转化为字符串
     NSString * endDate = [dateFormatter stringFromDate:endYear];
     
     http.parameters[@"startDatetime"] = startDate;
     http.parameters[@"endDatetime"] = endDate;
-    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"symbol"] = @"USDT";
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"type"] = type;
     [http postWithSuccess:^(id responseObject) {
@@ -643,7 +644,7 @@
         [_smoothView drawSmoothViewWithArrayX:arrayX andArrayY:arrayY andScaleX:(maxPrice - minPrice) andScalemax:maxPrice andScalemin:minPrice];
         [_smoothView refreshChartAnmition];
         
-//        [self.tableView reloadxData];
+        //        [self.tableView reloadxData];
         
         
     } failure:^(NSError *error) {
@@ -662,9 +663,9 @@
     CoinWeakSelf;
     TLNetworking *http = [[TLNetworking alloc] init];
     
-//    http.showView = weakSelf.view;
+    //    http.showView = weakSelf.view;
     http.code = @"650201";
-    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"symbol"] = @"USDT";
     http.parameters[@"type"] = @"0";
     [http postWithSuccess:^(id responseObject) {
         
@@ -689,7 +690,7 @@
         buyingLbl.frame = CGRectMake(SCREEN_WIDTH - 15 - sellLbl.width - 30 - buyingLbl.width, 22, buyingLbl.width, 16.5);
         
         titleLbl.frame = CGRectMake(15, 22, SCREEN_WIDTH - 60 - sellLbl.width - buyingLbl.width - 10, 16.5);
-
+        
         
         buyPrice = [responseObject[@"data"][@"buyPrice"] floatValue];
         sellerPrice = [responseObject[@"data"][@"sellerPrice"] floatValue];
@@ -743,9 +744,9 @@
     [_smoothView refreshChartAnmition];
     [self.view addSubview:topView];
     
-//    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 40, 50, 40, 149)];
-//    rightView.backgroundColor = kWhiteColor;
-//    [self.view addSubview:rightView];
+    //    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 40, 50, 40, 149)];
+    //    rightView.backgroundColor = kWhiteColor;
+    //    [self.view addSubview:rightView];
 }
 
 
@@ -757,10 +758,10 @@
 - (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
 {
     NSLog(@"OC OCR Finish");
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
     hud.labelText = @"即将进入活体识别";
-//    [SVProgressHUD showInfoWithStatus:@"正在认证中"];
+    //    [SVProgressHUD showInfoWithStatus:@"正在认证中"];
     
     UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
     UIImage *portrait = [userInfo objectForKey:@"portrait"];
@@ -867,7 +868,5 @@
         
     }];
 }
-
-
 
 @end

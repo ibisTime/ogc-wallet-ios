@@ -182,6 +182,8 @@
 		1FC390EE21E328840070E153 /* MyBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390ED21E328840070E153 /* MyBankCardVC.m */; };
 		1FC390F121E349FA0070E153 /* MyBankCardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F021E349FA0070E153 /* MyBankCardTableView.m */; };
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
+		1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */; };
+		1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */; };
 		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
 		211A34D71FB3F51400FEB71F /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34D61FB3F51400FEB71F /* MineHeaderView.m */; };
 		211A34DB1FB4083300FEB71F /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DA1FB4083300FEB71F /* MineTableView.m */; };
@@ -981,6 +983,10 @@
 		1FC390F021E349FA0070E153 /* MyBankCardTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardTableView.m; sourceTree = "<group>"; };
 		1FC390F221E34A230070E153 /* MyBankCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardCell.h; sourceTree = "<group>"; };
 		1FC390F321E34A230070E153 /* MyBankCardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardCell.m; sourceTree = "<group>"; };
+		1FDD17182223C12D00E74D74 /* InvestMentAllVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestMentAllVC.h; sourceTree = "<group>"; };
+		1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestMentAllVC.m; sourceTree = "<group>"; };
+		1FDD171B2223C15600E74D74 /* USDTInvestmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTInvestmentVC.h; sourceTree = "<group>"; };
+		1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTInvestmentVC.m; sourceTree = "<group>"; };
 		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
 		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
 		211A34D51FB3F51400FEB71F /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -2465,6 +2471,8 @@
 			children = (
 				1F76698421D5F56200006B41 /* InvestmentVC.h */,
 				1F76698521D5F56200006B41 /* InvestmentVC.m */,
+				1FDD171B2223C15600E74D74 /* USDTInvestmentVC.h */,
+				1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3252,6 +3260,8 @@
 		216F5B1D206CD9D900F2C832 /* Investment */ = {
 			isa = PBXGroup;
 			children = (
+				1FDD17182223C12D00E74D74 /* InvestMentAllVC.h */,
+				1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */,
 				1F76699C21DCB2D900006B41 /* Controller */,
 				1F76699B21DCB2D600006B41 /* Model */,
 				1F76699A21DCB2D400006B41 /* View */,
@@ -4743,6 +4753,7 @@
 				211A34EB1FB42F8100FEB71F /* SettingVC.m in Sources */,
 				211DE6C51FB58B4C002FCF3D /* HttpRequestService.m in Sources */,
 				1F93618021EEDBD3007E522A /* LYSToolObject.m in Sources */,
+				1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */,
 				B88B092A20C8ED77005C2D2F /* JoinModel.m in Sources */,
 				B88B59232109AEF500F20D1B /* CountryModel.m in Sources */,
 				1F76697321D4A34D00006B41 /* aescrypt.c in Sources */,
@@ -4835,6 +4846,7 @@
 				1F76692121D4A32700006B41 /* BTCBase58.m in Sources */,
 				2159796A1FB82BC10029F177 /* CustomPickerView.m in Sources */,
 				B83666F3210EAF480065DF18 /* LocalSettingTableView.m in Sources */,
+				1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */,
 				211A34DE1FB4245D00FEB71F /* MineCell.m in Sources */,
 				B8CAA13E21158FF200695BC3 /* UIView+HandyValue.m in Sources */,
 				211DE6AB1FB58B4C002FCF3D /* TLTableView.m in Sources */,

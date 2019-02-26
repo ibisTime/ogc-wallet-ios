@@ -69,6 +69,8 @@
         if (_price != 0) {
             cell.price = _price;
         }
+        
+        cell.symbol = _symbol;
         cell.Rate = self.Rate;
         cell.balance = self.balance;
         return cell;
