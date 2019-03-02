@@ -224,16 +224,7 @@
         self.Type = CheckWprdTypeFirst;
 #warning to do;   //支付密码设置完成 待储存
         if (self.IsImport == YES) {
-            //导入
-//            NSString *pwd = [self.FirstPSWArray componentsJoinedByString:@""];
-//            [[NSUserDefaults standardUserDefaults] setObject:pwd forKey:KUserPwd];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//            //导入钱包 设置的交易密码
-//            TLUpdateVC *up = [[TLUpdateVC alloc] init];
-//            TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
-//
-//            [UIApplication sharedApplication].keyWindow.rootViewController = up;
+
             
         }else{
             //创建

@@ -112,6 +112,7 @@
     http.parameters[@"tradePrice"] = @(sellerPrice);
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"tradePwd"] = password;
+    http.parameters[@"tradeCoin"] = @"BTC";
     [http postWithSuccess:^(id responseObject) {
         
         
@@ -443,6 +444,8 @@
         http.parameters[@"tradeCurrency"] = @"CNY";
         http.parameters[@"tradePrice"] = @(buyPrice);
         http.parameters[@"userId"] = [TLUser user].userId;
+        http.parameters[@"tradeCoin"] = @"BTC";
+        
         [http postWithSuccess:^(id responseObject) {
             
             

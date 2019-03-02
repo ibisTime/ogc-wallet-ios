@@ -145,14 +145,14 @@
     [[TLUser user] loginOut];
     
     
-    UITabBarController *tabbarContrl = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    if ([tabbarContrl isKindOfClass:[UINavigationController class]]) {
-        return;
-    }
-    if ([tabbarContrl isKindOfClass:[BuildWalletMineVC class]]) {
-        return;
-    }
-    TLTabBarController *tab = [[TLTabBarController alloc] init];
+//    UITabBarController *tabbarContrl = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//    if ([tabbarContrl isKindOfClass:[UINavigationController class]]) {
+//        return;
+//    }
+//    if ([tabbarContrl isKindOfClass:[BuildWalletMineVC class]]) {
+//        return;
+//    }
+    TLUpdateVC *tab = [[TLUpdateVC alloc] init];
     TLUserLoginVC *login = [TLUserLoginVC new];
     
 //
@@ -173,7 +173,7 @@
     id obj = [UIApplication sharedApplication].keyWindow.rootViewController;
     if ([obj isKindOfClass:[UITabBarController class]]) {
         
-        UITabBarController *tabBarController = (UITabBarController *)obj;
+        TLUpdateVC *tabBarController = (TLUpdateVC *)obj;
         return tabBarController;
         
     } else {
@@ -211,7 +211,7 @@
         }
         self.window.rootViewController = na;
     }else{
-        TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+        TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
         self.window.rootViewController = tabBarCtrl;
     }
 }
@@ -297,10 +297,7 @@
             return;
         }
         [self.window.rootViewController presentViewController:na animated:YES completion:nil];
-        
     }
-    
-    
 }
 
 #pragma mark- 应用切后台

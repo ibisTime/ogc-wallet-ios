@@ -139,7 +139,7 @@
 
 //                         [LangSwitcher changLangType:type];
                          //                             UIView *v = nil;
-                         TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+                         TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
                          [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
 //                         [LangSwitcher startWithTraditional];
                          //                             [v sizeToFit];

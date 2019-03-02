@@ -11,7 +11,7 @@
 #import "MyCell2.h"
 #import "MyCell3.h"
 
-@interface MineTableView ()<UITableViewDataSource, UITableViewDelegate>
+@interface MineTableView ()<UITableViewDataSource, UITableViewDelegate,MyCellDelegate1>
 
 @end
 
@@ -40,7 +40,7 @@ static NSString *Cell3 = @"MyCell3";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return self.dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -50,43 +50,41 @@ static NSString *Cell3 = @"MyCell3";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 0) {
-        MyCell1 *cell = [tableView dequeueReusableCellWithIdentifier:Cell1 forIndexPath:indexPath];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = kClearColor;
-        [cell.AccountBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        cell.AccountBtn.tag = 100;
-        return cell;
-    }
-    if (indexPath.section == 1) {
-        MyCell2 *cell = [tableView dequeueReusableCellWithIdentifier:Cell2 forIndexPath:indexPath];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = kClearColor;
-        [cell.friendsBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        cell.friendsBtn.tag = 101;
-        [cell.invitationBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        cell.invitationBtn.tag = 102;
-        
-        return cell;
-    }
+//    if (indexPath.section == 0) {
+//
+//    }
+//    if (indexPath.section == 1) {
+//        MyCell2 *cell = [tableView dequeueReusableCellWithIdentifier:Cell2 forIndexPath:indexPath];
+//
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.backgroundColor = kClearColor;
+//        cell.delegate = self;
+//        cell.dataArray = self.dataArray;
+//        return cell;
+//    }
+//
+//    MyCell3 *cell = [tableView dequeueReusableCellWithIdentifier:Cell3 forIndexPath:indexPath];
+//
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.delegate = self;
+//    cell.backgroundColor = kClearColor;
+//
+//    cell.dataArray = self.dataArray;
+//    return cell;
     
-    MyCell3 *cell = [tableView dequeueReusableCellWithIdentifier:Cell3 forIndexPath:indexPath];
+    MyCell1 *cell = [tableView dequeueReusableCellWithIdentifier:Cell1 forIndexPath:indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
     cell.backgroundColor = kClearColor;
-    [cell.communityBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.communityBtn.tag = 103;
-    [cell.helpCentenBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.helpCentenBtn.tag = 104;
-    [cell.setUpBtn addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.setUpBtn.tag = 105;
-//    [cell.bankCardBtn  addTarget:self action:@selector(BtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//    cell.bankCardBtn.tag = 106;
-    
+    cell.delegate = self;
+    NSArray *array = self.dataArray[indexPath.section];
+    cell.dataArray = array;
     return cell;
+}
+
+-(void)MyCellButtonSelectTag:(NSString *)btnStr
+{
+    [self.refreshDelegate refreshTableView:self setCurrencyModel:nil setTitle:btnStr];
 }
 
 -(void)BtnClick:(UIButton *)sender
@@ -110,13 +108,35 @@ static NSString *Cell3 = @"MyCell3";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 60;
-    }
-    if (indexPath.section == 1) {
-        return 120;
-    }
-    return 320 - 60;
+//    if (indexPath.section == 0) {
+//        if (self.dataArray.count >= 1) {
+//            return 60;
+//        }else
+//        {
+//            return 0.1;
+//        }
+//
+//    }
+//    if (indexPath.section == 1) {
+//        if (self.dataArray.count >= 3) {
+//            return 120;
+//        }else
+//        {
+//            return 60;
+//        }
+//    }
+//
+//    if (self.dataArray.count == 4) {
+//        return 60;
+//    }
+//    if (self.dataArray.count == 5) {
+//        return 120;
+//    }
+//    if (self.dataArray.count == 6) {
+//        return 180;
+//    }
+    NSArray *array = self.dataArray[indexPath.section];
+    return array.count * 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

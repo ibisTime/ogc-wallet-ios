@@ -10,6 +10,7 @@
 
 @interface TLTabBarController : UITabBarController
 
+@property (nonatomic , strong)NSArray *dataArray;
 //- (void)pushToChatViewControllerWith:(IMAUser *)user;
 
 @end

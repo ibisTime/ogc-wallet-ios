@@ -489,7 +489,7 @@
                 [[TLUser user] saveUserInfo:userInfo];
                 [[TLUser user] setUserInfoWithDict:userInfo];
                 
-                TLTabBarController *ta = [[TLTabBarController alloc] init];
+                TLUpdateVC *ta = [[TLUpdateVC alloc] init];
                 
                 [UIApplication sharedApplication].keyWindow.rootViewController = ta;
                 [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];

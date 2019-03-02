@@ -42,7 +42,7 @@
         
         _tableView = [[MyBankCardTableView alloc] initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight) style:UITableViewStylePlain];
         _tableView.defaultNoDataImage = kImage(@"暂无订单");
-        _tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无收款方式" key:nil];
+        _tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无收款账号" key:nil];
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;
         //        [self.view addSubview:_tableView];
@@ -53,7 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleText.text = [LangSwitcher switchLang:@"我的收款方式" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"我的收款账号" key:nil];
     self.navigationItem.titleView = self.titleText;
     
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

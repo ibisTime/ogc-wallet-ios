@@ -40,26 +40,56 @@
     bgIV.contentMode = UIViewContentModeScaleAspectFill;
     
     bgIV.image = [UIImage imageNamed:@"Launch"];
-    [self setPlaceholderViewTitle:[LangSwitcher switchLang:@"加载失败" key:nil] operationTitle:[LangSwitcher switchLang:@"加载失败" key:nil]];
+//    [self setPlaceholderViewTitle:[LangSwitcher switchLang:@"加载失败" key:nil] operationTitle:[LangSwitcher switchLang:@"加载失败" key:nil]];
 
+    
+    [self configurationLoadData];
+    
+    
+    
 //    [self setPlaceholderViewTitle:@"加载失败" operationTitle:@"重新加载"];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
-    BOOL isChoose = [[NSUserDefaults standardUserDefaults] boolForKey:@"chooseCoutry"];
-
-    if (isChoose == YES) {
-        [self configUpdate];
-
-    }else{
-        
-        [self loadData];
-
-    }
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+//    BOOL isChoose = [[NSUserDefaults standardUserDefaults] boolForKey:@"chooseCoutry"];
+//
+//    if (isChoose == YES) {
+//        [self configUpdate];
+//
+//    }else{
+//
+//        [self loadData];
+//
+//    }
 
     // 由于无法通过，审核。如果为强制更新
 }
 
-
+-(void)configurationLoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630508";
+    http.parameters[@"status"] = @"1";
+    http.parameters[@"parentCode"] = @"DH201810120023250000000";
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        
+        
+        TLTabBarController *tab = [[TLTabBarController alloc] init];
+        //        tab.dataArray = dataArray;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
+        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+        
+    } failure:^(NSError *error) {
+        
+        [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+            
+        } confirm:^(UIAlertAction *action) {
+            [self configurationLoadData];
+        }];
+        
+    }];
+}
 
 -(NSString *)getWANIP
 {

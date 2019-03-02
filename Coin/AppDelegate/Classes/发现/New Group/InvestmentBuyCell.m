@@ -96,6 +96,7 @@
 
 -(void)setSymbol:(NSString *)symbol
 {
+    _symbol = symbol;
     numberunit.text = symbol;
 }
 
@@ -122,7 +123,7 @@
     {
         poundageLbl1.hidden = NO;
         NSString *poundage = [LangSwitcher switchLang:@"可用余额：" key:nil];
-        NSString *poundagePrice = [NSString stringWithFormat:@"%@BTC",balance];
+        NSString *poundagePrice = [NSString stringWithFormat:@"%@%@",balance,self.symbol];
         NSString *poundageAll = [NSString stringWithFormat:@"%@%@",poundage,poundagePrice];
         NSMutableAttributedString *poundageAttrStr = [[NSMutableAttributedString alloc] initWithString:poundageAll];
         [poundageAttrStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(poundage.length,poundageAll.length - poundage.length)];
@@ -190,26 +191,8 @@
         {
             return YES;
         }
-//    }else if (textField.tag == 10001)
-//    {
-//        if ([string length]>0) {
-//            unichar single=[string characterAtIndex:0];
-//            if ((single >='0' && single<='9')) {
-//                return YES;
-//            }else
-//            {
-//                return NO;
-//            }
-//        }else
-//        {
-//            return YES;
-//        }
-//
-//    }
-//    else
-//    {
-//        return YES;
-//    }
+
+
 }
 
 

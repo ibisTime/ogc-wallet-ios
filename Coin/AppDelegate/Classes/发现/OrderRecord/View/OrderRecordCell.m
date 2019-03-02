@@ -62,31 +62,27 @@
     
     [_countDownTimer invalidate];
     
+    if ([models.type isEqualToString:@"0"]) {
+        _nameLbl.text = [NSString stringWithFormat:@"买入-%@",models.tradeCoin];
+    }else
+    {
+        _nameLbl.text = [NSString stringWithFormat:@"卖出-%@",models.tradeCoin];
+    }
+    [_nameLbl sizeToFit];
+    _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
+    
     if ([models.status isEqualToString:@"0"]) {
         self.headImg.image = kImage(@"待支付-订单");
         
-        if ([models.type isEqualToString:@"0"]) {
-            _nameLbl.text = @"买入";
-        }else
-        {
-            _nameLbl.text = @"卖出";
-        }
-        [_nameLbl sizeToFit];
-        _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
+
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
-        NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];
-        
-        NSDate *currentDate = [NSDate date];
-        [dateFormatter setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
-        dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-        
-        NSString *dateString = [dateFormatter stringFromDate:currentDate];
+
         
         
-        NSString *invalidDatetime = [models.invalidDatetime convertToDetailDate];
+//        NSString *invalidDatetime = [models.remainTime convertToDetailDate];
         
-        [self dateTimeDifferenceWithStartTime:dateString endTime:invalidDatetime];
+        [self dateTimeDifferenceWithStartTime:models.remainTime];
         [_countDownTimer invalidate];
         _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownAction) userInfo:nil repeats:YES];
         
@@ -106,23 +102,17 @@
     
     if (([models.status isEqualToString:@"1"] || [models.status isEqualToString:@"2"])) {
         self.headImg.image = kImage(@"已完成-订单");
-        if ([models.type isEqualToString:@"0"]) {
-            _nameLbl.text = @"买入";
-        }else
-        {
-            _nameLbl.text = @"卖出";
-        }
         
-        [_nameLbl sizeToFit];
-        _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
+        
+        
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
-        NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:@"BTC"];
+        NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:models.tradeCoin];
         if ([models.type isEqualToString:@"0"]) {
-            _stateLbl.text = [NSString stringWithFormat:@"+%@BTC",leftAmount];
+            _stateLbl.text = [NSString stringWithFormat:@"+%@%@",leftAmount,models.tradeCoin];
         }else
         {
-            _stateLbl.text = [NSString stringWithFormat:@"-%@BTC",leftAmount];
+            _stateLbl.text = [NSString stringWithFormat:@"-%@%@",leftAmount,models.tradeCoin];
         }
         
         _stateLbl.font = FONT(14);
@@ -146,14 +136,8 @@
     
         self.headImg.image = kImage(@"已取消-订单");
         
-        if ([models.type isEqualToString:@"0"]) {
-            _nameLbl.text = [LangSwitcher switchLang:@"买入" key:nil];
-        }else
-        {
-            _nameLbl.text = [LangSwitcher switchLang:@"卖出" key:nil];
-        }
-        [_nameLbl sizeToFit];
-        _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
+        
+        
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
         if ([models.status isEqualToString:@"3"]) {
@@ -179,14 +163,8 @@
     
     if ([models.status isEqualToString:@"5"]) {
         self.headImg.image = kImage(@"已超时-订单");
-        if ([models.type isEqualToString:@"0"]) {
-            _nameLbl.text = @"买入";
-        }else
-        {
-            _nameLbl.text = @"卖出";
-        }
-        [_nameLbl sizeToFit];
-        _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
+        
+        
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
         _stateLbl.text = @"订单超时";
@@ -202,7 +180,7 @@
         _stateLbl2.textColor = kHexColor(@"#999999");
 
     }
-
+    
 
 }
 
@@ -229,9 +207,6 @@
         
         [_countDownTimer invalidate];
         self.headImg.image = kImage(@"已超时-订单");
-        _nameLbl.text = @"BTC";
-        [_nameLbl sizeToFit];
-        _nameLbl.frame = CGRectMake(60, 14.5, _nameLbl.width, 14);
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
         _stateLbl.text = @"订单超时";
@@ -251,18 +226,20 @@
 
 
 
-- (NSString *)dateTimeDifferenceWithStartTime:(NSString *)startTime endTime:(NSString *)endTime{
-    NSDateFormatter *date = [[NSDateFormatter alloc]init];
-     [date setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *startD =[date dateFromString:startTime];
-    NSDate *endD = [date dateFromString:endTime];
-    NSTimeInterval start = [startD timeIntervalSince1970]*1;
-    NSTimeInterval end = [endD timeIntervalSince1970]*1;
-    NSTimeInterval value = end - start;
+- (NSString *)dateTimeDifferenceWithStartTime:(NSString *)startTime{
+//    NSDateFormatter *date = [[NSDateFormatter alloc]init];
+//     [date setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    NSDate *startD =[date dateFromString:startTime];
+//    NSDate *endD = [date dateFromString:endTime];
+//    NSTimeInterval start = [startD timeIntervalSince1970]*1;
+//    NSTimeInterval end = [endD timeIntervalSince1970]*1;
+    
+    NSTimeInterval value = [startTime integerValue];
     int second = (int)value %60;//秒
     int minute = (int)value /60%60;
     int house = (int)value / (24 *3600)%3600;
     int day = (int)value / (24 *3600);
+    
     NSString *str;
     if (day != 0) {
        

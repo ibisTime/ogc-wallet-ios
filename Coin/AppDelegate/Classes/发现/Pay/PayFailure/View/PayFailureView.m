@@ -114,12 +114,12 @@
     label3.text = [NSString stringWithFormat:@"¥%@",models.tradePrice];
     label4.text = [models.createDatetime convertToDetailDate];
     
-    NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:@"BTC"];
+    NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:models.tradeCoin];
     if ([models.type isEqualToString:@"0"]) {
-        priceLbl.text = [NSString stringWithFormat:@"%@ %@BTC",[LangSwitcher switchLang:@"买入" key:nil],leftAmount];
+        priceLbl.text = [NSString stringWithFormat:@"%@ %@%@",[LangSwitcher switchLang:@"买入" key:nil],leftAmount,models.tradeCoin];
     }else
     {
-        priceLbl.text = [NSString stringWithFormat:@"%@ %@BTC",[LangSwitcher switchLang:@"卖出" key:nil],leftAmount];
+        priceLbl.text = [NSString stringWithFormat:@"%@ %@%@",[LangSwitcher switchLang:@"卖出" key:nil],leftAmount,models.tradeCoin];
     }
     allPriceLbl.text = [NSString stringWithFormat:@"%@ ¥%@",[LangSwitcher switchLang:@"总价" key:nil],models.tradeAmount];
     

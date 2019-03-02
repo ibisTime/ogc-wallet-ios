@@ -560,7 +560,7 @@
             self.loginSuccess();
         }
         
-        TLTabBarController*tab   = [[TLTabBarController alloc] init];
+        TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
         [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];

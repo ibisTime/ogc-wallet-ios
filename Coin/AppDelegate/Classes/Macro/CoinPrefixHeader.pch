@@ -26,7 +26,7 @@
 #import "AppColorMacro.h"
 #import "APICodeMacro.h"
 
-
+#import "TLUpdateVC.h"
 #import "AppConfig.h"
 #import "AppColorMacro.h"
 
@@ -74,15 +74,7 @@
 #import "ZJAnimationPopView.h"
 
 #import "FoundationHeader.h"
-
-
-
-
 #define BTCADDRESS @"BTCADDRESS"
-
-
-
-
 
 #endif /* CoinPrefixHeader_h */
 

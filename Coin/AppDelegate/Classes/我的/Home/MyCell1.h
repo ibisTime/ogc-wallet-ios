@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MyCellDelegate1<NSObject>
+
+-(void)MyCellButtonSelectTag:(NSString *)btnStr;
+
+@end
+
 @interface MyCell1 : UITableViewCell
+@property (nonatomic, strong)UIView *whiteView;
+@property (nonatomic, weak) id<MyCellDelegate1> delegate;
+
 @property (nonatomic, strong) UILabel *rightLabel;
 
 @property (nonatomic, strong) UIImageView *iconImageView;
@@ -17,7 +26,7 @@
 
 @property (nonatomic, strong) UIImageView *accessoryImageView;
 
-@property (nonatomic , strong)UIButton *AccountBtn;
-
+@property (nonatomic , strong)UIButton *backBtn;
+@property (nonatomic , strong)NSArray *dataArray;
 
 @end

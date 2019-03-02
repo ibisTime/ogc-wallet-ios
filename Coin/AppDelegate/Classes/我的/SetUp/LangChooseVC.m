@@ -144,11 +144,11 @@
                              //                             UIView *v = nil;
                              if (type == LangTypeKorean) {
                                  [LangSwitcher startWithTraditional];
-                                 TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+                                 TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
                                  [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
                                  return ;
                              }
-                             TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+                             TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
                       [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
 
                          }];

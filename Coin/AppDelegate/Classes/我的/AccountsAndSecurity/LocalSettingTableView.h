@@ -12,4 +12,6 @@
 @interface LocalSettingTableView : TLTableView
 @property (nonatomic, strong) SettingGroup *group;
 @property (nonatomic, copy) void (^ SwitchBlock) (NSInteger switchBlock);
+
+@property (nonatomic , strong)NSArray *dataArray;
 @end

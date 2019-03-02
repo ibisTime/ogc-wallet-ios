@@ -114,6 +114,7 @@
     http.parameters[@"tradePrice"] = @(sellerPrice);
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"tradePwd"] = password;
+    http.parameters[@"tradeCoin"] = @"USDT";
     [http postWithSuccess:^(id responseObject) {
         
         
@@ -444,6 +445,7 @@
         http.parameters[@"tradeCurrency"] = @"CNY";
         http.parameters[@"tradePrice"] = @(buyPrice);
         http.parameters[@"userId"] = [TLUser user].userId;
+        http.parameters[@"tradeCoin"] = @"USDT";
         [http postWithSuccess:^(id responseObject) {
             
             
@@ -637,8 +639,8 @@
             }
         }
         
-        CGFloat maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 100);
-        CGFloat minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 100);
+        CGFloat maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue]+3);
+        CGFloat minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue]-3);
         
         _smoothView.arrY = @[[NSString stringWithFormat:@"%.0f",minPrice] ,[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4 + minPrice],[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4*2 + minPrice],[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4*3 + minPrice],[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4*4 + minPrice]];
         [_smoothView drawSmoothViewWithArrayX:arrayX andArrayY:arrayY andScaleX:(maxPrice - minPrice) andScalemax:maxPrice andScalemin:minPrice];

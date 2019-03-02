@@ -58,6 +58,7 @@
 
 @property (nonatomic, strong) TLImagePicker *imagePicker;
 
+@property (nonatomic , strong)NSArray *dataArray;
 
 @end
 
@@ -68,6 +69,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self requesUserInfoWithResponseObject];
+    [self LoadData];
 }
 
 //如果仅设置当前页导航透明，需加入下面方法
@@ -75,6 +77,7 @@
     [super viewWillDisappear:animated];
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -95,8 +98,131 @@
     [[TLUser user] updateUserInfo];
     //通知
 //    [self addNotification];
+//    [self LoadData];
+//    self.dataArray = [NSMutableArray array];
+    
+}
+
+-(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
+{
+    if ([title isEqualToString:@"账户与安全"]) {
+        SettingVC *settingVC = [SettingVC new];
+        settingVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:settingVC animated:YES];
+    }
+    if ([title isEqualToString:@"我的好友"]) {
+        MyFriendViewController *vc = [MyFriendViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if ([title isEqualToString:@"邀请有礼"]) {
+        TLQrCodeVC *vc = [TLQrCodeVC new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if ([title isEqualToString:@"加入社群"]) {
+        JoinMineVc *vc = [[JoinMineVc alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if ([title isEqualToString:@"帮助中心"]) {
+        [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
+                               clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
+                             zendeskUrl: @"https://moorebit.zendesk.com"];
+        
+        id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
+        [[ZDKZendesk instance] setIdentity:userIdentity];
+        
+        [ZDKCoreLogger setEnabled:YES];
+        [ZDKSupport initializeWithZendesk:[ZDKZendesk instance]];
+        
+        
+        LangType type = [LangSwitcher currentLangType];
+        NSString *lan;
+        if (type == LangTypeSimple || type == LangTypeTraditional) {
+            lan = @"zh-cn";
+        }else if (type == LangTypeKorean)
+        {
+            lan = @"ko";
+        }else{
+            lan = @"en-us";
+        }
+        [ZDKSupport instance].helpCenterLocaleOverride = lan;
+        [ZDKLocalization localizedStringWithKey:lan];
+        
+        
+        ZDKHelpCenterUiConfiguration *hcConfig  =  [ ZDKHelpCenterUiConfiguration  new];
+        [ZDKTheme  currentTheme].primaryColor  = [UIColor redColor];
+        UIViewController<ZDKHelpCenterDelegate>*helpCenter  =  [ ZDKHelpCenterUi  buildHelpCenterOverviewWithConfigs :@[hcConfig]];
+        
+        self.navigationController.navigationBar.translucent = YES;
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationItem.backBarButtonItem = item;
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],
+                                                                          NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        helpCenter.uiDelegate = self;
+        helpCenter.hidesBottomBarWhenPushed=YES;
+        [self.navigationController  pushViewController:helpCenter animated:YES];
+    }
+    if ([title isEqualToString:@"设置"]) {
+        TLMeSetting *vc = [[TLMeSetting alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     
     
+    
+
+    
+    
+}
+
+-(void)LoadData
+{
+    TLNetworking *http = [TLNetworking new];
+//    http.showView = self.view;
+    http.code = @"630508";
+    http.parameters[@"status"] = @"1";
+    http.parameters[@"parentCode"] = @"DH201810120023250400000";
+//    DH201810120023250401000
+    [http postWithSuccess:^(id responseObject) {
+        
+        NSArray *array = responseObject[@"data"];
+        NSMutableArray *dataArray = [NSMutableArray array];
+        NSMutableArray *array1 = [NSMutableArray array];
+        NSMutableArray *array2 = [NSMutableArray array];
+        NSMutableArray *array3 = [NSMutableArray array];
+        for (int i = 0; i < array.count; i ++) {
+            if ([array[i][@"name"] isEqualToString:@"账户与安全"]) {
+                [array1 addObject:array[i]];
+            }
+            if ([array[i][@"name"] isEqualToString:@"我的好友"] || [array[i][@"name"] isEqualToString:@"邀请有礼"]) {
+                [array2 addObject:array[i]];
+            }
+            if ([array[i][@"name"] isEqualToString:@"加入社群"] || [array[i][@"name"] isEqualToString:@"帮助中心"] || [array[i][@"name"] isEqualToString:@"设置"]) {
+                [array3 addObject:array[i]];
+            }
+        }
+        
+        if (array1.count>0) {
+            [dataArray addObject:array1];
+        }
+        if (array2.count>0) {
+            [dataArray addObject:array2];
+        }
+        if (array3.count>0) {
+            [dataArray addObject:array3];
+        }
+        
+        self.tableView.dataArray =  dataArray;
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 
@@ -162,97 +288,7 @@
 
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
 {
-    switch (index) {
-        case 0:
-        {
-            SettingVC *settingVC = [SettingVC new];
-            settingVC.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:settingVC animated:YES];
-        }
-            break;
-        case 1:
-        {
-            MyFriendViewController *vc = [MyFriendViewController new];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 2:
-        {
-            TLQrCodeVC *vc = [TLQrCodeVC new];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 3:
-        {
-            JoinMineVc *vc = [[JoinMineVc alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 4:
-        {
-
-            [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
-                                   clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
-                                 zendeskUrl: @"https://moorebit.zendesk.com"];
-            
-            id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
-            [[ZDKZendesk instance] setIdentity:userIdentity];
-            
-            [ZDKCoreLogger setEnabled:YES];
-            [ZDKSupport initializeWithZendesk:[ZDKZendesk instance]];
-            
-            
-            LangType type = [LangSwitcher currentLangType];
-            NSString *lan;
-            if (type == LangTypeSimple || type == LangTypeTraditional) {
-                lan = @"zh-cn";
-            }else if (type == LangTypeKorean)
-            {
-                lan = @"ko";
-            }else{
-                lan = @"en-us";
-            }
-            [ZDKSupport instance].helpCenterLocaleOverride = lan;
-            [ZDKLocalization localizedStringWithKey:lan];
-            
-            
-            ZDKHelpCenterUiConfiguration *hcConfig  =  [ ZDKHelpCenterUiConfiguration  new];
-            [ZDKTheme  currentTheme].primaryColor  = [UIColor redColor];
-            UIViewController<ZDKHelpCenterDelegate>*helpCenter  =  [ ZDKHelpCenterUi  buildHelpCenterOverviewWithConfigs :@[hcConfig]];
-            
-            self.navigationController.navigationBar.translucent = YES;
-            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-            self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-            self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-            self.navigationItem.backBarButtonItem = item;
-            [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],
-                                                                              NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
-            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-            helpCenter.uiDelegate = self;
-            helpCenter.hidesBottomBarWhenPushed=YES;
-            [self.navigationController  pushViewController:helpCenter animated:YES];
-        }
-            break;
-        case 5:
-        {
-            TLMeSetting *vc = [[TLMeSetting alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 6:
-        {
-            MyBankCardVC *vc = [[MyBankCardVC alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        default:
-            break;
-    }
+    
 }
 
 - (TLImagePicker *)imagePicker {
@@ -286,12 +322,6 @@
     return ZDKNavBarConversationsUITypeLocalizedLabel;
 }
 
-//- (void)addNotification
-//{
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeInfo) name:kUserLoginNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeInfo) name:kUserInfoChange object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOut) name:kUserLoginOutNotification object:nil];
-//}
 
 //#pragma mark - Events
 - (void)loginOut

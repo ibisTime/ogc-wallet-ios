@@ -330,7 +330,7 @@
             [TLAlert alertWithMsg:@"删除成功"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
-                TLTabBarController *MineVC = [[TLTabBarController alloc] init];
+                TLUpdateVC *MineVC = [[TLUpdateVC alloc] init];
                 
                 [UIApplication sharedApplication].keyWindow.rootViewController = MineVC;
             });
@@ -377,7 +377,6 @@
             
             //导入钱包 设置的交易密码
             TLUpdateVC *up = [[TLUpdateVC alloc] init];
-            TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
             
             [UIApplication sharedApplication].keyWindow.rootViewController = up;
             

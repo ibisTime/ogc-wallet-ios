@@ -60,5 +60,6 @@
 @property (nonatomic , copy)NSString *userId;
 @property (nonatomic , copy)NSString *bankcardNumber;
 @property (nonatomic , copy)NSString *receiveName;
-
+@property (nonatomic , copy)NSString *remainTime;
+//@property (nonatomic , copy)NSString *tradeCoin;
 @end
