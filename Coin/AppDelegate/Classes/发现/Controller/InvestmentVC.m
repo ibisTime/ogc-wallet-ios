@@ -850,7 +850,7 @@
     }
 }
 
-- (void)requesUserInfoWithResponseObject {
+- (void)requesUserInfoWithResponseObject{
     
     //1.获取用户信息
     TLNetworking *http = [TLNetworking new];

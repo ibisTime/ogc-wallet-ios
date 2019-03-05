@@ -11,9 +11,9 @@
 		1F11E70521EDCCB2006C8DB4 /* OrderRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70421EDCCB2006C8DB4 /* OrderRecordModel.m */; };
 		1F19AC26221116450090BF84 /* utxoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F19AC24221116440090BF84 /* utxoModel.m */; };
 		1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F1BFFFD21E49391000BEBD3 /* Resource.bundle */; };
-		1F1B000621E49392000BEBD3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFE21E49391000BEBD3 /* opencv2.framework */; };
-		1F1B000721E49392000BEBD3 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFF21E49391000BEBD3 /* libjpeg.a */; };
-		1F1B000821E49392000BEBD3 /* libZQPlusFaceu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */; };
+		1F1B000621E49392000BEBD3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFE21E49391000BEBD3 /* opencv2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F1B000721E49392000BEBD3 /* libjpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1BFFFF21E49391000BEBD3 /* libjpeg.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F1B000821E49392000BEBD3 /* libZQPlusFaceu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B000221E49391000BEBD3 /* libZQPlusFaceu.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F1B000E21E49BF6000BEBD3 /* BindingEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */; };
 		1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */; };
 		1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */; };
@@ -21,6 +21,9 @@
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
 		1F4731C6221A92CB007B5908 /* 1080的.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4731C5221A92C9007B5908 /* 1080的.png */; };
 		1F5F8BBA21CCC7C900A7D0F2 /* AssetsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F8BB921CCC7C900A7D0F2 /* AssetsHeadView.m */; };
+		1F6F2BAA222CE84B00298FB3 /* BnakCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */; };
+		1F6F2BAD222CEA7A00298FB3 /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAC222CEA7A00298FB3 /* MyFriendViewController.m */; };
+		1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAF222CEB9700298FB3 /* InvestmentHeadCell.m */; };
 		1F709D712181E51E002D1CC4 /* UIView+Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F709D6E2181E51D002D1CC4 /* UIView+Banner.m */; };
 		1F709D722181E51E002D1CC4 /* HW3DBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F709D6F2181E51D002D1CC4 /* HW3DBannerView.m */; };
 		1F7667EB21D07A0B00006B41 /* MyAssetsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7667EA21D07A0B00006B41 /* MyAssetsHeadView.m */; };
@@ -98,15 +101,15 @@
 		1F76692721D4A32700006B41 /* BTCData+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76688921D4A32600006B41 /* BTCData+Tests.m */; };
 		1F76692821D4A32700006B41 /* BTCFancyEncryptedMessage+Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76688C21D4A32600006B41 /* BTCFancyEncryptedMessage+Tests.m */; };
 		1F76692921D4A32700006B41 /* BTCErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76689121D4A32600006B41 /* BTCErrors.m */; };
-		1F76692A21D4A32700006B41 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76689721D4A32600006B41 /* libcrypto.a */; };
-		1F76692B21D4A32700006B41 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76689821D4A32600006B41 /* libssl.a */; };
-		1F76696421D4A34D00006B41 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76692D21D4A34C00006B41 /* ZipArchive.framework */; };
-		1F76696521D4A34D00006B41 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76692E21D4A34C00006B41 /* SecurityGuardSDK.framework */; };
+		1F76692A21D4A32700006B41 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76689721D4A32600006B41 /* libcrypto.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F76692B21D4A32700006B41 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76689821D4A32600006B41 /* libssl.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F76696421D4A34D00006B41 /* ZipArchive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76692D21D4A34C00006B41 /* ZipArchive.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F76696521D4A34D00006B41 /* SecurityGuardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76692E21D4A34C00006B41 /* SecurityGuardSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F76696621D4A34D00006B41 /* MSADefaultLocale.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F76692F21D4A34C00006B41 /* MSADefaultLocale.bundle */; };
 		1F76696721D4A34D00006B41 /* yw_1222_0335.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F76693021D4A34C00006B41 /* yw_1222_0335.jpg */; };
-		1F76696821D4A34D00006B41 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76693121D4A34C00006B41 /* SGMain.framework */; };
+		1F76696821D4A34D00006B41 /* SGMain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76693121D4A34C00006B41 /* SGMain.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F76696921D4A34D00006B41 /* MSADefaultImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F76693221D4A34C00006B41 /* MSADefaultImages.bundle */; };
-		1F76696A21D4A34D00006B41 /* SGNoCaptcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76693321D4A34C00006B41 /* SGNoCaptcha.framework */; };
+		1F76696A21D4A34D00006B41 /* SGNoCaptcha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76693321D4A34C00006B41 /* SGNoCaptcha.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F76696B21D4A34D00006B41 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F76693521D4A34C00006B41 /* LICENSE.txt */; };
 		1F76696C21D4A34D00006B41 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F76693921D4A34C00006B41 /* unzip.c */; };
 		1F76696D21D4A34D00006B41 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F76693A21D4A34C00006B41 /* zip.c */; };
@@ -122,19 +125,17 @@
 		1F76697721D4A34D00006B41 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F76695621D4A34C00006B41 /* pwd2key.c */; };
 		1F76697821D4A34D00006B41 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F76695721D4A34C00006B41 /* aestab.c */; };
 		1F76697921D4A34D00006B41 /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F76695A21D4A34C00006B41 /* entropy.c */; };
-		1F76697A21D4A34D00006B41 /* MSAuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76695B21D4A34C00006B41 /* MSAuthSDK.framework */; };
-		1F76697B21D4A34D00006B41 /* SGSecurityBody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76695C21D4A34C00006B41 /* SGSecurityBody.framework */; };
+		1F76697A21D4A34D00006B41 /* MSAuthSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76695B21D4A34C00006B41 /* MSAuthSDK.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		1F76697B21D4A34D00006B41 /* SGSecurityBody.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76695C21D4A34C00006B41 /* SGSecurityBody.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F76697C21D4A34D00006B41 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F76696021D4A34C00006B41 /* README.txt */; };
-		1F76697D21D4A34D00006B41 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76696221D4A34C00006B41 /* libWeChatSDK.a */; };
+		1F76697D21D4A34D00006B41 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F76696221D4A34C00006B41 /* libWeChatSDK.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		1F76697E21D4A34D00006B41 /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F76696321D4A34C00006B41 /* read_me.txt */; };
 		1F76698621D5F56200006B41 /* InvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76698521D5F56200006B41 /* InvestmentVC.m */; };
 		1F76698B21D61D2F00006B41 /* ChangePhoneAndEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76698A21D61D2F00006B41 /* ChangePhoneAndEmailVC.m */; };
-		1F76698F21D771A800006B41 /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76698E21D771A800006B41 /* MyFriendViewController.m */; };
 		1F76699221D771C700006B41 /* MyFriendTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699121D771C700006B41 /* MyFriendTableView.m */; };
 		1F76699521D771E200006B41 /* MyFriendCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699421D771E200006B41 /* MyFriendCellCell.m */; };
 		1F76699821DC880A00006B41 /* SetUpTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699721DC880A00006B41 /* SetUpTableView.m */; };
 		1F76699F21DCB30400006B41 /* InvestmentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F76699E21DCB30400006B41 /* InvestmentTableView.m */; };
-		1F7669A221DCB3BA00006B41 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */; };
 		1F7669F921DDA5BF00006B41 /* UIColor+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F121DDA5BE00006B41 /* UIColor+Extra.m */; };
 		1F7669FA21DDA5BF00006B41 /* BrokenChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F421DDA5BE00006B41 /* BrokenChartView.m */; };
 		1F7669FB21DDA5BF00006B41 /* SmoothChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7669F621DDA5BE00006B41 /* SmoothChartView.m */; };
@@ -146,7 +147,6 @@
 		1F766A1021DDE9C800006B41 /* OrderRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A0F21DDE9C800006B41 /* OrderRecordCell.m */; };
 		1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A1521DDF42F00006B41 /* PayTreasureVC.m */; };
 		1F766A1F21DDF69E00006B41 /* PayTreasureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A1E21DDF69E00006B41 /* PayTreasureView.m */; };
-		1F766A2621DE09B300006B41 /* BnakCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2521DE09B300006B41 /* BnakCardVC.m */; };
 		1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2821DE09C000006B41 /* BnakCardView.m */; };
 		1F766A2F21DE0F0B00006B41 /* PayFailureVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A2E21DE0F0B00006B41 /* PayFailureVC.m */; };
 		1F766A3221DE0F1D00006B41 /* PayFailureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F766A3121DE0F1D00006B41 /* PayFailureView.m */; };
@@ -200,10 +200,10 @@
 		211A532F1FBFE4CF00CC6294 /* RateDescCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A532E1FBFE4CF00CC6294 /* RateDescCell.m */; };
 		211A53321FBFE4F100CC6294 /* RateDescTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A53311FBFE4F100CC6294 /* RateDescTableView.m */; };
 		211A53351FBFE53100CC6294 /* RateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A53341FBFE53100CC6294 /* RateModel.m */; };
-		211C05081FC6714500E51FCF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C05071FC6714400E51FCF /* libz.tbd */; };
-		211C050C1FC6715B00E51FCF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C050B1FC6715B00E51FCF /* libsqlite3.tbd */; };
-		211C05111FC6717300E51FCF /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C050F1FC6717300E51FCF /* libstdc++.6.0.9.tbd */; };
-		211C05121FC6717300E51FCF /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C05101FC6717300E51FCF /* libstdc++.6.tbd */; };
+		211C05081FC6714500E51FCF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C05071FC6714400E51FCF /* libz.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		211C050C1FC6715B00E51FCF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C050B1FC6715B00E51FCF /* libsqlite3.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		211C05111FC6717300E51FCF /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C050F1FC6717300E51FCF /* libstdc++.6.0.9.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		211C05121FC6717300E51FCF /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C05101FC6717300E51FCF /* libstdc++.6.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		211CEF141FCBBF90000FB0C4 /* SelectScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211CEF121FCBBF90000FB0C4 /* SelectScrollView.m */; };
 		211CEF151FCBBF90000FB0C4 /* SortBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 211CEF131FCBBF90000FB0C4 /* SortBar.m */; };
 		211D4ED61FCD9B0C000E0D43 /* EditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 211D4ED51FCD9B0C000E0D43 /* EditVC.m */; };
@@ -292,7 +292,7 @@
 		21C91D7D1FDBCF9C006EDB16 /* ZMAuthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C91D7C1FDBCF9B006EDB16 /* ZMAuthVC.m */; };
 		21C91D801FDBCFB6006EDB16 /* ZMAuthResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C91D7E1FDBCFB6006EDB16 /* ZMAuthResultVC.m */; };
 		21C91D881FDBD604006EDB16 /* TLAlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 21C91D871FDBD604006EDB16 /* TLAlipayManager.m */; };
-		21C91D981FDBD7E4006EDB16 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C91D971FDBD7DE006EDB16 /* CoreMotion.framework */; };
+		21C91D981FDBD7E4006EDB16 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C91D971FDBD7DE006EDB16 /* CoreMotion.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		21D216861FB9C5750040795E /* QRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D216851FB9C5750040795E /* QRCodeVC.m */; };
 		2E394FED1FB0575A00BA0829 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E394FEB1FB0575A00BA0829 /* AppDelegate.m */; };
 		2E394FFC1FB059C100BA0829 /* TLBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E394FF91FB059C100BA0829 /* TLBaseModel.m */; };
@@ -315,15 +315,15 @@
 		2EE950C31FB05B4500429257 /* TLWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE950C21FB05B4500429257 /* TLWalletVC.m */; };
 		2EE950C61FB05B5900429257 /* TLMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EE950C51FB05B5900429257 /* TLMineVC.m */; };
 		2EFFE6AA1FF4829100BFCC40 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2EFFE6AC1FF4829100BFCC40 /* Localizable.strings */; };
-		2EFFE6B21FF6286600BFCC40 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19201FED0CB600100420 /* CoreTelephony.framework */; };
-		2EFFE6B31FF6287D00BFCC40 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19241FED0CDD00100420 /* UserNotifications.framework */; };
-		2EFFE6B51FF6289600BFCC40 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFFE6B41FF6289600BFCC40 /* libsqlite3.0.tbd */; };
+		2EFFE6B21FF6286600BFCC40 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19201FED0CB600100420 /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		2EFFE6B31FF6287D00BFCC40 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19241FED0CDD00100420 /* UserNotifications.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		2EFFE6B51FF6289600BFCC40 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EFFE6B41FF6289600BFCC40 /* libsqlite3.0.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		4C2438252066C2F1003B35F3 /* TopSegmentUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2438232066C2F0003B35F3 /* TopSegmentUtil.m */; };
 		4C41F84920723D6600BBA366 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C41F84820723D6600BBA366 /* HomeCell.m */; };
 		4C8DE98520C983D100EC183C /* EthereumUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8DE98420C983D100EC183C /* EthereumUtil.swift */; };
 		4CC7F0ED205FBC5400BBEC4D /* CoinModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CC7F0EC205FBC5400BBEC4D /* CoinModel.m */; };
 		4CE70FE120C82EDD00F0C803 /* MnemonicUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CE70FE020C82EDD00F0C803 /* MnemonicUtil.m */; };
-		7A07F7D8216B6EDD0026EB7A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C05091FC6714F00E51FCF /* libc++.tbd */; };
+		7A07F7D8216B6EDD0026EB7A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 211C05091FC6714F00E51FCF /* libc++.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
 		7A07F7DF216C7BD00026EB7A /* MyIncomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A07F7DE216C7BD00026EB7A /* MyIncomeVC.m */; };
 		7A07F7E2216C7BFB0026EB7A /* MyIncomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A07F7E1216C7BFB0026EB7A /* MyIncomeTableView.m */; };
 		7A07F7E5216C7C200026EB7A /* MyInconmeHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A07F7E4216C7C200026EB7A /* MyInconmeHeadCell.m */; };
@@ -425,14 +425,14 @@
 		7AABEAFB2148FEEF00283BC7 /* PoliteInstructionsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AABEAFA2148FEEF00283BC7 /* PoliteInstructionsVC.m */; };
 		7AABEAFE2149127200283BC7 /* BouncedPasteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AABEAFD2149127200283BC7 /* BouncedPasteView.m */; };
 		7AAF0312214F8C35008507FF /* IntegralVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAF0311214F8C35008507FF /* IntegralVC.m */; };
-		7AAF036F215269D0008507FF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19231FED0CD500100420 /* AdSupport.framework */; };
-		7AAF0370215269D8008507FF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F191E1FED0CA900100420 /* CFNetwork.framework */; };
-		7AAF0372215269ED008507FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0371215269ED008507FF /* CoreLocation.framework */; };
-		7AAF0373215269F6008507FF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19211FED0CC100100420 /* SystemConfiguration.framework */; };
-		7AAF037421526A00008507FF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F191F1FED0CAE00100420 /* CoreFoundation.framework */; };
-		7AAF037521526A07008507FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19221FED0CC900100420 /* CoreGraphics.framework */; };
-		7AAF037721526A31008507FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF037621526A31008507FF /* UIKit.framework */; };
-		7AAF037921526A39008507FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF037821526A38008507FF /* Foundation.framework */; };
+		7AAF036F215269D0008507FF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19231FED0CD500100420 /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF0370215269D8008507FF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F191E1FED0CA900100420 /* CFNetwork.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF0372215269ED008507FF /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF0371215269ED008507FF /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF0373215269F6008507FF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19211FED0CC100100420 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF037421526A00008507FF /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F191F1FED0CAE00100420 /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF037521526A07008507FF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E5F19221FED0CC900100420 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF037721526A31008507FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF037621526A31008507FF /* UIKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		7AAF037921526A39008507FF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAF037821526A38008507FF /* Foundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7AD659F1215F691C002F747E /* MoneyAndTreasureHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD659F0215F691C002F747E /* MoneyAndTreasureHeadView.m */; };
 		7AE970522170C4970066B66C /* InviteEarningsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE970512170C4970066B66C /* InviteEarningsModel.m */; };
 		7AE9705521742D140066B66C /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE9705421742D130066B66C /* NSBundle+Language.m */; };
@@ -552,10 +552,11 @@
 		B8F63EE020D3809700556150 /* LocalBillDetailTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F63EDF20D3809700556150 /* LocalBillDetailTableView.m */; };
 		B8F63EE320D397B000556150 /* WalletLocalWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F63EE220D397B000556150 /* WalletLocalWebVC.m */; };
 		B8FDB704214A824400313EC3 /* MysugarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FDB703214A824400313EC3 /* MysugarView.m */; };
-		FB49ABC88B6B7FFBB19DF11D /* Pods_Coin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524739678D50CF78B722738E /* Pods_Coin.framework */; };
+		FB49ABC88B6B7FFBB19DF11D /* Pods_Coin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 524739678D50CF78B722738E /* Pods_Coin.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F0BF770222E2885003FA1A5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F11E70021EDBD4A006C8DB4 /* InvestmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentModel.h; sourceTree = "<group>"; };
 		1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentModel.m; sourceTree = "<group>"; };
 		1F11E70321EDCCB2006C8DB4 /* OrderRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordModel.h; sourceTree = "<group>"; };
@@ -582,6 +583,12 @@
 		1F4731C5221A92C9007B5908 /* 1080的.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1080的.png"; sourceTree = "<group>"; };
 		1F5F8BB821CCC7C900A7D0F2 /* AssetsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetsHeadView.h; sourceTree = "<group>"; };
 		1F5F8BB921CCC7C900A7D0F2 /* AssetsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetsHeadView.m; sourceTree = "<group>"; };
+		1F6F2BA8222CE84A00298FB3 /* BnakCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BnakCardVC.h; sourceTree = "<group>"; };
+		1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BnakCardVC.m; sourceTree = "<group>"; };
+		1F6F2BAB222CEA7900298FB3 /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
+		1F6F2BAC222CEA7A00298FB3 /* MyFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFriendViewController.m; sourceTree = "<group>"; };
+		1F6F2BAE222CEB9700298FB3 /* InvestmentHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvestmentHeadCell.h; sourceTree = "<group>"; };
+		1F6F2BAF222CEB9700298FB3 /* InvestmentHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvestmentHeadCell.m; sourceTree = "<group>"; };
 		1F709D6D2181E51C002D1CC4 /* HW3DBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HW3DBannerView.h; sourceTree = "<group>"; };
 		1F709D6E2181E51D002D1CC4 /* UIView+Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Banner.m"; sourceTree = "<group>"; };
 		1F709D6F2181E51D002D1CC4 /* HW3DBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HW3DBannerView.m; sourceTree = "<group>"; };
@@ -874,8 +881,6 @@
 		1F76698521D5F56200006B41 /* InvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentVC.m; sourceTree = "<group>"; };
 		1F76698921D61D2F00006B41 /* ChangePhoneAndEmailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePhoneAndEmailVC.h; sourceTree = "<group>"; };
 		1F76698A21D61D2F00006B41 /* ChangePhoneAndEmailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePhoneAndEmailVC.m; sourceTree = "<group>"; };
-		1F76698D21D771A800006B41 /* MyFriendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyFriendViewController.h; path = ../../../../../../Documents/MyFriendViewController.h; sourceTree = "<group>"; };
-		1F76698E21D771A800006B41 /* MyFriendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MyFriendViewController.m; path = ../../../../../../Documents/MyFriendViewController.m; sourceTree = "<group>"; };
 		1F76699021D771C700006B41 /* MyFriendTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFriendTableView.h; sourceTree = "<group>"; };
 		1F76699121D771C700006B41 /* MyFriendTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendTableView.m; sourceTree = "<group>"; };
 		1F76699321D771E200006B41 /* MyFriendCellCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFriendCellCell.h; sourceTree = "<group>"; };
@@ -884,8 +889,6 @@
 		1F76699721DC880A00006B41 /* SetUpTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUpTableView.m; sourceTree = "<group>"; };
 		1F76699D21DCB30400006B41 /* InvestmentTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentTableView.h; sourceTree = "<group>"; };
 		1F76699E21DCB30400006B41 /* InvestmentTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentTableView.m; sourceTree = "<group>"; };
-		1F7669A021DCB3BA00006B41 /* InvestmentHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = InvestmentHeadCell.h; path = ../../../../../../Documents/InvestmentHeadCell.h; sourceTree = "<group>"; };
-		1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = InvestmentHeadCell.m; path = ../../../../../../Documents/InvestmentHeadCell.m; sourceTree = "<group>"; };
 		1F7669F021DDA5BE00006B41 /* UIColor+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extra.h"; sourceTree = "<group>"; };
 		1F7669F121DDA5BE00006B41 /* UIColor+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extra.m"; sourceTree = "<group>"; };
 		1F7669F321DDA5BE00006B41 /* SmoothChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmoothChartView.h; sourceTree = "<group>"; };
@@ -908,8 +911,6 @@
 		1F766A1521DDF42F00006B41 /* PayTreasureVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayTreasureVC.m; sourceTree = "<group>"; };
 		1F766A1D21DDF69E00006B41 /* PayTreasureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayTreasureView.h; sourceTree = "<group>"; };
 		1F766A1E21DDF69E00006B41 /* PayTreasureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayTreasureView.m; sourceTree = "<group>"; };
-		1F766A2421DE09B300006B41 /* BnakCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BnakCardVC.h; path = ../../../../../../../../Documents/BnakCardVC.h; sourceTree = "<group>"; };
-		1F766A2521DE09B300006B41 /* BnakCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BnakCardVC.m; path = ../../../../../../../../Documents/BnakCardVC.m; sourceTree = "<group>"; };
 		1F766A2721DE09C000006B41 /* BnakCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BnakCardView.h; sourceTree = "<group>"; };
 		1F766A2821DE09C000006B41 /* BnakCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BnakCardView.m; sourceTree = "<group>"; };
 		1F766A2D21DE0F0B00006B41 /* PayFailureVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayFailureVC.h; sourceTree = "<group>"; };
@@ -1228,7 +1229,6 @@
 		2EA2526C1FF09B52007FF9A2 /* CoinUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinUtil.h; sourceTree = "<group>"; };
 		2EA2526D1FF09B52007FF9A2 /* CoinUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoinUtil.m; sourceTree = "<group>"; };
 		2EA584B41FA813C900C7106C /* Coin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EA584C51FA813C900C7106C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EA584C61FA813C900C7106C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2EB039A51FE8B23300589D8E /* EditEmailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditEmailVC.h; sourceTree = "<group>"; };
 		2EB039A61FE8B23300589D8E /* EditEmailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditEmailVC.m; sourceTree = "<group>"; };
@@ -2411,8 +2411,8 @@
 		1F76698C21D7715400006B41 /* MyFriend */ = {
 			isa = PBXGroup;
 			children = (
-				1F76698D21D771A800006B41 /* MyFriendViewController.h */,
-				1F76698E21D771A800006B41 /* MyFriendViewController.m */,
+				1F6F2BAB222CEA7900298FB3 /* MyFriendViewController.h */,
+				1F6F2BAC222CEA7A00298FB3 /* MyFriendViewController.m */,
 				1F9361D721F1B388007E522A /* MyFriendModel.h */,
 				1F9361D821F1B388007E522A /* MyFriendModel.m */,
 				1F76699021D771C700006B41 /* MyFriendTableView.h */,
@@ -2442,8 +2442,8 @@
 				1F7669EF21DDA5BE00006B41 /* UIColor */,
 				1F76699D21DCB30400006B41 /* InvestmentTableView.h */,
 				1F76699E21DCB30400006B41 /* InvestmentTableView.m */,
-				1F7669A021DCB3BA00006B41 /* InvestmentHeadCell.h */,
-				1F7669A121DCB3BA00006B41 /* InvestmentHeadCell.m */,
+				1F6F2BAE222CEB9700298FB3 /* InvestmentHeadCell.h */,
+				1F6F2BAF222CEB9700298FB3 /* InvestmentHeadCell.m */,
 				1F7669FD21DDDA8400006B41 /* InvestmentBuyCell.h */,
 				1F7669FE21DDDA8400006B41 /* InvestmentBuyCell.m */,
 				1F766A0021DDDFDB00006B41 /* PayWayCell.h */,
@@ -2597,8 +2597,8 @@
 		1F766A2321DE099800006B41 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F766A2421DE09B300006B41 /* BnakCardVC.h */,
-				1F766A2521DE09B300006B41 /* BnakCardVC.m */,
+				1F6F2BA8222CE84A00298FB3 /* BnakCardVC.h */,
+				1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3564,8 +3564,8 @@
 				216F5AEE206CC6F600F2C832 /* AppDelegate */,
 				2E394FA31FB0546E00BA0829 /* Classes */,
 				7A40B100217CAEA6004B9830 /* Assets.xcassets */,
-				2EA584C51FA813C900C7106C /* Info.plist */,
 				1F4731C5221A92C9007B5908 /* 1080的.png */,
+				1F0BF770222E2885003FA1A5 /* Info.plist */,
 				B8DAD14920E2208B00AF4CD4 /* InfoPlist.strings */,
 				2EE361351FFB7D4500A5C3EB /* README.md */,
 				1F770ED621904D7D00E2889F /* langImg.png */,
@@ -4595,9 +4595,9 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
 				"${BUILT_PRODUCTS_DIR}/UIDeviceIdentifier/UIDeviceIdentifier.framework",
-				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.1/ZendeskCoreSDK.framework",
-				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.1/ZendeskProviderSDK.framework",
-				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.1/ZendeskSDK.framework",
+				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.2/ZendeskCoreSDK.framework",
+				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.2/ZendeskProviderSDK.framework",
+				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.2/ZendeskSDK.framework",
 				"${BUILT_PRODUCTS_DIR}/libsodium/libsodium.framework",
 				"${BUILT_PRODUCTS_DIR}/secp256k1_ios/secp256k1_ios.framework",
 				"${BUILT_PRODUCTS_DIR}/web3swift/web3swift.framework",
@@ -4646,7 +4646,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Coin/Pods-Coin-resources.sh",
 				"${PODS_ROOT}/Weibo_SDK/libWeiboSDK/WeiboSDK.bundle",
-				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.1/ZendeskSDKStrings.bundle",
+				"${PODS_ROOT}/ZendeskSDK/ZendeskSDK/4.2/ZendeskSDKStrings.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -4811,7 +4811,6 @@
 				B8DB9EC3214F8A220091276E /* H5DrtailVC.m in Sources */,
 				B8F63EE020D3809700556150 /* LocalBillDetailTableView.m in Sources */,
 				1F76691021D4A32700006B41 /* BTCMerkleTree.m in Sources */,
-				1F76698F21D771A800006B41 /* MyFriendViewController.m in Sources */,
 				7AABEAFE2149127200283BC7 /* BouncedPasteView.m in Sources */,
 				7A2CC674215CAECF00B27E2D /* AccumulatedEarningsVC.m in Sources */,
 				B80D54CE210C9C11005303D5 /* TLChangeNikeName.m in Sources */,
@@ -4860,6 +4859,7 @@
 				7A2CC6B2215DC88B00B27E2D /* PGDatePicker+Common.m in Sources */,
 				1F76691521D4A32700006B41 /* BTCCurvePoint.m in Sources */,
 				1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */,
+				1F6F2BAD222CEA7A00298FB3 /* MyFriendViewController.m in Sources */,
 				7A2CC6B5215DC88B00B27E2D /* PGDatePicker+DateHour.m in Sources */,
 				211DE6C21FB58B4C002FCF3D /* Foundation+Log.m in Sources */,
 				B8890045214CD61A0081AC4F /* WBManger.m in Sources */,
@@ -5065,6 +5065,7 @@
 				7A07F82E216CDAC10026EB7A /* InviteEarningsVC.m in Sources */,
 				B88B591A2109AEC400F20D1B /* TLNavigationController.m in Sources */,
 				B8CAA14621158FF200695BC3 /* LPDImagePickerController.m in Sources */,
+				1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */,
 				1F7668F721D4A32700006B41 /* BTCBlockchainInfo.m in Sources */,
 				7A2CC677215CD41100B27E2D /* AccumulatedEarningsTableView.m in Sources */,
 				2EB039B51FEA0B4500589D8E /* TLUpdateVC.m in Sources */,
@@ -5082,13 +5083,11 @@
 				1F76692221D4A32700006B41 /* BTCPaymentMethodRequest.m in Sources */,
 				7A07F805216C84F30026EB7A /* SCChart.m in Sources */,
 				1F7669FC21DDA5BF00006B41 /* UIBezierPath+curved.m in Sources */,
-				1F766A2621DE09B300006B41 /* BnakCardVC.m in Sources */,
 				7A8A5DC620EA6FE7002D9A48 /* UIView+Extension.m in Sources */,
 				7A8A5DCB20EA7EB8002D9A48 /* GetTheCell.m in Sources */,
 				7A3821BD20EABD1300D6B636 /* GetTheTableView.m in Sources */,
 				1F76697721D4A34D00006B41 /* pwd2key.c in Sources */,
 				211CEF141FCBBF90000FB0C4 /* SelectScrollView.m in Sources */,
-				1F7669A221DCB3BA00006B41 /* InvestmentHeadCell.m in Sources */,
 				B8E08BED212594FF00348AD4 /* TLMoneyDeailVC.m in Sources */,
 				7A07F837216DAA8D0026EB7A /* MyIncomeModel.m in Sources */,
 				B80D54CB210C84CA005303D5 /* APPLanguage.m in Sources */,
@@ -5106,6 +5105,7 @@
 				1F76697621D4A34D00006B41 /* prng.c in Sources */,
 				4CC7F0ED205FBC5400BBEC4D /* CoinModel.m in Sources */,
 				7A2CC6C5215DC88C00B27E2D /* PGDatePickManager.m in Sources */,
+				1F6F2BAA222CE84B00298FB3 /* BnakCardVC.m in Sources */,
 				B88B59182109AEC400F20D1B /* UIColor+theme.m in Sources */,
 				211DE6B11FB58B4C002FCF3D /* UIButton+EnLargeEdge.m in Sources */,
 				B8A2436520E5E0F20074DF8F /* TLDataBase.m in Sources */,
@@ -5259,7 +5259,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -5311,7 +5311,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Coin/Coin-Bridging-Header.h";

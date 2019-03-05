@@ -25,22 +25,22 @@
 //        backImage.image = kImage(@"邮政银行");
         [self addSubview:backImage];
         
-        UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(24, 24, 40, 40)];
-        kViewRadius(bottomView, 20);
-        bottomView.backgroundColor = kWhiteColor;
-        [backImage addSubview:bottomView];
+//        UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(24, 24, 40, 40)];
+//        kViewRadius(bottomView, 20);
+//        bottomView.backgroundColor = kWhiteColor;
+//        [backImage addSubview:bottomView];
+//
         
-        
-        iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(8.5, 8.5, 23, 23)];
+        iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(24, 24, 40, 40)];
 //        iconImg.image = kImage(@"邮政银行");
-        [bottomView addSubview:iconImg];
+        [backImage addSubview:iconImg];
         
-        bankNameLbl = [UILabel labelWithFrame:CGRectMake(bottomView.xx + 12, 24, SCREEN_WIDTH - 115, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kWhiteColor];
+        bankNameLbl = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 24, SCREEN_WIDTH - 115, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kWhiteColor];
         bankNameLbl.text = [LangSwitcher switchLang:@"中国邮政储蓄银行" key:nil];
         [backImage addSubview:bankNameLbl];
         
         
-        bankTypeLbl = [UILabel labelWithFrame:CGRectMake(bottomView.xx + 12, bankNameLbl.yy + 1, SCREEN_WIDTH - 115, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
+        bankTypeLbl = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, bankNameLbl.yy + 1, SCREEN_WIDTH - 115, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
         bankTypeLbl.text = [LangSwitcher switchLang:@"银行卡" key:nil];
         [backImage addSubview:bankTypeLbl];
         
@@ -81,7 +81,8 @@
     bankNameLbl.text = models.bankName;
     if ([models.bankName isEqualToString:@"支付宝"]) {
         bankTypeLbl.text = @"";
-    }else
+    }
+    else
     {
         bankTypeLbl.text = @"银行卡";
     }

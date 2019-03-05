@@ -81,14 +81,48 @@
         [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         
     } failure:^(NSError *error) {
+        NSString *dic = error.description;
         
-        [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+        if ([dic hasPrefix:@"token失效"]) {
             
-        } confirm:^(UIAlertAction *action) {
-            [self configurationLoadData];
-        }];
-        
+        }else
+        {
+            [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+                //
+                } confirm:^(UIAlertAction *action) {
+                    [self configurationLoadData];
+                }];
+        }
+//        NSDictionary *dic = [self convertToDictionary:error.description];
+//        NSData *jsonData = [error.description dataUsingEncoding:NSUTF8StringEncoding];
+//        NSError *err;
+//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                            options:NSJSONReadingMutableContainers
+//                                                              error:&err];
+        NSLog(@"====== %@",dic);
+//        if ([dic[@"errorCode"] isEqualToString:@"4"]) {
+//
+//        }
+//        else
+//        {
+//            [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+//
+//            } confirm:^(UIAlertAction *action) {
+//                [self configurationLoadData];
+//            }];
+//
+//        }
     }];
+}
+
+
+
+-(NSDictionary *)convertToDictionary:(NSString *)jsonStr
+{
+    NSData *data = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *tempDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    return tempDic;
 }
 
 -(NSString *)getWANIP

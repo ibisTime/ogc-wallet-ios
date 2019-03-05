@@ -31,14 +31,14 @@
 #import "TLUserLoginVC.h"
 #import "ZLGestureLockViewController.h"
 #import <UMMobClick/MobClick.h>
-#import <ZendeskSDK/ZendeskSDK.h>
+//#import <ZendeskSDK/ZendeskSDK.h>
 #import "TLWXManager.h"
 #import <UMMobClick/MobClick.h>
 
 #import "WXApi.h"
 #import "IQKeyboardManager.h"
-#import <ZendeskCoreSDK/ZendeskCoreSDK.h>
-#import <ZendeskProviderSDK/ZendeskProviderSDK.h>
+//#import <ZendeskCoreSDK/ZendeskCoreSDK.h>
+//#import <ZendeskProviderSDK/ZendeskProviderSDK.h>
 #import <WeiboSDK.h>
 #import "NSBundle+Language.h"
 
@@ -57,9 +57,9 @@
 //    研发
 //    [AppConfig config].runEnv = RunEnvDev;
 //    测试
-    [AppConfig config].runEnv = RunEnvTest;
+//    [AppConfig config].runEnv = RunEnvTest;
 //    正式
-//    [AppConfig config].runEnv = RunEnvRelease;
+    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
     [AppConfig config].isChecking = NO;
 
