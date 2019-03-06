@@ -25,19 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CoinWeakSelf;
-
-    
-    
-        
-        
+//    CoinWeakSelf;
 //    NSMutableArray *titleArray = [NSMutableArray array];
 //    NSMutableArray *VCNamesArray = [NSMutableArray array];
 //    NSMutableArray *imageNamesArray = [NSMutableArray array];
 //    NSMutableArray *selectedImageNames = [NSMutableArray array];
 //    if (self.dataArray.count > 0) {
-//
-//
 //        NSArray *dataArray = self.dataArray;
 //        self.delegate = self;
 //        for (int i = 0; i < dataArray.count; i ++) {
@@ -54,19 +47,13 @@
 //            if ([dataArray[i][@"name"] isEqualToString:@"我的"]) {
 //                [VCNamesArray addObject:@"TLMineVC"];
 //            }
-//
 //            [imageNamesArray addObject:[dataArray[i][@"pic"] convertImageUrl]];
 //            [selectedImageNames addObject:[dataArray[i][@"enPic"] convertImageUrl]];
 //        }
-//
 //        for (int i = 0; i < titleArray.count; i++) {
-//
 //            if (i == 0 && [AppConfig config].isUploadCheck) {
-//
 //                continue;
 //            }
-//
-//
 //            [self addChildVCWithTitle:titleArray[i]
 //                           controller:VCNamesArray[i]
 //                          normalImage:imageNamesArray[i]
@@ -82,7 +69,7 @@
 //    {
 //
 //
-////    CoinWeakSelf;
+//          CoinWeakSelf;
 //
 ////        [self.navigationController pushViewController:tab animated:YES];
 ////        self.delegate = self;

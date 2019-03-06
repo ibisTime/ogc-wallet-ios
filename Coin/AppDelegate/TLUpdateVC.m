@@ -41,18 +41,12 @@
     
     bgIV.image = [UIImage imageNamed:@"Launch"];
 //    [self setPlaceholderViewTitle:[LangSwitcher switchLang:@"加载失败" key:nil] operationTitle:[LangSwitcher switchLang:@"加载失败" key:nil]];
-
-    
     [self configurationLoadData];
-    
-    
-    
 //    [self setPlaceholderViewTitle:@"加载失败" operationTitle:@"重新加载"];
-    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
 //    BOOL isChoose = [[NSUserDefaults standardUserDefaults] boolForKey:@"chooseCoutry"];
 //
-//    if (isChoose == YES) {
+//    if (isCoose == YES) {
 //        [self configUpdate];
 //
 //    }else{
@@ -83,7 +77,7 @@
     } failure:^(NSError *error) {
         NSString *dic = error.description;
         
-        if ([dic hasPrefix:@"token失效"]) {
+        if ([dic containsString:@"token"]) {
             
         }else
         {
