@@ -32,6 +32,7 @@
 #import "ZLGestureLockViewController.h"
 #import <UMMobClick/MobClick.h>
 //#import <ZendeskSDK/ZendeskSDK.h>
+#import "GengXinModel.h"
 #import "TLWXManager.h"
 #import <UMMobClick/MobClick.h>
 
@@ -57,9 +58,9 @@
 //    研发
 //    [AppConfig config].runEnv = RunEnvDev;
 //    测试
-    [AppConfig config].runEnv = RunEnvTest;
+//    [AppConfig config].runEnv = RunEnvTest;
 //    正式
-//    [AppConfig config].runEnv = RunEnvRelease;
+    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
     [AppConfig config].isChecking = NO;
 
@@ -68,7 +69,7 @@
     [NBNetworkConfig config].respDelegate = self.respHandler;
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
-    
+    [self configUpdate];
     //    配置七牛地址
     [self GetSevenCattleAddress];
     //配置键盘
@@ -113,6 +114,78 @@
     });
     return YES;
 }
+
+//#pragma mark - Config
+- (void)configUpdate {
+    
+    //1:iOS 2:安卓
+    TLNetworking *http = [[TLNetworking alloc] init];
+    
+    http.code = @"660918";
+    http.parameters[@"type"] = @"ios-c";
+    
+    [http postWithSuccess:^(id responseObject) {
+        
+        GengXinModel *update = [GengXinModel mj_objectWithKeyValues:responseObject[@"data"]];
+//        [self removePlaceholderView];
+        //获取当前版本号
+        NSString *currentVersion = [self version];
+        
+        
+        if ([currentVersion integerValue] < [update.version integerValue]) {
+            
+            if ([update.forceUpdate isEqualToString:@"0"]) {
+                
+                //不强制
+                [TLAlert alertWithTitle:[LangSwitcher switchLang:@"更新提示" key:nil] msg:update.note confirmMsg:[LangSwitcher switchLang:@"立即升级" key:nil] cancleMsg:[LangSwitcher switchLang:@"稍后提醒" key:nil] cancle:^(UIAlertAction *action) {
+                    
+                    
+                    
+//                    [self setRootVC];
+                    
+                } confirm:^(UIAlertAction *action) {
+                    
+                    //                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[update.xiaZaiUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
+                    [self goBcoinWeb:update.downloadUrl];
+                }];
+                
+            } else {
+                
+                //强制
+                [TLAlert alertWithTitle:[LangSwitcher switchLang:@"更新提醒" key:nil] message:update.note confirmMsg:[LangSwitcher switchLang:@"立即升级" key:nil] confirmAction:^{
+                    
+                    //                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[update.xiaZaiUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
+                    [self goBcoinWeb:update.downloadUrl];
+                    
+                    
+                }];
+            }
+        } else {
+            
+//            [self setRootVC];
+            
+        }
+        
+    } failure:^(NSError *error) {
+        
+//        [self addPlaceholderView];
+    }];
+    
+}
+
+- (void)goBcoinWeb:(NSString *)var{
+ 
+ NSString *urlStr = [var stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+ NSURL *url = [NSURL URLWithString:urlStr];
+ [[UIApplication sharedApplication] openURL:url];
+ }
+
+- (NSString *)version {
+    
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    
+}
+
 
 
 //获取七牛地址

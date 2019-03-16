@@ -56,7 +56,7 @@
     UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
     topImage.image = kImage(@"Mask");
     [self addSubview:topImage];
-    
+
     
     UILabel *titleLab  = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:18.0];
     titleLab.frame = CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, 44);

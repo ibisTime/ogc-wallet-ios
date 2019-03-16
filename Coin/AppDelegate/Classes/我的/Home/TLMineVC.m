@@ -77,7 +77,6 @@
     [super viewWillDisappear:animated];
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -100,7 +99,6 @@
 //    [self addNotification];
 //    [self LoadData];
 //    self.dataArray = [NSMutableArray array];
-    
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
@@ -132,11 +130,8 @@
         
         id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
         [[ZDKZendesk instance] setIdentity:userIdentity];
-        
         [ZDKCoreLogger setEnabled:YES];
         [ZDKSupport initializeWithZendesk:[ZDKZendesk instance]];
-        
-        
         LangType type = [LangSwitcher currentLangType];
         NSString *lan;
         if (type == LangTypeSimple || type == LangTypeTraditional) {
@@ -149,9 +144,7 @@
         }
         [ZDKSupport instance].helpCenterLocaleOverride = lan;
         [ZDKLocalization localizedStringWithKey:lan];
-        
-        
-        ZDKHelpCenterUiConfiguration *hcConfig  =  [ ZDKHelpCenterUiConfiguration  new];
+        ZDKHelpCenterUiConfiguration *hcConfig  =  [ZDKHelpCenterUiConfiguration  new];
         [ZDKTheme  currentTheme].primaryColor  = [UIColor redColor];
         UIViewController<ZDKHelpCenterDelegate>*helpCenter  =  [ ZDKHelpCenterUi  buildHelpCenterOverviewWithConfigs :@[hcConfig]];
         
@@ -160,24 +153,17 @@
         self.navigationController.navigationBar.tintColor = [UIColor blackColor];
         self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
         self.navigationItem.backBarButtonItem = item;
-        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],
-                                                                          NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
         helpCenter.uiDelegate = self;
         helpCenter.hidesBottomBarWhenPushed=YES;
-        [self.navigationController  pushViewController:helpCenter animated:YES];
+        [self.navigationController pushViewController:helpCenter animated:YES];
     }
     if ([title isEqualToString:@"设置"]) {
         TLMeSetting *vc = [[TLMeSetting alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    
-    
-
-    
-    
 }
 
 -(void)LoadData
@@ -243,7 +229,6 @@
         //初始化用户信息
         [[TLUser user] setUserInfoWithDict:userInfo];
         [self changeInfo];
-//        self.tableView.earnings Str = [NSString stringWithFormat:@"≈%.2f",[responseObject[@"data"][@"incomeTotal"] floatValue]];
         [self.tableView reloadData];
     } failure:^(NSError *error) {
         
@@ -252,25 +237,13 @@
 
 
 #pragma mark- overly-delegate
-
 #pragma mark - Init
-
 - (void)initMineHeaderView
 {
     MineHeaderView *mineHeaderView = [[MineHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 135 + kNavigationBarHeight)];
     mineHeaderView.delegate = self;
     self.headerView = mineHeaderView;
 }
-
-//-(ZDKContactUsVisibility)active
-//{
-//    return ZDKContactUsVisibilityArticleListOnly;
-//}
-//
-//- (ZDKNavBarConversationsUIType) navBarConversationsUIType
-//{
-//    return ZDKNavBarConversationsUITypeLocalizedLabel;
-//}
 
 - (void)initTableView
 {
@@ -316,12 +289,10 @@
     return ZDKContactUsVisibilityArticleListOnly;
 }
 
-
 - (ZDKNavBarConversationsUIType) navBarConversationsUIType
 {
     return ZDKNavBarConversationsUITypeLocalizedLabel;
 }
-
 
 //#pragma mark - Events
 - (void)loginOut
@@ -399,13 +370,12 @@
         loginVC.loginSuccess = ^{
             
         };
-        return ;
+        return;
     }
     [self.imagePicker picker];
 }
 
 - (void)changeHeadIconWithKey:(NSString *)key imgData:(NSData *)imgData {
-    
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
     http.code = USER_CHANGE_USER_PHOTO;
@@ -424,7 +394,6 @@
 }
 
 #pragma mark - MineHeaderSeletedDelegate
-
 - (void)didSelectedWithType:(MineHeaderSeletedType)type {
     switch (type) {
         case MineHeaderSeletedTypePhoto:
@@ -435,9 +404,5 @@
             break;
     }
 }
-
-
-
-
 
 @end

@@ -38,7 +38,6 @@
     UIImageView *bgIV = [[UIImageView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:bgIV];
     bgIV.contentMode = UIViewContentModeScaleAspectFill;
-    
     bgIV.image = [UIImage imageNamed:@"Launch"];
 //    [self setPlaceholderViewTitle:[LangSwitcher switchLang:@"加载失败" key:nil] operationTitle:[LangSwitcher switchLang:@"加载失败" key:nil]];
     [self configurationLoadData];
@@ -54,8 +53,7 @@
 //        [self loadData];
 //
 //    }
-
-    // 由于无法通过，审核。如果为强制更新
+//    由于无法通过，审核。如果为强制更新
 }
 
 -(void)configurationLoadData
@@ -76,25 +74,27 @@
         
     } failure:^(NSError *error) {
         NSString *dic = error.description;
-        
-        if ([dic containsString:@"token"]) {
+        if ([dic containsString:@"token"])
+        {
             
-        }else
+        }
+        else
         {
             [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
-                //
+                
                 } confirm:^(UIAlertAction *action) {
                     [self configurationLoadData];
-                }];
+            }];
         }
 //        NSDictionary *dic = [self convertToDictionary:error.description];
 //        NSData *jsonData = [error.description dataUsingEncoding:NSUTF8StringEncoding];
 //        NSError *err;
 //        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
 //                                                            options:NSJSONReadingMutableContainers
-//                                                              error:&err];
+//                                                            error:&err];
         NSLog(@"====== %@",dic);
-//        if ([dic[@"errorCode"] isEqualToString:@"4"]) {
+//        if ([dic[@"errorCode"] isEqualToString:@"4"])
+//        {
 //
 //        }
 //        else
@@ -123,7 +123,6 @@
 {
     //通过淘宝的服务来定位WAN的IP，否则获取路由IP没什么用
     NSURL *ipURL = [NSURL URLWithString:@"http://ip.taobao.com/service/getIpInfo.php?ip=myip"];
-    
     NSData *data = [NSData dataWithContentsOfURL:ipURL];
     if (data == nil) {
         return @"0086";
@@ -134,13 +133,10 @@
         ipStr = ipDic[@"data"][@"country_id"];
     }
     return (ipStr ? ipStr : @"");
-    
 }
+
 - (void)loadData
 {
-    
-//
-//
 //    TLNetworking *net = [TLNetworking new];
 //    net.showView = self.view;
 //    net.code = @"801120";
@@ -149,7 +145,7 @@
 //    net.parameters[@"status"] = @"1";
 //    [net postWithSuccess:^(id responseObject) {
 //        self.countrys = [CountryModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-////        self.countrys = [CountryModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+////      self.countrys = [CountryModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
 //
 ////
 //
@@ -271,10 +267,8 @@
       [self configUpdate];
  
     } abnormality:nil failure:^(NSError *error) {
-        
         [TLProgressHUD dismiss];
         [self addPlaceholderView];
-        
     }];
     
     
