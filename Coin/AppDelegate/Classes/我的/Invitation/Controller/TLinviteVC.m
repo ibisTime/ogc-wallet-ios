@@ -8,7 +8,7 @@
 
 #import "TLinviteVC.h"
 #import "TLQrCodeVC.h"
-#import "RedEnvelopeVC.h"
+//#import "RedEnvelopeVC.h"
 #import "UIButton+SGImagePosition.h"
 #import "PoliteInstructionsVC.h"
 #import "NewHtmlVC.h"
@@ -241,23 +241,9 @@
 }
 
 
-- (void)inviteButtonClick
-{
-    TLQrCodeVC *vc = [TLQrCodeVC new];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-}
 
-- (void)sendinviteButtonClick
-{
-    
-    RedEnvelopeVC *redEnvelopeVC = [RedEnvelopeVC new];
 
-    [self.navigationController pushViewController:redEnvelopeVC animated:YES];
-        
-  
 
-}
 
 - (void)getShareUrl
 {

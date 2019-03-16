@@ -265,7 +265,7 @@
     titleLbl.font = FONT(12);
     titleLbl.textColor = kHexColor(@"#999999");
     NSString *str1 = [LangSwitcher switchLang:@"我已阅读并接受" key:nil];
-    NSString *str2 = [LangSwitcher switchLang:@"《MooreBit注册协议》" key:nil];
+    NSString *str2 = [LangSwitcher switchLang:@"《金米钱包注册协议》" key:nil];
     NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@%@",str1,str2]];
     [attriStr addAttribute:NSForegroundColorAttributeName value:kTabbarColor range:NSMakeRange(str1.length, str2.length)];
     titleLbl.attributedText = attriStr;
@@ -395,7 +395,7 @@
 - (void)goReg {
 
     if (isReading == NO) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请先阅读并接受《MooreBit注册协议》" key:nil]];
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请先阅读并接受《金米钱包注册协议》" key:nil]];
         return;
     }
     

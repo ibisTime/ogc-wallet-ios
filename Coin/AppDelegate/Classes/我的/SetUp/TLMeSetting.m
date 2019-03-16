@@ -98,10 +98,6 @@
     
 }
 
-
-
-
-
 - (NSString *)version {
     
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];

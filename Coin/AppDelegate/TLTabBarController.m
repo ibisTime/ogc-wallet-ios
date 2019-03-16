@@ -171,7 +171,10 @@
         for (int i = 0; i < dataArray.count; i ++) {
             [titleArray addObject:dataArray[i][@"name"]];
             if ([dataArray[i][@"name"] isEqualToString:@"投资"]) {
-                [VCNamesArray addObject:@"PosMiningVC"];
+//                [VCNamesArray addObject:@"PosMiningVC"];
+//
+                [VCNamesArray addObject:@"HomeVC"];
+                
                 [imageNamesArray addObject:@"投资（未选中）"];
                 [selectedImageNames addObject:@"投资（选中）"];
             }

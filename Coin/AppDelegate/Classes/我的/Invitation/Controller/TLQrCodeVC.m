@@ -217,8 +217,8 @@
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(backView.mas_top).offset(157.5);
-        make.width.mas_equalTo(@(kHeight(100)));
-        make.height.mas_equalTo(@(kHeight(100)));
+        make.width.mas_equalTo(@(kHeight(120)));
+        make.height.mas_equalTo(@(kHeight(60)));
         
         make.centerX.equalTo(backView.mas_centerX);
         
@@ -230,7 +230,7 @@
     [backView addSubview:nameLabel];
     
     UILabel *introduceLbl = [UILabel labelWithFrame:CGRectMake(0, nameLabel.yy + kHeight(8), SCREEN_WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kWhiteColor];
-    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入MooreBit" key:nil];
+    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入金米钱包" key:nil];
     [backView addSubview:introduceLbl];
     
     

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh</string>
 	<key>CFBundleDisplayName</key>
-	<string>MooreBit</string>
+	<string>金米钱包</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2.0</string>
+	<string>1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -84,13 +84,13 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>是否允许MooreBit访问您的相机,用于修改头像、上传凭证</string>
+	<string>是否允许金米钱包访问您的相机,用于修改头像、上传凭证</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>允许访问您的麦克风</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>是否允许MooreBit访问您的相册,用于修改头像、上传凭证</string>
+	<string>是否允许金米钱包访问您的相册,用于修改头像、上传凭证</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

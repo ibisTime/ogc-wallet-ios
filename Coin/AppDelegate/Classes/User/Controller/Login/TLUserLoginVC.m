@@ -222,7 +222,7 @@
     [self.view addSubview:topImage];
     
     
-    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40,  kStatusBarHeight + 20, 80, 70)];
+    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];
     logoView.contentMode = UIViewContentModeScaleToFill;
     [topImage addSubview:logoView];
     logoView.image = kImage(@"邀请-logo");
@@ -232,7 +232,7 @@
     backView.layer.cornerRadius=10;
     backView.layer.shadowOpacity = 0.22;// 阴影透明度
     backView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-    backView.layer.shadowRadius=3;// 阴影扩散的范围控制
+    backView.layer.shadowRadius = 3;// 阴影扩散的范围控制
     backView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
     [self.view addSubview:backView];
     
