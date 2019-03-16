@@ -23,8 +23,7 @@
         
         //
         [self initSubvies];
-        //购买跟出售
-        //        [self initBuyAndSell];
+
     }
     return self;
 }
@@ -32,26 +31,7 @@
 #pragma mark - Init
 - (void)initSubvies {
     
-//    self.backgroundColor = kBackgroundColor;
-//
-//    UIImageView *bgIV = [[UIImageView alloc] init];
-//
-//    bgIV.image = kImage(@"背景");
-//    bgIV.contentMode = UIViewContentModeScaleToFill;
-//
-//    [self addSubview:bgIV];
-//    [bgIV mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.left.top.right.equalTo(@0);
-//        make.height.equalTo(@((kHeight(156))));
-//
-//    }];
-//
-//    self.bgIV = bgIV;
-    
-//    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 135 + kNavigationBarHeight)];
-//    topView.backgroundColor = kTabbarColor;
-//    [self addSubview:topView];
+
     
     UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
     topImage.image = kImage(@"Mask");
@@ -63,25 +43,7 @@
     [self addSubview:titleLab];
     titleLab.textAlignment = NSTextAlignmentCenter;
     titleLab.text = [LangSwitcher switchLang:@"我的" key:nil];
-//    [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self.bgIV.mas_centerX);
-//        make.top.equalTo(self.bgIV.mas_top).offset(kStatusBarHeight+9);
-//    }];
-    
-//    UIView *titleView = [[UIView alloc] init];
-//    titleView.backgroundColor = kWhiteColor;
-//    titleView.layer.cornerRadius = 4.0;
-//    titleView.clipsToBounds = YES;
-//    [self addSubview:titleView];
-    
-    
-//    [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(@15);
-//        make.top.equalTo(self.mas_top).offset(kStatusBarHeight+44);
-//        make.right.equalTo(@-15);
-//        make.height.equalTo(@(kHeight(140)));
-//    }];
-//    CGFloat imgWidth = 66;
+
 
     self.photoBtn = [UIButton buttonWithTitle:nil titleColor:kAppCustomMainColor backgroundColor:kWhiteColor titleFont:30 cornerRadius:75/2.0];
     self.photoBtn = [UIButton buttonWithImageName:@"头像" cornerRadius:58/2.0];
