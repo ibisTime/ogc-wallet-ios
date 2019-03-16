@@ -13,14 +13,15 @@
 #import "UIButton+EnLargeEdge.h"
 //V
 #import "TLBannerView.h"
-
-@interface HomeHeaderView()<HW3DBannerViewDelegate>
+//#import "SGAdvertScrollView.h"
+#import "SLBannerView.h"
+@interface HomeHeaderView()<HW3DBannerViewDelegate,SLBannerViewDelegate>
 {
     NSInteger selectNum;
 }
 
 //轮播图
-@property (nonatomic,strong) TLBannerView *bannerView;
+@property (nonatomic,strong) SLBannerView *banner;
 //统计
 @property (nonatomic, strong) UIView *statisticsView;
 //数据
@@ -53,10 +54,25 @@
     return self;
 }
 
+//-(SLBannerView *)banner
+//{
+//    if (!_banner) {
+//        _banner = [SLBannerView bannerView];
+//        _banner.frame = CGRectMake(15, 10, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/350 * 150);
+//        //工程图片
+//        _banner.slImages = @[@"树 跟背景", @"树 跟背景", @"树 跟背景", @"树 跟背景", @"树 跟背景"];
+//        _banner.durTimeInterval = 0.2;
+//        _banner.imgStayTimeInterval = 2.5;
+//        _banner.delegate = self;
+//    }
+//    return _banner;
+//}
+
 -(HW3DBannerView *)scrollView
 {
     if (!_scrollView) {
 //        CoinWeakSelf;
+        [_scrollView removeFromSuperview];
         _scrollView = [HW3DBannerView initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/350 * 150) imageSpacing:10 imageWidth:SCREEN_WIDTH - 30];
         _scrollView.initAlpha = 0; // 设置两边卡片的透明度
         _scrollView.imageRadius = 6.5; // 设置卡片圆角
@@ -66,7 +82,7 @@
         _scrollView.data = @[@"top",@"top",@"top"];
 //        _scrollView.data = @[@"banner",@"banner",@"banner"];
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
-            
+
             selectNum = currentIndex;
         };
     }
@@ -126,6 +142,12 @@
     _scrollView.data = imgUrls;
 //    self.bannerView.imgUrls = imgUrls;
 
+}
+
+
+
+-(void)bannerView:(SLBannerView *)banner didClickImagesAtIndex:(NSInteger)index{
+    self.headerBlock(HomeEventsTypeBanner, index,nil);
 }
 
 

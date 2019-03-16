@@ -526,10 +526,10 @@
 -(void)bottomBtnClick
 {
     
-    if ([TLUser isBlankString:[TLUser user].idNo] == YES)
+    if ([TLUser isBlankString:[TLUser user].idNo] == NO)
     {
 
-        [TLAlert alertWithTitle:@"提示" msg:@"您还为完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+        [TLAlert alertWithTitle:@"提示" msg:@"您还未完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
             
         } confirm:^(UIAlertAction *action) {
             ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];

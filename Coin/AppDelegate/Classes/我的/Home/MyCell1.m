@@ -10,6 +10,9 @@
 
 
 @implementation MyCell1
+{
+    UILabel *rightLbl;
+}
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
@@ -67,6 +70,17 @@
         self.titleLbl.frame = CGRectMake(self.iconImageView.xx + 10, i % dataArray.count * 60, SCREEN_WIDTH - self.iconImageView.xx - 40 - 35, 60);
         [whiteView addSubview:self.titleLbl];
         
+        rightLbl = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH - 40 - 100, 0, 85, 60) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(15) textColor:kTextBlack];
+        [_backBtn addSubview:rightLbl];
+        if ([dataArray[i][@"name"] isEqualToString:@"金米福分"]) {
+            self.accessoryImageView.hidden = YES;
+            rightLbl.hidden = NO;
+        }else
+        {
+            self.accessoryImageView.hidden = NO;
+            rightLbl.hidden = YES;
+        }
+        
         if (i < dataArray.count - 1) {
             UIView *line = [[UIView alloc] initWithFrame:CGRectMake(self.iconImageView.xx + 10,59.5 + i % self.dataArray.count * 60 , SCREEN_WIDTH - 40 - self.iconImageView.xx - 10, 1)];
             line.backgroundColor = kLineColor;
@@ -85,5 +99,9 @@
     [_delegate MyCellButtonSelectTag:_dataArray[sender.tag - 100][@"name"]];
 }
 
+-(void)setBlessing:(NSInteger)blessing
+{
+    rightLbl.text = [NSString stringWithFormat:@"%d",blessing];
+}
 
 @end

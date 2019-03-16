@@ -70,6 +70,7 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self requesUserInfoWithResponseObject];
     [self LoadData];
+    [self blessingLoadData];
 }
 
 //如果仅设置当前页导航透明，需加入下面方法
@@ -107,22 +108,22 @@
         SettingVC *settingVC = [SettingVC new];
         settingVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:settingVC animated:YES];
-    }
+    }else
     if ([title isEqualToString:@"我的好友"]) {
         MyFriendViewController *vc = [MyFriendViewController new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }
+    }else
     if ([title isEqualToString:@"邀请有礼"]) {
         TLQrCodeVC *vc = [TLQrCodeVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }
+    }else
     if ([title isEqualToString:@"加入社群"]) {
         JoinMineVc *vc = [[JoinMineVc alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }
+    }else
     if ([title isEqualToString:@"帮助中心"]) {
         [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
                                clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
@@ -158,12 +159,31 @@
         helpCenter.uiDelegate = self;
         helpCenter.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:helpCenter animated:YES];
-    }
+    }else
     if ([title isEqualToString:@"设置"]) {
         TLMeSetting *vc = [[TLMeSetting alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+    }else
+    {
+        [TLAlert alertWithInfo:@"敬请期待"];
     }
+}
+
+-(void)blessingLoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    //    http.showView = self.view;
+    http.code = @"805913";
+    http.parameters[@"userId"] = [TLUser user].userId;
+//    http.parameters[@"parentCode"] = @"DH201810120023250400000";
+    //    DH201810120023250401000
+    [http postWithSuccess:^(id responseObject) {
+        self.tableView.blessing = [responseObject[@"data"][@"regAcount"] integerValue];
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)LoadData
@@ -182,10 +202,10 @@
         NSMutableArray *array2 = [NSMutableArray array];
         NSMutableArray *array3 = [NSMutableArray array];
         for (int i = 0; i < array.count; i ++) {
-            if ([array[i][@"name"] isEqualToString:@"账户与安全"]) {
+            if ([array[i][@"name"] isEqualToString:@"账户与安全"] || [array[i][@"name"] isEqualToString:@"金米钱包"]) {
                 [array1 addObject:array[i]];
             }
-            if ([array[i][@"name"] isEqualToString:@"我的好友"] || [array[i][@"name"] isEqualToString:@"邀请有礼"]) {
+            if ([array[i][@"name"] isEqualToString:@"我的好友"] || [array[i][@"name"] isEqualToString:@"邀请有礼"] || [array[i][@"name"] isEqualToString:@"金米福分"]) {
                 [array2 addObject:array[i]];
             }
             if ([array[i][@"name"] isEqualToString:@"加入社群"] || [array[i][@"name"] isEqualToString:@"帮助中心"] || [array[i][@"name"] isEqualToString:@"设置"]) {

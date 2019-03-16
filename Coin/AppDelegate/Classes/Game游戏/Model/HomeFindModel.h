@@ -24,7 +24,7 @@
 @property (nonatomic ,copy) NSString *updater;
 @property (nonatomic ,copy) NSString *updateDatetime;
 @property (nonatomic ,copy) NSString *remark;
-
+@property (nonatomic ,copy) NSString *type;
 
 
 

@@ -56,7 +56,7 @@
 @property (nonatomic,strong) NSArray <HomeFindModel *>*findModels;
 @property (nonatomic , strong)NSMutableArray <FindTheGameModel *>*GameModel;
 @property (nonatomic , strong)NSMutableArray *GameModelArray;
-
+@property (nonatomic , strong)NSArray *dataArray;
 @end
 
 @implementation HomeVC
@@ -119,6 +119,7 @@
     start = 1;
     self.GameModelArray = [NSMutableArray array];
     [self requestBannerList];
+    [self reloadFindData];
     [self loadData];
 }
 
@@ -202,7 +203,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 4;
+        return self.dataArray.count;
     }
     if (section == 1) {
         return 1;
@@ -215,16 +216,11 @@
     if (indexPath.section == 0) {
         IconCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IconCollCell" forIndexPath:indexPath];
         //    cell.backgroundColor = [UIColor redColor];
-        NSArray *imgArray = @[@"top1",@"top1",@"top1",@"top1"];
-        NSArray *array = @[@"肥猪",@"皮卡丘",@"大熊猫",@"大熊猫"];
-        cell.iconImage.image = kImage(imgArray[indexPath.row]);
-        cell.nameLbl.text = array[indexPath.row];
-//        [cell.iconButton setTitle:[LangSwitcher switchLang:array[indexPath.row] key:nil] forState:(UIControlStateNormal)];
-//        [cell.iconButton SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:9 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(imgArray[indexPath.row]) forState:(UIControlStateNormal)];
-//        }];
-//        [cell.iconButton addTarget:self action:@selector(iconButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//        cell.iconButton.tag = 300 + indexPath.row;
+//        NSArray *imgArray = @[@"top1",@"top1",@"top1",@"top1"];
+//        NSArray *array = @[@"肥猪",@"皮卡丘",@"大熊猫",@"大熊猫"];
+        
+        [cell.iconImage sd_setImageWithURL:[NSURL URLWithString:[self.dataArray[indexPath.row][@"icon"] convertImageUrl]]];
+        cell.nameLbl.text = self.dataArray[indexPath.row][@"name"];
         return cell;
     }
     if (indexPath.section == 1) {
@@ -246,8 +242,7 @@
     [self loadNewData];
 }
 
--(void)iconButtonClick:(UIButton *)sender
-{
+-(void)iconButtonClick:(UIButton *)sender{
 //    [self loginTheWhether];
     switch (sender.tag - 300) {
         case 0:
@@ -340,10 +335,12 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0) {
+        GeneralWebView *vc = [GeneralWebView new];
+        vc.URL = self.dataArray[indexPath.row][@"position"];
+        [self showViewController:vc sender:self];
+    }
     if (indexPath.section == 2) {
-        
-//        [self loginTheWhether];
-        
         FindTheGameVC *vc = [FindTheGameVC new];
         vc.GameModel = self.GameModel[indexPath.row];
         [self showViewController:vc sender:self];
@@ -365,12 +362,6 @@
     }
     return UIEdgeInsetsMake(10, 10, 10, 10);
 }
-
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//}
-
 
 
 
@@ -483,11 +474,11 @@
 //        return;
 //    }
     
-    if ([self.bannerRoom[index].action isEqualToString:@"0"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"0"]) {
         return;
     }
     
-    if ([self.bannerRoom[index].action isEqualToString:@"1"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"1"]) {
         NSString *url = [[self.bannerRoom objectAtIndex:index] url];
         if (url && url.length > 0) {
             GeneralWebView *vc = [GeneralWebView new];
@@ -495,12 +486,12 @@
             [self showViewController:vc sender:self];
         }
     }
-    if ([self.bannerRoom[index].action isEqualToString:@"2"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"2"]) {
         FindTheGameVC *vc = [FindTheGameVC new];
         vc.url = [[self.bannerRoom objectAtIndex:index] url];
         [self showViewController:vc sender:self];
     }
-    if ([self.bannerRoom[index].action isEqualToString:@"3"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"3"]) {
         PosMiningVC *vc = [PosMiningVC new];
 //        vc.url = [[self.bannerRoom objectAtIndex:index] url];
         [self showViewController:vc sender:self];
@@ -526,7 +517,7 @@
     TLNetworking *http = [TLNetworking new];
 //    http.showView = self.view;
     http.isUploadToken = NO;
-    http.code = @"805806";
+    http.code = @"630506";
     http.parameters[@"location"] = @"app_home";
     
     [http postWithSuccess:^(id responseObject) {
@@ -548,43 +539,38 @@
 }
 
 #pragma mark - 获取发现列表数据
-//- (void)reloadFindData{
-//
-//    NSString *lang;
-//
-//    LangType type = [LangSwitcher currentLangType];
-//    if (type == LangTypeSimple || type == LangTypeTraditional)
-//    {
-//        lang = @"ZH_CN";
-//    }else if (type == LangTypeKorean)
-//    {
-//        lang = @"KO";
-//    }else
-//    {
-//        lang = @"EN";
-//
-//    }
-//    TLNetworking *http = [TLNetworking new];
-//
-//    http.code = @"625412";
-//    http.parameters[@"language"] = lang  ;
-//    http.parameters[@"location"] = @"0";
-//    http.parameters[@"status"] = @"1"  ;
-//
-//    [http postWithSuccess:^(id responseObject) {
-//
-//        self.tableView.findModels = [HomeFindModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        [self.tableView endRefreshHeader];
-//        [self.tableView reloadData];
-//        if (self.findModels.count != self.tableView.findModels.count) {
-//            [TableViewAnimationKit showWithAnimationType:6 tableView:self.tableView];
-//        }
-//        self.findModels = [HomeFindModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//
-//    } failure:^(NSError *error) {
-//        [self.tableView endRefreshHeader];
-//    }];
-//}
+- (void)reloadFindData{
+
+    NSString *lang;
+
+    LangType type = [LangSwitcher currentLangType];
+    if (type == LangTypeSimple || type == LangTypeTraditional)
+    {
+        lang = @"ZH_CN";
+    }else if (type == LangTypeKorean)
+    {
+        lang = @"KO";
+    }else
+    {
+        lang = @"EN";
+
+    }
+    TLNetworking *http = [TLNetworking new];
+
+    http.code = @"625412";
+    http.parameters[@"language"] = lang;
+    http.parameters[@"location"] = @"0";
+    http.parameters[@"status"] = @"1";
+
+    [http postWithSuccess:^(id responseObject) {
+
+        self.dataArray = responseObject[@"data"];
+        [self.collectionView reloadData];
+
+    } failure:^(NSError *error) {
+//        [self.collectionView endRefreshHeader];
+    }];
+}
 
 
 

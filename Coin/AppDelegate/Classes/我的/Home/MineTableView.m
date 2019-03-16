@@ -79,6 +79,7 @@ static NSString *Cell3 = @"MyCell3";
     cell.delegate = self;
     NSArray *array = self.dataArray[indexPath.section];
     cell.dataArray = array;
+    cell.blessing = self.blessing;
     return cell;
 }
 

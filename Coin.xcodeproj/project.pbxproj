@@ -178,6 +178,8 @@
 		1F9361B821F02DE6007E522A /* SellDetalisView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9361B721F02DE6007E522A /* SellDetalisView.m */; };
 		1F9361BB21F05927007E522A /* HBAlertPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9361BA21F05927007E522A /* HBAlertPasswordView.m */; };
 		1F9361D921F1B388007E522A /* MyFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9361D821F1B388007E522A /* MyFriendModel.m */; };
+		1FA41B2F223D4B7400B746D8 /* SLBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA41AEE223D4B7300B746D8 /* SLBannerView.m */; };
+		1FA41B46223D4B7400B746D8 /* SLBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA41B2D223D4B7400B746D8 /* SLBannerView.xib */; };
 		1FA566ED223CD4B90077FE54 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA566D5223CD4B90077FE54 /* HomeVC.m */; };
 		1FA566EE223CD4B90077FE54 /* ClassificationCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA566D8223CD4B90077FE54 /* ClassificationCollCell.m */; };
 		1FA566EF223CD4B90077FE54 /* HomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA566D9223CD4B90077FE54 /* HomeHeaderView.m */; };
@@ -996,6 +998,9 @@
 		1F9361BA21F05927007E522A /* HBAlertPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBAlertPasswordView.m; sourceTree = "<group>"; };
 		1F9361D721F1B388007E522A /* MyFriendModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFriendModel.h; sourceTree = "<group>"; };
 		1F9361D821F1B388007E522A /* MyFriendModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFriendModel.m; sourceTree = "<group>"; };
+		1FA41AEE223D4B7300B746D8 /* SLBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBannerView.m; sourceTree = "<group>"; };
+		1FA41B2D223D4B7400B746D8 /* SLBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLBannerView.xib; sourceTree = "<group>"; };
+		1FA41B2E223D4B7400B746D8 /* SLBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBannerView.h; sourceTree = "<group>"; };
 		1FA566D5223CD4B90077FE54 /* HomeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
 		1FA566D6223CD4B90077FE54 /* HomeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
 		1FA566D8223CD4B90077FE54 /* ClassificationCollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassificationCollCell.m; sourceTree = "<group>"; };
@@ -2785,6 +2790,16 @@
 			path = "SellDetalis卖出详情";
 			sourceTree = "<group>";
 		};
+		1FA41AED223D4B7300B746D8 /* SLBannerView */ = {
+			isa = PBXGroup;
+			children = (
+				1FA41AEE223D4B7300B746D8 /* SLBannerView.m */,
+				1FA41B2D223D4B7400B746D8 /* SLBannerView.xib */,
+				1FA41B2E223D4B7400B746D8 /* SLBannerView.h */,
+			);
+			path = SLBannerView;
+			sourceTree = "<group>";
+		};
 		1FA566D3223CD49C0077FE54 /* Game游戏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2809,6 +2824,7 @@
 		1FA566D7223CD4B90077FE54 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FA41AED223D4B7300B746D8 /* SLBannerView */,
 				1FA566DE223CD4B90077FE54 /* HomeHeaderView.h */,
 				1FA566D9223CD4B90077FE54 /* HomeHeaderView.m */,
 				1FA566E1223CD4B90077FE54 /* HomeTbleView.h */,
@@ -4622,6 +4638,7 @@
 				B8DAD14720E2208B00AF4CD4 /* InfoPlist.strings in Resources */,
 				1F76696B21D4A34D00006B41 /* LICENSE.txt in Resources */,
 				1F76696721D4A34D00006B41 /* yw_1222_0335.jpg in Resources */,
+				1FA41B46223D4B7400B746D8 /* SLBannerView.xib in Resources */,
 				7A40B101217CAEA8004B9830 /* Assets.xcassets in Resources */,
 				1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */,
 				1F76697E21D4A34D00006B41 /* read_me.txt in Resources */,
@@ -4917,6 +4934,7 @@
 				B8CAA13E21158FF200695BC3 /* UIView+HandyValue.m in Sources */,
 				211DE6AB1FB58B4C002FCF3D /* TLTableView.m in Sources */,
 				1F7668F421D4A32700006B41 /* BTCTransaction+Tests.m in Sources */,
+				1FA41B2F223D4B7400B746D8 /* SLBannerView.m in Sources */,
 				1F9361A821EF0F7F007E522A /* ShareButton.m in Sources */,
 				1F9361AD21EF0F7F007E522A /* SelectedListView.m in Sources */,
 				1F766A3521DEFBB100006B41 /* PaymentInstructionsView.m in Sources */,
@@ -5555,7 +5573,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.GoldenRiceWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -5716,7 +5734,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.GoldenRiceWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
