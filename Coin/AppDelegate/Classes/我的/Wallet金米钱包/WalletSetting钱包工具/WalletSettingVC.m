@@ -125,29 +125,33 @@
     
     SettingModel *walletName = [SettingModel new];
     
-    TLDataBase *dataBase = [TLDataBase sharedManager];
-    NSString *word;
-    if ([dataBase.dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT name from THAUser where userId = '%@'",[TLUser user].userId];
-        //        [sql appendString:[TLUser user].userId];
-        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-        while ([set next])
-        {
-            word = [set stringForColumn:@"name"];
-            
-        }
-        [set close];
-    }
-    [dataBase.dataBase close];
-    if (word || word.length > 0) {
-        walletName.text = [LangSwitcher switchLang:word key:nil];
-
-    }else{
-        walletName.text =@"";
-
-        
-    }
-
+//    TLDataBase *dataBase = [TLDataBase sharedManager];
+//    NSString *word;
+//    if ([dataBase.dataBase open]) {
+//        NSString *sql = [NSString stringWithFormat:@"SELECT name from THAUser where userId = '%@'",[TLUser user].userId];
+//        //        [sql appendString:[TLUser user].userId];
+//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//        while ([set next])
+//        {
+//            word = [set stringForColumn:@"name"];
+//
+//        }
+//        [set close];
+//    }
+//    [dataBase.dataBase close];
+//    if (word || word.length > 0) {
+//        walletName.text = [LangSwitcher switchLang:word key:nil];
+//
+//    }else{
+//        walletName.text =@"";
+//
+//
+//    }
+    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+    walletName.text = walletDic[@"walletName"];
+    NSString *pwd = walletDic[@"pwd"];
+    NSString *mnemonics = walletDic[@"mnemonics"];
+    NSString *Name = walletDic[@"walletName"];
     
     SettingModel *changeTradePwd = [SettingModel new];
     changeTradePwd.text = [LangSwitcher switchLang:@"修改密码" key:nil];
@@ -164,8 +168,11 @@
     //实名认证
     SettingModel *idAuth = [SettingModel new];
     idAuth.text = [LangSwitcher switchLang:@"钱包备份" key:nil];
-    BuildBackUpVC *vc =[BuildBackUpVC new];
-    vc.title = [LangSwitcher switchLang:@"钱包备份" key:nil];
+    
+    
+//    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+//    NSString *pwd = walletDic[@"pwd"];
+    
     [idAuth setAction:^{
         
         [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
@@ -176,55 +183,68 @@
                           maker:self cancle:^(UIAlertAction *action) {
                               
                           } confirm:^(UIAlertAction *action, UITextField *textField) {
-                              TLDataBase *dataBase = [TLDataBase sharedManager];
-                              NSString *pwd;
-                              if ([dataBase.dataBase open]) {
-                                  NSString *sql = [NSString stringWithFormat:@"SELECT PwdKey from THAUser where userId = '%@'",[TLUser user].userId];
-                                  //        [sql appendString:[TLUser user].userId];
-                                  FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-                                  while ([set next])
-                                  {
-                                      pwd = [set stringForColumn:@"PwdKey"];
-                                      
-                                  }
-                                  [set close];
-                              }
-                              [dataBase.dataBase close];
                               if ([pwd isEqualToString:textField.text]) {
-                                  
-                                  TLDataBase *dataBase = [TLDataBase sharedManager];
-                                  NSString *word;
-                                  NSString *name;
-
-                                  if ([dataBase.dataBase open]) {
-                                      NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics,name from THAUser where userId = '%@'",[TLUser user].userId];
-                                      //        [sql appendString:[TLUser user].userId];
-                                      FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-                                      while ([set next])
-                                      {
-                                          word = [set stringForColumn:@"Mnemonics"];
-                                          name = [set stringForColumn:@"name"];
-
-                                      }
-                                      [set close];
-                                  }
-                                  [dataBase.dataBase close];
-                                  
-                                  if (word.length > 0) {
-                                      vc.mnemonics = word;
-                                      vc.pwd = pwd;
-                                      vc.name = name;
-                                      [self.navigationController pushViewController:vc animated:YES];
-
-                                  }else{
-                                      
-                                      return ;
-                                  }
-                                  
+                                  BuildBackUpVC *vc =[BuildBackUpVC new];
+                                  vc.title = [LangSwitcher switchLang:@"钱包备份" key:nil];
+                                  vc.mnemonics = mnemonics;
+                                  vc.pwd = pwd;
+                                  vc.name = Name;
+                                  [self.navigationController pushViewController:vc animated:YES];
                               }else{
                                   [TLAlert alertWithError:@"交易密码错误"];
                                   
                               }
+                              
+                          }];
+        
+    }];
+                              
+//                              TLDataBase *dataBase = [TLDataBase sharedManager];
+//
+//                              if ([dataBase.dataBase open]) {
+//                                  NSString *sql = [NSString stringWithFormat:@"SELECT PwdKey from THAUser where userId = '%@'",[TLUser user].userId];
+//                                  //        [sql appendString:[TLUser user].userId];
+//                                  FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//                                  while ([set next])
+//                                  {
+//                                      pwd = [set stringForColumn:@"PwdKey"];
+//
+//                                  }
+//                                  [set close];
+//                              }
+//                              [dataBase.dataBase close];
+//                              if ([pwd isEqualToString:textField.text]) {
+//
+//                                  TLDataBase *dataBase = [TLDataBase sharedManager];
+//                                  NSString *word;
+//                                  NSString *name;
+//
+//                                  if ([dataBase.dataBase open]) {
+//                                      NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics,name from THAUser where userId = '%@'",[TLUser user].userId];
+//                                      //        [sql appendString:[TLUser user].userId];
+//                                      FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//                                      while ([set next])
+//                                      {
+//                                          word = [set stringForColumn:@"Mnemonics"];
+//                                          name = [set stringForColumn:@"name"];
+//
+//                                      }
+//                                      [set close];
+//                                  }
+//                                  [dataBase.dataBase close];
+                              
+//                                  if (word.length > 0) {
+                              
+
+//                                  }else{
+//
+//                                      return ;
+//                                  }
+                              
+//                              }else{
+//                                  [TLAlert alertWithError:@"交易密码错误"];
+//
+//                              }
 //                              if (word || word.length > 0) {
 //                                  walletName.text = [LangSwitcher switchLang:word key:nil];
 //
@@ -235,38 +255,32 @@
 //                              }
                               //                          [self confirmWithdrawalsWithPwd:textField.text];
                               
-                          }];
-        
-    }];
+
     
     //绑定邮箱
-    SettingModel *bindEmail = [SettingModel new];
-    bindEmail.text = [LangSwitcher switchLang:@"导出私钥" key:nil];
-    [bindEmail setAction:^{
-        
-        CheckForwordVC *editVC = [[CheckForwordVC alloc] init];
-        editVC.WalletType = WalletWordTypeThree;
-
-        editVC.title = [LangSwitcher switchLang:@"导出私钥" key:nil];
-
-
-        [weakSelf.navigationController pushViewController:editVC animated:YES];
-    }];
+//    SettingModel *bindEmail = [SettingModel new];
+//    bindEmail.text = [LangSwitcher switchLang:@"导出私钥" key:nil];
+//    [bindEmail setAction:^{
+//
+//        CheckForwordVC *editVC = [[CheckForwordVC alloc] init];
+//        editVC.WalletType = WalletWordTypeThree;
+//
+//        editVC.title = [LangSwitcher switchLang:@"导出私钥" key:nil];
+//
+//
+//        [weakSelf.navigationController pushViewController:editVC animated:YES];
+//    }];
     
 
     
-    //修改登录密码
-    SettingModel *changeLoginPwd = [SettingModel new];
-    changeLoginPwd.text = [LangSwitcher switchLang:@"删除钱包" key:nil];
-    [changeLoginPwd setAction:^{
-        
-        WalletDelectVC *changeLoginPwdVC = [WalletDelectVC new];
-        
-
-
-        [weakSelf.navigationController pushViewController:changeLoginPwdVC animated:YES];
-        
-    }];
+//    SettingModel *changeLoginPwd = [SettingModel new];
+//    changeLoginPwd.text = [LangSwitcher switchLang:@"删除钱包" key:nil];
+//    [changeLoginPwd setAction:^{
+//
+//        WalletDelectVC *changeLoginPwdVC = [WalletDelectVC new];
+//        [weakSelf.navigationController pushViewController:changeLoginPwdVC animated:YES];
+//
+//    }];
     
   
     

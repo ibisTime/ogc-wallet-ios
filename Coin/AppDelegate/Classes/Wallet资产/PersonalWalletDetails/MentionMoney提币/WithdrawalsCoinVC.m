@@ -20,6 +20,9 @@
 #import "FilterView.h"
 #import "QRCodeVC.h"
 #import "CoinAddressModel.h"
+#import "ZQFaceAuthEngine.h"
+#import "ZQOCRScanEngine.h"
+#import "TLUploadManager.h"
 
 typedef NS_ENUM(NSInteger, AddressType) {
     
@@ -28,9 +31,12 @@ typedef NS_ENUM(NSInteger, AddressType) {
     AddressTypeCopy,                    //复制粘贴
 };
 
-@interface WithdrawalsCoinVC ()
+@interface WithdrawalsCoinVC ()<ZQFaceAuthDelegate,ZQOcrScanDelegate>
 {
     UILabel *poundageLabel;
+    NSString *str1;
+    NSString *str2;
+    NSString *str3;
 }
 
 //可用余额
@@ -63,6 +69,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 @property (nonatomic, strong) UILabel * blanceFree;
 
 @property (nonatomic, strong) UISlider *slider;
+
 @end
 
 @implementation WithdrawalsCoinVC
@@ -329,7 +336,6 @@ typedef NS_ENUM(NSInteger, AddressType) {
             
             [weakSelf pickerEventWithIndex:index];
         };
-        
         _coinAddressPicker.tagNames = textArr;
         
     }
@@ -342,73 +348,212 @@ typedef NS_ENUM(NSInteger, AddressType) {
 - (void)clickConfirm:(UIButton *)sender {
 
     [self.view endEditing:YES];
-    
-    if ([self.balanceTF.text isEqualToString:@"请选择付币地址或扫码录入"]) {
-        
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择接收地址" key:nil] ];
-        return ;
-    }
-    
-    [self setGoogleAuth];
+    if ([TLUser isBlankString:[TLUser user].idNo] == YES)
+    {
 
-    CGFloat amount = [self.tranAmountTF.text doubleValue];
-    
-    if (amount <= 0 || ![self.tranAmountTF.text valid]) {
+        [TLAlert alertWithTitle:@"提示" msg:@"您还未完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+
+        } confirm:^(UIAlertAction *action) {
+            ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
+            engine.delegate = self;
+            engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+            engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+            [engine startOcrScanIdCardInViewController:self];
+        }];
+
+    }else
+    {
+        if ([self.balanceTF.text isEqualToString:@"请选择付币地址或扫码录入"]) {
+            
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择接收地址" key:nil] ];
+            return ;
+        }
         
-        [TLAlert alertWithInfo:@"提币金额需大于0"];
-        return ;
-    }
-    
-    if ([TLUser user].isGoogleAuthOpen) {
+        [self setGoogleAuth];
         
-        if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
+        CGFloat amount = [self.tranAmountTF.text doubleValue];
+        
+        if (amount <= 0 || ![self.tranAmountTF.text valid]) {
             
-            if (![self.googleAuthTF.text valid]) {
+            [TLAlert alertWithInfo:@"提币金额需大于0"];
+            return ;
+        }
+        
+        if ([TLUser user].isGoogleAuthOpen) {
+            
+            if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
                 
-                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil]];
-                return;
+                if (![self.googleAuthTF.text valid]) {
+                    
+                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil]];
+                    return;
+                    
+                }
+                
+                //判断谷歌验证码是否为纯数字
+                if (![NSString isPureNumWithString:self.googleAuthTF.text]) {
+                    
+                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
+                    return ;
+                }
+                
+                //判断谷歌验证码是否为6位
+                if (self.googleAuthTF.text.length != 6) {
+                    
+                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
+                    return ;
+                }
                 
             }
+        }
+        
+        if (self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"]) {
             
-            //判断谷歌验证码是否为纯数字
-            if (![NSString isPureNumWithString:self.googleAuthTF.text]) {
-                
-                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
-                return ;
-            }
+            [self confirmWithdrawalsWithPwd:nil];
             
-            //判断谷歌验证码是否为6位
-            if (self.googleAuthTF.text.length != 6) {
-                
-                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
-                return ;
-            }
+            return ;
             
         }
+        
+        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
+                            msg:@""
+                     confirmMsg:[LangSwitcher switchLang:@"确定" key:nil]
+                      cancleMsg:[LangSwitcher switchLang:@"取消" key:nil]
+                    placeHolder:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
+                          maker:self cancle:^(UIAlertAction *action) {
+                              
+                          } confirm:^(UIAlertAction *action, UITextField *textField) {
+                              
+                              [self confirmWithdrawalsWithPwd:textField.text];
+                              
+                          }];
     }
     
-    if (self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"]) {
-        
-        [self confirmWithdrawalsWithPwd:nil];
-        
-        return ;
-
-    }
-    
-    [TLAlert alertWithTitle:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
-                        msg:@""
-                 confirmMsg:[LangSwitcher switchLang:@"确定" key:nil]
-                  cancleMsg:[LangSwitcher switchLang:@"取消" key:nil]
-                placeHolder:[LangSwitcher switchLang:@"请输入交易密码" key:nil]
-                      maker:self cancle:^(UIAlertAction *action) {
-        
-    } confirm:^(UIAlertAction *action, UITextField *textField) {
-        
-        [self confirmWithdrawalsWithPwd:textField.text];
-        
-    }];
 
 }
+
+
+
+- (void)faceAuthFinishedWithResult:(NSInteger)result userInfo:(id)userInfo
+{
+    NSLog(@"Swift authFinish");
+}
+
+- (void)idCardOcrScanFinishedWithResult:(ZQFaceAuthResult)result userInfo:(id)userInfo
+{
+    NSLog(@"OC OCR Finish");
+    //    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.labelText = @"即将进入活体识别";
+    //    [SVProgressHUD showInfoWithStatus:@"正在认证中"];
+    
+    UIImage *frontcard = [userInfo objectForKey:@"frontcard"];
+    UIImage *portrait = [userInfo objectForKey:@"portrait"];
+    UIImage *backcard = [userInfo objectForKey:@"backcard"];
+    if(result  == ZQFaceAuthResult_Done && frontcard != nil && portrait != nil && backcard !=nil)
+    {
+        NSData *imgData = UIImageJPEGRepresentation(frontcard, 0.6);
+        NSData *imgData1 = UIImageJPEGRepresentation(backcard, 0.6);
+        //进行上传
+        [TLProgressHUD show];
+        TLUploadManager *manager = [TLUploadManager manager];
+        
+        manager.imgData = imgData;
+        manager.image = frontcard;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            
+            str1 = key;
+            //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+            [TLProgressHUD show];
+            TLUploadManager *manager1 = [TLUploadManager manager];
+            
+            manager1.imgData = imgData1;
+            manager1.image = backcard;
+            [manager1 getTokenShowView:self.view succes:^(NSString *key) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+                str2 = key;
+                ZQFaceAuthEngine * engine = [[ZQFaceAuthEngine alloc]init];
+                engine.delegate = self;
+                engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+                engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+                [engine startFaceAuthInViewController:self];
+                //            [weakSelf changeHeadIconWithKey:key imgData:imgData];
+                
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            }];
+        } failure:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+        }];
+    }
+    else
+    {
+        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    }
+}
+
+#pragma mark - ZQFaceAuthDelegate
+- (void)faceAuthFinishedWithResult:(ZQFaceAuthResult)result UserInfo:(id)userInfo{
+    
+    UIImage * livingPhoto = [userInfo objectForKey:@"livingPhoto"];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    hud.labelText = @"正在认证中";
+    if(result  == ZQFaceAuthResult_Done && livingPhoto !=nil){
+        [TLProgressHUD show];
+        TLUploadManager *manager = [TLUploadManager manager];
+        NSData *imgData = UIImageJPEGRepresentation(livingPhoto, 0.6);
+        manager.imgData = imgData;
+        manager.image = livingPhoto;
+        [manager getTokenShowView:self.view succes:^(NSString *key) {
+            str3 = key;
+            
+            TLNetworking *http = [TLNetworking new];
+            //            http.showView = self.view;
+            http.code = @"805197";
+            http.parameters[@"userId"] = [TLUser user].userId;
+            http.parameters[@"frontImage"] = str1;
+            http.parameters[@"backImage"] = str2;
+            http.parameters[@"faceImage"] = str3;
+            //
+            [http postWithSuccess:^(id responseObject) {
+                [TLAlert alertWithMsg:[LangSwitcher switchLang:@"实名认证成功" key:nil]];
+                [self requesUserInfoWithResponseObject];
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+            }];
+            
+        } failure:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+        }];
+    }else
+    {
+        [MBProgressHUD hideHUDForView:[[UIApplication sharedApplication] keyWindow] animated:YES];
+    }
+}
+
+- (void)requesUserInfoWithResponseObject{
+    
+    //1.获取用户信息
+    TLNetworking *http = [TLNetworking new];
+    //    http.showView = self.view;
+    http.code = USER_INFO;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        NSDictionary *userInfo = responseObject[@"data"];
+        //保存用户信息
+        [[TLUser user] saveUserInfo:userInfo];
+        //初始化用户信息
+        [[TLUser user] setUserInfoWithDict:userInfo];
+        
+//        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
 
 - (void)clickPaste {
     

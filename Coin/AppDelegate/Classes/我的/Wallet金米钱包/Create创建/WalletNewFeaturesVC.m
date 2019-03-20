@@ -15,7 +15,7 @@
 #import "TLUpdateVC.h"
 #import "TLNavigationController.h"
 #import "TLTabBarController.h"
-
+#import "PrivateKeyWalletVC.h"
 @interface WalletNewFeaturesVC ()
 @property (nonatomic ,strong) UIButton *importButton;
 @property (nonatomic ,strong) UIImageView *iconImage;
@@ -88,12 +88,15 @@
 - (void)importNow
 {
     //导入钱包 设置的交易密码
-    TLUpdateVC *up = [[TLUpdateVC alloc] init];
-//    TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:KISBuild];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [UIApplication sharedApplication].keyWindow.rootViewController = up;
-    
+//    TLUpdateVC *up = [[TLUpdateVC alloc] init];
+////    TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:KISBuild];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [UIApplication sharedApplication].keyWindow.rootViewController = up;
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -22,7 +22,7 @@
         lineView.backgroundColor = kBackgroundColor;
         [self addSubview:lineView];
         
-        NSArray *array = @[@"ETH游戏",@"TRX游戏"];
+        NSArray *array = @[@"ETHdapp",@"TRXdapp"];
         for (int i = 0; i < 2; i ++) {
             UIButton *ClassificationBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:array[i] key:nil] titleColor:kHexColor(@"#acacac") backgroundColor:kClearColor titleFont:16];
             

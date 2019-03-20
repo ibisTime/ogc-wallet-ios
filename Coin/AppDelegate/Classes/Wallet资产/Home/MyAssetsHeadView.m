@@ -29,6 +29,7 @@
         UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, 44)];
         nameLable.text = [LangSwitcher switchLang:@"我的资产" key:nil];
         nameLable.textAlignment = NSTextAlignmentCenter;
+        self.nameLable = nameLable;
         nameLable.font = Font(18);
         nameLable.textColor = kWhiteColor;
         [self addSubview:nameLable];

@@ -15,6 +15,7 @@
 #import "TLUpdateVC.h"
 #import "MnemonicUtil.h"
 #import "WalletNewFeaturesVC.h"
+#import "PrivateKeyWalletVC.h"
 @interface BuildCheckVC ()<addCollectionViewDelegate>
 @property (nonatomic ,strong) UILabel *nameLable;
 
@@ -338,7 +339,7 @@
 - (void)buildSureWallet
 {
     
-    WalletNewFeaturesVC * newVC = [WalletNewFeaturesVC new];
+//    WalletNewFeaturesVC * newVC = [WalletNewFeaturesVC new];
     
     //        [self.navigationController pushViewController:newVC animated:YES];
     
@@ -350,55 +351,84 @@
         NSLog(@"%@",self.titleWord);
         
 //        NSString *word =  [[NSUserDefaults standardUserDefaults] objectForKey:self.titleWord];
-        if (self.isCopy == YES) {
-            
-            
-            NSString *text = [LangSwitcher switchLang:@"备份成功,请妥善保管助记词" key:nil];
-            
-            [TLAlert alertWithMsg:text];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                WalletNewFeaturesVC * newVC = [WalletNewFeaturesVC new];
-                newVC.isimport = NO;
-                //        [self.navigationController pushViewController:newVC animated:YES];
-                [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
-                return ;
-            });
-        }
-        NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:self.titleWord];
+//        if (self.isCopy == YES) {
+//
+//
+//            NSString *text = [LangSwitcher switchLang:@"备份成功,请妥善保管助记词" key:nil];
+//
+//            [TLAlert alertWithMsg:text];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                WalletNewFeaturesVC * newVC = [WalletNewFeaturesVC new];
+//                newVC.isimport = NO;
+//                //        [self.navigationController pushViewController:newVC animated:YES];
+//                [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
+//                return ;
+//            });
+//        }
+//        NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:self.titleWord];
 
-        NSString *address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+//        NSString *address = [MnemonicUtil getAddressWithPrivateKey:prikey];
         
 //        [[NSUserDefaults standardUserDefaults] setObject:self.titleWord forKey:KWalletWord];
 //
 //        [[NSUserDefaults standardUserDefaults] setObject:prikey forKey:KWalletPrivateKey];
 //        [[NSUserDefaults standardUserDefaults] setObject:address forKey:KWalletAddress];
 //        [[NSUserDefaults standardUserDefaults] synchronize];
-        NSString *user = [TLUser user].userId;
+//        NSString *user = [TLUser user].userId;
         //创建钱包后 储存助记伺 地址 私钥
-        TLDataBase *dateBase = [TLDataBase sharedManager];
-        if ([dateBase.dataBase open]) {
-            BOOL sucess = [dateBase.dataBase executeUpdate:@"insert into THAUser(userId,Mnemonics,wanAddress,wanPrivate,ethPrivate,ethAddress,PwdKey,name) values(?,?,?,?,?,?,?,?)",user,self.titleWord,address,prikey,prikey,address,self.pwd,self.name];
+//        TLDataBase *dateBase = [TLDataBase sharedManager];
+//        if ([dateBase.dataBase open]) {
+//            BOOL sucess = [dateBase.dataBase executeUpdate:@"insert into THAUser(userId,Mnemonics,wanAddress,wanPrivate,ethPrivate,ethAddress,PwdKey,name) values(?,?,?,?,?,?,?,?)",user,self.titleWord,address,prikey,prikey,address,self.pwd,self.name];
+//
+//            NSLog(@"插入地址私钥%d",sucess);
+//        }
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [paths objectAtIndex:0];
+        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+        NSLog(@"dbPath = %@",dbPath);
+        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
+        
+        
+        if ([dataBase open])
+        {
+            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
             
-            NSLog(@"插入地址私钥%d",sucess);
         }
-      
-        NSString *text = [LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil];
+        [dataBase close];
         
-        [TLAlert alertWithMsg:text];
+        [dataBase open];
+        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,self.titleWord,self.pwd,self.name];
+        [dataBase close];
+      
+        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+//            创建通知
+//            self.tabBarController.selectedIndex = 3;
+            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+//            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+//            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+//        [TLAlert alertWithMsg:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil]];
         //验证通过
-        
-      
-        
-        WalletNewFeaturesVC * newVC = [WalletNewFeaturesVC new];
+//        WalletNewFeaturesVC * newVC = [WalletNewFeaturesVC new];
 //        [self.navigationController pushViewController:newVC animated:YES];
-        [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
+//        [[UIApplication sharedApplication].keyWindow.rootViewController.navigationController pushViewController:newVC animated:YES];
+//        [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
        
-    }else{
+    }
+    else
+    {
         //验证失败
         NSString *text = [LangSwitcher switchLang:@"助记词验证失败,请检查备份" key:nil];
         [TLAlert alertWithMsg:text];
         return;
-        }
+    }
     
 }
 

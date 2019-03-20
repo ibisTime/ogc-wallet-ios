@@ -164,39 +164,8 @@
 
 - (void)buildBackUpWallet
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = [paths objectAtIndex:0];
-    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
-    NSLog(@"dbPath = %@",dbPath);
-    FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
     
     
-    if ([dataBase open])
-    {
-        [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text,walletList text)"];
-        
-    }
-    [dataBase close];
-    
-    
-    
-    
-    NSArray *walletList = @[@{@"address":@"afhaskdfhjksadfhjksadf",
-                            @"icon":@"asdasdfsdf",
-                            @"name":@"btc"
-                            },
-                          @{
-                              @"address":@"afhaskdfhjksadfhjksadf",
-                              @"icon":@"asdasdfsdf",
-                              @"name":@"btc"
-                              }];
-    
-
-    self.mnemonics = [MnemonicUtil getGenerateMnemonics];
-    
-    [dataBase open];
-    [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName,walletList) VALUES (?,?,?,?,?)",[TLUser user].userId,self.mnemonics,self.PWD,self.name,[walletList componentsJoinedByString:@","]];
-    [dataBase close];
 
 //    if ([dataBase open])
 //    {
@@ -216,7 +185,7 @@
     
         
 //    }
-    
+    self.mnemonics = [MnemonicUtil getGenerateMnemonics];
     //点击备份钱包 生成助记词
     BuildBackUpVC *backUpVC = [BuildBackUpVC new];
     backUpVC.pwd = self.PWD;

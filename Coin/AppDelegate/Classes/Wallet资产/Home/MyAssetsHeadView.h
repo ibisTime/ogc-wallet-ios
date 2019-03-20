@@ -11,5 +11,5 @@
 @interface MyAssetsHeadView : UIView
 
 @property (nonatomic , strong)NSDictionary *dataDic;
-
+@property (nonatomic , strong)UILabel *nameLable;
 @end

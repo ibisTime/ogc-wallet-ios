@@ -67,7 +67,10 @@
 
 
 - (void)viewDidLoad {
-    self.title = [LangSwitcher switchLang:@"导入钱包" key:nil];
+    
+    self.titleText.text = [LangSwitcher switchLang:@"导入钱包" key:nil];
+    self.titleText.textColor = kWhiteColor;
+    self.navigationItem.titleView = self.titleText;
     self.view.backgroundColor = kWhiteColor;
 //    NSString *word = [[NSUserDefaults standardUserDefaults] objectForKey:KWalletWord];
     TLDataBase *dataBase = [TLDataBase sharedManager];
@@ -188,9 +191,10 @@
     self.introduceButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:self.introduceButton];
 //    NSString *text3 =  [LangSwitcher switchLang:@"我已阅读并同意服务及隐私条款" key:nil];
-    [self.introduceButton setImage:kImage(@"打勾 圆") forState:UIControlStateNormal];
-    [self.introduceButton setImage:kImage(@"未选中") forState:UIControlStateSelected];
-
+//    [self.introduceButton setImage:kImage(@"打勾 圆") forState:UIControlStateNormal];
+//    [self.introduceButton setImage:kImage(@"未选中") forState:UIControlStateSelected];
+    [self.introduceButton setImage:kImage(@"Combined Shape2") forState:UIControlStateNormal];
+    [self.introduceButton setImage:kImage(@"Oval Copy2") forState:UIControlStateSelected];
 //    [self.introduceButton setTitle:text3 forState:UIControlStateNormal];
 
     [self.introduceButton addTarget:self action:@selector(html5Pri:) forControlEvents:UIControlEventTouchUpInside];
@@ -336,69 +340,101 @@
         }
     }
     NSLog(@"%@",self.tempArray);
-    if (self.tempArray.count >= 12) {
-      
-    }
-//    NSString *result = [MnemonicUtil getMnemonicsISRight:self.textView.text];
-    if ([[MnemonicUtil getMnemonicsISRight:self.textView.text] isEqualToString:@"1"]  ) {
-        NSString *word = self.textView.text;
-//        NSString *word = @"ef3274ded22bc98d372e816613d9544aab4caaa181e0ba1df7643d1552d35c51";
-        NSArray *wordsArray = [self.textView.text componentsSeparatedByString:@" "];
-        word = [wordsArray componentsJoinedByString:@" "];
 
-        NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:word];
+//    NSString *result = [MnemonicUtil getMnemonicsISRight:self.textView.text];
+    if ([[MnemonicUtil getMnemonicsISRight:self.textView.text] isEqualToString:@"1"]) {
+        NSString *mnemonics = self.textView.text;
         
-        NSString *address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [paths objectAtIndex:0];
+        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+        NSLog(@"dbPath = %@",dbPath);
+        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
+        
+        if ([dataBase open])
+        {
+            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
+        }
+        [dataBase close];
+        
+        [dataBase open];
+        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,mnemonics,self.pwdTf.text,self.nameTf.text];
+        [dataBase close];
+        
+        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"导入成功" key:nil] confirmAction:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            //            创建通知
+            //            self.tabBarController.selectedIndex = 3;
+            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            //            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
+            //            vc.hidesBottomBarWhenPushed = YES;
+            //            [self.navigationController pushViewController:vc animated:YES];
+            //            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
+            //            vc.hidesBottomBarWhenPushed = YES;
+            //            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+        
+        
+//        NSString *word = @"ef3274ded22bc98d372e816613d9544aab4caaa181e0ba1df7643d1552d35c51";
+//        NSArray *wordsArray = [self.textView.text componentsSeparatedByString:@" "];
+//        word = [wordsArray componentsJoinedByString:@" "];
+//
+//        NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:word];
+//
+//        NSString *address = [MnemonicUtil getAddressWithPrivateKey:prikey];
         
         //储存用户导入的钱包
         //1 查询本地是否存储已创建的钱包
-        TLDataBase *dataBase = [TLDataBase sharedManager];
-        NSString *Mnemonics;
-        if ([dataBase.dataBase open]) {
-            NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
-            //        [sql appendString:[TLUser user].userId];
-            FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-            while ([set next])
-            {
-                Mnemonics = [set stringForColumn:@"Mnemonics"];
-                
-            }
-            [set close];
-        }
-        [dataBase.dataBase close];
-        
-        if (Mnemonics.length > 0) {
-            //验证正确
-            [TLAlert alertWithMsg:[LangSwitcher switchLang:@"导入成功" key:nil]];
-
-            WalletNewFeaturesVC *newVC = [WalletNewFeaturesVC new];
-            newVC.isimport = YES;
-            [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
-
-        }else{
-            
-            //储存导入的钱包
-            TLDataBase *dateBase = [TLDataBase sharedManager];
-            if ([dateBase.dataBase open]) {
-                BOOL sucess = [dateBase.dataBase executeUpdate:@"insert into THAUser(userId,Mnemonics,wanAddress,wanPrivate,ethPrivate,ethAddress,PwdKey,name) values(?,?,?,?,?,?,?,?)",[TLUser user].userId,word,address,prikey,prikey,address,self.pwdTf.text,self.nameTf.text];
+//        TLDataBase *dataBase = [TLDataBase sharedManager];
+//        NSString *Mnemonics;
+//        if ([dataBase.dataBase open]) {
+//            NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
+//            //        [sql appendString:[TLUser user].userId];
+//            FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//            while ([set next])
+//            {
+//                Mnemonics = [set stringForColumn:@"Mnemonics"];
 //
-//                 BOOL sucess = [dateBase.dataBase executeUpdate:@"insert into THAWallet(userId,Mnemonics,wanAddress,wanPrivate,ethPrivate,ethAddress,PwdKey,name) values(?,?,?,?,?,?,?,?)",[TLUser user].userId,word,address,prikey,prikey,address,self.pwdTf.text,self.nameTf.text];
-                NSLog(@"导入地址私钥%d",sucess);
-            }
-            [dateBase.dataBase close];
-            [TLAlert alertWithMsg:[LangSwitcher switchLang:@"导入成功" key:nil]];
+//            }
+//            [set close];
+//        }
+//        [dataBase.dataBase close];
+//
+//        if (Mnemonics.length > 0) {
+//            //验证正确
+//            [TLAlert alertWithMsg:[LangSwitcher switchLang:@"导入成功" key:nil]];
+//
+//            WalletNewFeaturesVC *newVC = [WalletNewFeaturesVC new];
+//            newVC.isimport = YES;
+//            [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
+//
+//        }else{
+//
+//            //储存导入的钱包
+//            TLDataBase *dateBase = [TLDataBase sharedManager];
+//            if ([dateBase.dataBase open]) {
+//                BOOL sucess = [dateBase.dataBase executeUpdate:@"insert into THAUser(userId,Mnemonics,wanAddress,wanPrivate,ethPrivate,ethAddress,PwdKey,name) values(?,?,?,?,?,?,?,?)",[TLUser user].userId,word,address,prikey,prikey,address,self.pwdTf.text,self.nameTf.text];
+////
+////                 BOOL sucess = [dateBase.dataBase executeUpdate:@"insert into THAWallet(userId,Mnemonics,wanAddress,wanPrivate,ethPrivate,ethAddress,PwdKey,name) values(?,?,?,?,?,?,?,?)",[TLUser user].userId,word,address,prikey,prikey,address,self.pwdTf.text,self.nameTf.text];
+//                NSLog(@"导入地址私钥%d",sucess);
+//            }
+//            [dateBase.dataBase close];
+//            [TLAlert alertWithMsg:[LangSwitcher switchLang:@"导入成功" key:nil]];
+//
+//            WalletNewFeaturesVC *newVC = [WalletNewFeaturesVC new];
+//            newVC.isimport = YES;
+//
+//            [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
+//
+//
 
-            WalletNewFeaturesVC *newVC = [WalletNewFeaturesVC new];
-            newVC.isimport = YES;
-        
-            [UIApplication sharedApplication].keyWindow.rootViewController = newVC;
 
 
 
-
-
-
-        }
+//        }
         
 //        [[NSUserDefaults standardUserDefaults] setObject:word forKey:KWalletWord];
 //
