@@ -51,17 +51,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-#pragma mark - Init
 
+#pragma mark - Init
 - (void)initTableView {
-    
-    
     self.tableView = [[SettingTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kSuperViewHeight) style:UITableViewStyleGrouped];
-    
     self.tableView.group = self.group;
-    
     [self.view addSubview:self.tableView];
- 
     self.importButton = [UIButton buttonWithImageName:nil cornerRadius:6];
     NSString *text2 = [LangSwitcher switchLang:@"删除钱包" key:nil];
     [self.importButton setTitle:text2 forState:UIControlStateNormal];

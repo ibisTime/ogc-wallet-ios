@@ -65,12 +65,34 @@
     [http postWithSuccess:^(id responseObject) {
         
         
+         TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+        
+        ZLGestureLockViewController *vc = [ZLGestureLockViewController new];
+        vc.isCheck = YES;
+        
+        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+//        BOOL isLanch  = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLanch"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLanch"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSString *word = [ZLGestureLockViewController gesturesPassword];
+        if (word.length >0) {
+            [self presentViewController:na animated:YES completion:nil];
+            vc.CheckSucessBlock = ^{
+                [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
+                
+            };
+        }else{
+            
+            [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
+            
+        }
         
         
-        TLTabBarController *tab = [[TLTabBarController alloc] init];
+       
         //        tab.dataArray = dataArray;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
-        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+//        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         
     } failure:^(NSError *error) {
         NSString *dic = error.description;

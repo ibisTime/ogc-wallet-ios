@@ -29,8 +29,6 @@
 #import "TLUpdateVC.h"
 #import "AppConfig.h"
 #import "AppColorMacro.h"
-
-
 #import "TLUser.h"
 #import "TLAlert.h"
 #import "TLUIHeader.h"

@@ -164,7 +164,13 @@
         TLMeSetting *vc = [[TLMeSetting alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }else
+    }else if([title isEqualToString:@"金米钱包"])
+    {
+        BuildWalletMineVC *vc = [[BuildWalletMineVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+        else
     {
         [TLAlert alertWithInfo:@"敬请期待"];
     }

@@ -91,7 +91,8 @@
     //    }
 //    [LangSwitcher startWithTraditional];
     
-    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLanch"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     //配置根控制器
     [self configRootViewController];
     
@@ -287,6 +288,7 @@
         TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
         self.window.rootViewController = tabBarCtrl;
     }
+    
 }
 
 + (id)sharedAppDelegate

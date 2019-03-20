@@ -38,10 +38,24 @@
 
 @implementation BuildCheckVC
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    [self navigationSetDefault];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self navigationwhiteColor];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = [LangSwitcher switchLang:@"钱包备份" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"钱包备份" key:nil];
+    self.titleText.textColor = kWhiteColor;
+    self.navigationItem.titleView = self.titleText;
     [self initSubViews];
     self.view.backgroundColor = kWhiteColor;
     self.bottomView.bottomtitles = self.bottomtitles;
@@ -68,14 +82,7 @@
             [weakSelf.bottomNames addObject:obj.symbol];
         }
     }];
-    
-//    if (self.titles.count > 0) {
-//        for (CurrencyTitleModel *tit in self.titles) {
-//            tit.IsSelect = NO;
-//        }
-//    }
 
-    // Do any additional setup after loading the view.
 }
 
 - (void)initSubViews
@@ -164,16 +171,7 @@
     [self.sureButton setBackgroundColor:kAppCustomMainColor forState:UIControlStateNormal];
     [self.sureButton setBackgroundColor:kHexColor(@"#f5f5f5") forState:UIControlStateDisabled];
     self.sureButton.enabled = NO;
-//    [self.view addSubview:self.sureButton];
-//    self.view.backgroundColor = kWhiteColor;
-//
-//    [self.sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(self.view.mas_bottom).offset(-(kBottomInsetHeight+10));
-//        make.right.equalTo(self.view.mas_right).offset(-15);
-//        make.left.equalTo(self.view.mas_left).offset(15);
-//        make.height.equalTo(@45);
-//        
-//    }];
+
     
 }
 - (void)initTopCollectionView{
@@ -182,8 +180,8 @@
         layout.minimumLineSpacing = 10.0; // 竖
     layout.minimumInteritemSpacing = 10.0;
     layout.itemSize = CGSizeMake(80, 36);
-        UIImage *image1 = [UIImage imageNamed:@"bch"];
-        UIImage *image2 = [UIImage imageNamed:@"eth"];
+        UIImage *image1 = [UIImage imageNamed:@"ltc"];
+        UIImage *image2 = [UIImage imageNamed:@"ltc"];
         UIImage *image3 = [UIImage imageNamed:@"ltc"];
         NSArray *array = @[image2, image2, image3, image2, image3, image1, image3, image1, image1];
 
@@ -215,8 +213,8 @@
     layout.itemSize = CGSizeMake(kScreenWidth/3, 46);
 
     layout.scrollDirection         = UICollectionViewScrollDirectionVertical;
-    UIImage *image1 = [UIImage imageNamed:@"bch"];
-    UIImage *image2 = [UIImage imageNamed:@"eth"];
+    UIImage *image1 = [UIImage imageNamed:@"ltc"];
+    UIImage *image2 = [UIImage imageNamed:@"ltc"];
     UIImage *image3 = [UIImage imageNamed:@"ltc"];
     NSArray *array = @[image2, image2, image3, image2, image3, image1, image3, image1, image1];
     QHCollectionViewNine *bottomView = [[QHCollectionViewNine alloc] initWithFrame:CGRectMake(0, 422, kScreenWidth, 200) collectionViewLayout:layout withImage:array];
@@ -273,12 +271,6 @@
             self.sureButton.selected = NO;
         }
         [self.nineView reloadData];
-//        [self.bottomView reloadItemsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:indexPath.row inSection:0], nil]];
-//        [self.bottomtitles removeObjectAtIndex:temp];
-//        self.bottomView.bottomtitles = self.bottomtitles;
-//
-//        [self.bottomView reloadData];
-//        [self.bottomtitles insertObject:tit atIndex:temp];
          self.bottomtitles = arr.mutableCopy;
         [self.bottomView.bottomtitles removeAllObjects];
         [self.bottomView reloadData];
@@ -340,7 +332,6 @@
     
     
     NSLog(@"%s",__func__);
-    
 }
 
 

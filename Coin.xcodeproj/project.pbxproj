@@ -2443,7 +2443,7 @@
 			path = ChangePhoneAndEmail;
 			sourceTree = "<group>";
 		};
-		1F76698C21D7715400006B41 /* MyFriend */ = {
+		1F76698C21D7715400006B41 /* MyFriend我的好友 */ = {
 			isa = PBXGroup;
 			children = (
 				1F6F2BAB222CEA7900298FB3 /* MyFriendViewController.h */,
@@ -2455,7 +2455,7 @@
 				1F76699321D771E200006B41 /* MyFriendCellCell.h */,
 				1F76699421D771E200006B41 /* MyFriendCellCell.m */,
 			);
-			path = MyFriend;
+			path = "MyFriend我的好友";
 			sourceTree = "<group>";
 		};
 		1F76699A21DCB2D400006B41 /* View */ = {
@@ -3035,6 +3035,24 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1FFF59272240DD04000CD2E7 /* Wallet金米钱包 */ = {
+			isa = PBXGroup;
+			children = (
+				B8B15C0020CA312100F13220 /* BuildWalletMineVC.h */,
+				B8B15C0120CA312100F13220 /* BuildWalletMineVC.m */,
+				B8B15C0320CA55D600F13220 /* BuildSucessVC.h */,
+				B8B15C0420CA55D600F13220 /* BuildSucessVC.m */,
+				B8B15C0620CA5B1800F13220 /* BuildBackUpVC.h */,
+				B8B15C0720CA5B1800F13220 /* BuildBackUpVC.m */,
+				B8B15C2A20CA8A3900F13220 /* BuildCheckVC.h */,
+				B8B15C2B20CA8A3900F13220 /* BuildCheckVC.m */,
+				7AEF23582154C58A00BF1DB5 /* WalletSetting钱包设置 */,
+				B8CA7D4720CBA22800A0E93C /* WalletImportVC.h */,
+				B8CA7D4820CBA22800A0E93C /* WalletImportVC.m */,
+			);
+			path = "Wallet金米钱包";
+			sourceTree = "<group>";
+		};
 		211A34D81FB3F55600FEB71F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3484,8 +3502,6 @@
 				B8B15C1C20CA752800F13220 /* QHCollectionViewNine.m */,
 				216F5AFB206CD3A800F2C832 /* GengXinModel.h */,
 				216F5AFC206CD3A800F2C832 /* GengXinModel.m */,
-				B8B15C0320CA55D600F13220 /* BuildSucessVC.h */,
-				B8B15C0420CA55D600F13220 /* BuildSucessVC.m */,
 				B8B15C3020CAB4DE00F13220 /* CustomLayoutWallet.h */,
 				B8B15C3120CAB4DE00F13220 /* CustomLayoutWallet.m */,
 				B8C2056E20CF984900952765 /* WalletDelectVC.h */,
@@ -3723,15 +3739,14 @@
 			isa = PBXGroup;
 			children = (
 				7A2CC6372159E0E900B27E2D /* Home */,
-				7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity */,
-				1F76698C21D7715400006B41 /* MyFriend */,
-				7A2CC63A2159E35000B27E2D /* Invitation */,
-				7AEF23572154C51D00BF1DB5 /* JoinMine */,
-				7A2CC63E2159E42600B27E2D /* Feedback */,
-				7AEF23582154C58A00BF1DB5 /* WalletSetting */,
-				7A2CC63D2159E3F700B27E2D /* SetUp */,
-				7A07F7D9216C7B650026EB7A /* MyIncome */,
-				1F358B3A218AA43A00F1665B /* ScratchableLatex九宫格 */,
+				7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity账户与设置 */,
+				1F76698C21D7715400006B41 /* MyFriend我的好友 */,
+				7A2CC63A2159E35000B27E2D /* Invitation邀请有礼 */,
+				7AEF23572154C51D00BF1DB5 /* JoinMine加入社群 */,
+				7A2CC63E2159E42600B27E2D /* Feedback意见反馈 */,
+				1FFF59272240DD04000CD2E7 /* Wallet金米钱包 */,
+				7A2CC63D2159E3F700B27E2D /* SetUp设置 */,
+				7A07F7D9216C7B650026EB7A /* 我的收益 */,
 				2E394FAD1FB055DE00BA0829 /* Controller */,
 				21A7F35B1FB2EB9300FAA0A2 /* Model */,
 				211A34D81FB3F55600FEB71F /* View */,
@@ -3826,7 +3841,7 @@
 			path = Crypto;
 			sourceTree = "<group>";
 		};
-		7A07F7D9216C7B650026EB7A /* MyIncome */ = {
+		7A07F7D9216C7B650026EB7A /* 我的收益 */ = {
 			isa = PBXGroup;
 			children = (
 				7A07F825216CD94F0026EB7A /* InviteEarnings邀请收益 */,
@@ -3835,7 +3850,7 @@
 				7A07F7DB216C7B870026EB7A /* Model */,
 				7A07F7DA216C7B850026EB7A /* View */,
 			);
-			path = MyIncome;
+			path = "我的收益";
 			sourceTree = "<group>";
 		};
 		7A07F7DA216C7B850026EB7A /* View */ = {
@@ -4023,21 +4038,17 @@
 		7A2CC6392159E28400B27E2D /* WalletBackup钱包备份 */ = {
 			isa = PBXGroup;
 			children = (
-				B8B15C0620CA5B1800F13220 /* BuildBackUpVC.h */,
-				B8B15C0720CA5B1800F13220 /* BuildBackUpVC.m */,
-				B8B15C2A20CA8A3900F13220 /* BuildCheckVC.h */,
-				B8B15C2B20CA8A3900F13220 /* BuildCheckVC.m */,
 			);
 			path = "WalletBackup钱包备份";
 			sourceTree = "<group>";
 		};
-		7A2CC63A2159E35000B27E2D /* Invitation */ = {
+		7A2CC63A2159E35000B27E2D /* Invitation邀请有礼 */ = {
 			isa = PBXGroup;
 			children = (
 				7A2CC63B2159E39B00B27E2D /* Controller */,
 				7A2CC63C2159E3A200B27E2D /* View */,
 			);
-			path = Invitation;
+			path = "Invitation邀请有礼";
 			sourceTree = "<group>";
 		};
 		7A2CC63B2159E39B00B27E2D /* Controller */ = {
@@ -4066,7 +4077,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		7A2CC63D2159E3F700B27E2D /* SetUp */ = {
+		7A2CC63D2159E3F700B27E2D /* SetUp设置 */ = {
 			isa = PBXGroup;
 			children = (
 				B89F07E0211B07FA0057E781 /* TLMeSetting.h */,
@@ -4080,10 +4091,10 @@
 				2ED651D02010443C0065A1B0 /* TLAboutUsVC.h */,
 				2ED651D12010443C0065A1B0 /* TLAboutUsVC.m */,
 			);
-			path = SetUp;
+			path = "SetUp设置";
 			sourceTree = "<group>";
 		};
-		7A2CC63E2159E42600B27E2D /* Feedback */ = {
+		7A2CC63E2159E42600B27E2D /* Feedback意见反馈 */ = {
 			isa = PBXGroup;
 			children = (
 				B8CAA1182115693A00695BC3 /* TLQusertionVC.h */,
@@ -4093,7 +4104,7 @@
 				B8D938CD2116C2AC00B2AA88 /* QiestionDetailVC.h */,
 				B8D938CE2116C2AC00B2AA88 /* QiestionDetailVC.m */,
 			);
-			path = Feedback;
+			path = "Feedback意见反馈";
 			sourceTree = "<group>";
 		};
 		7A2CC640215A29C800B27E2D /* MentionMoney提币 */ = {
@@ -4291,7 +4302,7 @@
 			path = CustomAnimation;
 			sourceTree = "<group>";
 		};
-		7AEF23572154C51D00BF1DB5 /* JoinMine */ = {
+		7AEF23572154C51D00BF1DB5 /* JoinMine加入社群 */ = {
 			isa = PBXGroup;
 			children = (
 				B88B091F20C8E29D005C2D2F /* JoinMineVc.h */,
@@ -4303,10 +4314,10 @@
 				B88B092820C8ED77005C2D2F /* JoinModel.h */,
 				B88B092920C8ED77005C2D2F /* JoinModel.m */,
 			);
-			path = JoinMine;
+			path = "JoinMine加入社群";
 			sourceTree = "<group>";
 		};
-		7AEF23582154C58A00BF1DB5 /* WalletSetting */ = {
+		7AEF23582154C58A00BF1DB5 /* WalletSetting钱包设置 */ = {
 			isa = PBXGroup;
 			children = (
 				7A2CC6392159E28400B27E2D /* WalletBackup钱包备份 */,
@@ -4316,10 +4327,10 @@
 				211A34F51FB4328800FEB71F /* SettingTableView.h */,
 				211A34F61FB4328800FEB71F /* SettingTableView.m */,
 			);
-			path = WalletSetting;
+			path = "WalletSetting钱包设置";
 			sourceTree = "<group>";
 		};
-		7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity */ = {
+		7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity账户与设置 */ = {
 			isa = PBXGroup;
 			children = (
 				211A34E91FB42F8100FEB71F /* SettingVC.h */,
@@ -4328,6 +4339,7 @@
 				B83666F2210EAF470065DF18 /* LocalSettingTableView.m */,
 				211A34F21FB430F900FEB71F /* SettingCell.h */,
 				211A34F31FB430F900FEB71F /* SettingCell.m */,
+				1F358B3A218AA43A00F1665B /* ScratchableLatex九宫格 */,
 				1F76698821D61D0500006B41 /* ChangePhoneAndEmail */,
 				1F76698721D61B5D00006B41 /* ChangePassword */,
 				1F1B000921E49BB8000BEBD3 /* BindingEmail */,
@@ -4336,7 +4348,7 @@
 				1FC390E921E328520070E153 /* MyBankCard */,
 				21C91D791FDBCF5B006EDB16 /* Auth实名认证 */,
 			);
-			path = AccountsAndSecurity;
+			path = "AccountsAndSecurity账户与设置";
 			sourceTree = "<group>";
 		};
 		7AEF235A2154C70400BF1DB5 /* Email */ = {
@@ -4351,10 +4363,6 @@
 		7AEF235B2154C81400BF1DB5 /* AddWallet */ = {
 			isa = PBXGroup;
 			children = (
-				B8CA7D4720CBA22800A0E93C /* WalletImportVC.h */,
-				B8CA7D4820CBA22800A0E93C /* WalletImportVC.m */,
-				B8B15C0020CA312100F13220 /* BuildWalletMineVC.h */,
-				B8B15C0120CA312100F13220 /* BuildWalletMineVC.m */,
 			);
 			path = AddWallet;
 			sourceTree = "<group>";

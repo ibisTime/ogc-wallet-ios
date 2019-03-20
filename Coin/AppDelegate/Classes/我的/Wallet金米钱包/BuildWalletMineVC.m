@@ -48,79 +48,34 @@
 {
     
     [super viewWillAppear:animated];
-    
+    [self navigationSetDefault];
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self navigationwhiteColor];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self requestProtect];
-//    self.navigationController.navigationBar.barTintColor = kAppCustomMainColor;
-//    UINavigationBar *navBar = [UINavigationBar appearance];
-//    NSString *text = [LangSwitcher switchLang:@"返回" key:nil];
-//    [self.navigationController.navigationItem.backBarButtonItem setTitle:text];
-//
-//    navBar.backIndicatorImage = [UIImage imageNamed:@"返回 白色"];
-//    navBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回 白色"];
-//    navBar.barTintColor = [UIColor whiteColor];
-//    navBar.translucent = NO;
-//    navBar.tintColor = kAppCustomMainColor;
-//    [navBar setTitleTextAttributes:@{
-//                                     NSForegroundColorAttributeName : [UIColor textColor]
-//                                     }];
-    self.title =  [LangSwitcher switchLang:@"创建钱包" key:nil];
-//    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回 白色"];
-//    UIColor *color = [UIColor whiteColor];
-//    NSDictionary *dict = [NSDictionary dictionaryWithObject:color forKey:NSForegroundColorAttributeName];
-//    self.navigationController.navigationBar.titleTextAttributes = dict;
-//    [UINavigationBar appearance].backIndicatorImage = [UIImage imageNamed:@"返回 白色"];
-//    
+
+//    self.title =  [LangSwitcher switchLang:@"创建钱包" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"创建钱包" key:nil];
+    self.titleText.textColor = kWhiteColor;
+    self.navigationItem.titleView = self.titleText;
     [self initViews];
     self.navigationController.navigationBar.titleTextAttributes=
   @{NSForegroundColorAttributeName:kWhiteColor
     ,
     NSFontAttributeName:[UIFont systemFontOfSize:16]};
-//    self.navigationController.navigationBar.hidden = YES;
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)initViews
 {
-//    UIButton *cancelBtn = [UIButton buttonWithImageName:@"cancel"];
-//
-//    [cancelBtn addTarget:self action:@selector(clickCancel) forControlEvents:UIControlEventTouchUpInside];
-//
-//    [self.view addSubview:cancelBtn];
-//    [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.top.equalTo(@(kStatusBarHeight+20));
-//        make.left.equalTo(@5);
-//        make.width.equalTo(@50);
-//        make.height.equalTo(@25);
-//
-////
-//    }];
     
     self.view.backgroundColor = kHexColor(@"#ffffff");
-//    self.iconImage = [[UIImageView alloc] init];
-//    [self.view addSubview:self.iconImage];
-//    self.iconImage.image = kImage(@"icon圆角");
-//    [self.iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(@(kHeight(150)));
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.width.height.equalTo(@75);
-//
-//    }];
-//
-//    self.nameLable = [[UIImageView alloc] init];
-//    //    self.title = [LangSwitcher switchLang:@"我的" key:nil];
-//    [self.view addSubview:self.nameLable];
-//    [self.nameLable mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.iconImage.mas_bottom).offset(28);
-//        make.centerX.equalTo(self.view.mas_centerX);
-//        make.height.equalTo(@19);
-//
-//    }];
-//    self.nameLable.contentMode = UIViewContentModeScaleToFill;
-//    self.nameLable.image = kImage(@"THAWALLET");
+
     UIView *topView = [[UIView alloc] init];
     [self.view addSubview:topView];
     topView.backgroundColor = kTabbarColor;
@@ -197,12 +152,7 @@
     [self.view addSubview:phone3];
     phone3.backgroundColor = kLineColor;
     phone3.frame = CGRectMake(margin*2, pwdTf.yy, w-30, 1);
-    //re密码
-//    UILabel *pLab = [UILabel labelWithTitle:[LangSwitcher switchLang:@"密码" key:nil] frame:CGRectMake(20, pwdTf.yy, w, 22)];
-//    pLab.font = [UIFont systemFontOfSize:14];
-//    pLab.textAlignment = NSTextAlignmentLeft;
-//    pLab.textColor = kTextColor;
-//    [self.view addSubview:pLab];
+
     TLTextField *rePwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, pwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"" key:nil] titleWidth:20 placeholder:[LangSwitcher switchLang:@"确认密码" key:nil]];
     rePwdTf.returnKeyType = UIReturnKeyNext;
     [rePwdTf addTarget:self action:@selector(next2) forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -216,22 +166,14 @@
     phone4.backgroundColor = kLineColor;
     phone4.frame = CGRectMake(margin*2, rePwdTf.yy, w-30, 1);
     
-//    TLTextField *introduceTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, rePwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"" key:nil] titleWidth:20 placeholder:[LangSwitcher switchLang:@"密码提示信息 (可不填)" key:nil]];
-////    introduceTf.secureTextEntry = YES;
-////    [self.view addSubview:introduceTf];
-//    self.introduceTf = introduceTf;
-//    UIView *phone5 = [[UIView alloc] init];
-//    [self.view addSubview:phone5];
-//    phone5.backgroundColor = kLineColor;
-//    phone5.frame = CGRectMake(margin*2, introduceTf.yy, w-30, 1);
-//
-    
+
     
     self.introduceButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.view addSubview:self.introduceButton];
 //        NSString *text3 =  [LangSwitcher switchLang:@"我已阅读并同意服务及隐私条款" key:nil];
-        [self.introduceButton setImage:kImage(@"打勾 圆") forState:UIControlStateNormal];
-        [self.introduceButton setImage:kImage(@"未选中") forState:UIControlStateSelected];
+
+        [self.introduceButton setImage:kImage(@"Combined Shape2") forState:UIControlStateNormal];
+        [self.introduceButton setImage:kImage(@"Oval Copy2") forState:UIControlStateSelected];
         _isSelect = @"1";
 //        [self.introduceButton setTitle:text3 forState:UIControlStateNormal];
     [self.introduceButton addTarget:self action:@selector(html5Pri:) forControlEvents:UIControlEventTouchUpInside];

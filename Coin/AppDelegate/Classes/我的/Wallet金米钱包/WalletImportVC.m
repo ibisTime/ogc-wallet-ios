@@ -53,6 +53,19 @@
 
 @implementation WalletImportVC
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    [self navigationSetDefault];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self navigationwhiteColor];
+}
+
+
 - (void)viewDidLoad {
     self.title = [LangSwitcher switchLang:@"导入钱包" key:nil];
     self.view.backgroundColor = kWhiteColor;
@@ -431,55 +444,36 @@
     [self.navigationController pushViewController:htmlVC animated:YES];
 }
 
-
 - (void)html5Wallet
 {
     HTMLStrVC *htmlVC = [[HTMLStrVC alloc] init];
     self.navigationController.navigationBar.hidden = NO;
-    
     htmlVC.type = HTMLTypeMnemonic;
-    
     [self.navigationController pushViewController:htmlVC animated:YES];
-    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    
     [self.view endEditing:YES];
-    
 }
+
 - (void)beginEdit
 {
-    
     [self.view endEditing:YES];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    CoinWeakSelf;
-    　　if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-        
-        if (self.walletBlock) {
-            self.walletBlock();
-        }
-        　　　　NSLog(@"clicked navigationbar back button");
-        　　}
-    
-}
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    CoinWeakSelf;
+//    　　if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+//
+//        if (self.walletBlock) {
+//            self.walletBlock();
+//        }
+//        　　　　NSLog(@"clicked navigationbar back button");
+//        　　}
+//
+//}
 
 @end

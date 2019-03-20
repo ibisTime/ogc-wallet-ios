@@ -37,8 +37,23 @@
 
 @implementation BuildBackUpVC
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    [self navigationSetDefault];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self navigationwhiteColor];
+}
+
+
 - (void)viewDidLoad {
-    self.title = [LangSwitcher switchLang:@"钱包备份" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"钱包备份" key:nil];
+    self.titleText.textColor = kWhiteColor;
+    self.navigationItem.titleView = self.titleText;
 //    [self.navigationController.navigationItem setHidesBackButton:YES];
 //    [self.navigationItem setHidesBackButton:YES];
 //    [self.navigationController.navigationBar.backItem setHidesBackButton:YES];
@@ -199,8 +214,8 @@
     layout.minimumInteritemSpacing = 0.0; // 横
 //    layout.sectionInset = UIEdgeInsetsMake(10, 10, , 10);
     layout.itemSize = CGSizeMake((kWidth(kScreenWidth-60))/3, 45);
-    UIImage *image1 = [UIImage imageNamed:@"bch"];
-    UIImage *image2 = [UIImage imageNamed:@"eth"];
+    UIImage *image1 = [UIImage imageNamed:@"ltc"];
+    UIImage *image2 = [UIImage imageNamed:@"ltc"];
     UIImage *image3 = [UIImage imageNamed:@"ltc"];
     NSArray *array = @[image2, image2, image3, image2, image3, image1, image3, image1, image1];
     QHCollectionViewNine *bottomView = [[QHCollectionViewNine alloc] initWithFrame:CGRectMake(15, kHeight(253), (kWidth(kScreenWidth-60)), 220) collectionViewLayout:layout withImage:array];
@@ -209,16 +224,7 @@
     bottomView.refreshDelegate = self;
     self.bottomView.type = SearchTypeTop;
     [self.whiteView addSubview:bottomView];
-//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(@(kHeight(253)));
-//        make.left.equalTo(self.whiteView.mas_left).offset(15);
-//        make.right.equalTo(self.whiteView.mas_right).offset(-15);
-//        make.height.equalTo(@(kHeight(175)));
-//
-//    }];
-    
-//    bottomView.layer.cornerRadius = 6;
-//    bottomView.clipsToBounds = YES;
+
     bottomView.backgroundColor = kWhiteColor;
 }
 
@@ -392,40 +398,7 @@
     }
     
     self.bottomView.titles = self.bottomNames;
-//    NSMutableArray *tpArray = [NSMutableArray array];
-//    for (int i = 0; i < self.bottomNames.count; i++) {
-//        [tpArray addObject:self.bottomNames[i].symbol];
-//    }
-//
-//    NSMutableArray *categoryArray = [[NSMutableArray alloc] init];
-//
-//    for (unsigned i = 0; i < [self.bottomNames count]; i++){
-//
-//        if ([tpArray containsObject:[self.bottomNames objectAtIndex:i].symbol] == NO){
-//
-//            [categoryArray addObject:[self.bottomNames objectAtIndex:i]];
-//
-//        }
-//
-//
-//
-//    }
-//    if (categoryArray.count == 11) {
-//        self.mnemonics = [MnemonicUtil getGenerateMnemonics];
-//        NSArray *words = [self.mnemonics componentsSeparatedByString:@" "];
-//
-//        NSArray *tmpArr = words.mutableCopy;
-//
-//        self.bottomNames = [NSMutableArray array];
-//
-//        for (int i = 0; i < tmpArr.count; i++) {
-//            CurrencyTitleModel *title =  [[CurrencyTitleModel alloc] init];
-//            title.symbol = words[i];
-//            title.IsSelect = NO;
-//
-//            [self.bottomNames addObject:title];
-//        }
-//    }
+
     checkVC.userTitles = self.bottomNames.mutableCopy;
     NSArray *result = [self.bottomNames sortedArrayUsingComparator:^NSComparisonResult( CurrencyTitleModel* obj1,  CurrencyTitleModel* obj2) {
         

@@ -179,7 +179,7 @@
 -(void)initNavigationNar
 {
     self.nameLable = [[UILabel alloc]init];
-    self.nameLable.text = [LangSwitcher switchLang:@"游戏" key:nil];
+    self.nameLable.text = [LangSwitcher switchLang:@"应用" key:nil];
     self.nameLable.textAlignment = NSTextAlignmentCenter;
     self.nameLable.font = Font(18);
     self.nameLable.textColor = kWhiteColor;
