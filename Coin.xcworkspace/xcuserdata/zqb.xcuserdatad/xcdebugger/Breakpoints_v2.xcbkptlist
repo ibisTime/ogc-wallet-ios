@@ -87,5 +87,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/Create&#x521b;&#x5efa;/BuildCheckVC.m"
+            timestampString = "574850760.918344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "-buildSureWallet"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[BuildCheckVC buildSureWallet]_block_invoke"
+                  moduleName = "Coin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/%E6%88%91%E7%9A%84/Wallet%E9%87%91%E7%B1%B3%E9%92%B1%E5%8C%85/Create%E5%88%9B%E5%BB%BA/BuildCheckVC.m"
+                  timestampString = "574850762.1487319"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "413"
+                  endingLineNumber = "413"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_.349"
+                  moduleName = "Coin"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/%E6%88%91%E7%9A%84/Wallet%E9%87%91%E7%B1%B3%E9%92%B1%E5%8C%85/Create%E5%88%9B%E5%BB%BA/BuildCheckVC.m"
+                  timestampString = "574850762.151087"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "406"
+                  endingLineNumber = "406"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/WalletSetting&#x94b1;&#x5305;&#x5de5;&#x5177;/TLNewPwdVC.m"
+            timestampString = "574850760.918586"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "-changePwd"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

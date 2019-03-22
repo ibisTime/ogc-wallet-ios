@@ -382,37 +382,48 @@
 //
 //            NSLog(@"插入地址私钥%d",sucess);
 //        }
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [paths objectAtIndex:0];
-        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
-        NSLog(@"dbPath = %@",dbPath);
-        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
         
-        
-        if ([dataBase open])
+        if(self.isSave == YES)
         {
-            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
+            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+            NSString *documentDirectory = [paths objectAtIndex:0];
+            NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+            NSLog(@"dbPath = %@",dbPath);
+            FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
             
+            
+            if ([dataBase open])
+            {
+                [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
+                
+            }
+            [dataBase close];
+            
+            [dataBase open];
+            [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,self.titleWord,self.pwd,self.name];
+            [dataBase close];
+            
+            [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                //            创建通知
+
+                NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+            }];
+            
+        }else
+        {
+            [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                //            创建通知
+                
+                NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+                
+            }];
         }
-        [dataBase close];
         
-        [dataBase open];
-        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,self.titleWord,self.pwd,self.name];
-        [dataBase close];
-      
-        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
-            [self.navigationController popToRootViewControllerAnimated:YES];
-//            创建通知
-//            self.tabBarController.selectedIndex = 3;
-            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
-            [[NSNotificationCenter defaultCenter] postNotification:notification];
-//            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController pushViewController:vc animated:YES];
-//            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
-//            vc.hidesBottomBarWhenPushed = YES;
-//            [self.navigationController popViewControllerAnimated:YES];
-        }];
         
 //        [TLAlert alertWithMsg:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil]];
         //验证通过

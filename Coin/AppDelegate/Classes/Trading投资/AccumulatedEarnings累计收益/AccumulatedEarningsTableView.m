@@ -17,31 +17,26 @@
 static NSString *identifierCell = @"AccumulatedEarningsCell";
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
-
     if (self = [super initWithFrame:frame style:style]) {
-
         self.dataSource = self;
         self.delegate = self;
         //        [self setContentInset:UIEdgeInsetsMake(5, 0.0, -5, 0.0)];
         self.backgroundColor = kBackgroundColor;
-
         [self registerClass:[AccumulatedEarningsCell class] forCellReuseIdentifier:identifierCell];
-
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.date = @"";
     }
-
     return self;
 }
 
 #pragma mark - UITableViewDataSource
-
 -(NSInteger)numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.model.count;
 }
 
@@ -75,14 +70,10 @@ static NSString *identifierCell = @"AccumulatedEarningsCell";
     {
         return 5;
     }
-
 }
 
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-
     UIView *view = [UIView new];
-
     if (![self.date isEqualToString:@""]) {
         UILabel *titleLbl = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#999999")];
         titleLbl.text = [NSString stringWithFormat:@"%@%@",self.date,[LangSwitcher switchLang:@"账单" key:nil]];
@@ -91,9 +82,7 @@ static NSString *identifierCell = @"AccumulatedEarningsCell";
     return view;
 }
 
-
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-
     return [UIView new];
 }
 

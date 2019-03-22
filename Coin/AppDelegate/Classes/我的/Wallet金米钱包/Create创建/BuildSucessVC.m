@@ -191,6 +191,7 @@
     backUpVC.pwd = self.PWD;
     backUpVC.name = self.name;
     backUpVC.mnemonics = self.mnemonics;
+    backUpVC.isSave = YES;
     [self.navigationController pushViewController:backUpVC animated:YES];
 //    TLDataBase *dataBase = [TLDataBase sharedManager];
 //    NSString *word;

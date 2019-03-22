@@ -201,6 +201,15 @@
         return;
     }
     
+    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+    //    walletName.text = walletDic[@"walletName"];
+    NSString *pwd = walletDic[@"pwd"];
+    
+    if (![self.pwdTf.text isEqualToString:pwd]) {
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"交易密码错误" key:nil]];
+        return;
+    }
+    
     if (!self.rePwdTf.text || [self.rePwdTf.text isBlank]) {
         
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入新密码" key:nil]];
@@ -220,46 +229,58 @@
         
     }
     
-    TLDataBase *dataBase = [TLDataBase sharedManager];
-    NSString *word;
-    if ([dataBase.dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT PwdKey from THAUser where userId = '%@'",[TLUser user].userId];
-        //        [sql appendString:[TLUser user].userId];
-        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-        while ([set next])
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
+    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+    FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
+    
+//    TLDataBase *dataBase = [TLDataBase sharedManager];
+//    NSString *word;
+//    if ([dataBase.dataBase open]) {
+//        NSString *sql = [NSString stringWithFormat:@"SELECT PwdKey from THAUser where userId = '%@'",[TLUser user].userId];
+//        //        [sql appendString:[TLUser user].userId];
+//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//        while ([set next])
+//        {
+//            word = [set stringForColumn:@"PwdKey"];
+//            if ([word isEqualToString:@""]) {
+//                word = @"111111";
+//            }
+//
+//        }
+//        [set close];
+//    }
+//    [dataBase.dataBase close];
+//
+//    if (![word isEqualToString:self.pwdTf.text]) {
+//        [TLAlert alertWithError:[LangSwitcher switchLang:@"交易密码错误" key:nil]];
+//        return;
+//    }
+//
+//    TLDataBase *db = [TLDataBase sharedManager];
+    if ([dataBase open]) {
+        NSString *sql = [NSString stringWithFormat:@"UPDATE ChengWallet SET pwd = '%@' WHERE userid = '%@'",self.rePwdTf.text,[TLUser user].userId];
+        BOOL sucess = [dataBase executeUpdate:sql];
+
+        if (sucess == YES) {
+            NSLog(@"成功");
+        }else
         {
-            word = [set stringForColumn:@"PwdKey"];
-            if ([word isEqualToString:@""]) {
-                word = @"111111";
-            }
-            
+            NSLog(@"失败");
         }
-        [set close];
-    }
-    [dataBase.dataBase close];
-    
-    if (![word isEqualToString:self.pwdTf.text]) {
-        [TLAlert alertWithError:[LangSwitcher switchLang:@"交易密码错误" key:nil]];
-        return;
-    }
-    
-    TLDataBase *db = [TLDataBase sharedManager];
-    if ([db.dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"UPDATE THAUser SET PwdKey = '%@' WHERE userId = '%@'",self.rePwdTf.text,[TLUser user].userId];
-        BOOL sucess = [db.dataBase executeUpdate:sql];
         
 //        NSLog(@"导入钱包交易密码%d",sucess);
-        
+
     }
-    [db.dataBase close];
-    
+    [dataBase close];
+
     [self.view endEditing:YES];
     [TLAlert alertWithSucces:[LangSwitcher switchLang:@"修改成功" key:nil]];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.navigationController popViewControllerAnimated:YES];
     });
-    
+//
     
     
 }

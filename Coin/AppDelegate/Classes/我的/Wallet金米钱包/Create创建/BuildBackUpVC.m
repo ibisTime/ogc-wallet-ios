@@ -381,7 +381,7 @@
     checkVC.pwd = self.pwd;
     checkVC.name = self.name;
 //    checkVC.view.backgroundColor = kClearColor;
-    checkVC.isCopy = self.isCopy;
+    
 //    self.mnemonics =  [MnemonicUtil getGenerateMnemonics];
     NSArray *words = [self.mnemonics componentsSeparatedByString:@" "];
     
@@ -425,7 +425,7 @@
     self.bottomNames = [NSMutableArray arrayWithArray:result];
     
     checkVC.bottomtitles = self.bottomNames;
-    
+    checkVC.isSave = self.isSave;
     
     checkVC.titleWord = self.mnemonics;
     

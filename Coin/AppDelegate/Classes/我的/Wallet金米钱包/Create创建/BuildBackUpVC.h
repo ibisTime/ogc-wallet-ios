@@ -14,6 +14,6 @@
 @property (nonatomic ,copy) NSString *pwd;
 @property (nonatomic ,copy) NSString *name;
 
-@property (nonatomic ,assign) BOOL isCopy;
+@property (nonatomic ,assign)BOOL isSave;
 
 @end

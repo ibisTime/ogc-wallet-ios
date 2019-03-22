@@ -189,6 +189,7 @@
                                   vc.mnemonics = mnemonics;
                                   vc.pwd = pwd;
                                   vc.name = Name;
+                                  vc.isSave = NO;
                                   [self.navigationController pushViewController:vc animated:YES];
                               }else{
                                   [TLAlert alertWithError:@"交易密码错误"];
