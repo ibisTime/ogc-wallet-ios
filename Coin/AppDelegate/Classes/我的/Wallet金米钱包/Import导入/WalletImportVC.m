@@ -73,22 +73,21 @@
     self.navigationItem.titleView = self.titleText;
     self.view.backgroundColor = kWhiteColor;
 //    NSString *word = [[NSUserDefaults standardUserDefaults] objectForKey:KWalletWord];
-    TLDataBase *dataBase = [TLDataBase sharedManager];
-    NSString *word;
-    if ([dataBase.dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
-        //        [sql appendString:[TLUser user].userId];
-        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-        while ([set next])
-        {
-            word = [set stringForColumn:@"Mnemonics"];
-            
-        }
-        [set close];
-    }
-    [dataBase.dataBase close];
+//    TLDataBase *dataBase = [TLDataBase sharedManager];
+//    NSString *word;
+//    if ([dataBase.dataBase open]) {
+//        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
+//        //        [sql appendString:[TLUser user].userId];
+//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//        while ([set next])
+//        {
+//            word = [set stringForColumn:@"Mnemonics"];
+//        }
+//        [set close];
+//    }
+//    [dataBase.dataBase close];
     //验证
-    self.userTempArray = [word componentsSeparatedByString:@" "];
+//    self.userTempArray = [word componentsSeparatedByString:@" "];
     self.wordTempArray = [NSMutableArray array];
     
     for (NSString *str in self.userTempArray) {

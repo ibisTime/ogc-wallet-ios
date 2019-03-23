@@ -58,7 +58,7 @@ void TLLog(NSString *format, ...) {
             
 //            self.addr = @"http://120.26.6.213:5801";
 //金米
-            self.addr = @"http://3.1.207.21:2801";
+            self.addr = @"http://3.1.207.21:2701";
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info/";
@@ -69,7 +69,7 @@ void TLLog(NSString *format, ...) {
             
         case RunEnvRelease: {
             
-            self.addr = @"https://moorebit.io/api";
+            self.addr = @"http://3.1.207.21:2801";
             self.ethHash = @"https://etherscan.io/tx";
             self.wanHash = @"https://www.wanscan.org/tx";
             self.btcHash = @"https://www.blockchain.com/btc/";

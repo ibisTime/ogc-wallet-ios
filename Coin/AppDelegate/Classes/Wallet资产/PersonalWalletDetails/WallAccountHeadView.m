@@ -48,7 +48,7 @@
     bgImage.layer.shadowRadius=3;// 阴影扩散的范围控制
     bgImage.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
     [self addSubview:bgImage];
-
+    self.bgImage.image = kImage(@"BTC背景");
     
     UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(25, 110/2 - 20, 40, 40)];
     kViewRadius(iconImage, 20);
@@ -78,23 +78,23 @@
 {
     _currency = currency;
 
-    
-    if ([currency.currency isEqualToString:@"BTC"]) {
-        self.bgImage.image = kImage(@"BTC背景");
+    if ([TLUser isBlankString:currency.currency] == YES) {
+        CoinModel *coin = [CoinUtil getCoinModel:currency.symbol];
+        
+        [self.bgIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
+
+        self.currentLbl.text = currency.symbol;
+        self.amountLbl.text = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:currency.balance coin:currency.symbol],currency.symbol];
     }else
     {
-        self.bgImage.image = kImage(@"usdt背景");
+        CoinModel *coin = [CoinUtil getCoinModel:currency.currency];
+        
+        [self.bgIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
+        
+        NSString *leftAmount = [currency.amount subNumber:currency.frozenAmount];
+        self.currentLbl.text = currency.currency;
+        self.amountLbl.text = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:leftAmount coin:currency.currency],currency.currency];
     }
-    
-    CoinModel *coin = [CoinUtil getCoinModel:currency.currency];
-
-    [self.bgIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
-    
-    NSString *leftAmount = [currency.amount subNumber:currency.frozenAmount];
-    self.currentLbl.text = currency.currency;
-    
-    self.amountLbl.text = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:leftAmount coin:currency.currency],currency.currency];
-
-
 }
+
 @end

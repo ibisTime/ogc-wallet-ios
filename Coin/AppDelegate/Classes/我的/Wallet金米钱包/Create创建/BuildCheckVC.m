@@ -395,10 +395,8 @@
             if ([dataBase open])
             {
                 [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
-                
             }
             [dataBase close];
-            
             [dataBase open];
             [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,self.titleWord,self.pwd,self.name];
             [dataBase close];

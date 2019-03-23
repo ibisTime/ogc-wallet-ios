@@ -25,7 +25,7 @@
 #import "AppMacro.h"
 #import "AppColorMacro.h"
 #import "APICodeMacro.h"
-
+#import "CustomFMDBModel.h"
 #import "TLUpdateVC.h"
 #import "AppConfig.h"
 #import "AppColorMacro.h"

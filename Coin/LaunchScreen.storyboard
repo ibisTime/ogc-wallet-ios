@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="启动页1080.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q08-fy-gdv">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="启动页.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q08-fy-gdv">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="启动页1080.png" width="1080" height="1920"/>
+        <image name="启动页.png" width="1080" height="1920"/>
     </resources>
 </document>

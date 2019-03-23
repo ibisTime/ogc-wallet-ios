@@ -21,6 +21,7 @@
 #import "LocalBillDetailVC.h"
 #import "TLBillBTCVC.h"
 #import "USDTRecordModel.h"
+#import "WalletForwordVC.h"
 @interface WalletLocalVc ()<RefreshDelegate>
 @property (nonatomic, strong) WalletLocalBillTableView *tableView;
 
@@ -46,7 +47,17 @@
 @end
 
 @implementation WalletLocalVc
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    [self navigationTransparentClearColor];
+}
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self navigationwhiteColor];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initHeadView];
@@ -61,34 +72,31 @@
         [self requestBtcList];
 
     }
-    else if ([self.currency.symbol isEqualToString:@"LXT"])
-    {
-        [self requestLXTList];
-    }
     else if ([self.currency.symbol isEqualToString:@"USDT"])
     {
         [self requestUSDTList];
     }
     else
     {
-        [self requestBillList];
+//        [self requestBillList];
     }
-
+    self.titleText.text = self.currency.symbol;
+    self.titleText.textColor = kWhiteColor;
+    self.navigationItem.titleView = self.titleText;
 }
 
 -(void)requestUSDTList
 {
     __weak typeof(self) weakSelf = self;
-    
-    
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     
     helper.tableView = self.tableView;
     self.helper = helper;
     
-    helper.code = @"802505";
+    helper.code = @"802221";
     helper.start = 0;
     helper.limit = 10;
+    helper.parameters[@"symbol"] = self.currency.symbol;
 //    helper.parameters[@"address"] = @"1x6YnuBVeeE65dQRZztRWgUPwyBjHCA5g";
     helper.parameters[@"address"] = self.currency.address;
     [helper modelClass:[USDTRecordModel class]];
@@ -156,6 +164,7 @@
     helper.code = @"802308";
     helper.start = 0;
     helper.limit = 10;
+    helper.parameters[@"symbol"] = self.currency.symbol;
     helper.parameters[@"address"] = self.currency.address;
     CoinModel *coin = [CoinUtil getCoinModel:self.currency.symbol];
 
@@ -230,10 +239,12 @@
     helper.tableView = self.tableView;
     self.helper = helper;
     
-    helper.code = @"802221";
+    helper.code = @"802224";
     helper.start = 0;
     helper.limit = 10;
     helper.parameters[@"address"] = self.currency.address;
+    
+//    helper.parameters[@"symbol"] = self.currency.symbol;
     [helper modelClass:[BillModel class]];
     
     [self.tableView addRefreshAction:^{
@@ -401,7 +412,7 @@
     }];
    
     
-    WallAccountHeadView *headView = [[WallAccountHeadView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 110)];
+    WallAccountHeadView *headView = [[WallAccountHeadView alloc] initWithFrame:CGRectMake(0, 0 - kNavigationBarHeight, kScreenWidth, 110 + kNavigationBarHeight)];
     self.headView = headView;
     [self.view addSubview:headView];
     self.headView.ISLocal = YES;
@@ -431,7 +442,7 @@
                          [LangSwitcher switchLang:@"收款" key:nil],
                          [LangSwitcher switchLang:@"转账" key:nil]
                          ];
-    NSArray *imgArr = @[@"充币", @"提币"];
+    NSArray *imgArr = @[@"转入", @"转出"];
     
     
     for (int i = 0; i < 2; i ++) {
@@ -465,7 +476,7 @@
             [self.navigationController pushViewController:coinVC animated:YES];
             break;
         case 1:
-//            [self clickWithdrawWithCurrency:self.currency];
+            [self clickWithdrawWithCurrency:self.currency];
 
             break;
             
@@ -475,12 +486,12 @@
     
 }
 
-//- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
-//
-//    WalletForwordVC *coinVC = [WalletForwordVC new];
-//    coinVC.currency = currencyModel;
-//    [self.navigationController pushViewController:coinVC animated:YES];
-//}
+- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
+
+    WalletForwordVC *coinVC = [WalletForwordVC new];
+    coinVC.currency = currencyModel;
+    [self.navigationController pushViewController:coinVC animated:YES];
+}
 
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath

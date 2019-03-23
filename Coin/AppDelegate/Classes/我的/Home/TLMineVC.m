@@ -102,9 +102,19 @@
 #pragma mark -- 接收到通知
 - (void)InfoNotificationAction:(NSNotification *)notification{
     
-    PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+    if ([TLUser isBlankString:walletDic[@"mnemonics"]] == NO) {
+        PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        
+        BuildWalletMineVC *vc = [[BuildWalletMineVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark -- 删除通知

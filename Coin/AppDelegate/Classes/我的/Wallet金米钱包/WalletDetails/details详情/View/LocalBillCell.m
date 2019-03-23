@@ -195,30 +195,23 @@
             self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"转账"] key:nil]; ;
 
         }
-        self.iconIV.image = kImage(@"转账");
-
-
-    }else
+        self.iconIV.image = kImage(@"转  出");
+    }
+    else
     {
          self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"收款"] key:nil]; ;
         self.iconIV.image  = kImage(@"收款");
-
     }
     [self layoutSubviews];
     _billModel.dHeightValue = self.detailLbl.frame.size.height == 1 ? 0: self.detailLbl.height;
-    
 }
-
 
 -(void)setUsdtModel:(USDTRecordModel *)usdtModel
 {
     self.introduceLab.text = [NSString stringWithFormat:@"%@",usdtModel.txid];
     self.timeLbl.text = [self UTCchangeDate:usdtModel.blockTime];
-    
-    
     NSString *countStr = [CoinUtil convertToRealCoin:usdtModel.amount
                                                 coin:self.currencyModel.symbol];
-    
     if ([self.currencyModel.address isEqualToString:usdtModel.referenceAddress]) {
         self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"收款"] key:nil]; ;
         self.iconIV.image  = kImage(@"收款");
@@ -227,28 +220,20 @@
     }else
     {
         self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"转账"] key:nil]; ;
-        self.iconIV.image = kImage(@"转账");
+        self.iconIV.image = kImage(@"转  出");
         self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
         self.moneyLbl.text = [NSString stringWithFormat:@"-%@ %@", countStr, self.currencyModel.symbol];
     }
 }
 
 -(NSString *)UTCchangeDate:(NSString *)utc{
-    
     NSTimeInterval time = [utc doubleValue];
-    
     NSDate *date=[NSDate dateWithTimeIntervalSince1970:time];
-    
     NSDateFormatter *dateformatter=[[NSDateFormatter alloc] init];
-    
     [dateformatter setDateFormat:@"MM-dd HH:mm"];
-    
     NSString *staartstr=[dateformatter stringFromDate:date];
-    
     return staartstr;
-    
 }
-
 
 
 @end

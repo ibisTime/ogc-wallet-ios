@@ -91,21 +91,12 @@
                       maker:self cancle:^(UIAlertAction *action) {
                           
                       } confirm:^(UIAlertAction *action, UITextField *textField) {
-                          TLDataBase *dataBase = [TLDataBase sharedManager];
-                          NSString *word;
-                          if ([dataBase.dataBase open]) {
-                              NSString *sql = [NSString stringWithFormat:@"SELECT PwdKey from THAUser where userId = '%@'",[TLUser user].userId];
-                              //        [sql appendString:[TLUser user].userId];
-                              FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-                              while ([set next])
-                              {
-                                  word = [set stringForColumn:@"PwdKey"];
-                                  
-                              }
-                              [set close];
-                          }
-                          [dataBase.dataBase close];
-                          if ([word isEqualToString:textField.text]) {
+                          NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+//                          walletName.text = walletDic[@"walletName"];
+                          NSString *pwd = walletDic[@"pwd"];
+                          NSString *mnemonics = walletDic[@"mnemonics"];
+                          NSString *Name = walletDic[@"walletName"];
+                          if ([pwd isEqualToString:textField.text]) {
                               [self deleteWallet];
                           }else{
                               [TLAlert alertWithError:@"交易密码错误"];
@@ -292,61 +283,63 @@
 - (void)deleteWallet
 {
     
-    TLDataBase *dataBase = [TLDataBase sharedManager];
-    NSString *word;
-    if ([dataBase.dataBase open]) {
-        
-        
-        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
-        //        [sql appendString:[TLUser user].userId];
-        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-        while ([set next])
-        {
-            word = [set stringForColumn:@"Mnemonics"];
-            
-        }
-        [set close];
-    }
-    [dataBase.dataBase close];
-    if (!word) {
-        return;
-    }
-    
+//    TLDataBase *dataBase = [TLDataBase sharedManager];
+//    NSString *word;
+//    if ([dataBase.dataBase open]) {
+//
+//
+//        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
+//        //        [sql appendString:[TLUser user].userId];
+//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//        while ([set next])
+//        {
+//            word = [set stringForColumn:@"Mnemonics"];
+//
+//        }
+//        [set close];
+//    }
+//    [dataBase.dataBase close];
+//    if (!word) {
+//        return;
+//    }
+//    [NSString stringWithFormat:@"select * from ChengWallet where userid like '%@'",[TLUser user].userId]
     [TLAlert alertWithTitle:[LangSwitcher switchLang:@"删除钱包" key:nil] msg:[LangSwitcher switchLang:@"请确保已备份钱包至安全的地方，金米钱包不承担任何钱包丢失、被盗、忘记密码等产生的资产损失!" key:nil] confirmMsg:[LangSwitcher switchLang:@"确定" key:nil] cancleMsg:[LangSwitcher switchLang:@"取消" key:nil] maker:self cancle:^(UIAlertAction *action) {
         
         
     } confirm:^(UIAlertAction *action) {
         
-        TLDataBase *db = [TLDataBase sharedManager];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [paths objectAtIndex:0];
+        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
         
-        if ([db.dataBase open]) {
-            NSString *Sql2 =[NSString stringWithFormat:@"delete from THALocal WHERE walletId = (SELECT walletId from THAUser where userId='%@')",[TLUser user].userId];
+        if ([dataBase open]) {
+            NSString *Sql2 =[NSString stringWithFormat:@"delete from ChengWallet where userid = '%@'",[TLUser user].userId];
             
-            BOOL sucess2  = [db.dataBase executeUpdate:Sql2];
+            BOOL sucess2  = [dataBase executeUpdate:Sql2];
             NSLog(@"删除自选表%d",sucess2);
             
-            NSString *Sql =[NSString stringWithFormat:@"delete from THAUser WHERE userId = '%@'",[TLUser user].userId];
             
-            BOOL sucess  = [db.dataBase executeUpdate:Sql];
-            
-            NSLog(@"删除钱包表%d",sucess);
+//            NSString *Sql =[NSString stringWithFormat:@"delete from THAUser WHERE userId = '%@'",[TLUser user].userId];
+//
+//            BOOL sucess  = [db.dataBase executeUpdate:Sql];
+//
+//            NSLog(@"删除钱包表%d",sucess);
             
             
         }
         
-        [db.dataBase close];
-        //                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KWalletWord];
-        //                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KWalletAddress];
-        //                [[NSUserDefaults standardUserDefaults] removeObjectForKey:KWalletPrivateKey];
-        //                [[NSUserDefaults standardUserDefaults] synchronize];
+        [dataBase close];
+
         [TLAlert alertWithMsg:[LangSwitcher switchLang:@"删除成功" key:nil]];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:KISBuild];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            TLTabBarController *MineVC = [[TLTabBarController alloc] init];
-            
-            [UIApplication sharedApplication].keyWindow.rootViewController = MineVC;
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            //            创建通知
+            //            self.tabBarController.selectedIndex = 3;
+//            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+//            [[NSNotificationCenter defaultCenter] postNotification:notification];
         });
     }];
     

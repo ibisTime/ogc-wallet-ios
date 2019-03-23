@@ -180,6 +180,12 @@
 		1F9361D921F1B388007E522A /* MyFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9361D821F1B388007E522A /* MyFriendModel.m */; };
 		1F9C80D722420F4D00DFA9C3 /* PrivateKeyWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C80D622420F4D00DFA9C3 /* PrivateKeyWalletVC.m */; };
 		1F9C80DB22421B3A00DFA9C3 /* CustomFMDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C80DA22421B3A00DFA9C3 /* CustomFMDB.m */; };
+		1F9C8FB52244DF0600DFA9C3 /* WalletForwordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C8FB42244DF0600DFA9C3 /* WalletForwordVC.m */; };
+		1F9C8FBA2244DF2100DFA9C3 /* UsdtClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C8FB62244DF2000DFA9C3 /* UsdtClient.m */; };
+		1F9C8FBB2244DF2100DFA9C3 /* BTCPoundage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C8FB92244DF2100DFA9C3 /* BTCPoundage.m */; };
+		1F9C8FBF2244E10700DFA9C3 /* CustomFMDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C8FBE2244E10700DFA9C3 /* CustomFMDBModel.m */; };
+		1F9C8FC52246182600DFA9C3 /* PrivateKeyWalletTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C8FC42246182600DFA9C3 /* PrivateKeyWalletTableView.m */; };
+		1F9C8FC82246183D00DFA9C3 /* PrivateKeyWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C8FC72246183D00DFA9C3 /* PrivateKeyWalletCell.m */; };
 		1FA41B2F223D4B7400B746D8 /* SLBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA41AEE223D4B7300B746D8 /* SLBannerView.m */; };
 		1FA41B46223D4B7400B746D8 /* SLBannerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA41B2D223D4B7400B746D8 /* SLBannerView.xib */; };
 		1FA566ED223CD4B90077FE54 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA566D5223CD4B90077FE54 /* HomeVC.m */; };
@@ -235,7 +241,7 @@
 		1FA56B0B223CD7610077FE54 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA56B05223CD7600077FE54 /* NSTimer+addition.m */; };
 		1FA56B0C223CD7610077FE54 /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA56B08223CD7600077FE54 /* WYWebProgressLayer.m */; };
 		1FA56B0F223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA56B0D223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.m */; };
-		1FA56B11223CDDD90077FE54 /* 启动页1080.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA56B10223CDDD80077FE54 /* 启动页1080.png */; };
+		1FA56B11223CDDD90077FE54 /* 启动页.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA56B10223CDDD80077FE54 /* 启动页.png */; };
 		1FC390EE21E328840070E153 /* MyBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390ED21E328840070E153 /* MyBankCardVC.m */; };
 		1FC390F121E349FA0070E153 /* MyBankCardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F021E349FA0070E153 /* MyBankCardTableView.m */; };
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
@@ -1004,6 +1010,18 @@
 		1F9C80D622420F4D00DFA9C3 /* PrivateKeyWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivateKeyWalletVC.m; sourceTree = "<group>"; };
 		1F9C80D922421B3A00DFA9C3 /* CustomFMDB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomFMDB.h; sourceTree = "<group>"; };
 		1F9C80DA22421B3A00DFA9C3 /* CustomFMDB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomFMDB.m; sourceTree = "<group>"; };
+		1F9C8FB32244DF0600DFA9C3 /* WalletForwordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletForwordVC.h; sourceTree = "<group>"; };
+		1F9C8FB42244DF0600DFA9C3 /* WalletForwordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletForwordVC.m; sourceTree = "<group>"; };
+		1F9C8FB62244DF2000DFA9C3 /* UsdtClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsdtClient.m; sourceTree = "<group>"; };
+		1F9C8FB72244DF2000DFA9C3 /* BTCPoundage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTCPoundage.h; sourceTree = "<group>"; };
+		1F9C8FB82244DF2000DFA9C3 /* UsdtClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsdtClient.h; sourceTree = "<group>"; };
+		1F9C8FB92244DF2100DFA9C3 /* BTCPoundage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTCPoundage.m; sourceTree = "<group>"; };
+		1F9C8FBD2244E10700DFA9C3 /* CustomFMDBModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomFMDBModel.h; sourceTree = "<group>"; };
+		1F9C8FBE2244E10700DFA9C3 /* CustomFMDBModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomFMDBModel.m; sourceTree = "<group>"; };
+		1F9C8FC32246182600DFA9C3 /* PrivateKeyWalletTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateKeyWalletTableView.h; sourceTree = "<group>"; };
+		1F9C8FC42246182600DFA9C3 /* PrivateKeyWalletTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivateKeyWalletTableView.m; sourceTree = "<group>"; };
+		1F9C8FC62246183D00DFA9C3 /* PrivateKeyWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrivateKeyWalletCell.h; sourceTree = "<group>"; };
+		1F9C8FC72246183D00DFA9C3 /* PrivateKeyWalletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrivateKeyWalletCell.m; sourceTree = "<group>"; };
 		1FA41AEE223D4B7300B746D8 /* SLBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLBannerView.m; sourceTree = "<group>"; };
 		1FA41B2D223D4B7400B746D8 /* SLBannerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SLBannerView.xib; sourceTree = "<group>"; };
 		1FA41B2E223D4B7400B746D8 /* SLBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLBannerView.h; sourceTree = "<group>"; };
@@ -1114,7 +1132,7 @@
 		1FA56B08223CD7600077FE54 /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
 		1FA56B0D223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+NSURLRequestSSLY.m"; sourceTree = "<group>"; };
 		1FA56B0E223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+NSURLRequestSSLY.h"; sourceTree = "<group>"; };
-		1FA56B10223CDDD80077FE54 /* 启动页1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页1080.png"; sourceTree = "<group>"; };
+		1FA56B10223CDDD80077FE54 /* 启动页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页.png"; sourceTree = "<group>"; };
 		1FC390EC21E328840070E153 /* MyBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardVC.h; sourceTree = "<group>"; };
 		1FC390ED21E328840070E153 /* MyBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardVC.m; sourceTree = "<group>"; };
 		1FC390EF21E349FA0070E153 /* MyBankCardTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardTableView.h; sourceTree = "<group>"; };
@@ -2020,15 +2038,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		1F358B3F218ADFDD00F1665B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1F358B3B218ABC4500F1665B /* USDTRecordModel.h */,
-				1F358B3C218ABC4500F1665B /* USDTRecordModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		1F358B40218ADFDF00F1665B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2818,17 +2827,12 @@
 			children = (
 				1F9C80D522420F4D00DFA9C3 /* PrivateKeyWalletVC.h */,
 				1F9C80D622420F4D00DFA9C3 /* PrivateKeyWalletVC.m */,
+				1F9C8FC32246182600DFA9C3 /* PrivateKeyWalletTableView.h */,
+				1F9C8FC42246182600DFA9C3 /* PrivateKeyWalletTableView.m */,
+				1F9C8FC62246183D00DFA9C3 /* PrivateKeyWalletCell.h */,
+				1F9C8FC72246183D00DFA9C3 /* PrivateKeyWalletCell.m */,
 			);
 			path = "Wallet钱包";
-			sourceTree = "<group>";
-		};
-		1F9C80D822421B0500DFA9C3 /* FMDB */ = {
-			isa = PBXGroup;
-			children = (
-				1F9C80D922421B3A00DFA9C3 /* CustomFMDB.h */,
-				1F9C80DA22421B3A00DFA9C3 /* CustomFMDB.m */,
-			);
-			path = FMDB;
 			sourceTree = "<group>";
 		};
 		1F9C80DC2242244A00DFA9C3 /* Import导入 */ = {
@@ -2838,6 +2842,32 @@
 				B8CA7D4820CBA22800A0E93C /* WalletImportVC.m */,
 			);
 			path = "Import导入";
+			sourceTree = "<group>";
+		};
+		1F9C8FB22244DEFC00DFA9C3 /* Transfer转账 */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C8FB32244DF0600DFA9C3 /* WalletForwordVC.h */,
+				1F9C8FB42244DF0600DFA9C3 /* WalletForwordVC.m */,
+			);
+			path = "Transfer转账";
+			sourceTree = "<group>";
+		};
+		1F9C8FBC2244DF3800DFA9C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C8FBD2244E10700DFA9C3 /* CustomFMDBModel.h */,
+				1F9C8FBE2244E10700DFA9C3 /* CustomFMDBModel.m */,
+				1F9C80D922421B3A00DFA9C3 /* CustomFMDB.h */,
+				1F9C80DA22421B3A00DFA9C3 /* CustomFMDB.m */,
+				1F358B3B218ABC4500F1665B /* USDTRecordModel.h */,
+				1F358B3C218ABC4500F1665B /* USDTRecordModel.m */,
+				1F9C8FB72244DF2000DFA9C3 /* BTCPoundage.h */,
+				1F9C8FB92244DF2100DFA9C3 /* BTCPoundage.m */,
+				1F9C8FB82244DF2000DFA9C3 /* UsdtClient.h */,
+				1F9C8FB62244DF2000DFA9C3 /* UsdtClient.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1FA41AED223D4B7300B746D8 /* SLBannerView */ = {
@@ -3088,11 +3118,12 @@
 		1FFF59272240DD04000CD2E7 /* Wallet金米钱包 */ = {
 			isa = PBXGroup;
 			children = (
+				7AEF235C2154CB1500BF1DB5 /* WalletDetails */,
 				1F9C80D422420F2300DFA9C3 /* Wallet钱包 */,
-				1F9C80D822421B0500DFA9C3 /* FMDB */,
 				1F9C80DC2242244A00DFA9C3 /* Import导入 */,
 				1F9C80D322420EF600DFA9C3 /* Create创建 */,
 				7AEF23582154C58A00BF1DB5 /* WalletSetting钱包工具 */,
+				1F9C8FBC2244DF3800DFA9C3 /* Model */,
 			);
 			path = "Wallet金米钱包";
 			sourceTree = "<group>";
@@ -3756,8 +3787,6 @@
 				7A40B111217EEC95004B9830 /* FlashAgainst */,
 				7AEF23612154E5E000BF1DB5 /* Receivables */,
 				7AEF235D2154D60100BF1DB5 /* PersonalWalletDetails */,
-				7AEF235C2154CB1500BF1DB5 /* WalletDetails */,
-				7AEF235B2154C81400BF1DB5 /* AddWallet */,
 			);
 			path = "Wallet资产";
 			sourceTree = "<group>";
@@ -3849,7 +3878,7 @@
 				216F5AEE206CC6F600F2C832 /* AppDelegate */,
 				2E394FA31FB0546E00BA0829 /* Classes */,
 				7A40B100217CAEA6004B9830 /* Assets.xcassets */,
-				1FA56B10223CDDD80077FE54 /* 启动页1080.png */,
+				1FA56B10223CDDD80077FE54 /* 启动页.png */,
 				1F4731C5221A92C9007B5908 /* 1080的.png */,
 				1F0BF770222E2885003FA1A5 /* Info.plist */,
 				B8DAD14920E2208B00AF4CD4 /* InfoPlist.strings */,
@@ -4386,16 +4415,10 @@
 			path = Email;
 			sourceTree = "<group>";
 		};
-		7AEF235B2154C81400BF1DB5 /* AddWallet */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AddWallet;
-			sourceTree = "<group>";
-		};
 		7AEF235C2154CB1500BF1DB5 /* WalletDetails */ = {
 			isa = PBXGroup;
 			children = (
+				1F9C8FB22244DEFC00DFA9C3 /* Transfer转账 */,
 				7AEF23602154E35A00BF1DB5 /* details详情 */,
 			);
 			path = WalletDetails;
@@ -4454,7 +4477,6 @@
 			isa = PBXGroup;
 			children = (
 				1F358B40218ADFDF00F1665B /* Controller */,
-				1F358B3F218ADFDD00F1665B /* Model */,
 				1F358B3E218ADFDA00F1665B /* View */,
 				1F35825E2186D44800F1665B /* Other */,
 				1F35825D2186D43300F1665B /* BTC */,
@@ -4665,7 +4687,7 @@
 				1F76696621D4A34D00006B41 /* MSADefaultLocale.bundle in Resources */,
 				2EFFE6AA1FF4829100BFCC40 /* Localizable.strings in Resources */,
 				7A2CC6D4215DC89200B27E2D /* LICENSE in Resources */,
-				1FA56B11223CDDD90077FE54 /* 启动页1080.png in Resources */,
+				1FA56B11223CDDD90077FE54 /* 启动页.png in Resources */,
 				2EB9495B1FDF6B1A00CE4B94 /* SimplifiedCode.txt in Resources */,
 				2EE361361FFB7D4500A5C3EB /* README.md in Resources */,
 				1F770ED721904D7D00E2889F /* langImg.png in Resources */,
@@ -4814,6 +4836,7 @@
 				1F7669FA21DDA5BF00006B41 /* BrokenChartView.m in Sources */,
 				7A07F80C216C84F30026EB7A /* SCPieChartDataItem.m in Sources */,
 				1FA56AEA223CD6A70077FE54 /* YYTextLayout.m in Sources */,
+				1F9C8FBF2244E10700DFA9C3 /* CustomFMDBModel.m in Sources */,
 				215979761FB84CC70029F177 /* BillDetailCell.m in Sources */,
 				7A2CC6B8215DC88C00B27E2D /* PGDatePicker+Logic.m in Sources */,
 				7A2CC64A215B74BB00B27E2D /* TLMoneyDetailsHeadView.m in Sources */,
@@ -4896,6 +4919,7 @@
 				1F76691B21D4A32700006B41 /* BTCKey+Tests.m in Sources */,
 				B88B093320C908DC005C2D2F /* ResiseTextFiled.m in Sources */,
 				B89F07DF211B06E20057E781 /* TLinviteVC.m in Sources */,
+				1F9C8FBB2244DF2100DFA9C3 /* BTCPoundage.m in Sources */,
 				1FA566EE223CD4B90077FE54 /* ClassificationCollCell.m in Sources */,
 				1F770EDA21913CC000E2889F /* UserModel.m in Sources */,
 				21223CB71FBDB2D200057444 /* WebVC.m in Sources */,
@@ -5031,6 +5055,7 @@
 				1F7668E621D4A32700006B41 /* BTCBlockHeader.m in Sources */,
 				211DE6A01FB58B4C002FCF3D /* TLDatePicker.m in Sources */,
 				1F76698621D5F56200006B41 /* InvestmentVC.m in Sources */,
+				1F9C8FBA2244DF2100DFA9C3 /* UsdtClient.m in Sources */,
 				1F76690321D4A32700006B41 /* BTCCurvePoint+Tests.m in Sources */,
 				1FA56AF4223CD6A70077FE54 /* YYTextRubyAnnotation.m in Sources */,
 				1FA56B0B223CD7610077FE54 /* NSTimer+addition.m in Sources */,
@@ -5200,6 +5225,7 @@
 				B8CAA14621158FF200695BC3 /* LPDImagePickerController.m in Sources */,
 				1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */,
 				1F7668F721D4A32700006B41 /* BTCBlockchainInfo.m in Sources */,
+				1F9C8FC82246183D00DFA9C3 /* PrivateKeyWalletCell.m in Sources */,
 				7A2CC677215CD41100B27E2D /* AccumulatedEarningsTableView.m in Sources */,
 				2EB039B51FEA0B4500589D8E /* TLUpdateVC.m in Sources */,
 				1F76691721D4A32700006B41 /* BTCMerkleTree+Tests.m in Sources */,
@@ -5240,6 +5266,7 @@
 				B88B59182109AEC400F20D1B /* UIColor+theme.m in Sources */,
 				1FA56AFF223CD6A70077FE54 /* StrategyCell.m in Sources */,
 				211DE6B11FB58B4C002FCF3D /* UIButton+EnLargeEdge.m in Sources */,
+				1F9C8FC52246182600DFA9C3 /* PrivateKeyWalletTableView.m in Sources */,
 				B8A2436520E5E0F20074DF8F /* TLDataBase.m in Sources */,
 				7A07F809216C84F30026EB7A /* SCGenericChart.m in Sources */,
 				7A07F7E5216C7C200026EB7A /* MyInconmeHeadCell.m in Sources */,
@@ -5287,6 +5314,7 @@
 				B8B15C2020CA752900F13220 /* CurrencyTitleModel.m in Sources */,
 				216F5B5A206D02DC00F2C832 /* PosMiningVC.m in Sources */,
 				1F766A0221DDDFDB00006B41 /* PayWayCell.m in Sources */,
+				1F9C8FB52244DF0600DFA9C3 /* WalletForwordVC.m in Sources */,
 				1F76680121D1FEC500006B41 /* MyCell2.m in Sources */,
 				B8CAA14821158FF200695BC3 /* LPDQuoteImagesView.m in Sources */,
 				7A40B11E217EF884004B9830 /* ZJAnimationPopView.m in Sources */,

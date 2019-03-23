@@ -1,23 +1,24 @@
 //
-//  PlatformTableView.m
-//  ljs
+//  PrivateKeyWalletTableView.m
+//  Coin
 //
-//  Created by 蔡卓越 on 2018/3/21.
-//  Copyright © 2018年 caizhuoyue. All rights reserved.
+//  Created by 郑勤宝 on 2019/3/23.
+//  Copyright © 2019 chengdai. All rights reserved.
 //
 
-#import "PlatformTableView.h"
+#import "PrivateKeyWalletTableView.h"
+
 //V
-#import "MyAsstesCell.h"
+#import "PrivateKeyWalletCell.h"
 //#import "AccountMoneyCellTableViewCell.h"
-@interface PlatformTableView()<UITableViewDelegate, UITableViewDataSource,MyAsstesDelegate>
+@interface PrivateKeyWalletTableView()<UITableViewDelegate, UITableViewDataSource,MyAsstesDelegate>
 {
     NSMutableArray *arr;
 }
 
 @end
 
-@implementation PlatformTableView
+@implementation PrivateKeyWalletTableView
 
 static NSString *MyAsstes = @"MyAsstesCell";
 
@@ -27,9 +28,9 @@ static NSString *MyAsstes = @"MyAsstesCell";
         
         self.dataSource = self;
         self.delegate = self;
-        [self registerClass:[MyAsstesCell class] forCellReuseIdentifier:MyAsstes];
-//        [self registerClass:[AccountMoneyCellTableViewCell class] forCellReuseIdentifier:platformCell1];
-
+        [self registerClass:[PrivateKeyWalletCell class] forCellReuseIdentifier:MyAsstes];
+        //        [self registerClass:[AccountMoneyCellTableViewCell class] forCellReuseIdentifier:platformCell1];
+        
     }
     
     return self;
@@ -44,9 +45,9 @@ static NSString *MyAsstes = @"MyAsstesCell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MyAsstesCell *cell = [tableView dequeueReusableCellWithIdentifier:MyAsstes forIndexPath:indexPath];
+    PrivateKeyWalletCell *cell = [tableView dequeueReusableCellWithIdentifier:MyAsstes forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     cell.delegate = self;
     if (self.platforms.count > 0) {
         cell.platforms = self.platforms;
@@ -64,7 +65,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.platforms.count> 0) {
-        return self.platforms.count * 100 + 20;
+        return self.platforms.count * 80 + 20;
     }
     return 0.01;
 }
@@ -88,5 +89,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
     
     return [UIView new];
 }
+
+
 
 @end
