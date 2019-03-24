@@ -159,6 +159,9 @@
 		1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BED2180953B0078B945 /* SGQRCodeScanningView.m */; };
 		1F816BF82180953D0078B945 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BEE2180953B0078B945 /* UIImage+ImageSize.m */; };
 		1F816BF92180953D0078B945 /* SGQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BF02180953C0078B945 /* SGQRCodeHelperTool.m */; };
+		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
+		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
+		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
 		1F93617E21EEDBD3007E522A /* LYSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93617821EEDBD2007E522A /* LYSLineChart.m */; };
 		1F93617F21EEDBD3007E522A /* LYSHistogramChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93617921EEDBD2007E522A /* LYSHistogramChart.m */; };
 		1F93618021EEDBD3007E522A /* LYSToolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93617D21EEDBD2007E522A /* LYSToolObject.m */; };
@@ -966,6 +969,12 @@
 		1F816BF12180953C0078B945 /* SGQRCodeScanManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanManager.h; sourceTree = "<group>"; };
 		1F816BF22180953C0078B945 /* SGQRCodeHelperTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeHelperTool.h; sourceTree = "<group>"; };
 		1F816BF32180953D0078B945 /* SGQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
+		1F9031CC2247A8670093C38D /* JXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSegment.m; sourceTree = "<group>"; };
+		1F9031CD2247A8680093C38D /* JXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSegment.h; sourceTree = "<group>"; };
+		1F9031CE2247A8680093C38D /* UIView+JXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXView.h"; sourceTree = "<group>"; };
+		1F9031CF2247A8680093C38D /* JXPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPageView.h; sourceTree = "<group>"; };
+		1F9031D02247A8680093C38D /* UIView+JXView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JXView.m"; sourceTree = "<group>"; };
+		1F9031D12247A8680093C38D /* JXPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPageView.m; sourceTree = "<group>"; };
 		1F93617821EEDBD2007E522A /* LYSLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSLineChart.m; sourceTree = "<group>"; };
 		1F93617921EEDBD2007E522A /* LYSHistogramChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSHistogramChart.m; sourceTree = "<group>"; };
 		1F93617A21EEDBD2007E522A /* LYSToolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSToolObject.h; sourceTree = "<group>"; };
@@ -2669,6 +2678,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1F9031CB2247A84D0093C38D /* TopScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				1F9031CF2247A8680093C38D /* JXPageView.h */,
+				1F9031D12247A8680093C38D /* JXPageView.m */,
+				1F9031CD2247A8680093C38D /* JXSegment.h */,
+				1F9031CC2247A8670093C38D /* JXSegment.m */,
+				1F9031CE2247A8680093C38D /* UIView+JXView.h */,
+				1F9031D02247A8680093C38D /* UIView+JXView.m */,
+			);
+			path = TopScrollView;
+			sourceTree = "<group>";
+		};
 		1F93617721EEDBD2007E522A /* LYSChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -3588,6 +3610,7 @@
 		216F5B1D206CD9D900F2C832 /* Investment交易 */ = {
 			isa = PBXGroup;
 			children = (
+				1F9031CB2247A84D0093C38D /* TopScrollView */,
 				1FDD17182223C12D00E74D74 /* InvestMentAllVC.h */,
 				1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */,
 				1F76699C21DCB2D900006B41 /* Controller */,
@@ -5041,6 +5064,7 @@
 				1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */,
 				7A2CC6C4215DC88C00B27E2D /* PGDatePickerView.m in Sources */,
 				7A2CC6BB215DC88C00B27E2D /* PGDatePicker+MonthDayHour.m in Sources */,
+				1F9031D42247A8680093C38D /* JXPageView.m in Sources */,
 				211DE6B61FB58B4C002FCF3D /* UIView+Extension.m in Sources */,
 				7A07F811216CAAEA0026EB7A /* MyInconmeCell.m in Sources */,
 				7AE970522170C4970066B66C /* InviteEarningsModel.m in Sources */,
@@ -5152,6 +5176,7 @@
 				2EB9495A1FDF6B1A00CE4B94 /* ZMChineseConvert.m in Sources */,
 				1F76691421D4A32700006B41 /* BTCProcessor.m in Sources */,
 				B8CAA14A21158FF200695BC3 /* NSBundle+LPDImagePicker.m in Sources */,
+				1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */,
 				1FA566F0223CD4B90077FE54 /* HomeTbleView.m in Sources */,
 				B87B1BCA20D2509E00EF7B8E /* WalletNewFeaturesVC.m in Sources */,
 				7A2CC667215BBC6B00B27E2D /* PosMyInvestmentDetailsTableView.m in Sources */,
@@ -5190,6 +5215,7 @@
 				1F7667EE21D07F1C00006B41 /* MyAsstesCell.m in Sources */,
 				1FA566F4223CD4B90077FE54 /* HomeFindModel.m in Sources */,
 				1F76692921D4A32700006B41 /* BTCErrors.m in Sources */,
+				1F9031D22247A8680093C38D /* JXSegment.m in Sources */,
 				7A07F818216CB2320026EB7A /* GlobalRevenueListVC.m in Sources */,
 				7A07F81B216CB23F0026EB7A /* GlobalRevenueListTableView.m in Sources */,
 				215979601FB81CC40029F177 /* BillTableView.m in Sources */,
