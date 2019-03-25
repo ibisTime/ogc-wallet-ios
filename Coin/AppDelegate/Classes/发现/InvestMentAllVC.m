@@ -43,7 +43,7 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    segment = [[JXSegment alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH - 60 - 10, 44)];
+    segment = [[JXSegment alloc] initWithFrame:CGRectMake(70, kStatusBarHeight, SCREEN_WIDTH - 140, 44)];
     [segment updateChannels:self.channelArray];
     
     segment.delegate = self;
@@ -71,9 +71,23 @@
     
 }
 
+-(void)myRecodeClick
+{
+    OrderRecordVC *vc = [OrderRecordVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (NSArray*)channelArray{
     if (_channelArray == nil) {
-        _channelArray = @[@"BTC",@"USDT",@"WAN",@"BRR",@"ETH"];
+        NSMutableArray *array = [NSMutableArray array];
+        NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
+        for (int i = 0; i < arr.count; i ++) {
+            CoinModel *model = arr[i];
+            if ([model.isAccept isEqualToString:@"1"]) {
+                [array addObject:model.symbol];
+            }
+        }
+        _channelArray = array;
     }
     return _channelArray;
 }
@@ -85,8 +99,8 @@
 
 -(UIView*)pageView:(JXPageView *)pageView viewAtIndex:(NSInteger)index{
     UIView *view = [[UIView alloc] init];
-    InvestMentAllVC *vc = [[InvestMentAllVC alloc]init];
-    vc.symbol = @"BTC";
+    InvestmentVC *vc = [[InvestmentVC alloc]init];
+    vc.symbol = _channelArray[index];
     [self addChildViewController:vc];
     [view addSubview:vc.view];
 

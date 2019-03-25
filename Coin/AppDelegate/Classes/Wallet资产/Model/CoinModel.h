@@ -45,6 +45,8 @@
 
 @property (nonatomic, copy) NSString *id;
 
+@property (nonatomic, copy) NSString *isAccept;
+
 @property (nonatomic, copy) NSString *walletId;
 //token币合约地址
 @property (nonatomic, copy) NSString * contractAddress;

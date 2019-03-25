@@ -365,21 +365,21 @@
 
 //升级修改
 
- /*- (void)goBcoinWeb:(NSString *)var{
+- (void)goBcoinWeb:(NSString *)var{
     
     NSString *urlStr = [var stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     NSURL *url = [NSURL URLWithString:urlStr];
     [[UIApplication sharedApplication] openURL:url];
-}*/
+}
 
 
 
 //
 
-- (void)goBcoinWeb:(NSString *)var{
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/m-help/id1436959010?mt=8"]];
-    [[UIApplication sharedApplication]openURL:url];
-}
+//- (void)goBcoinWeb:(NSString *)var{
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/app/m-help/id1436959010?mt=8"]];
+//    [[UIApplication sharedApplication]openURL:url];
+//}
 
 
 

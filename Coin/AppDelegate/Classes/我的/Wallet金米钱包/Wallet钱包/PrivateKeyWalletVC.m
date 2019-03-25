@@ -159,7 +159,6 @@
     _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:[CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName]];
     for (int i = 0; i < arr.count; i++) {
         CoinModel *model = arr[i];
-        if (![model.symbol isEqualToString:@"KCC"]) {
             NSArray *array = [_fmdbModel.mnemonics componentsSeparatedByString:@" "];
             BTCMnemonic *mnemonic1 =  [MnemonicUtil importMnemonic:array];
             if ([AppConfig config].runEnv == 0)
@@ -193,7 +192,7 @@
                                       @"address":address,
                                       };
             [muArray addObject:coinDic];
-        }
+        
     }
     self.addressArray = muArray;
     TLNetworking *http = [TLNetworking new];

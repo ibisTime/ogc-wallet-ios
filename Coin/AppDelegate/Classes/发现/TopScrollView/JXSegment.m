@@ -9,7 +9,7 @@
 #import "JXSegment.h"
 #import "UIView+JXView.h"
 
-#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+//#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface JXSegment(){
     NSArray *widthArray;
@@ -36,7 +36,7 @@
 //        [_scrollView addSubview:_divideLineView];
         
         _divideView  = [[UIView alloc] init];
-        _divideView.backgroundColor = [UIColor redColor];
+        _divideView.backgroundColor = kTabbarColor;
         [_scrollView addSubview:_divideView];
         
         UIImageView *divideImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.bounds.size.height-1, self.bounds.size.width, 0.5)];
@@ -49,7 +49,7 @@
 }
 
 -(UIFont*)textFont{
-    return _textFont?:[UIFont systemFontOfSize:16];
+    return _textFont?:[UIFont systemFontOfSize:14];
 }
 
 
@@ -58,16 +58,18 @@
     _isOneChannelPage = NO;
     NSMutableArray *widthMutableArray = [NSMutableArray array];
     NSInteger totalW = 0;
+    CGFloat buttonW;
     for (int i = 0; i < array.count; i++) {
         
         NSString *string = [array objectAtIndex:i];
-        CGFloat buttonW = [string boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.textFont} context:nil].size.width + 20;
+        buttonW = [string boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:self.textFont} context:nil].size.width + 20;
         [widthMutableArray addObject:@(buttonW)];
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(totalW, 0, buttonW, self.bounds.size.height)];
+//        button.backgroundColor = [UIColor redCrolor];
         button.tag = 1000 + i;
-        [button.titleLabel setFont:self.textFont];
+        [button.titleLabel setFont:FONT(14)];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        [button setTitleColor:kTabbarColor forState:UIControlStateSelected];
         [button setTitle:string forState:UIControlStateNormal];
         [button addTarget:self action:@selector(clickSegmentButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.scrollView addSubview:button];
@@ -75,14 +77,14 @@
         
         if (i == 0) {
             [button setSelected:YES];
-            _divideView.frame = CGRectMake(0, _scrollView.bounds.size.height-2, buttonW, 2);
+            
             _selectedIndex = 0;
         }
     }
     
     //如果不足屏幕宽度，平分
-    if (totalW <= SCREEN_WIDTH) {
-        CGFloat buttonW = SCREEN_WIDTH/array.count;
+    if (totalW <= SCREEN_WIDTH - 140) {
+        CGFloat buttonW = (SCREEN_WIDTH - 140)/array.count;
         [widthMutableArray removeAllObjects];
         UIButton *button;
         for (int i=0; i<array.count; i++) {
@@ -92,13 +94,18 @@
             [widthMutableArray addObject:@(buttonW)];
             _isOneChannelPage = YES;
         }
-        [_divideView setWidth:buttonW];
+//        [_divideView setWidth:buttonW];
     }
     
     _allButtonW = totalW;
     _scrollView.contentSize = CGSizeMake(totalW,0);
     widthArray = [widthMutableArray copy];
-    _divideLineView.frame = CGRectMake(0, _scrollView.frame.size.height-2, totalW, 2);
+    
+    
+    UIButton *button = [self viewWithTag:1000];
+    _divideView.frame = CGRectMake(button.width/2 - 15, _scrollView.bounds.size.height-2, 30, 2);
+    
+//    _divideLineView.frame = CGRectMake(buttonW/2 - 15, _scrollView.frame.size.height-2, 30, 2);
 }
 
 - (void)clickSegmentButton:(UIButton*)selectedButton{
@@ -128,7 +135,7 @@
     
     //滑块
     [UIView animateWithDuration:0.1 animations:^{
-        _divideView.frame = CGRectMake(totalW, _divideView.frame.origin.y, selectW, _divideView.frame.size.height);
+        _divideView.frame = CGRectMake(totalW + selectW/2 - 15, _divideView.frame.origin.y, 30, _divideView.frame.size.height);
     }];
     
 }

@@ -36,7 +36,7 @@
 #import "TLinviteVC.h"
 #import "TLMeSetting.h"
 #import "NewHelpCentetVC.h"
-
+#import "GoldenRiceBlessingVC.h"
 #import "IntegralVC.h"
 //我的收益
 #import "MyIncomeVC.h"
@@ -71,6 +71,7 @@
     [self requesUserInfoWithResponseObject];
     [self LoadData];
     [self blessingLoadData];
+    
 }
 
 //如果仅设置当前页导航透明，需加入下面方法
@@ -201,7 +202,13 @@
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
-    }
+    }else
+        if ([title isEqualToString:@"金米福分"]) {
+            GoldenRiceBlessingVC *vc = [[GoldenRiceBlessingVC alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.blessing = self.tableView.blessing;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
         else
     {
         [TLAlert alertWithInfo:@"敬请期待"];
@@ -375,8 +382,10 @@
     }
     self.headerView.nameLbl.text = [TLUser user].nickname;
     NSRange rang = NSMakeRange(3, 4);
+    
     UITapGestureRecognizer *ta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNickName)];
     [self.headerView.nameLbl addGestureRecognizer:ta];
+    
     if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
         if ([TLUser user].email.length>10) {
             self.headerView.mobileLbl.text =[[TLUser user].email stringByReplacingCharactersInRange:rang withString:@"****"];

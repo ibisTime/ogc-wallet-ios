@@ -62,7 +62,6 @@ void TLLog(NSString *format, ...) {
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info/";
-
             self.ethAddress = @"";
             self.wanAddress = @"";
         }break;

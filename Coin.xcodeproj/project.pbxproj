@@ -162,6 +162,7 @@
 		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
 		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
 		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
+		1F9031D82247CA500093C38D /* GoldenRiceBlessingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D72247CA500093C38D /* GoldenRiceBlessingVC.m */; };
 		1F93617E21EEDBD3007E522A /* LYSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93617821EEDBD2007E522A /* LYSLineChart.m */; };
 		1F93617F21EEDBD3007E522A /* LYSHistogramChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93617921EEDBD2007E522A /* LYSHistogramChart.m */; };
 		1F93618021EEDBD3007E522A /* LYSToolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F93617D21EEDBD2007E522A /* LYSToolObject.m */; };
@@ -975,6 +976,8 @@
 		1F9031CF2247A8680093C38D /* JXPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXPageView.h; sourceTree = "<group>"; };
 		1F9031D02247A8680093C38D /* UIView+JXView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JXView.m"; sourceTree = "<group>"; };
 		1F9031D12247A8680093C38D /* JXPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXPageView.m; sourceTree = "<group>"; };
+		1F9031D62247CA500093C38D /* GoldenRiceBlessingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoldenRiceBlessingVC.h; sourceTree = "<group>"; };
+		1F9031D72247CA500093C38D /* GoldenRiceBlessingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoldenRiceBlessingVC.m; sourceTree = "<group>"; };
 		1F93617821EEDBD2007E522A /* LYSLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSLineChart.m; sourceTree = "<group>"; };
 		1F93617921EEDBD2007E522A /* LYSHistogramChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSHistogramChart.m; sourceTree = "<group>"; };
 		1F93617A21EEDBD2007E522A /* LYSToolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSToolObject.h; sourceTree = "<group>"; };
@@ -2691,6 +2694,15 @@
 			path = TopScrollView;
 			sourceTree = "<group>";
 		};
+		1F9031D52247CA2D0093C38D /* GoldenRiceBlessing金米福分 */ = {
+			isa = PBXGroup;
+			children = (
+				1F9031D62247CA500093C38D /* GoldenRiceBlessingVC.h */,
+				1F9031D72247CA500093C38D /* GoldenRiceBlessingVC.m */,
+			);
+			path = "GoldenRiceBlessing金米福分";
+			sourceTree = "<group>";
+		};
 		1F93617721EEDBD2007E522A /* LYSChart */ = {
 			isa = PBXGroup;
 			children = (
@@ -3833,6 +3845,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2CC6372159E0E900B27E2D /* Home */,
+				1F9031D52247CA2D0093C38D /* GoldenRiceBlessing金米福分 */,
 				7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity账户与设置 */,
 				1F76698C21D7715400006B41 /* MyFriend我的好友 */,
 				7A2CC63A2159E35000B27E2D /* Invitation邀请有礼 */,
@@ -5371,6 +5384,7 @@
 				211DE6A31FB58B4C002FCF3D /* TLNetworking.m in Sources */,
 				211A34F41FB430F900FEB71F /* SettingCell.m in Sources */,
 				1FA56AF1223CD6A70077FE54 /* YYTextParser.m in Sources */,
+				1F9031D82247CA500093C38D /* GoldenRiceBlessingVC.m in Sources */,
 				1F9361BB21F05927007E522A /* HBAlertPasswordView.m in Sources */,
 				2EA2526E1FF09B52007FF9A2 /* CoinUtil.m in Sources */,
 			);

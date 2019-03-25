@@ -112,7 +112,7 @@
     http.parameters[@"tradePrice"] = @(sellerPrice);
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"tradePwd"] = password;
-    http.parameters[@"tradeCoin"] = @"BTC";
+    http.parameters[@"tradeCoin"] = self.symbol;
     [http postWithSuccess:^(id responseObject) {
         
         
@@ -165,7 +165,7 @@
     if (!_tableView) {
         
         _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - 50 - kTabBarHeight - 220) style:UITableViewStyleGrouped];
-        _tableView.symbol = @"BTC";
+        _tableView.symbol = self.symbol;
         _tableView.refreshDelegate = self;
         _tableView.backgroundColor = kBackgroundColor;
         //        [self.view addSubview:_tableView];
@@ -202,7 +202,7 @@
     self.tableView.indexBtnTag = 0;
     [self makeSmoothChartView];
 
-    _bottomBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"买入BTC" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16];
+    _bottomBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:[NSString stringWithFormat:@"买入%@",self.symbol] key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16];
     _bottomBtn.frame = CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - 50 - kTabBarHeight, SCREEN_WIDTH, 50);
     [_bottomBtn addTarget:self action:@selector(bottomBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:_bottomBtn];
@@ -254,7 +254,7 @@
     }else if (index == 0) {
         indexBtnTag = index;
         [_bottomBtn setBackgroundColor:kTabbarColor forState:(UIControlStateNormal)];
-        [_bottomBtn setTitle:[LangSwitcher switchLang:@"买入BTC" key:nil] forState:(UIControlStateNormal)];
+        [_bottomBtn setTitle:[LangSwitcher switchLang:[NSString stringWithFormat:@"买入%@",self.symbol] key:nil] forState:(UIControlStateNormal)];
         textField1.placeholder = [LangSwitcher switchLang:@"请输入买入金额" key:nil];
         textField2.placeholder = [LangSwitcher switchLang:@"请输入买入数量" key:nil];
         textField1.text = @"";
@@ -270,7 +270,7 @@
     {
         indexBtnTag = index;
         [_bottomBtn setBackgroundColor:kHexColor(@"#FA7D0E") forState:(UIControlStateNormal)];
-        [_bottomBtn setTitle:[LangSwitcher switchLang:@"卖出BTC" key:nil] forState:(UIControlStateNormal)];
+        [_bottomBtn setTitle:[LangSwitcher switchLang:[NSString stringWithFormat:@"卖出%@",self.symbol] key:nil] forState:(UIControlStateNormal)];
         textField1.text = @"";
         textField2.text = @"";
         textField1.placeholder = [LangSwitcher switchLang:@"请输入卖出金额" key:nil];
@@ -282,7 +282,7 @@
         for (int i = 0; i < self.platforms.count; i ++) {
             CurrencyModel *model = self.platforms[i];
             
-            if ([model.currency isEqualToString:@"BTC"]) {
+            if ([model.currency isEqualToString:self.symbol]) {
                 NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
                 
                 NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
@@ -444,7 +444,7 @@
         http.parameters[@"tradeCurrency"] = @"CNY";
         http.parameters[@"tradePrice"] = @(buyPrice);
         http.parameters[@"userId"] = [TLUser user].userId;
-        http.parameters[@"tradeCoin"] = @"BTC";
+        http.parameters[@"tradeCoin"] = self.symbol;
         
         [http postWithSuccess:^(id responseObject) {
             
@@ -490,7 +490,7 @@
             return ;
         }
         [[UserModel user].cusPopView dismiss];
-        self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ BTC",textField2.text];
+        self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ %@",textField2.text,self.symbol];
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.passWordView];
         
 
@@ -506,7 +506,7 @@
     TLNetworking *http = [[TLNetworking alloc] init];
     http.showView = self.view;
     http.code = @"802034";
-    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"symbol"] = self.symbol;
     
     [http postWithSuccess:^(id responseObject) {
         
@@ -614,7 +614,7 @@
     
     http.parameters[@"startDatetime"] = startDate;
     http.parameters[@"endDatetime"] = endDate;
-    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"symbol"] = self.symbol;
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"type"] = type;
     [http postWithSuccess:^(id responseObject) {
@@ -667,7 +667,7 @@
     
 //    http.showView = weakSelf.view;
     http.code = @"650201";
-    http.parameters[@"symbol"] = @"BTC";
+    http.parameters[@"symbol"] = self.symbol;
     http.parameters[@"type"] = @"0";
     [http postWithSuccess:^(id responseObject) {
         
