@@ -62,9 +62,7 @@
     [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
     [AppConfig config].isChecking = NO;
-
     self.respHandler = [[RespHandler alloc] init];
-
     [NBNetworkConfig config].respDelegate = self.respHandler;
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
@@ -89,7 +87,6 @@
     //        }
     //    }
 //    [LangSwitcher startWithTraditional];
-    
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isLanch"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     //配置根控制器

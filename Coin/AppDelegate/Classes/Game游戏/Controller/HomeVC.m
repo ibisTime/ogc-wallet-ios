@@ -474,11 +474,13 @@
 //        return;
 //    }
     
-    if ([self.bannerRoom[index].type isEqualToString:@"0"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"0"])
+    {
         return;
     }
     
-    if ([self.bannerRoom[index].type isEqualToString:@"1"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"1"])
+    {
         NSString *url = [[self.bannerRoom objectAtIndex:index] url];
         if (url && url.length > 0) {
             GeneralWebView *vc = [GeneralWebView new];
@@ -486,17 +488,12 @@
             [self showViewController:vc sender:self];
         }
     }
-    if ([self.bannerRoom[index].type isEqualToString:@"2"]) {
+    if ([self.bannerRoom[index].type isEqualToString:@"2"])
+    {
         FindTheGameVC *vc = [FindTheGameVC new];
         vc.url = [[self.bannerRoom objectAtIndex:index] url];
         [self showViewController:vc sender:self];
     }
-    if ([self.bannerRoom[index].type isEqualToString:@"3"]) {
-        PosMiningVC *vc = [PosMiningVC new];
-//        vc.url = [[self.bannerRoom objectAtIndex:index] url];
-        [self showViewController:vc sender:self];
-    }
-    
     
 //    if ([url hasPrefix:@"http"]) {
 //

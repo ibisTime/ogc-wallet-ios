@@ -217,18 +217,18 @@
 
 -(void)blessingLoadData
 {
-    TLNetworking *http = [TLNetworking new];
-    //    http.showView = self.view;
-    http.code = @"805913";
-    http.parameters[@"userId"] = [TLUser user].userId;
-//    http.parameters[@"parentCode"] = @"DH201810120023250400000";
-    //    DH201810120023250401000
-    [http postWithSuccess:^(id responseObject) {
-        self.tableView.blessing = [responseObject[@"data"][@"regAcount"] integerValue];
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        
-    }];
+//    TLNetworking *http = [TLNetworking new];
+//    //    http.showView = self.view;
+//    http.code = @"805913";
+//    http.parameters[@"userId"] = [TLUser user].userId;
+////    http.parameters[@"parentCode"] = @"DH201810120023250400000";
+//    //    DH201810120023250401000
+//    [http postWithSuccess:^(id responseObject) {
+//        self.tableView.blessing = [responseObject[@"data"][@"regAcount"] integerValue];
+//        [self.tableView reloadData];
+//    } failure:^(NSError *error) {
+//        
+//    }];
 }
 
 -(void)LoadData

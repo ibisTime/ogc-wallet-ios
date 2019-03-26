@@ -43,8 +43,7 @@
     NSString *privateKey = [EthCrypto getPrivateKey:mnenomic];
     
     NSString *address = [EthCrypto getAddressWithPrivateKey:privateKey];
-    //    BOOL is = [EthCrypto is:mnenomic];
-    //    NSLog(@"%d",is);
+
     NSLog(@"mnenomic=%@", mnenomic);
     NSLog(@"privateKey=%@", privateKey);
     NSLog(@"address=%@", address);
@@ -59,7 +58,6 @@
     
     NSString * result = [EthCrypto sendTransactionWithMnemonic:word to:toAddress amount:@"3" gasPrice:gprice gasLimit:@"21000"];
     NSLog(@"%@",result);
-    
 }
 
 +(NSString *)getGasPrice
