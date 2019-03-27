@@ -638,11 +638,30 @@
                 }
             }
         }
+        CGFloat maxPrice;
+        CGFloat minPrice;
+        if (([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + [[arrayY valueForKeyPath:@"@min.floatValue"] floatValue])/2 > 10000) {
+            maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 100);
+            minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 100);
+        }else if (([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + [[arrayY valueForKeyPath:@"@min.floatValue"] floatValue])/2 > 1000)
+        {
+            maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 100);
+            minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 100);
+        }
+        else if(([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + [[arrayY valueForKeyPath:@"@min.floatValue"] floatValue])/2 > 100){
+            maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 10);
+            minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 10);
+        }else if(([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + [[arrayY valueForKeyPath:@"@min.floatValue"] floatValue])/2 > 10){
+            maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 10);
+            minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 10);
+        }else
+        {
+            maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 1);
+            minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 1);
+        }
         
-        CGFloat maxPrice = ([[arrayY valueForKeyPath:@"@max.floatValue"] floatValue] + 100);
-        CGFloat minPrice = ([[arrayY valueForKeyPath:@"@min.floatValue"] floatValue] - 100);
         
-        _smoothView.arrY = @[[NSString stringWithFormat:@"%.0f",minPrice] ,[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4 + minPrice],[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4*2 + minPrice],[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4*3 + minPrice],[NSString stringWithFormat:@"%.0f",(maxPrice - minPrice)/4*4 + minPrice]];
+        _smoothView.arrY = @[[NSString stringWithFormat:@"%.1f",minPrice] ,[NSString stringWithFormat:@"%.1f",(maxPrice - minPrice)/4 + minPrice],[NSString stringWithFormat:@"%.1f",(maxPrice - minPrice)/4*2 + minPrice],[NSString stringWithFormat:@"%.1f",(maxPrice - minPrice)/4*3 + minPrice],[NSString stringWithFormat:@"%.1f",(maxPrice - minPrice)/4*4 + minPrice]];
         [_smoothView drawSmoothViewWithArrayX:arrayX andArrayY:arrayY andScaleX:(maxPrice - minPrice) andScalemax:maxPrice andScalemin:minPrice];
         [_smoothView refreshChartAnmition];
         

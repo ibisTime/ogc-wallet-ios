@@ -13,11 +13,14 @@
 @end
 
 @implementation GoldenRiceBlessingVC
-- (void)viewWillAppear:(BOOL)animated{
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     [self navigationwhiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kWhiteColor;
@@ -28,10 +31,8 @@
     topImage.image = kImage(@"积分背景");
     [self.view addSubview:topImage];
     
-    
-    
     UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(30, 20, SCREEN_WIDTH - 90, (SCREEN_WIDTH - 30)/2/3) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:RGB(174, 184, 239)];
-    nameLbl.text = @"我的积分";
+    nameLbl.text = @"我的福分";
     [topImage addSubview:nameLbl];
     
     

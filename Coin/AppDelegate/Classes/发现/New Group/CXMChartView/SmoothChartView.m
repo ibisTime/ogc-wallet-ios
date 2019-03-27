@@ -97,7 +97,7 @@
 
     _bottomLayer = [CAShapeLayer layer];
     _bottomLayer.backgroundColor = kClearColor.CGColor;
-    _bottomLayer.frame = CGRectMake(45, LABLE_HEIGHT/5, SCREEN_WIDTH - 30 - 45, 147 - LABLE_HEIGHT/5);
+    _bottomLayer.frame = CGRectMake(60, LABLE_HEIGHT/5, SCREEN_WIDTH - 80, 147 - LABLE_HEIGHT/5);
     [self.layer addSublayer:_bottomLayer];
 }
 
@@ -156,7 +156,7 @@
     for (int i=0; i<arrY.count; i++) {
         
         UILabel *layer6 = [UILabel new];
-        layer6.frame = CGRectMake(0,LABLE_HEIGHT-(i*height)-20, 45, 20);
+        layer6.frame = CGRectMake(0,LABLE_HEIGHT-(i*height)-20, 60, 20);
         layer6.text = [NSString stringWithFormat:@"%@",_arrY[i]];
         layer6.font = [UIFont systemFontOfSize:11];
         layer6.textAlignment = NSTextAlignmentLeft;
@@ -198,7 +198,7 @@
     for (int i= 0; i< pathY.count; i++) {
         
 //        CGFloat X = i % pathY.count * ((SCREEN_WIDTH - 100)/pathY.count + (SCREEN_WIDTH - 100)/pathY.count );
-        CGFloat X = i * (SCREEN_WIDTH - 80)/(pathY.count - 1);
+        CGFloat X = i * (SCREEN_WIDTH - 100)/(pathY.count - 1);
         CGFloat Y =  BLY * (max - [pathY[i] floatValue]);//(VIEW_HEIGHT - LABLE_HEIGHT)/2是指图表在背景大图的的height
 
         
@@ -218,13 +218,13 @@
         [path addLineToPoint:point];
     }
     //平滑曲线
-    path = [path smoothedPathWithGranularity:20];
+    path = [path smoothedPathWithGranularity:1];
     // 关联layer和贝塞尔路径~
     layer.path = path.CGPath;
     
     // 创建Animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.fromValue = @(0.0);
+    animation.fromValue = @(3.0);
     animation.toValue = @(3.0);
     animation.autoreverses = NO;
     animation.duration = 6.0;
@@ -250,7 +250,7 @@
     [gradientLayer removeFromSuperlayer];
     
     gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 80), 149 - LABLE_HEIGHT/5);
+    gradientLayer.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 80), 147 - LABLE_HEIGHT/5);
     gradientLayer.colors =@[(__bridge id)[UIColor colorWithRed:151/255.0 green:64/255.0 blue:230/255.0 alpha:0.4].CGColor,(__bridge id)[UIColor colorWithRed:240/255.0 green:252/255.0 blue:254/255.0 alpha:0.4].CGColor];
     
 //    151,64,230
@@ -270,7 +270,7 @@
         [gradientPath addLineToPoint:[_pointArr[i] CGPointValue]];
     }
     // 圆滑曲线
-    gradientPath = [gradientPath smoothedPathWithGranularity:20];
+    gradientPath = [gradientPath smoothedPathWithGranularity:1];
     
     CGPoint endPoint = lastPoint;
     endPoint = CGPointMake(endPoint.x , (SCREEN_WIDTH - 80));
@@ -282,10 +282,10 @@
     [anmitionLayer addSublayer:gradientLayer];
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.fromValue = @(0.3);
-    animation.toValue = @(1);
+    animation.fromValue = @(3);
+    animation.toValue = @(3);
     animation.autoreverses = NO;
-    animation.duration = 2.0;
+    animation.duration = 6.0;
     [gradientLayer addAnimation:animation forKey:nil];
     
 }
@@ -293,7 +293,7 @@
     
     // 创建Animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.fromValue = @(0.0);
+    animation.fromValue = @(3.0);
     animation.toValue = @(3.0);
     animation.autoreverses = NO;
     animation.duration = 6.0;
