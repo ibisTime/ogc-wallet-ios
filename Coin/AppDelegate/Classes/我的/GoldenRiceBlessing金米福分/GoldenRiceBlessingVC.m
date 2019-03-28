@@ -7,8 +7,10 @@
 //
 
 #import "GoldenRiceBlessingVC.h"
-
+#import <WebKit/WebKit.h>
 @interface GoldenRiceBlessingVC ()
+
+@property (nonatomic , strong)WKWebView *webView;
 
 @end
 
@@ -57,7 +59,7 @@
     
     
     [http postWithSuccess:^(id responseObject) {
-        numbernLbl.text = [NSString stringWithFormat:@"%ld",[responseObject[@"data"][@"regAcount"] integerValue]];
+        numbernLbl.text = [NSString stringWithFormat:@"%.2f",[responseObject[@"data"][@"totalAward"] floatValue]/100000000];
     } failure:^(NSError *error) {
         
     }];
@@ -77,16 +79,65 @@
         
     }];
     
+    
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(20, topImage.yy + 30, 3, 15)];
+    lineView.backgroundColor = kTabbarColor;
+    kViewRadius(lineView, 1.5);
+    [self.view addSubview:lineView];
+    
+    UILabel *rulesLbl = [UILabel labelWithFrame:CGRectMake(lineView.xx + 5, topImage.yy + 27.5, SCREEN_WIDTH - lineView.xx - 3 - 15, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kTextColor];
+    rulesLbl.text = @"福分规则";
+    [self.view addSubview:rulesLbl];
+    
+//    UILabel *rulesLbl1 = [UILabel labelWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#999999")];
+//
+//    rulesLbl1.attributedText = [UserModel ReturnsTheDistanceBetween:@"1.邀请人A可从一级好友B（B注册一年内）和二级好友C的年化出借额中获得不同合伙人级别对应返现比例的奖励。\n2.返现奖励逐月发放，散标将在好友还款日当日发放，智选服务在好友进入服务期限的次月当日发放。"];
+//    rulesLbl1.numberOfLines = 0;
+//    [rulesLbl1 sizeToFit];
+//    [self.view addSubview:rulesLbl1];
+    
+    
+    
+    NSString *jS = [NSString stringWithFormat:@"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'); meta.setAttribute('width', %lf); document.getElementsByTagName('head')[0].appendChild(meta);",kScreenWidth];
+    
+    WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:jS injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+    
+    WKUserContentController *wkUCC = [WKUserContentController new];
+    
+    [wkUCC addUserScript:wkUserScript];
+    
+    WKWebViewConfiguration *wkConfig = [WKWebViewConfiguration new];
+    
+    wkConfig.userContentController = wkUCC;
+    
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) configuration:wkConfig];
+    
+    _webView.backgroundColor = kWhiteColor;
+    
+//    _webView.navigationDelegate = self;
+    
+    _webView.allowsBackForwardNavigationGestures = YES;
+//    [_webView.scrollView adjustsContentInsets];
+    [self.view addSubview:_webView];
+    
+    
+    TLNetworking *http2 = [TLNetworking new];
+    http2.showView = self.view;
+    http2.code = USER_CKEY_CVALUE;
+    
+    http2.parameters[SYS_KEY] = @"activety_notice";
+    
+    [http2 postWithSuccess:^(id responseObject) {
+        
+//        self.htmlStr = ;
+//        [_webView loadWebWithString:responseObject[@"data"][@"cvalue"]];
+        [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

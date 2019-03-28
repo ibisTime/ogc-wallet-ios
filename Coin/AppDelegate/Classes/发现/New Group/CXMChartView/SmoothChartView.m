@@ -78,7 +78,7 @@
     for (int i=0; i<5; i++) {
         if (i!=5) {
             CAShapeLayer *layer5 = [CAShapeLayer layer];
-            layer5.frame = CGRectMake(45,height + i*height,LABLE_WIDTH - 45, 0.5f);
+            layer5.frame = CGRectMake(60,height + i*height,LABLE_WIDTH - 70, 0.5f);
             layer5.backgroundColor = [kHexColor(@"#EBEBEB") CGColor];
 //            layer5.backgroundColor = [[UIColor blackColor] CGColor];
             [self.layer addSublayer:layer5];
@@ -224,7 +224,7 @@
     
     // 创建Animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.fromValue = @(3.0);
+    animation.fromValue = @(0);
     animation.toValue = @(3.0);
     animation.autoreverses = NO;
     animation.duration = 6.0;
@@ -282,10 +282,10 @@
     [anmitionLayer addSublayer:gradientLayer];
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    animation.fromValue = @(3);
-    animation.toValue = @(3);
+    animation.fromValue = @(0.3);
+    animation.toValue = @(1);
     animation.autoreverses = NO;
-    animation.duration = 6.0;
+    animation.duration = 2.0;
     [gradientLayer addAnimation:animation forKey:nil];
     
 }
@@ -293,7 +293,7 @@
     
     // 创建Animation
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    animation.fromValue = @(3.0);
+    animation.fromValue = @(0.0);
     animation.toValue = @(3.0);
     animation.autoreverses = NO;
     animation.duration = 6.0;

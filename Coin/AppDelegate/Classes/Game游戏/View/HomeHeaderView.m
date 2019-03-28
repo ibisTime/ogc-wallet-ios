@@ -79,8 +79,7 @@
 //        _scrollView.imageHeightPoor = 20;// 设置占位图片
         _scrollView.delegate = self;
         _scrollView.autoScrollTimeInterval = 4;
-        _scrollView.data = @[@"top",@"top",@"top"];
-//        _scrollView.data = @[@"banner",@"banner",@"banner"];
+//        _scrollView.data = @[@"Mask",@"Mask",@"Mask",@"Mask",@"Mask",@"Mask",@"Mask",@"Mask",@"Mask",@"Mask"];
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
 
             selectNum = currentIndex;
