@@ -1,13 +1,4 @@
-//
-//  TLWalletVC.m
-//  Coin
-//
-//  Created by  tianlei on 2017/11/06.
-//  Copyright © 2017年  tianlei. All rights reserved.
-//
-
 #import "TLWalletVC.h"
-//#import "WalletHeaderView.h"
 #import "CurrencyModel.h"
 #import "FMDBMigrationManager.h"
 #import "RechargeCoinVC.h"
@@ -25,7 +16,6 @@
 #import "QRCodeVC.h"
 #import "BuildWalletMineVC.h"
 #import "CountryModel.h"
-//#import "BuildLocalHomeView.h"
 #import "WalletImportVC.h"
 #import "HTMLStrVC.h"
 #import "BuildSucessVC.h"
@@ -38,8 +28,6 @@
 #import "BillModel.h"
 #import "AssetsHeadView.h"
 #import "MyAssetsHeadView.h"
-
-
 
 @interface TLWalletVC ()<RefreshDelegate>
 
@@ -121,14 +109,13 @@
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kWhiteColor;
     [self.view addSubview:self.headView];
-    
+
     [self initTableView];
     //登录退出通知
     [self addNotification];
@@ -174,22 +161,15 @@
     }
 }
 
-
-
-
-
-
-
-- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
+- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel
+{
     CoinWeakSelf;
     //    实名认证成功后，判断是否设置资金密码
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-        
         TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
         vc.titleString = @"设置交易密码";
         [weakSelf.navigationController pushViewController:vc animated:YES];
-        return ;
-        
+        return;
     }
     WithdrawalsCoinVC *coinVC = [WithdrawalsCoinVC new];
     coinVC.currency = currencyModel;
@@ -197,22 +177,17 @@
     [self.navigationController pushViewController:coinVC animated:YES];
 }
 
-- (void)addNotification {
-    
+- (void)addNotification
+{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userlogin) name:kUserLoginNotification object:nil];
 }
 
-
 #pragma mark -- 个人钱包列表网络请求
 - (void)getMyCurrencyList {
-    
     CoinWeakSelf;
     [self.tableView addRefreshAction:^{
-        
         [CoinUtil refreshOpenCoinList:^{
-
             [weakSelf queryCenterTotalAmount];
-
         } failure:^{
             [weakSelf.tableView endRefreshHeader];
         }];
@@ -220,32 +195,26 @@
     [self.tableView beginRefreshing];
 }
 
-
 #pragma mark - Events
-
 - (void)userlogin
 {
     [self getMyCurrencyList];
 }
 
-
 //   个人钱包余额查询
-- (void)queryCenterTotalAmount {
-    
+- (void)queryCenterTotalAmount
+{
     TLNetworking *http = [TLNetworking new];
     http.code = @"802301";
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"token"] = [TLUser user].token;
-    
     [http postWithSuccess:^(id responseObject) {
-        
         self.headView.dataDic = responseObject[@"data"];
         self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
         [self.tableView reloadData];
         self.AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
         [self.tableView endRefreshHeader];
     } failure:^(NSError *error) {
-        
         [self.tableView endRefreshHeader];
     }];
 }

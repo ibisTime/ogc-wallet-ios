@@ -77,14 +77,14 @@
         [whiteView addSubview:nameLabel];
         
         
-        UILabel *freezeLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 45 + i % platforms.count * 80, 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
+        UILabel *freezeLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 45 + i % platforms.count * 80, 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
 
         if ([[TLUser user].localMoney isEqualToString:@"USD"])
         {
             freezeLabel.text = [NSString stringWithFormat:@"≈%.2f USD", [[model.priceUSD convertToSimpleRealMoney] doubleValue]];
         }else
         {
-            freezeLabel.text = [NSString stringWithFormat:@"≈%.2f USD", [[model.priceCNY convertToSimpleRealMoney] doubleValue]];
+            freezeLabel.text = [NSString stringWithFormat:@"≈%.2f CNY", [[model.priceCNY convertToSimpleRealMoney] doubleValue]];
         }
         [whiteView addSubview:freezeLabel];
 
@@ -106,7 +106,7 @@
             allPriceLabel.text = [NSString stringWithFormat:@"≈%.2f USD", [[model.amountCNY convertToSimpleRealMoney] doubleValue]];
         }else
         {
-            allPriceLabel.text = [NSString stringWithFormat:@"≈%.2f USD", [[model.amountCNY convertToSimpleRealMoney] doubleValue]];
+            allPriceLabel.text = [NSString stringWithFormat:@"≈%.2f CNY", [[model.amountCNY convertToSimpleRealMoney] doubleValue]];
         }
         if (i != platforms.count - 1) {
             UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 80 + i % platforms.count * 80, SCREEN_WIDTH - 30, 1)];

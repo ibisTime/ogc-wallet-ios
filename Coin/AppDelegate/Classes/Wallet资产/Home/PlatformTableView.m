@@ -28,16 +28,11 @@ static NSString *MyAsstes = @"MyAsstesCell";
         self.dataSource = self;
         self.delegate = self;
         [self registerClass:[MyAsstesCell class] forCellReuseIdentifier:MyAsstes];
-//        [self registerClass:[AccountMoneyCellTableViewCell class] forCellReuseIdentifier:platformCell1];
-
     }
-    
     return self;
 }
 
-
 #pragma mark - UITableViewDataSource;
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
     
@@ -53,7 +48,6 @@ static NSString *MyAsstes = @"MyAsstesCell";
     }
     
     return cell;
-    
 }
 
 -(void)MyAsstesButton:(UIButton *)sender

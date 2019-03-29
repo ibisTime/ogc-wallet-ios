@@ -392,28 +392,13 @@ typedef enum : NSUInteger {
     
 }
 
-//- (void)loadPwd{
-//    self.word = [[NSUserDefaults standardUserDefaults] objectForKey:MNEMONICPASSWORD];
-//}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-    // 获取币type
-//    [self loadtype];
     //获取矿工费
     [self getgamProce];
     [super viewDidAppear:animated];
 }
 
-//-(void)loadtype
-//{
-//    NSArray *array = [[NSUserDefaults standardUserDefaults]objectForKey:COINARRAY];
-//    for (int i = 0; i < array.count; i ++) {
-//        if ([array[i][@"symbol"] isEqualToString:self.currency.symbol]) {
-//            self.currency.type = array[i][@"type"];
-//        }
-//    }
-//}
 
 #pragma mark -- //获取 BTCUTXO
 - (void)loadUtxoList
@@ -574,37 +559,6 @@ typedef enum : NSUInteger {
             self.blanceFree.text = [NSString stringWithFormat:@"%.4f Gwei",self.slider.value];
             self.pricr = [NSString stringWithFormat:@"%.0f",self.slider.value *1000000000];
         }
-        
-//        NSString *symbolStr;
-//        if ([self.currency.type isEqualToString:@"0"]) {
-//            symbolStr = self.currency.symbol;
-//            if ([symbolStr isEqualToString:@"ETH"]  ) {
-//
-////                self.gamPrice = slider.value /(int)pow(10, 9);
-//
-//            }else if ([symbolStr isEqualToString:@"BTC"] || [symbolStr isEqualToString:@"USDT"])
-//            {
-//                self.blanceFree.text = [NSString stringWithFormat:@"%.4f %@",self.slider.value,symbolStr];
-//                self.pricr = [NSString stringWithFormat:@"%.0f",self.slider.value * 1000000000/21000];
-////                self.gamPrice = slider.value /(int)pow(10, 9);
-//
-//            }else
-//            {
-//                self.blanceFree.text = [NSString stringWithFormat:@"%.4f Gwin",self.slider.value];
-//                self.pricr = [NSString stringWithFormat:@"%.0f",self.slider.value * 1000000000];
-////                self.gamPrice = slider.value /(int)pow(10, 9);
-//            }
-//
-//        }else if ([self.currency.type isEqualToString:@"1"])
-//        {
-////
-//
-////            self.gamPrice = slider.value /(int)pow(10, 9);
-//
-//        }else{
-//            
-////            self.gamPrice = slider.value /(int)pow(10, 9);
-//        }
     }
 }
 
