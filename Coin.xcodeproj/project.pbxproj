@@ -251,6 +251,7 @@
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
 		1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */; };
 		1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */; };
+		1FE99236224F7E13000698EA /* TronModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE99235224F7E13000698EA /* TronModel.m */; };
 		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
 		211A34D71FB3F51400FEB71F /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34D61FB3F51400FEB71F /* MineHeaderView.m */; };
 		211A34DB1FB4083300FEB71F /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DA1FB4083300FEB71F /* MineTableView.m */; };
@@ -1155,6 +1156,8 @@
 		1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestMentAllVC.m; sourceTree = "<group>"; };
 		1FDD171B2223C15600E74D74 /* USDTInvestmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTInvestmentVC.h; sourceTree = "<group>"; };
 		1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTInvestmentVC.m; sourceTree = "<group>"; };
+		1FE99234224F7E13000698EA /* TronModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TronModel.h; sourceTree = "<group>"; };
+		1FE99235224F7E13000698EA /* TronModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TronModel.m; sourceTree = "<group>"; };
 		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
 		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
 		211A34D51FB3F51400FEB71F /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -3149,9 +3152,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1FE99233224F7DFB000698EA /* TronModel */ = {
+			isa = PBXGroup;
+			children = (
+				1FE99234224F7E13000698EA /* TronModel.h */,
+				1FE99235224F7E13000698EA /* TronModel.m */,
+			);
+			path = TronModel;
+			sourceTree = "<group>";
+		};
 		1FFF59272240DD04000CD2E7 /* Wallet金米钱包 */ = {
 			isa = PBXGroup;
 			children = (
+				1FE99233224F7DFB000698EA /* TronModel */,
 				7AEF235C2154CB1500BF1DB5 /* WalletDetails */,
 				1F9C80D422420F2300DFA9C3 /* Wallet钱包 */,
 				1F9C80DC2242244A00DFA9C3 /* Import导入 */,
@@ -5170,6 +5183,7 @@
 				B8F63ED720D362DA00556150 /* WalletLocalBillTableView.m in Sources */,
 				21635DB91FBECBDD003F48B4 /* TopLabelUtil.m in Sources */,
 				B8B15C0520CA55D600F13220 /* BuildSucessVC.m in Sources */,
+				1FE99236224F7E13000698EA /* TronModel.m in Sources */,
 				7A07F807216C84F30026EB7A /* SCCircleChart.m in Sources */,
 				7AD659F1215F691C002F747E /* MoneyAndTreasureHeadView.m in Sources */,
 				1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */,
@@ -5561,6 +5575,15 @@
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "/Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/Macro/CoinPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PODS_ROOT)/libsodium/src/libsodium/include/sodium\"",
+					"\"$(PODS_ROOT)/libsodium/src/libsodium/include\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/Weibo_SDK\"",
+					"\"$(SRCROOT)/Coin/TronWallet/TronWallet.xcodeproj\"",
+				);
 				INFOPLIST_FILE = Coin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -5722,6 +5745,15 @@
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "/Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/Macro/CoinPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PODS_ROOT)/libsodium/src/libsodium/include/sodium\"",
+					"\"$(PODS_ROOT)/libsodium/src/libsodium/include\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/JPush\"",
+					"\"${PODS_ROOT}/Headers/Public/Weibo_SDK\"",
+					"\"$(SRCROOT)/Coin/TronWallet/TronWallet.xcodeproj\"",
+				);
 				INFOPLIST_FILE = Coin/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -13,7 +13,7 @@
 #import "UIView+Frame.h"
 #import "WLWebProgressLayer.h"
 #import "YSActionSheetView.h"
-#import <WeiboSDK.h>
+//#import <WeiboSDK.h>
 @interface StrategyVC ()<UIWebViewDelegate,UIWebViewDelegate,PlatformButtonClickDelegate>
 {
     WYWebProgressLayer *_progressLayer; // 网页加载进度条

@@ -13,8 +13,10 @@
 #import "PoliteInstructionsVC.h"
 #import "NewHtmlVC.h"
 #import "AppDelegate.h"
-#import <WeiboSDK.h>
-@interface TLinviteVC ()<WBMediaTransferProtocol>
+//#import <WeiboSDK.h>
+//#import <WeiboSDK.h>
+@interface TLinviteVC ()
+//<WBMediaTransferProtocol>
 
 @property (nonatomic ,strong) UIImageView *bgView;
 @property (nonatomic, strong) UIImageView *bgImage;
@@ -24,7 +26,7 @@
 @property (nonatomic, strong) UILabel *nameLable;
 
 @property (nonatomic, strong) NSString *h5String;
-@property (nonatomic, strong) WBMessageObject *messageObject;
+//@property (nonatomic, strong) WBMessageObject *messageObject;
 @property (nonatomic, strong) UIAlertController *actionSheetController;
 @property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, strong) UIButton *integralBtn;
@@ -294,37 +296,37 @@
 }
 
 - (void)sinaShare {
-    self.messageObject = [self messageToShare];
-    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    WBAuthorizeRequest *authRequest = [WBAuthorizeRequest request];
-    authRequest.redirectURI = @"www.baidu.com";
-    authRequest.scope = @"all";
-    
-    WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:_messageObject authInfo:authRequest access_token:myDelegate.wbtoken];
-    request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",
-                         @"Other_Info_1": [NSNumber numberWithInt:123],
-                         @"Other_Info_2": @[@"obj1", @"obj2"],
-                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
-    if (![WeiboSDK sendRequest:request]) {
-        NSLog(@"打开失败");
-    }
+//    self.messageObject = [self messageToShare];
+//    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
+//
+//    WBAuthorizeRequest *authRequest = [WBAuthorizeRequest request];
+//    authRequest.redirectURI = @"www.baidu.com";
+//    authRequest.scope = @"all";
+//
+//    WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:_messageObject authInfo:authRequest access_token:myDelegate.wbtoken];
+//    request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",
+//                         @"Other_Info_1": [NSNumber numberWithInt:123],
+//                         @"Other_Info_2": @[@"obj1", @"obj2"],
+//                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+//    if (![WeiboSDK sendRequest:request]) {
+//        NSLog(@"打开失败");
+//    }
 }
 
-- (WBMessageObject *)messageToShare
-{
-    WBMessageObject *message = [WBMessageObject message];
-
-    UIImage *image = kImage(@"头像");
-  
-    NSArray *imageArray = [NSArray arrayWithObjects:image, nil];
-    WBImageObject *imageObject = [WBImageObject object];
-    imageObject.imageData = UIImageJPEGRepresentation(image, 1.0);
-    message.imageObject = imageObject;
-    imageObject.delegate = self;
-    message.imageObject = imageObject;
-    return message;
-}
+//- (WBMessageObject *)messageToShare
+//{
+//    WBMessageObject *message = [WBMessageObject message];
+//
+//    UIImage *image = kImage(@"头像");
+//
+//    NSArray *imageArray = [NSArray arrayWithObjects:image, nil];
+//    WBImageObject *imageObject = [WBImageObject object];
+//    imageObject.imageData = UIImageJPEGRepresentation(image, 1.0);
+//    message.imageObject = imageObject;
+//    imageObject.delegate = self;
+//    message.imageObject = imageObject;
+//    return message;
+//}
 
 
 - (void)buttonClick
