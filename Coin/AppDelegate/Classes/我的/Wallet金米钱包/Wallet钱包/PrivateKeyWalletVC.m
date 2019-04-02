@@ -40,14 +40,24 @@
 #import "WalletSettingVC.h"
 #import "PrivateKeyWalletTableView.h"
 #import "WalletLocalVc.h"
+#import "BTCBase58.h"
+#import "SecureData.h"
+#import "sha3.h"
+#import "ccMemory.h"
+#import "NSData+Hashing.h"
+#import "TWWalletAccountClient.h"
+#import "TWHexConvert.h"
 @interface PrivateKeyWalletVC ()<RefreshDelegate>
-
+{
+    NSData *_publicKey;
+    NSData *_ownerAddress;
+}
 @property (nonatomic , strong)MyAssetsHeadView *headView;
 @property (nonatomic, strong) PrivateKeyWalletTableView *tableView;
 @property (nonatomic, strong) NSMutableArray <CurrencyModel *>*AssetsListModel;
 @property (nonatomic, strong) CustomFMDBModel *fmdbModel;
 @property (nonatomic , strong)NSArray *addressArray;
-
+@property(nonatomic , strong) TWWalletAccountClient *client;
 @end
 
 @implementation PrivateKeyWalletVC
@@ -167,7 +177,7 @@
             }else{
                 mnemonic1.keychain.network = [BTCNetwork testnet];
             }
-            NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:_fmdbModel.mnemonics];
+            NSString *prikey = [MnemonicUtil getPrivateKeyWithMnemonics:_fmdbModel.mnemonics];
             
             NSString *address;
             
@@ -194,6 +204,20 @@
             [muArray addObject:coinDic];
         
     }
+    TWWalletType type = TWWalletCold;
+    NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+    NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
+    //    TWWalletAccountClient *client = [[TWWalletAccountClient alloc] initWithGenKey:YES type:type];
+    TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
+    [client store:dic[@"pwd"]];
+    
+    //    [client store:password];
+    
+    //    NSString *str = [self base58CheckOwnerAddress];
+    NSString *address = [client base58OwnerAddress];
+    NSData *priKeyData = [_client.crypto privateKey];
+    NSString *priKey = [TWHexConvert convertDataToHexStr:priKeyData];
+    
     self.addressArray = muArray;
     TLNetworking *http = [TLNetworking new];
     http.code = @"802270";

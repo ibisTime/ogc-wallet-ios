@@ -46,7 +46,10 @@
 #import "MyFriendViewController.h"
 #import "MyBankCardVC.h"
 #import "PrivateKeyWalletVC.h"
+
+
 @interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate,ZDKHelpCenterConversationsUIDelegate,ZDKHelpCenterDelegate>
+
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 //头部
@@ -60,6 +63,8 @@
 
 @property (nonatomic , strong)NSArray *dataArray;
 
+
+
 @end
 
 @implementation TLMineVC
@@ -71,8 +76,79 @@
     [self requesUserInfoWithResponseObject];
     [self LoadData];
     [self blessingLoadData];
-    
 }
+
+//-(NSString *)base58OwnerAddress
+//{
+//    NSData *mdata = [self ownerAddress];
+//    NSString *address = BTCBase58StringWithData(mdata);
+//    //    NSLog(@"address is: %@",address);
+//    //    NSData *d = BTCDataFromBase58(address);
+//    //    [self printData:d name:@"reverse 58"];
+//
+//    return address;
+//}
+//
+//-(NSString *)base58CheckOwnerAddress
+//{
+//    NSData *mdata = [self ownerAddress];
+//
+//    NSString *address = BTCBase58CheckStringWithData(mdata);
+//    //    NSLog(@"base58 check address is: %@",address);
+//    return address;
+//}
+//
+//-(NSData *)ownerAddress
+//{
+//    if (_ownerAddress) {
+//        return _ownerAddress;
+//    }
+//    const uint8_t *pubBytes = (const uint8_t *)[_publicKey bytes];
+//    if (_publicKey.length == 65) {
+//        //remove prefix
+//        NSData *pubdata = [_publicKey subdataWithRange:NSMakeRange(1, 64)];
+//        pubBytes = (const uint8_t *)[pubdata bytes];
+//    }
+//
+//    uint8_t l_public[64];
+//    memcpy(l_public, pubBytes, 64);
+//
+//    NSData *data = [NSData dataWithBytes:l_public length:64];
+//    //    [self printData:data name:@"merge pubkey"];
+//
+//    NSData *sha256Data = [data KECCAK256Hash];
+//    //    [self printData:sha256Data name:@"256 key"];
+//
+//    NSData *subData = [sha256Data subdataWithRange:NSMakeRange(sha256Data.length - 20, 20)];
+//
+//    NSMutableData *mdata = [[NSMutableData alloc]init];
+//
+//
+//    //    uint8_t pre = 0xa0;
+//
+//    //on line
+//    uint8_t pre = 0x41;
+//
+//    [mdata appendBytes:&pre length:1];
+//
+//    [mdata appendData:subData];
+//    //    [self printData:mdata name:@" address data "];
+//
+//
+////    NSData *hash0 = [mdata SHA256Hash];
+////    //    [self printData:hash0 name:@" hash 0 "];
+////    NSData *hash1 = [hash0 SHA256Hash];
+////    //    [self printData:hash1 name:@" hash 1 "];
+////
+////    [mdata appendData:[hash1 subdataWithRange:NSMakeRange(0, 4)]];
+//    //    [self printData:mdata name:@"address check sum"];
+//    _ownerAddress = mdata;
+//    return mdata;
+//}
+
+
+
+
 
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
@@ -100,6 +176,10 @@
     //通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"PrivateKeyWalletCreat" object:nil];
 }
+
+
+
+
 #pragma mark -- 接收到通知
 - (void)InfoNotificationAction:(NSNotification *)notification{
     

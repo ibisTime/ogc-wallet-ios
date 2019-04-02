@@ -8,8 +8,6 @@
 
 #import "MineTableView.h"
 #import "MyCell1.h"
-#import "MyCell2.h"
-#import "MyCell3.h"
 
 @interface MineTableView ()<UITableViewDataSource, UITableViewDelegate,MyCellDelegate1>
 
@@ -29,8 +27,6 @@ static NSString *Cell3 = @"MyCell3";
         self.delegate = self;
         
         [self registerClass:[MyCell1 class] forCellReuseIdentifier:Cell1];
-        [self registerClass:[MyCell2 class] forCellReuseIdentifier:Cell2];
-        [self registerClass:[MyCell3 class] forCellReuseIdentifier:Cell3];
     }
     
     return self;
@@ -49,28 +45,7 @@ static NSString *Cell3 = @"MyCell3";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    if (indexPath.section == 0) {
-//
-//    }
-//    if (indexPath.section == 1) {
-//        MyCell2 *cell = [tableView dequeueReusableCellWithIdentifier:Cell2 forIndexPath:indexPath];
-//
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        cell.backgroundColor = kClearColor;
-//        cell.delegate = self;
-//        cell.dataArray = self.dataArray;
-//        return cell;
-//    }
-//
-//    MyCell3 *cell = [tableView dequeueReusableCellWithIdentifier:Cell3 forIndexPath:indexPath];
-//
-//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.delegate = self;
-//    cell.backgroundColor = kClearColor;
-//
-//    cell.dataArray = self.dataArray;
-//    return cell;
+
     
     MyCell1 *cell = [tableView dequeueReusableCellWithIdentifier:Cell1 forIndexPath:indexPath];
     
