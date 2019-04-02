@@ -44,7 +44,7 @@ use_modular_headers!
 #pod 'web3swift', '~> 0.8.0'
 use_frameworks!
 pod 'web3swift', '~> 0.8.0'
-pod 'Protobuf' , '3.0.0'
-pod 'gRPC' , '1.9.1'
-pod 'gRPC-ProtoRPC' , '1.9.1'
+pod 'Protobuf'
+pod 'gRPC'
+pod 'gRPC-ProtoRPC'
 end
