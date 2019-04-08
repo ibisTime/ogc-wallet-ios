@@ -398,9 +398,10 @@
 
 - (NSString *) dataFilePath//应用程序的沙盒路径
 {
-    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *document = [path objectAtIndex:0];
-    return[document stringByAppendingPathComponent:@"THAWallet.sqlite"];
+//    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *document = [path objectAtIndex:0];
+    return @"";
+//    [document stringByAppendingPathComponent:@"THAWallet.sqlite"];
 }
 
 

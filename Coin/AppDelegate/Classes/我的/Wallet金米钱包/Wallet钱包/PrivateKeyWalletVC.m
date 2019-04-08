@@ -65,13 +65,11 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-//    [self queryCenterTotalAmount];
     [self navigationTransparentClearColor];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    
-//    [self.navigationController setNavigationBarHidden:YES animated:animated];
+- (void)viewWillDisappear:(BOOL)animated
+{
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self navigationwhiteColor];
 }
@@ -85,16 +83,11 @@
     return _headView;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kWhiteColor;
     [self.view addSubview:self.headView];
-    
     [self initTableView];
-
-    
-//    self.RightButton.frame = CGRectMake(SCREEN_WIDTH - 100,  - 44, 85, 44);
     self.RightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.RightButton.titleLabel.font = FONT(16);
     [self.RightButton setTitleColor:kWhiteColor forState:(UIControlStateNormal)];
@@ -103,7 +96,6 @@
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -10;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    
     //列表查询个人账户币种列表
     [self getMyCurrencyList];
 }
@@ -131,40 +123,23 @@
 }
 
 
-
-//- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
-//    CoinWeakSelf;
-    //    实名认证成功后，判断是否设置资金密码
-//    WithdrawalsCoinVC *coinVC = [WithdrawalsCoinVC new];
-//    coinVC.currency = currencyModel;
-//    coinVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:coinVC animated:YES];
-//}
-
 - (void)saveLocalWalletData{
     //    兼容2.0以下私钥数据库
-    
     ////        ETH("0", "以太币"), BTC("1", "比特币"), WAN("2", "万维"), USDT("3", "泰达币")
-    
     // 基于某条公链的token币
     //        , ETH_TOKEN("0T", "以太token币"), WAN_TOKEN("2T", "万维token币");
     //        if ([model.type isEqualToString:@"0"]) {
     //            if ([model.symbol isEqualToString:@"BTC"] || [model.symbol isEqualToString:@"USDT"]) {
-    //
     //                address = [MnemonicUtil getBtcAddress:mnemonic1];
     //            }
     //            if ([model.symbol isEqualToString:@"ETH"]) {
     //                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
-    //
     //            }
     //            if ([model.symbol isEqualToString:@"WAN"]) {
     //                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
-    //
     //            }
     //        }
-    
     NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
-    
     NSMutableArray *muArray = [NSMutableArray array];
     _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:[CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName]];
     for (int i = 0; i < arr.count; i++) {
@@ -192,31 +167,29 @@
             }else if ([model.type isEqualToString:@"2"] || [model.type isEqualToString:@"2T"])
             {
                 address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+            }else if ([model.type isEqualToString:@"4"])
+            {
+                TWWalletType type = TWWalletCold;
+                NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+                NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
+                //    TWWalletAccountClient *client = [[TWWalletAccountClient alloc] initWithGenKey:YES type:type];
+                TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
+                [client store:dic[@"pwd"]];
+                
+                //    [client store:password];
+                
+                //    NSString *str = [self base58CheckOwnerAddress];
+                address = [client base58OwnerAddress];
             }
-            
-            
-            
             [arr[i] setValue:address forKey:@"address"];
-            
             NSDictionary *coinDic = @{@"symbol":model.symbol,
                                       @"address":address,
                                       };
             [muArray addObject:coinDic];
-        
     }
-    TWWalletType type = TWWalletCold;
-    NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
-    NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
-    //    TWWalletAccountClient *client = [[TWWalletAccountClient alloc] initWithGenKey:YES type:type];
-    TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
-    [client store:dic[@"pwd"]];
     
-    //    [client store:password];
-    
-    //    NSString *str = [self base58CheckOwnerAddress];
-    NSString *address = [client base58OwnerAddress];
-    NSData *priKeyData = [_client.crypto privateKey];
-    NSString *priKey = [TWHexConvert convertDataToHexStr:priKeyData];
+//    NSData *priKeyData = [_client.crypto privateKey];
+//    NSString *priKey = [TWHexConvert convertDataToHexStr:priKeyData];
     
     self.addressArray = muArray;
     TLNetworking *http = [TLNetworking new];
@@ -225,7 +198,6 @@
     http.isUploadToken = NO;
     http.parameters[@"accountList"] = muArray;
     CoinWeakSelf;
-    
     [http postWithSuccess:^(id responseObject) {
         self.headView.dataDic = responseObject[@"data"];
         self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];

@@ -45,20 +45,22 @@ static NSString *identifierLocalBillCell = @"LocalBillCell";
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.ustds.count > 0) {
+    if (self.trxs.count > 0) {
+        return self.trxs.count;
+    }else if (self.ustds.count > 0) {
         return self.ustds.count;
-    }else
-    {
+    }else{
         return self.bills.count;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     LocalBillCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierLocalBillCell forIndexPath:indexPath];
     cell.currencyModel = self.billModel;
-    if (self.ustds.count > 0) {
+    if (self.trxs.count > 0) {
+        cell.trxModel = self.trxs[indexPath.row];
+    }else if (self.ustds.count > 0) {
         cell.usdtModel = self.ustds[indexPath.row];
     }else
     {

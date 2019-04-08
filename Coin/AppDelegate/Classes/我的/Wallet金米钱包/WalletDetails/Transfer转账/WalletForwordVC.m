@@ -227,9 +227,9 @@ typedef enum : NSUInteger {
                                                  leftTitle:[LangSwitcher switchLang:@"谷歌验证码" key:nil]
                                                 titleWidth:100
                                                placeholder:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil] ];
-    
+
     self.googleAuthTF.keyboardType = UIKeyboardTypeNumberPad;
-    
+
     [self.view addSubview:self.googleAuthTF];
     
     //复制
@@ -308,55 +308,58 @@ typedef enum : NSUInteger {
         
     }];
     
-    UISlider *slider = [UISlider new];
-    self.slider = slider;
-    [self.view addSubview:slider];
-    slider.maximumValue = 1.0;
-    slider.minimumValue = 0;
-    slider.thumbTintColor = kHexColor(@"#1B61F0");
-    slider.minimumTrackTintColor = kHexColor(@"#1B61F0");
-    slider.maximumTrackTintColor = kHexColor(@"#DDE6F9");
-    slider.value = 0.5;
-    [slider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-    [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@15);
-        make.top.equalTo(self.minerFeeTF.mas_bottom).offset(30);
-        make.width.equalTo(@(kScreenWidth-30));
-        make.height.equalTo(@(20));
-    }];
-    
-    UILabel * solw = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
-    solw.text = [LangSwitcher switchLang:@"慢" key:nil];
-    UILabel * fast = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
-    fast.text = [LangSwitcher switchLang:@"快" key:nil];
-    UILabel * blanceFree = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:16];
-    self.blanceFree = blanceFree;
-    blanceFree.text = [LangSwitcher switchLang:@"" key:nil];
-    
-    [self.view addSubview:solw];
-    [self.view addSubview:blanceFree];
-    
-    [self.view addSubview:fast];
-    
-    [solw mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@15);
-        make.top.equalTo(slider.mas_bottom).offset(20);
+    if (![self.currency.symbol isEqualToString:@"TRX"]) {
+        UISlider *slider = [UISlider new];
+        self.slider = slider;
+        [self.view addSubview:slider];
+        slider.maximumValue = 1.0;
+        slider.minimumValue = 0;
+        slider.thumbTintColor = kHexColor(@"#1B61F0");
+        slider.minimumTrackTintColor = kHexColor(@"#1B61F0");
+        slider.maximumTrackTintColor = kHexColor(@"#DDE6F9");
+        slider.value = 0.5;
+        [slider addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
+        [slider mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(@15);
+            make.top.equalTo(self.minerFeeTF.mas_bottom).offset(30);
+            make.width.equalTo(@(kScreenWidth-30));
+            make.height.equalTo(@(20));
+        }];
+        
+        UILabel * solw = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
+        solw.text = [LangSwitcher switchLang:@"慢" key:nil];
+        UILabel * fast = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#AAAAAA") font:12];
+        fast.text = [LangSwitcher switchLang:@"快" key:nil];
+        UILabel * blanceFree = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:16];
+        self.blanceFree = blanceFree;
+        blanceFree.text = [LangSwitcher switchLang:@"" key:nil];
+        
+        [self.view addSubview:solw];
+        [self.view addSubview:blanceFree];
+        
+        [self.view addSubview:fast];
+        
+        [solw mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(@15);
+            make.top.equalTo(slider.mas_bottom).offset(20);
+            
+            
+        }];
+        [fast mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(@-15);
+            make.top.equalTo(slider.mas_bottom).offset(20);
+            
+            
+        }];
+        
+        [blanceFree mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view.mas_centerX);
+            make.top.equalTo(slider.mas_bottom).offset(20);
+        }];
         
         
-    }];
-    [fast mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(@-15);
-        make.top.equalTo(slider.mas_bottom).offset(20);
-        
-        
-    }];
-    
-    [blanceFree mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self.view.mas_centerX);
-        make.top.equalTo(slider.mas_bottom).offset(20);
-    }];
-    
-    //确认付币
+    }
+        //确认付币
     UIButton *confirmPayBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确认转账" key:nil]
                                              titleColor:kWhiteColor
                                         backgroundColor:kHexColor(@"#108ee9")
@@ -373,6 +376,8 @@ typedef enum : NSUInteger {
         
     }];
     self.confirmBtn = confirmPayBtn;
+    
+    
 }
 
 - (void)viewDidLoad {
@@ -706,6 +711,26 @@ typedef enum : NSUInteger {
          if ([self.walletModel.pwd isEqualToString:textField.text]) {
              
              
+             if ([self.currency.symbol isEqualToString:@"TRX"]) {
+                 TLNetworking *net = [TLNetworking new];
+                 net.code = @"802501";
+                 net.showView = self.view;
+                 NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+                 NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
+                 net.parameters[@"toAddress"] = textFieldStr;
+                 net.parameters[@"privateKey"] = prikey;
+                 net.parameters[@"amount"] = gaspic;
+                 [net postWithSuccess:^(id responseObject) {
+                     NSLog(@"%@",responseObject);
+                     [TLAlert alertWithSucces:[LangSwitcher switchLang:@"广播成功" key:nil]];
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                         [self.navigationController popViewControllerAnimated:YES];
+                     });
+                 } failure:^(NSError *error) {
+                     
+                 }];
+                 return;
+             }
              dispatch_queue_t  queue= dispatch_queue_create("wendingding", NULL);
              dispatch_async(queue, ^{
                  NSLog(@"下载图片1----%@",[NSThread currentThread]);
@@ -766,7 +791,6 @@ typedef enum : NSUInteger {
                          [self RadioPrompt];
                      } failure:^(NSError *error) {
                          //        [MBProgressHUD hideHUDForView:self.view animated:YES];
-                         
                      }];
                  }else
                  {

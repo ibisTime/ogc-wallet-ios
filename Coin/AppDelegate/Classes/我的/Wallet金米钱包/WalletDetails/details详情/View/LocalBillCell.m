@@ -121,6 +121,29 @@
     
 }
 
+-(void)setTrxModel:(BillModel *)trxModel
+{
+    
+    BillModel *model = [BillModel mj_objectWithKeyValues:trxModel.contractData];
+    NSString *countStr = [CoinUtil convertToRealCoin:model.amount
+                                                coin:self.currencyModel.symbol];
+    if ([self.currencyModel.address isEqualToString:trxModel.toAddress]) {
+        self.moneyLbl.text = [NSString stringWithFormat:@"%@ %@", countStr, self.currencyModel.symbol];
+        self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"收款"] key:nil];
+        self.iconIV.image  = kImage(@"收款");
+        self.moneyLbl.textColor = kHexColor(@"#47D047");
+    }else{
+        self.moneyLbl.text = [NSString stringWithFormat:@"-%@ %@", countStr, self.currencyModel.symbol];
+        self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"转账"] key:nil];
+        self.iconIV.image = kImage(@"转  出");
+        self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
+    }
+    
+    self.introduceLab.text = [NSString stringWithFormat:@"%@",trxModel.Hashs];
+    self.timeLbl.text = [trxModel.timestamp convertRedDate];
+    
+}
+
 - (void)setBillModel:(BillModel *)billModel {
     
     _billModel = billModel;
@@ -224,6 +247,7 @@
         self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
         self.moneyLbl.text = [NSString stringWithFormat:@"-%@ %@", countStr, self.currencyModel.symbol];
     }
+    
 }
 
 -(NSString *)UTCchangeDate:(NSString *)utc{

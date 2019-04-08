@@ -19,27 +19,41 @@
 
 @implementation LocalBillDetailVC
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    [super viewWillAppear:animated];
+    [self navigationSetDefault];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self navigationwhiteColor];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = [LangSwitcher switchLang:@"交易详情" key:nil];
+    self.titleText.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = self.titleText;
     self.view.backgroundColor = kWhiteColor;
-    TLDataBase *dataBase = [TLDataBase sharedManager];
-    NSString *type;
+//    TLDataBase *dataBase = [TLDataBase sharedManager];
+//    NSString *type;
     
-    if ([dataBase.dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT type from THALocal where symbol = '%@'",self.currentModel.symbol];
-        //        [sql appendString:[TLUser user].userId];
-        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-        while ([set next])
-        {
-            type = [set stringForColumn:@"type"];
-            
-        }
-        [set close];
-    }
-    [dataBase.dataBase close];
-    self.currentModel.type = type;
+//    if ([dataBase.dataBase open]) {
+//        NSString *sql = [NSString stringWithFormat:@"SELECT type from THALocal where symbol = '%@'",self.currentModel.symbol];
+//        //        [sql appendString:[TLUser user].userId];
+//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
+//        while ([set next])
+//        {
+//            type = [set stringForColumn:@"type"];
+//
+//        }
+//        [set close];
+//    }
+//    [dataBase.dataBase close];
+//    self.currentModel.type = type;
     [self initTableView];
     //
     [self initHeaderView];
@@ -121,18 +135,39 @@
     NSString *onlyCountStr;
     NSString *moneyStr = @"";
     //
-    if ([_currentModel.symbol isEqualToString:@"USDT"]) {
+    
+    
+    if ([_currentModel.symbol isEqualToString:@"TRX"]) {
+        BillModel *model = [BillModel mj_objectWithKeyValues:self.bill.contractData];
+        NSString *countStr = [CoinUtil convertToRealCoin:model.amount
+                                                    coin:self.currentModel.symbol];
+        if (![self.currentModel.address isEqualToString:self.bill.owner_address]) {
+            moneyStr = [NSString stringWithFormat:@"%@ %@", countStr, self.currentModel.symbol];
+            textLbl.text = [LangSwitcher switchLang:@"转入" key:nil];
+//            self.title =  [LangSwitcher switchLang:@"转入" key:nil];
+            self.titleText.text = [LangSwitcher switchLang:@"转入" key:nil];
+//            self.iconIV.image  = kImage(@"收款");
+//            self.moneyLbl.textColor = kHexColor(@"#47D047");
+        }else{
+            
+            moneyStr = [NSString stringWithFormat:@"-%@ %@", countStr, self.currentModel.symbol];
+            textLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"转出"] key:nil];
+            self.titleText.text =  [LangSwitcher switchLang:@"转出" key:nil];
+//            self.iconIV.image = kImage(@"转  出");
+//            self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
+        }
+    }else if ([_currentModel.symbol isEqualToString:@"USDT"]) {
         onlyCountStr = [CoinUtil convertToRealCoin:_usdtModel.amount
                                               coin:self.currentModel.symbol];
         if ([self.currentModel.address isEqualToString:_usdtModel.referenceAddress]) {
             moneyStr = [NSString stringWithFormat:@"%@ %@", onlyCountStr, self.currentModel.symbol];
             textLbl.text = [LangSwitcher switchLang:@"转入" key:nil];
-            self.title =  [LangSwitcher switchLang:@"转入" key:nil];
+            self.titleText.text =  [LangSwitcher switchLang:@"转入" key:nil];
         }else
         {
             moneyStr = [NSString stringWithFormat:@"-%@ %@", onlyCountStr, self.currentModel.symbol];
             textLbl.text = [LangSwitcher switchLang:@"转出" key:nil];
-            self.title =  [LangSwitcher switchLang:@"转出" key:nil];
+            self.titleText.text =  [LangSwitcher switchLang:@"转出" key:nil];
         }
     }else
     {
@@ -140,11 +175,11 @@
         if ([_bill.direction isEqualToString:@"1"]) {
             moneyStr = [NSString stringWithFormat:@"+%@ %@", onlyCountStr, _currentModel.symbol];
             textLbl.text = [LangSwitcher switchLang:@"转入" key:nil];
-            self.title =  [LangSwitcher switchLang:@"转入" key:nil];
+            self.titleText.text =  [LangSwitcher switchLang:@"转入" key:nil];
         } else  {
             moneyStr = [NSString stringWithFormat:@"-%@ %@", onlyCountStr, _currentModel.symbol];
             textLbl.text = [LangSwitcher switchLang:@"转出" key:nil];
-            self.title =  [LangSwitcher switchLang:@"转出" key:nil];
+            self.titleText.text =  [LangSwitcher switchLang:@"转出" key:nil];
         }
     }
     amountLbl.text = moneyStr;
@@ -165,11 +200,11 @@
 - (void)initTableView {
     
     self.tableView = [[LocalBillDetailTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    
+    self.tableView.currentModel = self.currentModel;
     self.tableView.bill = self.bill;
     self.tableView.usdtModel = self.usdtModel;
     self.tableView.refreshDelegate = self;
-    self.tableView.currentModel = self.currentModel;
+    
     
     self.tableView.frame = CGRectMake(0, 110, SCREEN_WIDTH, SCREEN_HEIGHT - 110 - kNavigationBarHeight);
     [self.view addSubview:self.tableView];

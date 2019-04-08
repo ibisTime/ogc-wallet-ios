@@ -53,11 +53,6 @@
         
         CurrencyModel *model = platforms[i];
         NSString *amount = [CoinUtil convertToRealCoin:model.balance coin:model.symbol];
-        
-//        NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
-//        NSString *available = [amount subNumber:frozenAmount];
-        
-        
         _backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _backButton.frame = CGRectMake(0, i % platforms.count * 80, SCREEN_WIDTH - 30, 80);
         [_backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];

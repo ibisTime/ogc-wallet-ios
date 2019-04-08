@@ -14,6 +14,7 @@
 
 @property (nonatomic,strong) BillModel *billModel;
 
+@property (nonatomic,strong) BillModel *trxModel;
 @property (nonatomic,strong) USDTRecordModel *usdtModel;
 
 @property (nonatomic,strong) CurrencyModel *currencyModel;

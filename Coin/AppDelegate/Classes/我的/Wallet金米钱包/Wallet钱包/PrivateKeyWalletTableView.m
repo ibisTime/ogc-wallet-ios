@@ -28,9 +28,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
         
         self.dataSource = self;
         self.delegate = self;
-        [self registerClass:[PrivateKeyWalletCell class] forCellReuseIdentifier:MyAsstes];
-        //        [self registerClass:[AccountMoneyCellTableViewCell class] forCellReuseIdentifier:platformCell1];
-        
+        [self registerClass:[PrivateKeyWalletCell class] forCellReuseIdentifier:MyAsstes];\
     }
     
     return self;

@@ -125,13 +125,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/Wallet&#x94b1;&#x5305;/PrivateKeyWalletVC.m"
-            timestampString = "575889349.717464"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/WalletDetails/details&#x8be6;&#x60c5;/View/LocalBillCell.m"
+            timestampString = "576303291.3766479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "-saveLocalWalletData"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-setTrxModel:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -80,7 +80,7 @@ static NSString *identifierCell = @"BillDetailCell";
         CoinModel *co = [CoinUtil getCoinModel:_currentModel.symbol];
         postAmount  = [CoinUtil convertToRealCoin:_usdtModel.fee coin:co.symbol];
         
-    }else if ([_bill.tokenSymbol isEqualToString:@"LXT"]) {
+    }else if ([_currentModel.symbol isEqualToString:@"LXT"]) {
         dateStr = [_bill.createDatetime convertToDetailDate];
         toAdress = _bill.to;
         formAdress = _bill.from;
@@ -90,6 +90,15 @@ static NSString *identifierCell = @"BillDetailCell";
         CoinModel *co = [CoinUtil getCoinModel:_currentModel.symbol];
         postAmount  = [CoinUtil convertToRealCoin:_bill.txFee coin:co.symbol];
         
+    }else if ([_currentModel.symbol isEqualToString:@"TRX"])
+    {
+        dateStr = [self getTimeFromTimesTamp:_bill.timestamp];
+        toAdress = _bill.toAddress;
+        formAdress = _bill.ownerAddress;
+        charge = @"0";
+        height = _bill.block;
+        texthash = _bill.Hashs;
+        postAmount  = @"0";
     }else{
         dateStr = [_bill.transDatetime convertToDetailDate];
         toAdress = _bill.to;
@@ -114,6 +123,26 @@ static NSString *identifierCell = @"BillDetailCell";
     [cell.rightLabel sizeToFit];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+    
+}
+
+- (NSString *)getTimeFromTimesTamp:(NSString *)timeStr
+
+{
+    
+    double time = [timeStr doubleValue]/1000;
+    NSDate *myDate = [NSDate dateWithTimeIntervalSince1970:time];
+    
+
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    
+    //将时间转换为字符串
+    
+    NSString *timeS = [formatter stringFromDate:myDate];
+    
+    
+    return timeS;
     
 }
 

@@ -23,11 +23,14 @@
 #import "USDTRecordModel.h"
 #import "WalletForwordVC.h"
 @interface WalletLocalVc ()<RefreshDelegate>
+{
+    NSInteger start;
+}
 @property (nonatomic, strong) WalletLocalBillTableView *tableView;
-
+@property (nonatomic,assign) NSInteger start;
 @property (nonatomic,strong) NSMutableArray <BillModel *>*bills;
 @property (nonatomic,strong) NSMutableArray <USDTRecordModel *>*ustds;
-
+@property (nonatomic,strong) NSMutableArray *trxArray;
 @property (nonatomic, strong) TLPageDataHelper *helper;
 //筛选
 @property (nonatomic, strong) FilterView *filterPicker;
@@ -58,6 +61,7 @@
 {
     [self navigationwhiteColor];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initHeadView];
@@ -76,23 +80,76 @@
     {
         [self requestUSDTList];
     }
-    else
+    else if([self.currency.symbol isEqualToString:@"TRX"])
     {
-//        [self requestBillList];
+        [self requestTRXList];
+    }else
+    {
+        [self requestLXTList];
     }
     self.titleText.text = self.currency.symbol;
     self.titleText.textColor = kWhiteColor;
     self.navigationItem.titleView = self.titleText;
 }
 
+-(void)requestTRXList
+{
+    
+    
+    CoinWeakSelf;
+    [self.tableView addRefreshAction:^{
+        weakSelf.trxArray = [NSMutableArray array];
+        weakSelf.start = 0;
+        [weakSelf loadData];
+    }];
+    
+    [self.tableView beginRefreshing];
+    
+    [self.tableView addLoadMoreAction:^{
+        
+        weakSelf.start ++;
+        [weakSelf loadData];
+    }];
+    
+    [self.tableView endRefreshingWithNoMoreData_tl];
+    
+}
+
+-(void)loadData
+{
+    
+    NSDictionary *dic = @{@"address":self.currency.address,
+                          @"start":@(_start),
+                          @"limit":@"10"
+                          };
+    [TLNetworking GET:@"https://apilist.tronscan.org/api/transaction" parameters:dic success:^(NSString *msg, id data) {
+        
+        
+        [self.trxArray addObjectsFromArray:data[@"data"]];
+        
+        self.tableView.billModel = self.currency;
+        self.tableView.trxs = [BillModel mj_objectArrayWithKeyValuesArray:self.trxArray];
+        [self.tableView reloadData];
+        self.bills = [BillModel mj_objectArrayWithKeyValuesArray:self.trxArray];
+        [self.tableView endRefreshHeader];
+        [self.tableView endRefreshFooter];
+    } abnormality:^{
+        [self.tableView endRefreshHeader];
+        [self.tableView endRefreshFooter];
+    } failure:^(NSError *error) {
+        [self.tableView endRefreshHeader];
+        [self.tableView endRefreshFooter];
+        [TLAlert alertWithInfo:@"当前网络不给力，请稍后再试或切换网络"];
+    }];
+    
+}
+
 -(void)requestUSDTList
 {
     __weak typeof(self) weakSelf = self;
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-    
     helper.tableView = self.tableView;
     self.helper = helper;
-    
     helper.code = @"802221";
     helper.start = 0;
     helper.limit = 10;
@@ -514,8 +571,6 @@
         detailVc.currentModel = self.currency;
         [self.navigationController pushViewController:detailVc animated:YES];
     }
-    
-    
 }
 
 

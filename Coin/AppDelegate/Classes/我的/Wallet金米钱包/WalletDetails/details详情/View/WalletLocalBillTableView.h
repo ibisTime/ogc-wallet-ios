@@ -12,6 +12,7 @@
 #import "USDTRecordModel.h"
 @interface WalletLocalBillTableView : TLTableView
 @property (nonatomic,strong) NSMutableArray <BillModel *>*bills;
+@property (nonatomic,strong) NSMutableArray <BillModel *>*trxs;
 @property (nonatomic,strong) CurrencyModel *billModel;
 @property (nonatomic,strong) NSMutableArray <USDTRecordModel *>*ustds;
 

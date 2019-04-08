@@ -10,10 +10,16 @@
 #import "NSString+CGSize.h"
 
 @interface BillModel : TLBaseModel
-
+@property (nonatomic, copy) NSString *block;
+@property (nonatomic, copy) NSString *timestamp;
+@property (nonatomic, strong) NSDictionary *contractData;
 @property (nonatomic, copy) NSString *preAmountString;
-
+@property (nonatomic, copy) NSString *owner_address;
+@property (nonatomic, copy) NSString *toAddress;
+@property (nonatomic, copy) NSString *ownerAddress;
 @property (nonatomic, copy) NSString *realName;
+
+@property (nonatomic, copy) NSString *amount;
 
 @property (nonatomic, copy) NSString *accountNumber;
 
@@ -83,7 +89,7 @@
 
 //Token
 @property (nonatomic, copy) NSString *Hashs;
-
+//@property (nonatomic, copy) NSString *hash;
 @property (nonatomic, copy) NSString *contractAddress;
 
 @property (nonatomic, copy) NSString *tokenName;

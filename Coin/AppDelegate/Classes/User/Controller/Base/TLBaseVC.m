@@ -118,6 +118,7 @@
     self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
     self.navigationController.navigationBar.barTintColor = kTabbarColor;
     self.navigationItem.backBarButtonItem = item;
+    
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     

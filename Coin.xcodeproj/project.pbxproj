@@ -275,7 +275,6 @@
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
 		1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */; };
 		1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */; };
-		1FE99236224F7E13000698EA /* TronModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE99235224F7E13000698EA /* TronModel.m */; };
 		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
 		211A34D71FB3F51400FEB71F /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34D61FB3F51400FEB71F /* MineHeaderView.m */; };
 		211A34DB1FB4083300FEB71F /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DA1FB4083300FEB71F /* MineTableView.m */; };
@@ -1232,8 +1231,6 @@
 		1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestMentAllVC.m; sourceTree = "<group>"; };
 		1FDD171B2223C15600E74D74 /* USDTInvestmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTInvestmentVC.h; sourceTree = "<group>"; };
 		1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTInvestmentVC.m; sourceTree = "<group>"; };
-		1FE99234224F7E13000698EA /* TronModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TronModel.h; sourceTree = "<group>"; };
-		1FE99235224F7E13000698EA /* TronModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TronModel.m; sourceTree = "<group>"; };
 		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
 		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
 		211A34D51FB3F51400FEB71F /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
@@ -2138,6 +2135,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1F39AD9A22548FF700CA5FC5 /* NsData */ = {
+			isa = PBXGroup;
+			children = (
+				1F73664E225211EF00135F7E /* NSData+AES128.h */,
+				1F73664F225211EF00135F7E /* NSData+AES128.m */,
+				1F73664B225211E300135F7E /* NSData+HexToString.h */,
+				1F73664C225211E400135F7E /* NSData+HexToString.m */,
+				1F73663422520B4400135F7E /* NSData+Hashing.h */,
+				1F73663322520B4400135F7E /* NSData+Hashing.m */,
+			);
+			path = NsData;
+			sourceTree = "<group>";
+		};
 		1F709D5B2180A7FC002D1CC4 /* SGQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -2203,6 +2213,12 @@
 		1F73679B225332F300135F7E /* TronTransfer */ = {
 			isa = PBXGroup;
 			children = (
+				1F73663C225210F900135F7E /* TWWalletAccountClient.h */,
+				1F73663D225210FA00135F7E /* TWWalletAccountClient.m */,
+				1F7366422252110800135F7E /* TWEllipticCurveCrypto.h */,
+				1F7366412252110800135F7E /* TWEllipticCurveCrypto.m */,
+				1F7366402252110700135F7E /* TWEllipticCurveCrypto+Hash.h */,
+				1F73663F2252110700135F7E /* TWEllipticCurveCrypto+Hash.m */,
 			);
 			path = TronTransfer;
 			sourceTree = "<group>";
@@ -3278,31 +3294,18 @@
 		1FE99233224F7DFB000698EA /* TronModel */ = {
 			isa = PBXGroup;
 			children = (
-				1F73663C225210F900135F7E /* TWWalletAccountClient.h */,
-				1F73663D225210FA00135F7E /* TWWalletAccountClient.m */,
+				1F39AD9A22548FF700CA5FC5 /* NsData */,
 				1F73679B225332F300135F7E /* TronTransfer */,
 				1F7366DB2252FEFA00135F7E /* trezor-crypto */,
-				1F73664E225211EF00135F7E /* NSData+AES128.h */,
-				1F73664F225211EF00135F7E /* NSData+AES128.m */,
-				1F73664B225211E300135F7E /* NSData+HexToString.h */,
-				1F73664C225211E400135F7E /* NSData+HexToString.m */,
 				1F7366482252115C00135F7E /* TWShEncoder.h */,
 				1F7366492252115C00135F7E /* TWShEncoder.m */,
 				1F7366452252113000135F7E /* TWHexConvert.h */,
 				1F7366462252113000135F7E /* TWHexConvert.m */,
-				1F7366422252110800135F7E /* TWEllipticCurveCrypto.h */,
-				1F7366412252110800135F7E /* TWEllipticCurveCrypto.m */,
-				1F7366402252110700135F7E /* TWEllipticCurveCrypto+Hash.h */,
-				1F73663F2252110700135F7E /* TWEllipticCurveCrypto+Hash.m */,
 				1F73663722520BC200135F7E /* RegEx.h */,
 				1F73663822520BC300135F7E /* RegEx.m */,
-				1F73663422520B4400135F7E /* NSData+Hashing.h */,
-				1F73663322520B4400135F7E /* NSData+Hashing.m */,
 				1F73663222520A7A00135F7E /* ccMemory.h */,
 				1F73663022520A7000135F7E /* SecureData.h */,
 				1F73662F22520A6F00135F7E /* SecureData.m */,
-				1FE99234224F7E13000698EA /* TronModel.h */,
-				1FE99235224F7E13000698EA /* TronModel.m */,
 				1F73680322533A9E00135F7E /* ImageHelper.h */,
 				1F73680422533A9E00135F7E /* ImageHelper.m */,
 			);
@@ -5344,7 +5347,6 @@
 				B8F63ED720D362DA00556150 /* WalletLocalBillTableView.m in Sources */,
 				21635DB91FBECBDD003F48B4 /* TopLabelUtil.m in Sources */,
 				B8B15C0520CA55D600F13220 /* BuildSucessVC.m in Sources */,
-				1FE99236224F7E13000698EA /* TronModel.m in Sources */,
 				7A07F807216C84F30026EB7A /* SCCircleChart.m in Sources */,
 				1F73670B2252FEFA00135F7E /* ripemd160.c in Sources */,
 				7AD659F1215F691C002F747E /* MoneyAndTreasureHeadView.m in Sources */,
@@ -5869,7 +5871,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.JMWall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6040,7 +6042,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.JMWall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
