@@ -10,4 +10,5 @@
 
 @interface InvestmentVC : TLBaseVC
 
+@property (nonatomic , copy)NSString *symbol;
 @end

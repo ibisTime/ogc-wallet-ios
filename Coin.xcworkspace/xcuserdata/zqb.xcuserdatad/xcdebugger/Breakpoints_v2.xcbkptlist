@@ -71,5 +71,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/Create&#x521b;&#x5efa;/WalletNewFeaturesVC.m"
+            timestampString = "574758695.107769"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-importNow"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/WalletSetting&#x94b1;&#x5305;&#x5de5;&#x5177;/TLNewPwdVC.m"
+            timestampString = "574850760.918586"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "-changePwd"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/TronModel/TWWalletAccountClient.m"
+            timestampString = "575889329.841011"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-initWithGenKey:type:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/WalletDetails/details&#x8be6;&#x60c5;/View/LocalBillCell.m"
+            timestampString = "576303291.3766479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-setTrxModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

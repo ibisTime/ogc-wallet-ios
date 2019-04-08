@@ -15,4 +15,6 @@
 
 @property (nonatomic , strong)NSArray *dataArray;
 
+@property (nonatomic , assign)NSInteger blessing;
+
 @end

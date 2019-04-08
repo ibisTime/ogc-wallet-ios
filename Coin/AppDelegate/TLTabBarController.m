@@ -169,26 +169,38 @@
         
         self.delegate = self;
         for (int i = 0; i < dataArray.count; i ++) {
-            [titleArray addObject:dataArray[i][@"name"]];
+            
+            if ([dataArray[i][@"name"] isEqualToString:@"应用"]) {
+                [VCNamesArray addObject:@"HomeVC"];
+                [titleArray addObject:@"应用"];
+                [imageNamesArray addObject:@"应用（未选中）"];
+                [selectedImageNames addObject:@"应用（选中）"];
+            }
+            
             if ([dataArray[i][@"name"] isEqualToString:@"投资"]) {
                 [VCNamesArray addObject:@"PosMiningVC"];
+                [titleArray addObject:@"投资"];
                 [imageNamesArray addObject:@"投资（未选中）"];
                 [selectedImageNames addObject:@"投资（选中）"];
             }
+            
             if ([dataArray[i][@"name"] isEqualToString:@"交易"]) {
                 [VCNamesArray addObject:@"InvestMentAllVC"];
                 [imageNamesArray addObject:@"交易（未选中）"];
                 [selectedImageNames addObject:@"交易（选中）"];
+                [titleArray addObject:@"交易"];
             }
             if ([dataArray[i][@"name"] isEqualToString:@"资产"]) {
                 [VCNamesArray addObject:@"TLWalletVC"];
                 [imageNamesArray addObject:@"钱包（未选中）"];
                 [selectedImageNames addObject:@"钱包（选中）"];
+                [titleArray addObject:@"资产"];
             }
             if ([dataArray[i][@"name"] isEqualToString:@"我的"]) {
                 [VCNamesArray addObject:@"TLMineVC"];
                 [imageNamesArray addObject:@"我的（未选中）"];
                 [selectedImageNames addObject:@"我的（选中）"];
+                [titleArray addObject:@"我的"];
             }
             [self addChildVCWithTitle:titleArray[i]
                            controller:VCNamesArray[i]

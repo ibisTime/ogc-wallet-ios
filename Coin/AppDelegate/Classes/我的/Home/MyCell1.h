@@ -29,4 +29,5 @@
 @property (nonatomic , strong)UIButton *backBtn;
 @property (nonatomic , strong)NSArray *dataArray;
 
+@property (nonatomic , assign)NSInteger blessing;
 @end

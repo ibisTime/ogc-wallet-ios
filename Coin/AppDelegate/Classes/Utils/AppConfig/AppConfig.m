@@ -40,14 +40,13 @@ void TLLog(NSString *format, ...) {
     
     _runEnv = runEnv;
     
-    self.companyCode = @"CD-OGC000019";
-    self.systemCode = @"CD-OGC000019";
+    self.companyCode = @"CD-OGC000021";
+    self.systemCode = @"CD-OGC000021";
     self.qiniuDomain = [[NSUserDefaults standardUserDefaults]objectForKey:Get_Seven_Cattle_Address];
     switch (_runEnv) {
             
         case RunEnvTest: {
-//            self.qiniuDomain = @"http://pajvine9a.bkt.clouddn.com";
-//            http://m.thatest.hichengdai.com/api
+            
             self.addr = @"http://120.26.6.213:6801";
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
@@ -56,23 +55,20 @@ void TLLog(NSString *format, ...) {
             
         case RunEnvDev: {
 //            self.qiniuDomain = @"http://pajvine9a.bkt.clouddn.com";
-            self.addr = @"http://120.26.6.213:5801";
             
-//            self.addr = @"http://47.97.202.123:2801";
+//            self.addr = @"http://120.26.6.213:5801";
+//金米
+            self.addr = @"http://3.1.207.21:2701";
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info/";
-
             self.ethAddress = @"";
             self.wanAddress = @"";
         }break;
             
         case RunEnvRelease: {
             
-//            self.qiniuDomain = @"http://pajvine9a.bkt.clouddn.com";
-//            self.addr = @"http://47.75.165.70:2101";
-//            self.addr = @"http://47.97.202.123:2801";
-            self.addr = @"https://moorebit.io/api";
+            self.addr = @"http://3.1.207.21:2801";
             self.ethHash = @"https://etherscan.io/tx";
             self.wanHash = @"https://www.wanscan.org/tx";
             self.btcHash = @"https://www.blockchain.com/btc/";

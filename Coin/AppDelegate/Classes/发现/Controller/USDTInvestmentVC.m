@@ -529,7 +529,7 @@
     if ([TLUser isBlankString:[TLUser user].idNo] == YES)
     {
         
-        [TLAlert alertWithTitle:@"提示" msg:@"您还为完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+        [TLAlert alertWithTitle:@"提示" msg:@"您还未完成实名认证，是否前去认证" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
             
         } confirm:^(UIAlertAction *action) {
             ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
@@ -538,8 +538,8 @@
             engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
             [engine startOcrScanIdCardInViewController:self];
         }];
-        
-    }else
+    }
+    else
     {
         if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
             TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];

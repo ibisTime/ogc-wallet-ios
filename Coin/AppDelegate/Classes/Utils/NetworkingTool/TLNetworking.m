@@ -92,7 +92,9 @@
             
             self.url = [[self class] serveUrl];
         }
-        
+//        if ([self.code isEqualToString:@"802501"]) {
+//            self.url = @"http://3.1.207.21:2701/forward-service/api";
+//        }
        
         
         if (self.isLocal == YES) {
