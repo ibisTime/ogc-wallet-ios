@@ -18,9 +18,14 @@
     if ([propertyName isEqualToString:@"Hashs"]) {
         return @"hash";
     }
-    
+    if ([propertyName isEqualToString:@"txHash"]) {
+        return @"blockHash";
+    }
     return propertyName;
 }
+
+
+
 
 //+(NSDictionary *)mj_objectClassInArray
 //{

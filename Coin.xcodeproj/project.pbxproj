@@ -276,6 +276,11 @@
 		1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */; };
 		1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */; };
 		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
+		1FFB8EB0225B4BAF00B72F31 /* MLMSegmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */; };
+		1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA6225B4BAF00B72F31 /* MLMSegmentHead.m */; };
+		1FFB8EB2225B4BAF00B72F31 /* UIView+ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA7225B4BAF00B72F31 /* UIView+ViewController.m */; };
+		1FFB8EB3225B4BAF00B72F31 /* MLMSegmentScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA8225B4BAF00B72F31 /* MLMSegmentScroll.m */; };
+		1FFB8EB4225B4BAF00B72F31 /* UIView+EasyFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA9225B4BAF00B72F31 /* UIView+EasyFrame.m */; };
 		211A34D71FB3F51400FEB71F /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34D61FB3F51400FEB71F /* MineHeaderView.m */; };
 		211A34DB1FB4083300FEB71F /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DA1FB4083300FEB71F /* MineTableView.m */; };
 		211A34DE1FB4245D00FEB71F /* MineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 211A34DD1FB4245D00FEB71F /* MineCell.m */; };
@@ -1233,6 +1238,17 @@
 		1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTInvestmentVC.m; sourceTree = "<group>"; };
 		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
 		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
+		1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentManager.m; sourceTree = "<group>"; };
+		1FFB8EA6225B4BAF00B72F31 /* MLMSegmentHead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentHead.m; sourceTree = "<group>"; };
+		1FFB8EA7225B4BAF00B72F31 /* UIView+ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewController.m"; sourceTree = "<group>"; };
+		1FFB8EA8225B4BAF00B72F31 /* MLMSegmentScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentScroll.m; sourceTree = "<group>"; };
+		1FFB8EA9225B4BAF00B72F31 /* UIView+EasyFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+EasyFrame.m"; sourceTree = "<group>"; };
+		1FFB8EAA225B4BAF00B72F31 /* SegmentPageHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentPageHead.h; sourceTree = "<group>"; };
+		1FFB8EAB225B4BAF00B72F31 /* MLMSegmentHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentHead.h; sourceTree = "<group>"; };
+		1FFB8EAC225B4BAF00B72F31 /* UIView+ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewController.h"; sourceTree = "<group>"; };
+		1FFB8EAD225B4BAF00B72F31 /* MLMSegmentManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentManager.h; sourceTree = "<group>"; };
+		1FFB8EAE225B4BAF00B72F31 /* UIView+EasyFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+EasyFrame.h"; sourceTree = "<group>"; };
+		1FFB8EAF225B4BAF00B72F31 /* MLMSegmentScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLMSegmentScroll.h; sourceTree = "<group>"; };
 		211A34D51FB3F51400FEB71F /* MineHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
 		211A34D61FB3F51400FEB71F /* MineHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineHeaderView.m; sourceTree = "<group>"; };
 		211A34D91FB4083300FEB71F /* MineTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineTableView.h; sourceTree = "<group>"; };
@@ -3312,6 +3328,24 @@
 			path = TronModel;
 			sourceTree = "<group>";
 		};
+		1FFB8EA4225B4BAF00B72F31 /* MLMSegmentPageView */ = {
+			isa = PBXGroup;
+			children = (
+				1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */,
+				1FFB8EA6225B4BAF00B72F31 /* MLMSegmentHead.m */,
+				1FFB8EA7225B4BAF00B72F31 /* UIView+ViewController.m */,
+				1FFB8EA8225B4BAF00B72F31 /* MLMSegmentScroll.m */,
+				1FFB8EA9225B4BAF00B72F31 /* UIView+EasyFrame.m */,
+				1FFB8EAA225B4BAF00B72F31 /* SegmentPageHead.h */,
+				1FFB8EAB225B4BAF00B72F31 /* MLMSegmentHead.h */,
+				1FFB8EAC225B4BAF00B72F31 /* UIView+ViewController.h */,
+				1FFB8EAD225B4BAF00B72F31 /* MLMSegmentManager.h */,
+				1FFB8EAE225B4BAF00B72F31 /* UIView+EasyFrame.h */,
+				1FFB8EAF225B4BAF00B72F31 /* MLMSegmentScroll.h */,
+			);
+			path = MLMSegmentPageView;
+			sourceTree = "<group>";
+		};
 		1FFF59272240DD04000CD2E7 /* Wallet金米钱包 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3786,6 +3820,7 @@
 		216F5B1D206CD9D900F2C832 /* Investment交易 */ = {
 			isa = PBXGroup;
 			children = (
+				1FFB8EA4225B4BAF00B72F31 /* MLMSegmentPageView */,
 				1F9031CB2247A84D0093C38D /* TopScrollView */,
 				1FDD17182223C12D00E74D74 /* InvestMentAllVC.h */,
 				1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */,
@@ -5065,10 +5100,12 @@
 				7A07F804216C84F30026EB7A /* SCBarChart.m in Sources */,
 				211DE6AC1FB58B4C002FCF3D /* TLPageDataHelper.m in Sources */,
 				1F11E70221EDBD4A006C8DB4 /* InvestmentModel.m in Sources */,
+				1FFB8EB3225B4BAF00B72F31 /* MLMSegmentScroll.m in Sources */,
 				1FA56AFC223CD6A70077FE54 /* YYTextWeakProxy.m in Sources */,
 				7A2CC67A215CD45300B27E2D /* AccumulatedEarningsCell.m in Sources */,
 				B8CAA13D21158FF200695BC3 /* LPDAssetCell.m in Sources */,
 				1F76690721D4A32700006B41 /* BTCAssetAddress.m in Sources */,
+				1FFB8EB2225B4BAF00B72F31 /* UIView+ViewController.m in Sources */,
 				2EB039A71FE8B23300589D8E /* EditEmailVC.m in Sources */,
 				1F73663522520B4400135F7E /* NSData+Hashing.m in Sources */,
 				7A07F808216C84F30026EB7A /* SCColor.m in Sources */,
@@ -5276,6 +5313,7 @@
 				1F76696D21D4A34D00006B41 /* zip.c in Sources */,
 				1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */,
 				B8CA7D4920CBA22800A0E93C /* WalletImportVC.m in Sources */,
+				1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */,
 				B83666F6210EC0610065DF18 /* LocalSettingCell.m in Sources */,
 				1F76690B21D4A32700006B41 /* BTCCurrencyConverter+Tests.m in Sources */,
 				B8CAA14121158FF200695BC3 /* LPDProgressView.m in Sources */,
@@ -5371,6 +5409,7 @@
 				B87B1BCA20D2509E00EF7B8E /* WalletNewFeaturesVC.m in Sources */,
 				7A2CC667215BBC6B00B27E2D /* PosMyInvestmentDetailsTableView.m in Sources */,
 				1F9361B821F02DE6007E522A /* SellDetalisView.m in Sources */,
+				1FFB8EB4225B4BAF00B72F31 /* UIView+EasyFrame.m in Sources */,
 				7A2CC6BE215DC88C00B27E2D /* PGDatePicker+Time.m in Sources */,
 				1F76690221D4A32700006B41 /* BTCFancyEncryptedMessage.m in Sources */,
 				B83D1E0C20CE63A2007835DB /* WalletLocalVc.m in Sources */,
@@ -5390,6 +5429,7 @@
 				1F816BF52180953D0078B945 /* SGQRCodeAlbumManager.m in Sources */,
 				7A2CC6D6215DC89200B27E2D /* PGPickerColumnView.m in Sources */,
 				211DE6BB1FB58B4C002FCF3D /* NSString+CGSize.m in Sources */,
+				1FFB8EB0225B4BAF00B72F31 /* MLMSegmentManager.m in Sources */,
 				B8CF2CC52121375800055706 /* BTCDetailModel.m in Sources */,
 				211DE6B81FB58B4C002FCF3D /* UIControl+Block.m in Sources */,
 				B8CAA14421158FF200695BC3 /* LPDImageManager.m in Sources */,

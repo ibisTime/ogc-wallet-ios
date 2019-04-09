@@ -80,16 +80,6 @@ static NSString *identifierCell = @"BillDetailCell";
         CoinModel *co = [CoinUtil getCoinModel:_currentModel.symbol];
         postAmount  = [CoinUtil convertToRealCoin:_usdtModel.fee coin:co.symbol];
         
-    }else if ([_currentModel.symbol isEqualToString:@"LXT"]) {
-        dateStr = [_bill.createDatetime convertToDetailDate];
-        toAdress = _bill.to;
-        formAdress = _bill.from;
-        charge = _bill.cumulativeGasUsed;
-        height = _bill.blockNumber;
-        texthash = _bill.Hashs;
-        CoinModel *co = [CoinUtil getCoinModel:_currentModel.symbol];
-        postAmount  = [CoinUtil convertToRealCoin:_bill.txFee coin:co.symbol];
-        
     }else if ([_currentModel.symbol isEqualToString:@"TRX"])
     {
         dateStr = [self getTimeFromTimesTamp:_bill.timestamp];
@@ -100,11 +90,11 @@ static NSString *identifierCell = @"BillDetailCell";
         texthash = _bill.Hashs;
         postAmount  = @"0";
     }else{
-        dateStr = [_bill.transDatetime convertToDetailDate];
+        dateStr = [self getTimeFromTimesTamp:[NSString stringWithFormat:@"%f",[_bill.timeStamp doubleValue]*1000]];
         toAdress = _bill.to;
         formAdress = _bill.from;
         charge = _bill.txFee;
-        height = _bill.height;
+        height = _bill.blockNumber;
         texthash = _bill.txHash;
         postAmount  = [CoinUtil convertToRealCoin:_bill.txFee coin:_currentModel.symbol];
     }

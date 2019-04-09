@@ -10,6 +10,7 @@
 #import "NSString+CGSize.h"
 
 @interface BillModel : TLBaseModel
+@property (nonatomic, copy) NSString *timeStamp;
 @property (nonatomic, copy) NSString *block;
 @property (nonatomic, copy) NSString *timestamp;
 @property (nonatomic, strong) NSDictionary *contractData;

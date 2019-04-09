@@ -67,7 +67,13 @@
     [NBNetworkConfig config].respDelegate = self.respHandler;
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
-    [self configUpdate];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self configUpdate];
+        
+    });
+    
     //    配置七牛地址
     [self GetSevenCattleAddress];
     //配置键盘
@@ -137,13 +143,9 @@
                 //不强制
                 [TLAlert alertWithTitle:[LangSwitcher switchLang:@"更新提示" key:nil] msg:update.note confirmMsg:[LangSwitcher switchLang:@"立即升级" key:nil] cancleMsg:[LangSwitcher switchLang:@"稍后提醒" key:nil] cancle:^(UIAlertAction *action) {
                     
-                    
-                    
-//                    [self setRootVC];
+
                     
                 } confirm:^(UIAlertAction *action) {
-                    
-                    //                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[update.xiaZaiUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
                     [self goBcoinWeb:update.downloadUrl];
                 }];
                 
@@ -151,16 +153,14 @@
                 
                 //强制
                 [TLAlert alertWithTitle:[LangSwitcher switchLang:@"更新提醒" key:nil] message:update.note confirmMsg:[LangSwitcher switchLang:@"立即升级" key:nil] confirmAction:^{
-                    
-                    //                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[update.xiaZaiUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]];
+
                     [self goBcoinWeb:update.downloadUrl];
                     
                     
                 }];
             }
         } else {
-            
-//            [self setRootVC];
+
             
         }
         

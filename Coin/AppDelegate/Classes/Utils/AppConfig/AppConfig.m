@@ -51,6 +51,7 @@ void TLLog(NSString *format, ...) {
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info";
+            self.trxHash = @"https://shasta.tronscan.org/";
         }break;
             
         case RunEnvDev: {
@@ -64,6 +65,7 @@ void TLLog(NSString *format, ...) {
             self.btcHash = @"https://testnet.blockchain.info/";
             self.ethAddress = @"";
             self.wanAddress = @"";
+            self.trxHash = @"https://shasta.tronscan.org/";
         }break;
             
         case RunEnvRelease: {
@@ -72,7 +74,7 @@ void TLLog(NSString *format, ...) {
             self.ethHash = @"https://etherscan.io/tx";
             self.wanHash = @"https://www.wanscan.org/tx";
             self.btcHash = @"https://www.blockchain.com/btc/";
-
+            self.trxHash = @"https://tronscan.org/";
         } break;
             
     }

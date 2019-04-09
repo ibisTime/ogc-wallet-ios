@@ -37,16 +37,9 @@
     [self.view addSubview:bgIV];
     bgIV.contentMode = UIViewContentModeScaleAspectFill;
     bgIV.image = [UIImage imageNamed:@"Launch"];
-//    [self setPlaceholderViewTitle:[LangSwitcher switchLang:@"加载失败" key:nil] operationTitle:[LangSwitcher switchLang:@"加载失败" key:nil]];
+
     [self configurationLoadData];
-//    [self setPlaceholderViewTitle:@"加载失败" operationTitle:@"重新加载"];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
-//    BOOL isChoose = [[NSUserDefaults standardUserDefaults] boolForKey:@"chooseCoutry"];
-//    if (isCoose == YES) {
-//        [self configUpdate];
-//    }else{
-//        [self loadData];
-//    }
+
 //    由于无法通过，审核。如果为强制更新
 }
 

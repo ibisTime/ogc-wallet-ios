@@ -201,8 +201,10 @@
     [http postWithSuccess:^(id responseObject) {
         self.headView.dataDic = responseObject[@"data"];
         self.tableView.platforms = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+        
         [self.tableView reloadData];
         self.AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
+        
         [self.tableView endRefreshHeader];
         
     } failure:^(NSError *error) {

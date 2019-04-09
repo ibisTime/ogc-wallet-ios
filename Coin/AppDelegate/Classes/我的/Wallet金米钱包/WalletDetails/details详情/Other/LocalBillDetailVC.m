@@ -219,7 +219,11 @@
     WalletLocalWebVC *webVC = [WalletLocalWebVC new];
     if ([self.currentModel.symbol isEqualToString:@"USDT"]) {
         webVC.urlString = self.usdtModel.txid;
-    }else
+    }else if ([self.currentModel.symbol isEqualToString:@"TRX"])
+    {
+        webVC.urlString = self.bill.Hashs;
+    }
+    else
     {
         webVC.urlString = self.bill.txHash;
     }
