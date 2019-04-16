@@ -71,7 +71,7 @@ void TLLog(NSString *format, ...) {
             
 //            self.qiniuDomain = @"http://pajvine9a.bkt.clouddn.com";
 //            self.addr = @"http://47.75.165.70:2101";
-            self.addr = @"http://47.97.202.123:2801";
+            self.addr = @"http://3.1.216.216:2801";
 
             self.ethHash = @"https://etherscan.io/tx";
             self.wanHash = @"https://www.wanscan.org/tx";

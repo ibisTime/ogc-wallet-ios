@@ -39,10 +39,11 @@
 #import "IQKeyboardManager.h"
 //#import <ZendeskCoreSDK/ZendeskCoreSDK.h>
 //#import <ZendeskProviderSDK/ZendeskProviderSDK.h>
-#import <WeiboSDK.h>
+//#import <WeiboSDK.h>
 #import "NSBundle+Language.h"
 
-@interface AppDelegate ()<WeiboSDKDelegate>
+@interface AppDelegate ()
+//<WeiboSDKDelegate>
 
 @property (nonatomic, strong) RespHandler *respHandler;
 @property (nonatomic ,assign) BOOL IsEnterBack;
@@ -57,9 +58,9 @@
 //    研发
 //    [AppConfig config].runEnv = RunEnvDev;
 //    测试
-    [AppConfig config].runEnv = RunEnvTest;
+//    [AppConfig config].runEnv = RunEnvTest;
 //    正式
-//    [AppConfig config].runEnv = RunEnvRelease;
+    [AppConfig config].runEnv = RunEnvRelease;
     NSLog(@"================= %@",NSHomeDirectory());
     [AppConfig config].isChecking = NO;
 
@@ -260,7 +261,7 @@
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
 
         if ([url.host containsString:@"response"]) {
-            [WeiboSDK handleOpenURL:url delegate:self];
+//            [WeiboSDK handleOpenURL:url delegate:self];
             }
          else {
             
@@ -332,41 +333,41 @@
 }
 
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    return [WeiboSDK handleOpenURL:url delegate:self];
-}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    return [WeiboSDK handleOpenURL:url delegate:self ];
-}
-
-- (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
-    
-    
-    if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
-    {
-        if(response.statusCode == WeiboSDKResponseStatusCodeSuccess){
-//            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"分享成功" key:nil]];
-        }else{
-//            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"分享失败" key:nil]];
-
-        }
-        WBSendMessageToWeiboResponse* sendMessageToWeiboResponse = (WBSendMessageToWeiboResponse*)response;
-        NSString* accessToken = [sendMessageToWeiboResponse.authResponse accessToken];
-        if (accessToken)
-        {
-            self.wbtoken = accessToken;
-        }
-        NSString* userID = [sendMessageToWeiboResponse.authResponse userID];
-        if (userID) {
-            self.wbCurrentUserID = userID;
-        }
-        
-    }
-    
-}
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//    return [WeiboSDK handleOpenURL:url delegate:self];
+//}
+//
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+//{
+//    return [WeiboSDK handleOpenURL:url delegate:self ];
+//}
+//
+//- (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
+//    
+//    
+//    if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
+//    {
+//        if(response.statusCode == WeiboSDKResponseStatusCodeSuccess){
+////            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"分享成功" key:nil]];
+//        }else{
+////            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"分享失败" key:nil]];
+//
+//        }
+//        WBSendMessageToWeiboResponse* sendMessageToWeiboResponse = (WBSendMessageToWeiboResponse*)response;
+//        NSString* accessToken = [sendMessageToWeiboResponse.authResponse accessToken];
+//        if (accessToken)
+//        {
+//            self.wbtoken = accessToken;
+//        }
+//        NSString* userID = [sendMessageToWeiboResponse.authResponse userID];
+//        if (userID) {
+//            self.wbCurrentUserID = userID;
+//        }
+//        
+//    }
+//    
+//}
 
 
 
