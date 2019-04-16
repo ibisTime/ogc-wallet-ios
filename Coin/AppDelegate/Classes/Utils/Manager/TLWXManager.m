@@ -40,21 +40,29 @@
 }
 + (void)shareSinaWeiboWithText:(NSString *)text image:(UIImage *)image{
 //    if (![WeiboSDK isWeiboAppInstalled]) {
-//
+
 //        //        [self showLoadSinaWeiboClient];
 //    }else {
 //        WBMessageObject *message = [WBMessageObject message];
 //        message.text = text;
-//
+
 //        // 消息的图片内容中，图片数据不能为空并且大小不能超过10M
 //        WBImageObject *imageObject = [WBImageObject object];
 //        imageObject.imageData = UIImageJPEGRepresentation(image, 1.0);
 //        message.imageObject = imageObject;
+
 //
 //        WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message];
 //        [WeiboSDK sendRequest:request];
 //    }
     
+
+//        
+//        WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message];
+//        [WeiboSDK sendRequest:request];
+//    }
+//    
+
 }
 
 

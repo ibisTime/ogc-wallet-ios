@@ -418,6 +418,19 @@
 //- (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
 //
 //
+
+//    return [WeiboSDK handleOpenURL:url delegate:self];
+//}
+//
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+//{
+//    return [WeiboSDK handleOpenURL:url delegate:self ];
+//}
+//
+//- (void)didReceiveWeiboResponse:(WBBaseResponse *)response {
+//    
+//    
+
 //    if ([response isKindOfClass:WBSendMessageToWeiboResponse.class])
 //    {
 //        if(response.statusCode == WeiboSDKResponseStatusCodeSuccess){
@@ -436,9 +449,15 @@
 //        if (userID) {
 //            self.wbCurrentUserID = userID;
 //        }
+
 //
 //    }
 //
+
+//        
+//    }
+//    
+
 //}
 
 

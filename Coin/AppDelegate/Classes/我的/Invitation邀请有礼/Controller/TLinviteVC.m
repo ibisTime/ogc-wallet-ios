@@ -13,8 +13,7 @@
 #import "PoliteInstructionsVC.h"
 #import "NewHtmlVC.h"
 #import "AppDelegate.h"
-//#import <WeiboSDK.h>
-//#import <WeiboSDK.h>
+
 @interface TLinviteVC ()
 //<WBMediaTransferProtocol>
 

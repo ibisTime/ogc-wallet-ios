@@ -23,11 +23,19 @@
 //    imageObject.imageData = UIImageJPEGRepresentation(image, 1.0);
 //    message.imageObject = imageObject;
 //    AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
+
 //
 //    WBAuthorizeRequest *authRequest = [WBAuthorizeRequest request];
 //    authRequest.redirectURI = @"www.baidu.com";
 //    authRequest.scope = @"all";
 //
+
+//    
+//    WBAuthorizeRequest *authRequest = [WBAuthorizeRequest request];
+//    authRequest.redirectURI = @"www.baidu.com";
+//    authRequest.scope = @"all";
+//    
+
 //    WBSendMessageToWeiboRequest *request = [WBSendMessageToWeiboRequest requestWithMessage:message authInfo:authRequest access_token:myDelegate.wbtoken];
 //    request.userInfo = @{@"ShareMessageFrom": @"SendMessageToWeiboViewController",
 //                         @"Other_Info_1": [NSNumber numberWithInt:123],
