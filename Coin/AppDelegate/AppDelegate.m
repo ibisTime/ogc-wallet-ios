@@ -67,7 +67,7 @@
     [NBNetworkConfig config].respDelegate = self.respHandler;
     //2.新版本请求
     [NBNetworkConfig config].baseUrl = [AppConfig config].apiUrl;
-    [self configUpdate];
+    
     //    配置七牛地址
     [self GetSevenCattleAddress];
     //配置键盘
@@ -108,20 +108,19 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
         [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        [self configUpdate];
 
     });
+    
     return YES;
 }
 
 //#pragma mark - Config
 - (void)configUpdate {
-    
     //1:iOS 2:安卓
     TLNetworking *http = [[TLNetworking alloc] init];
-    
     http.code = @"660918";
     http.parameters[@"type"] = @"ios-c";
-    
     [http postWithSuccess:^(id responseObject) {
         
         GengXinModel *update = [GengXinModel mj_objectWithKeyValues:responseObject[@"data"]];

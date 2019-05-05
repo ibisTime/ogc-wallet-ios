@@ -341,9 +341,17 @@
         [self showViewController:vc sender:self];
     }
     if (indexPath.section == 2) {
-        FindTheGameVC *vc = [FindTheGameVC new];
-        vc.GameModel = self.GameModel[indexPath.row];
-        [self showViewController:vc sender:self];
+        if ([[TLUser user].mobile isEqualToString:MONBILE]) {
+            GeneralWebView *vc = [GeneralWebView new];
+            vc.URL =  self.GameModel[indexPath.row].url;
+            [self showViewController:vc sender:self];
+        }
+        else
+        {
+            FindTheGameVC *vc = [FindTheGameVC new];
+            vc.GameModel = self.GameModel[indexPath.row];
+            [self showViewController:vc sender:self];
+        }
     }
 }
 

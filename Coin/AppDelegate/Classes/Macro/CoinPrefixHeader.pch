@@ -73,7 +73,7 @@
 
 #import "FoundationHeader.h"
 #define BTCADDRESS @"BTCADDRESS"
-
+#define MONBILE @"13506537519"
 #endif /* CoinPrefixHeader_h */
 
 #endif

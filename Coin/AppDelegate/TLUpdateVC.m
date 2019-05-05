@@ -58,8 +58,11 @@
     http.parameters[@"parentCode"] = @"DH201810120023250000000";
     [http postWithSuccess:^(id responseObject) {
         
+        NSArray *dataArray = responseObject[@"data"];
         
-         TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+        NSMutableArray *array = [NSMutableArray array];
+        
+        TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
         
         ZLGestureLockViewController *vc = [ZLGestureLockViewController new];
         vc.isCheck = YES;
@@ -82,10 +85,22 @@
             
         }
         
-        
+        for (int i = 0; i < dataArray.count; i ++) {
+            if ([[TLUser user].mobile isEqualToString:@"13506537519"]) {
+                if ([dataArray[i][@"name"] isEqualToString:@"交易"]) {
+                    
+                }else
+                {
+                    [array addObject:dataArray[i]];
+                }
+            }else
+            {
+                [array addObject:dataArray[i]];
+            }
+        }
        
         //        tab.dataArray = dataArray;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":array}];
 //        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         
     } failure:^(NSError *error) {

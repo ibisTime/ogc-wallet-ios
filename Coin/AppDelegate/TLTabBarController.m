@@ -158,7 +158,7 @@
 {
     NSLog(@"%@",notification.object);
 //    self.dataArray = notification.userInfo[@"data"];
-    NSArray *dataArray = notification.object[@"data"][@"data"];
+    NSArray *dataArray = notification.object[@"data"];
     NSMutableArray *titleArray = [NSMutableArray array];
     NSMutableArray *VCNamesArray = [NSMutableArray array];
     NSMutableArray *imageNamesArray = [NSMutableArray array];
@@ -190,6 +190,7 @@
                 [selectedImageNames addObject:@"交易（选中）"];
                 [titleArray addObject:@"交易"];
             }
+            
             if ([dataArray[i][@"name"] isEqualToString:@"资产"]) {
                 [VCNamesArray addObject:@"TLWalletVC"];
                 [imageNamesArray addObject:@"钱包（未选中）"];
@@ -202,10 +203,15 @@
                 [selectedImageNames addObject:@"我的（选中）"];
                 [titleArray addObject:@"我的"];
             }
+            
             [self addChildVCWithTitle:titleArray[i]
                            controller:VCNamesArray[i]
                           normalImage:imageNamesArray[i]
                         selectedImage:selectedImageNames[i]];
+            
+            
+            
+            
         }
 //        for (int i = 0; i < titleArray.count; i++) {
 ////            if (i == 0 && [AppConfig config].isUploadCheck) {
