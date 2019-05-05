@@ -22,7 +22,7 @@ static NSString *identifierCell = @"BillDetailCell";
     {
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+ 
         [self registerClass:[BillDetailCell class] forCellReuseIdentifier:identifierCell];
     }
     return self;

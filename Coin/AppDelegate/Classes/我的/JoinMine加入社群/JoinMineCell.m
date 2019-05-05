@@ -35,7 +35,7 @@
 }
 - (void)initSubviews {
     
-    self.backgroundColor = kWhiteColor;
+  
     self.nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:15];
     [self addSubview:self.nameLab];
     [self.nameLab mas_makeConstraints:^(MASConstraintMaker *make) {

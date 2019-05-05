@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>白色</key>
+	<string></string>
+	<key>self.view.back</key>
+	<string>0xFFFFFF</string>
+	<key>buttonBack</key>
+	<string>0x77A4FF</string>
+	<key>textColor</key>
+	<string>0x282A2E</string>
+	<key>tableview.back</key>
+	<string>0x0000FF</string>
+	<key>cell.back</key>
+	<string>0x52565D</string>
+	<key>label5</key>
+	<string>0x3300FF</string>
+	<key>label6</key>
+	<string>0x663366</string>
+</dict>
+</plist>

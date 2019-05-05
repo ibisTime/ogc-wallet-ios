@@ -53,7 +53,7 @@
 - (void)initTableView {
     self.tableView = [[TLMoneyDetailsTableView alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:(UITableViewStyleGrouped)];
     self.tableView.refreshDelegate = self;
-    self.tableView.backgroundColor = kBackgroundColor;
+    
     self.tableView.moneyModel = self.moneyModel;
     [self.view addSubview:self.tableView];
 

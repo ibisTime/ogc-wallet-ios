@@ -395,7 +395,7 @@
     self.tableView = [[MineTableView alloc] initWithFrame:CGRectMake(0, 175 - 64 + kNavigationBarHeight, kScreenWidth, kScreenHeight - (175 - 64 + kNavigationBarHeight) - kTabBarHeight) style:UITableViewStyleGrouped];
     self.tableView.showsVerticalScrollIndicator = YES;
     self.tableView.showsHorizontalScrollIndicator = YES;
-    self.tableView.backgroundColor = kClearColor;
+    
     self.tableView.mineGroup = self.group;
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.headerView];

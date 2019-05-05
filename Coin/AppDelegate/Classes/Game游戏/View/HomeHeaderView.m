@@ -39,7 +39,7 @@
     
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = kWhiteColor;
+        
         UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10 + (SCREEN_WIDTH - 30)/350 * 150/2)];
         topView.backgroundColor = kTabbarColor;
         [self addSubview:topView];

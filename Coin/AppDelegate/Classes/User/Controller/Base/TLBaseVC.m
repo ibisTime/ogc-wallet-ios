@@ -16,10 +16,8 @@
 @end
 
 @implementation TLBaseVC {
-
     UILabel *_placeholderTitleLbl;
     UIButton *_opBtn;
-
 }
 
 -(UIButton *)LeftBackbButton
@@ -75,7 +73,7 @@
     self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1"];
     self.navigationItem.backBarButtonItem = item;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
+    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
 }
 
 -(void)navigationwhiteColor

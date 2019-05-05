@@ -44,7 +44,7 @@
         _tableView.defaultNoDataImage = kImage(@"暂无订单");
         _tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无收款账号" key:nil];
         _tableView.refreshDelegate = self;
-        _tableView.backgroundColor = kBackgroundColor;
+//        _tableView.backgroundColor = kBackgroundColor;
         //        [self.view addSubview:_tableView];
     }
     return _tableView;

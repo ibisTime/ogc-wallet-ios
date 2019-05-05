@@ -45,7 +45,7 @@
     
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.backgroundColor = kWhiteColor;
+    
         
         self.coinCountLbl = [UILabel labelWithFrame:CGRectZero
                                       textAligment:NSTextAlignmentLeft

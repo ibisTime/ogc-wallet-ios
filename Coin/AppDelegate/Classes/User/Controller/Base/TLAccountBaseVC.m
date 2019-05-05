@@ -34,6 +34,9 @@
     [self.bgSV addGestureRecognizer:tap];
     [self.view addSubview:_bgSV];
 
+    
+    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

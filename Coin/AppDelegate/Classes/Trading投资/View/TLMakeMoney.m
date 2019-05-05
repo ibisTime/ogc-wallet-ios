@@ -20,7 +20,6 @@ static NSString *identifierCell = @"MakeMoneyCell";
     if (self = [super initWithFrame:frame style:style]) {
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
         [self registerClass:[MakeMoneyCell class] forCellReuseIdentifier:identifierCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
     }

@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        self.backgroundColor = kWhiteColor;
+      
         UIImageView *headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, 10, 50, 50)];
         headImage.image = kImage(@"头像");
         self.headImage = headImage;

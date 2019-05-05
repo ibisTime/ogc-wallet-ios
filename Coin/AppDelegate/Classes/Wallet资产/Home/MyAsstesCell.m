@@ -13,8 +13,10 @@
 @implementation MyAsstesCell
 {
     UIImageView *iconImg;
-    UILabel *nameLabel;
+    UILabel * nameLabel;
     UILabel *priceLabel;
+    UILabel *aboutPicLabel;
+    UILabel *allPicLabel;
 }
 
 
@@ -23,88 +25,96 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
+        
+        UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 75)];
+        [whiteView theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
+        self.whiteView = whiteView;
+        whiteView.layer.cornerRadius=4;
+        whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
+        whiteView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
+        whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
+        whiteView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
+        [self addSubview:whiteView];
+        
+        
+        
+        iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 17.5, 40, 40)];
+        //        kViewRadius(iconImg, 20);
+        
+        [whiteView addSubview:iconImg];
+        
+        nameLabel = [UILabel labelWithFrame:CGRectMake(66, 12.5, 100, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];
+//        nameLabel.text = model.currency;
+        [whiteView addSubview:nameLabel];
+        
+        
+        priceLabel = [UILabel labelWithFrame:CGRectMake(nameLabel.xx, 12.5, SCREEN_WIDTH - 30 - nameLabel.xx - 15, 22.5) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(16) textColor:kTextColor2];
+        priceLabel.text = @"0";
+        [whiteView addSubview:priceLabel];
+        
+        aboutPicLabel = [UILabel labelWithFrame:CGRectMake(66, 42, 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kTextColor2];
+//        availableLabel.text = [NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"可用" key:nil],available,model.currency];
+        aboutPicLabel.text = @"≈0.11";
+        [whiteView addSubview:aboutPicLabel];
+        
+        
+        
+        
+        
+        allPicLabel = [UILabel labelWithFrame:CGRectMake(aboutPicLabel.xx, 42, SCREEN_WIDTH - 30 - nameLabel.xx - 15, 22.5) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
+//        aboutPicLabel.text = [NSString stringWithFormat:@"%@%@",amount,model.currency];
+//        aboutPicLabel.centerY = freezeLabel.centerY;
+        allPicLabel.text = @"≈0.00";
+        [whiteView addSubview:allPicLabel];
+        
+        
+        
+        
     }
     return self;
 }
 
--(void)backButtonClick:(UIButton *)sender
+-(void)setPlatforms:(CurrencyModel *)platforms
 {
-    [_delegate MyAsstesButton:sender];
+    CoinModel *coin = [CoinUtil getCoinModel:platforms.currency];
+    [iconImg sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
+    nameLabel.text = platforms.currency;
 }
 
+//-(void)backButtonClick:(UIButton *)sender
+//{
+//    [_delegate MyAsstesButton:sender];
+//}
 
 
 
--(void)setPlatforms:(NSMutableArray<CurrencyModel *> *)platforms
-{
-    
-    [self.whiteView removeFromSuperview];
-    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, platforms.count * 100)];
-    whiteView.backgroundColor = kWhiteColor;
-    self.whiteView = whiteView;
-    whiteView.layer.cornerRadius=10;
-    whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
-    whiteView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-    whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
-    whiteView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
-    [self addSubview:whiteView];
-    
-    
-    for (int i = 0; i < platforms.count; i ++) {
-        
-        CurrencyModel *model = platforms[i];
-        NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
-        
-        NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
-        NSString *available = [amount subNumber:frozenAmount];
-        
-        
-        _backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _backButton.frame = CGRectMake(0, i % platforms.count * 100, SCREEN_WIDTH - 30, 100);
-        [_backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        _backButton.tag = 100 + i;
-        [whiteView addSubview:_backButton];
-        
-        
-        iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 30 + i % platforms.count * 100, 40, 40)];
-//        kViewRadius(iconImg, 20);
-        CoinModel *coin = [CoinUtil getCoinModel:model.currency];
-        [iconImg sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
-        [whiteView addSubview:iconImg];
-        
-        nameLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 23.5 + i % platforms.count * 100, SCREEN_WIDTH - 23.5 - 45, 21) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];
-        nameLabel.text = model.currency;
-        [whiteView addSubview:nameLabel];
-        
-        
-        UILabel *freezeLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, nameLabel.yy + 4 + i % platforms.count * 100, 0, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTextColor2];
-        
-        
-        
-        freezeLabel.text = [NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"冻结" key:nil],frozenAmount,model.currency];
-        [freezeLabel sizeToFit];
-        freezeLabel.frame = CGRectMake(iconImg.xx + 12, nameLabel.yy + 4, freezeLabel.width, 12);
-        [whiteView addSubview:freezeLabel];
-        
-        UILabel *availableLabel = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, freezeLabel.yy + 4, SCREEN_WIDTH - iconImg.xx - 12 - 30 - 15, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:kTextColor2];
-        availableLabel.text = [NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"可用" key:nil],available,model.currency];
-        [whiteView addSubview:availableLabel];
-        
-        
-        
-        
-        
-        priceLabel = [UILabel labelWithFrame:CGRectMake(freezeLabel.xx + 10, 34.5 + i % platforms.count * 100, SCREEN_WIDTH - freezeLabel.xx - 30 - 15 - 10, 21) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(16) textColor:[UIColor blackColor]];
-        priceLabel.text = [NSString stringWithFormat:@"%@%@",amount,model.currency];
-        priceLabel.centerY = freezeLabel.centerY;
-        [whiteView addSubview:priceLabel];
-        
-        if (i != platforms.count - 1) {
-            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 100 + i % platforms.count * 100, SCREEN_WIDTH - 30, 1)];
-            lineView.backgroundColor = kLineColor;
-            [whiteView addSubview:lineView];
-        }
-    }
-}
+
+//-(void)setPlatforms:(NSMutableArray<CurrencyModel *> *)platforms
+//{
+//
+//    [self.whiteView removeFromSuperview];
+//
+//
+//
+//    for (int i = 0; i < platforms.count; i ++) {
+//
+//        CurrencyModel *model = platforms[i];
+//        NSString *amount = [CoinUtil convertToRealCoin:model.amount coin:model.currency];
+//
+//        NSString *frozenAmount = [CoinUtil convertToRealCoin:model.frozenAmount coin:model.currency];
+//        NSString *available = [amount subNumber:frozenAmount];
+//
+//
+////        _backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+////        _backButton.frame = CGRectMake(0, i % platforms.count * 100, SCREEN_WIDTH - 30, 100);
+////        [_backButton addTarget:self action:@selector(backButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+////        _backButton.tag = 100 + i;
+////        [whiteView addSubview:_backButton];
+//
+//
+//
+//    }
+//}
 
 @end

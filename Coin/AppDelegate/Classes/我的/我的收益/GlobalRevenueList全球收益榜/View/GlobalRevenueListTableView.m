@@ -22,7 +22,7 @@
 
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+     
 
         [self registerClass:[GlobalRevenueListCell class] forCellReuseIdentifier:MyInconme];
         [self registerClass:[GlobalRevenueListHeadCell class] forCellReuseIdentifier:GlobalRevenueListHead];

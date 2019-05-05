@@ -23,7 +23,7 @@
 
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+        
 
         [self registerClass:[PosBuyBalanceCell class] forCellReuseIdentifier:PosBuyBalance];
         [self registerClass:[PosBuyIntroduceCell class] forCellReuseIdentifier:PosBuyIntroduce];

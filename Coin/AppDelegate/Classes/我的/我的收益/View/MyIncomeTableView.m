@@ -25,7 +25,7 @@
 
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+      
 
         [self registerClass:[MyInconmeHeadCell class] forCellReuseIdentifier:MyInconmeHead];
         [self registerClass:[SCPieCell class] forCellReuseIdentifier:SCPie];

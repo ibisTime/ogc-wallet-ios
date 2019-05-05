@@ -167,7 +167,7 @@
         _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - 50 - kTabBarHeight - 220) style:UITableViewStyleGrouped];
         _tableView.symbol = self.symbol;
         _tableView.refreshDelegate = self;
-        _tableView.backgroundColor = kBackgroundColor;
+//        _tableView.backgroundColor = kBackgroundColor;
         //        [self.view addSubview:_tableView];
     }
     return _tableView;

@@ -66,7 +66,7 @@
                       style:UITableViewStyleGrouped];
     
     self.tableView.placeHolderView = self.placeHolderView;
-    self.tableView.backgroundColor = kWhiteColor;
+    
     self.tableView.refreshDelegate = self;
     
     self.tableView.sectionHeaderHeight = 22;

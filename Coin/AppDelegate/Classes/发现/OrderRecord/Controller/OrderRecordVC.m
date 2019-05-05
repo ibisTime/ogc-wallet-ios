@@ -32,7 +32,7 @@
         _tableView = [[OrderRecordTableView alloc] initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight) style:UITableViewStylePlain];
         
         _tableView.refreshDelegate = self;
-        _tableView.backgroundColor = kBackgroundColor;
+//        _tableView.backgroundColor = kBackgroundColor;
     }
     return _tableView;
 }

@@ -165,41 +165,41 @@
     NSMutableArray *selectedImageNames = [NSMutableArray array];
 //    if (self.dataArray.count > 0) {
     
-        
+    NSArray *array = @[@"首页",@"DAPP",@"行情",@"快讯",@"我的"];
         
         self.delegate = self;
-        for (int i = 0; i < dataArray.count; i ++) {
+        for (int i = 0; i < array.count; i ++) {
             
-            if ([dataArray[i][@"name"] isEqualToString:@"应用"]) {
-                [VCNamesArray addObject:@"HomeVC"];
-                [titleArray addObject:@"应用"];
-                [imageNamesArray addObject:@"应用（未选中）"];
-                [selectedImageNames addObject:@"应用（选中）"];
-            }
-            
-            if ([dataArray[i][@"name"] isEqualToString:@"投资"]) {
-                [VCNamesArray addObject:@"PosMiningVC"];
-                [titleArray addObject:@"投资"];
-                [imageNamesArray addObject:@"投资（未选中）"];
-                [selectedImageNames addObject:@"投资（选中）"];
-            }
-            
-            if ([dataArray[i][@"name"] isEqualToString:@"交易"]) {
-                [VCNamesArray addObject:@"InvestMentAllVC"];
-                [imageNamesArray addObject:@"交易（未选中）"];
-                [selectedImageNames addObject:@"交易（选中）"];
-                [titleArray addObject:@"交易"];
-            }
-            if ([dataArray[i][@"name"] isEqualToString:@"资产"]) {
+            if ([array[i] isEqualToString:@"首页"]) {
                 [VCNamesArray addObject:@"TLWalletVC"];
-                [imageNamesArray addObject:@"钱包（未选中）"];
-                [selectedImageNames addObject:@"钱包（选中）"];
-                [titleArray addObject:@"资产"];
+                [titleArray addObject:@"首页"];
+                [imageNamesArray addObject:@"首页-未选中"];
+                [selectedImageNames addObject:@"首页-选中"];
             }
-            if ([dataArray[i][@"name"] isEqualToString:@"我的"]) {
+            
+            if ([array[i] isEqualToString:@"DAPP"]) {
+                [VCNamesArray addObject:@"HomeVC"];
+                [titleArray addObject:@"DAPP"];
+                [imageNamesArray addObject:@"DAPP-未选中"];
+                [selectedImageNames addObject:@"DAPP-选中"];
+            }
+            
+            if ([array[i] isEqualToString:@"行情"]) {
+                [VCNamesArray addObject:@"MarketVC"];
+                [imageNamesArray addObject:@"行情-未选中"];
+                [selectedImageNames addObject:@"行情-选中"];
+                [titleArray addObject:@"行情"];
+            }
+            if ([array[i] isEqualToString:@"快讯"]) {
+                [VCNamesArray addObject:@"AlertsVC"];
+                [imageNamesArray addObject:@"快讯-未选中"];
+                [selectedImageNames addObject:@"快讯-选中"];
+                [titleArray addObject:@"快讯"];
+            }
+            if ([array[i] isEqualToString:@"我的"]) {
                 [VCNamesArray addObject:@"TLMineVC"];
-                [imageNamesArray addObject:@"我的（未选中）"];
-                [selectedImageNames addObject:@"我的（选中）"];
+                [imageNamesArray addObject:@"我的-未选中"];
+                [selectedImageNames addObject:@"我的-选中"];
                 [titleArray addObject:@"我的"];
             }
             [self addChildVCWithTitle:titleArray[i]
@@ -215,11 +215,12 @@
 //
 //        }
     
-        UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
-        tabBarBgView.backgroundColor = [UIColor whiteColor];
+    UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
+//        tabBarBgView.backgroundColor = [UIColor whiteColor];
         //        //判断点击的Controller是不是需要登录，如果是，那就登录
-        
-        self.tabBar.backgroundColor = [UIColor whiteColor];
+    [tabBarBgView theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
+    [self.tabBar theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
+//        self.tabBar.backgroundColor = [UIColor whiteColor];
 //    }
 }
 
@@ -253,8 +254,13 @@
     //    vc.title = title;
     
     //获得原始图片
-    UIImage *normalImage = [self getOrgImage:[UIImage imageNamed:normalImageName]];
-    UIImage *selectedImage = [self getOrgImage:[UIImage imageNamed:selectedImageName]];
+//    UIImage *normalImage = [self getOrgImage:[UIImage imageNamed:normalImageName]];
+//    UIImage *selectedImage = [self getOrgImage:[UIImage imageNamed:selectedImageName]];
+    
+    UIImage *normalImage = [MTThemeManager.manager getImageWithModuleName:normalImageName
+                                        identifier:ImgAddress];
+    UIImage *selectedImage = [MTThemeManager.manager getImageWithModuleName:selectedImageName
+                                                                 identifier:ImgAddress];
     
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:title
                                                              image:normalImage

@@ -363,7 +363,7 @@
                       style:UITableViewStyleGrouped];
     
     self.tableView.placeHolderView = self.placeHolderView;
-    self.tableView.backgroundColor = kWhiteColor;
+
     self.tableView.refreshDelegate = self;
     self.tableView.billModel = self.currency;
     self.tableView.defaultNoDataImage = kImage(@"暂无订单");

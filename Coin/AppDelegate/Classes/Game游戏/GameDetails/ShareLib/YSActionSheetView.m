@@ -73,7 +73,7 @@
         _tableView.layer.cornerRadius = 10;
         _tableView.clipsToBounds = YES;
         _tableView.bounces = NO;
-        _tableView.backgroundColor = [UIColor clearColor];
+//        _tableView.backgroundColor = [UIColor clearColor];
         _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
         
     }

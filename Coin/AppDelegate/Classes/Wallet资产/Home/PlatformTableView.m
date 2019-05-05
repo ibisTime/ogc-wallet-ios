@@ -34,7 +34,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
 #pragma mark - UITableViewDataSource;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.platforms.count;
     
 }
 
@@ -44,7 +44,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
     cell.delegate = self;
     if (self.platforms.count > 0) {
-        cell.platforms = self.platforms;
+        cell.platforms = self.platforms[indexPath.row];
     }
     
     return cell;
@@ -57,10 +57,8 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.platforms.count> 0) {
-        return self.platforms.count * 100 + 20;
-    }
-    return 0.01;
+    
+    return 90;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

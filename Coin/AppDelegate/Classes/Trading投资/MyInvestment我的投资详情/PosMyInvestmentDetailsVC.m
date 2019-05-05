@@ -59,7 +59,7 @@
 - (void)initTableView {
     self.tableView = [[PosMyInvestmentDetailsTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) style:(UITableViewStyleGrouped)];
     self.tableView.refreshDelegate = self;
-    self.tableView.backgroundColor = kBackgroundColor;
+    
 
 
     headView = [[PosMyInvestmentHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 210)];

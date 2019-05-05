@@ -21,7 +21,7 @@ static NSString *identifierCell = @"AccumulatedEarningsCell";
         self.dataSource = self;
         self.delegate = self;
         //        [self setContentInset:UIEdgeInsetsMake(5, 0.0, -5, 0.0)];
-        self.backgroundColor = kBackgroundColor;
+ 
         [self registerClass:[AccumulatedEarningsCell class] forCellReuseIdentifier:identifierCell];
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.date = @"";

@@ -46,7 +46,7 @@
 
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+        
 
         [self registerClass:[TLMoneyDeailCell class] forCellReuseIdentifier:TLMoneyDeail];
         [self registerClass:[TLMoneyDetailsAttributesCell class] forCellReuseIdentifier:TLMoneyDetailsAttributes];

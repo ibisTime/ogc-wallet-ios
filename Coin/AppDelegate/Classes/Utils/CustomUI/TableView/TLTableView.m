@@ -81,7 +81,8 @@ _Pragma("clang diagnostic pop") \
     
     if (self = [super initWithFrame:frame style:style]) {
         
-        self.backgroundColor = kBackgroundColor;
+        [self theme_setBackgroundColorIdentifier:@"tableview.back" moduleName:@"homepage"];
+        
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.estimatedRowHeight = 0;
         self.estimatedSectionHeaderHeight = 0;

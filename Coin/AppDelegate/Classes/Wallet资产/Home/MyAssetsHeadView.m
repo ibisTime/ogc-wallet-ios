@@ -19,48 +19,52 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+        UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, 15, 100, 33.5)];
+        nameLable.text = [LangSwitcher switchLang:@"零用钱包" key:nil];
         
-        UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 148 - 64 + kNavigationBarHeight)];
-        topImage.image = kImage(@"Mask");
-        [self addSubview:topImage];
-        
-        
-        
-        UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, 44)];
-        nameLable.text = [LangSwitcher switchLang:@"我的资产" key:nil];
-        nameLable.textAlignment = NSTextAlignmentCenter;
+        nameLable.textAlignment = NSTextAlignmentLeft;
         self.nameLable = nameLable;
-        nameLable.font = Font(18);
-        nameLable.textColor = kWhiteColor;
+        nameLable.font = Font(24);
+        [nameLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
         [self addSubview:nameLable];
         
         
-        UIImageView *whiteView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 87 - 64 + kNavigationBarHeight - 10, SCREEN_WIDTH - 10 , 180)];
+        UIButton *SwitchPurse = [UIButton buttonWithTitle:@"" titleColor:kClearColor backgroundColor:kClearColor titleFont:10];
+        SwitchPurse.frame = CGRectMake(SCREEN_WIDTH - 55, 15, 46, 34);
+//        [SwitchPurse SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:4 imagePositionBlock:^(UIButton *button) {
+//            [button theme_setImageIdentifier:@"钱包切换" forState:(UIControlStateNormal) moduleName:ImgAddress];
+//        }];
+        [self addSubview:SwitchPurse];
+        
+        
+        UIImageView *switchImg = [[UIImageView alloc]initWithFrame:CGRectMake(16, 0, 18, 18)];
+        [switchImg theme_setImageIdentifier:@"钱包切换" moduleName:ImgAddress];
+        [SwitchPurse addSubview:switchImg];
+        
+        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, 22, 45, 12) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(10) textColor:nil];
+        nameLbl.text = @"钱包切换";
+        [nameLbl theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+        [SwitchPurse addSubview:nameLbl];
+        
+        UIImageView *whiteView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 64, SCREEN_WIDTH - 10 , 170)];
 //        我的资产背景
-        whiteView.image = kImage(@"我的资产背景背景");
+        [whiteView theme_setImageIdentifier:@"零用钱包背景" moduleName:ImgAddress];
         [self addSubview:whiteView];
         
-        
-//        UIImageView *iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(35, 48, 11, 12)];
-//        iconImg.image = kImage(@"");
-//        [whiteView addSubview:iconImg];
-        
-        UIButton *allAssetsBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"总资产" key:nil] titleColor:[UIColor blackColor] backgroundColor:kClearColor titleFont:12];
+        UIButton *allAssetsBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil] titleColor:[UIColor blackColor] backgroundColor:kClearColor titleFont:12];
         allAssetsBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        allAssetsBtn.frame = CGRectMake(35, 48 + 5, SCREEN_WIDTH - 80, 14);
-        [allAssetsBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:4 imagePositionBlock:^(UIButton *button) {
-            [button setImage:kImage(@"转出") forState:(UIControlStateNormal)];
-        }];
+        allAssetsBtn.frame = CGRectMake(35, 44, SCREEN_WIDTH - 80, 20);
+        
         [whiteView addSubview:allAssetsBtn];
         
         
-        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, allAssetsBtn.yy + 20, SCREEN_WIDTH - 80, 32) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(32) textColor:kTabbarColor];
+        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 80, SCREEN_WIDTH - 80, 41) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(41) textColor:kTabbarColor];
          if ([[TLUser user].localMoney isEqualToString:@"USD"])
          {
-             allAssetsLbl.text = @"≈0.00 USD";
+             allAssetsLbl.text = @"≈0.00";
          }else
          {
-             allAssetsLbl.text = @"≈0.00 CNY";
+             allAssetsLbl.text = @"≈0.00";
          }
         
         [whiteView addSubview:allAssetsLbl];

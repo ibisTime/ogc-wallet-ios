@@ -49,7 +49,9 @@
         
         button.titleLabel.font = Font(titleFont);
         [button setTitle:title forState:UIControlStateNormal];
-        [button setTitleColor:titleColor forState:UIControlStateNormal];
+//        [button setTitleColor:titleColor forState:UIControlStateNormal];
+        [button theme_setTitleIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+        
         if (backgroundColor) {
             
             [button setBackgroundColor:backgroundColor];

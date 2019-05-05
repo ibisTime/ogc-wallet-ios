@@ -82,7 +82,7 @@
 - (void)initTableView {
     self.tableView = [[GlobalRevenueListTableView alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - GlobalRevenueListBottomHeight - 50) style:(UITableViewStyleGrouped)];
     self.tableView.refreshDelegate = self;
-    self.tableView.backgroundColor = kBackgroundColor;
+    
     [self.view addSubview:self.tableView];
 }
 

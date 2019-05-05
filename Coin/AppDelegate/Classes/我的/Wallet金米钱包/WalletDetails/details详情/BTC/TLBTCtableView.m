@@ -31,7 +31,7 @@ static NSString *identifierCell = @"BTCDetailModel";
         
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+   
         
         [self registerClass:[BTCDetailModel class] forCellReuseIdentifier:identifierCell];
     }

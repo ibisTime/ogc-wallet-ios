@@ -32,7 +32,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         [self initSubviews];
-        self.backgroundColor = kBackgroundColor;
+  
     }
     
     return self;

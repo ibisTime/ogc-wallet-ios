@@ -306,7 +306,7 @@
         _tableView = [[TLMakeMoney alloc] initWithFrame:CGRectMake(0, -kNavigationBarHeight + 240 - 64 + kNavigationBarHeight + 45, SCREEN_WIDTH, SCREEN_HEIGHT - (240 - 64 + kNavigationBarHeight - 45) - kTabBarHeight - kNavigationBarHeight) style:UITableViewStylePlain];
 
         _tableView.refreshDelegate = self;
-        _tableView.backgroundColor = kBackgroundColor;
+//        _tableView.backgroundColor = kBackgroundColor;
     }
     return _tableView;
 }

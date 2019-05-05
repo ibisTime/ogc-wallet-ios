@@ -25,7 +25,7 @@
         _tableView = [[MyFriendTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight) style:UITableViewStyleGrouped];
         self.tableView.showsVerticalScrollIndicator = YES;
         self.tableView.showsHorizontalScrollIndicator = YES;
-        self.tableView.backgroundColor = kWhiteColor;
+
         self.tableView.refreshDelegate = self;
         self.tableView.defaultNoDataImage = kImage(@"暂无订单");
         self.tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无好友" key:nil];

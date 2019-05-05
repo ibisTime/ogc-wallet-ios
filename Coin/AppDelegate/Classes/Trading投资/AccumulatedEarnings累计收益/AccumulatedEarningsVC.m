@@ -67,7 +67,7 @@
 - (void)initTableView {
     self.tableView = [[AccumulatedEarningsTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) style:(UITableViewStyleGrouped)];
     self.tableView.refreshDelegate = self;
-    self.tableView.backgroundColor = kBackgroundColor;
+//    .backgroundColor = kBackgroundColor;
     self.tableView.defaultNoDataImage = kImage(@"暂无订单");
     self.tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无明细" key:nil];
     [self.view addSubview:self.tableView];

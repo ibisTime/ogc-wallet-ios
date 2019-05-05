@@ -99,7 +99,7 @@
 -(MyAssetsHeadView *)headView
 {
     if (!_headView) {
-        _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 87 - 64 + kNavigationBarHeight - 10 + 180)];
+        _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 240)];
     }
     return _headView;
 }
@@ -113,8 +113,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kWhiteColor;
-    [self.view addSubview:self.headView];
+    
 
     [self initTableView];
     //登录退出通知
@@ -124,11 +123,11 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, self.headView.yy - 5, kScreenWidth, kScreenHeight - kNavigationBarHeight - self.headView.yy + 5) style:UITableViewStyleGrouped];
-    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, kTabBarHeight, 0);
-    self.tableView.backgroundColor = kWhiteColor;
+    self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, kScreenWidth, kScreenHeight - kNavigationBarHeight - kStatusBarHeight) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
+//    [self.view addSubview:self.headView];
+    self.tableView.tableHeaderView = self.headView;
 }
 
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index

@@ -74,8 +74,7 @@
     self.tableView = [[JoinMineTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStylePlain];
     //    self.tableView.tableHeaderView = self.headerView;
     self.tableView.refreshDelegate = self;
-    self.tableView.backgroundColor = kWhiteColor;
-    //    [self.tableView adjustsContentInsets];
+    
     [self.view addSubview:self.tableView];
 }
 

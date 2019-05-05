@@ -52,7 +52,8 @@
     lbl.textAlignment = aligment;
     lbl.backgroundColor = color;
     lbl.font = font;
-    lbl.textColor = textColor;
+//    lbl.textColor = textColor;
+    [lbl theme_setTextColorIdentifier:@"textColor" moduleName:@"homepage"];
     return lbl;
     
 }

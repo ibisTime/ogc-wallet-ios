@@ -25,7 +25,7 @@
 
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+ 
 
         [self registerClass:[PosMyInvestmentDetailsCell class] forCellReuseIdentifier:PosMyInvestmentDetails];
 

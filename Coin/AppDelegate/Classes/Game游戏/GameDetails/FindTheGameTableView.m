@@ -19,7 +19,7 @@
         
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+
         
         [self registerClass:[FindTheGameHeadCell class] forCellReuseIdentifier:@"FindTheGameHeadCell"];
         [self registerClass:[GameIntroducedCell class] forCellReuseIdentifier:@"GameIntroducedCell"];

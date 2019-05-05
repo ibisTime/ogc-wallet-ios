@@ -21,7 +21,7 @@
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        self.backgroundColor = kWhiteColor;
+
         self.iconImageView = [[UIImageView alloc] init];
         [self.contentView addSubview:self.iconImageView];
         self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;

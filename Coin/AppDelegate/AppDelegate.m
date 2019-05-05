@@ -61,6 +61,22 @@
 //    [AppConfig config].runEnv = RunEnvTest;
 //    正式
     [AppConfig config].runEnv = RunEnvRelease;
+    //主题模块初始化
+    CFAbsoluteTime themeStartTime = CFAbsoluteTimeGetCurrent();
+    NSString *path = [NSBundle mainBundle].bundlePath;
+    NSString *themePath = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+    [MTThemeManager initializeWithDefaultThemePath:themePath];
+    CFAbsoluteTime themeEndTime = CFAbsoluteTimeGetCurrent();
+    MTTheme_Log(@"[During]主题注册事件 during in %f seconds.", (themeStartTime - themeEndTime));
+    
+    //字体模块初始化
+    CFAbsoluteTime fontStartTime = CFAbsoluteTimeGetCurrent();
+    NSString *fontPath = [path stringByAppendingPathComponent:@"Font/Font1"];
+    [MTFontManager initializeWithDefaultFontPath:fontPath];
+    CFAbsoluteTime fontEndTime = CFAbsoluteTimeGetCurrent();
+    MTTheme_Log(@"[During]字体注册事件 during in %f seconds.", (fontStartTime - fontEndTime));
+    
+    
     NSLog(@"================= %@",NSHomeDirectory());
     [AppConfig config].isChecking = NO;
     self.respHandler = [[RespHandler alloc] init];
@@ -73,6 +89,8 @@
         [self configUpdate];
         
     });
+    
+    
     
     //    配置七牛地址
     [self GetSevenCattleAddress];

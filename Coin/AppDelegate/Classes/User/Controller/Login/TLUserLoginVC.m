@@ -82,6 +82,10 @@
     
     [self setUpUI];
 
+    [self.view theme_setBackgroundColorIdentifier:TableViewColor moduleName:@"homepage"];
+//    self.view.backgroundColor
+    
+    
 //    [self loadData];
 
 //    [self changeCodeLogin];
@@ -212,20 +216,10 @@
     self.view.backgroundColor = kWhiteColor;
     
     
-//    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200 - 64 + kNavigationBarHeight)];
-//    topView.backgroundColor = kTabbarColor;
-//    [self.view addSubview:topView];
-    
-    
-    UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 209 - 64 + kNavigationBarHeight)];
-    topImage.image = kImage(@"Mask");
-    [self.view addSubview:topImage];
-    
-    
-    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];
-    logoView.contentMode = UIViewContentModeScaleToFill;
-    [topImage addSubview:logoView];
-    logoView.image = kImage(@"邀请-logo");
+//    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];
+//    logoView.contentMode = UIViewContentModeScaleToFill;
+//    [self.view addSubview:logoView];
+//    logoView.image = kImage(@"邀请-logo");
     
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, 170 - 64 + kNavigationBarHeight - 35, SCREEN_WIDTH - 30, 360)];
     backView.backgroundColor = kWhiteColor;
@@ -277,7 +271,7 @@
     UIButton *registeredBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"立即注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:14.0];
     registeredBtn.frame = CGRectMake(20, loginBtn.yy + 20, (SCREEN_WIDTH - 80)/2, 20);
     registeredBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [registeredBtn addTarget:self action:@selector(goReg) forControlEvents:UIControlEventTouchUpInside];
+    [registeredBtn addTarget:self action:@selector(goReg:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:registeredBtn];
     
     
@@ -285,17 +279,31 @@
     UIButton *forgetPwdBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"忘记密码" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:14.0];
     forgetPwdBtn.frame = CGRectMake(registeredBtn.xx, loginBtn.yy + 20, (SCREEN_WIDTH - 80)/2, 20);
     forgetPwdBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [backView addSubview:forgetPwdBtn];
 }
 
 //HTMLTypeRegProtocol
 
--(void)forgetPwdBtnClick
+-(void)forgetPwdBtnClick:(UIButton *)btn
 {
+//    NSString *path = [NSBundle mainBundle].bundlePath;
+//    path = [path stringByAppendingPathComponent:@"Theme"];
+//    path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+//    [MTThemeManager.manager setThemePath:path];
     TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
     vc.titleString = @"修改登录密码";
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)goReg:(UIButton *)btn {
+//    NSString *path = [NSBundle mainBundle].bundlePath;
+//    path = [path stringByAppendingPathComponent:@"Theme"];
+//    path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+//    [MTThemeManager.manager setThemePath:path];
+    TLUserRegisterVC *registerVC = [[TLUserRegisterVC alloc] init];
+    [self.navigationController pushViewController:registerVC animated:YES];
+    
 }
 
 //- (void)sendCaptcha
@@ -439,14 +447,7 @@
 
 
 
-- (void)goReg {
-    
-    TLUserRegisterVC *registerVC = [[TLUserRegisterVC alloc] init];
-//    self.title = [LangSwitcher switchLang:@"注册" key:nil];
 
-    [self.navigationController pushViewController:registerVC animated:YES];
-    
-}
 
 - (void)goLogin {
     

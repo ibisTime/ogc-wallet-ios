@@ -21,7 +21,6 @@ static NSString *identifierCell = @"SettingCell";
         
         self.dataSource = self;
         self.delegate = self;
-        //        self.backgroundColor = kWhiteColor;
         [self registerClass:[SettingCell class] forCellReuseIdentifier:identifierCell];
     }
     

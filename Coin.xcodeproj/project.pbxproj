@@ -17,6 +17,7 @@
 		1F1B000E21E49BF6000BEBD3 /* BindingEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */; };
 		1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */; };
 		1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */; };
+		1F2E00C5227EE12000FE79C8 /* Theme in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E00C4227EE11F00FE79C8 /* Theme */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
 		1F4731C6221A92CB007B5908 /* 1080的.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4731C5221A92C9007B5908 /* 1080的.png */; };
@@ -177,6 +178,22 @@
 		1F770ED721904D7D00E2889F /* langImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F770ED621904D7D00E2889F /* langImg.png */; };
 		1F770EDA21913CC000E2889F /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770ED921913CC000E2889F /* UserModel.m */; };
 		1F770EDD2191738400E2889F /* ToolTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F770EDC2191738400E2889F /* ToolTextField.m */; };
+		1F7F6F5B227EE572003AEBA7 /* MTElementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F3E227EE571003AEBA7 /* MTElementModel.m */; };
+		1F7F6F5C227EE572003AEBA7 /* MTBaseTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F3F227EE571003AEBA7 /* MTBaseTable.m */; };
+		1F7F6F5D227EE572003AEBA7 /* MTThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F43227EE571003AEBA7 /* MTThemeManager.m */; };
+		1F7F6F5E227EE572003AEBA7 /* MTThemeTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F44227EE571003AEBA7 /* MTThemeTable.m */; };
+		1F7F6F5F227EE572003AEBA7 /* MTThemePerformSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F46227EE571003AEBA7 /* MTThemePerformSelector.m */; };
+		1F7F6F60227EE572003AEBA7 /* MTThemeBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F47227EE571003AEBA7 /* MTThemeBlock.m */; };
+		1F7F6F61227EE572003AEBA7 /* MTFontTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F49227EE571003AEBA7 /* MTFontTable.m */; };
+		1F7F6F62227EE572003AEBA7 /* MTFontManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F4A227EE571003AEBA7 /* MTFontManager.m */; };
+		1F7F6F63227EE572003AEBA7 /* UIButton+MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F50227EE571003AEBA7 /* UIButton+MTTheme.m */; };
+		1F7F6F64227EE572003AEBA7 /* UIView+MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F54227EE571003AEBA7 /* UIView+MTTheme.m */; };
+		1F7F6F65227EE572003AEBA7 /* UIImageView+MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F55227EE571003AEBA7 /* UIImageView+MTTheme.m */; };
+		1F7F6F66227EE572003AEBA7 /* UILabel+MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F57227EE571003AEBA7 /* UILabel+MTTheme.m */; };
+		1F7F6F67227EE572003AEBA7 /* UITextView+MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F58227EE571003AEBA7 /* UITextView+MTTheme.m */; };
+		1F7F6F68227EE572003AEBA7 /* UITextField+MTTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F59227EE571003AEBA7 /* UITextField+MTTheme.m */; };
+		1F7F6F6E227EFB5A003AEBA7 /* MarketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F6D227EFB5A003AEBA7 /* MarketVC.m */; };
+		1F7F6F74227EFBD3003AEBA7 /* AlertsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F6F73227EFBD3003AEBA7 /* AlertsVC.m */; };
 		1F816BF42180953D0078B945 /* SGQRCodeScanManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BE6218095380078B945 /* SGQRCodeScanManager.m */; };
 		1F816BF52180953D0078B945 /* SGQRCodeAlbumManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BE92180953A0078B945 /* SGQRCodeAlbumManager.m */; };
 		1F816BF62180953D0078B945 /* SGQRCodeGenerateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BEC2180953B0078B945 /* SGQRCodeGenerateManager.m */; };
@@ -639,6 +656,7 @@
 		1F1BFFFD21E49391000BEBD3 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 		1F1BFFFE21E49391000BEBD3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		1F1BFFFF21E49391000BEBD3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
+		1F2E00C4227EE11F00FE79C8 /* Theme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Theme; sourceTree = "<group>"; };
 		1F35826421870D8C00F1665B /* NewHelpCentetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHelpCentetVC.m; sourceTree = "<group>"; };
 		1F35826521870D8E00F1665B /* NewHelpCentetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpCentetVC.h; sourceTree = "<group>"; };
 		1F358B3B218ABC4500F1665B /* USDTRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTRecordModel.h; sourceTree = "<group>"; };
@@ -1037,6 +1055,40 @@
 		1F770ED921913CC000E2889F /* UserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		1F770EDB2191738400E2889F /* ToolTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToolTextField.h; sourceTree = "<group>"; };
 		1F770EDC2191738400E2889F /* ToolTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToolTextField.m; sourceTree = "<group>"; };
+		1F7F6F3A227EE571003AEBA7 /* MTBaseTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTBaseTable.h; sourceTree = "<group>"; };
+		1F7F6F3B227EE571003AEBA7 /* MTElementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTElementModel.h; sourceTree = "<group>"; };
+		1F7F6F3C227EE571003AEBA7 /* MTThemeBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTThemeBlock.h; sourceTree = "<group>"; };
+		1F7F6F3D227EE571003AEBA7 /* MTThemePerformSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTThemePerformSelector.h; sourceTree = "<group>"; };
+		1F7F6F3E227EE571003AEBA7 /* MTElementModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTElementModel.m; sourceTree = "<group>"; };
+		1F7F6F3F227EE571003AEBA7 /* MTBaseTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTBaseTable.m; sourceTree = "<group>"; };
+		1F7F6F40227EE571003AEBA7 /* MTThemeDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTThemeDefinition.h; sourceTree = "<group>"; };
+		1F7F6F42227EE571003AEBA7 /* MTThemeTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTThemeTable.h; sourceTree = "<group>"; };
+		1F7F6F43227EE571003AEBA7 /* MTThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTThemeManager.m; sourceTree = "<group>"; };
+		1F7F6F44227EE571003AEBA7 /* MTThemeTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTThemeTable.m; sourceTree = "<group>"; };
+		1F7F6F45227EE571003AEBA7 /* MTThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTThemeManager.h; sourceTree = "<group>"; };
+		1F7F6F46227EE571003AEBA7 /* MTThemePerformSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTThemePerformSelector.m; sourceTree = "<group>"; };
+		1F7F6F47227EE571003AEBA7 /* MTThemeBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTThemeBlock.m; sourceTree = "<group>"; };
+		1F7F6F49227EE571003AEBA7 /* MTFontTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFontTable.m; sourceTree = "<group>"; };
+		1F7F6F4A227EE571003AEBA7 /* MTFontManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTFontManager.m; sourceTree = "<group>"; };
+		1F7F6F4B227EE571003AEBA7 /* MTFontTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFontTable.h; sourceTree = "<group>"; };
+		1F7F6F4C227EE571003AEBA7 /* MTFontManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTFontManager.h; sourceTree = "<group>"; };
+		1F7F6F4D227EE571003AEBA7 /* MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTheme.h; sourceTree = "<group>"; };
+		1F7F6F4F227EE571003AEBA7 /* UILabel+MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+MTTheme.h"; sourceTree = "<group>"; };
+		1F7F6F50227EE571003AEBA7 /* UIButton+MTTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+MTTheme.m"; sourceTree = "<group>"; };
+		1F7F6F51227EE571003AEBA7 /* UIImageView+MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+MTTheme.h"; sourceTree = "<group>"; };
+		1F7F6F52227EE571003AEBA7 /* UITextView+MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+MTTheme.h"; sourceTree = "<group>"; };
+		1F7F6F53227EE571003AEBA7 /* UITextField+MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+MTTheme.h"; sourceTree = "<group>"; };
+		1F7F6F54227EE571003AEBA7 /* UIView+MTTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MTTheme.m"; sourceTree = "<group>"; };
+		1F7F6F55227EE571003AEBA7 /* UIImageView+MTTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+MTTheme.m"; sourceTree = "<group>"; };
+		1F7F6F56227EE571003AEBA7 /* UIButton+MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+MTTheme.h"; sourceTree = "<group>"; };
+		1F7F6F57227EE571003AEBA7 /* UILabel+MTTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+MTTheme.m"; sourceTree = "<group>"; };
+		1F7F6F58227EE571003AEBA7 /* UITextView+MTTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+MTTheme.m"; sourceTree = "<group>"; };
+		1F7F6F59227EE571003AEBA7 /* UITextField+MTTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+MTTheme.m"; sourceTree = "<group>"; };
+		1F7F6F5A227EE571003AEBA7 /* UIView+MTTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MTTheme.h"; sourceTree = "<group>"; };
+		1F7F6F6C227EFB5A003AEBA7 /* MarketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketVC.h; sourceTree = "<group>"; };
+		1F7F6F6D227EFB5A003AEBA7 /* MarketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketVC.m; sourceTree = "<group>"; };
+		1F7F6F72227EFBD3003AEBA7 /* AlertsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsVC.h; sourceTree = "<group>"; };
+		1F7F6F73227EFBD3003AEBA7 /* AlertsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsVC.m; sourceTree = "<group>"; };
 		1F816BE6218095380078B945 /* SGQRCodeScanManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanManager.m; sourceTree = "<group>"; };
 		1F816BE7218095390078B945 /* SGQRCodeScanningView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningView.h; sourceTree = "<group>"; };
 		1F816BE8218095390078B945 /* SGQRCode.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SGQRCode.bundle; sourceTree = "<group>"; };
@@ -2839,6 +2891,125 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1F7F6F38227EE571003AEBA7 /* MTTheme */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F39227EE571003AEBA7 /* Core */,
+				1F7F6F4D227EE571003AEBA7 /* MTTheme.h */,
+				1F7F6F4E227EE571003AEBA7 /* Categorys */,
+			);
+			path = MTTheme;
+			sourceTree = "<group>";
+		};
+		1F7F6F39227EE571003AEBA7 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F3A227EE571003AEBA7 /* MTBaseTable.h */,
+				1F7F6F3B227EE571003AEBA7 /* MTElementModel.h */,
+				1F7F6F3C227EE571003AEBA7 /* MTThemeBlock.h */,
+				1F7F6F3D227EE571003AEBA7 /* MTThemePerformSelector.h */,
+				1F7F6F3E227EE571003AEBA7 /* MTElementModel.m */,
+				1F7F6F3F227EE571003AEBA7 /* MTBaseTable.m */,
+				1F7F6F40227EE571003AEBA7 /* MTThemeDefinition.h */,
+				1F7F6F41227EE571003AEBA7 /* Theme */,
+				1F7F6F46227EE571003AEBA7 /* MTThemePerformSelector.m */,
+				1F7F6F47227EE571003AEBA7 /* MTThemeBlock.m */,
+				1F7F6F48227EE571003AEBA7 /* Font */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1F7F6F41227EE571003AEBA7 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F42227EE571003AEBA7 /* MTThemeTable.h */,
+				1F7F6F43227EE571003AEBA7 /* MTThemeManager.m */,
+				1F7F6F44227EE571003AEBA7 /* MTThemeTable.m */,
+				1F7F6F45227EE571003AEBA7 /* MTThemeManager.h */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		1F7F6F48227EE571003AEBA7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F49227EE571003AEBA7 /* MTFontTable.m */,
+				1F7F6F4A227EE571003AEBA7 /* MTFontManager.m */,
+				1F7F6F4B227EE571003AEBA7 /* MTFontTable.h */,
+				1F7F6F4C227EE571003AEBA7 /* MTFontManager.h */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		1F7F6F4E227EE571003AEBA7 /* Categorys */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F4F227EE571003AEBA7 /* UILabel+MTTheme.h */,
+				1F7F6F50227EE571003AEBA7 /* UIButton+MTTheme.m */,
+				1F7F6F51227EE571003AEBA7 /* UIImageView+MTTheme.h */,
+				1F7F6F52227EE571003AEBA7 /* UITextView+MTTheme.h */,
+				1F7F6F53227EE571003AEBA7 /* UITextField+MTTheme.h */,
+				1F7F6F54227EE571003AEBA7 /* UIView+MTTheme.m */,
+				1F7F6F55227EE571003AEBA7 /* UIImageView+MTTheme.m */,
+				1F7F6F56227EE571003AEBA7 /* UIButton+MTTheme.h */,
+				1F7F6F57227EE571003AEBA7 /* UILabel+MTTheme.m */,
+				1F7F6F58227EE571003AEBA7 /* UITextView+MTTheme.m */,
+				1F7F6F59227EE571003AEBA7 /* UITextField+MTTheme.m */,
+				1F7F6F5A227EE571003AEBA7 /* UIView+MTTheme.h */,
+			);
+			path = Categorys;
+			sourceTree = "<group>";
+		};
+		1F7F6F69227EFB22003AEBA7 /* Market行情 */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F6B227EFB3A003AEBA7 /* Controller */,
+				1F7F6F6A227EFB38003AEBA7 /* View */,
+			);
+			path = "Market行情";
+			sourceTree = "<group>";
+		};
+		1F7F6F6A227EFB38003AEBA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7F6F6B227EFB3A003AEBA7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F6C227EFB5A003AEBA7 /* MarketVC.h */,
+				1F7F6F6D227EFB5A003AEBA7 /* MarketVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F7F6F6F227EFBB6003AEBA7 /* Alerts快讯 */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F71227EFBC2003AEBA7 /* Controller */,
+				1F7F6F70227EFBC0003AEBA7 /* View */,
+			);
+			path = "Alerts快讯";
+			sourceTree = "<group>";
+		};
+		1F7F6F70227EFBC0003AEBA7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F7F6F71227EFBC2003AEBA7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F7F6F72227EFBD3003AEBA7 /* AlertsVC.h */,
+				1F7F6F73227EFBD3003AEBA7 /* AlertsVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1F9031CB2247A84D0093C38D /* TopScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3995,6 +4166,8 @@
 		2E394FA31FB0546E00BA0829 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1F7F6F6F227EFBB6003AEBA7 /* Alerts快讯 */,
+				1F7F6F69227EFB22003AEBA7 /* Market行情 */,
 				211DE6901FB58B4C002FCF3D /* Macro */,
 				B88B58F32109AEC300F20D1B /* Other */,
 				216F5AF0206CC73D00F2C832 /* Update */,
@@ -4105,6 +4278,8 @@
 		2EA584B61FA813C900C7106C /* Coin */ = {
 			isa = PBXGroup;
 			children = (
+				1F7F6F38227EE571003AEBA7 /* MTTheme */,
+				1F2E00C4227EE11F00FE79C8 /* Theme */,
 				1F1BFFFB21E49391000BEBD3 /* OCR */,
 				1F76692C21D4A34C00006B41 /* ValidationSDK */,
 				1F76695D21D4A34C00006B41 /* WechatSDK1.8.2 */,
@@ -4909,6 +5084,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F2E00C5227EE12000FE79C8 /* Theme in Resources */,
 				7A2CC6C2215DC88C00B27E2D /* PGDatePicker.bundle in Resources */,
 				1F76697C21D4A34D00006B41 /* README.txt in Resources */,
 				1F76696921D4A34D00006B41 /* MSADefaultImages.bundle in Resources */,
@@ -5067,6 +5243,7 @@
 				B89F07E2211B07FA0057E781 /* TLMeSetting.m in Sources */,
 				1F7669FA21DDA5BF00006B41 /* BrokenChartView.m in Sources */,
 				7A07F80C216C84F30026EB7A /* SCPieChartDataItem.m in Sources */,
+				1F7F6F60227EE572003AEBA7 /* MTThemeBlock.m in Sources */,
 				1FA56AEA223CD6A70077FE54 /* YYTextLayout.m in Sources */,
 				1F9C8FBF2244E10700DFA9C3 /* CustomFMDBModel.m in Sources */,
 				1F7366432252110800135F7E /* TWEllipticCurveCrypto+Hash.m in Sources */,
@@ -5086,10 +5263,12 @@
 				7A07F7DF216C7BD00026EB7A /* MyIncomeVC.m in Sources */,
 				7A2CC670215C9E3B00B27E2D /* PosMyInvestmentModel.m in Sources */,
 				B8CAA14521158FF200695BC3 /* LPDPhotoArrangeCVlLayout.m in Sources */,
+				1F7F6F67227EE572003AEBA7 /* UITextView+MTTheme.m in Sources */,
 				1F76699F21DCB30400006B41 /* InvestmentTableView.m in Sources */,
 				B8BBA5FB20C780FA00DC4D5F /* PlatformCell.m in Sources */,
 				1F76697521D4A34D00006B41 /* sha1.c in Sources */,
 				211A53221FBFE3A100CC6294 /* RateDescVC.m in Sources */,
+				1F7F6F74227EFBD3003AEBA7 /* AlertsVC.m in Sources */,
 				211DE6BE1FB58B4C002FCF3D /* NSNumber+Extension.m in Sources */,
 				1F9361B521F02DD8007E522A /* SellDetalisVC.m in Sources */,
 				1F7668EA21D4A32700006B41 /* BTCAssetType.m in Sources */,
@@ -5103,6 +5282,7 @@
 				1FFB8EB3225B4BAF00B72F31 /* MLMSegmentScroll.m in Sources */,
 				1FA56AFC223CD6A70077FE54 /* YYTextWeakProxy.m in Sources */,
 				7A2CC67A215CD45300B27E2D /* AccumulatedEarningsCell.m in Sources */,
+				1F7F6F5F227EE572003AEBA7 /* MTThemePerformSelector.m in Sources */,
 				B8CAA13D21158FF200695BC3 /* LPDAssetCell.m in Sources */,
 				1F76690721D4A32700006B41 /* BTCAssetAddress.m in Sources */,
 				1FFB8EB2225B4BAF00B72F31 /* UIView+ViewController.m in Sources */,
@@ -5131,6 +5311,7 @@
 				211A34EB1FB42F8100FEB71F /* SettingVC.m in Sources */,
 				211DE6C51FB58B4C002FCF3D /* HttpRequestService.m in Sources */,
 				1F93618021EEDBD3007E522A /* LYSToolObject.m in Sources */,
+				1F7F6F5C227EE572003AEBA7 /* MTBaseTable.m in Sources */,
 				1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */,
 				B88B092A20C8ED77005C2D2F /* JoinModel.m in Sources */,
 				B88B59232109AEF500F20D1B /* CountryModel.m in Sources */,
@@ -5247,6 +5428,7 @@
 				7A2CC6B2215DC88B00B27E2D /* PGDatePicker+Common.m in Sources */,
 				1F76691521D4A32700006B41 /* BTCCurvePoint.m in Sources */,
 				1FA56AEE223CD6A70077FE54 /* YYTextDebugOption.m in Sources */,
+				1F7F6F6E227EFB5A003AEBA7 /* MarketVC.m in Sources */,
 				1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */,
 				1FA566F3223CD4B90077FE54 /* TheGameCollCell.m in Sources */,
 				1F6F2BAD222CEA7A00298FB3 /* MyFriendViewController.m in Sources */,
@@ -5264,6 +5446,7 @@
 				211DE6A11FB58B4C002FCF3D /* TLTimeButton.m in Sources */,
 				211A34F71FB4328800FEB71F /* SettingTableView.m in Sources */,
 				1F766A0A21DDE8D700006B41 /* OrderRecordVC.m in Sources */,
+				1F7F6F5D227EE572003AEBA7 /* MTThemeManager.m in Sources */,
 				1FA56B0A223CD7610077FE54 /* WLWebProgressLayer.m in Sources */,
 				211DE6B01FB58B4C002FCF3D /* UILable+convience.m in Sources */,
 				B8CAA13F21158FF200695BC3 /* LPDVideoPlayerController.m in Sources */,
@@ -5276,6 +5459,7 @@
 				1FA56B0C223CD7610077FE54 /* WYWebProgressLayer.m in Sources */,
 				1F7668FD21D4A32700006B41 /* BTCBase58+Tests.m in Sources */,
 				1F7668E921D4A32700006B41 /* BTCTransactionBuilder.m in Sources */,
+				1F7F6F61227EE572003AEBA7 /* MTFontTable.m in Sources */,
 				B8F44025212C81E700809522 /* TLNewPwdVC.m in Sources */,
 				B8B15C3220CAB4DE00F13220 /* CustomLayoutWallet.m in Sources */,
 				1FA56B09223CD7610077FE54 /* UIView+Frame.m in Sources */,
@@ -5285,6 +5469,7 @@
 				1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */,
 				7A2CC6C4215DC88C00B27E2D /* PGDatePickerView.m in Sources */,
 				7A2CC6BB215DC88C00B27E2D /* PGDatePicker+MonthDayHour.m in Sources */,
+				1F7F6F64227EE572003AEBA7 /* UIView+MTTheme.m in Sources */,
 				1F9031D42247A8680093C38D /* JXPageView.m in Sources */,
 				211DE6B61FB58B4C002FCF3D /* UIView+Extension.m in Sources */,
 				7A07F811216CAAEA0026EB7A /* MyInconmeCell.m in Sources */,
@@ -5314,6 +5499,7 @@
 				1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */,
 				B8CA7D4920CBA22800A0E93C /* WalletImportVC.m in Sources */,
 				1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */,
+				1F7F6F68227EE572003AEBA7 /* UITextField+MTTheme.m in Sources */,
 				B83666F6210EC0610065DF18 /* LocalSettingCell.m in Sources */,
 				1F76690B21D4A32700006B41 /* BTCCurrencyConverter+Tests.m in Sources */,
 				B8CAA14121158FF200695BC3 /* LPDProgressView.m in Sources */,
@@ -5372,6 +5558,7 @@
 				211A34E11FB4247800FEB71F /* MineModel.m in Sources */,
 				7A2CC6B1215DC88B00B27E2D /* NSDate+PGCategory.m in Sources */,
 				B8D938D82116EF5900B2AA88 /* imageCell.m in Sources */,
+				1F7F6F65227EE572003AEBA7 /* UIImageView+MTTheme.m in Sources */,
 				B8DDF882211D29EE0058D19D /* TLMakeMoney.m in Sources */,
 				B88B591B2109AEC400F20D1B /* LangSwitcher.m in Sources */,
 				1F7367102252FEFA00135F7E /* base58.c in Sources */,
@@ -5388,6 +5575,7 @@
 				7A07F807216C84F30026EB7A /* SCCircleChart.m in Sources */,
 				1F73670B2252FEFA00135F7E /* ripemd160.c in Sources */,
 				7AD659F1215F691C002F747E /* MoneyAndTreasureHeadView.m in Sources */,
+				1F7F6F63227EE572003AEBA7 /* UIButton+MTTheme.m in Sources */,
 				1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */,
 				2EA584C71FA813C900C7106C /* main.m in Sources */,
 				1F76698B21D61D2F00006B41 /* ChangePhoneAndEmailVC.m in Sources */,
@@ -5403,6 +5591,7 @@
 				B8C2056D20CF876600952765 /* CheckForwordVC.m in Sources */,
 				2EB9495A1FDF6B1A00CE4B94 /* ZMChineseConvert.m in Sources */,
 				1F76691421D4A32700006B41 /* BTCProcessor.m in Sources */,
+				1F7F6F62227EE572003AEBA7 /* MTFontManager.m in Sources */,
 				B8CAA14A21158FF200695BC3 /* NSBundle+LPDImagePicker.m in Sources */,
 				1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */,
 				1FA566F0223CD4B90077FE54 /* HomeTbleView.m in Sources */,
@@ -5474,6 +5663,7 @@
 				1F73664D225211E400135F7E /* NSData+HexToString.m in Sources */,
 				7A2CC64D215B772C00B27E2D /* TLMoneyDeailCell.m in Sources */,
 				21A7F3121FB2E2F900FAA0A2 /* BindMobileVC.m in Sources */,
+				1F7F6F5E227EE572003AEBA7 /* MTThemeTable.m in Sources */,
 				2EE950C31FB05B4500429257 /* TLWalletVC.m in Sources */,
 				211DE6A51FB58B4C002FCF3D /* TLProgressHUD.m in Sources */,
 				7A2CC6C7215DC88C00B27E2D /* UIColor+PGHex.m in Sources */,
@@ -5486,6 +5676,7 @@
 				1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */,
 				1F7668F721D4A32700006B41 /* BTCBlockchainInfo.m in Sources */,
 				1F9C8FC82246183D00DFA9C3 /* PrivateKeyWalletCell.m in Sources */,
+				1F7F6F66227EE572003AEBA7 /* UILabel+MTTheme.m in Sources */,
 				7A2CC677215CD41100B27E2D /* AccumulatedEarningsTableView.m in Sources */,
 				2EB039B51FEA0B4500589D8E /* TLUpdateVC.m in Sources */,
 				1F76691721D4A32700006B41 /* BTCMerkleTree+Tests.m in Sources */,
@@ -5532,6 +5723,7 @@
 				7A07F809216C84F30026EB7A /* SCGenericChart.m in Sources */,
 				7A07F7E5216C7C200026EB7A /* MyInconmeHeadCell.m in Sources */,
 				1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */,
+				1F7F6F5B227EE572003AEBA7 /* MTElementModel.m in Sources */,
 				1F7668F921D4A32700006B41 /* BTCScriptMachine.m in Sources */,
 				1F7367122252FEFA00135F7E /* pbkdf2.c in Sources */,
 				2EE361551FFE182800A5C3EB /* RespHandler.m in Sources */,
@@ -5764,6 +5956,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3ZCW993X44;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
@@ -5782,6 +5975,10 @@
 					"$(PROJECT_DIR)/Coin/ValidationSDK",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Coin/OCR/OpenCV",
+					"$(PROJECT_DIR)/Coin/SDTheme-master/Example/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Coin/SDTheme-master/Example/build/Debug-iphoneos/SDTheme",
+					"$(PROJECT_DIR)/Coin/Example/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Coin/Example/build/Debug-iphoneos/SDTheme",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "/Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/Macro/CoinPrefixHeader.pch";
@@ -5935,6 +6132,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3ZCW993X44;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
@@ -5953,6 +6151,10 @@
 					"$(PROJECT_DIR)/Coin/ValidationSDK",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Coin/OCR/OpenCV",
+					"$(PROJECT_DIR)/Coin/SDTheme-master/Example/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Coin/SDTheme-master/Example/build/Debug-iphoneos/SDTheme",
+					"$(PROJECT_DIR)/Coin/Example/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Coin/Example/build/Debug-iphoneos/SDTheme",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "/Users/zqb/ogc-wallet-ios/Coin/AppDelegate/Classes/Macro/CoinPrefixHeader.pch";

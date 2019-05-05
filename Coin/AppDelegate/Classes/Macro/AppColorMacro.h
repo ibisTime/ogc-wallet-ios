@@ -14,6 +14,16 @@
 
 #pragma mark - UIMacros
 
+
+#define ColorName @"homepage"
+#define ImgAddress @"untitled folder"
+
+#define CellBackColor @"cell.back"
+#define BackColor @"self.view.back"
+#define LabelColor @"textColor"
+#define TableViewColor @"tableview.back"
+
+
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
 #define kTabbarColor   [UIColor colorWithHexString:@"#4064E6"]

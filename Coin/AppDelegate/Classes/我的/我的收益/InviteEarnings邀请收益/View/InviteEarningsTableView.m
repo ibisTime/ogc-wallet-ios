@@ -23,7 +23,7 @@ static NSString *identifierCell = @"AccumulatedEarningsCell";
 
         self.dataSource = self;
         self.delegate = self;
-        self.backgroundColor = kBackgroundColor;
+     
 
         [self registerClass:[InviteEarningCell class] forCellReuseIdentifier:InviteEarning];
 

@@ -23,7 +23,7 @@
 
 @property (nonatomic, assign) id <MyAsstesDelegate> delegate;
 
-@property (nonatomic, strong) NSMutableArray <CurrencyModel *>*platforms;
+@property (nonatomic, strong) CurrencyModel *platforms;
 
 @property (nonatomic , strong)UIButton *backButton;
 

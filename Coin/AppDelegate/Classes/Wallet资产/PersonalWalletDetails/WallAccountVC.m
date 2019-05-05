@@ -157,7 +157,7 @@
                       initWithFrame:CGRectMake(0, self.headView.yy , kScreenWidth, SCREEN_HEIGHT - self.headView.yy - kNavigationBarHeight - 45)
                       style:UITableViewStyleGrouped];
    
-    self.tableView.backgroundColor = kWhiteColor;
+    
     self.tableView.refreshDelegate = self;
 
     self.tableView.defaultNoDataImage = kImage(@"暂无订单");

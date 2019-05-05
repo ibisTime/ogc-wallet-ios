@@ -23,7 +23,7 @@ static NSString *identifierCell = @"questionListCells";
         self.dataSource = self;
         self.delegate = self;
         [self setContentInset:UIEdgeInsetsMake(5, 0.0, -5, 0.0)];
-        self.backgroundColor = kBackgroundColor;
+     
         
         [self registerClass:[questionListCells class] forCellReuseIdentifier:identifierCell];
         

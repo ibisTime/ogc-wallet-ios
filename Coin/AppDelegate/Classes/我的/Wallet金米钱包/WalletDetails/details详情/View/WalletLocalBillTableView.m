@@ -26,7 +26,7 @@ static NSString *identifierLocalBillCell = @"LocalBillCell";
         self.dataSource = self;
         self.delegate = self;
         
-        self.backgroundColor = kBackgroundColor;
+
         
         [self registerClass:[BillCell class] forCellReuseIdentifier:identifierCell];
         [self registerClass:[LocalBillCell class] forCellReuseIdentifier:identifierLocalBillCell];
