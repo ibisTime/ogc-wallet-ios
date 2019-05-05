@@ -64,7 +64,7 @@
     //主题模块初始化
     CFAbsoluteTime themeStartTime = CFAbsoluteTimeGetCurrent();
     NSString *path = [NSBundle mainBundle].bundlePath;
-    NSString *themePath = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+    NSString *themePath = [path stringByAppendingPathComponent:@"Theme/Theme1"];
     [MTThemeManager initializeWithDefaultThemePath:themePath];
     CFAbsoluteTime themeEndTime = CFAbsoluteTimeGetCurrent();
     MTTheme_Log(@"[During]主题注册事件 during in %f seconds.", (themeStartTime - themeEndTime));

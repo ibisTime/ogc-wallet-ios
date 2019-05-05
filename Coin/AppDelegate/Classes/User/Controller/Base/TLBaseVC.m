@@ -67,6 +67,15 @@
 
     self.navigationController.navigationBar.translucent = NO; self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:16]};
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    [self.navigationController.navigationBar theme_setTintColorIdentifier:BackColor moduleName:ColorName];
+    
+    
+    UIColor *color = [self theme]
+    
+    
+    
+    
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1"];

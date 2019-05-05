@@ -11,9 +11,9 @@
 	<key>textColor</key>
 	<string>0x282A2E</string>
 	<key>tableview.back</key>
-	<string>0x0000FF</string>
+	<string>0xFFFFFF</string>
 	<key>cell.back</key>
-	<string>0x52565D</string>
+	<string>0xFFFFFF</string>
 	<key>label5</key>
 	<string>0x3300FF</string>
 	<key>label6</key>
