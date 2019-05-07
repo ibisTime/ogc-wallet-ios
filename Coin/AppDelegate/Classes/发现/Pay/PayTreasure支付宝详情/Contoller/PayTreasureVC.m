@@ -19,7 +19,7 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self navigationSetDefault];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     
 }
@@ -31,7 +31,7 @@
     //    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
@@ -39,7 +39,7 @@
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"订单详情" key:nil];
     self.titleText.font = FONT(18);
-    self.titleText.textColor = kWhiteColor;
+
     self.navigationItem.titleView = self.titleText;
     
     

@@ -71,7 +71,7 @@
 
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
 }
 //如果仅设置当前页导航透明，需加入下面方法
@@ -85,14 +85,14 @@
 
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = kWhiteColor;
-    self.title = [LangSwitcher switchLang:@"问题反馈" key:nil];
+
+    self.titleText.text = [LangSwitcher switchLang:@"问题反馈" key:nil];
 
     [self initCustomUi];
     [self initBodyView];
@@ -544,7 +544,7 @@
 
     self.Qintroduce = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:14];
     self.Qintroduce.text = [LangSwitcher switchLang:@"问题描述(必填)" key:nil];
-    //    self.title = [LangSwitcher switchLang:@"我的" key:nil];
+ 
     [self.bgImage addSubview:self.Qintroduce];
     
     [self.Qintroduce mas_makeConstraints:^(MASConstraintMaker *make) {

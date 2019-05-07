@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     CGFloat leftW = 90;
-    self.title = [LangSwitcher switchLang:@"手机号" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"手机号" key:nil];
     CGFloat leftMargin = 0;
     
     //手机号

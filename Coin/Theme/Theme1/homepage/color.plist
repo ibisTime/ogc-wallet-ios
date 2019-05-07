@@ -2,21 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>garyLabel.text</key>
+	<string>0x484848</string>
+	<key>lineViewColor</key>
+	<string>0xEEEEEE</string>
 	<key>白色</key>
 	<string></string>
 	<key>self.view.back</key>
-	<string>0xFFFFFF</string>
+	<string>0xf8f8f8</string>
 	<key>buttonBack</key>
 	<string>0x77A4FF</string>
 	<key>textColor</key>
 	<string>0x282A2E</string>
 	<key>tableview.back</key>
-	<string>0xFFFFFF</string>
+	<string>0xf8f8f8</string>
 	<key>cell.back</key>
+	<string>0xf8f8f8</string>
+	<key>tabbar.color</key>
 	<string>0xFFFFFF</string>
-	<key>label5</key>
-	<string>0x3300FF</string>
-	<key>label6</key>
-	<string>0x663366</string>
+	<key>cell.backView.Color</key>
+	<string>0xFFFFFF</string>
 </dict>
 </plist>

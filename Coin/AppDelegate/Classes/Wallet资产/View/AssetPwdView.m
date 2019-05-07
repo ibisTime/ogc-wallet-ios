@@ -54,7 +54,7 @@
 //    self.view1 = view1;
 //    view1.frame =CGRectMake(0, 0, kScreenWidth, kScreenHeight);
 //    view1.backgroundColor =
-    self.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.45];
+   
     
     //    view.alpha = 0.5;
 //    [self addSubview:view1];

@@ -119,7 +119,7 @@
 
     //去掉导航栏底部的黑线
     [self navigationTransparentClearColor];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }
 
@@ -134,8 +134,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    self.title = [LangSwitcher switchLang:@"邀请有礼" key:nil];
+
     [self getShareUrl];
 
     
@@ -159,7 +158,7 @@
     self.nameLable.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = self.nameLable;
 
-    self.view.backgroundColor  =[UIColor whiteColor];
+   
     [self.view addSubview:self.bouncedView];
     // Do any additional setup after loading the view.
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - kHeight(50) - kBottomInsetHeight, SCREEN_WIDTH, kHeight(50) + kBottomInsetHeight)];

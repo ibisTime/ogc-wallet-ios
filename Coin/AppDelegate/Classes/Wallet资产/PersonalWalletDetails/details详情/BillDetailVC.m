@@ -32,9 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//    self.title = [LangSwitcher switchLang:@"账单详情" key:nil];
     self.titleText.text = [LangSwitcher switchLang:@"账单详情" key:nil];
-    self.titleText.textColor = [UIColor whiteColor];
+//    self.titleText.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = self.titleText;
     
     [self initTableView];
@@ -63,7 +62,7 @@
 
 #pragma mark - Init
 - (void)initHeaderView {
-    self.view.backgroundColor = kWhiteColor;
+
     UIView *topView = [[UIView alloc] init];
     [self.view addSubview:topView];
     topView.backgroundColor = kTabbarColor;

@@ -25,13 +25,13 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
 }
 
 
@@ -42,7 +42,7 @@
     [super viewDidLoad];
     self.titleText.text = [LangSwitcher switchLang:_titleString key:nil];
     self.navigationItem.titleView = self.titleText;
-    self.view.backgroundColor = kWhiteColor;
+
     [self initSubviews];
 }
 

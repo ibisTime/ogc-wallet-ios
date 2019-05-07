@@ -28,7 +28,7 @@
 #import "BillModel.h"
 #import "AssetsHeadView.h"
 #import "MyAssetsHeadView.h"
-
+#import "SwitchPurseVC.h"
 @interface TLWalletVC ()<RefreshDelegate>
 
 @property (nonatomic, strong) NSMutableArray *arr;
@@ -85,7 +85,6 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self queryCenterTotalAmount];
 }
 
@@ -93,28 +92,35 @@
   
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 -(MyAssetsHeadView *)headView
 {
     if (!_headView) {
         _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 240)];
+        [_headView.SwitchPurse addTarget:self action:@selector(SwitchPurseClick) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _headView;
 }
 
+-(void)SwitchPurseClick
+{
+    SwitchPurseVC *vc = [SwitchPurseVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+//    [self.view theme_setBackgroundColorIdentifier:TableViewColor moduleName:ColorName];
 
+//    self.view.backgroundColor = kBackgroundColor;
+//    self.view.nightBackgroundColor = kNightBackgroundColor;
     [self initTableView];
     //登录退出通知
     [self addNotification];
@@ -126,40 +132,48 @@
     self.tableView = [[PlatformTableView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, kScreenWidth, kScreenHeight - kNavigationBarHeight - kStatusBarHeight) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
-//    [self.view addSubview:self.headView];
     self.tableView.tableHeaderView = self.headView;
 }
 
--(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     WallAccountVC *accountVC= [[WallAccountVC alloc] init];
-    accountVC.currency = self.AssetsListModel[index - 100];
+    accountVC.currency = self.AssetsListModel[indexPath.row];
     accountVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:accountVC animated:YES];
 }
 
+//-(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
+//{
+//    WallAccountVC *accountVC= [[WallAccountVC alloc] init];
+//    accountVC.currency = self.AssetsListModel[index - 100];
+//    accountVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:accountVC animated:YES];
+//}
+//
+//
+//-(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
+//{
+//    if ([title isEqualToString:@"转出"]) {
+//        [self clickWithdrawWithCurrency:model];
+//    }
+//    else if ([title isEqualToString:@"转入"])
+//    {
+//        RechargeCoinVC *coinVC = [RechargeCoinVC new];
+//        coinVC.currency = model;
+//        coinVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:coinVC animated:YES];
+//    }else
+//    {
+//        WallAccountVC *accountVC= [[WallAccountVC alloc] init];
+//        accountVC.currency = model;
+//        accountVC.hidesBottomBarWhenPushed = YES;
+//        accountVC.title = model.currency;
+//        accountVC.billType = CurrentTypeAll;
+//        [self.navigationController pushViewController:accountVC animated:YES];
+//    }
+//}
 
--(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
-{
-    if ([title isEqualToString:@"转出"]) {
-        [self clickWithdrawWithCurrency:model];
-    }
-    else if ([title isEqualToString:@"转入"])
-    {
-        RechargeCoinVC *coinVC = [RechargeCoinVC new];
-        coinVC.currency = model;
-        coinVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:coinVC animated:YES];
-    }else
-    {
-        WallAccountVC *accountVC= [[WallAccountVC alloc] init];
-        accountVC.currency = model;
-        accountVC.hidesBottomBarWhenPushed = YES;
-        accountVC.title = model.currency;
-        accountVC.billType = CurrentTypeAll;
-        [self.navigationController pushViewController:accountVC animated:YES];
-    }
-}
 
 - (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel
 {

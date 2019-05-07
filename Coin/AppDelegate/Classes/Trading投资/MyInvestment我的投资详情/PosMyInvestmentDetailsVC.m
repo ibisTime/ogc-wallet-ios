@@ -29,7 +29,7 @@
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self navigationSetDefault];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 
 }
@@ -39,9 +39,9 @@
     [super viewWillDisappear:animated];
     [self navigationwhiteColor];
 //    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
@@ -49,7 +49,7 @@
 
 
     self.titleText.text = [LangSwitcher switchLang:@"我的投资详情" key:nil];
-    self.titleText.textColor = kWhiteColor;
+    
     self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData:@[@"0",@"1",@"2"]];

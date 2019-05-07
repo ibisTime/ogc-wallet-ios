@@ -60,19 +60,19 @@
     
     if (billType == BillTypeAll) {
         
-        self.title = [LangSwitcher switchLang:@"余额明细" key:nil];
+        self.titleText.text = [LangSwitcher switchLang:@"余额明细" key:nil];
         
     } else if (billType == BillTypeRecharge) {
         
-        self.title = [LangSwitcher switchLang:@"充值明细" key:nil];
+        self.titleText.text = [LangSwitcher switchLang:@"充值明细" key:nil];
         
     } else if (billType == BillTypeWithdraw) {
         
-        self.title = [LangSwitcher switchLang:@"提币明细" key:nil];
+        self.titleText.text = [LangSwitcher switchLang:@"提币明细" key:nil];
         
     } else if (billType == BillTypeFrozen) {
         
-        self.title = [LangSwitcher switchLang:@"冻结明细" key:nil];
+        self.titleText.text = [LangSwitcher switchLang:@"冻结明细" key:nil];
     }
     
 }

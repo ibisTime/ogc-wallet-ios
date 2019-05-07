@@ -38,7 +38,7 @@
 @implementation CheckForwordVC
 
 - (void)viewDidLoad {
-    self.view.backgroundColor = kWhiteColor;
+
     [super viewDidLoad];
     self.inter = -1;
     

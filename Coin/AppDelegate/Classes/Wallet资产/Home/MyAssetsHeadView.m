@@ -19,6 +19,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         
+//        self.backgroundColor = kTableViewColor;
+//        self.nightBackgroundColor = kNightTableViewColor;
+        
+        
+        
+        
         UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, 15, 100, 33.5)];
         nameLable.text = [LangSwitcher switchLang:@"零用钱包" key:nil];
         
@@ -29,33 +35,34 @@
         [self addSubview:nameLable];
         
         
+        
+        UIImageView *switchImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 55 + 16, 15, 18, 18)];
+        [switchImg theme_setImageIdentifier:@"钱包切换" moduleName:ImgAddress];
+        [self addSubview:switchImg];
+        
+        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH - 55,15 + 22, 45, 12) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(10) textColor:nil];
+        nameLbl.text = @"钱包切换";
+        [self addSubview:nameLbl];
+        
         UIButton *SwitchPurse = [UIButton buttonWithTitle:@"" titleColor:kClearColor backgroundColor:kClearColor titleFont:10];
         SwitchPurse.frame = CGRectMake(SCREEN_WIDTH - 55, 15, 46, 34);
-//        [SwitchPurse SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:4 imagePositionBlock:^(UIButton *button) {
-//            [button theme_setImageIdentifier:@"钱包切换" forState:(UIControlStateNormal) moduleName:ImgAddress];
-//        }];
+        self.SwitchPurse = SwitchPurse;
         [self addSubview:SwitchPurse];
         
         
-        UIImageView *switchImg = [[UIImageView alloc]initWithFrame:CGRectMake(16, 0, 18, 18)];
-        [switchImg theme_setImageIdentifier:@"钱包切换" moduleName:ImgAddress];
-        [SwitchPurse addSubview:switchImg];
         
-        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, 22, 45, 12) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(10) textColor:nil];
-        nameLbl.text = @"钱包切换";
-        [nameLbl theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
-        [SwitchPurse addSubview:nameLbl];
         
         UIImageView *whiteView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 64, SCREEN_WIDTH - 10 , 170)];
 //        我的资产背景
         [whiteView theme_setImageIdentifier:@"零用钱包背景" moduleName:ImgAddress];
         [self addSubview:whiteView];
         
-        UIButton *allAssetsBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil] titleColor:[UIColor blackColor] backgroundColor:kClearColor titleFont:12];
-        allAssetsBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        allAssetsBtn.frame = CGRectMake(35, 44, SCREEN_WIDTH - 80, 20);
+
         
-        [whiteView addSubview:allAssetsBtn];
+        
+        UILabel *allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
+        [whiteView addSubview:allAssetsLbl];
         
         
         allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 80, SCREEN_WIDTH - 80, 41) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(41) textColor:kTabbarColor];

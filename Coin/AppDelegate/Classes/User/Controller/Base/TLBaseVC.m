@@ -38,23 +38,12 @@
         _RightButton.height = 44;
         _RightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         _RightButton.titleLabel.font = FONT(15);
-        [_RightButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+//        [_RightButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+        [_RightButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     }
     return _RightButton;
 }
 
--(UILabel *)titleText
-{
-    if (!_titleText) {
-        _titleText = [[UILabel alloc] init];
-        _titleText.textAlignment = NSTextAlignmentCenter;
-        _titleText.backgroundColor = [UIColor clearColor];
-        _titleText.textColor=[UIColor blackColor];
-        [_titleText setFont:[UIFont systemFontOfSize:16.0]];
-        _titleText.height = 44;
-    }
-    return _titleText;
-}
 
 
 
@@ -63,71 +52,76 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    self.view.backgroundColor = [UIColor whiteColor];
+    _titleText = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];
+    [_titleText theme_setTextIdentifier:LabelColor moduleName:ColorName];
+    _titleText.height = 44;
+    self.navigationItem.titleView = self.titleText;
+    
+    //设置导航栏透明
+    [self.navigationController.navigationBar setTranslucent:true];
+    //把背景设为空
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+    
 
-    self.navigationController.navigationBar.translucent = NO; self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:16]};
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, kNavigationBarHeight)];
+    [self.view addSubview:topView];
+    self.topView = topView;
+
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];]]
+    [topView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+//    topView.backgroundColor = kBackgroundColor;
+//    topView.nightBackgroundColor = kNightBackgroundColor;
+//    self.view.backgroundColor = kBackgroundColor;
+//    self.view.nightBackgroundColor = kNightBackgroundColor;
     
-    [self.navigationController.navigationBar theme_setTintColorIdentifier:BackColor moduleName:ColorName];
-    
-    
-    UIColor *color = [self theme]
-    
-    
-    
-    
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1"];
-    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1"];
-    self.navigationItem.backBarButtonItem = item;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
 }
 
 -(void)navigationwhiteColor
 {
-    self.navigationController.navigationBar.translucent = NO; self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:16]};
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
-    self.navigationItem.backBarButtonItem = item;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    self.navigationController.navigationBar.translucent = NO; self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:16]};
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
+//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
+//    self.navigationItem.backBarButtonItem = item;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 -(void)navigationTransparentClearColor
 {
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
-    //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    self.navigationController.navigationBar.translucent = YES;
+//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+//
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
+//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
+//    //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    self.navigationItem.backBarButtonItem = item;
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
 }
 
 -(void)navigationSetDefault
 {
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    self.navigationController.navigationBar.translucent = NO;
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:nil];
+//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
+//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
+//    self.navigationController.navigationBar.barTintColor = kTabbarColor;
+//    self.navigationItem.backBarButtonItem = item;
+//
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 }
 
@@ -135,11 +129,11 @@
 
 
 
-//- (void)viewWillAppear:(BOOL)animated
-//{
+- (void)viewWillAppear:(BOOL)animated
+{
 //    //去掉透明后导航栏下边的黑边
-//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//}
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+}
 //
 //- (void)viewWillDisappear:(BOOL)animated
 //{

@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = [LangSwitcher switchLang:@"系统公告" key:nil] ;
+    self.titleText.text = [LangSwitcher switchLang:@"系统公告" key:nil] ;
     
     [self initTableView];
     //获取汇率列表
@@ -40,7 +40,7 @@
     self.tableView = [[RateDescTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kSuperViewHeight)];
     
     self.tableView.refreshDelegate = self;
-    [self.tableView theme_setBackgroundColorIdentifier:@"self.view.back" moduleName:@"homepage"];
+//    [self.tableView theme_setBackgroundColorIdentifier:@"self.view.back" moduleName:@"homepage"];
     
     [self.view addSubview:self.tableView];
     

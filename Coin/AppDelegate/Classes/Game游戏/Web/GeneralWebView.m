@@ -34,10 +34,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
-    //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-    
+
     
     
 }
@@ -54,7 +51,7 @@
     self.navigationController.navigationBar.barTintColor = kHexColor(@"#0848DF");
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
 }
 
@@ -72,7 +69,7 @@
     nameLable.textColor = kTextBlack;
     self.navigationItem.titleView = nameLable;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 2, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 2)];
     self.webView.delegate = self;
     self.webView.backgroundColor = kWhiteColor;

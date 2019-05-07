@@ -51,7 +51,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [LangSwitcher switchLang:@"问题详情" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"问题详情" key:nil];
 
     [self initHeadView];
     [self loadList];

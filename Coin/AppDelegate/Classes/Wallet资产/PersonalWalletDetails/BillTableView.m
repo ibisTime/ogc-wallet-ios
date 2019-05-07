@@ -100,20 +100,18 @@ static NSString *identifierCell = @"BillListCell";
     UIView *contentView = [[UIView alloc] init];
 
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
-    backView.backgroundColor = [UIColor whiteColor];
+    [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [contentView addSubview:backView];
 
-    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, kScreenWidth - 35, 40)];
+    UILabel *lab = [UILabel labelWithFrame:CGRectMake(15, 0, kScreenWidth - 35, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
     [backView addSubview:lab];
-
-    lab.textColor = kTextColor;
-    lab.font = [UIFont systemFontOfSize:14];
     lab.text =[NSString stringWithFormat:@"%@",[LangSwitcher switchLang:@"交易记录" key:nil]];
 
 
     UIButton *button = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"筛选" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:14];
     [button addTarget:self action:@selector(clickFilter:) forControlEvents:UIControlEventTouchUpInside];
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [button theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [contentView addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(contentView.mas_top);

@@ -14,22 +14,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/SetUp&#x8bbe;&#x7f6e;/TLMeSetting.m"
-            timestampString = "567498743.987345"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "406"
-            endingLineNumber = "406"
-            landmarkName = "-logout"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -94,11 +78,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/WalletSetting&#x94b1;&#x5305;&#x5de5;&#x5177;/TLNewPwdVC.m"
-            timestampString = "574850760.918586"
+            timestampString = "578763219.650363"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "-changePwd"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,12 +126,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Coin/AppDelegate/Classes/&#x6211;&#x7684;/Wallet&#x91d1;&#x7c73;&#x94b1;&#x5305;/WalletDetails/details&#x8be6;&#x60c5;/Other/WalletLocalWebVC.m"
-            timestampString = "576467167.9727221"
+            timestampString = "578763219.650637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
             endingLineNumber = "31"
             landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Coin/AppDelegate/Classes/TabBar/LLTabBar.m"
+            timestampString = "578815054.6995341"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-tabBarItemWithFrame:title:normalImageName:selectedImageName:tabBarItemType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

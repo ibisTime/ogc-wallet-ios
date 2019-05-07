@@ -29,15 +29,15 @@
         [self.selectedBtn addTarget:self action:@selector(choose:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.selectedBtn];
         self.selectedBtn.backgroundColor = kAppCustomMainColor;
-        self.selectedBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+        self.selectedBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [self.selectedBtn setTitleColor:kHexColor(@"#56d0fd") forState:UIControlStateNormal];
         [self.selectedBtn setTitle:@"test" forState:UIControlStateNormal];
         [self.selectedBtn setTitle:@"test1" forState:UIControlStateSelected];
         
         self.selectedBtn.enabled = NO;
 //        self.selectedBtn.layer.cornerRadius = 4.0;
-        self.selectedBtn.layer.borderColor = kLineColor.CGColor;
-        self.selectedBtn.layer.borderWidth=1;
+//        self.selectedBtn.layer.borderColor = kLineColor.CGColor;
+//        self.selectedBtn.layer.borderWidth = 0.5;
         self.selectedBtn.frame = self.bounds;
         
     }

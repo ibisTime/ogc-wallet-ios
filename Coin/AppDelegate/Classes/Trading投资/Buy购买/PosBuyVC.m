@@ -55,12 +55,6 @@
     // Do any additional setup after loading the view.
     [self initTableView];
 
-//    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(kScreenWidth/2-60, 0, 120, 50)];
-//    titleText.textAlignment = NSTextAlignmentCenter;
-//    titleText.backgroundColor = [UIColor clearColor];
-//    titleText.textColor=kTextColor;
-//    [titleText setFont:[UIFont systemFontOfSize:17.0]];
-//    [titleText setText:[LangSwitcher switchLang:@"购买" key:nil]];
     self.titleText.text = [LangSwitcher switchLang:@"购买" key:nil];
     self.navigationItem.titleView=self.titleText;
 
@@ -663,7 +657,7 @@
 //    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
 //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
 //    self.navigationItem.backBarButtonItem = item;
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 
 
 }
@@ -680,7 +674,7 @@
 //    self.navigationController.navigationBar.barTintColor = kTabbarColor;
 //    self.navigationItem.backBarButtonItem = item;
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self.pwdView.password clearText];
     [self.pwdView.password.textField resignFirstResponder];
 

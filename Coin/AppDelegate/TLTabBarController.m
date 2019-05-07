@@ -16,7 +16,9 @@
 #import "NSBundle+Language.h"
 #import "InvestmentVC.h"
 @interface TLTabBarController ()<UITabBarControllerDelegate>
-
+{
+    UIView *view;
+}
 @property (nonatomic, assign) NSInteger currentIndex;
 
 @end
@@ -25,7 +27,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    CoinWeakSelf;
+    
+    
+    view = [[UIView alloc]init];
+    [view theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
+    view.frame = CGRectMake(0, 0, SCREEN_WIDTH, kNavigationBarHeight);
+    [[UITabBar appearance]insertSubview:view atIndex:0] ;
+    
+    //    CoinWeakSelf;
 //    NSMutableArray *titleArray = [NSMutableArray array];
 //    NSMutableArray *VCNamesArray = [NSMutableArray array];
 //    NSMutableArray *imageNamesArray = [NSMutableArray array];
@@ -169,37 +178,37 @@
         
         self.delegate = self;
         for (int i = 0; i < array.count; i ++) {
-            
+
             if ([array[i] isEqualToString:@"首页"]) {
                 [VCNamesArray addObject:@"TLWalletVC"];
                 [titleArray addObject:@"首页"];
-                [imageNamesArray addObject:@"首页-未选中"];
-                [selectedImageNames addObject:@"首页-选中"];
+                [imageNamesArray addObject:@"首页-未点击"];
+                [selectedImageNames addObject:@"首页-点击"];
             }
-            
+
             if ([array[i] isEqualToString:@"DAPP"]) {
                 [VCNamesArray addObject:@"HomeVC"];
                 [titleArray addObject:@"DAPP"];
-                [imageNamesArray addObject:@"DAPP-未选中"];
-                [selectedImageNames addObject:@"DAPP-选中"];
+                [imageNamesArray addObject:@"DAPP-未点击"];
+                [selectedImageNames addObject:@"DAPP-点击"];
             }
-            
+
             if ([array[i] isEqualToString:@"行情"]) {
                 [VCNamesArray addObject:@"MarketVC"];
-                [imageNamesArray addObject:@"行情-未选中"];
-                [selectedImageNames addObject:@"行情-选中"];
+                [imageNamesArray addObject:@"行情-未点击"];
+                [selectedImageNames addObject:@"行情-点击"];
                 [titleArray addObject:@"行情"];
             }
             if ([array[i] isEqualToString:@"快讯"]) {
                 [VCNamesArray addObject:@"AlertsVC"];
-                [imageNamesArray addObject:@"快讯-未选中"];
-                [selectedImageNames addObject:@"快讯-选中"];
+                [imageNamesArray addObject:@"快讯-未点击"];
+                [selectedImageNames addObject:@"快讯-点击"];
                 [titleArray addObject:@"快讯"];
             }
             if ([array[i] isEqualToString:@"我的"]) {
                 [VCNamesArray addObject:@"TLMineVC"];
-                [imageNamesArray addObject:@"我的-未选中"];
-                [selectedImageNames addObject:@"我的-选中"];
+                [imageNamesArray addObject:@"我的-未点击"];
+                [selectedImageNames addObject:@"我的-点击"];
                 [titleArray addObject:@"我的"];
             }
             [self addChildVCWithTitle:titleArray[i]
@@ -207,21 +216,19 @@
                           normalImage:imageNamesArray[i]
                         selectedImage:selectedImageNames[i]];
         }
-//        for (int i = 0; i < titleArray.count; i++) {
-////            if (i == 0 && [AppConfig config].isUploadCheck) {
-////                continue;
-////            }
-//
-//
-//        }
+//    for (int i = 0; i < 5; i ++ ) {
+//        UIButton *button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12];
+//        [button theme_setImageIdentifier:imageNamesArray[i] forState:(UIControlStateNormal) moduleName:ImgAddress];
+//        button.frame = CGRectMake(0 + i % 5 * SCREEN_WIDTH/5, 0, SCREEN_WIDTH/5, 50);
+//        [view addSubview:button];
+//    }
+    
     
     UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
-//        tabBarBgView.backgroundColor = [UIColor whiteColor];
-        //        //判断点击的Controller是不是需要登录，如果是，那就登录
-    [tabBarBgView theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
-    [self.tabBar theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
-//        self.tabBar.backgroundColor = [UIColor whiteColor];
-//    }
+    tabBarBgView.backgroundColor = [UIColor whiteColor];
+    //        //判断点击的Controller是不是需要登录，如果是，那就登录
+    
+    self.tabBar.backgroundColor = [UIColor whiteColor];
 }
 
 
@@ -254,13 +261,13 @@
     //    vc.title = title;
     
     //获得原始图片
-//    UIImage *normalImage = [self getOrgImage:[UIImage imageNamed:normalImageName]];
-//    UIImage *selectedImage = [self getOrgImage:[UIImage imageNamed:selectedImageName]];
+    UIImage *normalImage = [self getOrgImage:[UIImage imageNamed:normalImageName]];
+    UIImage *selectedImage = [self getOrgImage:[UIImage imageNamed:selectedImageName]];
     
-    UIImage *normalImage = [MTThemeManager.manager getImageWithModuleName:normalImageName
-                                        identifier:ImgAddress];
-    UIImage *selectedImage = [MTThemeManager.manager getImageWithModuleName:selectedImageName
-                                                                 identifier:ImgAddress];
+//    UIImage *normalImage = [MTThemeManager.manager getImageWithModuleName:normalImageName
+//                                        identifier:ImgAddress];
+//    UIImage *selectedImage = [MTThemeManager.manager getImageWithModuleName:selectedImageName
+//                                                                 identifier:ImgAddress];
     
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:title
                                                              image:normalImage
@@ -270,10 +277,10 @@
     
     //title颜色
     [tabBarItem setTitleTextAttributes:@{
-                                         NSForegroundColorAttributeName : [UIColor textColor]
+                                         NSForegroundColorAttributeName : kTextColor
                                          } forState:UIControlStateSelected];
     [tabBarItem setTitleTextAttributes:@{
-                                         NSForegroundColorAttributeName : [UIColor textColor]
+                                         NSForegroundColorAttributeName : kTextColor
                                          } forState:UIControlStateNormal];
     vc.tabBarItem = tabBarItem;
     TLNavigationController *navigationController = [[TLNavigationController alloc] initWithRootViewController:vc];

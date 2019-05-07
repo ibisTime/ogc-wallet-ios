@@ -30,7 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = [LangSwitcher switchLang:@"修改登录密码" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"修改登录密码" key:nil];
 
     [self setUpUI];
 

@@ -25,19 +25,18 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"绑定我的收款账号" key:nil];
-    self.navigationItem.titleView = self.titleText;
     [self initView];
     [self loadData];
     

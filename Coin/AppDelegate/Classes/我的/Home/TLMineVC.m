@@ -72,7 +72,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self requesUserInfoWithResponseObject];
     [self LoadData];
     [self blessingLoadData];
@@ -168,7 +167,7 @@
     self.navigationItem.titleView = self.titleText;
     //顶部视图
     [self initMineHeaderView];
-    self.view.backgroundColor = [UIColor whiteColor];
+   
 
     [self initTableView];
     //初始化用户信息
@@ -400,7 +399,7 @@
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.headerView];
 
-    self.view.backgroundColor = kClearColor;
+
     [self.view addSubview:self.tableView];
 }
 

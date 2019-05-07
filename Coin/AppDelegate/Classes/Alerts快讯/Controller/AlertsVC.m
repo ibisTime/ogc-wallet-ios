@@ -10,6 +10,9 @@
 
 @interface AlertsVC ()
 
+
+
+
 @end
 
 @implementation AlertsVC
@@ -23,7 +26,6 @@
         button.frame = CGRectMake(0, 100 + i % 2 * 100, SCREEN_WIDTH, 100);
         [button addTarget:self action:@selector(buttonClick:) forControlEvents:(UIControlEventTouchUpInside)];
         button.tag = i;
-        [button setTitleColor:kWhiteColor forState:(UIControlStateNormal)];
         [self.view addSubview:button];
     }
 }
@@ -34,23 +36,19 @@
         NSString *path = [NSBundle mainBundle].bundlePath;
         path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
         [MTThemeManager.manager setThemePath:path];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
     }else
     {
         NSString *path = [NSBundle mainBundle].bundlePath;
         path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
-        //        path = [path stringByAppendingPathComponent:[btn titleForState:UIControlStateNormal]];
+        
         [MTThemeManager.manager setThemePath:path];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     }
+
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

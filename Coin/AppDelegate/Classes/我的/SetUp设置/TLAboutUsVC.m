@@ -50,8 +50,7 @@
     [super viewDidLoad];
     
     self.titleText.text = [LangSwitcher switchLang:@"关于我们" key:nil];
-    self.navigationItem.titleView = self.titleText;
-//    self.title = [LangSwitcher switchLang:@"关于我们" key:nil];
+ 
     [self setUpUI];
 
     [self addLayout];

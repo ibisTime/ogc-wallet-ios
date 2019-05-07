@@ -35,18 +35,19 @@
         leftLbl.numberOfLines = 0;
         self.leftLbl = leftLbl;
 
-
+//        [leftLbl theme_setTextIdentifier:LabelColor moduleName:ColorName];
 
         
         self.leftView = leftBgView;
 
         
         self.frame = frame;
-        self.backgroundColor = [UIColor whiteColor];
         self.leftViewMode = UITextFieldViewModeAlways;
         self.rightViewMode = UITextFieldViewModeAlways;
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.placeholder = placeholder;
+//        [self theme_setTextIdentifier:LabelColor moduleName:ColorName];
+//        [self theme_setPlaceholderIdentifier:GaryLabelColor moduleName:ColorName];
         //    [tf addAction];
         self.font = [UIFont systemFontOfSize:13];
 

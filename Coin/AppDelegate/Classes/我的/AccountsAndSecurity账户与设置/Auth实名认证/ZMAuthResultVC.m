@@ -39,7 +39,7 @@
 #pragma mark - Init
 - (void)initSubviews {
     
-    self.view.backgroundColor = kWhiteColor;
+  
     
     CGFloat imageW = kWidth(60);
     

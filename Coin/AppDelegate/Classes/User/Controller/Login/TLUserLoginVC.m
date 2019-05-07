@@ -67,7 +67,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = YES;
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -78,12 +77,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.title = [LangSwitcher switchLang:@"登录" key:nil];
-    
+
     [self setUpUI];
 
-    [self.view theme_setBackgroundColorIdentifier:TableViewColor moduleName:@"homepage"];
-//    self.view.backgroundColor
+    
+    
+    
+    
+    
+//    [self.view theme_setBackgroundColorIdentifier:TableViewColor moduleName:@"homepage"];
     
     
 //    [self loadData];
@@ -212,8 +214,6 @@
 
 
 - (void)setUpUI {
-    
-    self.view.backgroundColor = kWhiteColor;
     
     
 //    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];

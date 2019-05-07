@@ -56,13 +56,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self requestUserInfo];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
 }
 
 
@@ -70,8 +70,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleText.text = [LangSwitcher switchLang:@"账户与安全" key:nil];
-    self.titleText.textColor = kTextBlack;
-    self.navigationItem.titleView = self.titleText;
+//    self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData];
 }

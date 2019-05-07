@@ -38,7 +38,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
     
     
@@ -60,7 +60,7 @@
     nameLable.textColor = kTextBlack;
     self.navigationItem.titleView = nameLable;
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, SCREEN_HEIGHT - kNavigationBarHeight - 2)];
     self.webView.delegate = self;
     self.webView.backgroundColor = kWhiteColor;

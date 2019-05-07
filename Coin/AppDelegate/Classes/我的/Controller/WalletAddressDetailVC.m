@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kBackgroundColor;
+
     self.title = [LangSwitcher switchLang:[NSString stringWithFormat:@"%@私钥",self.currentModel.symbol] key:nil];
     [self  initSubViews];
     // Do any additional setup after loading the view.

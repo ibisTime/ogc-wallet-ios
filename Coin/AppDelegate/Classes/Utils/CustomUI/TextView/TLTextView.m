@@ -20,6 +20,10 @@
 - (UILabel *)placeholderLbl {
 
     if (!_placeholderLbl) {
+        
+        
+        
+        
         _placeholderLbl =  [UILabel 
                             
                             
@@ -44,6 +48,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
 
     if (self = [super initWithFrame:frame]) {
+        
+        
+        
+        
         
         self.delegate = self;
         [self addSubview:self.placeholderLbl];

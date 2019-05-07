@@ -26,8 +26,7 @@ static NSString *identifierCell = @"RateDescCell";
         self.dataSource = self;
         self.delegate = self;
 
-        self.backgroundColor = kHexColor(@"#f8f8f8");
-        
+       
         [self registerClass:[RateDescCell class] forCellReuseIdentifier:identifierCell];
         
         self.separatorStyle = UITableViewStylePlain;

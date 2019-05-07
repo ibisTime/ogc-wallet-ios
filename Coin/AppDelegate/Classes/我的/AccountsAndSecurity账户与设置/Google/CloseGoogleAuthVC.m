@@ -34,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = [LangSwitcher switchLang:@"谷歌验证" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"谷歌验证" key:nil];
     
     [self initSubviews];
     

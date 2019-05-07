@@ -89,7 +89,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }
 //如果仅设置当前页导航透明，需加入下面方法
@@ -103,7 +103,7 @@
     self.navigationController.navigationBar.barTintColor = kTabbarColor;
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {

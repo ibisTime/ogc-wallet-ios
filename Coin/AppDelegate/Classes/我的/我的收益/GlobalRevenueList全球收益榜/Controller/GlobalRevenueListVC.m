@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = [LangSwitcher switchLang:@"全球收益榜" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"全球收益榜" key:nil];
     [self initTableView];
     [self LoadData];
 
@@ -121,7 +121,7 @@
 //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 
 }
@@ -137,7 +137,7 @@
 //    self.navigationController.navigationBar.barTintColor = kTabbarColor;
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 

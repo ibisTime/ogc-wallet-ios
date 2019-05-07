@@ -38,14 +38,13 @@
     [self requestInfo];
     
     self.titleText.text = [LangSwitcher switchLang:@"加入社群" key:nil];
-    self.titleText.textColor = kTextBlack;
     self.navigationItem.titleView = self.titleText;
     
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 //如果仅设置当前页导航透明，需加入下面方法

@@ -25,13 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initTableView];
-    UILabel *titleText = [[UILabel alloc] init];
-    titleText.textAlignment = NSTextAlignmentCenter;
-    titleText.backgroundColor = [UIColor clearColor];
-    titleText.textColor=kTextColor;
-    [titleText setFont:[UIFont systemFontOfSize:17.0]];
-    [titleText setText:[LangSwitcher switchLang:@"邀请收益" key:nil]];
-    self.navigationItem.titleView=titleText;
+//    UILabel *titleText = [[UILabel alloc] init];
+//    titleText.textAlignment = NSTextAlignmentCenter;
+//    titleText.backgroundColor = [UIColor clearColor];
+//    titleText.textColor=kTextColor;
+//    [titleText setFont:[UIFont systemFontOfSize:17.0]];
+//    [titleText setText:[LangSwitcher switchLang:@"邀请收益" key:nil]];
+//    self.navigationItem.titleView=titleText;
 
     [self LoadData];
 
@@ -142,7 +142,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 //如果仅设置当前页导航透明，需加入下面方法
@@ -157,7 +157,7 @@
     self.navigationController.navigationBar.barTintColor = kTabbarColor;
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }
 

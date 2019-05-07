@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 //转账数量
 @property (nonatomic, strong) TLTextField *tranAmountTF;
 //谷歌验证码
-@property (nonatomic, strong) TLTextField *googleAuthTF;
+//@property (nonatomic, strong) TLTextField *googleAuthTF;
 //矿工费
 @property (nonatomic, strong) TLTextField *minerFeeTF;
 //开关
@@ -76,8 +76,8 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [LangSwitcher switchLang:@"转出" key:nil];
-    self.view.backgroundColor = kBackgroundColor;
+    self.titleText.text= [LangSwitcher switchLang:@"转出" key:nil];
+
     
     
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -180,22 +180,22 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
     [self.view addSubview:receiveBtn];
 
-    //谷歌验证码
-    self.googleAuthTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, self.balanceTF.yy, kScreenWidth, heightMargin) leftTitle:[LangSwitcher switchLang:@"谷歌验证码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil] ];
-    
-    self.googleAuthTF.keyboardType = UIKeyboardTypeNumberPad;
-    self.googleAuthTF.hidden = NO;
-    [self.view addSubview:self.googleAuthTF];
+//    //谷歌验证码
+//    self.googleAuthTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, self.balanceTF.yy, kScreenWidth, heightMargin) leftTitle:[LangSwitcher switchLang:@"谷歌验证码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil] ];
+//
+//    self.googleAuthTF.keyboardType = UIKeyboardTypeNumberPad;
+//    self.googleAuthTF.hidden = NO;
+//    [self.view addSubview:self.googleAuthTF];
     
     //复制
-    UIView *authView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, self.googleAuthTF.height)];
-    
-    UIButton *pasteBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"粘贴" key:nil] titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:13.0 cornerRadius:5];
-    pasteBtn.frame = CGRectMake(0, 0, 85, self.googleAuthTF.height - 15);
-    pasteBtn.centerY = authView.height/2.0;
-    [pasteBtn addTarget:self action:@selector(clickPaste) forControlEvents:UIControlEventTouchUpInside];
-    [authView addSubview:pasteBtn];
-    self.googleAuthTF.rightView = authView;
+//    UIView *authView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, heightMargin)];
+//
+//    UIButton *pasteBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"粘贴" key:nil] titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:13.0 cornerRadius:5];
+//    pasteBtn.frame = CGRectMake(0, 0, 85, heightMargin - 15);
+//    pasteBtn.centerY = authView.height/2.0;
+//    [pasteBtn addTarget:self action:@selector(clickPaste) forControlEvents:UIControlEventTouchUpInside];
+//    [authView addSubview:pasteBtn];
+//    self.googleAuthTF.rightView = authView;
     
 
     
@@ -379,33 +379,33 @@ typedef NS_ENUM(NSInteger, AddressType) {
             return ;
         }
         
-        if ([TLUser user].isGoogleAuthOpen) {
-            
-            if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
-                
-                if (![self.googleAuthTF.text valid]) {
-                    
-                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil]];
-                    return;
-                    
-                }
-                
-                //判断谷歌验证码是否为纯数字
-                if (![NSString isPureNumWithString:self.googleAuthTF.text]) {
-                    
-                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
-                    return ;
-                }
-                
-                //判断谷歌验证码是否为6位
-                if (self.googleAuthTF.text.length != 6) {
-                    
-                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
-                    return ;
-                }
-                
-            }
-        }
+//        if ([TLUser user].isGoogleAuthOpen) {
+//
+//            if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
+//
+//                if (![self.googleAuthTF.text valid]) {
+//
+//                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil]];
+//                    return;
+//
+//                }
+//
+//                //判断谷歌验证码是否为纯数字
+//                if (![NSString isPureNumWithString:self.googleAuthTF.text]) {
+//
+//                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
+//                    return ;
+//                }
+//
+//                //判断谷歌验证码是否为6位
+//                if (self.googleAuthTF.text.length != 6) {
+//
+//                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的谷歌验证码" key:nil]];
+//                    return ;
+//                }
+//
+//            }
+//        }
         
         if (self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"]) {
             
@@ -561,7 +561,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     if (pasteboard.string != nil) {
         
-        self.googleAuthTF.text = pasteboard.string;
+//        self.googleAuthTF.text = pasteboard.string;
         
     } else {
         
@@ -647,7 +647,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
         [UIView animateWithDuration:0 animations:^{
             
-            self.googleAuthTF.transform = CGAffineTransformIdentity;
+//            self.googleAuthTF.transform = CGAffineTransformIdentity;
             self.minerFeeTF.transform = CGAffineTransformIdentity;
             self.minerView.transform = CGAffineTransformIdentity;
             self.confirmBtn.transform = CGAffineTransformIdentity;
@@ -658,7 +658,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
         
         [UIView animateWithDuration:0 animations:^{
             
-            self.googleAuthTF.transform = CGAffineTransformMakeTranslation(0, 50);
+//            self.googleAuthTF.transform = CGAffineTransformMakeTranslation(0, 50);
             self.minerFeeTF.transform = CGAffineTransformMakeTranslation(0, 50);
             self.minerView.transform = CGAffineTransformMakeTranslation(0, 50);
             self.confirmBtn.transform = CGAffineTransformMakeTranslation(0, 50);
@@ -712,14 +712,14 @@ typedef NS_ENUM(NSInteger, AddressType) {
     //    http.parameters[@"fee"] = @"-10";
     
     
-    if ([TLUser user].isGoogleAuthOpen) {
-        
-        if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
-            
-            http.parameters[@"googleCaptcha"] = self.googleAuthTF.text;
-            
-        }
-    }
+//    if ([TLUser user].isGoogleAuthOpen) {
+//
+//        if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
+//
+//            http.parameters[@"googleCaptcha"] = self.googleAuthTF.text;
+//
+//        }
+//    }
     
     if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
         
@@ -770,14 +770,14 @@ typedef NS_ENUM(NSInteger, AddressType) {
     //    http.parameters[@"fee"] = @"-10";
     
     
-    if ([TLUser user].isGoogleAuthOpen) {
-        
-        if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
-            
-            http.parameters[@"googleCaptcha"] = self.googleAuthTF.text;
-            
-        }
-    }
+//    if ([TLUser user].isGoogleAuthOpen) {
+//        
+//        if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
+//            
+//            http.parameters[@"googleCaptcha"] = self.googleAuthTF.text;
+//            
+//        }
+//    }
     
     if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
         
@@ -811,16 +811,10 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-    
-}
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 

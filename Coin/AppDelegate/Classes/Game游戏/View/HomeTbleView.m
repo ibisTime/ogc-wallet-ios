@@ -23,7 +23,6 @@ static NSString *identifierCell = @"homeCell";
 
         self.dataSource = self;
         self.delegate = self;
-//        self.backgroundColor = kBackgroundColor;
 
         [self registerClass:[HomeCell class] forCellReuseIdentifier:identifierCell];
         [self registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];

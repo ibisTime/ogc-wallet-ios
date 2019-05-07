@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"实名认证";
+    self.titleText.text = @"实名认证";
     [self initSubviews];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(realNameAuth:) name:@"RealNameAuthResult" object:nil];

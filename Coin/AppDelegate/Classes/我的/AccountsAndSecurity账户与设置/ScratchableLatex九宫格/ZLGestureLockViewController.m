@@ -74,23 +74,21 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setShadowImage:nil];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
 }
 
 
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [LangSwitcher switchLang:@"手势密码" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"手势密码" key:nil];
 
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+
     [self setupMainUI];
     
     self.gestureLockView.delegate = self;
@@ -134,7 +132,7 @@
     [self.view addSubview:headIcon];
     if (self.isCheck == YES) {
         headIcon.hidden = NO;
-        self.title = [LangSwitcher switchLang:@"欢迎回来" key:nil];
+        self.titleText.text = [LangSwitcher switchLang:@"欢迎回来" key:nil];
     }else{
         
         headIcon.hidden = YES;

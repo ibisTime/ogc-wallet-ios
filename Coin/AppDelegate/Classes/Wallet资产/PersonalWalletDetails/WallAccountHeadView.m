@@ -32,15 +32,13 @@
 - (void)initSubvies
 {
     
-    UIImageView *topView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 130 - 64 + kNavigationBarHeight)];
-    topView.image = kImage(@"账单详情");
-    [self addSubview:topView];
+//    UIImageView *topView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 130 - 64 + kNavigationBarHeight)];
+//    topView.image = kImage(@"账单详情");
+//    [self addSubview:topView];
     
     
     UIImageView *bgImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 84 - 64 + kNavigationBarHeight - 10, SCREEN_WIDTH - 10, 110)];
-
     self.bgImage = bgImage;
-    bgImage.image = kImage(@"背景");
     bgImage.contentMode = UIViewContentModeScaleToFill;
     bgImage.layer.cornerRadius=5;
     bgImage.layer.shadowOpacity = 0.22;// 阴影透明度
@@ -48,7 +46,8 @@
     bgImage.layer.shadowRadius=3;// 阴影扩散的范围控制
     bgImage.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
     [self addSubview:bgImage];
-    self.bgImage.image = kImage(@"BTC背景");
+    [self.bgImage theme_setImageIdentifier:@"私钥钱包背景" moduleName:ImgAddress];
+    
     
     UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(25, 110/2 - 20, 40, 40)];
     kViewRadius(iconImage, 20);

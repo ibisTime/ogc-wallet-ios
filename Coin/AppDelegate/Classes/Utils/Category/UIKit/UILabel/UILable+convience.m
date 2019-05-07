@@ -50,10 +50,9 @@
 {
     UILabel *lbl = [[UILabel alloc] initWithFrame:frame];
     lbl.textAlignment = aligment;
-    lbl.backgroundColor = color;
+//    lbl.backgroundColor = kBlackColor;
     lbl.font = font;
-//    lbl.textColor = textColor;
-    [lbl theme_setTextColorIdentifier:@"textColor" moduleName:@"homepage"];
+    [lbl theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     return lbl;
     
 }

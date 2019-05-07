@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = [LangSwitcher switchLang:@"身份认证" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"身份认证" key:nil];
     
     [self initSubviews];
 
@@ -34,7 +34,7 @@
     
     BOOL isRealNameExist = [[TLUser user].realName valid];
     
-    self.view.backgroundColor = kBackgroundColor;
+
     
     CGFloat leftMargin = 15;
     

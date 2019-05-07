@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [LangSwitcher switchLang:@"历史反馈" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"历史反馈" key:nil];
     [self initTopView];
     
     [self loadList];
@@ -34,7 +34,7 @@
 }
 - (void)initTopView
 {
-    self.view.backgroundColor = kBackgroundColor;
+
     UIView *top = [[UIView alloc] init];
     [self.view addSubview:top];
     top.backgroundColor = kTabbarColor;

@@ -48,52 +48,26 @@
 @implementation WallAccountVC
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self navigationTransparentClearColor];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
 
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self navigationwhiteColor];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
 - (void)viewDidLoad {
     
   
 
     [super viewDidLoad];
-    self.view.backgroundColor = kWhiteColor;
+  
 
     [self initHeadView];
     [self initTableView];
     [self initBottonView];
-    self.titleText.text = [LangSwitcher switchLang:@"账单" key:nil];
-    self.titleText.textColor = kWhiteColor;
-    self.navigationItem.titleView = self.titleText;
     
     [self ckey];
-//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    negativeSpacer.width = -10;
-//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-//    [self.RightButton setTitle:[LangSwitcher switchLang:@"筛选" key:nil] forState:(UIControlStateNormal)];
-//    [self.RightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
     //获取账单
     [self requestBillList];
 
-    // Do any additional setup after loading the view.
 }
 
-//-(void)rightButtonClick
-//{
-//    [self.filterPicker show];
-//}
+
 
 #pragma mark - Init
 - (FilterView *)filterPicker {
@@ -154,7 +128,7 @@
 - (void)initTableView {
     
     self.tableView = [[BillTableView alloc]
-                      initWithFrame:CGRectMake(0, self.headView.yy , kScreenWidth, SCREEN_HEIGHT - self.headView.yy - kNavigationBarHeight - 45)
+                      initWithFrame:CGRectMake(0, self.headView.yy , kScreenWidth, SCREEN_HEIGHT - self.headView.yy - kNavigationBarHeight - 80)
                       style:UITableViewStyleGrouped];
    
     
@@ -289,16 +263,11 @@
 - (void)initBottonView{
     UIView *bottomView  = [[UIView alloc] init];
     self.bottomViw = bottomView;
-    bottomView.backgroundColor = [UIColor redColor];
-    bottomView.frame = CGRectMake(0, SCREEN_HEIGHT - 45 - kNavigationBarHeight, SCREEN_WIDTH, 45);
+//    bottomView.backgroundColor = [UIColor redColor];
+    bottomView.frame = CGRectMake(0, SCREEN_HEIGHT - 80 - kNavigationBarHeight, SCREEN_WIDTH, 80);
     [self.view addSubview:bottomView];
 
-    bottomView.backgroundColor = kWhiteColor;
-    bottomView.layer.cornerRadius=5;
-    bottomView.layer.shadowOpacity = 0.22;// 阴影透明度
-    bottomView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-    bottomView.layer.shadowRadius=3;// 阴影扩散的范围控制
-    bottomView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
+    [bottomView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     //底部操作按钮
 
     NSArray *textArr = @[
@@ -309,22 +278,25 @@
 
 
     for (int i = 0; i < 2; i ++) {
-        UIButton *btn = [UIButton buttonWithTitle:textArr[i] titleColor:kTextColor backgroundColor:kClearColor titleFont:12.0];
+        UIButton *btn = [UIButton buttonWithTitle:textArr[i] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:12.0];
         [btn addTarget:self action:@selector(btnClickCurreny:) forControlEvents:UIControlEventTouchUpInside];
-        btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, 45);
+        btn.frame = CGRectMake(15 + i % 2 * ((SCREEN_WIDTH - 45)/2 + 15) , 15, SCREEN_WIDTH/2 - 45/2, 50);
         [btn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:3 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(imgArr[i]) forState:UIControlStateNormal];
         }];
+        if (i == 0) {
+            [btn setBackgroundColor:kHexColor(@"#77A4FF") forState:(UIControlStateNormal)];
+            
+        }else
+        {
+            [btn setBackgroundColor:kHexColor(@"#F4AC71") forState:(UIControlStateNormal)];
+        }
+
         btn.tag = 201806+i;
         [bottomView addSubview:btn];
     }
 
-    UIView *vLine = [[UIView alloc] init];
 
-    vLine.backgroundColor = kLineColor;
-
-    [self.bottomViw addSubview:vLine];
-    vLine.frame =CGRectMake(SCREEN_WIDTH/2, 0, 0.5, 45);
 
 }
 

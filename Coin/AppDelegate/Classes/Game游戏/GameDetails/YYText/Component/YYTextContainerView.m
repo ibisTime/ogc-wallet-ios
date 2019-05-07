@@ -20,7 +20,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (!self) return nil;
-    self.backgroundColor = [UIColor clearColor];
+  
     _attachmentViews = [NSMutableArray array];
     _attachmentLayers = [NSMutableArray array];
     return self;

@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kClearColor;
-    self.title = [LangSwitcher switchLang:@"积分抽奖" key:nil];
+
+    self.titleText.text= [LangSwitcher switchLang:@"积分抽奖" key:nil];
 
     [self initWebView];
     // Do any additional setup after loading the view.
@@ -31,13 +31,13 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 
 }
 

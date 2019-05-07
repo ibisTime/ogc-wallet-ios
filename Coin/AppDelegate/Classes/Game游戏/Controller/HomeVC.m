@@ -64,7 +64,7 @@
 {
     [super viewWillAppear:animated];
     [self navigationSetDefault];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 
 
@@ -73,7 +73,6 @@
     [super viewWillDisappear:animated];
     
     [self navigationwhiteColor];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 
@@ -171,7 +170,7 @@
     [self initNavigationNar];
 //    [self initTableView];
     [self.view addSubview:self.collectionView];
-    self.view.backgroundColor = kWhiteColor;
+    
     [self DownRefresh];
     category = 0;
 }

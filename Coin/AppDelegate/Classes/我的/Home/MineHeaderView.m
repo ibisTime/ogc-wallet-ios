@@ -37,7 +37,7 @@
 //    topImage.image = kImage(@"Mask");
 //    [self addSubview:topImage];
 
-    [self theme_setBackgroundColorIdentifier:@"self.view.back" moduleName:@"homepage"];
+//    [self theme_setBackgroundColorIdentifier:@"self.view.back" moduleName:@"homepage"];
     
     UILabel *titleLab  = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:18.0];
     titleLab.frame = CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, 44);
@@ -63,10 +63,6 @@
         [self.photoBtn setImage:kImage(@"头像") forState:UIControlStateNormal];
     }
     
-//    UIImageView *image = [[UIImageView alloc] init];
-//    image.contentMode = UIViewContentModeScaleToFill;
-//    image.image = kImage(@"1");
-//    [self addSubview:image];
     [self.photoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.width.equalTo(@58);
@@ -76,15 +72,7 @@
 
     }];
     
-//    [image mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.centerX.equalTo(self.photoBtn.mas_centerX);
-//        make.height.equalTo(@17);
-//        make.width.equalTo(@20);
-//
-//        make.bottom.equalTo(self.photoBtn.mas_top).offset(-2);
-//
-//    }];
+
     
     //昵称
     self.nameLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kWhiteColor font:22];

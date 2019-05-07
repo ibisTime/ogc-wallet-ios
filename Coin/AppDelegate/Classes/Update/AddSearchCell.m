@@ -45,8 +45,8 @@
         [self.selectedBtn setTitle:@"test1" forState:UIControlStateSelected];
         self.selectedBtn.enabled = NO;
 //        self.selectedBtn.layer.cornerRadius = 4.0;
-        self.selectedBtn.layer.borderColor = kLineColor.CGColor;
-        self.selectedBtn.layer.borderWidth=1;
+//        self.selectedBtn.layer.borderColor = kLineColor.CGColor;
+//        self.selectedBtn.layer.borderWidth=0.5;
         self.selectedBtn.titleLabel.font = [UIFont systemFontOfSize:16];
 
 //        [self.selectedBtn setImage:[UIImage imageNamed:@"金"] forState:UIControlStateNormal];

@@ -20,14 +20,14 @@
 {
     [super viewWillAppear:animated];
     [self navigationwhiteColor];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kWhiteColor;
+    
     // Do any additional setup after loading the view.
-    self.title = @"金米福分";
+    self.titleText.text = @"金米福分";
     
     UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/2)];
     topImage.image = kImage(@"积分背景");

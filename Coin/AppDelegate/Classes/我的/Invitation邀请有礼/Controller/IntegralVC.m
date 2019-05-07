@@ -17,20 +17,20 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }
 
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = [LangSwitcher switchLang:@"信用积分" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"信用积分" key:nil];
     [self initUI];
 }
 

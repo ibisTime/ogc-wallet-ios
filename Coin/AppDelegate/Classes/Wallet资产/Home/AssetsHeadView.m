@@ -14,8 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.backgroundColor = [UIColor whiteColor];
+     
         //公告背景
         _whiteView = [[UIView alloc] init];
         _whiteView.frame = CGRectMake(0, 0, SCREEN_WIDTH, kHeight(40));

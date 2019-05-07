@@ -31,7 +31,7 @@
         self.font = [UIFont systemFontOfSize:14];
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         
-        self.backgroundColor = [UIColor whiteColor];
+       
         
         //白色边界线
         UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.7, 18)];

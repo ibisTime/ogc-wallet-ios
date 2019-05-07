@@ -24,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeAll;
-    self.view.backgroundColor = [UIColor backgroundColor];
     
     //---//--//
     self.bgSV = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -35,7 +34,7 @@
     [self.view addSubview:_bgSV];
 
     
-    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
+//    [self.view theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
     
 }
 

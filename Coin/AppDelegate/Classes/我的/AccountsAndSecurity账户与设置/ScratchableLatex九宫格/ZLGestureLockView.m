@@ -45,7 +45,7 @@
 
 // 子视图初始化
 - (void)initSubviews {
-    self.backgroundColor = [UIColor clearColor];
+    
 
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self addGestureRecognizer:pan];

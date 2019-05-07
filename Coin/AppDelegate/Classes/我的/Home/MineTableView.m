@@ -8,7 +8,7 @@
 
 #import "MineTableView.h"
 #import "MyCell1.h"
-
+#import "MineHeadCell.h"
 @interface MineTableView ()<UITableViewDataSource, UITableViewDelegate,MyCellDelegate1>
 
 @end
@@ -34,9 +34,9 @@ static NSString *Cell3 = @"MyCell3";
 
 #pragma mark - UITableViewDataSource;
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return self.dataArray.count;
+-(NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

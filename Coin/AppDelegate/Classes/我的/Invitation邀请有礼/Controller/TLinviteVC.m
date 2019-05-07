@@ -45,12 +45,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-    if ([TLUser user].isLogin) {
-      BOOL is =  [[TLUser user] chang];
 
-    }
    
 }
 
@@ -66,12 +61,11 @@
     self.navigationController.navigationBar.barTintColor = kTabbarColor;
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.title = [LangSwitcher switchLang:@"邀请有礼" key:nil];
     self.nameLable = [[UILabel alloc]init];
     self.nameLable.text = [LangSwitcher switchLang:@"邀请有礼" key:nil];
     self.nameLable.textAlignment = NSTextAlignmentCenter;

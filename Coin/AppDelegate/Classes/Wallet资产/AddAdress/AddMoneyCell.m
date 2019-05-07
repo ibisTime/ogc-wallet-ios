@@ -40,7 +40,7 @@
 #pragma mark - Init
 - (void)initSubviews {
     
-    self.backgroundColor = kClearColor;
+    
     
     CGFloat leftMargin = 15;
     

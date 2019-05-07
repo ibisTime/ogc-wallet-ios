@@ -18,6 +18,13 @@
 #import "CountryModel.h"
 #import "ZLGestureLockViewController.h"
 #import "NSString+Check.h"
+
+#import "TLWalletVC.h"
+#import "HomeVC.h"
+#import "MarketVC.h"
+#import "AlertsVC.h"
+#import "TLMineVC.h"
+
 @interface TLUpdateVC ()
 @property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
 
@@ -43,6 +50,10 @@
 //    由于无法通过，审核。如果为强制更新
 }
 
+
+
+
+
 -(void)configurationLoadData
 {
     TLNetworking *http = [TLNetworking new];
@@ -51,33 +62,30 @@
     http.parameters[@"parentCode"] = @"DH201810120023250000000";
     [http postWithSuccess:^(id responseObject) {
         
-        
+//        [self UiNavigationandTabBar];
          TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
-        
+
         ZLGestureLockViewController *vc = [ZLGestureLockViewController new];
         vc.isCheck = YES;
-        
+
         UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
 //        BOOL isLanch  = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLanch"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLanch"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        
+
         NSString *word = [ZLGestureLockViewController gesturesPassword];
         if (word.length >0) {
             [self presentViewController:na animated:YES completion:nil];
             vc.CheckSucessBlock = ^{
                 [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
-                
+
             };
         }else{
-            
+
             [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
-            
+
         }
-        
-        
-       
-        //        tab.dataArray = dataArray;
+
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
 //        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         

@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [UIColor clearColor];
+  
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.view addSubview:self.scanningView];

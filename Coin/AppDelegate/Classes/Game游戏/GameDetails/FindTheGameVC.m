@@ -28,7 +28,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
     
     
@@ -47,7 +47,7 @@
     self.navigationController.navigationBar.barTintColor = kHexColor(@"#0848DF");
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }
 
@@ -61,7 +61,7 @@
     
     [self initTableView];
     [self loadData];
-    self.view.backgroundColor = kWhiteColor;
+    
     
     
 }

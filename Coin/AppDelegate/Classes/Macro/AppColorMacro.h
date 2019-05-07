@@ -14,25 +14,29 @@
 
 #pragma mark - UIMacros
 
-
 #define ColorName @"homepage"
 #define ImgAddress @"untitled folder"
-
+//
 #define CellBackColor @"cell.back"
 #define BackColor @"self.view.back"
 #define LabelColor @"textColor"
 #define TableViewColor @"tableview.back"
+#define TabbarColor @"tabbar.color"
+#define GaryLabelColor @"garyLabel.text"
+#define LineViewColor @"lineViewColor"
+
+
 
 
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-#define kTabbarColor   [UIColor colorWithHexString:@"#4064E6"]
+#define kTabbarColor   [UIColor colorWithHexString:@"#77A4FF"]
 
 //设置字体加粗
 #define HGboldfont(s)  [UIFont fontWithName:@"Helvetica-Bold" size:s]
 
 // 主色
-#define kAppCustomMainColor [UIColor colorWithHexString:@"#108ee9"]
+#define kAppCustomMainColor [UIColor colorWithHexString:@"#77A4FF"]
 
 // 颜色配置
 #define kNavBarMainColor  [UIColor appNavBarMainColor]
@@ -48,9 +52,12 @@
 //151, 215, 76 RGB(195, 207, 72)
 #define kNavBarBackgroundColor  RGB(241, 241, 241)
 
-#define kBackgroundColor        [UIColor colorWithHexString:@"#f8f8f8"]   //背景色
-#define kLineColor              [UIColor colorWithHexString:@"#EEEEEE"]   //分割线
-#define kTextColor              [UIColor colorWithHexString:@"#484848"]   //一级文字
+
+
+#define kLineColor [UIColor colorWithHexString:@"#999999"]
+#define kBackgroundColor RGB(250, 250, 250)
+
+#define kTextColor              [UIColor colorWithHexString:@"#333333"]
 #define kTextColor2             [UIColor colorWithHexString:@"#999999"]   //二级文字
 #define kTextColor3             [UIColor colorWithHexString:@"#666666"]   //三级文字
 #define kTextColor4             [UIColor colorWithHexString:@"#b3b3b3"]   //四级文字

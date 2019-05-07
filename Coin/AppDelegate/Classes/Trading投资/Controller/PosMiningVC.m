@@ -55,7 +55,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     self.navigationItem.backBarButtonItem = item;
     self.navigationController.navigationBar.shadowImage = [UIImage new];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self requesUserInfoWithResponseObject];
 }
 
@@ -73,9 +73,6 @@
 
     [self.view addSubview:self.tableView];
 
-    
-    
-        
     [self getMyCurrencyList:@"BTC"];
         
     
@@ -139,7 +136,6 @@
 {
     self.titleText.text = [LangSwitcher switchLang:@"Moore量化" key:nil];
     self.titleText.font = Font(18);
-    self.titleText.textColor = kWhiteColor;
     self.navigationItem.titleView = self.titleText;
 
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

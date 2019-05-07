@@ -25,15 +25,19 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        [self theme_setBackgroundColorIdentifier:BackColor moduleName:@"homepage"];
+        [self theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
+        
+//        self.backgroundColor = kCellViewColor;
+//        self.nightBackgroundColor = kNightCellViewColor;
         
         UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 75)];
-        [whiteView theme_setBackgroundColorIdentifier:CellBackColor moduleName:@"homepage"];
+
+        [whiteView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         self.whiteView = whiteView;
         whiteView.layer.cornerRadius=4;
         whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
         whiteView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-        whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
+        whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制iiiiiiiu
         whiteView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
         [self addSubview:whiteView];
         

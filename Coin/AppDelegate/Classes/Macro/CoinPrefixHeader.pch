@@ -38,10 +38,9 @@
 #import "TLTextField.h"
 #import "TLNetworking.h"
 #import "TLPageDataHelper.h"
-
+#import "LWSkinTool.h"
 #import "UserModel.h"
 #import "LangSwitcher.h"
-
 #import "CoinUtil.h"
 #import "CoinModel.h"
 
@@ -58,7 +57,6 @@
 #import "NSNumber+Extension.h"
 #import "MTTheme.h"
 #import "ToolTextField.h"
-
 #import "TLProgressHUD.h"
 #import "UITableView+AddForPlaceholder.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -69,7 +67,6 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "TLUserForgetPwdVC.h"
 #import "ZJAnimationPopView.h"
-
 #import "FoundationHeader.h"
 #define BTCADDRESS @"BTCADDRESS"
 

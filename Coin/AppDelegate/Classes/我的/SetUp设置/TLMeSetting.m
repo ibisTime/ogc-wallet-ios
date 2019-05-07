@@ -48,24 +48,21 @@
 @implementation TLMeSetting
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    //去掉透明后导航栏下边的黑边
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController.navigationBar setShadowImage:nil];
-}
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    //去掉透明后导航栏下边的黑边
+//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//    [self.navigationController.navigationBar setShadowImage:nil];
+//}
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleText.text = [LangSwitcher switchLang:@"设置" key:nil];
-    self.titleText.textColor = kTextBlack;
-    self.navigationItem.titleView = self.titleText;
     [self initTableView];
 }
 

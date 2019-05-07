@@ -11,6 +11,7 @@
 @interface UITextView (MTTheme)
 - (void)theme_setTextColorIdentifier:(nonnull NSString *)identifier
                           moduleName:(nonnull NSString *)moduleName;
+
 - (void)theme_setTextIdentifier:(nonnull NSString *)identifier
                      moduleName:(nonnull NSString *)moduleName;
 @end

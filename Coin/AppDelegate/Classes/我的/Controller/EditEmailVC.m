@@ -48,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [LangSwitcher switchLang:@"绑定邮箱" key:nil];
+    self.titleText.text  =  [LangSwitcher switchLang:@"绑定邮箱" key:nil];
     [self setUpUI];
     
     //

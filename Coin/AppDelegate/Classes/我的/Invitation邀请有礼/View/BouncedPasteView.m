@@ -39,7 +39,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        
 
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(kWidth(20), kHeight(30), SCREEN_WIDTH - kWidth(90), self.informationLabel.yy + kHeight(20))];
         backView.backgroundColor = kHexColor(@"#F8F8F8");

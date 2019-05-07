@@ -17,9 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kBackgroundColor;
+   
     
-    self.title = [LangSwitcher switchLang:@"闪兑" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"闪兑" key:nil];
    UIImageView *image =   [UIImageView new];
     image.contentMode = UIViewContentModeScaleToFill;
     
@@ -44,14 +44,6 @@
 
 
 
--(void)viewWillAppear:(BOOL)animated
-{
 
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
--(void)viewWillDisappear:(BOOL)animated
-{
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
 @end

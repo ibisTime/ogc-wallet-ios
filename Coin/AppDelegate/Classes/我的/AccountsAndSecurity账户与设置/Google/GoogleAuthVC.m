@@ -34,26 +34,14 @@
 @implementation GoogleAuthVC
 
 
--(void)viewWillAppear:(BOOL)animated
-{
-    
-    [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-}
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController.navigationBar setShadowImage:nil];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = [LangSwitcher switchLang:@"谷歌验证" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"谷歌验证" key:nil];
     
     [self initSubviews];
     //获取密钥

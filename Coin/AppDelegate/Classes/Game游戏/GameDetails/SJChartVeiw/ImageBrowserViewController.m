@@ -56,7 +56,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor=[UIColor blackColor];
+    
     
     //去除自动处理
     self.automaticallyAdjustsScrollViewInsets = NO;

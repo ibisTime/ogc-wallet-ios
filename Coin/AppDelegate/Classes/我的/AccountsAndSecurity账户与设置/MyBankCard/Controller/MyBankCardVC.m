@@ -20,20 +20,7 @@
 
 @implementation MyBankCardVC
 
--(void)viewWillAppear:(BOOL)animated
-{
-    
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController.navigationBar setShadowImage:nil];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
 
 
 - (MyBankCardTableView *)tableView {

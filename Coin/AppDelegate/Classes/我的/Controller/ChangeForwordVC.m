@@ -35,8 +35,8 @@
 @implementation ChangeForwordVC
 
 - (void)viewDidLoad {
-    self.title = [LangSwitcher switchLang:@"修改交易密码" key:nil];
-    self.view.backgroundColor = kWhiteColor;
+    self.titleText.text  = [LangSwitcher switchLang:@"修改交易密码" key:nil];
+
     [super viewDidLoad];
     self.inter = -1;
     

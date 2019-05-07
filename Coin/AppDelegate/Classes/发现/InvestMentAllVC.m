@@ -33,18 +33,7 @@
 
 @implementation InvestMentAllVC
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
-}
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [self.navigationController.navigationBar setShadowImage:nil];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -32,8 +32,7 @@
 
 @implementation WalletDelectVC
 - (void)viewDidLoad {
-    self.title = [LangSwitcher switchLang:@"删除钱包" key:nil];
-    self.view.backgroundColor = kBackgroundColor;
+    self.titleText.text = [LangSwitcher switchLang:@"删除钱包" key:nil];
 //    NSString *word = [[NSUserDefaults standardUserDefaults] objectForKey:KWalletWord];
     TLDataBase *dataBase = [TLDataBase sharedManager];
     NSString *word;
@@ -72,7 +71,6 @@
 - (void)initSub
 {
     self.nameLable = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:15];
-    //    self.title = [LangSwitcher switchLang:@"我的" key:nil];
     [self.view addSubview:self.nameLable];
     
     self.nameLable.text = [LangSwitcher switchLang:@"请输入导入的钱包助记词 (12个英文单词)  , 按空格分离" key:nil];

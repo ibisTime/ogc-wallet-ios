@@ -68,7 +68,7 @@
     
     [super viewWillAppear:animated];
 //    [self navigationTransparentClearColor];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
@@ -89,10 +89,7 @@
     
     [super viewDidLoad];
     //取消按钮
-//    [UIBarButtonItem addLeftItemWithImageName:kCancelIcon frame:CGRectMake(-20, 0, 40, 60) vc:self action:@selector(back)];
-//    self.navigationController.navigationBar.hidden = NO;
-//    self.title = [LangSwitcher switchLang:@"注册" key:nil];
-    self.view.backgroundColor = kWhiteColor;
+
     [self setUpUI];
 //    [self loadData];
     isReading = YES;

@@ -29,18 +29,12 @@
 
 
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
     if (self.isFirst) {
         self.isFirst = NO;
         
@@ -86,7 +80,7 @@
     
     [super viewDidLoad];
     self.isFirst  = YES;
-    self.title = self.titleString;
+    self.titleText.text = self.titleString;
     
     TLTableView *tableView = [TLTableView tableViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                     delegate:self dataSource:self];

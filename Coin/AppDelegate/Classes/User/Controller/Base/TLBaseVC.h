@@ -23,7 +23,7 @@
 @property (nonatomic , strong)UIButton *LeftBackbButton;
 
 @property (nonatomic , strong)UIButton *RightButton;
-
+@property (nonatomic , strong)UIView *topView;
 - (void)tl_placeholderOperation;
 
 

@@ -46,6 +46,7 @@ _Pragma("clang diagnostic pop") \
     tableView.delegate = delegate;
     tableView.dataSource = dataSource;
 //    tableView.backgroundColor = [UIColor clearColor];
+    
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.estimatedRowHeight = 0;
     tableView.estimatedSectionHeaderHeight = 0;
@@ -72,7 +73,7 @@ _Pragma("clang diagnostic pop") \
     tableView.estimatedRowHeight = 0;
     tableView.estimatedSectionHeaderHeight = 0;
     tableView.estimatedSectionFooterHeight = 0;
-
+    
     return tableView;
     
 }
@@ -81,13 +82,12 @@ _Pragma("clang diagnostic pop") \
     
     if (self = [super initWithFrame:frame style:style]) {
         
-        [self theme_setBackgroundColorIdentifier:@"tableview.back" moduleName:@"homepage"];
         
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.estimatedRowHeight = 0;
         self.estimatedSectionHeaderHeight = 0;
         self.estimatedSectionFooterHeight = 0;
-
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         if (@available(iOS 11.0, *)) {
             
             self.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

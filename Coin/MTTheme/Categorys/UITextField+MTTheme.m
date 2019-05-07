@@ -23,9 +23,18 @@
     [MTThemeBlock colorPickerWithView:self selector:@selector(setTextColor:) moduleName:moduleName identifier:identifier extendObj:nil];
 }
 
+
+
+
 - (void)theme_setTextIdentifier:(NSString *)identifier
                      moduleName:(NSString *)moduleName {
     [MTThemeBlock textPickerWithView:self selector:@selector(setText:) moduleName:moduleName identifier:identifier extendObj:nil];
+}
+
+- (void)theme_setPlacehoColorIdentifier:(nonnull NSString *)identifier
+                             moduleName:(nonnull NSString *)moduleName
+{
+    [MTThemeBlock colorPickerWithView:self selector:@selector(setPlacrColor:) moduleName:moduleName identifier:identifier extendObj:nil];
 }
 
 - (void)theme_setPlaceholderIdentifier:(NSString *)identifier
