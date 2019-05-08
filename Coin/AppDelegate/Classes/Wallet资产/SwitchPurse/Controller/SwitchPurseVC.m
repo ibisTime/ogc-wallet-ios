@@ -22,8 +22,17 @@
 {
     if (!_headView) {
         _headView = [[SwitchPurseHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 240)];
+        [_headView.SwitchPurse addTarget:self action:@selector(SwitchPurseClick) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _headView;
+}
+
+-(void)SwitchPurseClick
+{
+    NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    [self.navigationController popViewControllerAnimated:YES];
+    [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];
 }
 
 - (void)initTableView {
@@ -35,7 +44,11 @@
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+    [USERDEFAULTS setObject:array[indexPath.row][@"mnemonics"] forKey:@"mnemonics"];
+    NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index

@@ -158,8 +158,9 @@ typedef NS_ENUM(NSInteger, AddressType) {
     self.balanceTF.leftLbl.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:self.balanceTF];
 
-    UIImageView *rightArrow = [[UIImageView alloc] initWithImage:kImage(@"扫一扫-黑色")];
+    UIImageView *rightArrow = [[UIImageView alloc] init];
     rightArrow.contentMode = UIViewContentModeScaleToFill;
+    [rightArrow theme_setImageIdentifier:@"扫一扫" moduleName:ImgAddress]
     [self.view addSubview:rightArrow];
     rightArrow.userInteractionEnabled = YES;
     [rightArrow mas_makeConstraints:^(MASConstraintMaker *make) {

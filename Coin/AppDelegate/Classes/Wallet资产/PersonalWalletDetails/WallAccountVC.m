@@ -284,6 +284,7 @@
         [btn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:6 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(imgArr[i]) forState:UIControlStateNormal];
         }];
+        kViewRadius(btn, 4);
         if (i == 0) {
             [btn setBackgroundColor:kHexColor(@"#77A4FF") forState:(UIControlStateNormal)];
             

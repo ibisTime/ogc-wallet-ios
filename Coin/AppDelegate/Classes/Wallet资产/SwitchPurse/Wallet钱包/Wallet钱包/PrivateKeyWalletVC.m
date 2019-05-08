@@ -142,7 +142,11 @@
     //        }
     NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
     NSMutableArray *muArray = [NSMutableArray array];
+    
+    
+    
     _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:[CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName]];
+    
     for (int i = 0; i < arr.count; i++) {
         CoinModel *model = arr[i];
             NSArray *array = [_fmdbModel.mnemonics componentsSeparatedByString:@" "];
@@ -188,10 +192,6 @@
                                       };
             [muArray addObject:coinDic];
     }
-    
-//    NSData *priKeyData = [_client.crypto privateKey];
-//    NSString *priKey = [TWHexConvert convertDataToHexStr:priKeyData];
-    
     self.addressArray = muArray;
     TLNetworking *http = [TLNetworking new];
     http.code = @"802270";

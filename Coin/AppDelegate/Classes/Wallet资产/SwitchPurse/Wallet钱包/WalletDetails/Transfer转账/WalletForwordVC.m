@@ -66,7 +66,7 @@ typedef enum : NSUInteger {
 //转账数量
 @property (nonatomic, strong) TLTextField *tranAmountTF;
 //谷歌验证码
-@property (nonatomic, strong) TLTextField *googleAuthTF;
+//@property (nonatomic, strong) TLTextField *googleAuthTF;
 //矿工费
 @property (nonatomic, strong) TLTextField *minerFeeTF;
 //开关
@@ -133,22 +133,22 @@ typedef enum : NSUInteger {
 
 - (void)initSubviews {
     
-    UIView *top = [[UIView alloc] init];
-    [self.view addSubview:top];
-    top.backgroundColor = kTabbarColor;
+//    UIView *top = [[UIView alloc] init];
+//    [self.view addSubview:top];
+//    top.backgroundColor = kTabbarColor;
     
-    [top mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.height.equalTo(@(45));
-    }];
+//    [top mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view.mas_top);
+//
+//        make.left.equalTo(self.view.mas_left);
+//        make.right.equalTo(self.view.mas_right);
+//        make.height.equalTo(@(45));
+//    }];
     
     UIImageView *bgImage = [[UIImageView alloc] init];
     
     self.bgImage = bgImage;
-    bgImage.image = kImage(@"BTC背景");
+    [bgImage theme_setImageIdentifier:@"BTC背景" moduleName:ImgAddress];
     bgImage.contentMode = UIViewContentModeScaleToFill;
     bgImage.layer.cornerRadius=5;
     bgImage.layer.shadowOpacity = 0.22;// 阴影透明度
@@ -159,9 +159,9 @@ typedef enum : NSUInteger {
     
     [bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left).offset(15);
-        make.right.equalTo(self.view.mas_right).offset(-15);
-        make.height.equalTo(@90);
+        make.left.equalTo(self.view.mas_left).offset(5);
+        make.right.equalTo(self.view.mas_right).offset(-5);
+        make.height.equalTo(@110);
         
     }];
     
@@ -169,7 +169,7 @@ typedef enum : NSUInteger {
     blance.text = [LangSwitcher switchLang:@"可用余额" key:nil];
     [bgImage addSubview:blance];
     [blance mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(bgImage.mas_top).offset(20);
+        make.top.equalTo(bgImage.mas_top).offset(30);
         make.centerX.equalTo(bgImage.mas_centerX);
         
     }];
@@ -202,10 +202,13 @@ typedef enum : NSUInteger {
     }else{
         self.balanceTF.font =FONT(10);
     }
+    self.balanceTF.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [self.balanceTF setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:self.balanceTF];
     
     //更多
-    UIImageView *rightArrowIV = [[UIImageView alloc] initWithImage:kImage(@"扫一扫-黑色")];
+    UIImageView *rightArrowIV = [[UIImageView alloc] init];
+    [rightArrowIV theme_setImageIdentifier:@"扫一扫" moduleName:ImgAddress];
     rightArrowIV.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:rightArrowIV];
     rightArrowIV.userInteractionEnabled = YES;
@@ -220,50 +223,7 @@ typedef enum : NSUInteger {
     
     UITapGestureRecognizer *ta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(click)];
     [rightArrowIV addGestureRecognizer:ta];
-    
-    
-    //谷歌验证码
-    self.googleAuthTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, self.balanceTF.yy, kScreenWidth, heightMargin)
-                                                 leftTitle:[LangSwitcher switchLang:@"谷歌验证码" key:nil]
-                                                titleWidth:100
-                                               placeholder:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil] ];
 
-    self.googleAuthTF.keyboardType = UIKeyboardTypeNumberPad;
-
-    [self.view addSubview:self.googleAuthTF];
-    
-    //复制
-    UIView *authView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, self.googleAuthTF.height)];
-    
-    UIButton *pasteBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"粘贴" key:nil]
-                                        titleColor:kWhiteColor
-                                   backgroundColor:kAppCustomMainColor
-                                         titleFont:13.0
-                                      cornerRadius:5];
-    
-    pasteBtn.frame = CGRectMake(0, 0, 85, self.googleAuthTF.height - 15);
-    
-    pasteBtn.centerY = authView.height/2.0;
-    
-    [pasteBtn addTarget:self action:@selector(clickPaste) forControlEvents:UIControlEventTouchUpInside];
-    
-    [authView addSubview:pasteBtn];
-    
-    self.googleAuthTF.rightView = authView;
-    
-    //分割线
-    UIView *googleLine = [[UIView alloc] init];
-    
-    googleLine.backgroundColor = kLineColor;
-    
-    [self.googleAuthTF addSubview:googleLine];
-    [googleLine mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.top.right.equalTo(@0);
-        make.height.equalTo(@0.5);
-        
-    }];
-    
     //转账数量
     self.tranAmountTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, self.balanceTF.yy, kScreenWidth, heightMargin)
                                                  leftTitle:[LangSwitcher switchLang:@"转账数量" key:nil]
@@ -272,12 +232,12 @@ typedef enum : NSUInteger {
                          ];
     self.tranAmountTF.isSecurity = YES;
     self.tranAmountTF.delegate = self;
-    [self.tranAmountTF setValue:kPlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
     
     self.tranAmountTF.keyboardType = UIKeyboardTypeDecimalPad;
     
     [self.tranAmountTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    
+    self.tranAmountTF.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [self.tranAmountTF setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:self.tranAmountTF];
     
     //矿工费
@@ -285,11 +245,11 @@ typedef enum : NSUInteger {
                                                leftTitle:[LangSwitcher switchLang:@"矿工费" key:nil]
                                               titleWidth:80
                                              placeholder:nil];
-    
+    self.minerFeeTF.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [self.minerFeeTF setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     self.minerFeeTF.enabled = NO;
-    self.minerFeeTF.backgroundColor = [UIColor colorWithHexString:@"#fdfdfd"];
-    
     self.minerFeeTF.font = [UIFont systemFontOfSize:11];
+    
     
     UILabel *free = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:12];
     free.frame = CGRectMake(80, self.tranAmountTF.yy + 10, kScreenWidth-100, heightMargin);
@@ -297,7 +257,6 @@ typedef enum : NSUInteger {
     free.numberOfLines = 0;
     //    [LangSwitcher switchLang:@"矿工费将在可用余额中扣除，余额不足将从转账金额中扣除"];
     [self.view addSubview:self.minerFeeTF];
-    
     [self.view addSubview:free];
     [self.minerFeeTF mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -828,19 +787,19 @@ typedef enum : NSUInteger {
     }
 }
 
-- (void)clickPaste {
-
-    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-
-    if (pasteboard.string != nil) {
-
-        self.googleAuthTF.text = pasteboard.string;
-
-    } else {
-
-        [TLAlert alertWithInfo:@"粘贴内容为空"];
-    }
-}
+//- (void)clickPaste {
+//
+//    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+//
+//    if (pasteboard.string != nil) {
+//
+//        self.googleAuthTF.text = pasteboard.string;
+//
+//    } else {
+//
+//        [TLAlert alertWithInfo:@"粘贴内容为空"];
+//    }
+//}
 
 
 - (void)selectCoinAddress {
@@ -885,7 +844,7 @@ typedef enum : NSUInteger {
 
                 self.addressType = WalletAddressTypeCopy;
 
-                [weakSelf setGoogleAuth];
+//                [weakSelf setGoogleAuth];
 
             } else {
 
@@ -902,36 +861,36 @@ typedef enum : NSUInteger {
 
 
 
-- (void)setGoogleAuth {
-
-    if (![TLUser user].isGoogleAuthOpen) {
-
-        return ;
-    }
-
-    if ((self.addressType == WalletAddressTypeSelectAddress && [self.addressModel.status isEqualToString:kAddressCertified])) {
-
-        [UIView animateWithDuration:0 animations:^{
-
-            self.googleAuthTF.transform = CGAffineTransformIdentity;
-            self.minerFeeTF.transform = CGAffineTransformIdentity;
-            self.minerView.transform = CGAffineTransformIdentity;
-            self.confirmBtn.transform = CGAffineTransformIdentity;
-
-        }];
-
-    } else {
-
-        [UIView animateWithDuration:0 animations:^{
-
-            self.googleAuthTF.transform = CGAffineTransformMakeTranslation(0, 50);
-            self.minerFeeTF.transform = CGAffineTransformMakeTranslation(0, 50);
-            self.minerView.transform = CGAffineTransformMakeTranslation(0, 50);
-            self.confirmBtn.transform = CGAffineTransformMakeTranslation(0, 50);
-
-        }];
-    }
-}
+//- (void)setGoogleAuth {
+//
+//    if (![TLUser user].isGoogleAuthOpen) {
+//
+//        return ;
+//    }
+//
+//    if ((self.addressType == WalletAddressTypeSelectAddress && [self.addressModel.status isEqualToString:kAddressCertified])) {
+//
+//        [UIView animateWithDuration:0 animations:^{
+//
+//            self.googleAuthTF.transform = CGAffineTransformIdentity;
+//            self.minerFeeTF.transform = CGAffineTransformIdentity;
+//            self.minerView.transform = CGAffineTransformIdentity;
+//            self.confirmBtn.transform = CGAffineTransformIdentity;
+//
+//        }];
+//
+//    } else {
+//
+//        [UIView animateWithDuration:0 animations:^{
+//
+//            self.googleAuthTF.transform = CGAffineTransformMakeTranslation(0, 50);
+//            self.minerFeeTF.transform = CGAffineTransformMakeTranslation(0, 50);
+//            self.minerView.transform = CGAffineTransformMakeTranslation(0, 50);
+//            self.confirmBtn.transform = CGAffineTransformMakeTranslation(0, 50);
+//
+//        }];
+//    }
+//}
 
 
 #pragma mark- 获取手续费

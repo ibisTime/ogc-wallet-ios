@@ -11,7 +11,8 @@
 @implementation MyAssetsHeadView
 {
     UILabel *allAssetsLbl;
-//    UILabel *allPriceLbl;
+    UILabel *allPriceLbl;
+    
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -60,21 +61,21 @@
 
         
         
-        UILabel *allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
+        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        
         [whiteView addSubview:allAssetsLbl];
         
         
-        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 80, SCREEN_WIDTH - 80, 41) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(41) textColor:kTabbarColor];
+        allPriceLbl = [UILabel labelWithFrame:CGRectMake(35, 80, SCREEN_WIDTH - 80, 41) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(41) textColor:kTabbarColor];
          if ([[TLUser user].localMoney isEqualToString:@"USD"])
          {
-             allAssetsLbl.text = @"≈0.00";
+             allPriceLbl.text = @"≈0.00";
          }else
          {
-             allAssetsLbl.text = @"≈0.00";
+             allPriceLbl.text = @"≈0.00";
          }
         
-        [whiteView addSubview:allAssetsLbl];
+        [whiteView addSubview:allPriceLbl];
         
         
     }
@@ -83,17 +84,34 @@
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
+    if ([[USERDEFAULTS objectForKey:@"mnemonics"] isEqualToString:@""]) {
+        self.nameLable.text = [LangSwitcher switchLang:@"零用钱包" key:nil];
+        allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
+    }else
+    {
+        self.nameLable.text = [LangSwitcher switchLang:@"私钥钱包" key:nil];
+        CustomFMDBModel *_fmdbModel;
+        NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+        for (int i = 0; i < array.count; i ++) {
+            if ([array[i][@"mnemonics"] isEqualToString:[USERDEFAULTS objectForKey:@"mnemonics"]]) {
+                
+                _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:array[i]];
+                allAssetsLbl.text= [NSString stringWithFormat:@"%@ 总资产（¥）",_fmdbModel.walletName];
+            }
+        }
+    }
+    
     if ([[TLUser user].localMoney isEqualToString:@"USD"])
     {
-        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f USD", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f USD", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
     }
     else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
     {
-        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f KRW", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f KRW", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
     }
     else
     {
-        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f CNY", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f CNY", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
     }
 }
 

@@ -58,6 +58,7 @@ static NSString *identifierLocalBillCell = @"LocalBillCell";
     
     LocalBillCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierLocalBillCell forIndexPath:indexPath];
     cell.currencyModel = self.billModel;
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     if (self.trxs.count > 0) {
         cell.trxModel = self.trxs[indexPath.row];
     }else if (self.ustds.count > 0) {
@@ -102,30 +103,23 @@ static NSString *identifierLocalBillCell = @"LocalBillCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView *contentView = [[UIView alloc] init];
-
-    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
-    backView.backgroundColor = [UIColor whiteColor];
-    [contentView addSubview:backView];
-
-    UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(25, 0, kScreenWidth - 35, 40)];
-    [backView addSubview:lab];
     
-    lab.textColor = kTextColor;
-    lab.font = [UIFont systemFontOfSize:13];
+    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    [contentView addSubview:backView];
+    
+    UILabel *lab = [UILabel labelWithFrame:CGRectMake(15, 0, kScreenWidth - 35, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
+    [backView addSubview:lab];
     lab.text =[NSString stringWithFormat:@"%@",[LangSwitcher switchLang:@"交易记录" key:nil]];
-
-
-    UIView *view = [UIView new];
-    view.backgroundColor = kHexColor(@"276FFA ");
-    view.frame = CGRectMake(15, 14, 5, 12);
-    kViewRadius(view, 1);
-    [backView addSubview:view];
-
-
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 39, SCREEN_WIDTH - 30, 1)];
-    lineView.backgroundColor = kLineColor;
-    [backView addSubview:lineView];
-
+    
+    
+//    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(contentView.mas_top);
+//        make.right.equalTo(contentView.mas_right).offset(-15);
+//        make.width.equalTo(@75);
+//        make.height.equalTo(@40);
+//    }];
+    
     return contentView;
 }
 

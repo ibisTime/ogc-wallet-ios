@@ -63,6 +63,10 @@
         [whiteView addSubview:allAssetsLbl];
         
         
+        _SwitchPurse = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _SwitchPurse.frame = self.frame;
+        [self addSubview:_SwitchPurse];
+        
     }
     return self;
 }
