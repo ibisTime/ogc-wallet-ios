@@ -78,7 +78,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     [super viewDidLoad];
     self.titleText.text= [LangSwitcher switchLang:@"转出" key:nil];
 
-    
+    self.navigationItem.titleView = self.titleText;
     
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -10;
@@ -113,7 +113,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 - (void)initSubviews {
     
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150)];
-    backView.backgroundColor = kWhiteColor;
+//    backView.backgroundColor = kWhiteColor;
     [self.view addSubview:backView];
     
     
@@ -152,8 +152,9 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
 
     self.balanceTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, 50, kScreenWidth - 30, 50) leftTitle:[LangSwitcher switchLang:@"接收地址" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入付币地址或扫码" key:nil]];
+    self.balanceTF.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [self.balanceTF setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     
-    self.balanceTF.textColor = kHexColor(@"#109ee9");
     self.balanceTF.leftLbl.font = [UIFont systemFontOfSize:13];
     [self.view addSubview:self.balanceTF];
 
@@ -180,29 +181,14 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
     [self.view addSubview:receiveBtn];
 
-//    //谷歌验证码
-//    self.googleAuthTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, self.balanceTF.yy, kScreenWidth, heightMargin) leftTitle:[LangSwitcher switchLang:@"谷歌验证码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入谷歌验证码" key:nil] ];
-//
-//    self.googleAuthTF.keyboardType = UIKeyboardTypeNumberPad;
-//    self.googleAuthTF.hidden = NO;
-//    [self.view addSubview:self.googleAuthTF];
-    
-    //复制
-//    UIView *authView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 95, heightMargin)];
-//
-//    UIButton *pasteBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"粘贴" key:nil] titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:13.0 cornerRadius:5];
-//    pasteBtn.frame = CGRectMake(0, 0, 85, heightMargin - 15);
-//    pasteBtn.centerY = authView.height/2.0;
-//    [pasteBtn addTarget:self action:@selector(clickPaste) forControlEvents:UIControlEventTouchUpInside];
-//    [authView addSubview:pasteBtn];
-//    self.googleAuthTF.rightView = authView;
     
 
     
     
     //转账数量
     self.tranAmountTF = [[TLTextField alloc] initWithFrame:CGRectMake(0, self.balanceTF.yy, kScreenWidth, heightMargin) leftTitle:[LangSwitcher switchLang:@"提币数量" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请填写数量" key:nil]];
-    
+    self.tranAmountTF.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [self.tranAmountTF setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.tranAmountTF setValue:kPlaceholderColor forKeyPath:@"_placeholderLabel.textColor"];
     
     self.tranAmountTF.keyboardType = UIKeyboardTypeDecimalPad;
@@ -213,12 +199,11 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     for (int i = 0; i < 2; i ++) {
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 49.5 + i % 2 * 50, SCREEN_WIDTH, 0.5)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self.view addSubview:lineView];
     }
     
     UIView *backView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 160, SCREEN_WIDTH, 102)];
-    backView1.backgroundColor = kWhiteColor;
     [self.view addSubview:backView1];
     
 
@@ -234,7 +219,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     [backView1 addSubview:promptLabel];
 
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 210, SCREEN_WIDTH, 1)];
-    lineView.backgroundColor = kLineColor;
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self.view addSubview:lineView];
     
     UILabel *poundageNameLbl = [UILabel labelWithFrame:CGRectMake(15, 51, 0, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:[UIColor blackColor]];
@@ -771,11 +756,11 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     
 //    if ([TLUser user].isGoogleAuthOpen) {
-//        
+//
 //        if (!(self.addressType == AddressTypeSelectAddress && [self.addressModel.status isEqualToString:@"1"])) {
-//            
+//
 //            http.parameters[@"googleCaptcha"] = self.googleAuthTF.text;
-//            
+//
 //        }
 //    }
     

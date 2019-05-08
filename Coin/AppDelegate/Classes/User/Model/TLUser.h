@@ -43,7 +43,7 @@
 @property (nonatomic, copy) NSString *photo;
 //邮箱
 @property (nonatomic, copy) NSString *email;
-
+@property (nonatomic, copy) NSString *color;
 //用户手机号
 @property (nonatomic, strong) NSString *userName;
 //用户密码
@@ -137,6 +137,9 @@
 //字符串是否为空
 + (BOOL) isBlankString:(NSString *)string;
 + (NSString*)convertNull:(id)object;
+
++ (NSString *)TextFieldPlacColor;
++ (NSString *)TextFieldTextColor;
 
 //+ (NSString *)stringByNotRounding:(double)price afterPoint:(int)position;
 

@@ -29,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"我的收益" key:nil];
+    self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData];
 }
@@ -61,33 +62,18 @@
     [self.tableView beginRefreshing];
 
 
-//        [TLNetworking POST:@"http://rap2.hichengdai.com:8080/app/mock/22/625800" parameters:nil success:^(id responseObject) {
-//            NSLog(@"%@",responseObject);
-//
-//            weakSelf.topModel = [MyIncomeTopModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"top5"]];
-//            weakSelf.tableView.topModel = weakSelf.topModel;
-//
-//            weakSelf.model = [MyIncomeModel mj_objectWithKeyValues:responseObject[@"data"]];
-//            weakSelf.tableView.model = weakSelf.model;
-//
-//            [self.tableView reloadData];
-//            [self.tableView endRefreshHeader];
-//        } failure:^(NSError *error) {
-//            [self.tableView endRefreshHeader];
-//        }];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 }
 //
 //如果仅设置当前页导航透明，需加入下面方法
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
 }
 

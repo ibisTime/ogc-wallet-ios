@@ -36,7 +36,7 @@
 
 - (void)viewDidLoad {
     self.titleText.text  = [LangSwitcher switchLang:@"修改交易密码" key:nil];
-
+    self.navigationItem.titleView = self.titleText;
     [super viewDidLoad];
     self.inter = -1;
     

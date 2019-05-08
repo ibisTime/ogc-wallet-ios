@@ -61,27 +61,40 @@
         if ([TLUser isBlankString:self.GameModel.ID] == NO) {
             cell.GameModel = self.GameModel;
         }
+        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [cell.actionBtn addTarget:self action:@selector(actionBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
         
         return cell;
     }
-    if (select == 0) {
-        GameIntroducedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameIntroducedCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        _cell = cell;
-        _cell.delegate = self;
-        if ([TLUser isBlankString:self.GameModel.ID] == NO) {
-            cell.GameModel = self.GameModel;
-        }
-        
-        return cell;
-    }else
-    {
-        StrategyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StrategyCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.model = self.model[indexPath.row];
-        return cell;
+    GameIntroducedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameIntroducedCell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    _cell = cell;
+    [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+    _cell.delegate = self;
+    if ([TLUser isBlankString:self.GameModel.ID] == NO) {
+        cell.GameModel = self.GameModel;
     }
+    
+    return cell;
+//    if (select == 0) {
+//        GameIntroducedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GameIntroducedCell" forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        _cell = cell;
+//        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+//        _cell.delegate = self;
+//        if ([TLUser isBlankString:self.GameModel.ID] == NO) {
+//            cell.GameModel = self.GameModel;
+//        }
+//
+//        return cell;
+//    }else
+//    {
+//        StrategyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StrategyCell" forIndexPath:indexPath];
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.model = self.model[indexPath.row];
+//        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+//        return cell;
+//    }
 }
 
 -(void)actionBtnClick:(UIButton *)sender
@@ -94,17 +107,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 0) {
-        return 197;
+        return 114;
     }
-    if (indexPath.section == 1) {
-        if (select == 0) {
-            return _cell.scrollView.yy + 50;
-        }else
-        {
-            return 40;
-        }
-    }
-    return 0;
+    return _cell.scrollView.yy + 50;
     
 }
 
@@ -123,55 +128,21 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
-    if (section == 1) {
-        return 74;
-    }
+
     return 0.01;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section == 0) {
-        return 10;
+        return 25;
     }
     return 0.01;
     
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    if (section == 1) {
-        UIView *headView = [UIView new];
-        
-        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 74)];
-        backView.backgroundColor = kWhiteColor;
-        [headView addSubview:backView];
-        NSArray *array = @[@"介绍",@"攻略"];
-        for (int i = 0; i < 2; i ++) {
-            
-            UIButton *headBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:array[i] key:nil] titleColor:kHexColor(@"#acacac") backgroundColor:kWhiteColor titleFont:14];
-            headBtn.frame = CGRectMake(20 + i % 2 * (SCREEN_WIDTH/2 - 20 - 3.5 + 7), 17, (SCREEN_WIDTH/2 - 20 - 3.5), 40);
-            [headBtn setBackgroundColor:kHexColor(@"#0064ff") forState:(UIControlStateSelected)];
-            [headBtn setTitleColor:kWhiteColor forState:(UIControlStateSelected)];
-//            if (i == select) {
-//                selectBtn = sender;
-//            }
-            if (i == select) {
-                
-                headBtn.selected = YES;
-                kViewBorderRadius(headBtn, 6.5, 1, kHexColor(@"#0064ff"));
-            }
-            else
-            {
-                kViewBorderRadius(headBtn, 6.5, 1, kHexColor(@"#acacac"));
-            }
-            [headBtn addTarget:self action:@selector(headBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-            headBtn.tag = 400 + i;
-            [backView addSubview:headBtn];
-        }
-        
-        return headView;
-    }
+    
     return nil;
 }
 
@@ -182,7 +153,20 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    
+    if (section == 0) {
+        UIView *footView = [[UIView alloc]init];
+        
+        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+        [backView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+        [footView addSubview:backView];
+        
+        UIView *backView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 15)];
+        [backView1 theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+        [footView addSubview:backView1];
+        
+        
+        return footView;
+    }
     return [UIView new];
 }
 

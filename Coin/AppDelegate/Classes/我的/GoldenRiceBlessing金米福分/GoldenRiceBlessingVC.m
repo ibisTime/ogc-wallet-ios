@@ -28,6 +28,7 @@
     
     // Do any additional setup after loading the view.
     self.titleText.text = @"金米福分";
+    self.navigationItem.titleView = self.titleText;
     
     UIImageView *topImage = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/2)];
     topImage.image = kImage(@"积分背景");

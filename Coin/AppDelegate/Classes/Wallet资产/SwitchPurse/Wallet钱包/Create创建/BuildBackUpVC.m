@@ -70,9 +70,9 @@
     UIView * view1 = [UIView new];
     self.view1 = view1;
     view1.userInteractionEnabled = YES;
-    UITapGestureRecognizer *t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideinPut)];
+//    UITapGestureRecognizer *t = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideinPut)];
     
-    [view1 addGestureRecognizer:t];
+//    [view1 addGestureRecognizer:t];
     self.view1.hidden = NO;
     
     view1.frame =CGRectMake(0, 0, kScreenWidth, kScreenHeight);

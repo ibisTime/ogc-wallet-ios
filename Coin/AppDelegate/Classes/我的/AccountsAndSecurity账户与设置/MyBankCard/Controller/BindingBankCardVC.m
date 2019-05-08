@@ -37,6 +37,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"绑定我的收款账号" key:nil];
+    self.navigationItem.titleView = self.titleText;
     [self initView];
     [self loadData];
     

@@ -45,7 +45,8 @@
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
         [textField setValue:FONT(16) forKeyPath:@"_placeholderLabel.font"];
         textField.font = FONT(16);
-        //        self.pwdTf = textField;
+        textField.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [textField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         [self.view addSubview:textField];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, textField.yy, SCREEN_WIDTH - 30, 1)];

@@ -29,25 +29,25 @@
         UILabel *leftLbl = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, titleWidth - 18, frame.size.height)];
         leftLbl.text = leftTitle;
         leftLbl.textAlignment = NSTextAlignmentLeft;
+        [leftLbl theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
         leftLbl.font = Font(13.0);
-        leftLbl.textColor = [UIColor colorWithHexString:@"#484848"];
+//        leftLbl.textColor = [UIColor colorWithHexString:@"#484848"];
         [leftBgView addSubview:leftLbl];
         leftLbl.numberOfLines = 0;
         self.leftLbl = leftLbl;
 
-//        [leftLbl theme_setTextIdentifier:LabelColor moduleName:ColorName];
+
 
         
         self.leftView = leftBgView;
 
         
         self.frame = frame;
+     
         self.leftViewMode = UITextFieldViewModeAlways;
         self.rightViewMode = UITextFieldViewModeAlways;
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.placeholder = placeholder;
-//        [self theme_setTextIdentifier:LabelColor moduleName:ColorName];
-//        [self theme_setPlaceholderIdentifier:GaryLabelColor moduleName:ColorName];
         //    [tf addAction];
         self.font = [UIFont systemFontOfSize:13];
 

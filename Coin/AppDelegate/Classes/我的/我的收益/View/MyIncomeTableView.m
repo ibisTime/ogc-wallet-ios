@@ -65,7 +65,6 @@
         MyInconmeHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:MyInconmeHead forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.dataDic = @{};
-        cell.backgroundColor = kTabbarColor;
         if ([TLUser isBlankString:self.model.userId] == NO) {
             cell.model = self.model;
         }
@@ -127,9 +126,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     if (section == 2) {
-        return 100;
+        return 0.001;
     }
-    return 0.01;
+    return 10;
 }
 
 
@@ -151,24 +150,29 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
 
-    if (section == 2) {
-        UIView *headView = [UIView new];
-
-        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
-        backView.backgroundColor = kWhiteColor;
-        [headView addSubview:backView];
-
-        UIButton *moreButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"查看更多" key:nil] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:13];
-        moreButton.frame = CGRectMake(0, 20, SCREEN_WIDTH, 40);
-        [moreButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:5 imagePositionBlock:^(UIButton *button) {
-            [button setImage:kImage(@"更多拷贝") forState:(UIControlStateNormal)];
-        }];
-        [moreButton addTarget:self action:@selector(moreButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        [backView addSubview:moreButton];
-
-        return headView;
+//    if (section == 2) {
+//        UIView *headView = [UIView new];
+//
+//        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+//        [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+//        [headView addSubview:backView];
+//
+//        UIButton *moreButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"查看更多" key:nil] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:13];
+//        moreButton.frame = CGRectMake(0, 20, SCREEN_WIDTH, 40);
+//        [moreButton addTarget:self action:@selector(moreButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//        [backView addSubview:moreButton];
+//
+//        return headView;
+//    }
+    if (section < 2) {
+        UIView *footView = [[UIView alloc]init];
+        
+        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+        [backView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+        [footView addSubview:backView];
+        return footView;
     }
-    return [UIView new];
+    return nil;
 }
 
 -(void)moreButtonClick:(UIButton *)sender

@@ -104,58 +104,42 @@
 
     UILabel *promptLbl = [UILabel labelWithFrame:CGRectMake(15, nameLable.yy + 30, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:nil];
     promptLbl.text = @"请输入助记词，按空格分离";
-//    promptLbl.textColor = kGaryTextColor;
-//    promptLbl.nightTextColor = kNightGaryTextColor;
     [promptLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     [self.view addSubview:promptLbl];
     
+
     
-    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, promptLbl.yy + 17.5, kScreenWidth - 30, 90)];
-//    backView.backgroundColor = kNightBackgroundColor;
-//    backView.nightBackgroundColor = kBackgroundColor;
-    [backView theme_setBackgroundColorIdentifier:GaryLabelColor moduleName:ColorName];
-    [self.view addSubview:backView];
-    
-    TLTextView *textView = [[TLTextView alloc] initWithFrame:CGRectMake(1, 1, kScreenWidth - 30 - 2, 90 - 2)];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginEdit)];
-    [textView addGestureRecognizer:tap];
+    TLTextView *textView = [[TLTextView alloc] initWithFrame:CGRectMake(15, promptLbl.yy + 17.5, kScreenWidth - 30, 90)];
+    textView.backgroundColor = kClearColor;
+    textView.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [textView setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
+    kViewBorderRadius(textView, 1, 1, kHexColor([TLUser TextFieldPlacColor]));
+                      
     self.textView = textView;
-//    textView.backgroundColor = kBackgroundColor;
-//    textView.nightBackgroundColor = kNightBackgroundColor;
-    [textView theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     textView.returnKeyType = UIReturnKeyNext;
-//    [textView theme_setTextIdentifier:GaryLabelColor moduleName:ColorName];
     textView.font = [UIFont systemFontOfSize:15];
-    [backView addSubview:self.textView];
+    [self.view addSubview:self.textView];
     
     
-    UILabel *nameLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, backView.yy + 27, SCREEN_WIDTH - 30, 16.5)];
+    UILabel *nameLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, textView.yy + 27, SCREEN_WIDTH - 30, 16.5)];
     nameLbl.text = @"钱包名称";
     nameLbl.font = FONT(12);
-//    nameLbl.textColor = kGaryTextColor;
-//    nameLbl.nightTextColor = kNightGaryTextColor;
     [nameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     [self.view addSubview:nameLbl];
 
     
-    UITextField *nameTf = [[UITextField alloc]initWithFrame:CGRectMake(15, backView.yy + 52, SCREEN_WIDTH - 30, 25)];
+    UITextField *nameTf = [[UITextField alloc]initWithFrame:CGRectMake(15, textView.yy + 52, SCREEN_WIDTH - 30, 25)];
     [nameTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
-    nameTf.placeholder = [LangSwitcher switchLang:@"请设置钱包密码" key:nil];
+    nameTf.placeholder = [LangSwitcher switchLang:@"请设置钱包名称" key:nil];
     nameTf.font = FONT(18);
-//    nameTf.textColor = kGaryTextColor;
-//    nameTf.ni
-    [nameTf theme_setTextIdentifier:GaryLabelColor moduleName:ColorName];
-//    nameTf.textColor = kGaryTextColor;
-//    nameTf.ni
-//    nameTf.pl = kNightGaryTextColor;
+    nameTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [nameTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
+
     [self.view addSubview:nameTf];
     self.nameTf = nameTf;
 
     UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(15, nameTf.yy + 10, SCREEN_WIDTH - 30, 0.5)];
     [self.view addSubview:lineView1];
-//    [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-//    lineView1.backgroundColor = kGaryTextColor;
-//    lineView1.nightBackgroundColor = kNightGaryTextColor;
     [lineView1 theme_setBackgroundColorIdentifier:GaryLabelColor moduleName:ColorName];
     
     UILabel *pwdLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, lineView1.yy + 20, SCREEN_WIDTH - 30, 16.5)];
@@ -168,7 +152,8 @@
     pwdTf.placeholder = [LangSwitcher switchLang:@"请设置钱包密码" key:nil];
     [pwdTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
     pwdTf.font = FONT(18);
-    [pwdTf theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+    pwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [pwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:pwdTf];
     self.pwdTf = pwdTf;
     
@@ -186,16 +171,13 @@
     rePwdLbl.font = FONT(12);
     [self.view addSubview:rePwdLbl];
     
-
-    
-    
-    
     
     UITextField *rePwdTf = [[UITextField alloc]initWithFrame:CGRectMake(15, rePwdLbl.yy + 8.5, SCREEN_WIDTH - 30, 25)];
     rePwdTf.placeholder = [LangSwitcher switchLang:@"请输入重复密码" key:nil];
     [rePwdTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
     rePwdTf.font = FONT(18);
-    [rePwdTf theme_setTextIdentifier:GaryLabelColor moduleName:ColorName];
+    rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:rePwdTf];
     self.rePwdTf = rePwdTf;
     
@@ -316,6 +298,19 @@
         return;
         
     }
+    NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+    
+    for (int i = 0; i < array.count; i ++) {
+        NSDictionary *dic = array[i];
+        if ([dic[@"walletName"] isEqualToString:self.nameTf.text]) {
+            [TLAlert alertWithInfo:[NSString stringWithFormat:@"已存在%@钱包",self.nameTf.text]];
+            return;
+        }
+        if ([dic[@"mnemonics"] isEqualToString:self.textView.text]) {
+            [TLAlert alertWithInfo:@"助记词已存在"];
+            return;
+        }
+    }
 //    if (![self.isSelect isEqualToString:@"1"]) {
 //
 //        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请先阅读并同意服务条款" key:nil]];
@@ -348,8 +343,47 @@
 
 //    NSString *result = [MnemonicUtil getMnemonicsISRight:self.textView.text];
     if ([[MnemonicUtil getMnemonicsISRight:self.textView.text] isEqualToString:@"1"]) {
-        NSString *mnemonics = self.textView.text;
+//        NSString *mnemonics = self.textView.text;
+//
+//
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentDirectory = [paths objectAtIndex:0];
+//        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+//        NSLog(@"dbPath = %@",dbPath);
+//        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
+//
+//        if ([dataBase open])
+//        {
+//            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
+//        }
+//        [dataBase close];
+//
+//        [dataBase open];
+//        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,mnemonics,self.pwdTf.text,self.nameTf.text];
+//        [dataBase close];
+//
+//        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"导入成功" key:nil] confirmAction:^{
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+//            //            创建通知
+//            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+//            [[NSNotificationCenter defaultCenter] postNotification:notification];
+//        }];
         
+        
+        NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+        NSMutableArray *wallet = [NSMutableArray array];
+        [wallet addObjectsFromArray:array];
+        
+        NSDictionary *dic = @{
+                              @"mnemonics":self.textView.text,
+                              @"pwd":self.pwdTf.text,
+                              @"walletName":self.nameTf.text
+                              };
+        [wallet addObject:dic];
+        NSError *err = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:wallet options:NSJSONWritingPrettyPrinted error:&err];
+        NSString *jsonStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+//        NSString *str = [wallet componentsJoinedByString:@","];
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
@@ -357,25 +391,24 @@
         NSLog(@"dbPath = %@",dbPath);
         FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
         
+        
         if ([dataBase open])
         {
-            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
+            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,wallet text)"];
         }
         [dataBase close];
-        
         [dataBase open];
-        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,mnemonics,self.pwdTf.text,self.nameTf.text];
+        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
         [dataBase close];
         
         [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"导入成功" key:nil] confirmAction:^{
             [self.navigationController popToRootViewControllerAnimated:YES];
             //            创建通知
+            
             NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
         }];
-        
-        
-
 
         //设置交易密码
     }else{

@@ -20,6 +20,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
 
         self.priceLabel = [UILabel labelWithFrame:CGRectMake(33 + 30, 32 + 180/2 - 31, 120, 44) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(32) textColor:kHexColor(@"#333333")];
         self.priceLabel.text = @"0.0";
@@ -30,8 +31,8 @@
         [self addSubview:coinLabel];
 
 
-        NSArray *colorArray = @[RGB(255, 198, 83),RGB(255, 91, 67),RGB(59, 170, 174),RGB(0, 108, 109)];
-        NSArray *nameArray = @[@"量化收益",@"邀请收益"];
+        NSArray *colorArray = @[kHexColor(@"#6BAFFF"),kHexColor(@"#FFDA6B")];
+        NSArray *nameArray = @[@"量化收益  详情>",@"邀请收益  详情>"];
 //        NSArray *detailsArray = @[@"0%",@"0%"];
         for (int i = 0; i < 2; i ++) {
             UIView *pointView = [[UIView alloc]initWithFrame:CGRectMake(218 + 33, 32 + 45 + i % 4 * 65, 8, 8)];
@@ -39,24 +40,23 @@
             kViewRadius(pointView, 4);
             [self addSubview:pointView];
 
-            UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(218 + 33 + 16, 26 + 45 + i % 4 * 65, SCREEN_WIDTH - (218 + 33 + 16) - 8, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(14) textColor:kHexColor(@"#333333")];
+            UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(218 + 33 + 16, 26 + 45 + i % 4 * 65, SCREEN_WIDTH - (218 + 33 + 16) - 8, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(12) textColor:kHexColor(@"#333333")];
             nameLabel.text = [LangSwitcher switchLang:nameArray[i] key:nil];
+//            [nameLabel theme_setTextIdentifier:GaryLabelColor moduleName:ColorName];
             [self addSubview:nameLabel];
 
 
-            UIButton *detailsBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:[NSString stringWithFormat:@"0%%  %@",[LangSwitcher switchLang:@"详情" key:nil]] key:nil] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:13];
+            UIButton *detailsBtn = [UIButton buttonWithTitle:@"0%" titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:16];
             detailsBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-
-            detailsBtn.frame = CGRectMake(218 + 33 + 16, 46 + 45 + i % 4 * 65, SCREEN_WIDTH - (218 + 33 + 16) - 8, 18);
+            [detailsBtn theme_setImageIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+            detailsBtn.frame = CGRectMake(218 + 33 + 16, 26 + 45 + i % 4 * 65, SCREEN_WIDTH - (218 + 33 + 16) - 8, 58);
             if (i == 0) {
                 self.quantitativeButton = detailsBtn;
             }else
             {
                 self.invitationButton = detailsBtn;
             }
-            [detailsBtn SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:5 imagePositionBlock:^(UIButton *button) {
-                [button setImage:kImage(@"更多拷贝") forState:(UIControlStateNormal)];
-            }];
+        
             [self addSubview:detailsBtn];
         }
 

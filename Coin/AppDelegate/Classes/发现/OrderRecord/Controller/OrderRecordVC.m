@@ -55,7 +55,7 @@
     // Do any additional setup after loading the view.
     
     self.titleText.text = [LangSwitcher switchLang:@"订单记录" key:nil];
-    self.titleText.font = FONT(18);
+    
     self.navigationItem.titleView = self.titleText;
     [self ckey];
     [self LoadData];

@@ -45,17 +45,22 @@
 }
 
 
-
+-(UILabel *)titleText
+{
+    if (!_titleText) {
+        _titleText = [UILabel labelWithFrame:CGRectZero textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];
+        [_titleText theme_setTextIdentifier:LabelColor moduleName:ColorName];
+        _titleText.height = 44;
+    }
+    return _titleText;
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
 
-    _titleText = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 44) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(16) textColor:kHexColor(@"#333333")];
-    [_titleText theme_setTextIdentifier:LabelColor moduleName:ColorName];
-    _titleText.height = 44;
-    self.navigationItem.titleView = self.titleText;
+    
     
     //设置导航栏透明
     [self.navigationController.navigationBar setTranslucent:true];
@@ -63,6 +68,8 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     
+//    [self.navigationController.navigationBar setShadowImage:nil];
+
 
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, kNavigationBarHeight)];
     [self.view addSubview:topView];
@@ -133,6 +140,42 @@
 {
 //    //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        
+        NSString *path = [NSBundle mainBundle].bundlePath;
+        path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+        
+        [MTThemeManager.manager setThemePath:path];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+        
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"white" style:UIBarButtonItemStylePlain target:nil action:nil];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        
+        
+        self.navigationItem.backBarButtonItem = item;
+        self.navigationController.navigationBar.shadowImage = [UIImage new];
+        [[NSUserDefaults standardUserDefaults] setObject:BLACK forKey:COLOR];
+        
+    }else
+    {
+        
+        NSString *path = [NSBundle mainBundle].bundlePath;
+        path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+        [MTThemeManager.manager setThemePath:path];
+        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+        
+        
+        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+        
+        
+        self.navigationItem.backBarButtonItem = item;
+        self.navigationController.navigationBar.shadowImage = [UIImage new];
+        [[NSUserDefaults standardUserDefaults] setObject:WHITE forKey:COLOR];
+        
+    }
+    
 }
 //
 //- (void)viewWillDisappear:(BOOL)animated

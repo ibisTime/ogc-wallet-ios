@@ -33,6 +33,8 @@
 @implementation WalletDelectVC
 - (void)viewDidLoad {
     self.titleText.text = [LangSwitcher switchLang:@"删除钱包" key:nil];
+    self.navigationItem.titleView = self.titleText;
+    
 //    NSString *word = [[NSUserDefaults standardUserDefaults] objectForKey:KWalletWord];
     TLDataBase *dataBase = [TLDataBase sharedManager];
     NSString *word;

@@ -40,7 +40,7 @@ static NSString *identifierCell = @"SettingCell";
 //        return 5;
 //    }
     
-    return 2;
+    return 3;
     
 }
 
@@ -49,21 +49,46 @@ static NSString *identifierCell = @"SettingCell";
     
     SettingCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell];
     
+    cell.SwitchBlock = ^(NSInteger switchBlock) {
+        if (self.SwitchBlock) {
+            self.SwitchBlock(switchBlock);
+        }
+    };
+    
+    
+    if (indexPath.row == 0) {
+        
+        
+        if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+            cell.switchHidden = NO;
+            cell.arrowHidden = YES;
+            cell.sw.on = YES;
+        }else{
+            cell.switchHidden = NO;
+            cell.arrowHidden = YES;
+            cell.sw.on = NO;
+            
+        }
+        
+        
+    }else
+    {
+        cell.switchHidden = YES;
+    }
     //    self.group.items = self.group.sections[indexPath.section];
     //    SettingModel *settingModel = self.group.items[indexPath.row];
     
     //    CoinWeakSelf;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.switchHidden = YES;
+    
     //    cell.iconImageView.hidden = YES;
     
-    NSArray *nameArray1 = @[@"本地货币",@"版本更新"];
+    NSArray *nameArray1 = @[@"切换皮肤",@"本地货币",@"版本更新"];
     cell.titleLbl.text = [LangSwitcher switchLang:nameArray1[indexPath.row] key:nil];
     
     
-   
-    cell.titleLbl.textColor = kTextColor;
+
     cell.titleLbl.font = Font(15.0);
     [cell.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(cell.mas_left).offset(20);

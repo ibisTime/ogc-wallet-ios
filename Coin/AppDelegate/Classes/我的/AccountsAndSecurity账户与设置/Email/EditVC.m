@@ -51,14 +51,16 @@
                                                             key:nil]];
         
         self.contentTf.text = [self.text valid] ? self.text: @"";
-        
+        self.contentTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [self.contentTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         self.contentTf.keyboardType = UIKeyboardTypeEmailAddress;
         [self.view addSubview:self.contentTf];
         
     } else {
         
         self.contentTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 45) leftTitle:[LangSwitcher switchLang:@"昵称" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请填写昵称" key:nil]];
-        
+        self.contentTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [self.contentTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         self.contentTf.text = [self.text valid] ? self.text: @"";
 
         [self.view addSubview:self.contentTf];

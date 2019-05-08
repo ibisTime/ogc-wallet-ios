@@ -29,7 +29,8 @@
     }else{
         self.titleText.text = [LangSwitcher switchLang:@"添加资产" key:nil];
 
-        }
+    }
+    self.navigationItem.titleView = self.titleText;
     [self initTableView];
    
     [self getStatusSymbol];

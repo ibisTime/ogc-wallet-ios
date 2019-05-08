@@ -60,20 +60,7 @@
 @end
 
 @implementation HomeVC
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self navigationSetDefault];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-}
 
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self navigationwhiteColor];
-}
 
 
 
@@ -83,10 +70,9 @@
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight- kTabBarHeight) collectionViewLayout:flowayout];
         _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.showsHorizontalScrollIndicator = NO;
-        _collectionView.backgroundColor = kWhiteColor;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        
+        [_collectionView theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [_collectionView registerClass:[IconCollCell class] forCellWithReuseIdentifier:@"IconCollCell"];
         [_collectionView registerClass:[ClassificationCollCell class] forCellWithReuseIdentifier:@"ClassificationCollCell"];
         [_collectionView registerClass:[TheGameCollCell class] forCellWithReuseIdentifier:@"TheGameCollCell"];
@@ -168,22 +154,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initNavigationNar];
+    
 //    [self initTableView];
     [self.view addSubview:self.collectionView];
-    
+    [self.topView theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     [self DownRefresh];
     category = 0;
 }
 
 -(void)initNavigationNar
 {
-    self.nameLable = [[UILabel alloc]init];
-    self.nameLable.text = [LangSwitcher switchLang:@"应用" key:nil];
-    self.nameLable.textAlignment = NSTextAlignmentCenter;
-    self.nameLable.font = Font(18);
-    self.nameLable.textColor = kWhiteColor;
-//    [self.view addSubview:self.nameLable];
-    self.navigationItem.titleView = self.nameLable;
+    UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, kStatusBarHeight, 100, 44)];
+    nameLable.text = [LangSwitcher switchLang:@"DAPP" key:nil];
+    nameLable.textAlignment = NSTextAlignmentLeft;
+    self.nameLable = nameLable;
+    nameLable.font = Font(24);
+    [nameLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+    [self.topView addSubview:nameLable];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -214,10 +201,7 @@
 {
     if (indexPath.section == 0) {
         IconCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IconCollCell" forIndexPath:indexPath];
-        //    cell.backgroundColor = [UIColor redColor];
-//        NSArray *imgArray = @[@"top1",@"top1",@"top1",@"top1"];
-//        NSArray *array = @[@"肥猪",@"皮卡丘",@"大熊猫",@"大熊猫"];
-        
+        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [cell.iconImage sd_setImageWithURL:[NSURL URLWithString:[self.dataArray[indexPath.row][@"icon"] convertImageUrl]]];
         cell.nameLbl.text = self.dataArray[indexPath.row][@"name"];
         return cell;
@@ -225,11 +209,13 @@
     if (indexPath.section == 1) {
         ClassificationCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassificationCollCell" forIndexPath:indexPath];
         cell.delegate = self;
+        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         return cell;
     }
     TheGameCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TheGameCollCell" forIndexPath:indexPath];
     [cell.actionBtn addTarget:self action:@selector(iconButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     cell.actionBtn.tag = 400 + indexPath.row;
+    [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     cell.GameModel = self.GameModel[indexPath.row];
     return cell;
 }
@@ -310,14 +296,15 @@
     if (indexPath.section == 1) {
         return CGSizeMake(SCREEN_WIDTH, 55.5);
     }
-    return CGSizeMake((SCREEN_WIDTH - 30)/2, (SCREEN_WIDTH - 30)/2/336 * 160);
+    return CGSizeMake((SCREEN_WIDTH - 30)/2, 75);
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH - 20)/702 * 310 + 10);
+        return CGSizeMake(SCREEN_WIDTH, (SCREEN_WIDTH - 20)/690 * 320 + 10);
     }
+  
     return CGSizeMake(SCREEN_WIDTH, 0.001);
 }
 
@@ -328,6 +315,7 @@
         [headerView addSubview:self.headerView];
         return headerView;
     }
+
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView1" forIndexPath:indexPath];
     return headerView;
 }
@@ -364,77 +352,12 @@
 
 
 
-
-//-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ([TLUser isBlankString:[TLUser user].userId] == YES)
-//
-//    {
-//        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] msg:[LangSwitcher switchLang:@"您还未登录，是否前去登录" key:nil] confirmMsg:[LangSwitcher switchLang:@"确认" key:nil] cancleMsg:[LangSwitcher switchLang:@"取消" key:nil] cancle:^(UIAlertAction *action) {
-//
-//        } confirm:^(UIAlertAction *action) {
-//            TheInitialVC *vc = [[TheInitialVC alloc]init];
-//            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//            UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-//            [rootViewController presentViewController:nav animated:YES completion:nil];
-//        }];
-//
-//        return;
-//    }
-//    HomeFindModel *model = self.findModels[indexPath.row];
-//    if ([model.action isEqualToString:@"red_packet"]) {
-//        RedEnvelopeVC *redEnvelopeVC = [RedEnvelopeVC new];
-//        [self showViewController:redEnvelopeVC sender:self];;
-//        return;
-//
-//    }else if ([model.action isEqualToString:@"money_manager"])
-//    {
-//        PosMiningVC *vc = [PosMiningVC new];
-//        [self showViewController:vc sender:self];;
-//        return;
-//
-//    }else if ([model.action isEqualToString:@"invitation"])
-//    {
-//        TLinviteVC *settingVC = [TLinviteVC new];
-//        [self showViewController:settingVC sender:self];;
-//        return;
-//
-//    }else if ([model.action isEqualToString:@"none"]) {
-//        HTMLStrVC *vc = [HTMLStrVC new];
-//        vc.title = model.name;
-//        vc.name = model.name;
-//        vc.des = model.Description;
-//        vc.type = HTMLTypeOther;
-//        [self showViewController:vc sender:self];
-////        [self.navigationController pushViewController:vc animated:YES];
-//        return;
-//    }
-//}
-
-
-
 #pragma mark - Init
 
 
 
 - (void)OpenMessage
 {
-//    if ([TLUser isBlankString:[TLUser user].userId] == YES)
-//
-//    {
-//        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] msg:[LangSwitcher switchLang:@"您还未登录，是否前去登录" key:nil] confirmMsg:[LangSwitcher switchLang:@"确认" key:nil] cancleMsg:[LangSwitcher switchLang:@"取消" key:nil] cancle:^(UIAlertAction *action) {
-//
-//        } confirm:^(UIAlertAction *action) {
-//            TheInitialVC *vc = [[TheInitialVC alloc]init];
-//            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//            UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-//            [rootViewController presentViewController:nav animated:YES completion:nil];
-//        }];
-//
-//        return;
-//    }
-//    RateDescVC *vc = [RateDescVC new];
-//    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
@@ -459,19 +382,6 @@
 #pragma mark - HeaderEvents
 - (void)headerViewEventsWithType:(HomeEventsType)type index:(NSInteger)index  model:(HomeFindModel *)model
 {
-//    if ([TLUser isBlankString:[TLUser user].userId] == YES)
-//
-//    {
-//        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] msg:[LangSwitcher switchLang:@"您还未登录，是否前去登录" key:nil] confirmMsg:[LangSwitcher switchLang:@"确认" key:nil] cancleMsg:[LangSwitcher switchLang:@"取消" key:nil] cancle:^(UIAlertAction *action) {
-//
-//        } confirm:^(UIAlertAction *action) {
-//            TheInitialVC *vc = [[TheInitialVC alloc]init];
-//            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//            UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-//            [rootViewController presentViewController:nav animated:YES completion:nil];
-//        }];
-//        return;
-//    }
     
     if ([self.bannerRoom[index].type isEqualToString:@"0"])
     {

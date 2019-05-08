@@ -56,18 +56,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    研发
-//    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvDev;
 //    测试
 //    [AppConfig config].runEnv = RunEnvTest;
 //    正式
-    [AppConfig config].runEnv = RunEnvRelease;
+//    [AppConfig config].runEnv = RunEnvRelease;
     
 //    [ThemeManage shareThemeManage].isNight = [[NSUserDefaults standardUserDefaults] boolForKey:@"night"];//主题模块初始化
     
 //    [DKNightVersionManager dawnComing];
     CFAbsoluteTime themeStartTime = CFAbsoluteTimeGetCurrent();
     NSString *path = [NSBundle mainBundle].bundlePath;
-    NSString *themePath = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+    NSString *themePath;
+    
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        themePath = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+    }else
+    {
+        themePath = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+    }
+    
+    
     [MTThemeManager initializeWithDefaultThemePath:themePath];
     CFAbsoluteTime themeEndTime = CFAbsoluteTimeGetCurrent();
     MTTheme_Log(@"[During]主题注册事件 during in %f seconds.", (themeStartTime - themeEndTime));

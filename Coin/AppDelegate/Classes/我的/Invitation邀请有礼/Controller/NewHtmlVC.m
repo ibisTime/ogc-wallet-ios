@@ -24,7 +24,7 @@
     [super viewDidLoad];
 
     self.titleText.text= [LangSwitcher switchLang:@"积分抽奖" key:nil];
-
+    self.navigationItem.titleView = self.titleText;
     [self initWebView];
     // Do any additional setup after loading the view.
 }

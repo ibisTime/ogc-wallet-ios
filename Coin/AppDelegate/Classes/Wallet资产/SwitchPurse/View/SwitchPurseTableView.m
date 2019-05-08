@@ -34,13 +34,17 @@ static NSString *MyAsstes = @"MyAsstesCell";
 
 #pragma mark - UITableViewDataSource;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    
+    NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+    return array.count;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SwitchPurseCell *cell = [tableView dequeueReusableCellWithIdentifier:MyAsstes forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+    cell.walletDic = array[indexPath.row];
     return cell;
 }
 

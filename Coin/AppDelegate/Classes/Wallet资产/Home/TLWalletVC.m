@@ -117,15 +117,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self.view theme_setBackgroundColorIdentifier:TableViewColor moduleName:ColorName];
-
-//    self.view.backgroundColor = kBackgroundColor;
-//    self.view.nightBackgroundColor = kNightBackgroundColor;
     [self initTableView];
     //登录退出通知
     [self addNotification];
     //列表查询个人账户币种列表
     [self getMyCurrencyList];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"PrivateKeyWalletCreat" object:nil];
+    
+}
+
+
+- (void)InfoNotificationAction:(NSNotification *)notification
+{
+    
+}
+
+#pragma mark -- 删除通知
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PrivateKeyWalletCreat" object:nil];
 }
 
 - (void)initTableView {

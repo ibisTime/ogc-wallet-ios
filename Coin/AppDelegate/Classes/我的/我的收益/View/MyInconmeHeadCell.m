@@ -14,8 +14,11 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 0.5, 18, 1, 54)];
-        lineView.backgroundColor = kHexColor(@"#BAC1C8");
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
 
         self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];

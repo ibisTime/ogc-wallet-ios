@@ -31,7 +31,7 @@
     // Do any additional setup after loading the view.
     
     self.titleText.text = [LangSwitcher switchLang:@"修改登录密码" key:nil];
-
+    self.navigationItem.titleView = self.titleText;
     [self setUpUI];
 
 }

@@ -74,7 +74,7 @@
         
         self.titleText.text = [LangSwitcher switchLang:@"冻结明细" key:nil];
     }
-    
+    self.navigationItem.titleView = self.titleText;
 }
 
 #pragma mark - Init

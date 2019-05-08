@@ -28,6 +28,20 @@
 		1F6D9B8922801A0F0057A756 /* SwitchPurseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9B8822801A0F0057A756 /* SwitchPurseHeadView.m */; };
 		1F6D9B8C22801A3C0057A756 /* SwitchPurseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9B8B22801A3C0057A756 /* SwitchPurseCell.m */; };
 		1F6D9E462281396B0057A756 /* MineHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E452281396B0057A756 /* MineHeadCell.m */; };
+		1F6D9E5C2281716D0057A756 /* MessageDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E492281716C0057A756 /* MessageDetailsVC.m */; };
+		1F6D9E5D2281716D0057A756 /* TodoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E4E2281716C0057A756 /* TodoViewController.m */; };
+		1F6D9E5E2281716D0057A756 /* AnnouncementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E512281716C0057A756 /* AnnouncementVC.m */; };
+		1F6D9E5F2281716D0057A756 /* AllMessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E522281716C0057A756 /* AllMessageVC.m */; };
+		1F6D9E602281716D0057A756 /* MessageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E532281716C0057A756 /* MessageVC.m */; };
+		1F6D9E612281716D0057A756 /* TodoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E552281716C0057A756 /* TodoModel.m */; };
+		1F6D9E622281716D0057A756 /* MessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E5A2281716C0057A756 /* MessageTableView.m */; };
+		1F6D9E632281716D0057A756 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E5B2281716C0057A756 /* MessageCell.m */; };
+		1F6D9E692281BD310057A756 /* AddressBookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E682281BD300057A756 /* AddressBookVC.m */; };
+		1F6D9E6C2281BD490057A756 /* AddressBookTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E6B2281BD490057A756 /* AddressBookTableView.m */; };
+		1F6D9E6F2281BD650057A756 /* AddressBookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E6E2281BD650057A756 /* AddressBookCell.m */; };
+		1F6D9E732281C3850057A756 /* AddAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E722281C3850057A756 /* AddAddressVC.m */; };
+		1F6D9E762281D0160057A756 /* AlertsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E752281D0160057A756 /* AlertsTableView.m */; };
+		1F6D9E792281D04B0057A756 /* AlertsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E782281D04B0057A756 /* AlertsCell.m */; };
 		1F6F2BAA222CE84B00298FB3 /* BnakCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */; };
 		1F6F2BAD222CEA7A00298FB3 /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAC222CEA7A00298FB3 /* MyFriendViewController.m */; };
 		1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAF222CEB9700298FB3 /* InvestmentHeadCell.m */; };
@@ -682,6 +696,34 @@
 		1F6D9B8B22801A3C0057A756 /* SwitchPurseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwitchPurseCell.m; sourceTree = "<group>"; };
 		1F6D9E442281396B0057A756 /* MineHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineHeadCell.h; sourceTree = "<group>"; };
 		1F6D9E452281396B0057A756 /* MineHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineHeadCell.m; sourceTree = "<group>"; };
+		1F6D9E492281716C0057A756 /* MessageDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailsVC.m; sourceTree = "<group>"; };
+		1F6D9E4A2281716C0057A756 /* MessageDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailsVC.h; sourceTree = "<group>"; };
+		1F6D9E4C2281716C0057A756 /* AllMessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllMessageVC.h; sourceTree = "<group>"; };
+		1F6D9E4D2281716C0057A756 /* AnnouncementVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnouncementVC.h; sourceTree = "<group>"; };
+		1F6D9E4E2281716C0057A756 /* TodoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoViewController.m; sourceTree = "<group>"; };
+		1F6D9E4F2281716C0057A756 /* MessageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageVC.h; sourceTree = "<group>"; };
+		1F6D9E502281716C0057A756 /* TodoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoViewController.h; sourceTree = "<group>"; };
+		1F6D9E512281716C0057A756 /* AnnouncementVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnouncementVC.m; sourceTree = "<group>"; };
+		1F6D9E522281716C0057A756 /* AllMessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllMessageVC.m; sourceTree = "<group>"; };
+		1F6D9E532281716C0057A756 /* MessageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageVC.m; sourceTree = "<group>"; };
+		1F6D9E552281716C0057A756 /* TodoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoModel.m; sourceTree = "<group>"; };
+		1F6D9E562281716C0057A756 /* TodoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoModel.h; sourceTree = "<group>"; };
+		1F6D9E582281716C0057A756 /* MessageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableView.h; sourceTree = "<group>"; };
+		1F6D9E592281716C0057A756 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		1F6D9E5A2281716C0057A756 /* MessageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableView.m; sourceTree = "<group>"; };
+		1F6D9E5B2281716C0057A756 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		1F6D9E672281BD300057A756 /* AddressBookVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookVC.h; sourceTree = "<group>"; };
+		1F6D9E682281BD300057A756 /* AddressBookVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookVC.m; sourceTree = "<group>"; };
+		1F6D9E6A2281BD490057A756 /* AddressBookTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookTableView.h; sourceTree = "<group>"; };
+		1F6D9E6B2281BD490057A756 /* AddressBookTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookTableView.m; sourceTree = "<group>"; };
+		1F6D9E6D2281BD650057A756 /* AddressBookCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookCell.h; sourceTree = "<group>"; };
+		1F6D9E6E2281BD650057A756 /* AddressBookCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookCell.m; sourceTree = "<group>"; };
+		1F6D9E712281C3850057A756 /* AddAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddAddressVC.h; sourceTree = "<group>"; };
+		1F6D9E722281C3850057A756 /* AddAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddAddressVC.m; sourceTree = "<group>"; };
+		1F6D9E742281D0160057A756 /* AlertsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsTableView.h; sourceTree = "<group>"; };
+		1F6D9E752281D0160057A756 /* AlertsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsTableView.m; sourceTree = "<group>"; };
+		1F6D9E772281D04B0057A756 /* AlertsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsCell.h; sourceTree = "<group>"; };
+		1F6D9E782281D04B0057A756 /* AlertsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsCell.m; sourceTree = "<group>"; };
 		1F6F2BA8222CE84A00298FB3 /* BnakCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BnakCardVC.h; sourceTree = "<group>"; };
 		1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BnakCardVC.m; sourceTree = "<group>"; };
 		1F6F2BAB222CEA7900298FB3 /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
@@ -2266,6 +2308,92 @@
 			path = NsData;
 			sourceTree = "<group>";
 		};
+		1F6D9E472281716C0057A756 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E482281716C0057A756 /* Details */,
+				1F6D9E4B2281716C0057A756 /* Controller */,
+				1F6D9E542281716C0057A756 /* Model */,
+				1F6D9E572281716C0057A756 /* View */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		1F6D9E482281716C0057A756 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E4A2281716C0057A756 /* MessageDetailsVC.h */,
+				1F6D9E492281716C0057A756 /* MessageDetailsVC.m */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		1F6D9E4B2281716C0057A756 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E4F2281716C0057A756 /* MessageVC.h */,
+				1F6D9E532281716C0057A756 /* MessageVC.m */,
+				1F6D9E4C2281716C0057A756 /* AllMessageVC.h */,
+				1F6D9E522281716C0057A756 /* AllMessageVC.m */,
+				1F6D9E4D2281716C0057A756 /* AnnouncementVC.h */,
+				1F6D9E512281716C0057A756 /* AnnouncementVC.m */,
+				1F6D9E502281716C0057A756 /* TodoViewController.h */,
+				1F6D9E4E2281716C0057A756 /* TodoViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F6D9E542281716C0057A756 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E552281716C0057A756 /* TodoModel.m */,
+				1F6D9E562281716C0057A756 /* TodoModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F6D9E572281716C0057A756 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E582281716C0057A756 /* MessageTableView.h */,
+				1F6D9E5A2281716C0057A756 /* MessageTableView.m */,
+				1F6D9E5B2281716C0057A756 /* MessageCell.m */,
+				1F6D9E592281716C0057A756 /* MessageCell.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F6D9E642281BCFC0057A756 /* AddressBook地址本 */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E662281BD140057A756 /* Controller */,
+				1F6D9E652281BD120057A756 /* View */,
+			);
+			path = "AddressBook地址本";
+			sourceTree = "<group>";
+		};
+		1F6D9E652281BD120057A756 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E6A2281BD490057A756 /* AddressBookTableView.h */,
+				1F6D9E6B2281BD490057A756 /* AddressBookTableView.m */,
+				1F6D9E6D2281BD650057A756 /* AddressBookCell.h */,
+				1F6D9E6E2281BD650057A756 /* AddressBookCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F6D9E662281BD140057A756 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E672281BD300057A756 /* AddressBookVC.h */,
+				1F6D9E682281BD300057A756 /* AddressBookVC.m */,
+				1F6D9E712281C3850057A756 /* AddAddressVC.h */,
+				1F6D9E722281C3850057A756 /* AddAddressVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1F709D5B2180A7FC002D1CC4 /* SGQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -3047,6 +3175,10 @@
 		1F7F6F70227EFBC0003AEBA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F6D9E742281D0160057A756 /* AlertsTableView.h */,
+				1F6D9E752281D0160057A756 /* AlertsTableView.m */,
+				1F6D9E772281D04B0057A756 /* AlertsCell.h */,
+				1F6D9E782281D04B0057A756 /* AlertsCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3328,8 +3460,8 @@
 				1FA566D8223CD4B90077FE54 /* ClassificationCollCell.m */,
 				1FA566DB223CD4B90077FE54 /* HomeCell.h */,
 				1FA566E2223CD4B90077FE54 /* HomeCell.m */,
-				1FA566E3223CD4B90077FE54 /* TheGameCollCell.m */,
 				1FA566DD223CD4B90077FE54 /* TheGameCollCell.h */,
+				1FA566E3223CD4B90077FE54 /* TheGameCollCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3588,10 +3720,6 @@
 				B88B093220C908DC005C2D2F /* ResiseTextFiled.m */,
 				B83666F4210EC0610065DF18 /* LocalSettingCell.h */,
 				B83666F5210EC0610065DF18 /* LocalSettingCell.m */,
-				B8CAA14E2115FC6B00695BC3 /* QuestionListTableView.h */,
-				B8CAA14F2115FC6B00695BC3 /* QuestionListTableView.m */,
-				B8CAA15A211611D000695BC3 /* questionListCells.h */,
-				B8CAA15B211611D000695BC3 /* questionListCells.m */,
 				B8D938D02116C85200B2AA88 /* QuestionDetail.h */,
 				B8D938D12116C85200B2AA88 /* QuestionDetail.m */,
 				B8D938D32116CA0800B2AA88 /* QDetailCell.h */,
@@ -4270,8 +4398,10 @@
 			isa = PBXGroup;
 			children = (
 				7A2CC6372159E0E900B27E2D /* Home */,
+				1F6D9E472281716C0057A756 /* Message */,
 				1F9031D52247CA2D0093C38D /* GoldenRiceBlessing金米福分 */,
 				7AEF23592154C67F00BF1DB5 /* AccountsAndSecurity账户与设置 */,
+				1F6D9E642281BCFC0057A756 /* AddressBook地址本 */,
 				1F76698C21D7715400006B41 /* MyFriend我的好友 */,
 				7A2CC63A2159E35000B27E2D /* Invitation邀请有礼 */,
 				7AEF23572154C51D00BF1DB5 /* JoinMine加入社群 */,
@@ -4618,6 +4748,10 @@
 				B8CAA14C2115DE6300695BC3 /* TLhistoryListVC.m */,
 				B8D938CD2116C2AC00B2AA88 /* QiestionDetailVC.h */,
 				B8D938CE2116C2AC00B2AA88 /* QiestionDetailVC.m */,
+				B8CAA14E2115FC6B00695BC3 /* QuestionListTableView.h */,
+				B8CAA14F2115FC6B00695BC3 /* QuestionListTableView.m */,
+				B8CAA15A211611D000695BC3 /* questionListCells.h */,
+				B8CAA15B211611D000695BC3 /* questionListCells.m */,
 			);
 			path = "Feedback意见反馈";
 			sourceTree = "<group>";
@@ -5338,6 +5472,7 @@
 				7A2CC67A215CD45300B27E2D /* AccumulatedEarningsCell.m in Sources */,
 				1F7F6F5F227EE572003AEBA7 /* MTThemePerformSelector.m in Sources */,
 				B8CAA13D21158FF200695BC3 /* LPDAssetCell.m in Sources */,
+				1F6D9E5E2281716D0057A756 /* AnnouncementVC.m in Sources */,
 				1F76690721D4A32700006B41 /* BTCAssetAddress.m in Sources */,
 				1FFB8EB2225B4BAF00B72F31 /* UIView+ViewController.m in Sources */,
 				2EB039A71FE8B23300589D8E /* EditEmailVC.m in Sources */,
@@ -5382,6 +5517,7 @@
 				1F76690621D4A32700006B41 /* BTCChainCom.m in Sources */,
 				1F76697221D4A34D00006B41 /* hmac.c in Sources */,
 				211DE6B51FB58B4C002FCF3D /* UIView+Responder.m in Sources */,
+				1F6D9E792281D04B0057A756 /* AlertsCell.m in Sources */,
 				1FA566EF223CD4B90077FE54 /* HomeHeaderView.m in Sources */,
 				1F76690821D4A32700006B41 /* BTCBitcoinURL.m in Sources */,
 				7A2CC647215B746E00B27E2D /* TLMoneyDetailsTableView.m in Sources */,
@@ -5394,6 +5530,7 @@
 				B88B093320C908DC005C2D2F /* ResiseTextFiled.m in Sources */,
 				B89F07DF211B06E20057E781 /* TLinviteVC.m in Sources */,
 				1F9C8FBB2244DF2100DFA9C3 /* BTCPoundage.m in Sources */,
+				1F6D9E762281D0160057A756 /* AlertsTableView.m in Sources */,
 				1FA566EE223CD4B90077FE54 /* ClassificationCollCell.m in Sources */,
 				1F770EDA21913CC000E2889F /* UserModel.m in Sources */,
 				21223CB71FBDB2D200057444 /* WebVC.m in Sources */,
@@ -5407,6 +5544,7 @@
 				B8CF2CCB21214AB500055706 /* CommentCell.m in Sources */,
 				211DE6AE1FB58B4C002FCF3D /* TLUploadManager.m in Sources */,
 				1F73663E225210FA00135F7E /* TWWalletAccountClient.m in Sources */,
+				1F6D9E632281716D0057A756 /* MessageCell.m in Sources */,
 				7A40B121217F2186004B9830 /* AddAccoutModel.m in Sources */,
 				B8C2057920CFA0B300952765 /* WalletAddressCell.m in Sources */,
 				7A07F80A216C84F30026EB7A /* SCLineChart.m in Sources */,
@@ -5433,6 +5571,7 @@
 				7AABEAFE2149127200283BC7 /* BouncedPasteView.m in Sources */,
 				7A2CC674215CAECF00B27E2D /* AccumulatedEarningsVC.m in Sources */,
 				B80D54CE210C9C11005303D5 /* TLChangeNikeName.m in Sources */,
+				1F6D9E5D2281716D0057A756 /* TodoViewController.m in Sources */,
 				1F76691D21D4A32700006B41 /* BTCHashID.m in Sources */,
 				1F93617E21EEDBD3007E522A /* LYSLineChart.m in Sources */,
 				1FA56AE6223CD6A70077FE54 /* YYTextMagnifier.m in Sources */,
@@ -5456,6 +5595,7 @@
 				1FA56AE7223CD6A70077FE54 /* YYTextContainerView.m in Sources */,
 				B8BBA64020C7FB4600DC4D5F /* WallAccountHeadView.m in Sources */,
 				1F7668F221D4A32700006B41 /* BTCTransaction.m in Sources */,
+				1F6D9E612281716D0057A756 /* TodoModel.m in Sources */,
 				1F7668FA21D4A32700006B41 /* BTCMnemonic.m in Sources */,
 				1F73670F2252FEFA00135F7E /* sha3.c in Sources */,
 				1F76690421D4A32700006B41 /* BTCPriceSource+Tests.m in Sources */,
@@ -5476,6 +5616,7 @@
 				1F9361AD21EF0F7F007E522A /* SelectedListView.m in Sources */,
 				1F766A3521DEFBB100006B41 /* PaymentInstructionsView.m in Sources */,
 				1F6D9B8922801A0F0057A756 /* SwitchPurseHeadView.m in Sources */,
+				1F6D9E5C2281716D0057A756 /* MessageDetailsVC.m in Sources */,
 				1FA566F1223CD4B90077FE54 /* IconCollCell.m in Sources */,
 				7A07F80B216C84F30026EB7A /* SCPieChart.m in Sources */,
 				7A2CC654215BA06600B27E2D /* PosBuyVC.m in Sources */,
@@ -5677,7 +5818,9 @@
 				211DE6BB1FB58B4C002FCF3D /* NSString+CGSize.m in Sources */,
 				1FFB8EB0225B4BAF00B72F31 /* MLMSegmentManager.m in Sources */,
 				B8CF2CC52121375800055706 /* BTCDetailModel.m in Sources */,
+				1F6D9E6C2281BD490057A756 /* AddressBookTableView.m in Sources */,
 				211DE6B81FB58B4C002FCF3D /* UIControl+Block.m in Sources */,
+				1F6D9E5F2281716D0057A756 /* AllMessageVC.m in Sources */,
 				B8CAA14421158FF200695BC3 /* LPDImageManager.m in Sources */,
 				211DE6C41FB58B4C002FCF3D /* HttpSign.m in Sources */,
 				B8D9290F20EA58290026A3DF /* ChangeLocalMoneyVC.m in Sources */,
@@ -5695,6 +5838,8 @@
 				1F6D9B8C22801A3C0057A756 /* SwitchPurseCell.m in Sources */,
 				1F76692921D4A32700006B41 /* BTCErrors.m in Sources */,
 				1F9031D22247A8680093C38D /* JXSegment.m in Sources */,
+				1F6D9E692281BD310057A756 /* AddressBookVC.m in Sources */,
+				1F6D9E6F2281BD650057A756 /* AddressBookCell.m in Sources */,
 				7A07F818216CB2320026EB7A /* GlobalRevenueListVC.m in Sources */,
 				7A07F81B216CB23F0026EB7A /* GlobalRevenueListTableView.m in Sources */,
 				215979601FB81CC40029F177 /* BillTableView.m in Sources */,
@@ -5740,6 +5885,7 @@
 				1F76691721D4A32700006B41 /* BTCMerkleTree+Tests.m in Sources */,
 				2159796D1FB831B10029F177 /* FilterView.m in Sources */,
 				7A40B11A217EF15F004B9830 /* UITableView+XSAnimationKit.m in Sources */,
+				1F6D9E622281716D0057A756 /* MessageTableView.m in Sources */,
 				7A2CC664215BBC2900B27E2D /* PosMyInvestmentDetailsVC.m in Sources */,
 				B8F63EE320D397B000556150 /* WalletLocalWebVC.m in Sources */,
 				1F766A2F21DE0F0B00006B41 /* PayFailureVC.m in Sources */,
@@ -5844,6 +5990,7 @@
 				B8B15C2C20CA8A3900F13220 /* BuildCheckVC.m in Sources */,
 				1FA56AFE223CD6A70077FE54 /* FindTheGameHeadCell.m in Sources */,
 				1F76690C21D4A32700006B41 /* BTC256.m in Sources */,
+				1F6D9E732281C3850057A756 /* AddAddressVC.m in Sources */,
 				1FA56AE2223CD6A70077FE54 /* ImageBrowserViewController.m in Sources */,
 				7A2CC6B3215DC88B00B27E2D /* PGDatePicker+Date.m in Sources */,
 				1FA56AFA223CD6A70077FE54 /* UIView+YYText.m in Sources */,
@@ -5862,6 +6009,7 @@
 				1F9361BB21F05927007E522A /* HBAlertPasswordView.m in Sources */,
 				1F0725B42280097E0008EADA /* SwitchPurseTableView.m in Sources */,
 				2EA2526E1FF09B52007FF9A2 /* CoinUtil.m in Sources */,
+				1F6D9E602281716D0057A756 /* MessageVC.m in Sources */,
 				1F7367012252FEFA00135F7E /* bip39.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6168,7 +6316,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.JMWall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6344,7 +6492,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.JMWall;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

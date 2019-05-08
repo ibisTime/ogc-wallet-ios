@@ -24,12 +24,13 @@
         _nameLabel.text = @"";
         [self addSubview:_nameLabel];
         
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 69, SCREEN_WIDTH, 1)];
-        lineView.backgroundColor = kLineColor;
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 74.5, SCREEN_WIDTH, 0.5)];
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
         
         _timeLabel = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH - 155, 0, 140, 70) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(13) textColor:kTextColor];
         _timeLabel.text = @"";
+        
         [self addSubview:_timeLabel];
         
     }

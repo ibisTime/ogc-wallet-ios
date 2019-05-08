@@ -61,39 +61,13 @@
 @end
 
 @implementation TLQusertionVC
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-}
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-//    self.navigationController.navigationBarHidden = NO;
-
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
 
     self.titleText.text = [LangSwitcher switchLang:@"问题反馈" key:nil];
-
+    self.navigationItem.titleView = self.titleText;
     [self initCustomUi];
     [self initBodyView];
     
@@ -116,14 +90,21 @@
 //    self.imageLable
     UILabel *imageLable = [[UILabel alloc] initWithFrame:CGRectMake(15, self.reproductionView.yy+10, kScreenWidth - 30, 22)];
     imageLable.text = [LangSwitcher switchLang:@"问题截图(选填)" key:nil];
-    imageLable.textColor = kTextColor3;
+    [imageLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     imageLable.font = [UIFont systemFontOfSize:14];
     [self.bgImage addSubview:imageLable];
     
     LPDQuoteImagesView *quoteImagesView =[[LPDQuoteImagesView alloc] initWithFrame:CGRectMake(15, imageLable.yy + 10, kScreenWidth -30, SCREEN_WIDTH/4) withCountPerRowInView:4 cellMargin:11];
+    
     quoteImagesView.collectionView.showsVerticalScrollIndicator = NO;
     quoteImagesView.collectionView.showsHorizontalScrollIndicator = NO;
     quoteImagesView.collectionView.scrollEnabled = NO;
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        quoteImagesView.backgroundColor = kHexColor(@"#f8f8f8");
+    }else
+    {
+        quoteImagesView.backgroundColor = kHexColor(@"#282A2E");
+    }
     //初始化view的frame, view里每行cell个数， cell间距（上方的图片1 即为quoteImagesView）
 //    注：设置frame时，我们可以根据设计人员给的cell的宽度和最大个数、排列，间距去大致计算下quoteview的size.
     quoteImagesView.maxSelectedCount = 9;
@@ -143,42 +124,38 @@
         self.nextButton.frame =  CGRectMake(15, self.introduceTf.yy+30, kScreenWidth - 30, 45);
         self.bgImage.contentSize = CGSizeMake(0,  self.nextButton.yy+60);
 
-//        [self.bgImage addSubview:self.quoteImagesView];
-//        self.quoteImagesView.collectionView.frame = CGRectMake(0, 20 , SCREEN_WIDTH, height + 40);
-//
-//        [self.quoteImagesView.collectionView reloadData];
-//        self.quoteImagesView.collectionView.collectionViewLayout.collectionViewContentSize = CGSizeMake(0, height+100);
-//        self.quoteImagesView.frame = CGRectMake(15, self.reproductionView.yy + 10, kScreenWidth -30, height);
-//        self.lineView.frame =  CGRectMake(15, self.introduceTf.yy+5, kScreenWidth - 30, 0.5);
-//        self.introduceTf.frame = CGRectMake(15, self.quoteImagesView.yy + 10, kScreenWidth-30, 50);
-//        self.lineView1.frame = CGRectMake(15, self.introduceTf.yy+5, kScreenWidth - 30, 0.5);
-//        
-//        self.nextButton.frame =  CGRectMake(15, self.introduceTf.yy+30, kScreenWidth - 30, 45);
 
 
         [self.view setNeedsLayout];
         [self.bgImage setNeedsDisplay];
     };
-    quoteImagesView.navcDelegate = self;    //self 至少是一个控制器。
+    quoteImagesView.navcDelegate = self;
+    
+    [quoteImagesView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    //self 至少是一个控制器。
     //委托（委托controller弹出picker，且不用实现委托方法）
     UIView *lineView = [UIView new];
-    lineView.backgroundColor = kHexColor(@"#E3E3E3");
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     self.lineView = lineView;
+    
     lineView.frame = CGRectMake(15, quoteImagesView.yy+10, kScreenWidth - 30, 0.5);
     [self.bgImage addSubview:lineView];
 
     [self.bgImage addSubview:quoteImagesView];
-    TLTextField *introduceTf = [[TLTextField alloc] initWithFrame:CGRectMake(15, quoteImagesView.yy + 10, kScreenWidth-30, 50) leftTitle:[LangSwitcher switchLang:@"备注(选填)" key:nil] titleWidth:120 placeholder:[LangSwitcher switchLang:@"请留下您的联系方式（推荐邮箱)" key:nil]];
-    //    introduceTf.secureTextEntry = YES;
+    TLTextField *introduceTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, quoteImagesView.yy + 10, kScreenWidth, 50) leftTitle:[LangSwitcher switchLang:@"备注(选填)" key:nil] titleWidth:120 placeholder:[LangSwitcher switchLang:@"请留下您的联系方式（推荐邮箱)" key:nil]];
     [self.bgImage addSubview:introduceTf];
     introduceTf.leftLbl.font = [UIFont systemFontOfSize:14];
+    introduceTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [introduceTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     self.introduceTf = introduceTf;
    
     UIView *lineView1 = [UIView new];
-    lineView1.backgroundColor = kHexColor(@"#E3E3E3");
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     lineView1.frame = CGRectMake(15, introduceTf.yy+5, kScreenWidth - 30, 0.5);
     [self.bgImage addSubview:lineView1];
     self.lineView1 = lineView1;
+    
+    
     self.nextButton = [UIButton buttonWithImageName:nil cornerRadius:4];
     NSString *text = [LangSwitcher switchLang:@"提交" key:nil];
     [self.nextButton setTitle:text forState:UIControlStateNormal];
@@ -415,40 +392,21 @@
 
 - (void)initCustomUi
 {
-//    self.contentView = [[UIScrollView alloc] init];
-//    [self.view addSubview:self.contentView];
-//
-//    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.mas_equalTo(UIEdgeInsetsZero);
-//    }];
-//    self.contentView.scrollEnabled = YES;
+
     self.bgImage = [[UIScrollView alloc] init];
-//    self.bgImage.contentMode = UIViewContentModeScaleToFill;
     self.bgImage.userInteractionEnabled = YES;
     self.bgImage.delegate = self;
-    self.bgImage.backgroundColor = kWhiteColor;
-//    self.bgImage.image = [UIImage imageWithCGImage:(__bridge CGImageRef _Nonnull)(kWhiteColor.convertToImage)];
-//    self.bgImage.image = kImage(@"我的 背景");
+    [self.bgImage theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [self.view  addSubview:self.bgImage];
     self.bgImage.scrollEnabled = YES;
     
     [self.bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
-    
-//    self.backButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    self.backButton.frame = CGRectMake(15, kStatusBarHeight, 40, 40);
-//    [self.backButton setImage:kImage(@"返回1-1") forState:(UIControlStateNormal)];
-//    [self.backButton addTarget:self action:@selector(buttonClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    [self.bgImage addSubview:self.backButton];
 
-    self.nameLable = [[UILabel alloc]initWithFrame:CGRectMake(120, 0, kScreenWidth - 240, 44)];
-    self.nameLable.text = [LangSwitcher switchLang:@"问题反馈" key:nil];
-    self.nameLable.textAlignment = NSTextAlignmentCenter;
-    self.nameLable.font = Font(16);
-    self.nameLable.textColor = kTextBlack;
-//    self.nameLable.backgroundColor = [UIColor redColor];
-//    [self.bgImage addSubview:self.nameLable];
+
+    
+    self.titleText.text = [LangSwitcher switchLang:@"问题反馈" key:nil];
     self.navigationItem.titleView = self.nameLable;
 
     
@@ -458,18 +416,13 @@
     self.historyLable.userInteractionEnabled = YES;
     self.historyLable.font = Font(13);
     self.historyLable.textColor = kTextBlack;
-
+    [self.historyLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
 
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -10;
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.historyLable]];
 
-//    [self.historyLable mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(self.nameLable.mas_centerY);
-//        make.right.equalTo(self.view.mas_right).offset(-15);
-//
-//
-//    }];
+
     UITapGestureRecognizer *ta = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gohistory)];
     [self.historyLable addGestureRecognizer:ta];
 
@@ -492,7 +445,7 @@
     self.typeLab.textAlignment = NSTextAlignmentLeft;
 //    self.historyLable.userInteractionEnabled = YES;
     self.typeLab.font = Font(14);
-    self.typeLab.textColor = kTextColor3;
+    [self.typeLab theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     [self.bgImage addSubview:self.typeLab];
     [self.typeLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@(kHeight(30)));
@@ -500,9 +453,11 @@
     }];
     
     self.typeButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    [self.typeButton setBackgroundImage:kImage(@"下啦") forState:(UIControlStateNormal)];
-    [self.typeButton setBackgroundImage:kImage(@"上啦") forState:(UIControlStateSelected)];
-    [self.typeButton setTitle:@"iOS" forState:UIControlStateNormal];
+//    [self.typeButton setBackgroundImage:kImage(@"下啦") forState:(UIControlStateNormal)];
+//    [self.typeButton setBackgroundImage:kImage(@"上啦") forState:(UIControlStateSelected)];
+//    [self.typeButton setTitle:@"iOS" forState:UIControlStateNormal];
+    [self.typeButton theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
+    self.typeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.typeButton.titleLabel.textColor = kTextColor;
     self.typeButton.titleLabel.font = FONT(12);
     [self.typeButton addTarget:self action:@selector(history) forControlEvents:(UIControlEventTouchUpInside)];
@@ -510,12 +465,11 @@
     [self.typeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(@(kHeight(30)));
         make.right.equalTo(self.view.mas_right).offset(-15);
-        make.width.equalTo(@(kWidth(14)));
-        make.height.equalTo(@(kWidth(7)));
 
     }];
+    
     UIView *lineView2 = [UIView new];
-    lineView2.backgroundColor = kHexColor(@"#E3E3E3");
+    [lineView2 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self.bgImage addSubview:lineView2];
     [lineView2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -532,7 +486,7 @@
     //    self.historyLable.userInteractionEnabled = YES;
     self.typechange.font = Font(14);
     self.typechange.userInteractionEnabled = YES;
-    self.typechange.textColor = kTextColor;
+    [self.typechange theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     [self.bgImage addSubview:self.typechange];
     [self.typechange mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.typeButton.mas_centerY);
@@ -554,69 +508,45 @@
  
     TLTextView *textView = [[TLTextView alloc] initWithFrame:CGRectMake(15, kHeight(100), kScreenWidth - 30, 100)];
     textView.userInteractionEnabled = YES;
+    textView.backgroundColor = kClearColor;
     textView.returnKeyType = UIReturnKeyDone;
-    
-//    textView.delegate = self;
-//    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginEdit)];
-//    [textView addGestureRecognizer:tap1];
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginEdit)];
-//    [textView addGestureRecognizer:tap];
+    textView.font = [UIFont systemFontOfSize:15];
+    textView.placholder = [LangSwitcher switchLang:@"请详细描述一下问题" key:nil];
+    textView.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [textView setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     self.textView = textView;
+    [self.bgImage addSubview:self.textView];
+    
     
     UIView *lineView = [UIView new];
     lineView.backgroundColor = kHexColor(@"#E3E3E3");
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     lineView.frame = CGRectMake(15, textView.yy+5, kScreenWidth - 30, 0.5);
     [self.bgImage addSubview:lineView];
 
-    textView.backgroundColor = kHexColor(@"#FFFFFF");
-    textView.textColor = kTextColor;
-    textView.font = [UIFont systemFontOfSize:15];
-    textView.placholder = [LangSwitcher switchLang:@"请详细描述一下问题" key:nil];
-    [self.bgImage addSubview:self.textView];
-//    [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.Qintroduce.mas_bottom).offset(10);
-//        make.left.equalTo(self.bgImage.mas_left).offset(15);
-//        make.right.equalTo(self.bgImage.mas_right).offset(-15);
-//        make.height.equalTo(@(kHeight(100)));
-//
-//
-//    }];
     
     UILabel *refLab = [[UILabel alloc] initWithFrame:CGRectMake(15, textView.yy+10, kScreenWidth - 30, 22)];
     refLab.text = [LangSwitcher switchLang:@"复现步骤（必填)" key:nil];
-    refLab.textColor = kTextColor3;
+    [refLab theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     refLab.font = [UIFont systemFontOfSize:14];
     [self.bgImage addSubview:refLab];
     
+    
     TLTextView *reproductionView = [[TLTextView alloc] initWithFrame:CGRectMake(15, refLab.yy+10, kScreenWidth - 30, 100)];
-   
     reproductionView.userInteractionEnabled = YES;
     reproductionView.returnKeyType = UIReturnKeyDone;
-//    reproductionView.delegate = self;
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(beginEdits)];
-//    [reproductionView addGestureRecognizer:tap];
-//    [reproductionView addTarget:self action:@selector(done) forControlEvents:UIControlEventEditingDidEndOnExit];
-//
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(end)];
-//        [textView addGestureRecognizer:tap];
+    reproductionView.backgroundColor = kClearColor;
     self.reproductionView = reproductionView;
-    reproductionView.backgroundColor = kHexColor(@"#FFFFFF");
-    reproductionView.textColor = kTextColor;
+    reproductionView.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [reproductionView setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     reproductionView.font = [UIFont systemFontOfSize:14];
     reproductionView.placholder = [LangSwitcher switchLang:@"请填写复现步骤" key:nil];
     [self.bgImage addSubview:self.reproductionView];
-//    [self.reproductionView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.Qintroduce.mas_bottom).offset(10);
-//        make.left.equalTo(self.bgImage.mas_left).offset(15);
-//        make.right.equalTo(self.bgImage.mas_right).offset(-15);
-//        make.height.equalTo(@(kHeight(100)));
-//
-//
-//    }];
+
     
     
     UIView *lineView1 = [UIView new];
-    lineView1.backgroundColor = kHexColor(@"#E3E3E3");
+    [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     lineView1.frame = CGRectMake(15, reproductionView.yy+2, kScreenWidth - 30, 0.5);
     [self.bgImage addSubview:lineView1];
 }
@@ -660,11 +590,7 @@
     
     return YES;
 }
-//- (void)beginEdit
-//{
-////    [self.textView becomeFirstResponder];
-//    [self.view endEditing:YES];
-//}
+
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -674,20 +600,7 @@
     
 }
 
-- (void)buttonClick
-{
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
-}
 
-
-
-- (void)historyClick
-{
-    
-    
-}
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self.view endEditing:YES];

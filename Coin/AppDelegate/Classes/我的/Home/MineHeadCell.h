@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol MineHeadDelegate <NSObject>
 
+-(void)MineHeadDelegateSelectBtn:(NSInteger)tag;
+@end
 @interface MineHeadCell : UITableViewCell
+
+@property (nonatomic, assign) id <MineHeadDelegate> delegate;
 
 @end
 

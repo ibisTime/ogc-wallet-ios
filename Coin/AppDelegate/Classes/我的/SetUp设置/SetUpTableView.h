@@ -9,5 +9,5 @@
 #import "TLTableView.h"
 
 @interface SetUpTableView : TLTableView
-
+@property (nonatomic, copy) void (^ SwitchBlock) (NSInteger switchBlock);
 @end

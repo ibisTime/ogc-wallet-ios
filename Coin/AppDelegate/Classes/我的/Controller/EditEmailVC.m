@@ -49,6 +49,7 @@
     [super viewDidLoad];
     
     self.titleText.text  =  [LangSwitcher switchLang:@"绑定邮箱" key:nil];
+    self.navigationItem.titleView = self.titleText;
     [self setUpUI];
     
     //

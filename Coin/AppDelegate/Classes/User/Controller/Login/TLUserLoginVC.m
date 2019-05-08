@@ -230,8 +230,10 @@
     backView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
     [self.view addSubview:backView];
     
-    
-    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(20, 45, SCREEN_WIDTH - 30 - 70, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
+    UILabel *promptLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 45, SCREEN_WIDTH - 30 - 70, 35)];
+    promptLabel.textColor = kTextColor;
+    promptLabel.font = HGboldfont(27);
+//    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(20, 45, SCREEN_WIDTH - 30 - 70, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
     promptLabel.text = [LangSwitcher switchLang:@"欢迎回来" key:nil];
     [backView addSubview:promptLabel];
     

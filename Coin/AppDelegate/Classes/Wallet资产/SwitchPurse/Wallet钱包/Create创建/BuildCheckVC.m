@@ -389,44 +389,48 @@
 //            NSLog(@"插入地址私钥%d",sucess);
 //        }
         
-        if(self.isSave == YES)
-        {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentDirectory = [paths objectAtIndex:0];
-            NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
-            NSLog(@"dbPath = %@",dbPath);
-            FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
-            
-            
-            if ([dataBase open])
-            {
-                [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
-            }
-            [dataBase close];
-            [dataBase open];
-            [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,self.titleWord,self.pwd,self.name];
-            [dataBase close];
-            
-            [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
-                [self.navigationController popToRootViewControllerAnimated:YES];
-                //            创建通知
+        NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+        NSMutableArray *wallet = [NSMutableArray array];
+        [wallet addObjectsFromArray:array];
+        
+        NSDictionary *dic = @{
+                              @"mnemonics":self.titleWord,
+                              @"pwd":self.pwd,
+                              @"walletName":self.name
+                              };
+        [wallet addObject:dic];
+        
 
-                NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
-                [[NSNotificationCenter defaultCenter] postNotification:notification];
+        NSError *err = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:wallet options:NSJSONWritingPrettyPrinted error:&err];
+        NSString *jsonStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
 
-            }];
-            
-        }else
+        
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentDirectory = [paths objectAtIndex:0];
+        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+        NSLog(@"dbPath = %@",dbPath);
+        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
+        
+        
+        if ([dataBase open])
         {
-            [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
-                [self.navigationController popToRootViewControllerAnimated:YES];
-                //            创建通知
-                
-                NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
-                [[NSNotificationCenter defaultCenter] postNotification:notification];
-                
-            }];
+            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,wallet text)"];
         }
+        [dataBase close];
+        [dataBase open];
+        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
+        [dataBase close];
+        
+        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            //            创建通知
+            
+            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
+        }];
         
         
 //        [TLAlert alertWithMsg:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil]];
@@ -446,6 +450,7 @@
     }
     
 }
+
 
 
 

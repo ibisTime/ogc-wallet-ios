@@ -98,106 +98,57 @@
 
 
 
-
-//- (void)configData{
-//
-//    BOOL isChoose =  [[NSUserDefaults standardUserDefaults] boolForKey:@"chooseCoutry"];
-//
-//    if (isChoose == YES) {
-//
-//
-//        NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-//        CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//        if ([model.code isNotBlank]) {
-//            NSString *url = [model.pic convertImageUrl];
-//
-//            [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//            self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//        }else {
-//            for (CountryModel *country in self.countrys) {
-//                if ([country.interCode isEqualToString:model.interCode]) {
-//                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:country];
-//                    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"chooseModel"];
-//                    [[NSUserDefaults standardUserDefaults] synchronize];
-//                    NSString *url = [country.pic convertImageUrl];
-//
-//                    [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//                    self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[country.interCode substringFromIndex:2]];
-//                }
-//            }
-//        }
-//
-//    }else{
-//
-//        CountryModel *model = self.countrys[0];
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
-//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"chooseModel"];
-//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"chooseCoutry"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//        NSString *url = [model.pic convertImageUrl];
-//
-//        [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//        self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//
-//
-//
-//    }
-//}
-
-//- (void)back {
-//    [self.view endEditing:YES];
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
-
 #pragma mark - Events
 
 - (void)setUpUI {
     
 
     
-    UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(30, 45 , SCREEN_WIDTH - 60, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
+    UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(30, 45 + kNavigationBarHeight, SCREEN_WIDTH - 60, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
     nameLabel.text= [LangSwitcher switchLang:@"注册" key:nil];
     [self.view addSubview:nameLabel];
     
     
-    phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:20];
-    phoneRegister.frame = CGRectMake(30, nameLabel.yy + 30, 0, 25);
-    [phoneRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
-    [phoneRegister sizeToFit];
-    phoneRegister.selected = YES;
-    selectBtn = phoneRegister;
-    [phoneRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
-    phoneRegister.tag = 100;
-    [self.view addSubview:phoneRegister];
+//    phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:20];
+//    phoneRegister.frame = CGRectMake(30, nameLabel.yy + 30, 0, 25);
+//    [phoneRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
+//    [phoneRegister sizeToFit];
+//    phoneRegister.selected = YES;
+//    selectBtn = phoneRegister;
+//    [phoneRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
+//    phoneRegister.tag = 100;
+//    [self.view addSubview:phoneRegister];
     
     
-    emailRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"邮箱注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
-    emailRegister.frame = CGRectMake(phoneRegister.xx + 35, nameLabel.yy + 30, 0, 25);
-    [emailRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
-    [emailRegister sizeToFit];
-    [emailRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
-    emailRegister.tag = 101;
-    [self.view addSubview:emailRegister];
+//    emailRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"邮箱注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
+//    emailRegister.frame = CGRectMake(phoneRegister.xx + 35, nameLabel.yy + 30, 0, 25);
+//    [emailRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
+//    [emailRegister sizeToFit];
+//    [emailRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
+//    emailRegister.tag = 101;
+//    [self.view addSubview:emailRegister];
     
     
-    chooseView = [[UIView alloc]initWithFrame:CGRectMake(phoneRegister.x, phoneRegister.yy + 6, phoneRegister.width, 2)];
-    chooseView.backgroundColor = kTabbarColor;
-    [self.view addSubview:chooseView];
-    
+//    chooseView = [[UIView alloc]initWithFrame:CGRectMake(nameLabel.x, nameLabel.yy + 6, phoneRegister.width, 2)];
+//    chooseView.backgroundColor = kTabbarColor;
+//    [self.view addSubview:chooseView];
+//    rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+//    [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请确认密码"];
     
     for (int i = 0 ; i < 4; i ++) {
-        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, emailRegister.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60, 50)];
+        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, nameLabel.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60, 50)];
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
         [textField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         textField.font = FONT(14);
+        textField.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [textField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
 //        self.pwdTf = textField;
         [self.view addSubview:textField];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(30, textField.yy, SCREEN_WIDTH - 60, 1)];
-        lineView.backgroundColor = kLineColor;
+//        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self.view addSubview:lineView];
         
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -213,12 +164,12 @@
                 
                 UIButton *codeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"获取验证码" key:nil] titleColor:kTabbarColor backgroundColor:kClearColor titleFont:13];
                 [codeBtn sizeToFit];
-                codeBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - codeBtn.width - 30, textField.y + 10, codeBtn.width + 30, 30);
+                codeBtn.frame = CGRectMake(SCREEN_WIDTH - 30 - codeBtn.width - 30, textField.y + 10, codeBtn.width + 30, 30);
                 kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
                 [codeBtn addTarget:self action:@selector(sendCaptcha:) forControlEvents:(UIControlEventTouchUpInside)];
                 [self.view addSubview:codeBtn];
                 
-                textField.frame = CGRectMake(30, emailRegister.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60 - codeBtn.width - 5 , 50);
+                textField.frame = CGRectMake(30, nameLabel.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60 - codeBtn.width - 5 , 50);
                 
             }
                 break;
@@ -354,17 +305,19 @@
     http.showView = self.view;
     
     
-    
-    if (selectBtn.tag == 100) {
-        http.code = CAPTCHA_CODE;
-        http.parameters[@"mobile"] = self.phoneTf.text;
-        http.parameters[@"bizType"] = USER_REG_CODE;
-    }else
-    {
-        http.code = @"630093";
-        http.parameters[@"email"] = self.phoneTf.text;
-        http.parameters[@"bizType"] = @"805043";
-    }
+    http.code = CAPTCHA_CODE;
+    http.parameters[@"mobile"] = self.phoneTf.text;
+    http.parameters[@"bizType"] = USER_REG_CODE;
+//    if (selectBtn.tag == 100) {
+//        http.code = CAPTCHA_CODE;
+//        http.parameters[@"mobile"] = self.phoneTf.text;
+//        http.parameters[@"bizType"] = USER_REG_CODE;
+//    }else
+//    {
+//        http.code = @"630093";
+//        http.parameters[@"email"] = self.phoneTf.text;
+//        http.parameters[@"bizType"] = @"805043";
+//    }
     
     http.parameters[@"client"] = @"ios";
     
@@ -396,24 +349,29 @@
         return;
     }
     
-    if (selectBtn.tag == 100) {
-        if (![self.phoneTf.text isPhoneNum]) {
-            
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-            
-            return;
-        }
-    }else
-    {
-        if (![self.phoneTf.text isPhoneNum]) {
-            
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
-            
-            return;
-        }
+//    if (selectBtn.tag == 100) {
+//        if (![self.phoneTf.text isPhoneNum]) {
+//
+//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+//
+//            return;
+//        }
+//    }else
+//    {
+//        if (![self.phoneTf.text isPhoneNum]) {
+//
+//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
+//
+//            return;
+//        }
+//    }
+    
+    if (![self.phoneTf.text isPhoneNum]) {
+        
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+        
+        return;
     }
-    
-    
     if (!self.codeTf.text) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
         
@@ -444,18 +402,10 @@
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
     
-    if (selectBtn.tag == 100) {
-        http.code = USER_REG_CODE;
-        http.parameters[@"mobile"] = self.phoneTf.text;
-        http.parameters[@"loginPwd"] = self.pwdTf.text;
-        http.parameters[@"smsCaptcha"] = self.codeTf.text;
-    }else
-    {
-        http.code = @"805043";
-        http.parameters[@"email"] = self.phoneTf.text;
-        http.parameters[@"loginPwd"] = self.pwdTf.text;
-        http.parameters[@"captcha"] = self.codeTf.text;
-    }
+    http.code = USER_REG_CODE;
+    http.parameters[@"mobile"] = self.phoneTf.text;
+    http.parameters[@"loginPwd"] = self.pwdTf.text;
+    http.parameters[@"smsCaptcha"] = self.codeTf.text;
     
     http.parameters[@"kind"] = APP_KIND;
     http.parameters[@"client"] = @"ios";

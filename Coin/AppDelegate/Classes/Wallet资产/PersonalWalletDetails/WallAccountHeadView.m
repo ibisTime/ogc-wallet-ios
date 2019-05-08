@@ -46,7 +46,7 @@
     bgImage.layer.shadowRadius=3;// 阴影扩散的范围控制
     bgImage.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
     [self addSubview:bgImage];
-    [self.bgImage theme_setImageIdentifier:@"私钥钱包背景" moduleName:ImgAddress];
+    [self.bgImage theme_setImageIdentifier:@"BTC背景" moduleName:ImgAddress];
     
     
     UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(25, 110/2 - 20, 40, 40)];

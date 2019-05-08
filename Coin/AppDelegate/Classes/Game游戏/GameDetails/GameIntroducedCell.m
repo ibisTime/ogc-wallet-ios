@@ -34,7 +34,12 @@
         _introduceLbl.numberOfLines = 4;
         _introduceLbl.textVerticalAlignment = YYTextVerticalAlignmentTop;
         _introduceLbl.frame = CGRectMake(20,3, SCREEN_WIDTH-40,75);
-        
+        if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+            _introduceLbl.textColor = [UIColor whiteColor];
+        }else
+        {
+             _introduceLbl.textColor = [UIColor blackColor];
+        }
         [self addSubview:_introduceLbl];
         
         
@@ -150,7 +155,12 @@
     
     [text appendAttributedString:[UserModel ReturnsTheDistanceBetween:title]];
     text.yy_font = FONT(12);
-    
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        text.yy_color = [UIColor whiteColor];
+    }else
+    {
+        text.yy_color = [UIColor blackColor];
+    }
     _introduceLbl.attributedText = text;
     _introduceLbl1.attributedText = [self ReturnsTheDistanceBetween:title];
     _introduceLbl1.numberOfLines = 0;

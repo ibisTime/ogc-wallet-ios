@@ -33,7 +33,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"账单详情" key:nil];
-//    self.titleText.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = self.titleText;
     
     [self initTableView];

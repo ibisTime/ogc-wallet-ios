@@ -133,7 +133,7 @@
         if (self.ISparametArray == YES) {
             self.parameters[@"systemCode"] = nil;
             self.parameters[@"companyCode"] = nil;
-              NSData *data = [NSJSONSerialization dataWithJSONObject:self.parameters options:NSJSONWritingPrettyPrinted error:nil];
+            NSData *data = [NSJSONSerialization dataWithJSONObject:self.parameters options:NSJSONWritingPrettyPrinted error:nil];
             self.parameters = [NSMutableDictionary dictionaryWithCapacity:2];
             self.parameters[@"code"] = self.code;
             self.parameters[@"json"] = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

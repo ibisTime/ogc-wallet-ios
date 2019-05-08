@@ -24,13 +24,14 @@
 #define TabbarColor @"tabbar.color"
 #define GaryLabelColor @"garyLabel.text"
 #define LineViewColor @"lineViewColor"
-
-
-
-
+#define WhiteBlackColor @"whiteblackColor"
+#define HeaderColor @"headerViewColor"
+#define BLACK @"BLACK"
+#define WHITE @"WHITE"
+#define COLOR @"COLOR"
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
-#define kTabbarColor   [UIColor colorWithHexString:@"#77A4FF"]
+#define kTabbarColor   [UIColor colorWithHexString:@"#6F99EC"]
 
 //设置字体加粗
 #define HGboldfont(s)  [UIFont fontWithName:@"Helvetica-Bold" size:s]
@@ -41,7 +42,7 @@
 // 颜色配置
 #define kNavBarMainColor  [UIColor appNavBarMainColor]
 #define kNavBarBgColor    [UIColor appNavBarBgColor]
-
+#define USERDEFAULTS [NSUserDefaults standardUserDefaults]
 
 #define kTabbarMainColor   [UIColor appTabbarMainColor]
 #define kTabbarBgColor     [UIColor appTabbarBgColor]
@@ -54,7 +55,7 @@
 
 
 
-#define kLineColor [UIColor colorWithHexString:@"#999999"]
+#define kLineColor [UIColor colorWithHexString:@"#EEEEEE"]
 #define kBackgroundColor RGB(250, 250, 250)
 
 #define kTextColor              [UIColor colorWithHexString:@"#333333"]

@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"全球收益榜" key:nil];
+    self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData];
 

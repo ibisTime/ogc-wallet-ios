@@ -50,7 +50,7 @@
     [super viewDidLoad];
     
     self.titleText.text = [LangSwitcher switchLang:@"关于我们" key:nil];
- 
+    self.navigationItem.titleView = self.titleText;
     [self setUpUI];
 
     [self addLayout];
@@ -104,7 +104,8 @@
     //
     
     self.bgView = [[UIView alloc] init];
-    self.bgView.backgroundColor = [UIColor whiteColor];
+//    self.bgView.backgroundColor = [UIColor whiteColor];
+    [self.bgView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [self.bgImage addSubview:self.bgView];
     [self.bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.bgImage.mas_top).offset(30 + kNavigationBarHeight);
@@ -125,11 +126,11 @@
     [self.bgImage addSubview:self.nameLbl];
     
     UIView *line = [[UIView alloc] init];
-    line.backgroundColor = kLineColor;
+    [line theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self.bgView addSubview:line];
     self.line = line;
     UIView *line2 = [[UIView alloc] init];
-    line2.backgroundColor = kLineColor;
+    [line2 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     self.line2 = line2;
     [self.bgView addSubview:line2];
     //

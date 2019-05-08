@@ -135,7 +135,6 @@
 -(void)navigativeView
 {
     self.titleText.text = [LangSwitcher switchLang:@"Moore量化" key:nil];
-    self.titleText.font = Font(18);
     self.navigationItem.titleView = self.titleText;
 
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

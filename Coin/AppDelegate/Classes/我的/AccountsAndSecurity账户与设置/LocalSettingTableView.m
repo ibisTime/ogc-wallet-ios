@@ -32,14 +32,14 @@ static NSString *identifierCell = @"SettingCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return self.dataArray.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     
     NSArray *array = self.dataArray[section];
-    return array.count;
+    return 5;
 //    if (section == 0) {
 //        if (self.dataArray.count >= 2) {
 //            return 2;
@@ -73,9 +73,9 @@ static NSString *identifierCell = @"SettingCell";
     };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.switchHidden = YES;
-    NSArray *array = self.dataArray[indexPath.section];
-    NSString *name = array[indexPath.row][@"name"];
-    cell.titleLbl.text = [LangSwitcher switchLang:name key:nil];
+//    NSArray *array = self.dataArray[indexPath.section];
+//    NSString *name = array[indexPath.row][@"name"];
+//    cell.titleLbl.text = [LangSwitcher switchLang:name key:nil];
 //    name = array[indexPath.row][@"name"];
 //    if (indexPath.section == 0) {
 //
@@ -89,6 +89,10 @@ static NSString *identifierCell = @"SettingCell";
 //         name = array[indexPath.row + 6][@"name"];
 //
 //    }
+    
+    NSArray *array = @[@"交易密码",@"手势密码",@"修改登录密码",@"绑定/修改邮箱",@"绑定/修改手机号"];
+    NSString *name = array[indexPath.row];
+    cell.titleLbl.text = [LangSwitcher switchLang:array[indexPath.row] key:nil];
     
     if ([name isEqualToString:@"手势密码"]) {
         
@@ -166,7 +170,6 @@ static NSString *identifierCell = @"SettingCell";
 
     
 
-    cell.titleLbl.textColor = kTextColor;
     cell.titleLbl.font = Font(15.0);
     [cell.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(cell.mas_left).offset(20);
@@ -190,9 +193,9 @@ static NSString *identifierCell = @"SettingCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *name;
-    NSArray *array = self.dataArray[indexPath.section];
+//    NSArray *array = self.dataArray[indexPath.section];
 //    if (indexPath.section == 0) {
-    name = array[indexPath.row][@"name"];
+//    name = array[indexPath.row][@"name"];
 //
 //    }
 //    if (indexPath.section == 1) {
@@ -201,7 +204,8 @@ static NSString *identifierCell = @"SettingCell";
 //    if (indexPath.section == 2) {
 //        name = self.dataArray[indexPath.row + 6][@"name"];
 //    }
-    [self.refreshDelegate refreshTableView:self setCurrencyModel:nil setTitle:name];
+//    [self.refreshDelegate refreshTableView:self setCurrencyModel:nil setTitle:name];
+    [self.refreshDelegate refreshTableView:self didSelectRowAtIndexPath:indexPath];
     
 }
 

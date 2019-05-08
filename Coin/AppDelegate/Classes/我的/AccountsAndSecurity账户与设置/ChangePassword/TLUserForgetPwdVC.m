@@ -47,6 +47,8 @@
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
         [textField setValue:FONT(16) forKeyPath:@"_placeholderLabel.font"];
         textField.font = FONT(16);
+        textField.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [textField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         //        self.pwdTf = textField;
         [self.view addSubview:textField];
         

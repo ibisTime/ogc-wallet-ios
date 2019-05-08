@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view.
     
     self.titleText.text = [LangSwitcher switchLang:@"系统公告" key:nil] ;
-    
+    self.navigationItem.titleView = self.titleText;
     [self initTableView];
     //获取汇率列表
     [self requestRateList];

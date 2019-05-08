@@ -22,8 +22,6 @@ static NSString *identifierCell = @"questionListCells";
         
         self.dataSource = self;
         self.delegate = self;
-        [self setContentInset:UIEdgeInsetsMake(5, 0.0, -5, 0.0)];
-     
         
         [self registerClass:[questionListCells class] forCellReuseIdentifier:identifierCell];
         
@@ -59,7 +57,7 @@ static NSString *identifierCell = @"questionListCells";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return kHeight(100);
+    return 75;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

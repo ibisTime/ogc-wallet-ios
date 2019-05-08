@@ -35,7 +35,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"交易详情" key:nil];
-//    self.titleText.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = self.titleText;
 
 //    TLDataBase *dataBase = [TLDataBase sharedManager];
@@ -146,8 +145,7 @@
             textLbl.text = [LangSwitcher switchLang:@"转入" key:nil];
 //            self.title =  [LangSwitcher switchLang:@"转入" key:nil];
             self.titleText.text = [LangSwitcher switchLang:@"转入" key:nil];
-//            self.iconIV.image  = kImage(@"收款");
-//            self.moneyLbl.textColor = kHexColor(@"#47D047");
+            
         }else{
             
             moneyStr = [NSString stringWithFormat:@"-%@ %@", countStr, self.currentModel.symbol];
@@ -182,6 +180,7 @@
             self.titleText.text =  [LangSwitcher switchLang:@"转出" key:nil];
         }
     }
+    self.navigationItem.titleView = self.titleText;
     amountLbl.text = moneyStr;
     
     //

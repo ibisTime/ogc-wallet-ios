@@ -32,6 +32,8 @@
     
     CGFloat leftW = 90;
     self.titleText.text = [LangSwitcher switchLang:@"手机号" key:nil];
+    self.navigationItem.titleView = self.titleText;
+    
     CGFloat leftMargin = 0;
     
     //手机号

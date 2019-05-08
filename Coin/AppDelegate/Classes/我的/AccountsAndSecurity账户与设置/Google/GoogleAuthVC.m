@@ -42,7 +42,7 @@
     // Do any additional setup after loading the view.
     
     self.titleText.text = [LangSwitcher switchLang:@"谷歌验证" key:nil];
-    
+    self.navigationItem.titleView = self.titleText;
     [self initSubviews];
     //获取密钥
     [self getSecret];

@@ -64,15 +64,49 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
+    self.titleText.text = @"设置";
+    self.navigationItem.titleView = self.titleText;
 }
 
 
 - (void)initTableView {
-    
-    
-    
     self.tableView = [[SetUpTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
+    CoinWeakSelf;
+    self.tableView.SwitchBlock = ^(NSInteger switchBlock) {
+        if (switchBlock == 0) {
+            NSString *path = [NSBundle mainBundle].bundlePath;
+            path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+            [MTThemeManager.manager setThemePath:path];
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+            
+            
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+            weakSelf.navigationController.navigationBar.tintColor = [UIColor blackColor];
+            
+            
+            weakSelf.navigationItem.backBarButtonItem = item;
+            weakSelf.navigationController.navigationBar.shadowImage = [UIImage new];
+            [[NSUserDefaults standardUserDefaults] setObject:WHITE forKey:COLOR];
+        }else
+        {
+            
+            
+            NSString *path = [NSBundle mainBundle].bundlePath;
+            path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+            
+            [MTThemeManager.manager setThemePath:path];
+            [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+            
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"white" style:UIBarButtonItemStylePlain target:nil action:nil];
+            weakSelf.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+            
+            
+            weakSelf.navigationItem.backBarButtonItem = item;
+            weakSelf.navigationController.navigationBar.shadowImage = [UIImage new];
+            [[NSUserDefaults standardUserDefaults] setObject:BLACK forKey:COLOR];
+        }
+    };
     [self.view addSubview:self.tableView];
 }
 
@@ -84,11 +118,11 @@
 //        LangChooseVC *vc = [LangChooseVC new];
 //        [self.navigationController pushViewController:vc animated:YES];
 //    }
-    if (indexPath.row == 0) {
+    if (indexPath.row == 1) {
         ChangeLocalMoneyVC *vc = [ChangeLocalMoneyVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 1) {
+    if (indexPath.row == 2) {
         TLAboutUsVC *vc = [TLAboutUsVC new];
         [self.navigationController pushViewController:vc animated:YES];
     }

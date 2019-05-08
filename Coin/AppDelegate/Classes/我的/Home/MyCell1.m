@@ -9,18 +9,41 @@
 #import "MyCell1.h"
 
 
+@interface MyCell1 ()
+
+@property (nonatomic, strong) UIImageView *iconImageView;
+
+@property (nonatomic, strong) UILabel *titleLbl;
+
+@property (nonatomic, strong) UIImageView *accessoryImageView;
+
+@end
+
 @implementation MyCell1
-{
-    UILabel *rightLbl;
-}
+
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         
+        UIImageView *iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(16.5, 15, 19, 20)];
+        [self addSubview:iconImg];
         
+        UILabel *iconLbl = [[UILabel alloc]initWithFrame:CGRectMake(iconImg.xx + 12, 15, SCREEN_WIDTH - 100, 20)];
+        iconLbl.textAlignment = NSTextAlignmentLeft;
+        [iconLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
+        iconLbl.font = FONT(14);
+        [self addSubview:iconLbl];
 
+        
+        self.iconImg = iconImg;
+        self.iconLbl = iconLbl;
+        
+        UIImageView *youImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 7.5 - 12, 19, 7, 12)];
+        [youImg theme_setImageIdentifier:@"我的跳转" moduleName:ImgAddress];
+        
+        [self addSubview:youImg];
         
     }
     return self;
@@ -28,80 +51,6 @@
 }
 
 
--(void)setDataArray:(NSArray *)dataArray
-{
-    _dataArray = dataArray;
-    [self.whiteView removeFromSuperview];
-    
-    
-    //    NSArray *array = @[@"我的好友",@"邀请有礼"];
-    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(20, 0, SCREEN_WIDTH - 40, dataArray.count * 60)];
-    whiteView.backgroundColor = kWhiteColor;
-    whiteView.layer.cornerRadius=10;
-    whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
-    whiteView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-    whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
-    whiteView.layer.shadowOffset = CGSizeMake(1, 1);// 阴
-    [self addSubview:whiteView];
-    self.whiteView = whiteView;
-    
-    
-    for (int i = 0; i < dataArray.count; i ++) {
-        
-        
-        _backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _backBtn.frame = CGRectMake(20, i % dataArray.count * 60, SCREEN_WIDTH, 60);
-        [_backBtn addTarget:self action:@selector(backView:) forControlEvents:(UIControlEventTouchUpInside)];
-        _backBtn.tag = 100 + i;
-        [self addSubview:_backBtn];
-        
-        self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, i % dataArray.count * 60 + 20, 20, 20)];
-        [whiteView addSubview:self.iconImageView];
-        self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-        self.iconImageView.image = kImage(dataArray[i][@"name"]);
-        
-        
-        //右边箭头
-        self.accessoryImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 40 - 15 - 7, i % dataArray.count * 60 + 24, 7, 12)];
-        [whiteView addSubview:self.accessoryImageView];
-        self.accessoryImageView.image = [UIImage imageNamed:@"更多-灰色"];
-        self.titleLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:15.0];
-        self.titleLbl.text = [LangSwitcher switchLang:dataArray[i][@"name"] key:nil];
-        self.titleLbl.frame = CGRectMake(self.iconImageView.xx + 10, i % dataArray.count * 60, SCREEN_WIDTH - self.iconImageView.xx - 40 - 35, 60);
-        [whiteView addSubview:self.titleLbl];
-        
-//        rightLbl = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH - 40 - 100, 0, 85, 60) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(15) textColor:kTextBlack];
-//        [_backBtn addSubview:rightLbl];
-//        if ([dataArray[i][@"name"] isEqualToString:@"金米福分"]) {
-//            self.accessoryImageView.hidden = YES;
-//            rightLbl.hidden = NO;
-//        }else
-//        {
-//            self.accessoryImageView.hidden = NO;
-//            rightLbl.hidden = YES;
-//        }
-        
-        if (i < dataArray.count - 1) {
-            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(self.iconImageView.xx + 10,59.5 + i % self.dataArray.count * 60 , SCREEN_WIDTH - 40 - self.iconImageView.xx - 10, 1)];
-            line.backgroundColor = kLineColor;
-            [whiteView addSubview:line];
-        }
-        
-    }
-    
-    
-    
-    
-}
 
--(void)backView:(UIButton *)sender
-{
-    [_delegate MyCellButtonSelectTag:_dataArray[sender.tag - 100][@"name"]];
-}
-
--(void)setBlessing:(NSInteger)blessing
-{
-    rightLbl.text = [NSString stringWithFormat:@"%d",blessing];
-}
 
 @end

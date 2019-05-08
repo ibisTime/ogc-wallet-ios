@@ -281,7 +281,7 @@
         UIButton *btn = [UIButton buttonWithTitle:textArr[i] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:12.0];
         [btn addTarget:self action:@selector(btnClickCurreny:) forControlEvents:UIControlEventTouchUpInside];
         btn.frame = CGRectMake(15 + i % 2 * ((SCREEN_WIDTH - 45)/2 + 15) , 15, SCREEN_WIDTH/2 - 45/2, 50);
-        [btn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:3 imagePositionBlock:^(UIButton *button) {
+        [btn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:6 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(imgArr[i]) forState:UIControlStateNormal];
         }];
         if (i == 0) {

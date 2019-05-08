@@ -20,6 +20,7 @@
    
     
     self.titleText.text = [LangSwitcher switchLang:@"闪兑" key:nil];
+    self.navigationItem.titleView = self.titleText;
    UIImageView *image =   [UIImageView new];
     image.contentMode = UIViewContentModeScaleToFill;
     

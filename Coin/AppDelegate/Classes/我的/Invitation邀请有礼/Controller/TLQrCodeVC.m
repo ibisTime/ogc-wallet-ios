@@ -137,32 +137,26 @@
 
     [self getShareUrl];
 
-    
+    self.view.backgroundColor = kHexColor(@"#282A2E");
 //    渐变背景
     backView = [[UIView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT  - kHeight(50) - kBottomInsetHeight)];
     [self.view addSubview:backView];
-    gradientLayer = [CAGradientLayer layer];
-    gradientLayer.frame = backView.bounds;
-    [backView.layer addSublayer:gradientLayer];
-    gradientLayer.startPoint = CGPointMake(0, 0);
-    gradientLayer.endPoint = CGPointMake(0, 1);
-    gradientLayer.colors = @[(__bridge id)RGB(92, 101, 221).CGColor,
-                             (__bridge id)RGB(90, 63, 200).CGColor];
+    backView.backgroundColor = kHexColor(@"#282A2E");
     
-    gradientLayer.locations = @[@(0.5f), @(1.0f)];
 
     self.nameLable = [[UILabel alloc]init];
     self.nameLable.text = [LangSwitcher switchLang:@"邀请有礼" key:nil];
     self.nameLable.textAlignment = NSTextAlignmentCenter;
-    self.nameLable.font = Font(18);
+    self.nameLable.font = Font(16);
     self.nameLable.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = self.nameLable;
 
    
     [self.view addSubview:self.bouncedView];
     // Do any additional setup after loading the view.
+    
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - kHeight(50) - kBottomInsetHeight, SCREEN_WIDTH, kHeight(50) + kBottomInsetHeight)];
-    bottomView.backgroundColor = RGB(90, 61, 200);
+    bottomView.backgroundColor = RGB(45, 54, 71);
     bottomView.layer.shadowOpacity = 0.22;// 阴影透明度
     bottomView.layer.shadowColor = kWhiteColor.CGColor;// 阴影的颜色
     bottomView.layer.shadowRadius=3;// 阴影扩散的范围控制
@@ -211,25 +205,25 @@
     UIImageView *iconImageView = [[UIImageView alloc] init];
     iconImageView.image = [UIImage imageNamed:@"邀请-logo"];
     [backView  addSubview:iconImageView];
-//    self.iconImageView.layer.cornerRadius = 10;
-//    self.iconImageView.layer.masksToBounds = YES;
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
+
         make.top.equalTo(backView.mas_top).offset(157.5);
         make.width.mas_equalTo(@(kHeight(120)));
         make.height.mas_equalTo(@(kHeight(60)));
-        
+
         make.centerX.equalTo(backView.mas_centerX);
-        
+
     }];
     
 
     UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(0,   kNavigationBarHeight + kHeight(190), SCREEN_WIDTH, kHeight(25)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:kWhiteColor];
+    nameLabel.textColor = kWhiteColor;
     nameLabel.text = [LangSwitcher switchLang:[TLUser user].mobile key:nil];
     [backView addSubview:nameLabel];
     
     UILabel *introduceLbl = [UILabel labelWithFrame:CGRectMake(0, nameLabel.yy + kHeight(8), SCREEN_WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kWhiteColor];
-    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入金米钱包" key:nil];
+    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入TICP" key:nil];
+    introduceLbl.textColor = kWhiteColor;
     [backView addSubview:introduceLbl];
     
     
@@ -282,6 +276,7 @@
     
     UILabel *InviteLinkLabel = [UILabel labelWithFrame:CGRectMake(kWidth(20), -kNavigationBarHeight + codeView.yy + kHeight(15), 0, kHeight(22)) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
     InviteLinkLabel.text = [LangSwitcher switchLang:@"复制您的专属邀请链接" key:nil];
+    InviteLinkLabel.textColor = kWhiteColor;
     [self.view addSubview:InviteLinkLabel];
     [InviteLinkLabel sizeToFit];
     if (InviteLinkLabel.width >= SCREEN_WIDTH - kWidth(72) - kWidth(40)) {

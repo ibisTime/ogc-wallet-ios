@@ -72,6 +72,7 @@
     //获取账单
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang: [NSString stringWithFormat:@"%@",self.currency.symbol] key:nil];
+    self.navigationItem.titleView = self.titleText;
     if ([self.currency.symbol isEqualToString:@"BTC"]) {
         [self requestBtcList];
 
@@ -88,7 +89,7 @@
         [self requestLXTList];
     }
     self.titleText.text = self.currency.symbol;
-//    self.titleText.textColor = kWhiteColor;
+
     self.navigationItem.titleView = self.titleText;
 }
 

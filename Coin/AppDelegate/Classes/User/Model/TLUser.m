@@ -57,7 +57,29 @@ NSString *const kGoogleAuthClose = @"0";
 
 }
 
+
+
 #pragma mark - Setting
+
++(NSString *)TextFieldPlacColor
+{
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        return @"#8A8F99";
+    }else
+    {
+        return @"#999999";
+    }
+}
+
++(NSString *)TextFieldTextColor
+{
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        return @"#FFFFFF";
+    }else
+    {
+        return @"#333333";
+    }
+}
 
 - (void)setToken:(NSString *)token {
     

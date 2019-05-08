@@ -81,7 +81,7 @@
     [super viewDidLoad];
     self.isFirst  = YES;
     self.titleText.text = self.titleString;
-    
+    self.navigationItem.titleView = self.titleText;
     TLTableView *tableView = [TLTableView tableViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)
                                                     delegate:self dataSource:self];
     [self.view addSubview:tableView];

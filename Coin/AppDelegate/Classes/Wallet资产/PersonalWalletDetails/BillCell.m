@@ -83,8 +83,8 @@
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, 84.5, SCREEN_WIDTH, 0.5)];
         
-        line.backgroundColor = kLineColor;
-        
+//        line.backgroundColor = kLineColor;
+        [line theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:line];
 //        [line mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.left.equalTo(self.mas_left).offset(15);

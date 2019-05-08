@@ -61,12 +61,10 @@
 
 //    self.title =  [LangSwitcher switchLang:@"创建钱包" key:nil];
     self.titleText.text = [LangSwitcher switchLang:@"创建钱包" key:nil];
+    
     self.navigationItem.titleView = self.titleText;
     [self initViews];
-    self.navigationController.navigationBar.titleTextAttributes=
-  @{NSForegroundColorAttributeName:kWhiteColor
-    ,
-    NSFontAttributeName:[UIFont systemFontOfSize:16]};
+
 
 }
 
@@ -75,7 +73,7 @@
     
     
     UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, 15, 100, 33.5)];
-    nameLable.text = [LangSwitcher switchLang:@"导入钱包" key:nil];
+    nameLable.text = [LangSwitcher switchLang:@"创建钱包" key:nil];
     nameLable.textAlignment = NSTextAlignmentLeft;
 //    self.nameLable = nameLable;
     nameLable.font = Font(24);
@@ -90,8 +88,6 @@
     UILabel *nameLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, nameLable.yy + 45, SCREEN_WIDTH - 30, 16.5)];
     nameLbl.text = @"钱包名称";
     nameLbl.font = FONT(12);
-    //    nameLbl.textColor = kGaryTextColor;
-    //    nameLbl.nightTextColor = kNightGaryTextColor;
     [nameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     [self.view addSubview:nameLbl];
     
@@ -100,20 +96,14 @@
     [nameTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
     nameTf.placeholder = [LangSwitcher switchLang:@"请输入钱包名称" key:nil];
     nameTf.font = FONT(18);
-    //    nameTf.textColor = kGaryTextColor;
-    //    nameTf.ni
-    [nameTf theme_setTextIdentifier:GaryLabelColor moduleName:ColorName];
-    //    nameTf.textColor = kGaryTextColor;
-    //    nameTf.ni
-    //    nameTf.pl = kNightGaryTextColor;
+    nameTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [nameTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:nameTf];
     self.nameTf = nameTf;
     
     UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(15, nameTf.yy + 10, SCREEN_WIDTH - 30, 0.5)];
     [self.view addSubview:lineView1];
-    //    [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-    //    lineView1.backgroundColor = kGaryTextColor;
-    //    lineView1.nightBackgroundColor = kNightGaryTextColor;
+    
     [lineView1 theme_setBackgroundColorIdentifier:GaryLabelColor moduleName:ColorName];
     
     UILabel *pwdLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, lineView1.yy + 20, SCREEN_WIDTH - 30, 16.5)];
@@ -126,6 +116,8 @@
     pwdTf.placeholder = [LangSwitcher switchLang:@"请设置钱包密码" key:nil];
     [pwdTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
     pwdTf.font = FONT(18);
+    pwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [pwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [pwdTf theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     [self.view addSubview:pwdTf];
     self.pwdTf = pwdTf;
@@ -139,8 +131,7 @@
     UILabel *rePwdLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, lineView2.yy + 20, SCREEN_WIDTH - 30, 16.5)];
     rePwdLbl.text = @"请输入8～16位数字、字母组合";
     [rePwdLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    //    pwdLbl.textColor = kGaryTextColor;
-    //    pwdLbl.nightTextColor = kNightGaryTextColor;
+    
     rePwdLbl.font = FONT(12);
     [self.view addSubview:rePwdLbl];
     
@@ -153,7 +144,9 @@
     rePwdTf.placeholder = [LangSwitcher switchLang:@"请输入重复密码" key:nil];
     [rePwdTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
     rePwdTf.font = FONT(18);
-    [rePwdTf theme_setTextIdentifier:GaryLabelColor moduleName:ColorName];
+    rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
+    
     [self.view addSubview:rePwdTf];
     self.rePwdTf = rePwdTf;
     
@@ -284,6 +277,16 @@
         return;
         
     }
+    
+    NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+    
+    for (int i = 0; i < array.count; i ++) {
+        NSDictionary *dic = array[i];
+        if ([dic[@"walletName"] isEqualToString:self.nameTf.text]) {
+            [TLAlert alertWithInfo:[NSString stringWithFormat:@"已存在%@钱包",self.nameTf.text]];
+            return;
+        }
+    }
 //    if (![self.isSelect isEqualToString:@"1"]) {
 //
 //        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请先阅读并同意服务条款" key:nil]];
@@ -328,6 +331,10 @@
 //    [self.introduceButton setImage:kImage(@"打勾 圆") forState:UIControlStateNormal];
 //    [self.introduceButton setImage:kImage(@"打勾 圆") forState:UIControlStateSelected];
 
+    
+    
+    
+    
     HTMLStrVC *htmlVC = [[HTMLStrVC alloc] init];
     self.navigationController.navigationBar.hidden = NO;
 

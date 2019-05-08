@@ -9,7 +9,10 @@
 #import "SwitchPurseCell.h"
 
 @implementation SwitchPurseCell
-
+{
+    UILabel *allAssetsLbl;
+    UILabel *allPriceLbl;
+}
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -27,26 +30,30 @@
         
         
         
-        UILabel *allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         allAssetsLbl.text= [LangSwitcher switchLang:@"私钥钱包 总资产（¥）" key:nil];
         [whiteView addSubview:allAssetsLbl];
         
         
-        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 80, SCREEN_WIDTH - 80, 41) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(41) textColor:kTabbarColor];
+        allPriceLbl = [UILabel labelWithFrame:CGRectMake(35, 80, SCREEN_WIDTH - 80, 41) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(41) textColor:kTabbarColor];
         if ([[TLUser user].localMoney isEqualToString:@"USD"])
         {
-            allAssetsLbl.text = @"≈0.00";
+            allPriceLbl.text = @"≈0.00";
         }else
         {
-            allAssetsLbl.text = @"≈0.00";
+            allPriceLbl.text = @"≈0.00";
         }
         
-        [whiteView addSubview:allAssetsLbl];
+        [whiteView addSubview:allPriceLbl];
     }
     
     return self;
 }
 
+-(void)setWalletDic:(NSDictionary *)walletDic
+{
+    allAssetsLbl.text = [NSString stringWithFormat:@"%@ 总资产（¥）",walletDic[@"walletName"]];
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];

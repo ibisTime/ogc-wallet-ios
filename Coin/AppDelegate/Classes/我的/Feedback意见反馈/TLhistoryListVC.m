@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleText.text = [LangSwitcher switchLang:@"历史反馈" key:nil];
+    self.navigationItem.titleView = self.titleText;
     [self initTopView];
     
     [self loadList];
@@ -35,34 +36,8 @@
 - (void)initTopView
 {
 
-    UIView *top = [[UIView alloc] init];
-    [self.view addSubview:top];
-    top.backgroundColor = kTabbarColor;
-    
-    [top mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.height.equalTo(@(kHeight(66)));
-    }];
-    
-//    self.placeHolderView = [[UIView alloc] initWithFrame:CGRectMake(15, kHeight(150), kScreenWidth-30,  40)];
-
-//    UILabel *textLbl = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor2 font:14.0];
-//
-//    textLbl.text = [LangSwitcher switchLang:@"暂无历史反馈" key:nil];
-//    textLbl.textAlignment = NSTextAlignmentCenter;
-//
-//    [self.placeHolderView addSubview:textLbl];
-//    [textLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.top.equalTo(self.placeHolderView.mas_top).offset(150);
-//        make.centerX.equalTo(self.placeHolderView.mas_centerX);
-//
-//    }];
     self.tableView = [[QuestionListTableView alloc]
-                      initWithFrame:CGRectMake(15, 0, kScreenWidth-30, kSuperViewHeight-20)
+                      initWithFrame:CGRectMake(0, 0, kScreenWidth, kSuperViewHeight)
                       style:UITableViewStyleGrouped];
     
     self.tableView.placeHolderView = self.placeHolderView;

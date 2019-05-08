@@ -12,6 +12,8 @@
 {
     UIButton *selectBtn;
     UIView *blueView;
+    CGFloat width;
+    
 }
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -19,30 +21,41 @@
     if (self) {
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-        lineView.backgroundColor = kBackgroundColor;
+        [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
         [self addSubview:lineView];
         
-        NSArray *array = @[@"ETHdapp",@"TRXdapp"];
-        for (int i = 0; i < 2; i ++) {
+        NSArray *array = @[@"游戏类",@"工具类",@"DAPP分类"];
+        width = 15;
+        
+        for (int i = 0; i < 3; i ++) {
             UIButton *ClassificationBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:array[i] key:nil] titleColor:kHexColor(@"#acacac") backgroundColor:kClearColor titleFont:16];
             
-            ClassificationBtn.frame = CGRectMake(50 + i % 2 * (SCREEN_WIDTH/2 - 50) , 15, SCREEN_WIDTH/2 - 50, 40);
-            [ClassificationBtn setTitleColor:kHexColor(@"#0064ff") forState:(UIControlStateSelected)];
-            [ClassificationBtn setTitleColor:kHexColor(@"#acacac") forState:(UIControlStateNormal)];
+            ClassificationBtn.frame = CGRectMake(15 , 15, SCREEN_WIDTH/3 - 50, 40);
+
+//            [ClassificationBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+            [ClassificationBtn theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+            [ClassificationBtn setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
             ClassificationBtn.titleLabel.font = HGboldfont(16);
             if (i == 0) {
                 ClassificationBtn.selected = YES;
                 selectBtn = ClassificationBtn;
             }
+            [ClassificationBtn sizeToFit];
+            ClassificationBtn.frame = CGRectMake(width, 15, ClassificationBtn.width , 40);
+        
+            width = ClassificationBtn.xx + 15;
+            
             [ClassificationBtn addTarget:self action:@selector(ClassificationBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
             ClassificationBtn.tag = 200 + i;
+            
             
             
             if (i == 0) {
                 
                 
-                blueView = [[UIView alloc]initWithFrame:CGRectMake(ClassificationBtn.centerX - 20, 48 - 1.5 + 5, 40, 3)];
-                blueView.backgroundColor = kHexColor(@"#0064ff");
+                blueView = [[UIView alloc]initWithFrame:CGRectMake(ClassificationBtn.centerX - 12.5, 48 - 1.5 + 5, 25, 3)];
+                
+                blueView.backgroundColor = kTabbarColor;
                 [self addSubview:blueView];
                 
             }else
@@ -59,9 +72,7 @@
             
         }
         
-        UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 51 - 1.5 + 5, SCREEN_WIDTH, 1)];
-        lineView1.backgroundColor = kLineColor;
-        [self addSubview:lineView1];
+        
         
         
         
@@ -76,7 +87,7 @@
     selectBtn = sender;
     [_delegate ClassificationDelegateSelectBtn:sender.tag - 200];
     [UIView animateWithDuration:0.3 animations:^{
-        blueView.frame = CGRectMake(sender.centerX - 20, 48 - 1.5 + 5, 40, 3);
+        blueView.frame = CGRectMake(sender.centerX - 12.5, 48 - 1.5 + 5, 25, 3);
     }];
 }
 

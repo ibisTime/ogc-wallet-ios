@@ -30,7 +30,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame withCountPerRowInView:(NSUInteger)ArrangeCount cellMargin:(CGFloat)cellMargin{
   if(self = [super initWithFrame: frame]){
-    self.backgroundColor = [UIColor whiteColor];
+//    self.backgroundColor = [UIColor whiteColor];
     _selectedPhotos = [[NSMutableArray alloc] init];
     _selectedAssets = [[NSMutableArray alloc] init];
     
@@ -89,7 +89,7 @@
   layout.minimumLineSpacing = _margin;
   _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.lpd_width, self.lpd_height) collectionViewLayout:layout];
   _collectionView.alwaysBounceVertical = YES;
-  _collectionView.backgroundColor = [UIColor whiteColor];
+    [_collectionView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
   _collectionView.contentInset = _contentInsets;
   _collectionView.dataSource = self;
   _collectionView.delegate = self;

@@ -40,11 +40,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10 + (SCREEN_WIDTH - 30)/350 * 150/2)];
-        topView.backgroundColor = kTabbarColor;
-        [self addSubview:topView];
-        //轮播图
-//        [self initBannerView];
+        [self theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+
         [self addSubview:self.scrollView];
 
         
@@ -73,7 +70,7 @@
     if (!_scrollView) {
 //        CoinWeakSelf;
         [_scrollView removeFromSuperview];
-        _scrollView = [HW3DBannerView initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/350 * 150) imageSpacing:10 imageWidth:SCREEN_WIDTH - 30];
+        _scrollView = [HW3DBannerView initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/690 * 320) imageSpacing:10 imageWidth:SCREEN_WIDTH - 30];
         _scrollView.initAlpha = 0; // 设置两边卡片的透明度
         _scrollView.imageRadius = 6.5; // 设置卡片圆角
 //        _scrollView.imageHeightPoor = 20;// 设置占位图片

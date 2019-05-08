@@ -27,6 +27,8 @@
 
     
     self.titleText.text = [LangSwitcher switchLang:@"修改昵称" key:nil];
+    self.navigationItem.titleView = self.titleText;
+    
     self.contentTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 50) leftTitle:[LangSwitcher switchLang:@"昵称" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请填写昵称" key:nil]];
     self.contentTf.delegate = self;
     self.contentTf.backgroundColor = kWhiteColor;

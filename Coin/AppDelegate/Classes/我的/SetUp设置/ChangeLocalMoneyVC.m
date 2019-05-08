@@ -24,16 +24,7 @@
 @end
 
 @implementation ChangeLocalMoneyVC
-- (void)viewWillAppear:(BOOL)animated
-{
-    //去掉透明后导航栏下边的黑边
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.navigationController.navigationBar setShadowImage:nil];
-}
 
 
 - (void)viewDidLoad {
@@ -49,6 +40,7 @@
     self.langChooseTV.rowHeight = 55;
     [self.view addSubview:self.langChooseTV];
     self.langChooseTV.delegate = self;
+    [self.langChooseTV theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     self.langChooseTV.dataSource = self;
     self.langChooseTV.separatorStyle = UITableViewCellSeparatorStyleNone;
     __weak typeof(self) weakself = self;
@@ -179,9 +171,10 @@
         
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCellId"];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.backgroundColor = kWhiteColor;
+        [cell.textLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+        [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         UIView *line = [[UIView alloc] init];
-        line.backgroundColor = kLineColor;
+        [line theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [cell addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.equalTo(@0.7);

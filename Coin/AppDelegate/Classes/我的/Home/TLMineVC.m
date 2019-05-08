@@ -46,8 +46,8 @@
 #import "MyFriendViewController.h"
 #import "MyBankCardVC.h"
 #import "PrivateKeyWalletVC.h"
-
-
+#import "MessageVC.h"
+#import "AddressBookVC.h"
 @interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate,ZDKHelpCenterConversationsUIDelegate,ZDKHelpCenterDelegate>
 
 
@@ -77,75 +77,6 @@
     [self blessingLoadData];
 }
 
-//-(NSString *)base58OwnerAddress
-//{
-//    NSData *mdata = [self ownerAddress];
-//    NSString *address = BTCBase58StringWithData(mdata);
-//    //    NSLog(@"address is: %@",address);
-//    //    NSData *d = BTCDataFromBase58(address);
-//    //    [self printData:d name:@"reverse 58"];
-//
-//    return address;
-//}
-//
-//-(NSString *)base58CheckOwnerAddress
-//{
-//    NSData *mdata = [self ownerAddress];
-//
-//    NSString *address = BTCBase58CheckStringWithData(mdata);
-//    //    NSLog(@"base58 check address is: %@",address);
-//    return address;
-//}
-//
-//-(NSData *)ownerAddress
-//{
-//    if (_ownerAddress) {
-//        return _ownerAddress;
-//    }
-//    const uint8_t *pubBytes = (const uint8_t *)[_publicKey bytes];
-//    if (_publicKey.length == 65) {
-//        //remove prefix
-//        NSData *pubdata = [_publicKey subdataWithRange:NSMakeRange(1, 64)];
-//        pubBytes = (const uint8_t *)[pubdata bytes];
-//    }
-//
-//    uint8_t l_public[64];
-//    memcpy(l_public, pubBytes, 64);
-//
-//    NSData *data = [NSData dataWithBytes:l_public length:64];
-//    //    [self printData:data name:@"merge pubkey"];
-//
-//    NSData *sha256Data = [data KECCAK256Hash];
-//    //    [self printData:sha256Data name:@"256 key"];
-//
-//    NSData *subData = [sha256Data subdataWithRange:NSMakeRange(sha256Data.length - 20, 20)];
-//
-//    NSMutableData *mdata = [[NSMutableData alloc]init];
-//
-//
-//    //    uint8_t pre = 0xa0;
-//
-//    //on line
-//    uint8_t pre = 0x41;
-//
-//    [mdata appendBytes:&pre length:1];
-//
-//    [mdata appendData:subData];
-//    //    [self printData:mdata name:@" address data "];
-//
-//
-////    NSData *hash0 = [mdata SHA256Hash];
-////    //    [self printData:hash0 name:@" hash 0 "];
-////    NSData *hash1 = [hash0 SHA256Hash];
-////    //    [self printData:hash1 name:@" hash 1 "];
-////
-////    [mdata appendData:[hash1 subdataWithRange:NSMakeRange(0, 4)]];
-//    //    [self printData:mdata name:@"address check sum"];
-//    _ownerAddress = mdata;
-//    return mdata;
-//}
-
-
 
 
 
@@ -163,7 +94,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleText.text = [LangSwitcher switchLang:@"我的" key:nil];
-    self.titleText.font = FONT(18);
     self.navigationItem.titleView = self.titleText;
     //顶部视图
     [self initMineHeaderView];
@@ -173,59 +103,74 @@
     //初始化用户信息
     [[TLUser user] updateUserInfo];
     //通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"PrivateKeyWalletCreat" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"PrivateKeyWalletCreat" object:nil];
 }
 
 
 
 
 #pragma mark -- 接收到通知
-- (void)InfoNotificationAction:(NSNotification *)notification{
-    
-    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
-    if ([TLUser isBlankString:walletDic[@"mnemonics"]] == NO) {
-        PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc] init];
+//- (void)InfoNotificationAction:(NSNotification *)notification{
+//
+//    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+//    if ([TLUser isBlankString:walletDic[@"mnemonics"]] == NO) {
+//        PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    else
+//    {
+//
+//        BuildWalletMineVC *vc = [[BuildWalletMineVC alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//}
+
+//#pragma mark -- 删除通知
+//- (void)dealloc
+//{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PrivateKeyWalletCreat" object:nil];
+//}
+
+-(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
+{
+    if (index == 0) {
+        MessageVC *vc = [MessageVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else
-    {
-        
-        BuildWalletMineVC *vc = [[BuildWalletMineVC alloc] init];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-}
-
-#pragma mark -- 删除通知
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PrivateKeyWalletCreat" object:nil];
-}
-
--(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
-{
-    if ([title isEqualToString:@"账户与安全"]) {
-        SettingVC *settingVC = [SettingVC new];
-        settingVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:settingVC animated:YES];
-    }else
-    if ([title isEqualToString:@"我的好友"]) {
+    if (index == 1) {
         MyFriendViewController *vc = [MyFriendViewController new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }else
-    if ([title isEqualToString:@"邀请有礼"]) {
+    }
+    if (index == 2) {
         TLQrCodeVC *vc = [TLQrCodeVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }else
-    if ([title isEqualToString:@"加入社群"]) {
-        JoinMineVc *vc = [[JoinMineVc alloc] init];
+
+    }
+}
+
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        SettingVC *settingVC = [SettingVC new];
+        settingVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:settingVC animated:YES];
+    }
+    if (indexPath.row == 1) {
+        MyIncomeVC *vc = [MyIncomeVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }else
-    if ([title isEqualToString:@"帮助中心"]) {
+    }
+    if (indexPath.row == 2) {
+        AddressBookVC *vc = [AddressBookVC new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 3) {
         [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
                                clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
                              zendeskUrl: @"https://moorebit.zendesk.com"];
@@ -260,39 +205,108 @@
         helpCenter.uiDelegate = self;
         helpCenter.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:helpCenter animated:YES];
-    }else
-    if ([title isEqualToString:@"设置"]) {
+    }
+    if (indexPath.row == 4) {
+        TLQusertionVC * vc = [TLQusertionVC new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 5) {
         TLMeSetting *vc = [[TLMeSetting alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    else if([title isEqualToString:@"金米钱包"])
-    {
-        NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
-        if ([TLUser isBlankString:walletDic[@"mnemonics"]] == NO) {
-            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        else
-        {
-            
-            BuildWalletMineVC *vc = [[BuildWalletMineVC alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    }else
-        if ([title isEqualToString:@"金米福分"]) {
-            GoldenRiceBlessingVC *vc = [[GoldenRiceBlessingVC alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.blessing = self.tableView.blessing;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        else
-    {
-        [TLAlert alertWithInfo:@"敬请期待"];
-    }
 }
+
+//-(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title{
+//    if ([title isEqualToString:@"账户与安全"]) {
+//        SettingVC *settingVC = [SettingVC new];
+//        settingVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:settingVC animated:YES];
+//    }else
+//    if ([title isEqualToString:@"我的好友"]) {
+//        MyFriendViewController *vc = [MyFriendViewController new];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }else
+//    if ([title isEqualToString:@"邀请有礼"]) {
+//        TLQrCodeVC *vc = [TLQrCodeVC new];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }else
+//    if ([title isEqualToString:@"加入社群"]) {
+//        JoinMineVc *vc = [[JoinMineVc alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }else
+//    if ([title isEqualToString:@"帮助中心"]) {
+//        [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
+//                               clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
+//                             zendeskUrl: @"https://moorebit.zendesk.com"];
+//
+//        id<ZDKObjCIdentity> userIdentity = [[ZDKObjCAnonymous alloc] initWithName:nil email:nil];
+//        [[ZDKZendesk instance] setIdentity:userIdentity];
+//        [ZDKCoreLogger setEnabled:YES];
+//        [ZDKSupport initializeWithZendesk:[ZDKZendesk instance]];
+//        LangType type = [LangSwitcher currentLangType];
+//        NSString *lan;
+//        if (type == LangTypeSimple || type == LangTypeTraditional) {
+//            lan = @"zh-cn";
+//        }else if (type == LangTypeKorean)
+//        {
+//            lan = @"ko";
+//        }else{
+//            lan = @"en-us";
+//        }
+//        [ZDKSupport instance].helpCenterLocaleOverride = lan;
+//        [ZDKLocalization localizedStringWithKey:lan];
+//        ZDKHelpCenterUiConfiguration *hcConfig  =  [ZDKHelpCenterUiConfiguration  new];
+//        [ZDKTheme  currentTheme].primaryColor  = [UIColor redColor];
+//        UIViewController<ZDKHelpCenterDelegate>*helpCenter  =  [ ZDKHelpCenterUi  buildHelpCenterOverviewWithConfigs :@[hcConfig]];
+//
+//        self.navigationController.navigationBar.translucent = YES;
+//        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+//        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+//        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//        self.navigationItem.backBarButtonItem = item;
+//        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor],NSFontAttributeName : [UIFont fontWithName:@"Helvetica-Bold" size:16]}];
+//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//        helpCenter.uiDelegate = self;
+//        helpCenter.hidesBottomBarWhenPushed=YES;
+//        [self.navigationController pushViewController:helpCenter animated:YES];
+//    }else
+//    if ([title isEqualToString:@"设置"]) {
+//        TLMeSetting *vc = [[TLMeSetting alloc] init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    else if([title isEqualToString:@"金米钱包"])
+//    {
+//        NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+//        if ([TLUser isBlankString:walletDic[@"mnemonics"]] == NO) {
+//            PrivateKeyWalletVC *vc = [[PrivateKeyWalletVC alloc] init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//        else
+//        {
+//
+//            BuildWalletMineVC *vc = [[BuildWalletMineVC alloc] init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }else
+//        if ([title isEqualToString:@"金米福分"]) {
+//            GoldenRiceBlessingVC *vc = [[GoldenRiceBlessingVC alloc] init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            vc.blessing = self.tableView.blessing;
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//        else
+//    {
+//        [TLAlert alertWithInfo:@"敬请期待"];
+//    }
+//}
 
 -(void)blessingLoadData
 {
@@ -403,10 +417,6 @@
     [self.view addSubview:self.tableView];
 }
 
--(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
-{
-    
-}
 
 - (TLImagePicker *)imagePicker {
     if (!_imagePicker) {

@@ -81,6 +81,12 @@
 
 -(void)setPlatforms:(CurrencyModel *)platforms
 {
+    NSString *amount = [CoinUtil convertToRealCoin:platforms.amount coin:platforms.currency];
+    NSString *frozenAmount = [CoinUtil convertToRealCoin:platforms.frozenAmount coin:platforms.currency];
+    NSString *available = [amount subNumber:frozenAmount];
+    
+    
+    
     CoinModel *coin = [CoinUtil getCoinModel:platforms.currency];
     [iconImg sd_setImageWithURL:[NSURL URLWithString:[coin.pic1 convertImageUrl]]];
     nameLabel.text = platforms.currency;

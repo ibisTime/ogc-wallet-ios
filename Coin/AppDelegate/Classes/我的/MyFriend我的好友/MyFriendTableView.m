@@ -48,7 +48,7 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
 
     
     MyFriendCellCell *cell = [tableView dequeueReusableCellWithIdentifier:MyFriendCell forIndexPath:indexPath];
-    
+    [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (self.models.count > 0) {
         cell.model = self.models[indexPath.row];

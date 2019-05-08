@@ -31,74 +31,41 @@
 - (void)initSubviews {
     
 
-        self.nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
-        [self addSubview:self.nameLab];
+    [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    
+    self.nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
+    self.nameLab.frame = CGRectMake(15, 16, SCREEN_WIDTH/2, 22.5);
+    [self addSubview:self.nameLab];
 
-        self.stateLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
-        [self addSubview:self.stateLab];
+    self.stateLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
+    self.stateLab.frame = CGRectMake(self.nameLab.xx, 16, SCREEN_WIDTH - 44 - self.nameLab.xx, 22.5);
+    self.stateLab.textAlignment = NSTextAlignmentRight;
+    [self addSubview:self.stateLab];
 
-        self.desLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
-        [self addSubview:self.desLab];
-    self.desLab.numberOfLines = 0;
-
-        self.timeLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor2 font:11];
-        self.timeLab.numberOfLines = 0;
+    self.timeLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
+    self.timeLab.frame = CGRectMake(15, self.nameLab.yy + 5, SCREEN_WIDTH/2, 16.5);
     [self addSubview:self.timeLab];
     
-    self.moreButton = [UIButton buttonWithTitle:@"" titleColor:kClearColor backgroundColor:kClearColor titleFont:12];
-    [self.moreButton setImage:kImage(@"更多") forState:UIControlStateNormal];
+
+    self.desLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor2 font:11];
+    self.desLab.numberOfLines = 0;
+    self.desLab.frame = CGRectMake(self.timeLab.xx , self.nameLab.yy + 5, SCREEN_WIDTH - 44 - self.timeLab.xx, 16.5);
+    self.desLab.textAlignment = NSTextAlignmentRight;
+    [self addSubview:self.desLab];
     
+    self.moreButton = [UIButton buttonWithTitle:@"" titleColor:kClearColor backgroundColor:kClearColor titleFont:12];
+    self.moreButton.frame = CGRectMake(SCREEN_WIDTH - 15 - 7, 75/2 - 6, 7, 12);
+    [self.moreButton theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
     [self addSubview:self.moreButton];
     
     
-    [self.nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(10);
-        make.left.equalTo(self.mas_left).offset(10);
-        
-    }];
-    [self.stateLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mas_top).offset(10);
-        make.right.equalTo(self.mas_right).offset(-10);
-        
-    }];
-    
-    [self.desLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.nameLab.mas_bottom).offset(10);
-        make.left.equalTo(self.mas_left).offset(10);
-        make.right.equalTo(self.mas_right).offset(-100);
-
-    }];
-    
-    
-    [self.timeLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.desLab.mas_bottom).offset(8);
-        make.left.equalTo(self.mas_left).offset(10);
-        make.right.equalTo(self.mas_right).offset(-100);
-        
-    }];
-    
-    [self.moreButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.stateLab.mas_bottom).offset(8);
-        make.right.equalTo(self.mas_right).offset(-10);
-        make.centerY.equalTo(self.mas_centerY);
-        
-    }];
 
     UIView *vi = [UIView new];
-    vi.backgroundColor = kHexColor(@"#F0F2F7");
-    
+    vi.frame = CGRectMake(15, 74.5, SCREEN_WIDTH - 30, 0.5);
+//    vi.backgroundColor = kHexColor(@"#F0F2F7");
+    [vi theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self addSubview:vi];
-    [vi mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.mas_bottom);
-        make.right.equalTo(self.mas_right).offset(0);
-        make.left.equalTo(self.mas_left).offset(0);
-        make.height.equalTo(@2);
-        
-    }];
-    self.layer.borderWidth = 0.3;
-    self.layer.borderColor = kLineColor.CGColor;
-    self.layer.cornerRadius = 4;
-    self.clipsToBounds = YES;
+
 
 }
 
@@ -114,7 +81,7 @@
     self.nameLab.text = [TLUser user].nickname;
     if ([model.status isEqualToString:@"0"]) {
         self.stateLab.text = [LangSwitcher switchLang:@"待确认" key:nil];
-        self.stateLab.textColor = kHexColor(@"#007AFF ");
+//        self.stateLab.textColor = kHexColor(@"#007AFF ");
         self.desLab.text = [LangSwitcher switchLang:@"奖励确认中" key:nil];
         self.timeLab.text = [model.commitDatetime convertRedDate];
     }else if ([model.status isEqualToString:@"1"])
@@ -133,26 +100,7 @@
             type = [LangSwitcher switchLang:@"优化缺陷" key:nil];
 
         }
-//        CoinModel *currentCoin = [CoinUtil getCoinModel:@"WAN"];
-//
-//        NSString *leftAmount = [model.payAmount subNumber:currentCoin.withdrawFeeString];
-//        NSString *text1 =  [CoinUtil convertToRealCoin:leftAmount coin:@"WAN"];
-//
-//
-//        NSString *str = [NSString stringWithFormat:@"%@%.2fwan-%@,%@%@%@",[LangSwitcher switchLang:@"奖励" key:nil],[text1 floatValue],type,model.repairVersionCode,[LangSwitcher switchLang:@"已于" key:nil],[LangSwitcher switchLang:@"修复" key:nil]];
-//        NSString *money = [NSString stringWithFormat:@"%@",text1];
-////        NSString *money = [NSString stringWithFormat:@"%@",[CoinUtil convertToRealCoin:model.payAmount coin:@"wan"]];
-//        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-//        if ([LangSwitcher currentLangType] == LangTypeEnglish) {
-//            [attrStr addAttribute:NSForegroundColorAttributeName
-//                            value:kHexColor(@"#007AFF")
-//                            range:NSMakeRange(6, money.length+3)];
-//        }else{
-//            [attrStr addAttribute:NSForegroundColorAttributeName
-//                            value:kHexColor(@"#007AFF")
-//                            range:NSMakeRange(2, money.length+3)];
-//        }
-        
+
         self.desLab.text = [LangSwitcher switchLang:@"奖励发放中" key:nil];
         self.timeLab.text = [model.commitDatetime convertRedDate];
         

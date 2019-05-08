@@ -19,6 +19,7 @@
     [super viewDidLoad];
 
     self.titleText.text = [LangSwitcher switchLang:@"更多" key:nil];
+    self.navigationItem.titleView = self.titleText;
     self.web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT - kNavigationBarHeight)];
 //    self.web.scalesPageToFit = YES;
     [self.view addSubview:self.web];

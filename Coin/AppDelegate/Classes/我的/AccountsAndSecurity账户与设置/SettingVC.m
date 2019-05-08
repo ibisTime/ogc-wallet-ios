@@ -70,7 +70,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.titleText.text = [LangSwitcher switchLang:@"账户与安全" key:nil];
-//    self.navigationItem.titleView = self.titleText;
+    self.navigationItem.titleView = self.titleText;
+    
     [self initTableView];
     [self LoadData];
 }
@@ -161,10 +162,9 @@
     
 }
 
-
--(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([title isEqualToString:@"交易密码"]) {
+    if (indexPath.row == 0) {
         if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
             TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
             vc.titleString = @"设置交易密码";
@@ -176,63 +176,115 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
-    if ([title isEqualToString:@"手势密码"]) {
+    if (indexPath.row == 1) {
         
     }
-    if ([title isEqualToString:@"身份认证"]) {
-        if ([TLUser isBlankString:[TLUser user].idNo] == YES)
-        {
-            ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
-            engine.delegate = self;
-            engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
-            engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
-            [engine startOcrScanIdCardInViewController:self];
-        }
-        
+    if (indexPath.row == 2) {
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"修改登录密码";
+        [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([title isEqualToString:@"绑定邮箱"]) {
+    if (indexPath.row == 3) {
         if ([TLUser isBlankString:[TLUser user].email] == YES) {
             BindingEmailVC *vc = [BindingEmailVC new];
             vc.titleStr = @"绑定邮箱";
             [self.navigationController pushViewController:vc animated:YES];
+        }else
+        {
+            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+            vc.titleString = @"修改邮箱";
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
-    if ([title isEqualToString:@"绑定手机号码"]) {
+    if (indexPath.row == 4) {
         if ([TLUser isBlankString:[TLUser user].mobile] == YES)
         {
             BindingEmailVC *vc = [BindingEmailVC new];
             vc.titleStr = @"绑定手机号";
             [self.navigationController pushViewController:vc animated:YES];
+        }else
+        {
+            ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+            vc.titleString = @"修改手机号";
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
-    if ([title isEqualToString:@"我的收款账号"]) {
-        MyBankCardVC *vc = [[MyBankCardVC alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if ([title isEqualToString:@"修改邮箱"]) {
-        if ([TLUser isBlankString:[TLUser user].email] == YES) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"未绑定邮箱,请前去绑定" key:nil]];
-            return;
-        }
-        ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-        vc.titleString = @"修改邮箱";
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if ([title isEqualToString:@"修改手机号码"]) {
-        if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"未绑定手机号,请前去绑定" key:nil]];
-            return;
-        }
-        ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
-        vc.titleString = @"修改手机号";
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if ([title isEqualToString:@"修改登录密码"]) {
-        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-        vc.titleString = @"修改登录密码";
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+    
 }
+
+//-(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title{
+//
+//
+//
+//    if ([title isEqualToString:@"交易密码"]) {
+//        if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+//            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+//            vc.titleString = @"设置交易密码";
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }else
+//        {
+//            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+//            vc.titleString = @"修改交易密码";
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }
+//    if ([title isEqualToString:@"手势密码"]) {
+//
+//    }
+//    if ([title isEqualToString:@"身份认证"]) {
+//        if ([TLUser isBlankString:[TLUser user].idNo] == YES)
+//        {
+//            ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
+//            engine.delegate = self;
+//            engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+//            engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+//            [engine startOcrScanIdCardInViewController:self];
+//        }
+//
+//    }
+//    if ([title isEqualToString:@"绑定邮箱"]) {
+//        if ([TLUser isBlankString:[TLUser user].email] == YES) {
+//            BindingEmailVC *vc = [BindingEmailVC new];
+//            vc.titleStr = @"绑定邮箱";
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }
+//    if ([title isEqualToString:@"绑定手机号码"]) {
+//        if ([TLUser isBlankString:[TLUser user].mobile] == YES)
+//        {
+//            BindingEmailVC *vc = [BindingEmailVC new];
+//            vc.titleStr = @"绑定手机号";
+//            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//    }
+//    if ([title isEqualToString:@"我的收款账号"]) {
+//        MyBankCardVC *vc = [[MyBankCardVC alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    if ([title isEqualToString:@"修改邮箱"]) {
+//        if ([TLUser isBlankString:[TLUser user].email] == YES) {
+//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"未绑定邮箱,请前去绑定" key:nil]];
+//            return;
+//        }
+//        ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+//        vc.titleString = @"修改邮箱";
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    if ([title isEqualToString:@"修改手机号码"]) {
+//        if ([TLUser isBlankString:[TLUser user].mobile] == YES) {
+//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"未绑定手机号,请前去绑定" key:nil]];
+//            return;
+//        }
+//        ChangePhoneAndEmailVC *vc = [ChangePhoneAndEmailVC new];
+//        vc.titleString = @"修改手机号";
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//    if ([title isEqualToString:@"修改登录密码"]) {
+//        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+//        vc.titleString = @"修改登录密码";
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
+//}
 
 
 
@@ -365,12 +417,12 @@
         _loginOutBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 55, kScreenWidth - 40, 50)];
         _loginOutBtn.backgroundColor = kClearColor;
         [_loginOutBtn setTitle:[LangSwitcher switchLang:@"退出登录" key:nil] forState:UIControlStateNormal];
-        [_loginOutBtn setTitleColor:RGB(54, 73, 198) forState:UIControlStateNormal];
+        [_loginOutBtn setTitleColor:kHexColor(@"#77A4FF") forState:UIControlStateNormal];
         _loginOutBtn.layer.cornerRadius = 5;
         _loginOutBtn.layer.borderWidth = 1;
-        _loginOutBtn.layer.borderColor = RGB(54, 73, 198).CGColor;
+        _loginOutBtn.layer.borderColor = kHexColor(@"#77A4FF").CGColor;
         _loginOutBtn.clipsToBounds = YES;
-        _loginOutBtn.titleLabel.font = FONT(15);
+        _loginOutBtn.titleLabel.font = FONT(16);
         [_loginOutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     }
     return _loginOutBtn;

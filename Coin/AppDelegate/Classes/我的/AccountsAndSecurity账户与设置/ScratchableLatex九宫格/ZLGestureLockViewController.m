@@ -88,7 +88,7 @@
     [super viewDidLoad];
     self.titleText.text = [LangSwitcher switchLang:@"手势密码" key:nil];
 
-
+    self.navigationItem.titleView = self.titleText;
     [self setupMainUI];
     
     self.gestureLockView.delegate = self;

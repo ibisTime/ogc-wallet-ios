@@ -20,18 +20,17 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
 
-        self.iconImageView = [[UIImageView alloc] init];
-        [self.contentView addSubview:self.iconImageView];
-        self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@20);
-            make.height.equalTo(@20);
-            make.centerY.equalTo(self.contentView.mas_centerY);
-            make.left.equalTo(self.contentView.mas_left).offset(20);
-            
-        }];
+//        self.iconImageView = [[UIImageView alloc] init];
+//        [self.contentView addSubview:self.iconImageView];
+//        self.iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+//        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.width.equalTo(@20);
+//            make.height.equalTo(@20);
+//            make.centerY.equalTo(self.contentView.mas_centerY);
+//            make.left.equalTo(self.contentView.mas_left).offset(20);
+//        }];
         
         //右边箭头
         self.accessoryImageView = [[UIImageView alloc] init];
@@ -43,7 +42,7 @@
             make.right.equalTo(self.contentView.mas_right).offset(-15);
             
         }];
-        self.accessoryImageView.image = [UIImage imageNamed:@"更多-灰色"];
+        [self.accessoryImageView theme_setImageIdentifier:@"我的跳转" moduleName:ImgAddress];
         
         self.rightLabel = [UILabel labelWithBackgroundColor:kClearColor textColor:kTabbarColor font:12.0];
         self.rightLabel.hidden = YES;
@@ -61,7 +60,7 @@
         
         [self.contentView addSubview:self.titleLbl];
         [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.iconImageView.mas_right).offset(20);
+            make.left.equalTo(self.mas_right).offset(20);
             
             make.centerY.equalTo(self.contentView.mas_centerY);
             make.right.lessThanOrEqualTo(self.rightLabel.mas_right).offset(10);
@@ -81,14 +80,14 @@
         self.sw = sw;
         
         UIView *line = [[UIView alloc] init];
-        line.backgroundColor = kLineColor;
+        [line theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:line];
         [line mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(15);
             make.right.equalTo(self.mas_right).offset(-15);
 
-            make.height.equalTo(@1);
-            make.bottom.equalTo(self.mas_bottom).offset(-1);
+            make.height.equalTo(@0.5);
+            make.bottom.equalTo(self.mas_bottom).offset(-0.5);
         }];
         
     }
@@ -97,18 +96,18 @@
 }
 
 - (void)setSettingModel:(SettingModel *)settingModel {
-    if (self.iconImageView.hidden == YES) {
-        [self.titleLbl mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.mas_left).offset(20);
-            
-            make.centerY.equalTo(self.contentView.mas_centerY);
-            make.right.lessThanOrEqualTo(self.accessoryImageView.mas_left);
-        }];
-    }else{
-        self.iconImageView.image = [UIImage imageNamed:settingModel.imgName];
-
-        
-    }
+//    if (self.iconImageView.hidden == YES) {
+//        [self.titleLbl mas_remakeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(self.mas_left).offset(20);
+//
+//            make.centerY.equalTo(self.contentView.mas_centerY);
+//            make.right.lessThanOrEqualTo(self.accessoryImageView.mas_left);
+//        }];
+//    }else{
+//        self.iconImageView.image = [UIImage imageNamed:settingModel.imgName];
+//
+//
+//    }
     self.titleLbl.text = settingModel.text;
     self.rightLabel.text = settingModel.subText;
     

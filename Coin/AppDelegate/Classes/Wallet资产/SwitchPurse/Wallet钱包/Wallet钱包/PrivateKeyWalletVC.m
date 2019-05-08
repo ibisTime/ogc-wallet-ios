@@ -90,7 +90,8 @@
     [self initTableView];
     self.RightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     self.RightButton.titleLabel.font = FONT(16);
-    [self.RightButton setTitleColor:kWhiteColor forState:(UIControlStateNormal)];
+    
+    [self.RightButton theme_setTitleIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [self.RightButton setTitle:@"钱包工具" forState:(UIControlStateNormal)];
     [self.RightButton addTarget:self action:@selector(RightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

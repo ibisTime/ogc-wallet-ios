@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     
     self.titleText.text = [LangSwitcher switchLang:@"身份认证" key:nil];
-    
+    self.navigationItem.titleView = self.titleText;
     [self initSubviews];
 
 }

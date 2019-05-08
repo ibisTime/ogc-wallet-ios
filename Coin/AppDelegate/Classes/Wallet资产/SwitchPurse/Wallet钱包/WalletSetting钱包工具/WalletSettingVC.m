@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     self.titleText.text = [LangSwitcher switchLang:@"钱包工具" key:nil];
+    self.navigationItem.titleView = self.titleText;
     [self setGroup];
     [self initTableView];
     [super viewDidLoad];

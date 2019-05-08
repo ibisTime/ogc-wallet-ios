@@ -37,6 +37,7 @@
     // Do any additional setup after loading the view.
     self.titleText.text = [LangSwitcher switchLang:@"交易详情" key:nil];
 
+    self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self initHeaderView];
     
@@ -162,6 +163,7 @@
         self.titleText.text =  [LangSwitcher switchLang:@"转入" key:nil];
         
     }
+    self.navigationItem.titleView = self.titleText;
     //
     [amountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         

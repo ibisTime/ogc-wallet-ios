@@ -48,7 +48,7 @@
     // Do any additional setup after loading the view.
     
     self.titleText.text = [LangSwitcher switchLang:@"收款" key:nil];
-    
+    self.navigationItem.titleView = self.titleText;
     //提示框
     [self initTopView];
     //二维码
@@ -99,13 +99,13 @@
    
  
 
-    UILabel *lab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:16];
+    UILabel *lab = [[UILabel alloc]init];
     lab.font = HGboldfont(14);
     lab.textAlignment = NSTextAlignmentCenter;
     [self.topView addSubview:lab];
     lab.frame = CGRectMake(0, 32.5, kScreenWidth - 30, 22.5);
     lab.text = [LangSwitcher switchLang:@"钱包地址" key:nil];
-    
+    lab.textColor = [UIColor blackColor];
     
     
     //二维码

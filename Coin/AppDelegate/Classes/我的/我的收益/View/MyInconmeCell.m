@@ -14,6 +14,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         _numberLabel = [UILabel labelWithFrame:CGRectMake(15, 20, 50, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#999999")];
         [self addSubview:_numberLabel];
 
@@ -32,7 +35,7 @@
         [self addSubview:_priceLabel];
 
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(66, 59, SCREEN_WIDTH - 66 - 15 , 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
 
     }

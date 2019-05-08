@@ -59,7 +59,7 @@ void TLLog(NSString *format, ...) {
             
 //            self.addr = @"http://120.26.6.213:5801";
 //金米
-            self.addr = @"http://3.1.207.21:2701";
+            self.addr = @"http://api.wwdev.hichengdai.com/";
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info/";
@@ -75,7 +75,7 @@ void TLLog(NSString *format, ...) {
 
 //            self.qiniuDomain = @"http://pajvine9a.bkt.clouddn.com";
 //            self.addr = @"http://47.75.165.70:2101";
-            self.addr = @"http://3.1.216.216:2801";
+//            self.addr = @"http://3.1.216.216:2801";
 
             self.ethHash = @"https://etherscan.io/tx";
             self.wanHash = @"https://www.wanscan.org/tx";
@@ -88,14 +88,14 @@ void TLLog(NSString *format, ...) {
 }
 
 - (NSString *)apiUrl {
-    
-    if ([self.addr hasSuffix:@"api"]) {
-        
-        return self.addr;
-        
-    }
-    
-    return [self.addr stringByAppendingString:@"/forward-service/api"];
+    return self.addr;
+//    if ([self.addr hasSuffix:@"api"]) {
+//
+//        return self.addr;
+//
+//    }
+//
+//    return [self.addr stringByAppendingString:@"/forward-service/api"];
 }
 
 //- (NSString *)ipUrl {
