@@ -79,6 +79,8 @@
     //    pwdTf.keyboardType = UIKeyboardTypePhonePad;
 //    pwdTf.returnKeyType = UIReturnKeyNext;
     pwdTf.secureTextEntry = YES;
+    pwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [pwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:pwdTf];
     self.pwdTf = pwdTf;
     UIView *phone3 = [[UIView alloc] init];
@@ -95,6 +97,8 @@
     
     [self.view addSubview:rePwdTf];
     self.rePwdTf = rePwdTf;
+    rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     UIView *phone4 = [[UIView alloc] init];
     [self.view addSubview:phone4];
     phone4.backgroundColor = kLineColor;
@@ -103,15 +107,19 @@
     TLTextField *surePwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, rePwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"确认密码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入密码" key:nil]];
     //    rePwdTf.keyboardType = UIKeyboardTypePhonePad;
     surePwdTf.secureTextEntry = YES;
-
+    surePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [surePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     surePwdTf.returnKeyType = UIReturnKeyDone;
     [rePwdTf addTarget:self action:@selector(changePwd) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [self.view addSubview:surePwdTf];
     self.surePwdTf = surePwdTf;
+    
+    
     UIView *phone5 = [[UIView alloc] init];
     [self.view addSubview:phone5];
-    phone5.backgroundColor = kLineColor;
+//    phone5.backgroundColor = kLineColor;
+    
     phone5.frame = CGRectMake(btnMargin, surePwdTf.yy, w-30, 1);
     UIButton *confirmBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确认" key:nil] titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:16.0 cornerRadius:5];
     
@@ -126,6 +134,10 @@
         make.top.mas_equalTo(surePwdTf.mas_bottom).mas_equalTo(20);
         
     }];
+    
+    [phone3 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+    [phone4 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+    [phone5 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
 }
 - (void)chooseCountry
 {

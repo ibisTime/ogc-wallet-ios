@@ -45,6 +45,9 @@ static NSString *MyAsstes = @"MyAsstesCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSArray *array = [CustomFMDB FMDBqueryMnemonics];
     cell.walletDic = array[indexPath.row];
+    if (self.dataArray.count > 0) {
+        cell.price = self.dataArray[indexPath.row];
+    }
     return cell;
 }
 

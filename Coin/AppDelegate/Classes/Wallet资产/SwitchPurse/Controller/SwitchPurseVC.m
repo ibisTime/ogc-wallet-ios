@@ -11,9 +11,24 @@
 #import "SwitchPurseHeadView.h"
 #import "BuildWalletMineVC.h"
 #import "WalletImportVC.h"
+#import "BTCMnemonic.h"
+#import "BuildSucessVC.h"
+#import "BuildWalletMineVC.h"
+#import "BTCMnemonic.h"
+#import "BTCNetwork.h"
+#import "BTCData.h"
+#import "MnemonicUtil.h"
+#import "BTCKeychain.h"
+#import "BillModel.h"
+#import "AssetsHeadView.h"
+#import "MyAssetsHeadView.h"
+#import "SwitchPurseVC.h"
+#import "TWWalletAccountClient.h"
+#import "WalletSettingVC.h"
 @interface SwitchPurseVC ()<RefreshDelegate>
 @property (nonatomic , strong)SwitchPurseHeadView *headView;
 @property (nonatomic , strong)SwitchPurseTableView *tableView;
+@property (nonatomic , strong)NSArray *dataArray;
 @end
 
 @implementation SwitchPurseVC
@@ -40,6 +55,7 @@
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headView;
+    [self LoadData];
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,6 +81,103 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     
+}
+
+-(void)LoadData
+{
+    CustomFMDBModel *_fmdbModel;
+    
+    NSMutableArray *walletList = [NSMutableArray array];
+    NSMutableArray *accountList = [NSMutableArray array];
+    
+    NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
+    NSMutableArray *muArray;
+    
+    NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+    
+    for (int i = 0; i < array.count; i ++) {
+        muArray = [NSMutableArray array];
+        _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:array[i]];
+        
+        for (int i = 0; i < arr.count; i++) {
+            CoinModel *model = arr[i];
+            
+            NSArray *array = [_fmdbModel.mnemonics componentsSeparatedByString:@" "];
+            BTCMnemonic *mnemonic1 =  [MnemonicUtil importMnemonic:array];
+            
+            if ([AppConfig config].runEnv == 0)
+            {
+                mnemonic1.keychain.network = [BTCNetwork mainnet];
+            }else{
+                mnemonic1.keychain.network = [BTCNetwork testnet];
+            }
+            NSString *prikey = [MnemonicUtil getPrivateKeyWithMnemonics:_fmdbModel.mnemonics];
+            
+            NSString *address;
+            
+            
+            if ([model.type isEqualToString:@"0"] || [model.type isEqualToString:@"0T"])
+            {
+                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+            }
+            else if ([model.type isEqualToString:@"1"] || [model.type isEqualToString:@"3"])
+            {
+                address = [MnemonicUtil getBtcAddress:mnemonic1];
+            }else if ([model.type isEqualToString:@"2"] || [model.type isEqualToString:@"2T"])
+            {
+                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+            }else if ([model.type isEqualToString:@"4"])
+            {
+                TWWalletType type = TWWalletCold;
+                NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+                NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
+                //    TWWalletAccountClient *client = [[TWWalletAccountClient alloc] initWithGenKey:YES type:type];
+                TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
+                [client store:dic[@"pwd"]];
+                
+                //    [client store:password];
+                
+                //    NSString *str = [self base58CheckOwnerAddress];
+                address = [client base58OwnerAddress];
+            }
+
+            NSDictionary *coinDic = @{@"symbol":model.symbol,
+                                      @"address":address,
+                                      };
+            [muArray addObject:coinDic];
+            
+        }
+        NSDictionary *walletListDic = @{@"walletId":_fmdbModel.walletName,
+                                        @"accountList":muArray
+                                        };
+//        [muArray setValue:_fmdbModel.walletName forKey:@"walletId"];
+//        [accountList addObjectsFromArray:muArray];
+        
+
+        
+        [walletList addObject:walletListDic];
+        
+    }
+    
+    
+    
+    
+//    self.addressArray = muArray;
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"802272";
+    http.showView = self.view;
+    http.parameters[@"walletList"] = walletList;
+ 
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.dataArray = responseObject[@"data"][@"walletList"];
+        self.tableView.dataArray = self.dataArray;
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        [self.tableView endRefreshHeader];
+    }];
 }
 
 - (void)viewDidLoad {

@@ -187,30 +187,7 @@
     [lineView3 theme_setBackgroundColorIdentifier:GaryLabelColor moduleName:ColorName];
     
     _isSelect = @"1";
-//    self.introduceButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [self.view addSubview:self.introduceButton];
-//    [self.introduceButton setImage:kImage(@"Combined Shape2") forState:UIControlStateNormal];
-//    [self.introduceButton setImage:kImage(@"Oval Copy2") forState:UIControlStateSelected];
-//    [self.introduceButton addTarget:self action:@selector(html5Pri:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.introduceButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(rePwdTf.mas_bottom).offset(15);
-//        make.left.equalTo(self.view.mas_left).offset(15);
-//        make.width.equalTo(@(30));
-//        make.height.equalTo(@30);
-//
-//    }];
-//
-//    UIButton *button = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"我已阅读并同意服务及隐私条款" key:nil] titleColor:kAppCustomMainColor backgroundColor:kClearColor titleFont:12];
-//    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//    [button addTarget:self action:@selector(buttonClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    [self.view addSubview:button];
-//    [button mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(rePwdTf.mas_bottom).offset(15);
-//        make.left.equalTo(self.introduceButton.mas_right).offset(0);
-//        make.width.equalTo(@(SCREEN_WIDTH - 60));
-//        make.height.equalTo(@30);
-//
-//    }];
+
     
     self.importButton = [UIButton buttonWithImageName:nil cornerRadius:6];
     NSString *text2 = [LangSwitcher switchLang:@"导入钱包" key:nil];

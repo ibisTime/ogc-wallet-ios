@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface FindTheGameModel : NSObject
-
+@property (nonatomic , copy)NSString *icon;
 @property (nonatomic , copy)NSString *location;
 @property (nonatomic , copy)NSString *status;
 @property (nonatomic , copy)NSString *volume;

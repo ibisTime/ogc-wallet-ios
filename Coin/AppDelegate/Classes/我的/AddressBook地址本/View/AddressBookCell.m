@@ -44,4 +44,11 @@
     return self;
 }
 
+-(void)setModel:(AddressModel *)model
+{
+    _nameLabel.text = model.label;
+    _timeLabel.text = [model.createDatetime convertToDetailDate];
+    _addressLabel.text = model.address;
+}
+
 @end

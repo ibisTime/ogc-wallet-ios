@@ -31,9 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    backView.backgroundColor = kWhiteColor;
-    [self.view addSubview:backView];
     
     nameLable = [[UILabel alloc]initWithFrame:CGRectMake(54, kStatusBarHeight, kScreenWidth - 108, 44)];
 //    nameLable.text = [LangSwitcher switchLang:@"攻略" key:nil];

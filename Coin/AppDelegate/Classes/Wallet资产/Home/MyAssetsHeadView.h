@@ -13,4 +13,5 @@
 @property (nonatomic , strong)NSDictionary *dataDic;
 @property (nonatomic , strong)UILabel *nameLable;
 @property (nonatomic , strong)UIButton *SwitchPurse;
+@property (nonatomic , strong)UIButton *backBtn;
 @end

@@ -41,7 +41,7 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 8;
+    return self.models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -51,7 +51,7 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
     AddressBookCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressBookCell" forIndexPath:indexPath];
     [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.model = self.models[indexPath.row];
     return cell;
 }
 

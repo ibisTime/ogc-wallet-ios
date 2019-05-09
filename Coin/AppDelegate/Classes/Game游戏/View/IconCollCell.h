@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FindTheGameModel.h"
+@protocol IconCollDelegate <NSObject>
 
+-(void)IconCollDelegateSelectBtn:(NSInteger)tag;
+
+
+@end
 @interface IconCollCell : UICollectionViewCell
 
+@property (nonatomic, assign) id <IconCollDelegate> delegate;
+
+@property (nonatomic , strong)UIScrollView *scrollView;
+@property (nonatomic , strong)NSMutableArray <FindTheGameModel *>*dataArray;
 @property (nonatomic , strong)UIButton *iconButton;
 @property (nonatomic , strong)UIImageView *iconImage;
 @property (nonatomic , strong)UILabel *nameLbl;
+
 @end

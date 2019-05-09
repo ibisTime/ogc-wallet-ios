@@ -12,6 +12,7 @@
 #import "HTMLStrVC.h"
 #import "GeneralWebView.h"
 #import "StrategyVC.h"
+#import "PosMiningVC.h"
 @interface FindTheGameVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)FindTheGameTableView *tableView;

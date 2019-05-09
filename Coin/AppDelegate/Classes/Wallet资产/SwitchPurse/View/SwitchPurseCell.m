@@ -55,6 +55,22 @@
     allAssetsLbl.text = [NSString stringWithFormat:@"%@ 总资产（¥）",walletDic[@"walletName"]];
 }
 
+-(void)setPrice:(NSDictionary *)price
+{
+    if ([[TLUser user].localMoney isEqualToString:@"USD"])
+    {
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f", [[price[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
+    }
+    else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
+    {
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f", [[price[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
+    }
+    else
+    {
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f", [[price[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
+    }
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

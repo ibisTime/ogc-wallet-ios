@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SwitchPurseCell : UITableViewCell
 @property (nonatomic , strong)NSDictionary *walletDic;
+@property (nonatomic , strong)NSDictionary *price;
 @end
 
 NS_ASSUME_NONNULL_END

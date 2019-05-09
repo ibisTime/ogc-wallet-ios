@@ -54,66 +54,30 @@ static NSString *identifierCell = @"SettingCell";
     self.group.items = self.group.sections[indexPath.section];
     SettingModel *settingModel = self.group.items[indexPath.row];
     
-    CoinWeakSelf;
-    cell.SwitchBlock = ^(NSInteger switchBlock) {
-        if (self.SwitchBlock) {
-            self.SwitchBlock(switchBlock);
-        }
-    };
+//    CoinWeakSelf;
+//    cell.SwitchBlock = ^(NSInteger switchBlock) {
+//        if (self.SwitchBlock) {
+//            self.SwitchBlock(switchBlock);
+//        }
+//    };
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0 && indexPath.row == 0) {
         cell.switchHidden = YES;
         cell.arrowHidden = YES;
         settingModel.imgName = @"钱包";
-//        cell.iconImageView.image = kImage(@"钱包");
+        cell.accessoryImageView.hidden = YES;
+
     }else{
         cell.switchHidden = YES;
-        cell.textLabel.text = settingModel.text;
-        cell.textLabel.textColor = kTextColor;
-        cell.textLabel.font = Font(15.0);
+        cell.arrowHidden = NO;
+        cell.accessoryImageView.hidden = NO;
         
     }
-    if (settingModel.subText) {
-        
-        cell.rightLabel.text = settingModel.subText;
+    [cell.titleLbl theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+    cell.titleLbl.text = settingModel.text;
+//    cell.settingModel = settingModel;
 
-    }
-    if (indexPath.section == 1 & indexPath.row == 1) {
-        if ([settingModel.text isEqualToString:@"删除钱包"]) {
-            
-        }else{
-        NSString* gesture  =  [ZLGestureLockViewController gesturesPassword];
-        if (gesture.length >0) {
-            cell.switchHidden = NO;
-            cell.sw.on = YES;
-        }else{
-            
-            cell.switchHidden = NO;
-            cell.sw.on = NO;
 
-        }
-        }
-//
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        cell.userInteractionEnabled = NO;
-    }
-    cell.settingModel = settingModel;
-
-//    if (indexPath.section == 1) {
-//
-//        cell.arrowHidden = indexPath.row == 4 ? YES: NO;
-//
-//        cell.switchHidden = indexPath.row == 4 ? NO: YES;
-//
-//        cell.sw.on = YES;
-//
-//    } else {
-//
-//        cell.switchHidden = YES;
-//
-//        cell.arrowHidden = NO;
-//
-//    }
     
     return cell;
     

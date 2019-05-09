@@ -7,11 +7,11 @@
 //
 
 #import "TLTableView.h"
-
+#import "AddressModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AddressBookTableView : TLTableView
-
+@property (nonatomic , strong)NSMutableArray <AddressModel *>*models;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -160,7 +160,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
 
     UIImageView *rightArrow = [[UIImageView alloc] init];
     rightArrow.contentMode = UIViewContentModeScaleToFill;
-    [rightArrow theme_setImageIdentifier:@"扫一扫" moduleName:ImgAddress]
+    [rightArrow theme_setImageIdentifier:@"扫一扫" moduleName:ImgAddress];
     [self.view addSubview:rightArrow];
     rightArrow.userInteractionEnabled = YES;
     [rightArrow mas_makeConstraints:^(MASConstraintMaker *make) {

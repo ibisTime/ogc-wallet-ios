@@ -130,7 +130,7 @@
     UIImageView *im  =[[UIImageView alloc] init];
     im.contentMode = UIViewContentModeScaleToFill;
     im.image = kImage(@"请勿截图");
-    im.frame = CGRectMake((SCREEN_WIDTH - 70)/2 - 30 , tit1.yy + 21, 60, 52.5);
+    im.frame = CGRectMake((SCREEN_WIDTH - 70)/2 - 30 , 26 + 21 + 70, 60, 52.5);
     [showView addSubview:im];
     
     

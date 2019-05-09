@@ -40,7 +40,7 @@
 #import "FindTheGameVC.h"
 #import "FindTheGameModel.h"
 
-@interface HomeVC ()<RefreshDelegate,UIViewControllerPreviewingDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,ClassificationDelegate>
+@interface HomeVC ()<RefreshDelegate,UIViewControllerPreviewingDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,ClassificationDelegate,IconCollDelegate>
 {
     NSInteger start;
     NSInteger category;
@@ -56,7 +56,8 @@
 @property (nonatomic,strong) NSArray <HomeFindModel *>*findModels;
 @property (nonatomic , strong)NSMutableArray <FindTheGameModel *>*GameModel;
 @property (nonatomic , strong)NSMutableArray *GameModelArray;
-@property (nonatomic , strong)NSArray *dataArray;
+@property (nonatomic , strong)NSMutableArray <FindTheGameModel *>*dataArray;
+@property (nonatomic , strong)NSArray *dvalueArray;
 @end
 
 @implementation HomeVC
@@ -106,6 +107,7 @@
     [self requestBannerList];
     [self reloadFindData];
     [self loadData];
+    [self classification];
 }
 
 -(void)loadNewDataFooter
@@ -159,7 +161,7 @@
     [self.view addSubview:self.collectionView];
     [self.topView theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     [self DownRefresh];
-    category = 0;
+    category = 1;
 }
 
 -(void)initNavigationNar
@@ -189,7 +191,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return self.dataArray.count;
+        return 1;
     }
     if (section == 1) {
         return 1;
@@ -202,75 +204,82 @@
     if (indexPath.section == 0) {
         IconCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"IconCollCell" forIndexPath:indexPath];
         [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
-        [cell.iconImage sd_setImageWithURL:[NSURL URLWithString:[self.dataArray[indexPath.row][@"icon"] convertImageUrl]]];
-        cell.nameLbl.text = self.dataArray[indexPath.row][@"name"];
+
+        cell.dataArray = self.dataArray;
+        cell.delegate = self;
         return cell;
     }
     if (indexPath.section == 1) {
         ClassificationCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ClassificationCollCell" forIndexPath:indexPath];
         cell.delegate = self;
         [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+        cell.dvalueArray = self.dvalueArray;
         return cell;
     }
     TheGameCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TheGameCollCell" forIndexPath:indexPath];
-    [cell.actionBtn addTarget:self action:@selector(iconButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    cell.actionBtn.tag = 400 + indexPath.row;
     [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     cell.GameModel = self.GameModel[indexPath.row];
     return cell;
 }
 
+-(void)IconCollDelegateSelectBtn:(NSInteger)tag
+{
+//    PosMiningVC *vc = [PosMiningVC new];
+//    [self.navigationController pushViewController:vc animated:YES];
+    if ([self.dataArray[tag].action isEqualToString:@"0"]) {
+        GeneralWebView *vc = [GeneralWebView new];
+        vc.URL = self.dataArray[tag].url;
+        [self showViewController:vc sender:self];
+    }
+    if ([self.dataArray[tag].action isEqualToString:@"1"])
+    {
+
+    }
+    if ([self.dataArray[tag].action isEqualToString:@"2"])
+    {
+        GeneralWebView *vc = [GeneralWebView new];
+        vc.URL = self.dataArray[tag].url;
+        [self showViewController:vc sender:self];
+    }
+    if ([self.dataArray[tag].action isEqualToString:@"3"])
+    {
+        FindTheGameVC *vc = [FindTheGameVC new];
+        vc.url = self.dataArray[tag].url;
+
+        [self showViewController:vc sender:self];
+    }
+    if ([self.dataArray[tag].action isEqualToString:@"4"])
+    {
+
+    }
+}
+
+-(void)classification
+{
+    if (_dvalueArray.count == 0) {
+        TLNetworking *http = [TLNetworking new];
+        http.code = @"630036";
+        
+        http.parameters[@"parentKey"] = @"dopen_app_category";
+        
+        [http postWithSuccess:^(id responseObject) {
+            //        [self LoadData];
+            _dvalueArray = responseObject[@"data"];
+            [self.collectionView reloadData];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    
+}
+
 -(void)ClassificationDelegateSelectBtn:(NSInteger)tag
 {
     [TLProgressHUD show];
-    category = tag;
+    category = [self.dvalueArray[tag][@"dkey"] integerValue];
     [self loadNewData];
 }
 
--(void)iconButtonClick:(UIButton *)sender{
-//    [self loginTheWhether];
-    switch (sender.tag - 300) {
-        case 0:
-        {
-//            RedEnvelopeVC *redEnvelopeVC = [RedEnvelopeVC new];
-//            [self showViewController:redEnvelopeVC sender:self];
-        }
-            break;
-        case 1:
-        {
-            PosMiningVC *vc = [PosMiningVC new];
-            [self showViewController:vc sender:self];
-        }
-            break;
-        case 2:
-        {
-            TLinviteVC *settingVC = [TLinviteVC new];
-            [self showViewController:settingVC sender:self];
-        }
-            break;
-        case 3:
-        {
-            PosMiningVC *vc = [PosMiningVC new];
-//            vc.url = @"WAN";
-            [self showViewController:vc sender:self];
-        }
-            break;
-            
-        default:
-            break;
-    }
-    if (sender.tag >= 400) {
-        
-        GeneralWebView *vc = [GeneralWebView new];
-        vc.URL = self.GameModel[sender.tag - 400].url;
-        vc.name = self.GameModel[sender.tag - 400].name;
-        [self showViewController:vc sender:self];
-        
-//        FindTheGameVC *vc = [FindTheGameVC new];
-//        vc.GameModel = self.GameModel[sender.tag - 400];
-//        [self showViewController:vc sender:self];
-    }
-}
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
@@ -291,7 +300,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return CGSizeMake((SCREEN_WIDTH - 20)/3, 110);
+        return CGSizeMake((SCREEN_WIDTH), 110);
     }
     if (indexPath.section == 1) {
         return CGSizeMake(SCREEN_WIDTH, 55.5);
@@ -322,17 +331,72 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        GeneralWebView *vc = [GeneralWebView new];
-        vc.URL = self.dataArray[indexPath.row][@"position"];
-        [self showViewController:vc sender:self];
-    }
+//    if (indexPath.section == 0) {
+//        GeneralWebView *vc = [GeneralWebView new];
+//        vc.URL = self.dataArray[indexPath.row][@"position"];
+//        [self showViewController:vc sender:self];
+//    }
     if (indexPath.section == 2) {
-        FindTheGameVC *vc = [FindTheGameVC new];
-        vc.GameModel = self.GameModel[indexPath.row];
-        [self showViewController:vc sender:self];
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"0"])
+        {
+            NSString *url = self.GameModel[indexPath.row].url;
+            GeneralWebView *vc = [GeneralWebView new];
+            vc.URL = url;
+            [self showViewController:vc sender:self];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
+        {
+            
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
+        {
+            NSString *url = self.GameModel[indexPath.row].url;
+            GeneralWebView *vc = [GeneralWebView new];
+            vc.URL = url;
+            [self showViewController:vc sender:self];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"3"])
+        {
+            FindTheGameVC *vc = [FindTheGameVC new];
+            vc.url = self.GameModel[indexPath.row].url;
+            [self showViewController:vc sender:self];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"4"])
+        {
+            
+        }
     }
 }
+
+//-(void)selectInRow:(NSInteger)index
+//{
+//    if ([self.dataArray[index].action isEqualToString:@"0"]) {
+//        GeneralWebView *vc = [GeneralWebView new];
+//        vc.URL = self.dataArray[index].url;
+//        [self showViewController:vc sender:self];
+//    }
+//    if ([self.dataArray[index].action isEqualToString:@"1"])
+//    {
+//
+//    }
+//    if ([self.dataArray[index].action isEqualToString:@"2"])
+//    {
+//        GeneralWebView *vc = [GeneralWebView new];
+//        vc.URL = self.dataArray[index].url;
+//        [self showViewController:vc sender:self];
+//    }
+//    if ([self.dataArray[index].action isEqualToString:@"3"])
+//    {
+//        FindTheGameVC *vc = [FindTheGameVC new];
+//        vc.url = self.dataArray[index].url;
+//
+//        [self showViewController:vc sender:self];
+//    }
+//    if ([self.dataArray[index].action isEqualToString:@"4"])
+//    {
+//
+//    }
+//}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {
@@ -342,7 +406,7 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     if (section == 0) {
-        return UIEdgeInsetsMake(5, 5, 5, 5);
+        return UIEdgeInsetsMake(0,0, 0, 0);
     }
     if (section == 1) {
         return UIEdgeInsetsMake(0, 0, 0, 0);
@@ -383,36 +447,11 @@
 - (void)headerViewEventsWithType:(HomeEventsType)type index:(NSInteger)index  model:(HomeFindModel *)model
 {
     
-    if ([self.bannerRoom[index].type isEqualToString:@"0"])
-    {
-        return;
-    }
+    NSString *url = [[self.bannerRoom objectAtIndex:index] url];
+    GeneralWebView *vc = [GeneralWebView new];
+    vc.URL = url;
+    [self showViewController:vc sender:self];
     
-    if ([self.bannerRoom[index].type isEqualToString:@"1"])
-    {
-        NSString *url = [[self.bannerRoom objectAtIndex:index] url];
-        if (url && url.length > 0) {
-            GeneralWebView *vc = [GeneralWebView new];
-            vc.URL = url;
-            [self showViewController:vc sender:self];
-        }
-    }
-    if ([self.bannerRoom[index].type isEqualToString:@"2"])
-    {
-        FindTheGameVC *vc = [FindTheGameVC new];
-        vc.url = [[self.bannerRoom objectAtIndex:index] url];
-        [self showViewController:vc sender:self];
-    }
-    
-//    if ([url hasPrefix:@"http"]) {
-//
-//    }
-//    if (url && url.length > 0) {
-//        GeneralWebView *vc = [GeneralWebView new];
-//        vc.URL = url;
-//        [self showViewController:vc sender:self];
-//
-//    }
 }
 
 #pragma mark - Data
@@ -430,10 +469,6 @@
         
         self.bannerRoom = [BannerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         self.headerView.banners = self.bannerRoom;
-//        [self reloadFindData];
-        //获取官方钱包总量，已空投量
-//        [_collectionView.mj_footer endRefreshing];
-//        [_collectionView.mj_header endRefreshing];
 
     } failure:^(NSError *error) {
         
@@ -470,7 +505,8 @@
 
     [http postWithSuccess:^(id responseObject) {
 
-        self.dataArray = responseObject[@"data"];
+        self.dataArray = [FindTheGameModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        self.dataArray = responseObject[@"data"];
         [self.collectionView reloadData];
 
     } failure:^(NSError *error) {

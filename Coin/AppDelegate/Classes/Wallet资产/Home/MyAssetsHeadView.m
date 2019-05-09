@@ -12,7 +12,7 @@
 {
     UILabel *allAssetsLbl;
     UILabel *allPriceLbl;
-    
+    UIImageView *youImg;
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -41,6 +41,10 @@
         [switchImg theme_setImageIdentifier:@"钱包切换" moduleName:ImgAddress];
         [self addSubview:switchImg];
         
+        
+        
+        
+        
         UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH - 55,15 + 22, 45, 12) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(10) textColor:nil];
         nameLbl.text = @"钱包切换";
         [self addSubview:nameLbl];
@@ -59,7 +63,10 @@
         [self addSubview:whiteView];
         
 
-        
+        UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        backBtn.frame = CGRectMake(5, 64, SCREEN_WIDTH - 10 , 170);
+        self.backBtn = backBtn;
+        [self addSubview:backBtn];
         
         allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         
@@ -77,6 +84,9 @@
         
         [whiteView addSubview:allPriceLbl];
         
+        youImg = [[UIImageView alloc]init];
+        [youImg theme_setImageIdentifier:@"我的跳转" moduleName:ImgAddress];
+        [whiteView addSubview:youImg];
         
     }
     return self;
@@ -87,6 +97,8 @@
     if ([[USERDEFAULTS objectForKey:@"mnemonics"] isEqualToString:@""]) {
         self.nameLable.text = [LangSwitcher switchLang:@"零用钱包" key:nil];
         allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
+        allAssetsLbl.frame = CGRectMake(35, 44, SCREEN_WIDTH - 80, 20);
+        youImg.hidden = YES;
     }else
     {
         self.nameLable.text = [LangSwitcher switchLang:@"私钥钱包" key:nil];
@@ -94,12 +106,17 @@
         NSArray *array = [CustomFMDB FMDBqueryMnemonics];
         for (int i = 0; i < array.count; i ++) {
             if ([array[i][@"mnemonics"] isEqualToString:[USERDEFAULTS objectForKey:@"mnemonics"]]) {
-                
+                youImg.hidden = NO;
                 _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:array[i]];
                 allAssetsLbl.text= [NSString stringWithFormat:@"%@ 总资产（¥）",_fmdbModel.walletName];
+                [allAssetsLbl sizeToFit];
+                allAssetsLbl.frame = CGRectMake(35, 44, allAssetsLbl.width, 20);
+                youImg.frame = CGRectMake(allAssetsLbl.xx + 5, 44 + 4, 7, 12);
             }
         }
     }
+    
+    
     
     if ([[TLUser user].localMoney isEqualToString:@"USD"])
     {

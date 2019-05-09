@@ -60,7 +60,7 @@
         
         [self.contentView addSubview:self.titleLbl];
         [self.titleLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.mas_right).offset(20);
+            make.left.equalTo(self.contentView.mas_left).offset(20);
             
             make.centerY.equalTo(self.contentView.mas_centerY);
             make.right.lessThanOrEqualTo(self.rightLabel.mas_right).offset(10);

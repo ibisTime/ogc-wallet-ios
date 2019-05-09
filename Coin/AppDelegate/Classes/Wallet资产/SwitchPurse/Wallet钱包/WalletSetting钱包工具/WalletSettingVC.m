@@ -45,6 +45,8 @@
     self.tableView = [[SettingTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kSuperViewHeight) style:UITableViewStyleGrouped];
     self.tableView.group = self.group;
     [self.view addSubview:self.tableView];
+    
+    
     self.importButton = [UIButton buttonWithImageName:nil cornerRadius:6];
     NSString *text2 = [LangSwitcher switchLang:@"删除钱包" key:nil];
     [self.importButton setTitle:text2 forState:UIControlStateNormal];
@@ -52,7 +54,6 @@
     
     [self.importButton setTitleColor:kAppCustomMainColor forState:UIControlStateNormal];
     [self.importButton addTarget:self action:@selector(import) forControlEvents:UIControlEventTouchUpInside];
-    [self.importButton setBackgroundColor:kWhiteColor forState:UIControlStateNormal];
     self.importButton.layer.borderColor = (kAppCustomMainColor.CGColor);
     self.importButton.layer.borderWidth = 1;
     self.importButton.clipsToBounds = YES;
@@ -104,28 +105,6 @@
     
     SettingModel *walletName = [SettingModel new];
     
-//    TLDataBase *dataBase = [TLDataBase sharedManager];
-//    NSString *word;
-//    if ([dataBase.dataBase open]) {
-//        NSString *sql = [NSString stringWithFormat:@"SELECT name from THAUser where userId = '%@'",[TLUser user].userId];
-//        //        [sql appendString:[TLUser user].userId];
-//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//        while ([set next])
-//        {
-//            word = [set stringForColumn:@"name"];
-//
-//        }
-//        [set close];
-//    }
-//    [dataBase.dataBase close];
-//    if (word || word.length > 0) {
-//        walletName.text = [LangSwitcher switchLang:word key:nil];
-//
-//    }else{
-//        walletName.text =@"";
-//
-//
-//    }
     NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
     walletName.text = walletDic[@"walletName"];
     NSString *pwd = walletDic[@"pwd"];
@@ -148,9 +127,6 @@
     SettingModel *idAuth = [SettingModel new];
     idAuth.text = [LangSwitcher switchLang:@"钱包备份" key:nil];
     
-    
-//    NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
-//    NSString *pwd = walletDic[@"pwd"];
     
     [idAuth setAction:^{
         
@@ -178,91 +154,7 @@
                           }];
         
     }];
-                              
-//                              TLDataBase *dataBase = [TLDataBase sharedManager];
-//
-//                              if ([dataBase.dataBase open]) {
-//                                  NSString *sql = [NSString stringWithFormat:@"SELECT PwdKey from THAUser where userId = '%@'",[TLUser user].userId];
-//                                  //        [sql appendString:[TLUser user].userId];
-//                                  FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//                                  while ([set next])
-//                                  {
-//                                      pwd = [set stringForColumn:@"PwdKey"];
-//
-//                                  }
-//                                  [set close];
-//                              }
-//                              [dataBase.dataBase close];
-//                              if ([pwd isEqualToString:textField.text]) {
-//
-//                                  TLDataBase *dataBase = [TLDataBase sharedManager];
-//                                  NSString *word;
-//                                  NSString *name;
-//
-//                                  if ([dataBase.dataBase open]) {
-//                                      NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics,name from THAUser where userId = '%@'",[TLUser user].userId];
-//                                      //        [sql appendString:[TLUser user].userId];
-//                                      FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//                                      while ([set next])
-//                                      {
-//                                          word = [set stringForColumn:@"Mnemonics"];
-//                                          name = [set stringForColumn:@"name"];
-//
-//                                      }
-//                                      [set close];
-//                                  }
-//                                  [dataBase.dataBase close];
-                              
-//                                  if (word.length > 0) {
-                              
-
-//                                  }else{
-//
-//                                      return ;
-//                                  }
-                              
-//                              }else{
-//                                  [TLAlert alertWithError:@"交易密码错误"];
-//
-//                              }
-//                              if (word || word.length > 0) {
-//                                  walletName.text = [LangSwitcher switchLang:word key:nil];
-//
-//                              }else{
-//                                  walletName.text = [LangSwitcher switchLang:@"钱包名称" key:nil];
-//
-//
-//                              }
-                              //                          [self confirmWithdrawalsWithPwd:textField.text];
-                              
-
     
-    //绑定邮箱
-//    SettingModel *bindEmail = [SettingModel new];
-//    bindEmail.text = [LangSwitcher switchLang:@"导出私钥" key:nil];
-//    [bindEmail setAction:^{
-//
-//        CheckForwordVC *editVC = [[CheckForwordVC alloc] init];
-//        editVC.WalletType = WalletWordTypeThree;
-//
-//        editVC.title = [LangSwitcher switchLang:@"导出私钥" key:nil];
-//
-//
-//        [weakSelf.navigationController pushViewController:editVC animated:YES];
-//    }];
-    
-
-    
-//    SettingModel *changeLoginPwd = [SettingModel new];
-//    changeLoginPwd.text = [LangSwitcher switchLang:@"删除钱包" key:nil];
-//    [changeLoginPwd setAction:^{
-//
-//        WalletDelectVC *changeLoginPwdVC = [WalletDelectVC new];
-//        [weakSelf.navigationController pushViewController:changeLoginPwdVC animated:YES];
-//
-//    }];
-    
-  
     
     self.group = [SettingGroup new];
     self.group.sections = @[@[walletName,changeTradePwd], @[idAuth]];
@@ -270,55 +162,51 @@
 }
 - (void)deleteWallet
 {
+
     
-//    TLDataBase *dataBase = [TLDataBase sharedManager];
-//    NSString *word;
-//    if ([dataBase.dataBase open]) {
-//
-//
-//        NSString *sql = [NSString stringWithFormat:@"SELECT Mnemonics from THAUser where userId = '%@'",[TLUser user].userId];
-//        //        [sql appendString:[TLUser user].userId];
-//        FMResultSet *set = [dataBase.dataBase executeQuery:sql];
-//        while ([set next])
-//        {
-//            word = [set stringForColumn:@"Mnemonics"];
-//
-//        }
-//        [set close];
-//    }
-//    [dataBase.dataBase close];
-//    if (!word) {
-//        return;
-//    }
-//    [NSString stringWithFormat:@"select * from ChengWallet where userid like '%@'",[TLUser user].userId]
+    
+    
+    
     [TLAlert alertWithTitle:[LangSwitcher switchLang:@"删除钱包" key:nil] msg:[LangSwitcher switchLang:@"请确保已备份钱包至安全的地方，金米钱包不承担任何钱包丢失、被盗、忘记密码等产生的资产损失!" key:nil] confirmMsg:[LangSwitcher switchLang:@"确定" key:nil] cancleMsg:[LangSwitcher switchLang:@"取消" key:nil] maker:self cancle:^(UIAlertAction *action) {
         
         
     } confirm:^(UIAlertAction *action) {
         
+        NSArray *array = [CustomFMDB FMDBqueryMnemonics];
+        NSMutableArray *muArray = [NSMutableArray array];
+        [muArray addObjectsFromArray:array];
+        for (int i = 0 ; i < muArray.count; i ++) {
+            
+            if ([muArray[i][@"mnemonics"] isEqualToString:[USERDEFAULTS objectForKey:@"mnemonics"]]) {
+                [muArray removeObjectAtIndex:i];
+            }
+            
+        }
+        NSError *err = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:muArray options:NSJSONWritingPrettyPrinted error:&err];
+        NSString *jsonStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+        //        NSString *str = [wallet componentsJoinedByString:@","];
+        
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+        NSLog(@"dbPath = %@",dbPath);
         FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
         
-        if ([dataBase open]) {
-            NSString *Sql2 =[NSString stringWithFormat:@"delete from ChengWallet where userid = '%@'",[TLUser user].userId];
-            
-            BOOL sucess2  = [dataBase executeUpdate:Sql2];
-            NSLog(@"删除自选表%d",sucess2);
-            
-            
-//            NSString *Sql =[NSString stringWithFormat:@"delete from THAUser WHERE userId = '%@'",[TLUser user].userId];
-//
-//            BOOL sucess  = [db.dataBase executeUpdate:Sql];
-//
-//            NSLog(@"删除钱包表%d",sucess);
-            
-            
-        }
         
+        if ([dataBase open])
+        {
+            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,wallet text)"];
+        }
+        [dataBase close];
+        [dataBase open];
+        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
         [dataBase close];
 
+        
+        [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];
+        NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
         [TLAlert alertWithMsg:[LangSwitcher switchLang:@"删除成功" key:nil]];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

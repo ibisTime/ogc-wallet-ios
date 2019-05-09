@@ -30,7 +30,7 @@
 #import "MyAssetsHeadView.h"
 #import "SwitchPurseVC.h"
 #import "TWWalletAccountClient.h"
-
+#import "WalletSettingVC.h"
 @interface TLWalletVC ()<RefreshDelegate>
 @property (nonatomic , strong)NSArray *addressArray;
 @property(nonatomic , strong) TWWalletAccountClient *client;
@@ -102,6 +102,7 @@
     if (!_headView) {
         _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 240)];
         [_headView.SwitchPurse addTarget:self action:@selector(SwitchPurseClick) forControlEvents:(UIControlEventTouchUpInside)];
+        [_headView.backBtn addTarget:self action:@selector(backClick) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _headView;
 }
@@ -110,6 +111,18 @@
 {
     SwitchPurseVC *vc = [SwitchPurseVC new];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+//钱包工具
+-(void)backClick
+{
+    if ([[USERDEFAULTS objectForKey:@"mnemonics"] isEqualToString:@""]) {
+        
+    }else
+    {
+        WalletSettingVC *vc =[WalletSettingVC new];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

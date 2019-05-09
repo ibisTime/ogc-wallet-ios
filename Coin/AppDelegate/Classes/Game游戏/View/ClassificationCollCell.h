@@ -16,7 +16,7 @@
 @end
 @interface ClassificationCollCell : UICollectionViewCell
 
-
+@property (nonatomic , strong)NSArray *dvalueArray;
 @property (nonatomic, assign) id <ClassificationDelegate> delegate;
 
 @end
