@@ -138,6 +138,7 @@
 
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
         backView.backgroundColor = kWhiteColor;
+        [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [headView addSubview:backView];
 
         UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#333333")];

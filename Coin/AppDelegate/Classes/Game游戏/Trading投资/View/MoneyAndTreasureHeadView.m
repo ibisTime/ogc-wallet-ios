@@ -32,22 +32,22 @@
         
         
         //初始化CAGradientlayer对象，使它的大小为UIView的大小
-        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-        gradientLayer.frame = backView.bounds;
-        
-        //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
-        [backView.layer addSublayer:gradientLayer];
-        
-        //设置渐变区域的起始和终止位置（范围为0-1）
-        gradientLayer.startPoint = CGPointMake(0, 0);
-        gradientLayer.endPoint = CGPointMake(0, 1);
-        
-        //设置颜色数组
-        gradientLayer.colors = @[(__bridge id)kHexColor(@"#4265E0").CGColor,
-                                      (__bridge id)kHexColor(@"#2F49A5").CGColor];
-        
-        //设置颜色分割点（范围：0-1）
-        gradientLayer.locations = @[@(0.5f), @(1.0f)];
+//        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//        gradientLayer.frame = backView.bounds;
+//
+//        //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
+//        [backView.layer addSublayer:gradientLayer];
+//
+//        //设置渐变区域的起始和终止位置（范围为0-1）
+//        gradientLayer.startPoint = CGPointMake(0, 0);
+//        gradientLayer.endPoint = CGPointMake(0, 1);
+//
+//        //设置颜色数组
+//        gradientLayer.colors = @[(__bridge id)kHexColor(@"#4265E0").CGColor,
+//                                      (__bridge id)kHexColor(@"#2F49A5").CGColor];
+//
+//        //设置颜色分割点（范围：0-1）
+//        gradientLayer.locations = @[@(0.5f), @(1.0f)];
         
 
         UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(0, 90 - 64 + kNavigationBarHeight, kScreenWidth, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kHexColor(@"#FFFFFF")];
@@ -55,7 +55,9 @@
         [self addSubview:nameLabel];
 
 
-        UIButton *eyesButton = [UIButton buttonWithTitle:@"BTC" titleColor:kHexColor(@"#FFFFFF") backgroundColor:kClearColor titleFont:32];
+        UIButton *eyesButton = [UIButton buttonWithTitle:@"BTC" titleColor:nil backgroundColor:kClearColor titleFont:32];
+        [eyesButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+        
         eyesButton.frame = CGRectMake(15, nameLabel.yy + 6, kScreenWidth - 30, 45);
         NSString *eyesWhetherhide = [[NSUserDefaults standardUserDefaults] objectForKey:@"eyesWhetherhide"];
         if ([eyesWhetherhide isEqualToString:@"闭眼"]) {
@@ -138,14 +140,7 @@
 
 -(void)setDataDic:(NSDictionary *)dataDic
 {
-//    dic = dataDic;
-//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//    NSInteger Invest = [dataDic[@"yesterdayIncome"] integerValue];
-//    NSString *str = [numberFormatter stringFromNumber:dataDic[@"yesterdayIncome"]];
-//    totalInvest = [CoinUtil convertToRealCoin2:str setScale:4 coin:symbolStr];
-//    NSNumber Invest = [dataDic[@"yesterdayIncome"] integerValue];
 
-//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     YesterdayInvest = [CoinUtil convertToRealCoin2: dataDic[@"yesterdayIncome"] setScale:4 coin:@"USDT"];
     
     

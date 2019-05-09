@@ -7,6 +7,9 @@
 //
 
 #import "AddAddressVC.h"
+#import "SelectedListModel.h"
+#import "SelectedListView.h"
+#import "LEEAlert.h"
 @interface AddAddressVC ()<RefreshDelegate>
 
 
@@ -33,6 +36,19 @@
         textField.tag = 100 + i;
         [self.view addSubview:textField];
         
+        
+        if (i == 1) {
+            UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            btn.frame = textField.frame;
+            [btn addTarget:self action:@selector(buttonClick) forControlEvents:(UIControlEventTouchUpInside)];
+            [self.view addSubview:btn];
+            
+            UIImageView *youImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 7, textField.y + 4.5, 7, 12)];
+            [youImg theme_setImageIdentifier:@"我的跳转" moduleName:ImgAddress];
+            [self.view addSubview:youImg];
+            
+        }
+        
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, textField.yy + 17, SCREEN_WIDTH - 30, 0.5)];
         lineView.backgroundColor = kHexColor([TLUser TextFieldPlacColor]);
         [self.view addSubview:lineView];
@@ -45,6 +61,45 @@
     [confirmBtn addTarget:self action:@selector(confirmBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:confirmBtn];
     
+}
+
+-(void)buttonClick
+{
+     NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (int i = 0; i < arr.count; i ++) {
+//        array addObject:arr[@""]
+        CoinModel *model = arr[i];
+        [array addObject:model.symbol];
+    }
+    
+    NSMutableArray *array1 = [NSMutableArray array];
+    for (int i = 0;  i < array.count; i ++) {
+        [array1 addObject:[[SelectedListModel alloc] initWithSid:i Title:[NSString stringWithFormat:@"%@",array[i]]]];
+    }
+    SelectedListView *view = [[SelectedListView alloc] initWithFrame:CGRectMake(0, 0, 280, 0) style:UITableViewStylePlain];
+    view.isSingle = YES;
+    view.array = array1;
+    view.selectedBlock = ^(NSArray<SelectedListModel *> *array) {
+        [LEEAlert closeWithCompletionBlock:^{
+            NSLog(@"选中的%@" , array);
+            SelectedListModel *model = array[0];
+            UITextField *textField2 = [self.view viewWithTag:101];
+            textField2.text = model.title;
+//            _payWayDic = _payWayArray[model.sid];
+//            self.tableView.payWayDic = self.payWayDic;
+//            [self.tableView reloadData];
+        }];
+    };
+    [LEEAlert alert].config
+    .LeeTitle(@"选择")
+    .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+    .LeeCustomView(view)
+    .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+    .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+    .LeeClickBackgroundClose(YES)
+    .LeeShow();
 }
 
 -(void)confirmBtnClick:(UIButton *)sender
@@ -63,7 +118,8 @@
     [http postWithSuccess:^(id responseObject) {
         
         [self.navigationController popViewControllerAnimated:YES];
-        
+        NSNotification *notification =[NSNotification notificationWithName:@"addaddress" object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
     } failure:^(NSError *error) {
         
     }];

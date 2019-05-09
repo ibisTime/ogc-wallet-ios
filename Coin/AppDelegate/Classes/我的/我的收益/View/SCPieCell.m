@@ -102,8 +102,8 @@
         chartView = nil;
     }
     NSArray *items = @[
-                       [SCPieChartDataItem dataItemWithValue:[model.incomeRatioPop floatValue] * 100 color:RGB(255, 198, 83) description:@""],
-                       [SCPieChartDataItem dataItemWithValue:[model.incomeRatioInvite floatValue] * 100 color:RGB(255, 91, 67) description:@""],
+                       [SCPieChartDataItem dataItemWithValue:[model.incomeRatioPop floatValue] * 100 color:kHexColor(@"#6BAFFF") description:@""],
+                       [SCPieChartDataItem dataItemWithValue:[model.incomeRatioInvite floatValue] * 100 color:kHexColor(@"#FFDA6B") description:@""],
                        ];
 
     chartView = [[SCPieChart alloc] initWithFrame:CGRectMake(33, 32, 185, 185) items:items];

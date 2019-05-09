@@ -44,6 +44,7 @@
 		1F6D9E792281D04B0057A756 /* AlertsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E782281D04B0057A756 /* AlertsCell.m */; };
 		1F6D9E7D228330400057A756 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E7C2283303F0057A756 /* AddressModel.m */; };
 		1F6D9E802283F0880057A756 /* ChooseWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E7F2283F0880057A756 /* ChooseWalletVC.m */; };
+		1F6D9E84228419180057A756 /* lookingForwardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E83228419180057A756 /* lookingForwardVC.m */; };
 		1F6F2BAA222CE84B00298FB3 /* BnakCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */; };
 		1F6F2BAD222CEA7A00298FB3 /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAC222CEA7A00298FB3 /* MyFriendViewController.m */; };
 		1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAF222CEB9700298FB3 /* InvestmentHeadCell.m */; };
@@ -730,6 +731,8 @@
 		1F6D9E7C2283303F0057A756 /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		1F6D9E7E2283F0880057A756 /* ChooseWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseWalletVC.h; sourceTree = "<group>"; };
 		1F6D9E7F2283F0880057A756 /* ChooseWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseWalletVC.m; sourceTree = "<group>"; };
+		1F6D9E82228419180057A756 /* lookingForwardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lookingForwardVC.h; sourceTree = "<group>"; };
+		1F6D9E83228419180057A756 /* lookingForwardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = lookingForwardVC.m; sourceTree = "<group>"; };
 		1F6F2BA8222CE84A00298FB3 /* BnakCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BnakCardVC.h; sourceTree = "<group>"; };
 		1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BnakCardVC.m; sourceTree = "<group>"; };
 		1F6F2BAB222CEA7900298FB3 /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
@@ -2410,6 +2413,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1F6D9E81228413780057A756 /* lookingForward */ = {
+			isa = PBXGroup;
+			children = (
+				1F6D9E82228419180057A756 /* lookingForwardVC.h */,
+				1F6D9E83228419180057A756 /* lookingForwardVC.m */,
+			);
+			path = lookingForward;
+			sourceTree = "<group>";
+		};
 		1F709D5B2180A7FC002D1CC4 /* SGQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -3447,6 +3459,7 @@
 				1FA566D4223CD4B90077FE54 /* Controller */,
 				1FA566E4223CD4B90077FE54 /* Model */,
 				1FA566D7223CD4B90077FE54 /* View */,
+				1F6D9E81228413780057A756 /* lookingForward */,
 				1F76697F21D5EFB900006B41 /* Trading投资 */,
 				1FA56B00223CD7600077FE54 /* Web */,
 				1FA568C4223CD6630077FE54 /* GameDetails */,
@@ -6013,6 +6026,7 @@
 				1F6D9E732281C3850057A756 /* AddAddressVC.m in Sources */,
 				1FA56AE2223CD6A70077FE54 /* ImageBrowserViewController.m in Sources */,
 				7A2CC6B3215DC88B00B27E2D /* PGDatePicker+Date.m in Sources */,
+				1F6D9E84228419180057A756 /* lookingForwardVC.m in Sources */,
 				1FA56AFA223CD6A70077FE54 /* UIView+YYText.m in Sources */,
 				7A2CC6B9215DC88C00B27E2D /* PGDatePicker+MinuteAndSecond.m in Sources */,
 				1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */,
@@ -6336,7 +6350,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6512,7 +6526,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

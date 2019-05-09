@@ -437,11 +437,6 @@
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
             }
             
-            
-            //            创建通知
-            
-            
-            
         }];
         
         

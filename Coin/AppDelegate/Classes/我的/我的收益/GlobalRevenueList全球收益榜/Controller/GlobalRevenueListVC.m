@@ -110,36 +110,7 @@
     return image;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    //去掉导航栏底部的黑线
-    self.navigationController.navigationBar.translucent = YES;
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-
-}
-
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:nil];
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-    self.navigationItem.backBarButtonItem = item;
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
 
 @end

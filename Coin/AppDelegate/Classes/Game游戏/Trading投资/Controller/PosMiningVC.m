@@ -143,6 +143,7 @@
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
     [self.RightButton setTitle:[LangSwitcher switchLang:@"我的投资" key:nil] forState:(UIControlStateNormal)];
     [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.RightButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
 }
 
 - (void)myRecodeClick

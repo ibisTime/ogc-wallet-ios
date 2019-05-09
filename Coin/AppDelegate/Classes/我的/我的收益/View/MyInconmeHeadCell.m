@@ -44,10 +44,12 @@
             {
                 peiceLabel.frame = CGRectMake(SCREEN_WIDTH/4*3 - peiceLabel.frame.size.width/2,  40, peiceLabel.frame.size.width, 30);
 
-                UIButton *earningsButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"获得总收益" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:13];
+                UIButton *earningsButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
+                earningsButton.titleLabel.font = FONT(13);
+                [earningsButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
                 self.earningsButton = earningsButton;
                 earningsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-                earningsButton.alpha = 0.6;
+//                earningsButton.alpha = 0.6;
                 [self addSubview:earningsButton];
 
 
@@ -61,14 +63,7 @@
 
 -(void)setModel:(MyIncomeModel *)model
 {
-//    NSLog(@"%@",dataDic);
-//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//    NSString *incomeYesterday = [CoinUtil convertToRealCoin:model.incomeYesterday coin:@"BTC"];
-
     NSString *incomeYesterday = [CoinUtil convertToRealCoin2:model.incomeYesterday setScale:4  coin:@"BTC"];
-
-
-
     UILabel *label1 = [self viewWithTag:1212];
 
     NSString *label1Str = [NSString stringWithFormat:@"≈%@(BTC)",incomeYesterday];

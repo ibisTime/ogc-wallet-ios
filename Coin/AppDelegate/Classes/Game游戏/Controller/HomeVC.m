@@ -31,7 +31,7 @@
 #import "BTCNetwork.h"
 #import "TLinviteVC.h"
 #import "GeneralWebView.h"
-
+#import "lookingForwardVC.h"
 
 #import "IconCollCell.h"
 #import "TheGameCollCell.h"
@@ -58,6 +58,7 @@
 @property (nonatomic , strong)NSMutableArray *GameModelArray;
 @property (nonatomic , strong)NSMutableArray <FindTheGameModel *>*dataArray;
 @property (nonatomic , strong)NSArray *dvalueArray;
+
 @end
 
 @implementation HomeVC
@@ -161,7 +162,7 @@
     [self.view addSubview:self.collectionView];
     [self.topView theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
     [self DownRefresh];
-    category = 1;
+    category = 0;
 }
 
 -(void)initNavigationNar
@@ -178,13 +179,13 @@
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
 //测试账号判断
-    if ([[TLUser user].mobile isEqualToString:@"15268501481"]) {
-        return 1;
-    }
-    else
-    {
+//    if ([[TLUser user].mobile isEqualToString:@"15268501481"]) {
+//        return 1;
+//    }
+//    else
+//    {
         return 3;
-    }
+//    }
 }
 
 #pragma mark------CollectionView的代理方法
@@ -233,7 +234,8 @@
     }
     if ([self.dataArray[tag].action isEqualToString:@"1"])
     {
-
+        lookingForwardVC *vc = [lookingForwardVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     if ([self.dataArray[tag].action isEqualToString:@"2"])
     {
@@ -244,13 +246,24 @@
     if ([self.dataArray[tag].action isEqualToString:@"3"])
     {
         FindTheGameVC *vc = [FindTheGameVC new];
-        vc.url = self.dataArray[tag].url;
-
+//        vc.url = self.dataArray[tag].url;
+        vc.GameModel= self.dataArray[tag];
         [self showViewController:vc sender:self];
     }
     if ([self.dataArray[tag].action isEqualToString:@"4"])
     {
-
+        
+        if ([self.dataArray[tag].url isEqualToString:@"1"]) {
+            //                量化理财
+            PosMiningVC *vc = [PosMiningVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+        if ([self.dataArray[tag].url isEqualToString:@"2"]) {
+            
+            //                闪兑
+            [TLAlert alertWithInfo:@"暂未开发"];
+        }
     }
 }
 
@@ -346,7 +359,8 @@
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
         {
-            
+            lookingForwardVC *vc = [lookingForwardVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
         {
@@ -358,20 +372,20 @@
         if ([self.GameModel[indexPath.row].action isEqualToString:@"3"])
         {
             FindTheGameVC *vc = [FindTheGameVC new];
-            vc.url = self.GameModel[indexPath.row].url;
+            vc.GameModel = self.GameModel[indexPath.row];
             [self showViewController:vc sender:self];
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"4"])
         {
-            if ([self.GameModel[indexPath.row].url hasPrefix:@"1"]) {
+            if ([self.GameModel[indexPath.row].url isEqualToString:@"1"]) {
 //                量化理财
                 PosMiningVC *vc = [PosMiningVC new];
                 [self.navigationController pushViewController:vc animated:YES];
             }
-            if ([self.GameModel[indexPath.row].url hasPrefix:@"2"]) {
+            if ([self.GameModel[indexPath.row].url isEqualToString:@"2"]) {
              
 //                闪兑
-                
+                [TLAlert alertWithInfo:@"暂未开发"];
             }
         }
     }
@@ -507,14 +521,15 @@
     }
     TLNetworking *http = [TLNetworking new];
 
-    http.code = @"625412";
-    http.parameters[@"language"] = lang;
-    http.parameters[@"location"] = @"0";
-    http.parameters[@"status"] = @"1";
+    http.code = @"625456";
+//    http.parameters[@"language"] = lang;
+    http.parameters[@"location"] = @"1";
+    http.parameters[@"start"] = @"1";
+    http.parameters[@"limit"] = @"10";
 
     [http postWithSuccess:^(id responseObject) {
 
-        self.dataArray = [FindTheGameModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.dataArray = [FindTheGameModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
 //        self.dataArray = responseObject[@"data"];
         [self.collectionView reloadData];
 

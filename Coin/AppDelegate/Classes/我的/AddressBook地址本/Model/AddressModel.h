@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 //updateDatetime = "May 8, 2019 11:55:55 PM";
 //updater = U20190508151410179964065;
 //userId = U20190508151410179964065;
-
+@property (nonatomic , copy)NSString *ID;
 @property (nonatomic , copy)NSString *address;
 @property (nonatomic , copy)NSString *createDatetime;
 @property (nonatomic , copy)NSString *label;

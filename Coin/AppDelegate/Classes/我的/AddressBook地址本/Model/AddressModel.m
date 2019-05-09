@@ -10,4 +10,13 @@
 
 @implementation AddressModel
 
++ (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName {
+    
+    if ([propertyName isEqualToString:@"ID"]) {
+        return @"id";
+    }
+    
+    return propertyName;
+}
+
 @end

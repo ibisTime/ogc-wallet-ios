@@ -57,63 +57,63 @@
     nameLbl.text = GameModel.name;
     [gameImg sd_setImageWithURL:[NSURL URLWithString:[GameModel.picList convertImageUrl]]];
     
-    UIImageView *image1 = [self viewWithTag:1000];
-    UIImageView *image2 = [self viewWithTag:1001];
-    UIImageView *image3 = [self viewWithTag:1002];
-    UIImageView *image4 = [self viewWithTag:1003];
-    UIImageView *image5 = [self viewWithTag:1004];
-    
-    switch ([GameModel.grade integerValue]) {
-            
-        case 1:
-        {
-            image1.image = kImage(@"多边形亮色");
-            image2.image = kImage(@"多边形灰色");
-            image3.image = kImage(@"多边形灰色");
-            image4.image = kImage(@"多边形灰色");
-            image5.image = kImage(@"多边形灰色");
-        }
-            break;
-        case 2:
-        {
-            image1.image = kImage(@"多边形亮色");
-            image2.image = kImage(@"多边形亮色");
-            image3.image = kImage(@"多边形灰色");
-            image4.image = kImage(@"多边形灰色");
-            image5.image = kImage(@"多边形灰色");
-        }
-            break;
-        case 3:
-        {
-            image1.image = kImage(@"多边形亮色");
-            image2.image = kImage(@"多边形亮色");
-            image3.image = kImage(@"多边形亮色");
-            image4.image = kImage(@"多边形灰色");
-            image5.image = kImage(@"多边形灰色");
-        }
-            break;
-        case 4:
-        {
-            image1.image = kImage(@"多边形亮色");
-            image2.image = kImage(@"多边形亮色");
-            image3.image = kImage(@"多边形亮色");
-            image4.image = kImage(@"多边形亮色");
-            image5.image = kImage(@"多边形灰色");
-        }
-            break;
-        case 5:
-        {
-            image1.image = kImage(@"多边形亮色");
-            image2.image = kImage(@"多边形亮色");
-            image3.image = kImage(@"多边形亮色");
-            image4.image = kImage(@"多边形亮色");
-            image5.image = kImage(@"多边形亮色");
-        }
-            break;
-            
-        default:
-            break;
-    }
+//    UIImageView *image1 = [self viewWithTag:1000];
+//    UIImageView *image2 = [self viewWithTag:1001];
+//    UIImageView *image3 = [self viewWithTag:1002];
+//    UIImageView *image4 = [self viewWithTag:1003];
+//    UIImageView *image5 = [self viewWithTag:1004];
+//
+//    switch ([GameModel.grade integerValue]) {
+//
+//        case 1:
+//        {
+//            image1.image = kImage(@"多边形亮色");
+//            image2.image = kImage(@"多边形灰色");
+//            image3.image = kImage(@"多边形灰色");
+//            image4.image = kImage(@"多边形灰色");
+//            image5.image = kImage(@"多边形灰色");
+//        }
+//            break;
+//        case 2:
+//        {
+//            image1.image = kImage(@"多边形亮色");
+//            image2.image = kImage(@"多边形亮色");
+//            image3.image = kImage(@"多边形灰色");
+//            image4.image = kImage(@"多边形灰色");
+//            image5.image = kImage(@"多边形灰色");
+//        }
+//            break;
+//        case 3:
+//        {
+//            image1.image = kImage(@"多边形亮色");
+//            image2.image = kImage(@"多边形亮色");
+//            image3.image = kImage(@"多边形亮色");
+//            image4.image = kImage(@"多边形灰色");
+//            image5.image = kImage(@"多边形灰色");
+//        }
+//            break;
+//        case 4:
+//        {
+//            image1.image = kImage(@"多边形亮色");
+//            image2.image = kImage(@"多边形亮色");
+//            image3.image = kImage(@"多边形亮色");
+//            image4.image = kImage(@"多边形亮色");
+//            image5.image = kImage(@"多边形灰色");
+//        }
+//            break;
+//        case 5:
+//        {
+//            image1.image = kImage(@"多边形亮色");
+//            image2.image = kImage(@"多边形亮色");
+//            image3.image = kImage(@"多边形亮色");
+//            image4.image = kImage(@"多边形亮色");
+//            image5.image = kImage(@"多边形亮色");
+//        }
+//            break;
+//
+//        default:
+//            break;
+//    }
     
 }
 

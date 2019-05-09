@@ -138,7 +138,7 @@
     [self addNotification];
     //列表查询个人账户币种列表
     [self getMyCurrencyList];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"SwitchThePurse" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"PrivateKeyWalletCreat" object:nil];
     
 }
 

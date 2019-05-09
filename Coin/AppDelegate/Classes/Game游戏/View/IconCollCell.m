@@ -46,7 +46,7 @@
         [backBtn addSubview:nameLbl];
         self.nameLbl = nameLbl;
         
-        [iconImage sd_setImageWithURL:[NSURL URLWithString:[dataArray[i].icon convertImageUrl]]];
+        [iconImage sd_setImageWithURL:[NSURL URLWithString:[dataArray[i].picList convertImageUrl]]];
         self.nameLbl.text = dataArray[i].name;
         
     }

@@ -47,7 +47,24 @@
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
     
     [self LoadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"addaddress" object:nil];
 }
+
+
+
+
+#pragma mark -- 接收到通知
+- (void)InfoNotificationAction:(NSNotification *)notification{
+
+    [self LoadData];
+}
+
+#pragma mark -- 删除通知
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"addaddress" object:nil];
+}
+
 
 -(void)RightButtonClick
 {

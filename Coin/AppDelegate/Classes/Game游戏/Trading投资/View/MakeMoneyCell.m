@@ -44,7 +44,8 @@
     
 
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
-    lineView.backgroundColor = kBackgroundColor;
+//    lineView.backgroundColor = kBackgroundColor;
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self addSubview:lineView];
 
     self.nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#464646") font:15];
@@ -56,7 +57,7 @@
     [self addSubview:self.stateLab];
 
     UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 55, kScreenWidth - 30, 1)];
-    lineView1.backgroundColor = kLineColor;
+    [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self addSubview:lineView1];
 
     
@@ -75,7 +76,7 @@
 
 
         UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(kScreenWidth/3 + i %3*kScreenWidth/3, lineView1.yy + 33.5, 1, 55)];
-        lineV.backgroundColor = kLineColor;
+        [lineV theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineV];
 
     }
@@ -86,6 +87,7 @@
 
     UIView *backLineView = [[UIView alloc]init];
     backLineView.backgroundColor = kHexColor(@"#E6E6E6");
+//    [lineV theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName]
     [self addSubview:backLineView];
 
     [backLineView mas_remakeConstraints:^(MASConstraintMaker *make) {

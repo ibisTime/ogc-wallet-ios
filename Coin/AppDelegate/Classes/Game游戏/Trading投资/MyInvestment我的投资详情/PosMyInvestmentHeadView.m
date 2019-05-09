@@ -60,8 +60,9 @@
                 usdtTotalInvest = allPrice;
             }
             
-            UIButton *earningsButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"累计收益" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:12];
+            UIButton *earningsButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"累计收益" key:nil] titleColor:nil backgroundColor:kClearColor titleFont:12];
             self.earningsButton = earningsButton;
+            [earningsButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
             self.earningsButton.frame = CGRectMake(78 + (SCREEN_WIDTH - 78)/2, 23.5 + i %2 * 105, (SCREEN_WIDTH - 78)/2, 16.5);
             earningsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             [self.earningsButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:4 imagePositionBlock:^(UIButton *button) {
