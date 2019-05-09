@@ -11,5 +11,5 @@ typedef void(^WalletBackBlock)(void);
 
 @interface WalletImportVC : TLBaseVC
 @property (nonatomic , copy) WalletBackBlock walletBlock;
-
+@property (nonatomic , copy)NSString *state;
 @end

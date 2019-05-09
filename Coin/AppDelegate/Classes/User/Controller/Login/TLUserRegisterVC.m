@@ -27,7 +27,7 @@
 #import <MSAuthSDK/MSAuthVCFactory.h>
 #import <MSAuthSDK/MSAuthSDK.h>
 #import <SecurityGuardSDK/JAQ/SecurityVerification.h>
-
+#import "ChooseWalletVC.h"
 
 @interface TLUserRegisterVC ()<CLLocationManagerDelegate,MSAuthProtocol>
 {
@@ -348,24 +348,7 @@
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请先阅读并接受《金米钱包注册协议》" key:nil]];
         return;
     }
-    
-//    if (selectBtn.tag == 100) {
-//        if (![self.phoneTf.text isPhoneNum]) {
-//
-//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-//
-//            return;
-//        }
-//    }else
-//    {
-//        if (![self.phoneTf.text isPhoneNum]) {
-//
-//            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
-//
-//            return;
-//        }
-//    }
-    
+
     if (![self.phoneTf.text isPhoneNum]) {
         
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
@@ -436,10 +419,22 @@
                 [[TLUser user] saveUserInfo:userInfo];
                 [[TLUser user] setUserInfoWithDict:userInfo];
                 
-                TLUpdateVC *ta = [[TLUpdateVC alloc] init];
                 
-                [UIApplication sharedApplication].keyWindow.rootViewController = ta;
-                [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+                
+                if ([TLUser isBlankString:[USERDEFAULTS objectForKey:@"firstEnter"]] == YES ) {
+                    ChooseWalletVC *tab   = [[ChooseWalletVC alloc] init];
+                    [self.navigationController pushViewController:tab animated:YES];
+                    //            [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+                    [USERDEFAULTS setObject:@"否" forKey:@"firstEnter"];
+                    [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+                }else
+                {
+                    TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
+                    [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+                }
+                
             } failure:^(NSError *error) {
                 
             }];

@@ -136,7 +136,7 @@
                                                  name:kUserLoginOutNotification
                                                object:nil];
         
-        
+    
     [[TLUser user] updateUserInfo];
     [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification
                                                             object:nil];
@@ -256,7 +256,7 @@
 //    }
     TLUpdateVC *tab = [[TLUpdateVC alloc] init];
     TLUserLoginVC *login = [TLUserLoginVC new];
-    
+    [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];
 //
     UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:login];
     self.window.rootViewController = na;

@@ -43,6 +43,7 @@
 		1F6D9E762281D0160057A756 /* AlertsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E752281D0160057A756 /* AlertsTableView.m */; };
 		1F6D9E792281D04B0057A756 /* AlertsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E782281D04B0057A756 /* AlertsCell.m */; };
 		1F6D9E7D228330400057A756 /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E7C2283303F0057A756 /* AddressModel.m */; };
+		1F6D9E802283F0880057A756 /* ChooseWalletVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9E7F2283F0880057A756 /* ChooseWalletVC.m */; };
 		1F6F2BAA222CE84B00298FB3 /* BnakCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */; };
 		1F6F2BAD222CEA7A00298FB3 /* MyFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAC222CEA7A00298FB3 /* MyFriendViewController.m */; };
 		1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6F2BAF222CEB9700298FB3 /* InvestmentHeadCell.m */; };
@@ -727,6 +728,8 @@
 		1F6D9E782281D04B0057A756 /* AlertsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsCell.m; sourceTree = "<group>"; };
 		1F6D9E7B2283303F0057A756 /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
 		1F6D9E7C2283303F0057A756 /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
+		1F6D9E7E2283F0880057A756 /* ChooseWalletVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseWalletVC.h; sourceTree = "<group>"; };
+		1F6D9E7F2283F0880057A756 /* ChooseWalletVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseWalletVC.m; sourceTree = "<group>"; };
 		1F6F2BA8222CE84A00298FB3 /* BnakCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BnakCardVC.h; sourceTree = "<group>"; };
 		1F6F2BA9222CE84A00298FB3 /* BnakCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BnakCardVC.m; sourceTree = "<group>"; };
 		1F6F2BAB222CEA7900298FB3 /* MyFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFriendViewController.h; sourceTree = "<group>"; };
@@ -3444,6 +3447,7 @@
 				1FA566D4223CD4B90077FE54 /* Controller */,
 				1FA566E4223CD4B90077FE54 /* Model */,
 				1FA566D7223CD4B90077FE54 /* View */,
+				1F76697F21D5EFB900006B41 /* Trading投资 */,
 				1FA56B00223CD7600077FE54 /* Web */,
 				1FA568C4223CD6630077FE54 /* GameDetails */,
 			);
@@ -4268,6 +4272,8 @@
 				21A7F2EE1FB2E2F900FAA0A2 /* TLUserLoginVC.m */,
 				21A7F2EF1FB2E2F900FAA0A2 /* TLUserRegisterVC.h */,
 				21A7F2F21FB2E2F900FAA0A2 /* TLUserRegisterVC.m */,
+				1F6D9E7E2283F0880057A756 /* ChooseWalletVC.h */,
+				1F6D9E7F2283F0880057A756 /* ChooseWalletVC.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -4367,7 +4373,6 @@
 				1F7F6F6F227EFBB6003AEBA7 /* Alerts快讯 */,
 				1F7F6F69227EFB22003AEBA7 /* Market行情 */,
 				1FA566D3223CD49C0077FE54 /* Game游戏 */,
-				1F76697F21D5EFB900006B41 /* Trading投资 */,
 				216F5B1D206CD9D900F2C832 /* Investment交易 */,
 				2E394FAC1FB055DE00BA0829 /* My我的 */,
 				211DE63B1FB58B4B002FCF3D /* Utils */,
@@ -5782,6 +5787,7 @@
 				2E394FFC1FB059C100BA0829 /* TLBaseModel.m in Sources */,
 				B8F63ED720D362DA00556150 /* WalletLocalBillTableView.m in Sources */,
 				21635DB91FBECBDD003F48B4 /* TopLabelUtil.m in Sources */,
+				1F6D9E802283F0880057A756 /* ChooseWalletVC.m in Sources */,
 				B8B15C0520CA55D600F13220 /* BuildSucessVC.m in Sources */,
 				7A07F807216C84F30026EB7A /* SCCircleChart.m in Sources */,
 				1F73670B2252FEFA00135F7E /* ripemd160.c in Sources */,

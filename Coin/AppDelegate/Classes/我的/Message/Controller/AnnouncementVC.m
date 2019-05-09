@@ -21,11 +21,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initTableView];
+    self.titleText.text = @"系统公告";
+    self.navigationItem.titleView = self.titleText;
 }
 
 -(void)initTableView
 {
-    self.tableView = [[MessageTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 50 - kTabBarHeight) style:(UITableViewStyleGrouped)];
+    self.tableView = [[MessageTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight ) style:(UITableViewStyleGrouped)];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     [self loadData];

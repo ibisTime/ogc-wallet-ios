@@ -423,12 +423,24 @@
         [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
         [dataBase close];
         
+        [USERDEFAULTS setObject:self.titleWord forKey:@"mnemonics"];
+        
         [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            if ([self.state isEqualToString:@"100"]) {
+                TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
+                [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+            }else
+            {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+            }
+            
+            
             //            创建通知
             
-            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
-            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
             
         }];
         

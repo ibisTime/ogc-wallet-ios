@@ -23,5 +23,7 @@
 
 @property (nonatomic ,assign)BOOL isSave;
 
+@property (nonatomic , copy)NSString *state;
+
 
 @end

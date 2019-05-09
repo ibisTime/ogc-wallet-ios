@@ -363,7 +363,16 @@
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"4"])
         {
-            
+            if ([self.GameModel[indexPath.row].url hasPrefix:@"1"]) {
+//                量化理财
+                PosMiningVC *vc = [PosMiningVC new];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            if ([self.GameModel[indexPath.row].url hasPrefix:@"2"]) {
+             
+//                闪兑
+                
+            }
         }
     }
 }

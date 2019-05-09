@@ -12,5 +12,5 @@
 @property (nonatomic , assign) BOOL isCopy;
 @property (nonatomic , copy) NSString  *PWD;
 @property (nonatomic , copy) NSString  *name;
-
+@property (nonatomic , copy)NSString *state;
 @end

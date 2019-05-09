@@ -48,6 +48,7 @@
 #import "PrivateKeyWalletVC.h"
 #import "MessageVC.h"
 #import "AddressBookVC.h"
+#import "AnnouncementVC.h"
 @interface TLMineVC ()<MineHeaderSeletedDelegate, UINavigationControllerDelegate,RefreshDelegate,ZDKHelpCenterConversationsUIDelegate,ZDKHelpCenterDelegate>
 
 
@@ -136,7 +137,7 @@
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
 {
     if (index == 0) {
-        MessageVC *vc = [MessageVC new];
+        AnnouncementVC *vc = [AnnouncementVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }

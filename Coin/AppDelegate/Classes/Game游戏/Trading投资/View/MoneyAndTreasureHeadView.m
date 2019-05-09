@@ -23,12 +23,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        UIImageView *backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 160 - 64 + kNavigationBarHeight)];
-//        backImage.image = kImage(@"bijiabao");
-//        [self addSubview:backImage];
+
 
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 240 - 64 + kNavigationBarHeight)];
+        [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [self addSubview:backView];
         
         

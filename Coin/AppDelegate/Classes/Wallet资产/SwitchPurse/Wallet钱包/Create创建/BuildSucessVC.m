@@ -116,6 +116,7 @@
     backUpVC.name = self.name;
     backUpVC.mnemonics = self.mnemonics;
     backUpVC.isSave = YES;
+    backUpVC.state = @"100";
     [self.navigationController pushViewController:backUpVC animated:YES];
     
 }

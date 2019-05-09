@@ -34,7 +34,7 @@
 //#import "ChatManager.h"   czy
 //#import "IMModel.h"
 //#import <ImSDK/TIMManager.h>
-
+#import "ChooseWalletVC.h"
 @interface TLUserLoginVC ()<UITextFieldDelegate,MSAuthProtocol>
 
 @property (nonatomic,strong) UITextField *phoneTf;
@@ -289,111 +289,20 @@
 
 -(void)forgetPwdBtnClick:(UIButton *)btn
 {
-//    NSString *path = [NSBundle mainBundle].bundlePath;
-//    path = [path stringByAppendingPathComponent:@"Theme"];
-//    path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
-//    [MTThemeManager.manager setThemePath:path];
+
     TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
     vc.titleString = @"修改登录密码";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)goReg:(UIButton *)btn {
-//    NSString *path = [NSBundle mainBundle].bundlePath;
-//    path = [path stringByAppendingPathComponent:@"Theme"];
-//    path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
-//    [MTThemeManager.manager setThemePath:path];
+
     TLUserRegisterVC *registerVC = [[TLUserRegisterVC alloc] init];
     [self.navigationController pushViewController:registerVC animated:YES];
     
 }
 
-//- (void)sendCaptcha
-//{
-//    if (![self.phoneTf.text isPhoneNum]) {
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-//        return;
-//    }
-//    LangType type = [LangSwitcher currentLangType];
-//    NSString *lang;
-//    if (type == LangTypeSimple || type == LangTypeTraditional) {
-//        lang = @"zh_CN";
-//    }
-//    else if (type == LangTypeKorean)
-//    {
-//        lang = @"ko";
-//    }
-//    else
-//    {
-//        lang = @"en";
-//    }
-//    UIViewController *vc = [MSAuthVCFactory simapleVerifyWithType:(MSAuthTypeSlide) language:lang Delegate:self authCode:@"0335" appKey:nil];
-//    [self.navigationController pushViewController:vc animated:YES];
-//
-//}
-//
-//-(void)registeredBtn
-//{
-//    
-//}
-//
-//-(void)verifyDidFinishedWithResult:(t_verify_reuslt)code Error:(NSError *)error SessionId:(NSString *)sessionId
-//{
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        if (error) {
-//            NSLog(@"验证失败 %@", error);
-//            [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证失败" key:nil]];
-//        } else {
-//            NSLog(@"验证通过 %@", sessionId);
-//            //发送验证码
-////            [SVProgressHUD show];
-//            TLNetworking *http = [TLNetworking new];
-//            http.showView = self.view;
-//            http.code = CAPTCHA_CODE;
-//            http.parameters[@"client"] = @"ios";
-//            http.parameters[@"sessionId"] = sessionId;
-//            http.parameters[@"bizType"] = @"805044";
-//            http.parameters[@"mobile"] = self.phoneTf.text;
-//            http.parameters[@"interCode"] = [NSString stringWithFormat:@"00%@",[self.PhoneCode.text substringFromIndex:1]];;
-//            http.parameters[@"sessionId"] = sessionId;
-//
-//            [http postWithSuccess:^(id responseObject) {
-//
-//                [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
-//
-//                [self.captchaView.captchaBtn begin];
-////                MBProgressHUD hi
-////                [MBProgressHUD hideHUDForView:self.view animated:YES];
-//
-//            } failure:^(NSError *error) {
-//
-////                [MBProgressHUD hideHUDForView:self.view animated:YES];
-//            }];
-//        }
-//        [self.navigationController popViewControllerAnimated:YES];
-//        //将sessionid传到经过app服务器做二次验证
-//    });
-//}
 
-
-
-
-//- (void)changeCodeLogin
-//{
-//    self.forgetPwdBtn.selected = !self.forgetPwdBtn.selected;
-//
-//    self.forgetLab.hidden = !self.forgetLab.hidden;
-//    self.codeButton.hidden = !self.codeButton.hidden;
-//    self.pwdTf.hidden = !self.pwdTf.hidden;
-//    self.captchaView.hidden = !self.captchaView.hidden;
-//}
-
-//- (void)setUpNotification {
-//
-//    //登录成功之后，给予回调
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(login) name:kUserLoginNotification object:nil];
-//
-//}
 
 #pragma mark - Events
 
@@ -411,22 +320,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//登录成功
-//- (void)login {
-//
-//
-//    // apple delegate
-//
-//    [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
-//
-//    [self dismissViewControllerAnimated:YES completion:nil];
-//
-//    if (self.loginSuccess) {
-//
-//        self.loginSuccess();
-//    }
-//
-//}
+
 
 
 
@@ -465,53 +359,11 @@
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入密码" key:nil]];
         return;
     }
-//    if (!self.PhoneCode.text) {
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择国家" key:nil]];
-//
-//        return;
-//    }
-    
-//    if ([self.captchaView.captchaTf.text isBlank] &&self.captchaView.hidden == NO) {
-//
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入验证码" key:nil]];
-//        return;
-//    }
-//    [self.view endEditing:YES];
+
 
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
-//    if (self.captchaView.hidden == NO) {
-//        //验证码登录
-//        http.code = @"805044";
-//
-//    http.parameters[@"mobile"] = self.phoneTf.text;
-//    NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-//    CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//        if ([model.code isNotBlank]) {
-//            http.parameters[@"countryCode"] = model.code;
-//
-//        }else{
-//
-//            http.parameters[@"countryCode"] =  self.countrys[0].code;
-//
-//        }
-//
-//    http.parameters[@"smsCaptcha"] = self.captchaView.captchaTf.text;
-//
-//
-//    }else{
-    
-//        NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-//        CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//
-//        http.code = USER_LOGIN_CODE;
-//        if ([model.code isNotBlank]) {
-//
-//                http.parameters[@"countryCode"] = model.code;
-//            }else {
-//                http.parameters[@"countryCode"] =  self.countrys[0].code;
-//
-//            }
+
     http.code = USER_LOGIN_CODE;
     http.parameters[@"loginName"] = self.phoneTf.text;
     http.parameters[@"loginPwd"] = self.pwdTf.text;
@@ -521,6 +373,12 @@
 
     
     [http postWithSuccess:^(id responseObject) {
+        
+        
+//        ChooseWalletVC *tab   = [[ChooseWalletVC alloc] init];
+//        [self.navigationController pushViewController:tab animated:YES];
+//        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
         NSLog(@"%@",responseObject[@"data"][@"userId"]);
         [self requesUserInfoWithResponseObject:responseObject];
         [MobClick profileSignInWithPUID:responseObject[@"data"][@"userId"]];
@@ -535,9 +393,6 @@
     NSString *token = responseObject[@"data"][@"token"];
     NSString *userId = responseObject[@"data"][@"userId"];
     
-    //保存用户账号和密码
-//    [[TLUser user] saveUserName:self.phoneTf.text pwd:self.pwdTf.text];
-    
     //1.获取用户信息
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
@@ -545,6 +400,8 @@
     http.parameters[@"userId"] = userId;
     http.parameters[@"token"] = token;
     [http postWithSuccess:^(id responseObject) {
+        
+        
         
         NSDictionary *userInfo = responseObject[@"data"];
         
@@ -563,10 +420,26 @@
             self.loginSuccess();
         }
         
-        TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
-        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+        if ([TLUser isBlankString:[USERDEFAULTS objectForKey:@"firstEnter"]] == YES ) {
+            ChooseWalletVC *tab   = [[ChooseWalletVC alloc] init];
+            [self.navigationController pushViewController:tab animated:YES];
+//            [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+            [USERDEFAULTS setObject:@"否" forKey:@"firstEnter"];
+            [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+        }else
+        {
+            TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
+            [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+        }
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+        
+//        TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
+//        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+//
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
 //        [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(NSError *error) {
