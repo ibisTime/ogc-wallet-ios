@@ -7,16 +7,49 @@
 //
 
 #import "MarketVC.h"
+#import "MarketTableView.h"
+#import "MarketDetailsVC.h"
+@interface MarketVC ()<RefreshDelegate>
 
-@interface MarketVC ()
+@property (nonatomic ,strong)MarketTableView *tableView;
 
 @end
 
 @implementation MarketVC
 
+
+-(MarketTableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[MarketTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight) style:UITableViewStyleGrouped];
+        self.tableView.showsVerticalScrollIndicator = YES;
+        self.tableView.showsHorizontalScrollIndicator = YES;
+        self.tableView.refreshDelegate = self;
+    }
+    return _tableView;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, -44, 100, 44)];
+    nameLable.text = [LangSwitcher switchLang:@"行情" key:nil];
+    nameLable.textAlignment = NSTextAlignmentLeft;
+    nameLable.font = Font(24);
+    [nameLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+    [self.view addSubview:nameLable];
+    
+    [self.view addSubview:self.tableView];
+    
+    
+    
+}
+
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MarketDetailsVC *vc = [MarketDetailsVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

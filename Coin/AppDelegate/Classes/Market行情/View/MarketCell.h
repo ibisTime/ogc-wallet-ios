@@ -1,8 +1,8 @@
 //
-//  AlertsCell.h
+//  MarketCell.h
 //  Coin
 //
-//  Created by 郑勤宝 on 2019/5/7.
+//  Created by 郑勤宝 on 2019/5/10.
 //  Copyright © 2019 chengdai. All rights reserved.
 //
 
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AlertsCell : UITableViewCell
-
-@property (nonatomic , strong)UIButton *poorBtn;
+@interface MarketCell : UITableViewCell
 
 @end
 

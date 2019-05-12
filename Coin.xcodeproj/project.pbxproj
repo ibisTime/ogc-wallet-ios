@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F02F98A228558BD003AF7F1 /* AlertsDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */; };
+		1F02F99322856606003AF7F1 /* MarketTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F99222856606003AF7F1 /* MarketTableView.m */; };
+		1F02F9962285666D003AF7F1 /* MarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F9952285666D003AF7F1 /* MarketCell.m */; };
 		1F0725B1228009660008EADA /* SwitchPurseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0725B0228009660008EADA /* SwitchPurseVC.m */; };
 		1F0725B42280097E0008EADA /* SwitchPurseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0725B32280097E0008EADA /* SwitchPurseTableView.m */; };
 		1F0725BA22800CDC0008EADA /* LWSkinTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0725B822800CDB0008EADA /* LWSkinTool.m */; };
@@ -223,6 +226,12 @@
 		1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BED2180953B0078B945 /* SGQRCodeScanningView.m */; };
 		1F816BF82180953D0078B945 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BEE2180953B0078B945 /* UIImage+ImageSize.m */; };
 		1F816BF92180953D0078B945 /* SGQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BF02180953C0078B945 /* SGQRCodeHelperTool.m */; };
+		1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF2228572830045D62B /* MarketDetailsVC.m */; };
+		1F8E2CF62285733C0045D62B /* MarketDetaiilsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */; };
+		1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */; };
+		1F8E2CFC2285735E0045D62B /* MarketDetaiilsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CFB2285735E0045D62B /* MarketDetaiilsCell.m */; };
+		1F8E2CFF22857EB30045D62B /* SmoothChartView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CFE22857EB30045D62B /* SmoothChartView1.m */; };
+		1F8E2D02228597CB0045D62B /* BriefCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2D01228597CB0045D62B /* BriefCell.m */; };
 		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
 		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
 		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
@@ -659,6 +668,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F02F988228558BD003AF7F1 /* AlertsDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsDetailsVC.h; sourceTree = "<group>"; };
+		1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsDetailsVC.m; sourceTree = "<group>"; };
+		1F02F99122856606003AF7F1 /* MarketTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketTableView.h; sourceTree = "<group>"; };
+		1F02F99222856606003AF7F1 /* MarketTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketTableView.m; sourceTree = "<group>"; };
+		1F02F9942285666D003AF7F1 /* MarketCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketCell.h; sourceTree = "<group>"; };
+		1F02F9952285666D003AF7F1 /* MarketCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketCell.m; sourceTree = "<group>"; };
 		1F0725AF228009660008EADA /* SwitchPurseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchPurseVC.h; sourceTree = "<group>"; };
 		1F0725B0228009660008EADA /* SwitchPurseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwitchPurseVC.m; sourceTree = "<group>"; };
 		1F0725B22280097E0008EADA /* SwitchPurseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchPurseTableView.h; sourceTree = "<group>"; };
@@ -1172,6 +1187,18 @@
 		1F816BF12180953C0078B945 /* SGQRCodeScanManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanManager.h; sourceTree = "<group>"; };
 		1F816BF22180953C0078B945 /* SGQRCodeHelperTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeHelperTool.h; sourceTree = "<group>"; };
 		1F816BF32180953D0078B945 /* SGQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
+		1F8E2CF1228572830045D62B /* MarketDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetailsVC.h; sourceTree = "<group>"; };
+		1F8E2CF2228572830045D62B /* MarketDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetailsVC.m; sourceTree = "<group>"; };
+		1F8E2CF42285733C0045D62B /* MarketDetaiilsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsTableView.h; sourceTree = "<group>"; };
+		1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetaiilsTableView.m; sourceTree = "<group>"; };
+		1F8E2CF7228573520045D62B /* MarketDetaiilsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsHeadView.h; sourceTree = "<group>"; };
+		1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetaiilsHeadView.m; sourceTree = "<group>"; };
+		1F8E2CFA2285735E0045D62B /* MarketDetaiilsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsCell.h; sourceTree = "<group>"; };
+		1F8E2CFB2285735E0045D62B /* MarketDetaiilsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetaiilsCell.m; sourceTree = "<group>"; };
+		1F8E2CFD22857EB30045D62B /* SmoothChartView1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmoothChartView1.h; sourceTree = "<group>"; };
+		1F8E2CFE22857EB30045D62B /* SmoothChartView1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothChartView1.m; sourceTree = "<group>"; };
+		1F8E2D00228597CB0045D62B /* BriefCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BriefCell.h; sourceTree = "<group>"; };
+		1F8E2D01228597CB0045D62B /* BriefCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BriefCell.m; sourceTree = "<group>"; };
 		1F9031CC2247A8670093C38D /* JXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSegment.m; sourceTree = "<group>"; };
 		1F9031CD2247A8680093C38D /* JXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSegment.h; sourceTree = "<group>"; };
 		1F9031CE2247A8680093C38D /* UIView+JXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXView.h"; sourceTree = "<group>"; };
@@ -2078,6 +2105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F02F985228557FE003AF7F1 /* AlertsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1F02F988228558BD003AF7F1 /* AlertsDetailsVC.h */,
+				1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */,
+			);
+			path = AlertsDetails;
+			sourceTree = "<group>";
+		};
 		1F0725AC228008F30008EADA /* SwitchPurse */ = {
 			isa = PBXGroup;
 			children = (
@@ -3169,6 +3205,7 @@
 		1F7F6F69227EFB22003AEBA7 /* Market行情 */ = {
 			isa = PBXGroup;
 			children = (
+				1F8E2CF0228572610045D62B /* MarketDetails */,
 				1F7F6F6B227EFB3A003AEBA7 /* Controller */,
 				1F7F6F6A227EFB38003AEBA7 /* View */,
 			);
@@ -3178,6 +3215,10 @@
 		1F7F6F6A227EFB38003AEBA7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F02F99122856606003AF7F1 /* MarketTableView.h */,
+				1F02F99222856606003AF7F1 /* MarketTableView.m */,
+				1F02F9942285666D003AF7F1 /* MarketCell.h */,
+				1F02F9952285666D003AF7F1 /* MarketCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3194,6 +3235,7 @@
 		1F7F6F6F227EFBB6003AEBA7 /* Alerts快讯 */ = {
 			isa = PBXGroup;
 			children = (
+				1F02F985228557FE003AF7F1 /* AlertsDetails */,
 				1F7F6F71227EFBC2003AEBA7 /* Controller */,
 				1F7F6F70227EFBC0003AEBA7 /* View */,
 			);
@@ -3218,6 +3260,25 @@
 				1F7F6F73227EFBD3003AEBA7 /* AlertsVC.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2CF0228572610045D62B /* MarketDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2CF1228572830045D62B /* MarketDetailsVC.h */,
+				1F8E2CF2228572830045D62B /* MarketDetailsVC.m */,
+				1F8E2CF42285733C0045D62B /* MarketDetaiilsTableView.h */,
+				1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */,
+				1F8E2CF7228573520045D62B /* MarketDetaiilsHeadView.h */,
+				1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */,
+				1F8E2CFA2285735E0045D62B /* MarketDetaiilsCell.h */,
+				1F8E2CFB2285735E0045D62B /* MarketDetaiilsCell.m */,
+				1F8E2D00228597CB0045D62B /* BriefCell.h */,
+				1F8E2D01228597CB0045D62B /* BriefCell.m */,
+				1F8E2CFD22857EB30045D62B /* SmoothChartView1.h */,
+				1F8E2CFE22857EB30045D62B /* SmoothChartView1.m */,
+			);
+			path = MarketDetails;
 			sourceTree = "<group>";
 		};
 		1F9031CB2247A84D0093C38D /* TopScrollView */ = {
@@ -5541,6 +5602,7 @@
 				B8B15C0220CA312100F13220 /* BuildWalletMineVC.m in Sources */,
 				1F7367112252FEFA00135F7E /* ecdsa.c in Sources */,
 				211DE6A91FB58B4C002FCF3D /* TLPlaceholderView.m in Sources */,
+				1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */,
 				2E394FED1FB0575A00BA0829 /* AppDelegate.m in Sources */,
 				B88B592B2109B2EF00F20D1B /* ZLGestureLockIndicator.m in Sources */,
 				21D216861FB9C5750040795E /* QRCodeVC.m in Sources */,
@@ -5603,9 +5665,11 @@
 				7A2CC674215CAECF00B27E2D /* AccumulatedEarningsVC.m in Sources */,
 				B80D54CE210C9C11005303D5 /* TLChangeNikeName.m in Sources */,
 				1F6D9E5D2281716D0057A756 /* TodoViewController.m in Sources */,
+				1F02F9962285666D003AF7F1 /* MarketCell.m in Sources */,
 				1F76691D21D4A32700006B41 /* BTCHashID.m in Sources */,
 				1F93617E21EEDBD3007E522A /* LYSLineChart.m in Sources */,
 				1FA56AE6223CD6A70077FE54 /* YYTextMagnifier.m in Sources */,
+				1F8E2CFF22857EB30045D62B /* SmoothChartView1.m in Sources */,
 				B87BF1D02114251800DD5C05 /* FMDBMigrationManager.m in Sources */,
 				1F7668F321D4A32700006B41 /* BTCBigNumber+Tests.m in Sources */,
 				B8B15C1F20CA752900F13220 /* QHCollectionViewNine.m in Sources */,
@@ -5664,6 +5728,7 @@
 				B8890045214CD61A0081AC4F /* WBManger.m in Sources */,
 				B88B592C2109B2EF00F20D1B /* ZLGestureLockView.m in Sources */,
 				1F76691321D4A32700006B41 /* BTCData.m in Sources */,
+				1F02F98A228558BD003AF7F1 /* AlertsDetailsVC.m in Sources */,
 				1FA56AE0223CD6A70077FE54 /* YSActionSheetButton.m in Sources */,
 				1FA56AE8223CD6A70077FE54 /* YYTextEffectWindow.m in Sources */,
 				1F7668FE21D4A32700006B41 /* BTCBlindSignature+Tests.m in Sources */,
@@ -5720,6 +5785,7 @@
 				1FA56B0B223CD7610077FE54 /* NSTimer+addition.m in Sources */,
 				B8CAA14721158FF200695BC3 /* LPDPhotoPreviewCell.m in Sources */,
 				211DE6AA1FB58B4C002FCF3D /* TLImagePicker.m in Sources */,
+				1F8E2D02228597CB0045D62B /* BriefCell.m in Sources */,
 				1F73670E2252FEFA00135F7E /* bip32.c in Sources */,
 				21A7F3211FB2E2F900FAA0A2 /* AccountTf.m in Sources */,
 				2EB039AD1FE8EDE300589D8E /* UserInfo.m in Sources */,
@@ -5729,6 +5795,7 @@
 				B8CA7D4920CBA22800A0E93C /* WalletImportVC.m in Sources */,
 				1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */,
 				1F7F6F68227EE572003AEBA7 /* UITextField+MTTheme.m in Sources */,
+				1F8E2CFC2285735E0045D62B /* MarketDetaiilsCell.m in Sources */,
 				B83666F6210EC0610065DF18 /* LocalSettingCell.m in Sources */,
 				1F76690B21D4A32700006B41 /* BTCCurrencyConverter+Tests.m in Sources */,
 				B8CAA14121158FF200695BC3 /* LPDProgressView.m in Sources */,
@@ -5769,6 +5836,7 @@
 				1F816BF62180953D0078B945 /* SGQRCodeGenerateManager.m in Sources */,
 				1F9361B121EF0F7F007E522A /* LEEAlert.m in Sources */,
 				B8C2057020CF984900952765 /* WalletDelectVC.m in Sources */,
+				1F8E2CF62285733C0045D62B /* MarketDetaiilsTableView.m in Sources */,
 				211DE6AD1FB58B4C002FCF3D /* TLAlert.m in Sources */,
 				1FA56AE5223CD6A70077FE54 /* YYTextView.m in Sources */,
 				B8CAA11A2115693A00695BC3 /* TLQusertionVC.m in Sources */,
@@ -5941,6 +6009,7 @@
 				B8D938D22116C85200B2AA88 /* QuestionDetail.m in Sources */,
 				1F7668ED21D4A32700006B41 /* BTCProtocolSerialization+Tests.m in Sources */,
 				B8CAA13B21158FF200695BC3 /* LPDPhotoPreviewController.m in Sources */,
+				1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */,
 				B88B59192109AEC400F20D1B /* TLTabBarController.m in Sources */,
 				7A2CC6C0215DC88C00B27E2D /* PGDatePicker+Year.m in Sources */,
 				B8BBA63D20C7F6FC00DC4D5F /* WallAccountVC.m in Sources */,
@@ -5960,6 +6029,7 @@
 				7A07F809216C84F30026EB7A /* SCGenericChart.m in Sources */,
 				7A07F7E5216C7C200026EB7A /* MyInconmeHeadCell.m in Sources */,
 				1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */,
+				1F02F99322856606003AF7F1 /* MarketTableView.m in Sources */,
 				1F7F6F5B227EE572003AEBA7 /* MTElementModel.m in Sources */,
 				1F7668F921D4A32700006B41 /* BTCScriptMachine.m in Sources */,
 				1F7367122252FEFA00135F7E /* pbkdf2.c in Sources */,
@@ -6350,7 +6420,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -6526,7 +6596,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

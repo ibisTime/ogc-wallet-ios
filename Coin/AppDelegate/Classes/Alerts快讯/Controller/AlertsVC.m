@@ -7,25 +7,46 @@
 //
 
 #import "AlertsVC.h"
+#import "AlertsTableView.h"
+#import "AlertsDetailsVC.h"
+@interface AlertsVC ()<RefreshDelegate>
 
-@interface AlertsVC ()
 
-
-
+@property (nonatomic , strong)AlertsTableView *tableView;
 
 @end
 
 @implementation AlertsVC
 
+-(AlertsTableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[AlertsTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - kTabBarHeight) style:UITableViewStyleGrouped];
+        self.tableView.showsVerticalScrollIndicator = YES;
+        self.tableView.showsHorizontalScrollIndicator = YES;
+        self.tableView.refreshDelegate = self;
+    }
+    return _tableView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view addSubview:self.tableView];
+    UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, -44, 100, 44)];
+    nameLable.text = [LangSwitcher switchLang:@"快讯" key:nil];
+    nameLable.textAlignment = NSTextAlignmentLeft;
     
+    nameLable.font = Font(24);
+    [nameLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+    [self.view addSubview:nameLable];
 }
 
-
-
-
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AlertsDetailsVC *vc = [AlertsDetailsVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 @end
