@@ -34,131 +34,6 @@
     view.frame = CGRectMake(0, 0, SCREEN_WIDTH, kNavigationBarHeight);
     [[UITabBar appearance]insertSubview:view atIndex:0] ;
     
-    //    CoinWeakSelf;
-//    NSMutableArray *titleArray = [NSMutableArray array];
-//    NSMutableArray *VCNamesArray = [NSMutableArray array];
-//    NSMutableArray *imageNamesArray = [NSMutableArray array];
-//    NSMutableArray *selectedImageNames = [NSMutableArray array];
-//    if (self.dataArray.count > 0) {
-//        NSArray *dataArray = self.dataArray;
-//        self.delegate = self;
-//        for (int i = 0; i < dataArray.count; i ++) {
-//            [titleArray addObject:dataArray[i][@"name"]];
-//            if ([dataArray[i][@"name"] isEqualToString:@"投资"]) {
-//                [VCNamesArray addObject:@"PosMiningVC"];
-//            }
-//            if ([dataArray[i][@"name"] isEqualToString:@"交易"]) {
-//                [VCNamesArray addObject:@"InvestMentAllVC"];
-//            }
-//            if ([dataArray[i][@"name"] isEqualToString:@"资产"]) {
-//                [VCNamesArray addObject:@"TLWalletVC"];
-//            }
-//            if ([dataArray[i][@"name"] isEqualToString:@"我的"]) {
-//                [VCNamesArray addObject:@"TLMineVC"];
-//            }
-//            [imageNamesArray addObject:[dataArray[i][@"pic"] convertImageUrl]];
-//            [selectedImageNames addObject:[dataArray[i][@"enPic"] convertImageUrl]];
-//        }
-//        for (int i = 0; i < titleArray.count; i++) {
-//            if (i == 0 && [AppConfig config].isUploadCheck) {
-//                continue;
-//            }
-//            [self addChildVCWithTitle:titleArray[i]
-//                           controller:VCNamesArray[i]
-//                          normalImage:imageNamesArray[i]
-//                        selectedImage:selectedImageNames[i]];
-//        }
-//
-//        UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
-//        tabBarBgView.backgroundColor = [UIColor whiteColor];
-//        //        //判断点击的Controller是不是需要登录，如果是，那就登录
-//
-//        self.tabBar.backgroundColor = [UIColor whiteColor];
-//    }else
-//    {
-//
-//
-//          CoinWeakSelf;
-//
-////        [self.navigationController pushViewController:tab animated:YES];
-////        self.delegate = self;
-////        for (int i = 0; i < dataArray.count; i ++) {
-////            [titleArray addObject:dataArray[i][@"name"]];
-////            if ([dataArray[i][@"name"] isEqualToString:@"投资"]) {
-////                [VCNamesArray addObject:@"PosMiningVC"];
-////            }
-////            if ([dataArray[i][@"name"] isEqualToString:@"交易"]) {
-////                [VCNamesArray addObject:@"InvestMentAllVC"];
-////            }
-////            if ([dataArray[i][@"name"] isEqualToString:@"资产"]) {
-////                [VCNamesArray addObject:@"TLWalletVC"];
-////            }
-////            if ([dataArray[i][@"name"] isEqualToString:@"我的"]) {
-////                [VCNamesArray addObject:@"TLMineVC"];
-////            }
-////
-////            [imageNamesArray addObject:[dataArray[i][@"pic"] convertImageUrl]];
-////            [selectedImageNames addObject:[dataArray[i][@"enPic"] convertImageUrl]];
-////        }
-////
-////        for (int i = 0; i < titleArray.count; i++) {
-////
-////            if (i == 0 && [AppConfig config].isUploadCheck) {
-////
-////                continue;
-////            }
-////
-////
-////            [self addChildVCWithTitle:titleArray[i]
-////                    controller:VCNamesArray[i]
-////                    normalImage:imageNamesArray[i]
-////                    selectedImage:selectedImageNames[i]];
-////        }
-////
-////        UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
-////        tabBarBgView.backgroundColor = [UIColor whiteColor];
-////        //        //判断点击的Controller是不是需要登录，如果是，那就登录
-////
-////        self.tabBar.backgroundColor = [UIColor whiteColor];
-//
-//
-//
-//    }
-
-//    self.delegate = self;
-//
-//    NSArray *titles = @[
-//                        [LangSwitcher switchLang:@"投资" key:nil],
-//                        [LangSwitcher switchLang:@"交易" key:nil],
-//                        [LangSwitcher switchLang:@"资产" key:nil],
-//                        [LangSwitcher switchLang:@"我的" key:nil]
-//                        ];
-//    NSArray *VCNames = @[@"PosMiningVC",@"InvestMentAllVC",@"TLWalletVC", @"TLMineVC"];
-//
-//    NSArray *imageNames = @[@"投资（未选中）", @"交易（未选中）", @"钱包（未选中）",@"我的（未选中）"];
-//    NSArray *selectedImageNames = @[@"投资（选中）",@"交易（选中）",  @"钱包（选中）",@"我的（选中）"];
-//
-//    for (int i = 0; i < imageNames.count; i++) {
-//
-//        if (i == 0 && [AppConfig config].isUploadCheck) {
-//
-//            continue;
-//        }
-//
-//        [self addChildVCWithTitle:titles[i]
-//                       controller:VCNames[i]
-//                      normalImage:imageNames[i]
-//                    selectedImage:selectedImageNames[i]];
-//    }
-//
-////    self.selectedIndex =[AppConfig config].isUploadCheck ? 1 : 2;
-//
-//    //
-//    UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
-//    tabBarBgView.backgroundColor = [UIColor whiteColor];
-//    //        //判断点击的Controller是不是需要登录，如果是，那就登录
-//
-//    self.tabBar.backgroundColor = [UIColor whiteColor];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"TABBAR" object:nil];
 }
 
@@ -172,62 +47,88 @@
     NSMutableArray *VCNamesArray = [NSMutableArray array];
     NSMutableArray *imageNamesArray = [NSMutableArray array];
     NSMutableArray *selectedImageNames = [NSMutableArray array];
-//    if (self.dataArray.count > 0) {
     
-    NSArray *array = @[@"首页",@"DAPP",@"行情",@"快讯",@"我的"];
-        
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObjectsFromArray:dataArray];
+    
+    if (dataArray.count > 0) {
+    
+//    NSArray *array = @[@"首页",@"DAPP",@"行情",@"快讯",@"我的"];
+    
         self.delegate = self;
-        for (int i = 0; i < array.count; i ++) {
+        for (int i = 0; i < dataArray.count; i ++) {
 
-            if ([array[i] isEqualToString:@"首页"]) {
+            if ([dataArray[i][@"name"] isEqualToString:@"首页"]) {
                 [VCNamesArray addObject:@"TLWalletVC"];
                 [titleArray addObject:@"首页"];
                 [imageNamesArray addObject:@"首页-未点击"];
                 [selectedImageNames addObject:@"首页-点击"];
+                [self addChildVCWithTitle:titleArray[i]
+                               controller:VCNamesArray[i]
+                              normalImage:imageNamesArray[i]
+                            selectedImage:selectedImageNames[i]];
             }
 
-            if ([array[i] isEqualToString:@"DAPP"]) {
+            if ([dataArray[i][@"name"] isEqualToString:@"DAPP"]) {
                 [VCNamesArray addObject:@"HomeVC"];
                 [titleArray addObject:@"DAPP"];
                 [imageNamesArray addObject:@"DAPP-未点击"];
                 [selectedImageNames addObject:@"DAPP-点击"];
+                [self addChildVCWithTitle:titleArray[i]
+                               controller:VCNamesArray[i]
+                              normalImage:imageNamesArray[i]
+                            selectedImage:selectedImageNames[i]];
             }
 
-            if ([array[i] isEqualToString:@"行情"]) {
+            if ([dataArray[i][@"name"] isEqualToString:@"行情"]) {
                 [VCNamesArray addObject:@"MarketVC"];
                 [imageNamesArray addObject:@"行情-未点击"];
                 [selectedImageNames addObject:@"行情-点击"];
                 [titleArray addObject:@"行情"];
+
+                [self addChildVCWithTitle:titleArray[i]
+                               controller:VCNamesArray[i]
+                              normalImage:imageNamesArray[i]
+                            selectedImage:selectedImageNames[i]];
             }
-            if ([array[i] isEqualToString:@"快讯"]) {
+            if ([dataArray[i][@"name"] isEqualToString:@"快讯"]) {
                 [VCNamesArray addObject:@"AlertsVC"];
                 [imageNamesArray addObject:@"快讯-未点击"];
                 [selectedImageNames addObject:@"快讯-点击"];
                 [titleArray addObject:@"快讯"];
+                [self addChildVCWithTitle:titleArray[i]
+                               controller:VCNamesArray[i]
+                              normalImage:imageNamesArray[i]
+                            selectedImage:selectedImageNames[i]];
             }
-            if ([array[i] isEqualToString:@"我的"]) {
+            if ([dataArray[i][@"name"] isEqualToString:@"我的"]) {
                 [VCNamesArray addObject:@"TLMineVC"];
                 [imageNamesArray addObject:@"我的-未点击"];
                 [selectedImageNames addObject:@"我的-点击"];
                 [titleArray addObject:@"我的"];
+                [self addChildVCWithTitle:titleArray[i]
+                               controller:VCNamesArray[i]
+                              normalImage:imageNamesArray[i]
+                            selectedImage:selectedImageNames[i]];
             }
-            [self addChildVCWithTitle:titleArray[i]
-                           controller:VCNamesArray[i]
-                          normalImage:imageNamesArray[i]
-                        selectedImage:selectedImageNames[i]];
+            
+            if ([dataArray[i][@"name"] isEqualToString:@"交易"]) {
+                [VCNamesArray addObject:@"InvestMentAllVC"];
+                [imageNamesArray addObject:@"交易-未点击"];
+                [selectedImageNames addObject:@"交易-点击"];
+                [titleArray addObject:@"交易"];
+                [self addChildVCWithTitle:titleArray[i]
+                               controller:VCNamesArray[i]
+                              normalImage:imageNamesArray[i]
+                            selectedImage:selectedImageNames[i]];
+            }
+            
         }
-//    for (int i = 0; i < 5; i ++ ) {
-//        UIButton *button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12];
-//        [button theme_setImageIdentifier:imageNamesArray[i] forState:(UIControlStateNormal) moduleName:ImgAddress];
-//        button.frame = CGRectMake(0 + i % 5 * SCREEN_WIDTH/5, 0, SCREEN_WIDTH/5, 50);
-//        [view addSubview:button];
-//    }
+    }
     
     
     UIView *tabBarBgView = [[UIView alloc] initWithFrame:self.tabBar.bounds];
     tabBarBgView.backgroundColor = [UIColor whiteColor];
-    //        //判断点击的Controller是不是需要登录，如果是，那就登录
-    
     self.tabBar.backgroundColor = [UIColor whiteColor];
 }
 
@@ -264,20 +165,14 @@
     UIImage *normalImage = [self getOrgImage:[UIImage imageNamed:normalImageName]];
     UIImage *selectedImage = [self getOrgImage:[UIImage imageNamed:selectedImageName]];
     
-//    UIImage *normalImage = [MTThemeManager.manager getImageWithModuleName:normalImageName
-//                                        identifier:ImgAddress];
-//    UIImage *selectedImage = [MTThemeManager.manager getImageWithModuleName:selectedImageName
-//                                                                 identifier:ImgAddress];
     
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:title
                                                              image:normalImage
                                                      selectedImage:selectedImage];
-    //    tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
-    //    tabBarItem.titlePositionAdjustment = UIOffsetMake(0, 100);
     
     //title颜色
     [tabBarItem setTitleTextAttributes:@{
-                                         NSForegroundColorAttributeName : kTextColor
+                                         NSForegroundColorAttributeName : kTabbarColor
                                          } forState:UIControlStateSelected];
     [tabBarItem setTitleTextAttributes:@{
                                          NSForegroundColorAttributeName : kTextColor
@@ -358,67 +253,4 @@
     
 }
 
-#pragma mark - IM
-//- (void)pushToChatViewControllerWith:(IMAUser *)user
-//{
-//    NavigationViewController *curNav = (NavigationViewController *)[[self viewControllers] objectAtIndex:self.selectedIndex];
-//    if (self.selectedIndex == 2)
-//    {
-//        // 选的中会话tab
-//        // 先检查当前栈中是否聊天界面
-//        NSArray *array = [curNav viewControllers];
-//        for (UIViewController *vc in array)
-//        {
-//            if ([vc isKindOfClass:[IMAChatViewController class]])
-//            {
-//                // 有则返回到该界面
-//                IMAChatViewController *chat = (IMAChatViewController *)vc;
-//                [chat configWithUser:user];
-//                //                chat.hidesBottomBarWhenPushed = YES;
-//                [curNav popToViewController:chat animated:YES];
-//                return;
-//            }
-//        }
-////#if kTestChatAttachment
-////        // 无则重新创建
-////        ChatViewController *vc = [[CustomChatUIViewController alloc] initWith:user];
-////#else
-//        ChatViewController *vc = [[IMAChatViewController alloc] initWith:user];
-////#endif
-//        
-//        if ([user isC2CType])
-//        {
-//            TIMConversation *imconv = [[TIMManager sharedInstance] getConversation:TIM_C2C receiver:user.userId];
-//            if ([imconv getUnReadMessageNum] > 0)
-//            {
-//                [vc modifySendInputStatus:SendInputStatus_Send];
-//            }
-//        }
-//        
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [curNav pushViewController:vc withBackTitle:@"返回" animated:YES];
-//    }
-//    else
-//    {
-//        NavigationViewController *chatNav = (NavigationViewController *)[[self viewControllers] objectAtIndex:0];
-//        
-////#if kTestChatAttachment
-////        // 无则重新创建
-////        ChatViewController *vc = [[CustomChatUIViewController alloc] initWith:user];
-////#else
-//        ChatViewController *vc = [[IMAChatViewController alloc] initWith:user];
-////#endif
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [chatNav pushViewController:vc withBackTitle:@"返回" animated:YES];
-//        
-//        [self setSelectedIndex:2];
-//        self.currentIndex = 2;
-//        
-//        if (curNav.viewControllers.count != 2)
-//        {
-//            [curNav popToRootViewControllerAnimated:YES];
-//        }
-//        
-//    }
-//}
 @end

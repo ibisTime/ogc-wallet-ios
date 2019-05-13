@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>tabbarcolor</key>
+	<string>0xCFD7E6</string>
+	<key>tabbarselectcolor</key>
+	<string>0xFFFFFF</string>
 	<key>whiteblackColor</key>
 	<string>0x282A2E</string>
 	<key>headerViewColor</key>

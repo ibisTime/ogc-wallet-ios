@@ -81,48 +81,22 @@
 
             };
         }else{
-
             [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
-
         }
-
         [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
 //        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
-        
     } failure:^(NSError *error) {
         NSString *dic = error.description;
         if ([dic containsString:@"token"])
         {
-            
         }
         else
         {
             [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
-                
                 } confirm:^(UIAlertAction *action) {
                     [self configurationLoadData];
             }];
         }
-//        NSDictionary *dic = [self convertToDictionary:error.description];
-//        NSData *jsonData = [error.description dataUsingEncoding:NSUTF8StringEncoding];
-//        NSError *err;
-//        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-//                                                            options:NSJSONReadingMutableContainers
-//                                                            error:&err];
-        NSLog(@"====== %@",dic);
-//        if ([dic[@"errorCode"] isEqualToString:@"4"])
-//        {
-//
-//        }
-//        else
-//        {
-//            [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
-//
-//            } confirm:^(UIAlertAction *action) {
-//                [self configurationLoadData];
-//            }];
-//
-//        }
     }];
 }
 

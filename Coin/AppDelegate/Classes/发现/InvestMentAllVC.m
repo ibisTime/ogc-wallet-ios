@@ -70,15 +70,23 @@
     
     
     UIButton *rightButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    rightButton.frame = CGRectMake(SCREEN_WIDTH - 44-15, kStatusBarHeight, 44, 44);
+    rightButton.frame = CGRectMake(SCREEN_WIDTH - 44-15, kStatusBarHeight , 44, 44);
     rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    rightButton.titleLabel.font = FONT(15);
-    [rightButton setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
+    rightButton.titleLabel.font = FONT(16);
     [rightButton setTitle:@"账单" forState:(UIControlStateNormal)];
     [rightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:rightButton];
+    [rightButton theme_setBackgroundImageIdentifier:BackColor forState:(UIControlStateNormal) moduleName:ColorName];
+    [rightButton theme_setTitleIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     
+//    self.RightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//    self.RightButton.titleLabel.font = FONT(16);
     
+//    [self.RightButton setTitle:@"账单" forState:(UIControlStateNormal)];
+//    [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
+//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    negativeSpacer.width = -10;
+//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
     
 }
 
@@ -86,7 +94,11 @@
 - (void)segmentStyle {
 //    _channelArray = @[@"推荐",
 //             @"美容瘦身",
-//             @"科技"
+//                      @"科技",@"推荐",
+//                      @"美容瘦身",
+//                      @"科技",@"推荐",
+//                      @"美容瘦身",
+//                      @"科技"
 //             ];
     
     _style = SegmentHeadStyleLine;
@@ -101,18 +113,30 @@
     _segHead.bottomLineHeight = 0;
     _segHead.lineHeight = 2;
     _segHead.selectColor = kTabbarColor;
-//    _segHead.deSelectColor = [UIColor grayColor];
     
     
-    _segScroll = [[MLMSegmentScroll alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight - kTabBarHeight) vcOrViews:[self vcArr:_channelArray.count]];
+    _segScroll = [[MLMSegmentScroll alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH , SCREEN_HEIGHT - kNavigationBarHeight - kTabBarHeight) vcOrViews:[self vcArr:_channelArray.count]];
     _segScroll.loadAll = NO;
     _segScroll.showIndex = 0;
+//    _segScroll.contentMode = UIViewContentModeScaleToFill;
+//    _segScroll.userInteractionEnabled = YES;
     
     [MLMSegmentManager associateHead:_segHead withScroll:_segScroll completion:^{
-//        self.navigationItem.titleView = _segHead;
         [self.view addSubview:_segHead];
         [self.view addSubview:_segScroll];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 #pragma mark - 数据源

@@ -232,6 +232,9 @@
 		1F8E2CFC2285735E0045D62B /* MarketDetaiilsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CFB2285735E0045D62B /* MarketDetaiilsCell.m */; };
 		1F8E2CFF22857EB30045D62B /* SmoothChartView1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CFE22857EB30045D62B /* SmoothChartView1.m */; };
 		1F8E2D02228597CB0045D62B /* BriefCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2D01228597CB0045D62B /* BriefCell.m */; };
+		1F8E2DEE22893CAC0045D62B /* FlashAgainstTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DED22893CAC0045D62B /* FlashAgainstTableView.m */; };
+		1F8E2DF122893D390045D62B /* FlashAgainstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DF022893D390045D62B /* FlashAgainstVC.m */; };
+		1F8E2DF422893F340045D62B /* FlashAgainstHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */; };
 		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
 		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
 		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
@@ -1199,6 +1202,12 @@
 		1F8E2CFE22857EB30045D62B /* SmoothChartView1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmoothChartView1.m; sourceTree = "<group>"; };
 		1F8E2D00228597CB0045D62B /* BriefCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BriefCell.h; sourceTree = "<group>"; };
 		1F8E2D01228597CB0045D62B /* BriefCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BriefCell.m; sourceTree = "<group>"; };
+		1F8E2DEC22893CAC0045D62B /* FlashAgainstTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstTableView.h; sourceTree = "<group>"; };
+		1F8E2DED22893CAC0045D62B /* FlashAgainstTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstTableView.m; sourceTree = "<group>"; };
+		1F8E2DEF22893D390045D62B /* FlashAgainstVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstVC.h; sourceTree = "<group>"; };
+		1F8E2DF022893D390045D62B /* FlashAgainstVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstVC.m; sourceTree = "<group>"; };
+		1F8E2DF222893F340045D62B /* FlashAgainstHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstHeaderView.h; sourceTree = "<group>"; };
+		1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstHeaderView.m; sourceTree = "<group>"; };
 		1F9031CC2247A8670093C38D /* JXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSegment.m; sourceTree = "<group>"; };
 		1F9031CD2247A8680093C38D /* JXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSegment.h; sourceTree = "<group>"; };
 		1F9031CE2247A8680093C38D /* UIView+JXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXView.h"; sourceTree = "<group>"; };
@@ -3281,6 +3290,35 @@
 			path = MarketDetails;
 			sourceTree = "<group>";
 		};
+		1F8E2DE622893C2A0045D62B /* FlashAgainst闪兑 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2DE822893C6E0045D62B /* Controller */,
+				1F8E2DE722893C6C0045D62B /* View */,
+			);
+			path = "FlashAgainst闪兑";
+			sourceTree = "<group>";
+		};
+		1F8E2DE722893C6C0045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2DEC22893CAC0045D62B /* FlashAgainstTableView.h */,
+				1F8E2DED22893CAC0045D62B /* FlashAgainstTableView.m */,
+				1F8E2DF222893F340045D62B /* FlashAgainstHeaderView.h */,
+				1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2DE822893C6E0045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2DEF22893D390045D62B /* FlashAgainstVC.h */,
+				1F8E2DF022893D390045D62B /* FlashAgainstVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1F9031CB2247A84D0093C38D /* TopScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3514,7 +3552,7 @@
 			path = SLBannerView;
 			sourceTree = "<group>";
 		};
-		1FA566D3223CD49C0077FE54 /* Game游戏 */ = {
+		1FA566D3223CD49C0077FE54 /* DAPP */ = {
 			isa = PBXGroup;
 			children = (
 				1FA566D4223CD4B90077FE54 /* Controller */,
@@ -3524,8 +3562,9 @@
 				1F76697F21D5EFB900006B41 /* Trading投资 */,
 				1FA56B00223CD7600077FE54 /* Web */,
 				1FA568C4223CD6630077FE54 /* GameDetails */,
+				1F8E2DE622893C2A0045D62B /* FlashAgainst闪兑 */,
 			);
-			path = "Game游戏";
+			path = DAPP;
 			sourceTree = "<group>";
 		};
 		1FA566D4223CD4B90077FE54 /* Controller */ = {
@@ -3776,11 +3815,11 @@
 			isa = PBXGroup;
 			children = (
 				1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */,
+				1FFB8EAA225B4BAF00B72F31 /* SegmentPageHead.h */,
 				1FFB8EA6225B4BAF00B72F31 /* MLMSegmentHead.m */,
 				1FFB8EA7225B4BAF00B72F31 /* UIView+ViewController.m */,
 				1FFB8EA8225B4BAF00B72F31 /* MLMSegmentScroll.m */,
 				1FFB8EA9225B4BAF00B72F31 /* UIView+EasyFrame.m */,
-				1FFB8EAA225B4BAF00B72F31 /* SegmentPageHead.h */,
 				1FFB8EAB225B4BAF00B72F31 /* MLMSegmentHead.h */,
 				1FFB8EAC225B4BAF00B72F31 /* UIView+ViewController.h */,
 				1FFB8EAD225B4BAF00B72F31 /* MLMSegmentManager.h */,
@@ -4226,10 +4265,10 @@
 			children = (
 				2E394FEC1FB0575A00BA0829 /* AppDelegate.h */,
 				2E394FEB1FB0575A00BA0829 /* AppDelegate.m */,
-				B88B58F72109AEC300F20D1B /* TLTabBarController.h */,
-				B88B59042109AEC300F20D1B /* TLTabBarController.m */,
 				2EB039B41FEA0B4500589D8E /* TLUpdateVC.h */,
 				2EB039B31FEA0B4500589D8E /* TLUpdateVC.m */,
+				B88B58F72109AEC300F20D1B /* TLTabBarController.h */,
+				B88B59042109AEC300F20D1B /* TLTabBarController.m */,
 				1F0725B922800CDB0008EADA /* LWSkinTool.h */,
 				1F0725B822800CDB0008EADA /* LWSkinTool.m */,
 			);
@@ -4262,10 +4301,10 @@
 		216F5B1D206CD9D900F2C832 /* Investment交易 */ = {
 			isa = PBXGroup;
 			children = (
-				1FFB8EA4225B4BAF00B72F31 /* MLMSegmentPageView */,
-				1F9031CB2247A84D0093C38D /* TopScrollView */,
 				1FDD17182223C12D00E74D74 /* InvestMentAllVC.h */,
 				1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */,
+				1FFB8EA4225B4BAF00B72F31 /* MLMSegmentPageView */,
+				1F9031CB2247A84D0093C38D /* TopScrollView */,
 				1F76699C21DCB2D900006B41 /* Controller */,
 				1F76699B21DCB2D600006B41 /* Model */,
 				1F76699A21DCB2D400006B41 /* View */,
@@ -4446,7 +4485,7 @@
 				2E394FA41FB055DE00BA0829 /* Wallet资产 */,
 				1F7F6F6F227EFBB6003AEBA7 /* Alerts快讯 */,
 				1F7F6F69227EFB22003AEBA7 /* Market行情 */,
-				1FA566D3223CD49C0077FE54 /* Game游戏 */,
+				1FA566D3223CD49C0077FE54 /* DAPP */,
 				216F5B1D206CD9D900F2C832 /* Investment交易 */,
 				2E394FAC1FB055DE00BA0829 /* My我的 */,
 				211DE63B1FB58B4B002FCF3D /* Utils */,
@@ -5533,6 +5572,7 @@
 				1F7668FC21D4A32700006B41 /* BTCNetwork.m in Sources */,
 				1F76691121D4A32700006B41 /* BTCAddress+Tests.m in Sources */,
 				B8CAA14D2115DE6300695BC3 /* TLhistoryListVC.m in Sources */,
+				1F8E2DEE22893CAC0045D62B /* FlashAgainstTableView.m in Sources */,
 				1F9361B021EF0F7F007E522A /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				7A2CC6BF215DC88C00B27E2D /* PGDatePicker+TimeAndSecond.m in Sources */,
 				7A07F803216C84F30026EB7A /* SCBar.m in Sources */,
@@ -5767,6 +5807,7 @@
 				1F9031D42247A8680093C38D /* JXPageView.m in Sources */,
 				211DE6B61FB58B4C002FCF3D /* UIView+Extension.m in Sources */,
 				7A07F811216CAAEA0026EB7A /* MyInconmeCell.m in Sources */,
+				1F8E2DF422893F340045D62B /* FlashAgainstHeaderView.m in Sources */,
 				7AE970522170C4970066B66C /* InviteEarningsModel.m in Sources */,
 				B88B092720C8E371005C2D2F /* JoinMineCell.m in Sources */,
 				2120D8A31FCEE1DE00712600 /* HourPickerView.m in Sources */,
@@ -6007,6 +6048,7 @@
 				B8CAA14921158FF200695BC3 /* LPDPhotoPickerController.m in Sources */,
 				1F76699821DC880A00006B41 /* SetUpTableView.m in Sources */,
 				B8D938D22116C85200B2AA88 /* QuestionDetail.m in Sources */,
+				1F8E2DF122893D390045D62B /* FlashAgainstVC.m in Sources */,
 				1F7668ED21D4A32700006B41 /* BTCProtocolSerialization+Tests.m in Sources */,
 				B8CAA13B21158FF200695BC3 /* LPDPhotoPreviewController.m in Sources */,
 				1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */,

@@ -31,10 +31,11 @@
     
     self.contentTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, 10, kScreenWidth, 50) leftTitle:[LangSwitcher switchLang:@"昵称" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请填写昵称" key:nil]];
     self.contentTf.delegate = self;
-    self.contentTf.backgroundColor = kWhiteColor;
+    [self.contentTf theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     self.contentTf.text = [self.text valid] ? self.text: @"";
     [self.contentTf addTarget:self action:@selector(textFieldDidChanged:) forControlEvents:UIControlEventEditingChanged];//注意：textFied没有textFieldDidChanged代理方法，但是有UITextFieldTextDidChangeNotification通知，这里添加通知方法，textView有textFieldDidChanged代理方法，下面用法一样
-    
+    self.contentTf.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [self.contentTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
   
     [self.view addSubview:self.contentTf];
     
