@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>黑色</key>
+	<string></string>
 	<key>leftNumberView</key>
 	<string>0x52565D</string>
 	<key>FlashAgainstConversionColor</key>
@@ -13,11 +15,9 @@
 	<key>tabbarselectcolor</key>
 	<string>0xFFFFFF</string>
 	<key>whiteblackColor</key>
-	<string>0x282A2E</string>
+	<string>0x202226</string>
 	<key>headerViewColor</key>
 	<string>0x202226</string>
-	<key>黑色</key>
-	<string></string>
 	<key>garyLabel.text</key>
 	<string>0xCED7E8</string>
 	<key>lineViewColor</key>

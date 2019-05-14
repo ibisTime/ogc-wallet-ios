@@ -235,8 +235,10 @@
     }
     if ([self.dataArray[tag].action isEqualToString:@"1"])
     {
-        lookingForwardVC *vc = [lookingForwardVC new];
+        CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
         [self.navigationController pushViewController:vc animated:YES];
+//        lookingForwardVC *vc = [lookingForwardVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     if ([self.dataArray[tag].action isEqualToString:@"2"])
     {
@@ -263,11 +265,10 @@
         if ([self.dataArray[tag].url isEqualToString:@"2"]) {
 
             //                闪兑
-//            FlashAgainstVC *vc = [FlashAgainstVC new];
-//            [self.navigationController pushViewController:vc animated:YES];
-            
-            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+            FlashAgainstVC *vc = [FlashAgainstVC new];
             [self.navigationController pushViewController:vc animated:YES];
+            
+            
         }
     }
 }
@@ -285,8 +286,10 @@
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
         {
-            lookingForwardVC *vc = [lookingForwardVC new];
+            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
             [self.navigationController pushViewController:vc animated:YES];
+//            lookingForwardVC *vc = [lookingForwardVC new];
+//            [self.navigationController pushViewController:vc animated:YES];
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
         {
@@ -312,11 +315,10 @@
             if ([self.GameModel[indexPath.row].url isEqualToString:@"2"]) {
                 
                 //                闪兑
-                //                FlashAgainstVC *vc = [FlashAgainstVC new];
-                //                [self.navigationController pushViewController:vc animated:YES];
-                
-                CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+                FlashAgainstVC *vc = [FlashAgainstVC new];
                 [self.navigationController pushViewController:vc animated:YES];
+                
+                
             }
         }
     }

@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>headerViewColor</key>
+	<string>0xF5F5F5</string>
 	<key>tableview.back2</key>
 	<string></string>
 	<key>leftNumberView</key>
@@ -16,8 +18,6 @@
 	<string>#6F99EC</string>
 	<key>whiteblackColor</key>
 	<string>0xFFFFFF</string>
-	<key>headerViewColor</key>
-	<string>0xF5F5F5</string>
 	<key>garyLabel.text</key>
 	<string>0x999999</string>
 	<key>lineViewColor</key>

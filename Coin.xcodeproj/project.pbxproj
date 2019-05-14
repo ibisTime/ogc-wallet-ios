@@ -246,6 +246,7 @@
 		1F8E2E32228AA7F00045D62B /* BuyMillListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E31228AA7F00045D62B /* BuyMillListVC.m */; };
 		1F8E2E35228AA8230045D62B /* BuyMillListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E34228AA8230045D62B /* BuyMillListTableView.m */; };
 		1F8E2E38228AA8450045D62B /* BuyMillListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E37228AA8450045D62B /* BuyMillListCell.m */; };
+		1F8E2E3B228ABBE30045D62B /* BuyMillDetaiilsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E3A228ABBE20045D62B /* BuyMillDetaiilsVC.m */; };
 		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
 		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
 		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
@@ -1241,6 +1242,8 @@
 		1F8E2E34228AA8230045D62B /* BuyMillListTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListTableView.m; sourceTree = "<group>"; };
 		1F8E2E36228AA8450045D62B /* BuyMillListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillListCell.h; sourceTree = "<group>"; };
 		1F8E2E37228AA8450045D62B /* BuyMillListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListCell.m; sourceTree = "<group>"; };
+		1F8E2E39228ABBE20045D62B /* BuyMillDetaiilsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillDetaiilsVC.h; sourceTree = "<group>"; };
+		1F8E2E3A228ABBE20045D62B /* BuyMillDetaiilsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillDetaiilsVC.m; sourceTree = "<group>"; };
 		1F9031CC2247A8670093C38D /* JXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSegment.m; sourceTree = "<group>"; };
 		1F9031CD2247A8680093C38D /* JXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSegment.h; sourceTree = "<group>"; };
 		1F9031CE2247A8680093C38D /* UIView+JXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXView.h"; sourceTree = "<group>"; };
@@ -3367,14 +3370,14 @@
 		1F8E2E0C228A6F840045D62B /* CloudCalculateForce云算力 */ = {
 			isa = PBXGroup;
 			children = (
+				1F8E2E0F228A6FC00045D62B /* CloudCalculateForceVC.h */,
+				1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */,
 				1F8E2E12228A93320045D62B /* EggplantAccount茄子账户 */,
 				1F8E2E17228A93690045D62B /* BuyMill购买矿机 */,
 				1F8E2E16228A93660045D62B /* MyMill我的矿机 */,
 				1F8E2E15228A93640045D62B /* BeForceAccelerate算力加速 */,
 				1F8E2E14228A93620045D62B /* InviteRewards邀请奖励 */,
 				1F8E2E13228A935D0045D62B /* NodeLogin节点登录 */,
-				1F8E2E0F228A6FC00045D62B /* CloudCalculateForceVC.h */,
-				1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */,
 			);
 			path = "CloudCalculateForce云算力";
 			sourceTree = "<group>";
@@ -3471,6 +3474,8 @@
 			children = (
 				1F8E2E30228AA7F00045D62B /* BuyMillListVC.h */,
 				1F8E2E31228AA7F00045D62B /* BuyMillListVC.m */,
+				1F8E2E39228ABBE20045D62B /* BuyMillDetaiilsVC.h */,
+				1F8E2E3A228ABBE20045D62B /* BuyMillDetaiilsVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6270,6 +6275,7 @@
 				B80D54CB210C84CA005303D5 /* APPLanguage.m in Sources */,
 				B8CAA14921158FF200695BC3 /* LPDPhotoPickerController.m in Sources */,
 				1F76699821DC880A00006B41 /* SetUpTableView.m in Sources */,
+				1F8E2E3B228ABBE30045D62B /* BuyMillDetaiilsVC.m in Sources */,
 				B8D938D22116C85200B2AA88 /* QuestionDetail.m in Sources */,
 				1F8E2DF122893D390045D62B /* FlashAgainstVC.m in Sources */,
 				1F7668ED21D4A32700006B41 /* BTCProtocolSerialization+Tests.m in Sources */,

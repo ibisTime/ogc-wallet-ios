@@ -40,9 +40,7 @@
     // Do any additional setup after loading the view.
     self.titleText.text = @"茄子账户";
     self.navigationItem.titleView = self.titleText;
-    
     [self initTableView];
-    
 }
 
 - (void)initTableView {
@@ -50,10 +48,6 @@
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headView;
-    
-    
 }
-
-
 
 @end

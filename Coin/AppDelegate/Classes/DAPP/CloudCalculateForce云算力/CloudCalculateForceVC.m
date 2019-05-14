@@ -8,6 +8,7 @@
 
 #import "CloudCalculateForceVC.h"
 #import "EggplantAccountVC.h"
+#import "BuyMillListVC.h"
 @interface CloudCalculateForceVC ()
 
 @end
@@ -60,7 +61,8 @@
             break;
         case 1:
         {
-            
+            BuyMillListVC *vc = [BuyMillListVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
