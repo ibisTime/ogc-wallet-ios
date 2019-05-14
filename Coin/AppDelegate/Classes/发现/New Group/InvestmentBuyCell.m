@@ -19,6 +19,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         UIView *amountBox = [[UIView alloc]initWithFrame:CGRectMake(15, 20, SCREEN_WIDTH - 30, 45)];
         kViewBorderRadius(amountBox, 2, 0.5, kHexColor(@"#979797"));
         [self addSubview:amountBox];

@@ -140,7 +140,7 @@
 
 + (NSString *)TextFieldPlacColor;
 + (NSString *)TextFieldTextColor;
-
++ (NSString *)LineColor;
 //+ (NSString *)stringByNotRounding:(double)price afterPoint:(int)position;
 
 @end

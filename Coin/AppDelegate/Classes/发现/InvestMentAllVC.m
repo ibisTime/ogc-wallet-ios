@@ -16,6 +16,7 @@
 #import "MLMSegmentHead.h"
 #import "MLMSegmentScroll.h"
 #import "MLMSegmentManager.h"
+#import "HYPageView.h"
 @interface InvestMentAllVC()<JXSegmentDelegate,JXPageViewDataSource,JXPageViewDelegate>
 {
     JXPageView *pageView;
@@ -38,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     NSMutableArray *array = [NSMutableArray array];
     NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
     for (int i = 0; i < arr.count; i ++) {
@@ -48,8 +50,32 @@
     }
     _channelArray = array;
     
+    HYPageView *pageView = [[HYPageView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH , SCREEN_HEIGHT - kStatusBarHeight) withTitles:_channelArray withViewControllers:[self vcArr:_channelArray.count] withParameters:nil];
+    pageView.pageViewStyle = HYPageViewStyleB;
+    [pageView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    pageView.leftSpace = 70;
+    pageView.rightSpace = 70;
+        pageView.isShowTopTabBottomLine = YES;
+    pageView.isTranslucent = NO;
+    pageView.selectedColor = kTabbarColor;
+    pageView.defaultSubscript = 0;
+    [self.view addSubview:pageView];
     
-    [self segmentStyle];
+//    [self test];
+    
+    
+    
+//    UIViewController *v = [UIViewController new];
+//    [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    [v.view addSubview:];
+//    [self showViewController:v sender:nil];
+    
+    
+    
+    
+    
+    
+//    [self segmentStyle];
 //    self.automaticallyAdjustsScrollViewInsets = NO;
 //    segment = [[JXSegment alloc] initWithFrame:CGRectMake(70, kStatusBarHeight, SCREEN_WIDTH - 140, 44)];
 //    [segment updateChannels:self.channelArray];
@@ -75,21 +101,34 @@
     rightButton.titleLabel.font = FONT(16);
     [rightButton setTitle:@"账单" forState:(UIControlStateNormal)];
     [rightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [rightButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [self.view addSubview:rightButton];
-    [rightButton theme_setBackgroundImageIdentifier:BackColor forState:(UIControlStateNormal) moduleName:ColorName];
-    [rightButton theme_setTitleIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     
-//    self.RightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-//    self.RightButton.titleLabel.font = FONT(16);
-    
-//    [self.RightButton setTitle:@"账单" forState:(UIControlStateNormal)];
-//    [self.RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-//    negativeSpacer.width = -10;
-//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
     
 }
 
+- (HYPageView *)test {
+    
+    NSMutableArray *array = [NSMutableArray array];
+    NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
+    for (int i = 0; i < arr.count; i ++) {
+        CoinModel *model = arr[i];
+        if ([model.isAccept isEqualToString:@"1"]) {
+            [array addObject:model.symbol];
+        }
+    }
+    _channelArray = array;
+    
+    HYPageView *pageView = [[HYPageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH , SCREEN_HEIGHT ) withTitles:_channelArray withViewControllers:[self vcArr:_channelArray.count] withParameters:nil];
+    pageView.pageViewStyle = HYPageViewStyleB;
+    pageView.leftSpace = 70;
+    pageView.rightSpace = 70;
+//    pageView.isShowTopTabBottomLine = YES;
+    pageView.isTranslucent = NO;
+    pageView.selectedColor = kTabbarColor;
+    pageView.defaultSubscript = 1;
+    return pageView;
+}
 
 - (void)segmentStyle {
 //    _channelArray = @[@"推荐",
@@ -118,11 +157,8 @@
     _segScroll = [[MLMSegmentScroll alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH , SCREEN_HEIGHT - kNavigationBarHeight - kTabBarHeight) vcOrViews:[self vcArr:_channelArray.count]];
     _segScroll.loadAll = NO;
     _segScroll.showIndex = 0;
-//    _segScroll.contentMode = UIViewContentModeScaleToFill;
-//    _segScroll.userInteractionEnabled = YES;
-    
     [MLMSegmentManager associateHead:_segHead withScroll:_segScroll completion:^{
-        [self.view addSubview:_segHead];
+        self.navigationItem.titleView = self.segHead;
         [self.view addSubview:_segScroll];
     }];
 }

@@ -7,16 +7,42 @@
 //
 
 #import "FlashAgainstVC.h"
+#import "FlashAgainstHeaderView.h"
+#import "FlashAgainstTableView.h"
+@interface FlashAgainstVC ()<RefreshDelegate>
 
-@interface FlashAgainstVC ()
+@property (nonatomic , strong)FlashAgainstTableView *tableView;
+
+@property (nonatomic , strong)FlashAgainstHeaderView *headView;
 
 @end
 
 @implementation FlashAgainstVC
 
+-(FlashAgainstHeaderView *)headView
+{
+    if (!_headView) {
+        _headView = [[FlashAgainstHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 402)];
+        [_headView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    }
+    return _headView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.titleText.text = @"闪兑";
+    self.navigationItem.titleView = self.titleText;
+    [self initTableView];
+}
+
+- (void)initTableView {
+    self.tableView = [[FlashAgainstTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight) style:UITableViewStyleGrouped];
+    self.tableView.refreshDelegate = self;
+    [self.tableView theme_setBackgroundColorIdentifier:@"headerViewColor" moduleName:ColorName];
+    [self.view addSubview:self.tableView];
+    self.tableView.tableHeaderView = self.headView;
 }
 
 /*

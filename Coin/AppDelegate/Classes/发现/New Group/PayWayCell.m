@@ -17,10 +17,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
- 
+  
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-        backView.backgroundColor = kWhiteColor;
+        [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [self addSubview:backView];
         
         

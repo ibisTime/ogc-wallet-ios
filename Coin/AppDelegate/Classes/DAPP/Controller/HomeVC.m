@@ -40,6 +40,9 @@
 #import "FindTheGameVC.h"
 #import "FindTheGameModel.h"
 
+#import "FlashAgainstVC.h"
+
+#import "CloudCalculateForceVC.h"
 @interface HomeVC ()<RefreshDelegate,UIViewControllerPreviewingDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,ClassificationDelegate,IconCollDelegate>
 {
     NSInteger start;
@@ -225,8 +228,6 @@
 
 -(void)IconCollDelegateSelectBtn:(NSInteger)tag
 {
-//    PosMiningVC *vc = [PosMiningVC new];
-//    [self.navigationController pushViewController:vc animated:YES];
     if ([self.dataArray[tag].action isEqualToString:@"0"]) {
         GeneralWebView *vc = [GeneralWebView new];
         vc.URL = self.dataArray[tag].url;
@@ -252,17 +253,71 @@
     }
     if ([self.dataArray[tag].action isEqualToString:@"4"])
     {
-        
+
         if ([self.dataArray[tag].url isEqualToString:@"1"]) {
             //                量化理财
             PosMiningVC *vc = [PosMiningVC new];
             [self.navigationController pushViewController:vc animated:YES];
         }
-        
+
         if ([self.dataArray[tag].url isEqualToString:@"2"]) {
-            
+
             //                闪兑
-            [TLAlert alertWithInfo:@"暂未开发"];
+//            FlashAgainstVC *vc = [FlashAgainstVC new];
+//            [self.navigationController pushViewController:vc animated:YES];
+            
+            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+}
+
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) {
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"0"])
+        {
+            NSString *url = self.GameModel[indexPath.row].url;
+            GeneralWebView *vc = [GeneralWebView new];
+            vc.URL = url;
+            [self showViewController:vc sender:self];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
+        {
+            lookingForwardVC *vc = [lookingForwardVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
+        {
+            NSString *url = self.GameModel[indexPath.row].url;
+            GeneralWebView *vc = [GeneralWebView new];
+            vc.URL = url;
+            [self showViewController:vc sender:self];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"3"])
+        {
+            FindTheGameVC *vc = [FindTheGameVC new];
+            vc.GameModel = self.GameModel[indexPath.row];
+            [self showViewController:vc sender:self];
+        }
+        if ([self.GameModel[indexPath.row].action isEqualToString:@"4"])
+        {
+            if ([self.GameModel[indexPath.row].url isEqualToString:@"1"]) {
+                //                量化理财
+                PosMiningVC *vc = [PosMiningVC new];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+            
+            if ([self.GameModel[indexPath.row].url isEqualToString:@"2"]) {
+                
+                //                闪兑
+                //                FlashAgainstVC *vc = [FlashAgainstVC new];
+                //                [self.navigationController pushViewController:vc animated:YES];
+                
+                CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
         }
     }
 }
@@ -342,54 +397,7 @@
     return headerView;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    if (indexPath.section == 0) {
-//        GeneralWebView *vc = [GeneralWebView new];
-//        vc.URL = self.dataArray[indexPath.row][@"position"];
-//        [self showViewController:vc sender:self];
-//    }
-    if (indexPath.section == 2) {
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"0"])
-        {
-            NSString *url = self.GameModel[indexPath.row].url;
-            GeneralWebView *vc = [GeneralWebView new];
-            vc.URL = url;
-            [self showViewController:vc sender:self];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
-        {
-            lookingForwardVC *vc = [lookingForwardVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
-        {
-            NSString *url = self.GameModel[indexPath.row].url;
-            GeneralWebView *vc = [GeneralWebView new];
-            vc.URL = url;
-            [self showViewController:vc sender:self];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"3"])
-        {
-            FindTheGameVC *vc = [FindTheGameVC new];
-            vc.GameModel = self.GameModel[indexPath.row];
-            [self showViewController:vc sender:self];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"4"])
-        {
-            if ([self.GameModel[indexPath.row].url isEqualToString:@"1"]) {
-//                量化理财
-                PosMiningVC *vc = [PosMiningVC new];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            if ([self.GameModel[indexPath.row].url isEqualToString:@"2"]) {
-             
-//                闪兑
-                [TLAlert alertWithInfo:@"暂未开发"];
-            }
-        }
-    }
-}
+
 
 //-(void)selectInRow:(NSInteger)index
 //{

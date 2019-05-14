@@ -1,0 +1,13 @@
+//
+//  AlertsModel.m
+//  Coin
+//
+//  Created by 郑勤宝 on 2019/5/14.
+//  Copyright © 2019 chengdai. All rights reserved.
+//
+
+#import "AlertsModel.h"
+
+@implementation AlertsModel
+
+@end

@@ -54,15 +54,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 0) {
-//        InvestmentHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentHead forIndexPath:indexPath];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//        if (self.models.count > 0) {
-//            cell.models = self.models;
-//        }
-//        return cell;
-//    }
-    
     if (indexPath.section == 0) {
         InvestmentBuyCell *cell = [tableView dequeueReusableCellWithIdentifier:InvestmentBuy forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -161,22 +152,27 @@
         
         UIView *headView = [UIView new];
         
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+        [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+        [headView addSubview:lineView];
+        
         NSArray *btnArray = @[@"买入",@"卖出"];
         for (int i = 0; i < 2; i ++) {
-            UIButton *btn = [UIButton buttonWithTitle:btnArray[i] titleColor:kHexColor(@"#999999") backgroundColor:kWhiteColor titleFont:16];
+            UIButton *btn = [UIButton buttonWithType:(UIButtonTypeCustom)];
             btn.frame = CGRectMake(i % 2 * SCREEN_WIDTH/2, 10, SCREEN_WIDTH/2, 45);
-           
-            
+            [btn setTitle:btnArray[i] forState:(UIControlStateNormal)];
+            btn.titleLabel.font = FONT(16);
+            [btn theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+            [btn theme_setTitleColorIdentifier:@"selectbuttoncolor" forState:(UIControlStateSelected) moduleName:ColorName];
             if (i == 0) {
                 if (selectTag == 100) {
-                    [btn setTitleColor:kHexColor(@"#4064E6") forState:(UIControlStateNormal)];
+                    btn.selected = YES;
                 }
-                
             }
             
             if (i == 1) {
                 if (selectTag == 101) {
-                    [btn setTitleColor:kHexColor(@"#FA7D0E") forState:(UIControlStateNormal)];
+                    btn.selected = YES;
                 }
             }
             
@@ -201,7 +197,13 @@
         return headView;
     }
     
-    return [UIView new];
+    UIView *headView = [UIView new];
+    
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+    [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+    [headView addSubview:lineView];
+    
+    return headView;
 }
 
 -(void)BtnClick:(UIButton *)sender

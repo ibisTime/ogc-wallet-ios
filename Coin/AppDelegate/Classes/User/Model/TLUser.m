@@ -81,6 +81,16 @@ NSString *const kGoogleAuthClose = @"0";
     }
 }
 
++(NSString *)LineColor
+{
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        return @"#8A8F99";
+    }else
+    {
+        return @"#EEEEEE";
+    }
+}
+
 - (void)setToken:(NSString *)token {
     
     _token = [token copy];

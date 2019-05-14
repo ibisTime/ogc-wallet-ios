@@ -164,7 +164,7 @@
     
     if (!_tableView) {
         
-        _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - 50 - kTabBarHeight - 220) style:UITableViewStyleGrouped];
+        _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - kTabBarHeight - 220) style:UITableViewStyleGrouped];
         _tableView.symbol = self.symbol;
         _tableView.refreshDelegate = self;
 //        _tableView.backgroundColor = kBackgroundColor;
@@ -743,7 +743,7 @@
 -(void)makeSmoothChartView{
     
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 220)];
-    topView.backgroundColor = kWhiteColor;
+    [topView theme_setBackgroundColorIdentifier:ColorName moduleName:ColorName];
     [self.view addSubview:topView];
     
     titleLbl = [UILabel labelWithFrame:CGRectMake(15, 22, 0, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#999999")];
@@ -760,7 +760,7 @@
     titleLbl.frame = CGRectMake(15, 22, SCREEN_WIDTH - 60 - sellLbl.width - buyingLbl.width - 10, 16.5);
     
     _smoothView = [[SmoothChartView alloc] initWithFrame:CGRectMake(15, 50, SCREEN_WIDTH - 30,149)];
-    _smoothView.backgroundColor = [UIColor whiteColor];
+    [_smoothView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [topView addSubview:_smoothView];
     [_smoothView refreshChartAnmition];
     [self.view addSubview:topView];

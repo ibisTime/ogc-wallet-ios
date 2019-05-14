@@ -7,10 +7,12 @@
 //
 
 #import "TLTableView.h"
-
+#import "AlertsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AlertsTableView : TLTableView
+
+@property (nonatomic , strong)NSMutableArray <AlertsModel *>*models;
 
 @end
 

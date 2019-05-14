@@ -318,34 +318,8 @@
     }
     NSLog(@"%@",self.tempArray);
 
-//    NSString *result = [MnemonicUtil getMnemonicsISRight:self.textView.text];
     if ([[MnemonicUtil getMnemonicsISRight:self.textView.text] isEqualToString:@"1"]) {
-//        NSString *mnemonics = self.textView.text;
-//
-//
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString *documentDirectory = [paths objectAtIndex:0];
-//        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
-//        NSLog(@"dbPath = %@",dbPath);
-//        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
-//
-//        if ([dataBase open])
-//        {
-//            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,mnemonics text,pwd text,walletName text)"];
-//        }
-//        [dataBase close];
-//
-//        [dataBase open];
-//        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,mnemonics,pwd,walletName) VALUES (?,?,?,?)",[TLUser user].userId,mnemonics,self.pwdTf.text,self.nameTf.text];
-//        [dataBase close];
-//
-//        [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"导入成功" key:nil] confirmAction:^{
-//            [self.navigationController popToRootViewControllerAnimated:YES];
-//            //            创建通知
-//            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
-//            [[NSNotificationCenter defaultCenter] postNotification:notification];
-//        }];
-        
+
         
         NSArray *array = [CustomFMDB FMDBqueryMnemonics];
         NSMutableArray *wallet = [NSMutableArray array];

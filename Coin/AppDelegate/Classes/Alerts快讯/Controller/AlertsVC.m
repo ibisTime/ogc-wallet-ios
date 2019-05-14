@@ -9,10 +9,14 @@
 #import "AlertsVC.h"
 #import "AlertsTableView.h"
 #import "AlertsDetailsVC.h"
+#import "AlertsModel.h"
 @interface AlertsVC ()<RefreshDelegate>
 
 
 @property (nonatomic , strong)AlertsTableView *tableView;
+
+@property (nonatomic , strong)NSMutableArray <AlertsModel *>*models;
+
 
 @end
 
@@ -40,6 +44,65 @@
     nameLable.font = Font(24);
     [nameLable theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     [self.view addSubview:nameLable];
+    [self LoadData];
+}
+
+-(void)LoadData
+{
+    __weak typeof(self) weakSelf = self;
+    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+    helper.tableView = self.tableView;
+    helper.code = @"628095";
+    helper.parameters[@"type"] = @"1";
+    helper.parameters[@"status"] = @"1";
+    [helper modelClass:[AlertsModel class]];
+    
+    [self.tableView addRefreshAction:^{
+        
+        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.models = objs;
+            
+            weakSelf.tableView.models = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+            
+            [weakSelf addPlaceholderView];
+            
+        }];
+    }];
+    
+    [self.tableView beginRefreshing];
+    
+    [self.tableView addLoadMoreAction:^{
+        
+        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.models = objs;
+            
+            weakSelf.tableView.models = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+            
+            [weakSelf addPlaceholderView];
+            
+        }];
+        
+    }];
+    
+    [self.tableView endRefreshingWithNoMoreData_tl];
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -235,6 +235,17 @@
 		1F8E2DEE22893CAC0045D62B /* FlashAgainstTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DED22893CAC0045D62B /* FlashAgainstTableView.m */; };
 		1F8E2DF122893D390045D62B /* FlashAgainstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DF022893D390045D62B /* FlashAgainstVC.m */; };
 		1F8E2DF422893F340045D62B /* FlashAgainstHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */; };
+		1F8E2E04228978FE0045D62B /* HYPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E02228978FE0045D62B /* HYPageView.m */; };
+		1F8E2E08228A558A0045D62B /* AlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E07228A558A0045D62B /* AlertsModel.m */; };
+		1F8E2E0B228A6DD90045D62B /* FlashAgainstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E0A228A6DD90045D62B /* FlashAgainstCell.m */; };
+		1F8E2E11228A6FC10045D62B /* CloudCalculateForceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */; };
+		1F8E2E1C228A941A0045D62B /* EggplantAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E1B228A941A0045D62B /* EggplantAccountVC.m */; };
+		1F8E2E29228A98680045D62B /* EggplantAccountTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E28228A98680045D62B /* EggplantAccountTableView.m */; };
+		1F8E2E2C228A98810045D62B /* EggplantAccountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E2B228A98810045D62B /* EggplantAccountCell.m */; };
+		1F8E2E2F228A98980045D62B /* EggplantAccountHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E2E228A98980045D62B /* EggplantAccountHeadView.m */; };
+		1F8E2E32228AA7F00045D62B /* BuyMillListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E31228AA7F00045D62B /* BuyMillListVC.m */; };
+		1F8E2E35228AA8230045D62B /* BuyMillListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E34228AA8230045D62B /* BuyMillListTableView.m */; };
+		1F8E2E38228AA8450045D62B /* BuyMillListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E37228AA8450045D62B /* BuyMillListCell.m */; };
 		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
 		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
 		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
@@ -1208,6 +1219,28 @@
 		1F8E2DF022893D390045D62B /* FlashAgainstVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstVC.m; sourceTree = "<group>"; };
 		1F8E2DF222893F340045D62B /* FlashAgainstHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstHeaderView.h; sourceTree = "<group>"; };
 		1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstHeaderView.m; sourceTree = "<group>"; };
+		1F8E2E02228978FE0045D62B /* HYPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPageView.m; sourceTree = "<group>"; };
+		1F8E2E03228978FE0045D62B /* HYPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPageView.h; sourceTree = "<group>"; };
+		1F8E2E06228A558A0045D62B /* AlertsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsModel.h; sourceTree = "<group>"; };
+		1F8E2E07228A558A0045D62B /* AlertsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsModel.m; sourceTree = "<group>"; };
+		1F8E2E09228A6DD90045D62B /* FlashAgainstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstCell.h; sourceTree = "<group>"; };
+		1F8E2E0A228A6DD90045D62B /* FlashAgainstCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstCell.m; sourceTree = "<group>"; };
+		1F8E2E0F228A6FC00045D62B /* CloudCalculateForceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudCalculateForceVC.h; sourceTree = "<group>"; };
+		1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudCalculateForceVC.m; sourceTree = "<group>"; };
+		1F8E2E1A228A941A0045D62B /* EggplantAccountVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EggplantAccountVC.h; sourceTree = "<group>"; };
+		1F8E2E1B228A941A0045D62B /* EggplantAccountVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EggplantAccountVC.m; sourceTree = "<group>"; };
+		1F8E2E27228A98680045D62B /* EggplantAccountTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EggplantAccountTableView.h; sourceTree = "<group>"; };
+		1F8E2E28228A98680045D62B /* EggplantAccountTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EggplantAccountTableView.m; sourceTree = "<group>"; };
+		1F8E2E2A228A98810045D62B /* EggplantAccountCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EggplantAccountCell.h; sourceTree = "<group>"; };
+		1F8E2E2B228A98810045D62B /* EggplantAccountCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EggplantAccountCell.m; sourceTree = "<group>"; };
+		1F8E2E2D228A98980045D62B /* EggplantAccountHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EggplantAccountHeadView.h; sourceTree = "<group>"; };
+		1F8E2E2E228A98980045D62B /* EggplantAccountHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EggplantAccountHeadView.m; sourceTree = "<group>"; };
+		1F8E2E30228AA7F00045D62B /* BuyMillListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillListVC.h; sourceTree = "<group>"; };
+		1F8E2E31228AA7F00045D62B /* BuyMillListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListVC.m; sourceTree = "<group>"; };
+		1F8E2E33228AA8230045D62B /* BuyMillListTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillListTableView.h; sourceTree = "<group>"; };
+		1F8E2E34228AA8230045D62B /* BuyMillListTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListTableView.m; sourceTree = "<group>"; };
+		1F8E2E36228AA8450045D62B /* BuyMillListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillListCell.h; sourceTree = "<group>"; };
+		1F8E2E37228AA8450045D62B /* BuyMillListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListCell.m; sourceTree = "<group>"; };
 		1F9031CC2247A8670093C38D /* JXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSegment.m; sourceTree = "<group>"; };
 		1F9031CD2247A8680093C38D /* JXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSegment.h; sourceTree = "<group>"; };
 		1F9031CE2247A8680093C38D /* UIView+JXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXView.h"; sourceTree = "<group>"; };
@@ -2458,13 +2491,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1F6D9E81228413780057A756 /* lookingForward */ = {
+		1F6D9E81228413780057A756 /* lookingForward敬请期待 */ = {
 			isa = PBXGroup;
 			children = (
 				1F6D9E82228419180057A756 /* lookingForwardVC.h */,
 				1F6D9E83228419180057A756 /* lookingForwardVC.m */,
 			);
-			path = lookingForward;
+			path = "lookingForward敬请期待";
 			sourceTree = "<group>";
 		};
 		1F709D5B2180A7FC002D1CC4 /* SGQRCode */ = {
@@ -3246,6 +3279,7 @@
 			children = (
 				1F02F985228557FE003AF7F1 /* AlertsDetails */,
 				1F7F6F71227EFBC2003AEBA7 /* Controller */,
+				1F8E2E05228A55740045D62B /* Model */,
 				1F7F6F70227EFBC0003AEBA7 /* View */,
 			);
 			path = "Alerts快讯";
@@ -3306,6 +3340,8 @@
 				1F8E2DED22893CAC0045D62B /* FlashAgainstTableView.m */,
 				1F8E2DF222893F340045D62B /* FlashAgainstHeaderView.h */,
 				1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */,
+				1F8E2E09228A6DD90045D62B /* FlashAgainstCell.h */,
+				1F8E2E0A228A6DD90045D62B /* FlashAgainstCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3315,6 +3351,182 @@
 			children = (
 				1F8E2DEF22893D390045D62B /* FlashAgainstVC.h */,
 				1F8E2DF022893D390045D62B /* FlashAgainstVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2E05228A55740045D62B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E06228A558A0045D62B /* AlertsModel.h */,
+				1F8E2E07228A558A0045D62B /* AlertsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F8E2E0C228A6F840045D62B /* CloudCalculateForce云算力 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E12228A93320045D62B /* EggplantAccount茄子账户 */,
+				1F8E2E17228A93690045D62B /* BuyMill购买矿机 */,
+				1F8E2E16228A93660045D62B /* MyMill我的矿机 */,
+				1F8E2E15228A93640045D62B /* BeForceAccelerate算力加速 */,
+				1F8E2E14228A93620045D62B /* InviteRewards邀请奖励 */,
+				1F8E2E13228A935D0045D62B /* NodeLogin节点登录 */,
+				1F8E2E0F228A6FC00045D62B /* CloudCalculateForceVC.h */,
+				1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */,
+			);
+			path = "CloudCalculateForce云算力";
+			sourceTree = "<group>";
+		};
+		1F8E2E12228A93320045D62B /* EggplantAccount茄子账户 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E19228A93FA0045D62B /* Controller */,
+				1F8E2E18228A93F80045D62B /* View */,
+			);
+			path = "EggplantAccount茄子账户";
+			sourceTree = "<group>";
+		};
+		1F8E2E13228A935D0045D62B /* NodeLogin节点登录 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E26228A94460045D62B /* Controller */,
+				1F8E2E25228A943F0045D62B /* View */,
+			);
+			path = "NodeLogin节点登录";
+			sourceTree = "<group>";
+		};
+		1F8E2E14228A93620045D62B /* InviteRewards邀请奖励 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E24228A943C0045D62B /* Controller */,
+				1F8E2E23228A943A0045D62B /* View */,
+			);
+			path = "InviteRewards邀请奖励";
+			sourceTree = "<group>";
+		};
+		1F8E2E15228A93640045D62B /* BeForceAccelerate算力加速 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E22228A94380045D62B /* Controller */,
+				1F8E2E21228A94360045D62B /* View */,
+			);
+			path = "BeForceAccelerate算力加速";
+			sourceTree = "<group>";
+		};
+		1F8E2E16228A93660045D62B /* MyMill我的矿机 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E20228A94330045D62B /* Controller */,
+				1F8E2E1F228A94300045D62B /* View */,
+			);
+			path = "MyMill我的矿机";
+			sourceTree = "<group>";
+		};
+		1F8E2E17228A93690045D62B /* BuyMill购买矿机 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E1E228A94230045D62B /* Controller */,
+				1F8E2E1D228A94200045D62B /* View */,
+			);
+			path = "BuyMill购买矿机";
+			sourceTree = "<group>";
+		};
+		1F8E2E18228A93F80045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E27228A98680045D62B /* EggplantAccountTableView.h */,
+				1F8E2E28228A98680045D62B /* EggplantAccountTableView.m */,
+				1F8E2E2D228A98980045D62B /* EggplantAccountHeadView.h */,
+				1F8E2E2E228A98980045D62B /* EggplantAccountHeadView.m */,
+				1F8E2E2A228A98810045D62B /* EggplantAccountCell.h */,
+				1F8E2E2B228A98810045D62B /* EggplantAccountCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2E19228A93FA0045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E1A228A941A0045D62B /* EggplantAccountVC.h */,
+				1F8E2E1B228A941A0045D62B /* EggplantAccountVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2E1D228A94200045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E33228AA8230045D62B /* BuyMillListTableView.h */,
+				1F8E2E34228AA8230045D62B /* BuyMillListTableView.m */,
+				1F8E2E36228AA8450045D62B /* BuyMillListCell.h */,
+				1F8E2E37228AA8450045D62B /* BuyMillListCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2E1E228A94230045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E2E30228AA7F00045D62B /* BuyMillListVC.h */,
+				1F8E2E31228AA7F00045D62B /* BuyMillListVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2E1F228A94300045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2E20228A94330045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2E21228A94360045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2E22228A94380045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2E23228A943A0045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2E24228A943C0045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E2E25228A943F0045D62B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8E2E26228A94460045D62B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3558,11 +3770,12 @@
 				1FA566D4223CD4B90077FE54 /* Controller */,
 				1FA566E4223CD4B90077FE54 /* Model */,
 				1FA566D7223CD4B90077FE54 /* View */,
-				1F6D9E81228413780057A756 /* lookingForward */,
+				1F6D9E81228413780057A756 /* lookingForward敬请期待 */,
 				1F76697F21D5EFB900006B41 /* Trading投资 */,
 				1FA56B00223CD7600077FE54 /* Web */,
 				1FA568C4223CD6630077FE54 /* GameDetails */,
 				1F8E2DE622893C2A0045D62B /* FlashAgainst闪兑 */,
+				1F8E2E0C228A6F840045D62B /* CloudCalculateForce云算力 */,
 			);
 			path = DAPP;
 			sourceTree = "<group>";
@@ -4303,6 +4516,8 @@
 			children = (
 				1FDD17182223C12D00E74D74 /* InvestMentAllVC.h */,
 				1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */,
+				1F8E2E03228978FE0045D62B /* HYPageView.h */,
+				1F8E2E02228978FE0045D62B /* HYPageView.m */,
 				1FFB8EA4225B4BAF00B72F31 /* MLMSegmentPageView */,
 				1F9031CB2247A84D0093C38D /* TopScrollView */,
 				1F76699C21DCB2D900006B41 /* Controller */,
@@ -5574,6 +5789,7 @@
 				B8CAA14D2115DE6300695BC3 /* TLhistoryListVC.m in Sources */,
 				1F8E2DEE22893CAC0045D62B /* FlashAgainstTableView.m in Sources */,
 				1F9361B021EF0F7F007E522A /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
+				1F8E2E0B228A6DD90045D62B /* FlashAgainstCell.m in Sources */,
 				7A2CC6BF215DC88C00B27E2D /* PGDatePicker+TimeAndSecond.m in Sources */,
 				7A07F803216C84F30026EB7A /* SCBar.m in Sources */,
 				21A821171FDA690700AE59F2 /* GoogleAuthVC.m in Sources */,
@@ -5619,6 +5835,7 @@
 				211DE6BC1FB58B4C002FCF3D /* NSString+Extension.m in Sources */,
 				1FA56A95223CD69B0077FE54 /* StrategyModel.m in Sources */,
 				B88D6C6F20EDF39F0043832C /* TLFastvc.m in Sources */,
+				1F8E2E1C228A941A0045D62B /* EggplantAccountVC.m in Sources */,
 				7A2CC66A215BBCEA00B27E2D /* PosMyInvestmentHeadView.m in Sources */,
 				1F76692521D4A32700006B41 /* BTC256+Tests.m in Sources */,
 				21C91D7D1FDBCF9C006EDB16 /* ZMAuthVC.m in Sources */,
@@ -5710,6 +5927,7 @@
 				1F93617E21EEDBD3007E522A /* LYSLineChart.m in Sources */,
 				1FA56AE6223CD6A70077FE54 /* YYTextMagnifier.m in Sources */,
 				1F8E2CFF22857EB30045D62B /* SmoothChartView1.m in Sources */,
+				1F8E2E08228A558A0045D62B /* AlertsModel.m in Sources */,
 				B87BF1D02114251800DD5C05 /* FMDBMigrationManager.m in Sources */,
 				1F7668F321D4A32700006B41 /* BTCBigNumber+Tests.m in Sources */,
 				B8B15C1F20CA752900F13220 /* QHCollectionViewNine.m in Sources */,
@@ -5754,6 +5972,7 @@
 				1F6D9E5C2281716D0057A756 /* MessageDetailsVC.m in Sources */,
 				1FA566F1223CD4B90077FE54 /* IconCollCell.m in Sources */,
 				7A07F80B216C84F30026EB7A /* SCPieChart.m in Sources */,
+				1F8E2E2C228A98810045D62B /* EggplantAccountCell.m in Sources */,
 				7A2CC654215BA06600B27E2D /* PosBuyVC.m in Sources */,
 				1F76692821D4A32700006B41 /* BTCFancyEncryptedMessage+Tests.m in Sources */,
 				7A2CC6B2215DC88B00B27E2D /* PGDatePicker+Common.m in Sources */,
@@ -5807,12 +6026,14 @@
 				1F9031D42247A8680093C38D /* JXPageView.m in Sources */,
 				211DE6B61FB58B4C002FCF3D /* UIView+Extension.m in Sources */,
 				7A07F811216CAAEA0026EB7A /* MyInconmeCell.m in Sources */,
+				1F8E2E32228AA7F00045D62B /* BuyMillListVC.m in Sources */,
 				1F8E2DF422893F340045D62B /* FlashAgainstHeaderView.m in Sources */,
 				7AE970522170C4970066B66C /* InviteEarningsModel.m in Sources */,
 				B88B092720C8E371005C2D2F /* JoinMineCell.m in Sources */,
 				2120D8A31FCEE1DE00712600 /* HourPickerView.m in Sources */,
 				1F76697421D4A34D00006B41 /* fileenc.c in Sources */,
 				1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */,
+				1F8E2E38228AA8450045D62B /* BuyMillListCell.m in Sources */,
 				1F816BF92180953D0078B945 /* SGQRCodeHelperTool.m in Sources */,
 				1F76692321D4A32700006B41 /* BTCBlockchainInfo+Tests.m in Sources */,
 				7A2CC6BA215DC88C00B27E2D /* PGDatePicker+MonthDay.m in Sources */,
@@ -5966,6 +6187,7 @@
 				B8CAA14421158FF200695BC3 /* LPDImageManager.m in Sources */,
 				211DE6C41FB58B4C002FCF3D /* HttpSign.m in Sources */,
 				B8D9290F20EA58290026A3DF /* ChangeLocalMoneyVC.m in Sources */,
+				1F8E2E04228978FE0045D62B /* HYPageView.m in Sources */,
 				1FA56AED223CD6A70077FE54 /* YYTextKeyboardManager.m in Sources */,
 				1F93617F21EEDBD3007E522A /* LYSHistogramChart.m in Sources */,
 				1F7667F421D0B44700006B41 /* MyCell1.m in Sources */,
@@ -6015,6 +6237,7 @@
 				B88B092D20C8F878005C2D2F /* WalletSettingVC.m in Sources */,
 				1FA568C2223CD5750077FE54 /* GeneralWebView.m in Sources */,
 				7A07F80D216C84F30026EB7A /* SCTool.m in Sources */,
+				1F8E2E29228A98680045D62B /* EggplantAccountTableView.m in Sources */,
 				7A07F82E216CDAC10026EB7A /* InviteEarningsVC.m in Sources */,
 				B88B591A2109AEC400F20D1B /* TLNavigationController.m in Sources */,
 				B8CAA14621158FF200695BC3 /* LPDImagePickerController.m in Sources */,
@@ -6059,6 +6282,7 @@
 				7A07F7E8216C84ED0026EB7A /* SCPieCell.m in Sources */,
 				B887819920E366BC00879330 /* UIImageView+RotateImgV.m in Sources */,
 				1F76697621D4A34D00006B41 /* prng.c in Sources */,
+				1F8E2E11228A6FC10045D62B /* CloudCalculateForceVC.m in Sources */,
 				4CC7F0ED205FBC5400BBEC4D /* CoinModel.m in Sources */,
 				7A2CC6C5215DC88C00B27E2D /* PGDatePickManager.m in Sources */,
 				1F6F2BAA222CE84B00298FB3 /* BnakCardVC.m in Sources */,
@@ -6084,6 +6308,7 @@
 				B85FE46F21287D2300C9F60C /* PayModel.m in Sources */,
 				1F709D722181E51E002D1CC4 /* HW3DBannerView.m in Sources */,
 				1FA56ADF223CD6A70077FE54 /* YSActionSheetView.m in Sources */,
+				1F8E2E2F228A98980045D62B /* EggplantAccountHeadView.m in Sources */,
 				1F76691E21D4A32700006B41 /* BTCCurrencyConverter.m in Sources */,
 				1FA566ED223CD4B90077FE54 /* HomeVC.m in Sources */,
 				7AABEAFB2148FEEF00283BC7 /* PoliteInstructionsVC.m in Sources */,
@@ -6117,6 +6342,7 @@
 				B8B15C2020CA752900F13220 /* CurrencyTitleModel.m in Sources */,
 				1F73680522533A9F00135F7E /* ImageHelper.m in Sources */,
 				216F5B5A206D02DC00F2C832 /* PosMiningVC.m in Sources */,
+				1F8E2E35228AA8230045D62B /* BuyMillListTableView.m in Sources */,
 				1F766A0221DDDFDB00006B41 /* PayWayCell.m in Sources */,
 				1F9C8FB52244DF0600DFA9C3 /* WalletForwordVC.m in Sources */,
 				B8CAA14821158FF200695BC3 /* LPDQuoteImagesView.m in Sources */,

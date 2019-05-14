@@ -108,33 +108,7 @@
     [layerX removeFromSuperlayer];
     [self makeChartXView];
     
-//    CGFloat width = (VIEW_WIDTH-30)/3;
-    
-//    for (NSInteger i=0; i<arrX.count; i++) {
-//
-//        UILabel *label = (UILabel*)[self viewWithTag:5000+i];
-//        [label removeFromSuperview];
-//    }
-    //横坐标上的数字
-//    for (int i=0; i<arrX.count; i++) {
-//
-//        UILabel *layer3 = [UILabel new];
-//        layer3.frame = CGRectMake((VIEW_WIDTH - LABLE_WIDTH)+i*width+25, VIEW_HEIGHT - 20, width, 20);
-//        layer3.text = [NSString stringWithFormat:@"%@",_arrX[i]];
-//        layer3.font = [UIFont systemFontOfSize:12];
-//        layer3.textAlignment = NSTextAlignmentLeft;
-//        layer3.tag = 5000+i;
-//        layer3.textColor = [UIColor colorFromHexCode:@"999999"];
-//        [self addSubview:layer3];
-//
-//
-////        CATextLayer *layer3 = [CATextLayer layer];
-////        layer3.frame = CGRectMake((VIEW_WIDTH - LABLE_WIDTH)+i*width, 5, width, 20);
-////        layer3.string = [NSString stringWithFormat:@"%@",_arrX[i]];
-////        layer3.fontSize = 12;
-////        layer3.foregroundColor = [[UIColor colorFromHexCode:@"999999"] CGColor];
-////        [layerX addSublayer:layer3];
-//    }
+
 
 }
 -(void)setArrY:(NSArray *)arrY{
@@ -155,13 +129,13 @@
     //纵坐标上的数字
     for (int i=0; i<arrY.count; i++) {
         
-        UILabel *layer6 = [UILabel new];
-        layer6.frame = CGRectMake(0,LABLE_HEIGHT-(i*height)-20, 60, 20);
+        UILabel *layer6 = [UILabel labelWithFrame:CGRectMake(0,LABLE_HEIGHT-(i*height)-20, 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(11) textColor:nil];
+//        layer6.frame = CGRectMake(0,LABLE_HEIGHT-(i*height)-20, 60, 20);
         layer6.text = [NSString stringWithFormat:@"%@",_arrY[i]];
-        layer6.font = [UIFont systemFontOfSize:11];
-        layer6.textAlignment = NSTextAlignmentLeft;
+//        layer6.font = [UIFont systemFontOfSize:11];
+//        layer6.textAlignment = NSTextAlignmentLeft;
         layer6.tag = 4000+i;
-        layer6.textColor = kHexColor(@"#B3B3B3");
+//        [layer6 theme_setTextIdentifier:LabelColor moduleName:ColorName];
         [self addSubview:layer6];
 
 
