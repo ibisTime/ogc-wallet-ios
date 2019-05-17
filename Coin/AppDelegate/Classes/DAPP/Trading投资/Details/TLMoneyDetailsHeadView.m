@@ -63,23 +63,26 @@
 
         UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(0, 90 - 64 + kNavigationBarHeight, kScreenWidth, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kHexColor(@"#FFFFFF")];
         nameLabel.text = [LangSwitcher switchLang:@"预期年化收益率" key:nil];
+        nameLabel.textColor = kWhiteColor;
         [self addSubview:nameLabel];
 
         UILabel *priceLabel =[UILabel labelWithFrame:CGRectMake(15, 116 - 64 + kNavigationBarHeight, kScreenWidth - 30, 45) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(32) textColor:kHexColor(@"#FFFFFF")];
         self.priceLabel = priceLabel;
+        priceLabel.textColor = kWhiteColor;
         [self addSubview:priceLabel];
 
         NSArray *nameArray = @[@"认购期限",@"剩余额度",@"起购额度"];
         for (int i = 0; i < 3 ; i++) {
             UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake(10 + i % 3 * kScreenWidth/3, 250 - 64 + kNavigationBarHeight - 60 + 11.5, kScreenWidth/3 - 20, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#FFFFFF")];
             numberLabel.tag = 1000 + i;
+            numberLabel.textColor = kWhiteColor;
 //            numberLabel.text = @"300 ETH";
             [self addSubview:numberLabel];
 
             UILabel *contactLabel = [UILabel labelWithFrame:CGRectMake(10 + i % 3 * kScreenWidth/3, 250 - 64 + kNavigationBarHeight - 60 + 33.5, kScreenWidth/3 - 20, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#FFFFFF")];
             contactLabel.text = [LangSwitcher switchLang:nameArray[i] key:nil];
 //            contactLabel.alpha = 0.7;
-
+            contactLabel.textColor = kWhiteColor;
             [self addSubview:contactLabel];
         }
     }

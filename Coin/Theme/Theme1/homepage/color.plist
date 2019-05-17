@@ -2,10 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>白色</key>
+	<string></string>
+	<key>cellcolor1</key>
+	<string>0xE0E0E0</string>
 	<key>headerViewColor</key>
 	<string>0xF5F5F5</string>
-	<key>tableview.back2</key>
-	<string></string>
 	<key>leftNumberView</key>
 	<string>0xF0F0F0</string>
 	<key>FlashAgainstConversionColor</key>
@@ -22,8 +24,6 @@
 	<string>0x999999</string>
 	<key>lineViewColor</key>
 	<string>0xEEEEEE</string>
-	<key>白色</key>
-	<string></string>
 	<key>self.view.back</key>
 	<string>0xf8f8f8</string>
 	<key>buttonBack</key>

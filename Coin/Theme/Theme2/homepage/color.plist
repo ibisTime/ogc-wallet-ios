@@ -4,6 +4,8 @@
 <dict>
 	<key>黑色</key>
 	<string></string>
+	<key>cellcolor1</key>
+	<string>0x3B3E44</string>
 	<key>leftNumberView</key>
 	<string>0x52565D</string>
 	<key>FlashAgainstConversionColor</key>

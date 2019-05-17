@@ -219,6 +219,8 @@
     }
 }
 
+
+
 //-(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title{
 //    if ([title isEqualToString:@"账户与安全"]) {
 //        SettingVC *settingVC = [SettingVC new];

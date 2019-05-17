@@ -7,7 +7,7 @@
 //
 
 #import "BuyMillDetaiilsVC.h"
-
+#import "BuyMillBuyVC.h"
 @interface BuyMillDetaiilsVC ()
 
 @end
@@ -74,13 +74,15 @@
     [buyBtn setBackgroundColor:kTabbarColor forState:(UIControlStateNormal)];
     [buyBtn setTitle:@"购买" forState:(UIControlStateNormal)];
     kViewRadius(buyBtn, 4);
+    buyBtn.titleLabel.font = FONT(16);
     [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:buyBtn];
 }
 
 -(void)buyBtnClick
 {
-    
+    BuyMillBuyVC *vc = [BuyMillBuyVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

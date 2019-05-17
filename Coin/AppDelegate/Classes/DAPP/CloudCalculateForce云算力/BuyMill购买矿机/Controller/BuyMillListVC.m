@@ -9,6 +9,7 @@
 #import "BuyMillListVC.h"
 #import "BuyMillListTableView.h"
 #import "BuyMillDetaiilsVC.h"
+
 @interface BuyMillListVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)BuyMillListTableView *tableView;
@@ -26,7 +27,7 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[BuyMillListTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight ) style:UITableViewStyleGrouped];
+    self.tableView = [[BuyMillListTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     

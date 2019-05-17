@@ -315,44 +315,34 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 
+    
+    
+    if (section == 1) {
+        UIView *headView = [UIView new];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+        [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+        [headView addSubview:lineView];
+        
+        return headView;
+    }
     if (section > 1) {
 
         UIView *headView = [[UIView alloc]init];
 //        headView.backgroundColor = [UIColor blackColor];
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 1, SCREEN_WIDTH, 40)];
-        backView.backgroundColor = kWhiteColor;;
+//        backView.backgroundColor = kWhiteColor;;
+        [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [headView addSubview:backView];
+        
         NSArray *nameArray = @[@"购买属性",@"赎回属性",@"说明书"];
         UIButton *headButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[section - 2] key:nil] titleColor:kHexColor(@"#464646") backgroundColor:kClearColor titleFont:16];
         headButton.titleLabel.font = HGboldfont(16);
         headButton.frame = CGRectMake(15, 0, SCREEN_WIDTH - 45, 40);
-//        [headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
         headButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         headButton.tag = section;
         [backView addSubview:headButton];
-
-//        UIImageView *youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 22, 24, 7, 12)];
-//        youImage.image = kImage(@"更多-灰色");
-//        [headView addSubview:youImage];
-//        if (isOrOpen[section] == NO) {
-//            [UIView animateWithDuration:0.5 animations:^{
-//
-//
-//                youImage.transform=CGAffineTransformMakeRotation(0*M_PI/180);
-//            }];
-//        }else
-//        {
-//            [UIView animateWithDuration:0.5 animations:^{
-//
-//                youImage.transform=CGAffineTransformMakeRotation(90*M_PI/180);
-//            }];
-//
-//        }
-//
-//        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 59, SCREEN_WIDTH - 30, 1)];
-//        lineView.backgroundColor = kLineColor;
-//        [headView addSubview:lineView];
 
         return headView;
 
@@ -362,23 +352,6 @@
 
 
 
-//-(void)headButtonClick:(UIButton *)sender
-//{
-//    if (isOrOpen[sender.tag] == YES) {
-//        isOrOpen[sender.tag] = NO;
-//        self.selectSxtion = 0;
-//    }else
-//    {
-//        isOrOpen[sender.tag] = YES;
-//        self.selectSxtion = sender.tag;
-//
-//    }
-//    [self reloadData];
-//    NSIndexSet *indexSet=[[NSIndexSet alloc]initWithIndex:sender.tag];
-//    [self reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-
-
-//}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -389,7 +362,15 @@
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-
+    if (section == 1) {
+        UIView *headView = [UIView new];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+        [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+        [headView addSubview:lineView];
+        
+        return headView;
+    }
     return [UIView new];
 }
 

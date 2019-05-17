@@ -44,7 +44,7 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[EggplantAccountTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight ) style:UITableViewStyleGrouped];
+    self.tableView = [[EggplantAccountTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight  - kNavigationBarHeight) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headView;

@@ -7,11 +7,11 @@
 //
 
 #import "TLBaseVC.h"
-
+#import "AlertsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AlertsDetailsVC : TLBaseVC
-
+@property (nonatomic , strong)AlertsModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

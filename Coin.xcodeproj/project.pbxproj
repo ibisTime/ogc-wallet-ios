@@ -13,6 +13,15 @@
 		1F0725B1228009660008EADA /* SwitchPurseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0725B0228009660008EADA /* SwitchPurseVC.m */; };
 		1F0725B42280097E0008EADA /* SwitchPurseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0725B32280097E0008EADA /* SwitchPurseTableView.m */; };
 		1F0725BA22800CDC0008EADA /* LWSkinTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0725B822800CDB0008EADA /* LWSkinTool.m */; };
+		1F0E1510228D43D100AEE094 /* InviteRewardsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E150F228D43D100AEE094 /* InviteRewardsVC.m */; };
+		1F0E1513228D445000AEE094 /* TeamPerformanceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1512228D445000AEE094 /* TeamPerformanceVC.m */; };
+		1F0E151B228D448200AEE094 /* ResultsDistributionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E151A228D448200AEE094 /* ResultsDistributionVC.m */; };
+		1F0E151F228D4DE500AEE094 /* SLNodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E151E228D4DE500AEE094 /* SLNodeModel.m */; };
+		1F0E1522228D4DEF00AEE094 /* SLNodeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1521228D4DEF00AEE094 /* SLNodeTableViewCell.m */; };
+		1F0E1525228D586000AEE094 /* TeamPerFormanceTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1524228D586000AEE094 /* TeamPerFormanceTableView.m */; };
+		1F0E1528228D587F00AEE094 /* TeamPerFormanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1527228D587F00AEE094 /* TeamPerFormanceCell.m */; };
+		1F0E152B228D5F2700AEE094 /* NodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E152A228D5F2700AEE094 /* NodeLoginVC.m */; };
+		1F0E152E228D61DE00AEE094 /* NodesSummarizedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E152D228D61DE00AEE094 /* NodesSummarizedVC.m */; };
 		1F11E70221EDBD4A006C8DB4 /* InvestmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */; };
 		1F11E70521EDCCB2006C8DB4 /* OrderRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70421EDCCB2006C8DB4 /* OrderRecordModel.m */; };
 		1F19AC26221116450090BF84 /* utxoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F19AC24221116440090BF84 /* utxoModel.m */; };
@@ -226,6 +235,14 @@
 		1F816BF72180953D0078B945 /* SGQRCodeScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BED2180953B0078B945 /* SGQRCodeScanningView.m */; };
 		1F816BF82180953D0078B945 /* UIImage+ImageSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BEE2180953B0078B945 /* UIImage+ImageSize.m */; };
 		1F816BF92180953D0078B945 /* SGQRCodeHelperTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F816BF02180953C0078B945 /* SGQRCodeHelperTool.m */; };
+		1F824517228D017000B3C2AF /* MyMillVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F824516228D017000B3C2AF /* MyMillVC.m */; };
+		1F82451A228D018500B3C2AF /* MyMillCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F824519228D018500B3C2AF /* MyMillCell.m */; };
+		1F82451D228D01AD00B3C2AF /* MyMillTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82451C228D01AD00B3C2AF /* MyMillTableView.m */; };
+		1F824524228D0FF500B3C2AF /* MyMillDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F824523228D0FF500B3C2AF /* MyMillDetailsVC.m */; };
+		1F824527228D102A00B3C2AF /* MyMillDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F824526228D102A00B3C2AF /* MyMillDetailsTableView.m */; };
+		1F82452A228D104900B3C2AF /* MyMillDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F824529228D104900B3C2AF /* MyMillDetailsCell.m */; };
+		1F82452D228D3A9E00B3C2AF /* OreRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82452C228D3A9E00B3C2AF /* OreRecordCell.m */; };
+		1F824530228D3D7900B3C2AF /* BeForceAccelerateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82452F228D3D7900B3C2AF /* BeForceAccelerateVC.m */; };
 		1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF2228572830045D62B /* MarketDetailsVC.m */; };
 		1F8E2CF62285733C0045D62B /* MarketDetaiilsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */; };
 		1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */; };
@@ -247,6 +264,7 @@
 		1F8E2E35228AA8230045D62B /* BuyMillListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E34228AA8230045D62B /* BuyMillListTableView.m */; };
 		1F8E2E38228AA8450045D62B /* BuyMillListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E37228AA8450045D62B /* BuyMillListCell.m */; };
 		1F8E2E3B228ABBE30045D62B /* BuyMillDetaiilsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E3A228ABBE20045D62B /* BuyMillDetaiilsVC.m */; };
+		1F8E2E3E228AC9980045D62B /* BuyMillBuyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E3D228AC9970045D62B /* BuyMillBuyVC.m */; };
 		1F9031D22247A8680093C38D /* JXSegment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031CC2247A8670093C38D /* JXSegment.m */; };
 		1F9031D32247A8680093C38D /* UIView+JXView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D02247A8680093C38D /* UIView+JXView.m */; };
 		1F9031D42247A8680093C38D /* JXPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9031D12247A8680093C38D /* JXPageView.m */; };
@@ -696,6 +714,24 @@
 		1F0725B822800CDB0008EADA /* LWSkinTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSkinTool.m; sourceTree = "<group>"; };
 		1F0725B922800CDB0008EADA /* LWSkinTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSkinTool.h; sourceTree = "<group>"; };
 		1F0BF770222E2885003FA1A5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F0E150E228D43D000AEE094 /* InviteRewardsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InviteRewardsVC.h; sourceTree = "<group>"; };
+		1F0E150F228D43D100AEE094 /* InviteRewardsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteRewardsVC.m; sourceTree = "<group>"; };
+		1F0E1511228D445000AEE094 /* TeamPerformanceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamPerformanceVC.h; sourceTree = "<group>"; };
+		1F0E1512228D445000AEE094 /* TeamPerformanceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamPerformanceVC.m; sourceTree = "<group>"; };
+		1F0E1519228D448200AEE094 /* ResultsDistributionVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsDistributionVC.h; sourceTree = "<group>"; };
+		1F0E151A228D448200AEE094 /* ResultsDistributionVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsDistributionVC.m; sourceTree = "<group>"; };
+		1F0E151D228D4DE500AEE094 /* SLNodeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLNodeModel.h; sourceTree = "<group>"; };
+		1F0E151E228D4DE500AEE094 /* SLNodeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLNodeModel.m; sourceTree = "<group>"; };
+		1F0E1520228D4DEF00AEE094 /* SLNodeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLNodeTableViewCell.h; sourceTree = "<group>"; };
+		1F0E1521228D4DEF00AEE094 /* SLNodeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLNodeTableViewCell.m; sourceTree = "<group>"; };
+		1F0E1523228D586000AEE094 /* TeamPerFormanceTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamPerFormanceTableView.h; sourceTree = "<group>"; };
+		1F0E1524228D586000AEE094 /* TeamPerFormanceTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamPerFormanceTableView.m; sourceTree = "<group>"; };
+		1F0E1526228D587F00AEE094 /* TeamPerFormanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamPerFormanceCell.h; sourceTree = "<group>"; };
+		1F0E1527228D587F00AEE094 /* TeamPerFormanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamPerFormanceCell.m; sourceTree = "<group>"; };
+		1F0E1529228D5F2700AEE094 /* NodeLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodeLoginVC.h; sourceTree = "<group>"; };
+		1F0E152A228D5F2700AEE094 /* NodeLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodeLoginVC.m; sourceTree = "<group>"; };
+		1F0E152C228D61DE00AEE094 /* NodesSummarizedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodesSummarizedVC.h; sourceTree = "<group>"; };
+		1F0E152D228D61DE00AEE094 /* NodesSummarizedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodesSummarizedVC.m; sourceTree = "<group>"; };
 		1F11E70021EDBD4A006C8DB4 /* InvestmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentModel.h; sourceTree = "<group>"; };
 		1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentModel.m; sourceTree = "<group>"; };
 		1F11E70321EDCCB2006C8DB4 /* OrderRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordModel.h; sourceTree = "<group>"; };
@@ -1202,6 +1238,22 @@
 		1F816BF12180953C0078B945 /* SGQRCodeScanManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanManager.h; sourceTree = "<group>"; };
 		1F816BF22180953C0078B945 /* SGQRCodeHelperTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeHelperTool.h; sourceTree = "<group>"; };
 		1F816BF32180953D0078B945 /* SGQRCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCode.h; sourceTree = "<group>"; };
+		1F824515228D017000B3C2AF /* MyMillVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillVC.h; sourceTree = "<group>"; };
+		1F824516228D017000B3C2AF /* MyMillVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillVC.m; sourceTree = "<group>"; };
+		1F824518228D018500B3C2AF /* MyMillCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillCell.h; sourceTree = "<group>"; };
+		1F824519228D018500B3C2AF /* MyMillCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillCell.m; sourceTree = "<group>"; };
+		1F82451B228D01AD00B3C2AF /* MyMillTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillTableView.h; sourceTree = "<group>"; };
+		1F82451C228D01AD00B3C2AF /* MyMillTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillTableView.m; sourceTree = "<group>"; };
+		1F824522228D0FF500B3C2AF /* MyMillDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillDetailsVC.h; sourceTree = "<group>"; };
+		1F824523228D0FF500B3C2AF /* MyMillDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillDetailsVC.m; sourceTree = "<group>"; };
+		1F824525228D102A00B3C2AF /* MyMillDetailsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillDetailsTableView.h; sourceTree = "<group>"; };
+		1F824526228D102A00B3C2AF /* MyMillDetailsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillDetailsTableView.m; sourceTree = "<group>"; };
+		1F824528228D104900B3C2AF /* MyMillDetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillDetailsCell.h; sourceTree = "<group>"; };
+		1F824529228D104900B3C2AF /* MyMillDetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillDetailsCell.m; sourceTree = "<group>"; };
+		1F82452B228D3A9E00B3C2AF /* OreRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OreRecordCell.h; sourceTree = "<group>"; };
+		1F82452C228D3A9E00B3C2AF /* OreRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OreRecordCell.m; sourceTree = "<group>"; };
+		1F82452E228D3D7900B3C2AF /* BeForceAccelerateVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeForceAccelerateVC.h; sourceTree = "<group>"; };
+		1F82452F228D3D7900B3C2AF /* BeForceAccelerateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeForceAccelerateVC.m; sourceTree = "<group>"; };
 		1F8E2CF1228572830045D62B /* MarketDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetailsVC.h; sourceTree = "<group>"; };
 		1F8E2CF2228572830045D62B /* MarketDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetailsVC.m; sourceTree = "<group>"; };
 		1F8E2CF42285733C0045D62B /* MarketDetaiilsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsTableView.h; sourceTree = "<group>"; };
@@ -1244,6 +1296,8 @@
 		1F8E2E37228AA8450045D62B /* BuyMillListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListCell.m; sourceTree = "<group>"; };
 		1F8E2E39228ABBE20045D62B /* BuyMillDetaiilsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillDetaiilsVC.h; sourceTree = "<group>"; };
 		1F8E2E3A228ABBE20045D62B /* BuyMillDetaiilsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillDetaiilsVC.m; sourceTree = "<group>"; };
+		1F8E2E3C228AC9970045D62B /* BuyMillBuyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillBuyVC.h; sourceTree = "<group>"; };
+		1F8E2E3D228AC9970045D62B /* BuyMillBuyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillBuyVC.m; sourceTree = "<group>"; };
 		1F9031CC2247A8670093C38D /* JXSegment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSegment.m; sourceTree = "<group>"; };
 		1F9031CD2247A8680093C38D /* JXSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSegment.h; sourceTree = "<group>"; };
 		1F9031CE2247A8680093C38D /* UIView+JXView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXView.h"; sourceTree = "<group>"; };
@@ -2189,6 +2243,15 @@
 				1F6D9B8B22801A3C0057A756 /* SwitchPurseCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1F0E151C228D4DD400AEE094 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F0E151D228D4DE500AEE094 /* SLNodeModel.h */,
+				1F0E151E228D4DE500AEE094 /* SLNodeModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1F1B000021E49391000BEBD3 /* Lib */ = {
@@ -3308,6 +3371,21 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1F824521228D0FD500B3C2AF /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				1F824522228D0FF500B3C2AF /* MyMillDetailsVC.h */,
+				1F824523228D0FF500B3C2AF /* MyMillDetailsVC.m */,
+				1F824525228D102A00B3C2AF /* MyMillDetailsTableView.h */,
+				1F824526228D102A00B3C2AF /* MyMillDetailsTableView.m */,
+				1F824528228D104900B3C2AF /* MyMillDetailsCell.h */,
+				1F824529228D104900B3C2AF /* MyMillDetailsCell.m */,
+				1F82452B228D3A9E00B3C2AF /* OreRecordCell.h */,
+				1F82452C228D3A9E00B3C2AF /* OreRecordCell.m */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		1F8E2CF0228572610045D62B /* MarketDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -3394,8 +3472,10 @@
 		1F8E2E13228A935D0045D62B /* NodeLogin节点登录 */ = {
 			isa = PBXGroup;
 			children = (
-				1F8E2E26228A94460045D62B /* Controller */,
-				1F8E2E25228A943F0045D62B /* View */,
+				1F0E1529228D5F2700AEE094 /* NodeLoginVC.h */,
+				1F0E152A228D5F2700AEE094 /* NodeLoginVC.m */,
+				1F0E152C228D61DE00AEE094 /* NodesSummarizedVC.h */,
+				1F0E152D228D61DE00AEE094 /* NodesSummarizedVC.m */,
 			);
 			path = "NodeLogin节点登录";
 			sourceTree = "<group>";
@@ -3403,7 +3483,10 @@
 		1F8E2E14228A93620045D62B /* InviteRewards邀请奖励 */ = {
 			isa = PBXGroup;
 			children = (
+				1F0E150E228D43D000AEE094 /* InviteRewardsVC.h */,
+				1F0E150F228D43D100AEE094 /* InviteRewardsVC.m */,
 				1F8E2E24228A943C0045D62B /* Controller */,
+				1F0E151C228D4DD400AEE094 /* Model */,
 				1F8E2E23228A943A0045D62B /* View */,
 			);
 			path = "InviteRewards邀请奖励";
@@ -3412,8 +3495,8 @@
 		1F8E2E15228A93640045D62B /* BeForceAccelerate算力加速 */ = {
 			isa = PBXGroup;
 			children = (
-				1F8E2E22228A94380045D62B /* Controller */,
-				1F8E2E21228A94360045D62B /* View */,
+				1F82452E228D3D7900B3C2AF /* BeForceAccelerateVC.h */,
+				1F82452F228D3D7900B3C2AF /* BeForceAccelerateVC.m */,
 			);
 			path = "BeForceAccelerate算力加速";
 			sourceTree = "<group>";
@@ -3421,6 +3504,7 @@
 		1F8E2E16228A93660045D62B /* MyMill我的矿机 */ = {
 			isa = PBXGroup;
 			children = (
+				1F824521228D0FD500B3C2AF /* Details */,
 				1F8E2E20228A94330045D62B /* Controller */,
 				1F8E2E1F228A94300045D62B /* View */,
 			);
@@ -3476,6 +3560,8 @@
 				1F8E2E31228AA7F00045D62B /* BuyMillListVC.m */,
 				1F8E2E39228ABBE20045D62B /* BuyMillDetaiilsVC.h */,
 				1F8E2E3A228ABBE20045D62B /* BuyMillDetaiilsVC.m */,
+				1F8E2E3C228AC9970045D62B /* BuyMillBuyVC.h */,
+				1F8E2E3D228AC9970045D62B /* BuyMillBuyVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3483,6 +3569,10 @@
 		1F8E2E1F228A94300045D62B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F82451B228D01AD00B3C2AF /* MyMillTableView.h */,
+				1F82451C228D01AD00B3C2AF /* MyMillTableView.m */,
+				1F824518228D018500B3C2AF /* MyMillCell.h */,
+				1F824519228D018500B3C2AF /* MyMillCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3490,20 +3580,8 @@
 		1F8E2E20228A94330045D62B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1F8E2E21228A94360045D62B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1F8E2E22228A94380045D62B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				1F824515228D017000B3C2AF /* MyMillVC.h */,
+				1F824516228D017000B3C2AF /* MyMillVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3511,6 +3589,12 @@
 		1F8E2E23228A943A0045D62B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F0E1523228D586000AEE094 /* TeamPerFormanceTableView.h */,
+				1F0E1524228D586000AEE094 /* TeamPerFormanceTableView.m */,
+				1F0E1526228D587F00AEE094 /* TeamPerFormanceCell.h */,
+				1F0E1527228D587F00AEE094 /* TeamPerFormanceCell.m */,
+				1F0E1520228D4DEF00AEE094 /* SLNodeTableViewCell.h */,
+				1F0E1521228D4DEF00AEE094 /* SLNodeTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3518,22 +3602,12 @@
 		1F8E2E24228A943C0045D62B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1F0E1511228D445000AEE094 /* TeamPerformanceVC.h */,
+				1F0E1512228D445000AEE094 /* TeamPerformanceVC.m */,
+				1F0E1519228D448200AEE094 /* ResultsDistributionVC.h */,
+				1F0E151A228D448200AEE094 /* ResultsDistributionVC.m */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		1F8E2E25228A943F0045D62B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1F8E2E26228A94460045D62B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		1F9031CB2247A84D0093C38D /* TopScrollView */ = {
@@ -5771,11 +5845,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				21205D0C1FCD6512003C6C7C /* TLWXManager.m in Sources */,
+				1F0E1522228D4DEF00AEE094 /* SLNodeTableViewCell.m in Sources */,
+				1F0E152E228D61DE00AEE094 /* NodesSummarizedVC.m in Sources */,
 				1F9361AE21EF0F7F007E522A /* SignFinishView.m in Sources */,
 				211A34F11FB430DB00FEB71F /* SettingModel.m in Sources */,
 				216F5B40206CD9DA00F2C832 /* TLBannerView.m in Sources */,
 				21A7F3181FB2E2F900FAA0A2 /* TLUserRegisterVC.m in Sources */,
 				7A2CC65D215BA4E100B27E2D /* PosBuyIntroduceCell.m in Sources */,
+				1F0E1513228D445000AEE094 /* TeamPerformanceVC.m in Sources */,
 				B82D3878211BD4A50053A2E4 /* TLQrCodeVC.m in Sources */,
 				1F76690D21D4A32700006B41 /* BTCAddress.m in Sources */,
 				211CEF151FCBBF90000FB0C4 /* SortBar.m in Sources */,
@@ -5798,6 +5875,7 @@
 				7A2CC6BF215DC88C00B27E2D /* PGDatePicker+TimeAndSecond.m in Sources */,
 				7A07F803216C84F30026EB7A /* SCBar.m in Sources */,
 				21A821171FDA690700AE59F2 /* GoogleAuthVC.m in Sources */,
+				1F824530228D3D7900B3C2AF /* BeForceAccelerateVC.m in Sources */,
 				21A7F3171FB2E2F900FAA0A2 /* TLUserForgetPwdVC.m in Sources */,
 				211DE6BF1FB58B4C002FCF3D /* NSTimer+tlNoCycle.m in Sources */,
 				B8C2056A20CF86A400952765 /* ChangeForwordVC.m in Sources */,
@@ -5821,6 +5899,7 @@
 				211DE6AC1FB58B4C002FCF3D /* TLPageDataHelper.m in Sources */,
 				1F11E70221EDBD4A006C8DB4 /* InvestmentModel.m in Sources */,
 				1FFB8EB3225B4BAF00B72F31 /* MLMSegmentScroll.m in Sources */,
+				1F824524228D0FF500B3C2AF /* MyMillDetailsVC.m in Sources */,
 				1FA56AFC223CD6A70077FE54 /* YYTextWeakProxy.m in Sources */,
 				7A2CC67A215CD45300B27E2D /* AccumulatedEarningsCell.m in Sources */,
 				1F7F6F5F227EE572003AEBA7 /* MTThemePerformSelector.m in Sources */,
@@ -5863,6 +5942,7 @@
 				B8F63EDD20D37FE700556150 /* LocalBillDetailVC.m in Sources */,
 				B8B15C0220CA312100F13220 /* BuildWalletMineVC.m in Sources */,
 				1F7367112252FEFA00135F7E /* ecdsa.c in Sources */,
+				1F0E1510228D43D100AEE094 /* InviteRewardsVC.m in Sources */,
 				211DE6A91FB58B4C002FCF3D /* TLPlaceholderView.m in Sources */,
 				1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */,
 				2E394FED1FB0575A00BA0829 /* AppDelegate.m in Sources */,
@@ -5923,6 +6003,8 @@
 				1F73663922520BC300135F7E /* RegEx.m in Sources */,
 				B8F63EE020D3809700556150 /* LocalBillDetailTableView.m in Sources */,
 				1F76691021D4A32700006B41 /* BTCMerkleTree.m in Sources */,
+				1F0E151B228D448200AEE094 /* ResultsDistributionVC.m in Sources */,
+				1F824517228D017000B3C2AF /* MyMillVC.m in Sources */,
 				7AABEAFE2149127200283BC7 /* BouncedPasteView.m in Sources */,
 				7A2CC674215CAECF00B27E2D /* AccumulatedEarningsVC.m in Sources */,
 				B80D54CE210C9C11005303D5 /* TLChangeNikeName.m in Sources */,
@@ -6010,6 +6092,7 @@
 				7A2CC6BD215DC88C00B27E2D /* PGDatePicker+MonthDayHourMinuteSecond.m in Sources */,
 				1F7668FB21D4A32700006B41 /* BTCProtocolSerialization.m in Sources */,
 				B8BBA64620C8497000DC4D5F /* AddMoneyTableView.m in Sources */,
+				1F8E2E3E228AC9980045D62B /* BuyMillBuyVC.m in Sources */,
 				1F76691821D4A32700006B41 /* BTCTransactionOutput.m in Sources */,
 				1F76691C21D4A32700006B41 /* BTCScript.m in Sources */,
 				1F76691921D4A32700006B41 /* BTCPaymentRequest.m in Sources */,
@@ -6017,6 +6100,7 @@
 				1F7668FD21D4A32700006B41 /* BTCBase58+Tests.m in Sources */,
 				1F7668E921D4A32700006B41 /* BTCTransactionBuilder.m in Sources */,
 				1F7F6F61227EE572003AEBA7 /* MTFontTable.m in Sources */,
+				1F0E151F228D4DE500AEE094 /* SLNodeModel.m in Sources */,
 				B8F44025212C81E700809522 /* TLNewPwdVC.m in Sources */,
 				B8B15C3220CAB4DE00F13220 /* CustomLayoutWallet.m in Sources */,
 				1FA56B09223CD7610077FE54 /* UIView+Frame.m in Sources */,
@@ -6061,7 +6145,9 @@
 				1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */,
 				B8CA7D4920CBA22800A0E93C /* WalletImportVC.m in Sources */,
 				1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */,
+				1F0E1528228D587F00AEE094 /* TeamPerFormanceCell.m in Sources */,
 				1F7F6F68227EE572003AEBA7 /* UITextField+MTTheme.m in Sources */,
+				1F824527228D102A00B3C2AF /* MyMillDetailsTableView.m in Sources */,
 				1F8E2CFC2285735E0045D62B /* MarketDetaiilsCell.m in Sources */,
 				B83666F6210EC0610065DF18 /* LocalSettingCell.m in Sources */,
 				1F76690B21D4A32700006B41 /* BTCCurrencyConverter+Tests.m in Sources */,
@@ -6182,6 +6268,7 @@
 				1F7668EE21D4A32700006B41 /* BTCBlindSignature.m in Sources */,
 				1F816BF52180953D0078B945 /* SGQRCodeAlbumManager.m in Sources */,
 				7A2CC6D6215DC89200B27E2D /* PGPickerColumnView.m in Sources */,
+				1F82452A228D104900B3C2AF /* MyMillDetailsCell.m in Sources */,
 				211DE6BB1FB58B4C002FCF3D /* NSString+CGSize.m in Sources */,
 				1FFB8EB0225B4BAF00B72F31 /* MLMSegmentManager.m in Sources */,
 				B8CF2CC52121375800055706 /* BTCDetailModel.m in Sources */,
@@ -6246,6 +6333,7 @@
 				7A07F82E216CDAC10026EB7A /* InviteEarningsVC.m in Sources */,
 				B88B591A2109AEC400F20D1B /* TLNavigationController.m in Sources */,
 				B8CAA14621158FF200695BC3 /* LPDImagePickerController.m in Sources */,
+				1F0E1525228D586000AEE094 /* TeamPerFormanceTableView.m in Sources */,
 				1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */,
 				1F7668F721D4A32700006B41 /* BTCBlockchainInfo.m in Sources */,
 				1F9C8FC82246183D00DFA9C3 /* PrivateKeyWalletCell.m in Sources */,
@@ -6253,6 +6341,7 @@
 				7A2CC677215CD41100B27E2D /* AccumulatedEarningsTableView.m in Sources */,
 				2EB039B51FEA0B4500589D8E /* TLUpdateVC.m in Sources */,
 				1F76691721D4A32700006B41 /* BTCMerkleTree+Tests.m in Sources */,
+				1F82451A228D018500B3C2AF /* MyMillCell.m in Sources */,
 				2159796D1FB831B10029F177 /* FilterView.m in Sources */,
 				7A40B11A217EF15F004B9830 /* UITableView+XSAnimationKit.m in Sources */,
 				1F6D9E622281716D0057A756 /* MessageTableView.m in Sources */,
@@ -6303,8 +6392,10 @@
 				1F766A2921DE09C000006B41 /* BnakCardView.m in Sources */,
 				1F02F99322856606003AF7F1 /* MarketTableView.m in Sources */,
 				1F7F6F5B227EE572003AEBA7 /* MTElementModel.m in Sources */,
+				1F82452D228D3A9E00B3C2AF /* OreRecordCell.m in Sources */,
 				1F7668F921D4A32700006B41 /* BTCScriptMachine.m in Sources */,
 				1F7367122252FEFA00135F7E /* pbkdf2.c in Sources */,
+				1F82451D228D01AD00B3C2AF /* MyMillTableView.m in Sources */,
 				2EE361551FFE182800A5C3EB /* RespHandler.m in Sources */,
 				1FA56AF9223CD6A70077FE54 /* YYTextTransaction.m in Sources */,
 				B8D938D52116CA0800B2AA88 /* QDetailCell.m in Sources */,
@@ -6318,6 +6409,7 @@
 				1F76691E21D4A32700006B41 /* BTCCurrencyConverter.m in Sources */,
 				1FA566ED223CD4B90077FE54 /* HomeVC.m in Sources */,
 				7AABEAFB2148FEEF00283BC7 /* PoliteInstructionsVC.m in Sources */,
+				1F0E152B228D5F2700AEE094 /* NodeLoginVC.m in Sources */,
 				1F76690F21D4A32700006B41 /* BTCOutpoint.m in Sources */,
 				1F76690121D4A32700006B41 /* BTCOpcode.m in Sources */,
 				7A07F834216CDB000026EB7A /* InviteEarningCell.m in Sources */,

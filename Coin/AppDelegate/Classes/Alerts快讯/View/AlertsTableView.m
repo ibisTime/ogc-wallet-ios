@@ -36,12 +36,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 2;
+    return self.models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,6 +53,7 @@
         cell = [[AlertsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.model = self.models[indexPath.row];
     return cell;
 
 }
@@ -67,31 +68,32 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return cell.poorBtn.yy + 8;
+    return cell.contactLbl.yy + 8;
 }
 
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    return 0.01;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
-    UIView *topView = [[UIView alloc]init];
-    
-    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
-    [backView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-    [topView addSubview:backView];
-    
-    UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
-    titleLbl.text = @"03月04日星期二";
-    titleLbl.textAlignment = NSTextAlignmentCenter;
-    titleLbl.font = FONT(12);
-    [titleLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    [backView addSubview:titleLbl];
-
-    return topView;
+//    UIView *topView = [[UIView alloc]init];
+//
+//    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+//    [backView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+//    [topView addSubview:backView];
+//
+//    UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+//    titleLbl.text = @"03月04日星期二";
+//    titleLbl.textAlignment = NSTextAlignmentCenter;
+//    titleLbl.font = FONT(12);
+//    [titleLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
+//    [backView addSubview:titleLbl];
+//
+//    return topView;
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

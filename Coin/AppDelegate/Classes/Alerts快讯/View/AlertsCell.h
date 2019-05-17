@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AlertsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AlertsCell : UITableViewCell
 
-@property (nonatomic , strong)UIButton *poorBtn;
+@property (nonatomic , strong)AlertsModel *model;
 
+@property (nonatomic , strong)UIButton *poorBtn;
+@property (nonatomic , strong)UILabel *contactLbl;
+@property (nonatomic , strong)UILabel *timeLbl;
+@property (nonatomic , strong)UILabel *nameLbl;
+
+@property (nonatomic , strong)UIView *lineView;
 @end
 
 NS_ASSUME_NONNULL_END

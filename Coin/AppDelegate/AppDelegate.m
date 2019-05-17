@@ -103,8 +103,6 @@
         
     });
     
-    
-    
     //    配置七牛地址
     [self GetSevenCattleAddress];
     //配置键盘

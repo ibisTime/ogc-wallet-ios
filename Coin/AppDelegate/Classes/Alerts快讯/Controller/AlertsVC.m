@@ -53,7 +53,7 @@
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     helper.tableView = self.tableView;
     helper.code = @"628095";
-    helper.parameters[@"type"] = @"1";
+//    helper.parameters[@"type"] = @"1";
     helper.parameters[@"status"] = @"1";
     [helper modelClass:[AlertsModel class]];
     
@@ -108,6 +108,7 @@
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AlertsDetailsVC *vc = [AlertsDetailsVC new];
+    vc.model = self.models[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

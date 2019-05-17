@@ -9,6 +9,10 @@
 #import "CloudCalculateForceVC.h"
 #import "EggplantAccountVC.h"
 #import "BuyMillListVC.h"
+#import "MyMillVC.h"
+#import "BeForceAccelerateVC.h"
+#import "InviteRewardsVC.h"
+#import "NodeLoginVC.h"
 @interface CloudCalculateForceVC ()
 
 @end
@@ -67,22 +71,26 @@
             break;
         case 2:
         {
-            
+            MyMillVC *vc = [MyMillVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 3:
         {
-            
+            BeForceAccelerateVC *vc = [BeForceAccelerateVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 4:
         {
-            
+            InviteRewardsVC *vc = [InviteRewardsVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 5:
         {
-            
+            NodeLoginVC *vc = [NodeLoginVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
             

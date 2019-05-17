@@ -14,6 +14,9 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         UILabel *titleLabel = [UILabel labelWithFrame:CGRectMake(15, 15, kScreenWidth - 30, 22) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#464646")];
         titleLabel.text = [LangSwitcher switchLang:@"产品属性" key:nil];
         [self addSubview:titleLabel];
@@ -23,7 +26,7 @@
         for (int i = 0; i < 3 ; i ++) {
             UIView *pointView = [[UIView alloc]initWithFrame:CGRectMake(15, 55 + i % 3 * 28,  4, 4)];
             kViewRadius(pointView, 2);
-            pointView.backgroundColor = kHexColor(@"#464646");
+            pointView.backgroundColor = kHexColor([TLUser TextFieldTextColor]);
             [self addSubview:pointView];
 
 

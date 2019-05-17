@@ -30,25 +30,7 @@
         [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [self addSubview:backView];
         
-        
-        //初始化CAGradientlayer对象，使它的大小为UIView的大小
-//        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-//        gradientLayer.frame = backView.bounds;
-//
-//        //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
-//        [backView.layer addSublayer:gradientLayer];
-//
-//        //设置渐变区域的起始和终止位置（范围为0-1）
-//        gradientLayer.startPoint = CGPointMake(0, 0);
-//        gradientLayer.endPoint = CGPointMake(0, 1);
-//
-//        //设置颜色数组
-//        gradientLayer.colors = @[(__bridge id)kHexColor(@"#4265E0").CGColor,
-//                                      (__bridge id)kHexColor(@"#2F49A5").CGColor];
-//
-//        //设置颜色分割点（范围：0-1）
-//        gradientLayer.locations = @[@(0.5f), @(1.0f)];
-        
+
 
         UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(0, 90 - 64 + kNavigationBarHeight, kScreenWidth, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kHexColor(@"#FFFFFF")];
         nameLabel.text = [LangSwitcher switchLang:@"投资总额" key:nil];

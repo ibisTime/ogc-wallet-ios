@@ -42,10 +42,11 @@
 
 - (void)initSubviews {
     
+    [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
 
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
 //    lineView.backgroundColor = kBackgroundColor;
-    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+    [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
     [self addSubview:lineView];
 
     self.nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#464646") font:15];
@@ -63,8 +64,8 @@
     
     for (int i = 0; i < 3; i ++) {
         UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake( 10 + i % 3 * kScreenWidth/3, lineView1.yy + 35, kScreenWidth/3 - 20, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(18) textColor:kTabbarColor];
-        if ( i != 0) {
-            numberLabel.textColor = kHexColor(@"#333333");
+        if ( i == 0) {
+            numberLabel.textColor = kTabbarColor;
         }
         numberLabel.tag = 1000 + i;
         [self addSubview:numberLabel];
@@ -86,8 +87,8 @@
 
 
     UIView *backLineView = [[UIView alloc]init];
-    backLineView.backgroundColor = kHexColor(@"#E6E6E6");
-//    [lineV theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName]
+//    backLineView.backgroundColor = kHexColor(@"#E6E6E6");
+    [backLineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self addSubview:backLineView];
 
     [backLineView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -108,13 +109,7 @@
 
 }
 
-//-(void)setFrame:(CGRect)frame
-//{
-////    frame.origin.x = 10;//这里间距为10，可以根据自己的情况调整
-////    frame.size.width -= 2 * frame.origin.x;
-//    frame.size.height -= 2 * 5;
-//    [super setFrame:frame];
-//}
+
 
 - (void)loadMoneys
 {
