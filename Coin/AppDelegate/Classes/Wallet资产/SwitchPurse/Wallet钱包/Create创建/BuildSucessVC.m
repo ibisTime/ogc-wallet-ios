@@ -38,12 +38,12 @@
 {
     
     [super viewWillAppear:animated];
-    [self navigationSetDefault];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self navigationwhiteColor];
+    
 }
 
 - (void)viewDidLoad {

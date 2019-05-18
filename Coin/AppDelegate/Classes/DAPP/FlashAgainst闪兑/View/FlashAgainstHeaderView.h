@@ -7,11 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FlashAgainstModel.h"
+#import "CurrencyModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FlashAgainstHeaderView : UIView
+@interface FlashAgainstHeaderView : UIView<UITextFieldDelegate>
+@property (nonatomic , strong)FlashAgainstModel *model;
+@property (nonatomic , strong)NSMutableArray <CurrencyModel *>*currenctModel;
+@property (nonatomic , assign)NSString *InPrice;
+@property (nonatomic , assign)NSString *OutPrice;
+@property (nonatomic , strong)CurrencyModel *platforms;
+@property (nonatomic , strong)UIButton *exchangeBtn;
+@property (nonatomic , strong)NSDictionary *dataDic;
 
+@property (nonatomic , strong)UITextField *leftNumberTf;
+@property (nonatomic , strong)UITextField *rightNumberTf;
 @end
 
 NS_ASSUME_NONNULL_END

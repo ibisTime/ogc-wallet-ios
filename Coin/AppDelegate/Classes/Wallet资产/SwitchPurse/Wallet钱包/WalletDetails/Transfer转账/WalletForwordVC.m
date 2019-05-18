@@ -123,12 +123,12 @@ typedef enum : NSUInteger {
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self navigationSetDefault];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self navigationwhiteColor];
+    
 }
 
 - (void)initSubviews {
@@ -652,7 +652,6 @@ typedef enum : NSUInteger {
 
     NSLog(@"线程1--->%d",[NSThread isMainThread]);
     NSString *gaspic =  [CoinUtil convertToSysCoin:self.tranAmountTF.text coin:self.currency.symbol];
-    ;
     CoinModel *coin = [CoinUtil getCoinModel:self.currency.symbol];
     self.currency.type = coin.type;
     

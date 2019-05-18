@@ -42,6 +42,23 @@
     return _headView;
 }
 
+//   个人钱包余额查询
+- (void)queryCenterTotalAmount
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"802301";
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
+    [http postWithSuccess:^(id responseObject) {
+        self.headView.dataDic = responseObject[@"data"];
+        
+        [self.tableView reloadData];
+
+    } failure:^(NSError *error) {
+        [self.tableView endRefreshHeader];
+    }];
+}
+
 -(void)SwitchPurseClick
 {
     NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
@@ -56,6 +73,7 @@
     [self.view addSubview:self.tableView];
     self.tableView.tableHeaderView = self.headView;
     [self LoadData];
+    [self queryCenterTotalAmount];
 }
 
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath

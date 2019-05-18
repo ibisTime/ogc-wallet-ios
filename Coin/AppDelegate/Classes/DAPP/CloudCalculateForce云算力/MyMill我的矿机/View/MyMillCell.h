@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyMillModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MyMillCell : UITableViewCell
+
+
+@property (nonatomic , strong)MyMillModel *model;
 
 @end
 

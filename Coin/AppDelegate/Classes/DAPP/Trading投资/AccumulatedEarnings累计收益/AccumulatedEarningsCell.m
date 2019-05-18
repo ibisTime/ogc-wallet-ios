@@ -22,6 +22,8 @@
     self= [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         nameLabel = [UILabel labelWithFrame:CGRectMake(15, 15, 0, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(15) textColor:kHexColor(@"#464646")];
         nameLabel.text = @"";
         [self addSubview:nameLabel];
@@ -42,7 +44,7 @@
         [self addSubview:balanceLabel];
 
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 78, SCREEN_WIDTH - 30, 0.5)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];;
         [self addSubview:lineView];
     }
     return self;

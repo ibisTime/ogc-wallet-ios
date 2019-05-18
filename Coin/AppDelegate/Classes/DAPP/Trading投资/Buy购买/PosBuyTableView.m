@@ -156,7 +156,7 @@
 
         UILabel *titleLbl = [[UILabel alloc]initWithFrame:CGRectMake(44, 20, SCREEN_WIDTH - 44 - 15, 0)];
         titleLbl.font = FONT(14);
-        titleLbl.textColor = kHexColor(@"#333333");
+        [titleLbl theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
         titleLbl.numberOfLines = 0;
 
         NSString *str1 = [LangSwitcher switchLang:@"我已经仔细阅读" key:nil];

@@ -15,24 +15,6 @@
 @implementation SellDetalisVC
 
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self navigationSetDefault];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-    
-}
-//
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self navigationwhiteColor];
-    //    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

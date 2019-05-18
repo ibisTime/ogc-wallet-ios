@@ -86,51 +86,6 @@
     
 }
 
--(void)navigationwhiteColor
-{
-//    self.navigationController.navigationBar.translucent = NO; self.navigationController.navigationBar.titleTextAttributes=@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:16]};
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
-//    self.navigationItem.backBarButtonItem = item;
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
-
--(void)navigationTransparentClearColor
-{
-//    self.navigationController.navigationBar.translucent = YES;
-//    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
-//    //    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    self.navigationItem.backBarButtonItem = item;
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    
-}
-
--(void)navigationSetDefault
-{
-//    self.navigationController.navigationBar.translucent = NO;
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:nil];
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回1-1"];
-//    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回1-1"];
-//    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-//    self.navigationItem.backBarButtonItem = item;
-//
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-}
 
 
 
@@ -178,10 +133,14 @@
     
 }
 //
-//- (void)viewWillDisappear:(BOOL)animated
-//{
-//    [self.navigationController.navigationBar setShadowImage:nil];
-//}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    //设置导航栏透明
+    [self.navigationController.navigationBar setTranslucent:true];
+    //把背景设为空
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
+}
 
 // 如果tableview在视图最底层 默认会偏移电池栏的高度
 - (void)setViewEdgeInset {

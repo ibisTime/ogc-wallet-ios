@@ -205,7 +205,7 @@
 
         
         [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];
-        NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+        NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
         [TLAlert alertWithMsg:[LangSwitcher switchLang:@"删除成功" key:nil]];
         
@@ -214,7 +214,7 @@
             [self.navigationController popToRootViewControllerAnimated:YES];
             //            创建通知
             //            self.tabBarController.selectedIndex = 3;
-//            NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+//            NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
 //            [[NSNotificationCenter defaultCenter] postNotification:notification];
         });
     }];

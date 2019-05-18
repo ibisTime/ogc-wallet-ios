@@ -14,6 +14,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        [self theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
+        
         UILabel *nameLbael = [UILabel labelWithFrame:CGRectMake(10, 23, SCREEN_WIDTH - 60, 26.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(19) textColor:kHexColor(@"#333333")];
         nameLbael.text = [LangSwitcher switchLang:@"付款须知" key:nil];
         [self addSubview:nameLbael];
@@ -45,7 +48,7 @@
         [self addSubview:IntroductionLbl];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, IntroductionLbl.yy + 15.5, SCREEN_WIDTH - 40, 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
         
         

@@ -77,6 +77,8 @@
 
 @implementation InvestmentVC
 
+
+
 -(HBAlertPasswordView *)passWordView
 {
     if (!_passWordView) {
@@ -175,9 +177,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //去掉透明后导航栏下边的黑边
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    UITextField *textField1 = [self.view viewWithTag:10000];
+    UITextField *textField2 = [self.view viewWithTag:10001];
+    
+    textField1.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [textField1 setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
+    textField2.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [textField2 setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
+
     self.timer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(testTimerDeallo) userInfo:nil repeats:YES];
     [self queryCenterTotalAmount];
 }
@@ -209,7 +216,7 @@
     
     
     _promptView = [[PaymentInstructionsView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH - 40, 210)];
-    _promptView.backgroundColor = kWhiteColor;
+//    _promptView.backgroundColor = kWhiteColor;
     [_promptView.IkonwBtn addTarget:self action:@selector(promptIkonwBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     kViewRadius(_promptView, 4);
     [self.view addSubview:_promptView];

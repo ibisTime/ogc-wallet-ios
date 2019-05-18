@@ -56,14 +56,16 @@
     [self initTableView];
 
     self.titleText.text = [LangSwitcher switchLang:@"购买" key:nil];
-    self.navigationItem.titleView=self.titleText;
+    self.navigationItem.titleView = self.titleText;
 
+//    [self.topView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    
     UIButton *continBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"购买" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:18];
     [continBtn setBackgroundImage:kImage(@"Rectangle 3") forState:(UIControlStateNormal)];
     continBtn.frame = CGRectMake(0, SCREEN_HEIGHT - 50 - kNavigationBarHeight, SCREEN_WIDTH, 50);
     [continBtn addTarget:self action:@selector(continBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:continBtn];
-
+    
     number = 1;
 
 //    密码框
@@ -275,20 +277,9 @@
 - (void)payMoney
 {
 
-//    self.numberLabel = [self.view viewWithTag:1212];
-
-//    if ([TLUser isBlankString:self.currencyModel.currency] == NO) {
-//        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"正在加载,请稍等" key:nil]];
-//        return;
-//    }
     if (self.currencys.count == 0) {
         return;
     }
-    NSString *leftAmount = [CoinUtil convertToRealCoin:self.currencyModel.amount coin:self.currencyModel.currency];
-    NSString *rightAmount = [CoinUtil convertToRealCoin:self.currencyModel.frozenAmount coin:self.currencyModel.currency];
-    NSString *ritAmount = [leftAmount subNumber:rightAmount];
-
-
     [self.view endEditing:YES];
     //确认购买
 
@@ -298,12 +289,9 @@
     payModel.count = self.inputFiled.text;
     payModel.endTime = self.moneyModel.arriveDatetime;
     if (![self.inputFiled.text isBlank] ) {
-
-
         self.coinLab.text = [NSString stringWithFormat:@"%.2f",[self.moneyModel.expectYield floatValue]* [self.inputFiled.text floatValue]/365* [self.moneyModel.limitDays floatValue]];
     }
     payModel.getFree = self.coinLab.text;
-
 
     UIView * view2 = [UIView new];
     self.view2 = view2;
@@ -312,7 +300,6 @@
     view2.frame =CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     view2.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.45];
 
-    //    view.alpha = 0.5;
     UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
     [keyWindow addSubview:view2];
     UIView *whiteView = [UIView new];
@@ -322,7 +309,7 @@
     whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
     whiteView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
     whiteView.frame = CGRectMake(24, SCREEN_HEIGHT/2 - 175, kScreenWidth - 48, 350);
-    whiteView.backgroundColor = kWhiteColor;
+    [whiteView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     [view2 addSubview:whiteView];
 
 
@@ -338,13 +325,13 @@
 
     UILabel *sureLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:14];
     sureLab.text = [LangSwitcher switchLang:@"购买产品" key:nil];
-    sureLab.frame = CGRectMake(30, 40, 0, 14);
+    sureLab.frame = CGRectMake(15, 40, 0, 14);
     [sureLab sizeToFit];
     [whiteView addSubview:sureLab];
 
-
+    
     UILabel *nameLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:15];
-    nameLab.frame = CGRectMake(sureLab.xx + 10, sureLab.frame.origin.y + 1, SCREEN_WIDTH - 48 - 25 - sureLab.frame.size.width, 14);
+    nameLab.frame = CGRectMake(sureLab.xx + 10, sureLab.frame.origin.y + 1, SCREEN_WIDTH - 48 - sureLab.xx - 10 - 15, 14);
     [whiteView addSubview:nameLab];
 
     switch ([LangSwitcher currentLangType]) {
@@ -373,13 +360,13 @@
 
     UILabel *buycount = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:14];
     buycount.text = [LangSwitcher switchLang:@"购买额度" key:nil];
-    buycount.frame = CGRectMake(30, line1.yy + 25, 0, 14);
+    buycount.frame = CGRectMake(15, line1.yy + 25, 0, 14);
     [buycount sizeToFit];
     [whiteView addSubview:buycount];
 
 
     UILabel *buy = [UILabel labelWithBackgroundColor:kClearColor textColor:kHexColor(@"#FF6400") font:16];
-    buy.frame = CGRectMake(buycount.xx + 10, buycount.frame.origin.y, SCREEN_WIDTH - 48 - 25 - buycount.frame.size.width, 14);
+    buy.frame = CGRectMake(buycount.xx + 10, buycount.frame.origin.y, SCREEN_WIDTH - 48 - buycount.xx - 25, 14);
     [whiteView addSubview:buy];
     self.numberLabel = [self.view viewWithTag:1212];
 
@@ -403,12 +390,12 @@
     UILabel *freeTime = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:14];
 
     freeTime.text = [LangSwitcher switchLang:@"本息到期日期" key:nil];
-    freeTime.frame = CGRectMake(30, line2.yy + 25, 0, 14);
+    freeTime.frame = CGRectMake(15, line2.yy + 25, 0, 14);
     [freeTime sizeToFit];
     [whiteView addSubview:freeTime];
 
     UILabel *timeLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:15];
-    timeLab.frame = CGRectMake(freeTime.xx + 10, freeTime.frame.origin.y  + 1, SCREEN_WIDTH - 48 - 25 - freeTime.frame.size.width, 14);
+    timeLab.frame = CGRectMake(freeTime.xx + 10, freeTime.frame.origin.y  + 1, SCREEN_WIDTH - 48 - freeTime.xx - 25, 14);
     [whiteView addSubview:timeLab];
     timeLab.text = [self.moneyModel.arriveDatetime convertDate];
 
@@ -420,7 +407,7 @@
 
     UILabel *moneyMay = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:14];
     moneyMay.text = [LangSwitcher switchLang:@"预计收入" key:nil];
-    moneyMay.frame = CGRectMake(30, line3.yy + 25, 0, 14);
+    moneyMay.frame = CGRectMake(15, line3.yy + 25, 0, 14);
     [moneyMay sizeToFit];
     [whiteView addSubview:moneyMay];
 
@@ -436,7 +423,7 @@
 
 
 
-    money.frame = CGRectMake(moneyMay.xx + 5, moneyMay.frame.origin.y + 1,  SCREEN_WIDTH - 48 - 25 - moneyMay.xx, 14);
+    money.frame = CGRectMake(moneyMay.xx + 10, moneyMay.frame.origin.y + 1,  SCREEN_WIDTH - 48 - moneyMay.xx - 25, 14);
     [whiteView addSubview:money];
 
 
@@ -449,7 +436,7 @@
     [sureButton setBackgroundColor:kAppCustomMainColor forState:UIControlStateNormal];
     [sureButton setTitleColor:kWhiteColor forState:UIControlStateNormal];
     [view2 addSubview:sureButton];
-
+    kViewRadius(sureButton, 5);
     [sureButton setTitle:[LangSwitcher switchLang:@"确认付款" key:nil] forState:UIControlStateNormal];
     [sureButton addTarget:self action:@selector(payMoneyNow) forControlEvents:UIControlEventTouchUpInside];
 
@@ -481,6 +468,9 @@
     self.pwdView.hidden = NO;
     self.pwdView.password.textField.enabled = YES;
     [self.pwdView.password.textField becomeFirstResponder];
+    
+//    [self.pwdView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
+    
     CoinWeakSelf;
 
     self.pwdView.passwordBlock = ^(NSString *password) {
@@ -526,15 +516,11 @@
     UIView * view3 = [UIView new];
     self.view3 = view3;
     self.view3.hidden = NO;
-
     view3.frame =CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     view3.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.45];
-
-    //    view.alpha = 0.5;
     UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
     [keyWindow addSubview:view3];
     UIView *whiteView = [UIView new];
-
     [view3 addSubview:whiteView];
 
     whiteView.frame = CGRectMake(24, 194, kScreenWidth - 48, 300);
@@ -543,7 +529,8 @@
     whiteView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
     whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
     whiteView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
-    whiteView.backgroundColor = kWhiteColor;
+    [whiteView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [exitBtn setBackgroundImage:kImage(@"红包 删除") forState:UIControlStateNormal];
     [exitBtn addTarget:self action:@selector(hideSelf) forControlEvents:UIControlEventTouchUpInside];
@@ -555,7 +542,7 @@
     }];
 
     UIImageView *bgImage = [[UIImageView alloc] init];
-    bgImage.image = kImage(@"打勾 大");
+    [bgImage theme_setImageIdentifier:@"钱包新建成功" moduleName:ImgAddress];
     [whiteView addSubview:bgImage];
 
     [bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -576,8 +563,9 @@
     }];
 
     UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sureButton setBackgroundColor:kClearColor forState:UIControlStateNormal];
-    [sureButton setTitleColor:kTextColor forState:UIControlStateNormal];
+//    [sureButton setBackgroundColor:kClearColor forState:UIControlStateNormal];
+//    [sureButton setTitleColor:kTextColor forState:UIControlStateNormal];
+    [sureButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [whiteView addSubview:sureButton];
     sureButton.titleLabel.font = FONT(13);
     [sureButton setTitle:[LangSwitcher switchLang:@"查看购买记录" key:nil] forState:UIControlStateNormal];

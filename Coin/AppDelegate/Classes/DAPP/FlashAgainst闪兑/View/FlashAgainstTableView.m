@@ -48,7 +48,6 @@ static NSString *identifierCell = @"FlashAgainstCell";
     
     
     
-    
     FlashAgainstCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierCell forIndexPath:indexPath];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

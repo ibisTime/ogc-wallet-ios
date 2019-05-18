@@ -104,7 +104,7 @@
     //初始化用户信息
     [[TLUser user] updateUserInfo];
     //通知
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"PrivateKeyWalletCreat" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"SwitchThePurse" object:nil];
 }
 
 
@@ -131,7 +131,7 @@
 //#pragma mark -- 删除通知
 //- (void)dealloc
 //{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"PrivateKeyWalletCreat" object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SwitchThePurse" object:nil];
 //}
 
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F023B6A228FCCA80028CB45 /* BuyMillListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F023B69228FCCA80028CB45 /* BuyMillListModel.m */; };
+		1F023B6E229010A60028CB45 /* MyMillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F023B6D229010A60028CB45 /* MyMillModel.m */; };
 		1F02F98A228558BD003AF7F1 /* AlertsDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */; };
 		1F02F99322856606003AF7F1 /* MarketTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F99222856606003AF7F1 /* MarketTableView.m */; };
 		1F02F9962285666D003AF7F1 /* MarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F9952285666D003AF7F1 /* MarketCell.m */; };
@@ -22,6 +24,7 @@
 		1F0E1528228D587F00AEE094 /* TeamPerFormanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1527228D587F00AEE094 /* TeamPerFormanceCell.m */; };
 		1F0E152B228D5F2700AEE094 /* NodeLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E152A228D5F2700AEE094 /* NodeLoginVC.m */; };
 		1F0E152E228D61DE00AEE094 /* NodesSummarizedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E152D228D61DE00AEE094 /* NodesSummarizedVC.m */; };
+		1F0E1532228E8D8A00AEE094 /* FlashAgainstModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E1531228E8D8A00AEE094 /* FlashAgainstModel.m */; };
 		1F11E70221EDBD4A006C8DB4 /* InvestmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */; };
 		1F11E70521EDCCB2006C8DB4 /* OrderRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F11E70421EDCCB2006C8DB4 /* OrderRecordModel.m */; };
 		1F19AC26221116450090BF84 /* utxoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F19AC24221116440090BF84 /* utxoModel.m */; };
@@ -701,6 +704,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F023B68228FCCA80028CB45 /* BuyMillListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMillListModel.h; sourceTree = "<group>"; };
+		1F023B69228FCCA80028CB45 /* BuyMillListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListModel.m; sourceTree = "<group>"; };
+		1F023B6C229010A60028CB45 /* MyMillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillModel.h; sourceTree = "<group>"; };
+		1F023B6D229010A60028CB45 /* MyMillModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillModel.m; sourceTree = "<group>"; };
 		1F02F988228558BD003AF7F1 /* AlertsDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsDetailsVC.h; sourceTree = "<group>"; };
 		1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsDetailsVC.m; sourceTree = "<group>"; };
 		1F02F99122856606003AF7F1 /* MarketTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketTableView.h; sourceTree = "<group>"; };
@@ -732,6 +739,8 @@
 		1F0E152A228D5F2700AEE094 /* NodeLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodeLoginVC.m; sourceTree = "<group>"; };
 		1F0E152C228D61DE00AEE094 /* NodesSummarizedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NodesSummarizedVC.h; sourceTree = "<group>"; };
 		1F0E152D228D61DE00AEE094 /* NodesSummarizedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NodesSummarizedVC.m; sourceTree = "<group>"; };
+		1F0E1530228E8D8A00AEE094 /* FlashAgainstModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstModel.h; sourceTree = "<group>"; };
+		1F0E1531228E8D8A00AEE094 /* FlashAgainstModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstModel.m; sourceTree = "<group>"; };
 		1F11E70021EDBD4A006C8DB4 /* InvestmentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvestmentModel.h; sourceTree = "<group>"; };
 		1F11E70121EDBD4A006C8DB4 /* InvestmentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestmentModel.m; sourceTree = "<group>"; };
 		1F11E70321EDCCB2006C8DB4 /* OrderRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderRecordModel.h; sourceTree = "<group>"; };
@@ -2204,6 +2213,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F023B67228FCC990028CB45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F023B68228FCCA80028CB45 /* BuyMillListModel.h */,
+				1F023B69228FCCA80028CB45 /* BuyMillListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F023B6B229010940028CB45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F023B6C229010A60028CB45 /* MyMillModel.h */,
+				1F023B6D229010A60028CB45 /* MyMillModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1F02F985228557FE003AF7F1 /* AlertsDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -2250,6 +2277,15 @@
 			children = (
 				1F0E151D228D4DE500AEE094 /* SLNodeModel.h */,
 				1F0E151E228D4DE500AEE094 /* SLNodeModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1F0E152F228E8D6D00AEE094 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F0E1530228E8D8A00AEE094 /* FlashAgainstModel.h */,
+				1F0E1531228E8D8A00AEE094 /* FlashAgainstModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3409,6 +3445,7 @@
 			isa = PBXGroup;
 			children = (
 				1F8E2DE822893C6E0045D62B /* Controller */,
+				1F0E152F228E8D6D00AEE094 /* Model */,
 				1F8E2DE722893C6C0045D62B /* View */,
 			);
 			path = "FlashAgainst闪兑";
@@ -3506,6 +3543,7 @@
 			children = (
 				1F824521228D0FD500B3C2AF /* Details */,
 				1F8E2E20228A94330045D62B /* Controller */,
+				1F023B6B229010940028CB45 /* Model */,
 				1F8E2E1F228A94300045D62B /* View */,
 			);
 			path = "MyMill我的矿机";
@@ -3515,6 +3553,7 @@
 			isa = PBXGroup;
 			children = (
 				1F8E2E1E228A94230045D62B /* Controller */,
+				1F023B67228FCC990028CB45 /* Model */,
 				1F8E2E1D228A94200045D62B /* View */,
 			);
 			path = "BuyMill购买矿机";
@@ -6209,6 +6248,7 @@
 				7A2CC6B1215DC88B00B27E2D /* NSDate+PGCategory.m in Sources */,
 				B8D938D82116EF5900B2AA88 /* imageCell.m in Sources */,
 				1F7F6F65227EE572003AEBA7 /* UIImageView+MTTheme.m in Sources */,
+				1F023B6E229010A60028CB45 /* MyMillModel.m in Sources */,
 				B8DDF882211D29EE0058D19D /* TLMakeMoney.m in Sources */,
 				B88B591B2109AEC400F20D1B /* LangSwitcher.m in Sources */,
 				1F7367102252FEFA00135F7E /* base58.c in Sources */,
@@ -6374,6 +6414,7 @@
 				7A2CC6C0215DC88C00B27E2D /* PGDatePicker+Year.m in Sources */,
 				B8BBA63D20C7F6FC00DC4D5F /* WallAccountVC.m in Sources */,
 				7A07F831216CDAD80026EB7A /* InviteEarningsTableView.m in Sources */,
+				1F0E1532228E8D8A00AEE094 /* FlashAgainstModel.m in Sources */,
 				7A07F7E8216C84ED0026EB7A /* SCPieCell.m in Sources */,
 				B887819920E366BC00879330 /* UIImageView+RotateImgV.m in Sources */,
 				1F76697621D4A34D00006B41 /* prng.c in Sources */,
@@ -6415,6 +6456,7 @@
 				7A07F834216CDB000026EB7A /* InviteEarningCell.m in Sources */,
 				1F5F8BBA21CCC7C900A7D0F2 /* AssetsHeadView.m in Sources */,
 				1F9361D921F1B388007E522A /* MyFriendModel.m in Sources */,
+				1F023B6A228FCCA80028CB45 /* BuyMillListModel.m in Sources */,
 				B8B15C2720CA75CC00F13220 /* AddSearchBottomCell.m in Sources */,
 				7A2CC6B7215DC88C00B27E2D /* PGDatePicker+DateHourMinuteSecond.m in Sources */,
 				211DE6A21FB58B4C002FCF3D /* TLCaptchaView.m in Sources */,

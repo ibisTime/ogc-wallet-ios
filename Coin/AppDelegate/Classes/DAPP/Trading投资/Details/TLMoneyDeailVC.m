@@ -31,23 +31,6 @@
 @implementation TLMoneyDeailVC
 
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self navigationTransparentClearColor];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-
-}
-//
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    //    self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    [self navigationwhiteColor];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
 
 - (void)initTableView {
@@ -124,6 +107,7 @@
 ////    导航栏
     if (self.tableView.contentOffset.y <= (250 - kNavigationBarHeight)) {
         [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:64/255.0 green:100/255.0 blue:230/255.0 alpha:self.tableView.contentOffset.y / (250 - kNavigationBarHeight)]] forBarMetrics:UIBarMetricsDefault];
+        
     }else
     {
         [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:kTabbarColor] forBarMetrics:UIBarMetricsDefault];

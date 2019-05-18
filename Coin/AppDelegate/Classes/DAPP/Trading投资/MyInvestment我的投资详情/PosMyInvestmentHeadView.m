@@ -29,7 +29,7 @@
         
 
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 104, SCREEN_WIDTH - 30, 0.5)];
-        lineView.backgroundColor = kHexColor(@"#BAC1C8");
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];;
         [self addSubview:lineView];
 
         
@@ -66,12 +66,16 @@
             self.earningsButton.frame = CGRectMake(78 + (SCREEN_WIDTH - 78)/2, 23.5 + i %2 * 105, (SCREEN_WIDTH - 78)/2, 16.5);
             earningsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             [self.earningsButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:4 imagePositionBlock:^(UIButton *button) {
-                [button setImage:kImage(@"更多白色") forState:(UIControlStateNormal)];
+                [earningsButton theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
             }];
             [self.earningsButton addTarget:self action:@selector(earningsButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
             
             self.earningsButton.tag = 100 + i;
             [self addSubview:earningsButton];
+            
+            
+//            UIImageView *youImg = [[UIImageView alloc]initWithFrame:CGRectMake(78 + (SCREEN_WIDTH - 78)/2 + 65, 23.5 + i %2 * 105 + 2, 12, 7)];
+//            youImg theme_setImageIdentifier:@"我的跳转" moduleName:<#(nonnull NSString *)#>
             
             
             UILabel *earningsPrice = [UILabel labelWithFrame:CGRectMake(78 + (SCREEN_WIDTH - 78)/2, self.earningsButton.yy + 6, (SCREEN_WIDTH - 78)/2, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:kWhiteColor];
@@ -92,7 +96,7 @@
             [self addSubview:self.backButton];
 
         }
-
+        
     }
     return self;
 }

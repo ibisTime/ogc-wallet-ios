@@ -32,7 +32,10 @@
     
     
     NSArray *leftArray = @[@"矿机型号",@"每日产能",@"锁仓期限",@"总产能"];
-    NSArray *rightArray = @[@"HEY 007D",@"0.1%",@"7天",@"0.7%"];
+    NSArray *rightArray = @[_model.name,
+                            [NSString stringWithFormat:@"%@%%",_model.dailyOutput],
+                            [NSString stringWithFormat:@"%@天",_model.daysLimit],
+                            [NSString stringWithFormat:@"%.2f",[_model.dailyOutput floatValue] * [_model.daysLimit integerValue]]];
     for (int i = 0; i < 4; i ++) {
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, i % 4 * 50, SCREEN_WIDTH, 0.5)];
         [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
@@ -50,7 +53,8 @@
     
     
     NSArray *leftArray1 = @[@"总矿机数量",@"剩余矿机数量"];
-    NSArray *rightArray1 = @[@"100台",@"100台"];
+    NSArray *rightArray1 = @[[NSString stringWithFormat:@"%ld台",[_model.stockTotal integerValue]],
+                             [NSString stringWithFormat:@"%ld台",[_model.stockTotal integerValue] - [_model.stockOut integerValue]]];
     for (int i = 0; i < 2; i ++) {
         if (i == 1) {
             UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, i % 2 * 50, SCREEN_WIDTH, 0.5)];
@@ -82,6 +86,7 @@
 -(void)buyBtnClick
 {
     BuyMillBuyVC *vc = [BuyMillBuyVC new];
+    vc.model = self.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

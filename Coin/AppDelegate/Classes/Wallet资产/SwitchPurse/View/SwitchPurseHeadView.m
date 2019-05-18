@@ -46,7 +46,7 @@
         
         
         
-        UILabel *allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
         [whiteView addSubview:allAssetsLbl];
         
@@ -69,6 +69,22 @@
         
     }
     return self;
+}
+
+-(void)setDataDic:(NSDictionary *)dataDic
+{
+    if ([[TLUser user].localMoney isEqualToString:@"USD"])
+    {
+        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
+    }
+    else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
+    {
+        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
+    }
+    else
+    {
+        allAssetsLbl.text = [NSString stringWithFormat:@"≈%.2f", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
+    }
 }
 
 @end

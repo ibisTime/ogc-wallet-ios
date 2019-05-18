@@ -118,7 +118,7 @@
     [super viewWillAppear:animated];
 
     //去掉导航栏底部的黑线
-    [self navigationTransparentClearColor];
+    
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
 }

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BuyMillListModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BuyMillListCell : UITableViewCell
+
+@property (nonatomic , strong)BuyMillListModel *model;
 
 @end
 

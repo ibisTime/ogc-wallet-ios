@@ -22,6 +22,9 @@
 //        lineView.backgroundColor = kHexColor(@"#0064FF");
 //        [self addSubview:lineView];
 
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
+        
         UILabel *titleLbl = [UILabel labelWithFrame:CGRectMake(15, 20, kScreenWidth - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#333333")];
         self.titleLbl = titleLbl;
         titleLbl.text = @"";
@@ -37,7 +40,8 @@
 
 
         UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 132, SCREEN_WIDTH, 1)];
-        lineView1.backgroundColor = kLineColor;
+        
+        [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView1];
 
         UILabel *titleLbl1 = [UILabel labelWithFrame:CGRectMake(15, lineView1.yy + 20, kScreenWidth - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#333333")];
@@ -49,6 +53,8 @@
         kViewBorderRadius(reductionBtn, 0, 1, kLineColor);
         [reductionBtn addTarget:self action:@selector(reductionBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
         reductionBtn.tag = 500;
+        [reductionBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+        [reductionBtn theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [self addSubview:reductionBtn];
 
         UIButton *addBtn = [UIButton buttonWithTitle:@"+" titleColor:kHexColor(@"#464646") backgroundColor:kHexColor(@"#F9F9FC") titleFont:30];
@@ -56,6 +62,8 @@
         kViewBorderRadius(addBtn, 0, 1, kLineColor);
         [addBtn addTarget:self action:@selector(reductionBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
         addBtn.tag = 501;
+        [addBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+        [addBtn theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [self addSubview:addBtn];
 
 //        UILabel *numberLabel = [UILabel labelWithFrame:CGRectMake(90, 155, kScreenWidth - 180, 55) textAligment:(NSTextAlignmentCenter) backgroundColor:[UIColor whiteColor] font:Font(30) textColor:kHexColor(@"#464646")];
@@ -67,7 +75,7 @@
 
         UITextField *numberTextField = [[UITextField alloc]initWithFrame:CGRectMake(92, titleLbl1.yy + 30, kScreenWidth - 184, 42)];
         numberTextField.textAlignment = NSTextAlignmentCenter;
-        numberTextField.textColor = kHexColor(@"#333333");
+        numberTextField.textColor = kHexColor([TLUser TextFieldTextColor]);
         numberTextField.font = FONT(24);
         numberTextField.keyboardType = UIKeyboardTypeNumberPad;
         self.numberTextField = numberTextField;

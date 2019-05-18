@@ -211,7 +211,7 @@
     
     
     _promptView = [[PaymentInstructionsView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH - 40, 210)];
-    _promptView.backgroundColor = kWhiteColor;
+//    _promptView.backgroundColor = kWhiteColor;
     [_promptView.IkonwBtn addTarget:self action:@selector(promptIkonwBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     kViewRadius(_promptView, 4);
     [self.view addSubview:_promptView];

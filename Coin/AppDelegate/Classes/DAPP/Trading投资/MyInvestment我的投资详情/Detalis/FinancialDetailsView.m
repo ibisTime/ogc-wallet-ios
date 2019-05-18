@@ -20,12 +20,12 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeight(130) - kNavigationBarHeight)];
-        topView.backgroundColor = kTabbarColor;
-        [self addSubview:topView];
+//        UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeight(130) - kNavigationBarHeight)];
+//        topView.backgroundColor = kTabbarColor;
+//        [self addSubview:topView];
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(kWidth(15), kHeight(84) - kNavigationBarHeight, SCREEN_WIDTH - kWidth(30), kHeight(485))];
-        backView.backgroundColor = kWhiteColor;
+        [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         backView.layer.cornerRadius = 10;
         backView.layer.shadowOpacity = 0.22;// 阴影透明度
         backView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
@@ -51,7 +51,8 @@
         
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(kWidth(6), kHeight(125), SCREEN_WIDTH - kWidth(42), 1)];
-        lineView.backgroundColor = kLineColor;
+        
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [backView addSubview:lineView];
         
         
@@ -151,7 +152,6 @@
     label7.text = [model.productInfo[@"incomeDatetime"] convertToDetailDate];
     
     label8.text = [model.productInfo[@"arriveDatetime"] convertToDetailDate];
-//    @"合约编号",@"交易时间",@"产品期限",@"年收益率",@"购买金额",@"总收益",@"起息时间",@"到期时间"
 }
 
 

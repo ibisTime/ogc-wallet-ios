@@ -7,10 +7,12 @@
 //
 
 #import "TLTableView.h"
-
+#import "FlashAgainstModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FlashAgainstTableView : TLTableView
+
+@property (nonatomic , strong)FlashAgainstModel *model;
 
 @end
 

@@ -26,7 +26,7 @@
         self.headImg = [[UIImageView alloc]initWithFrame:CGRectMake(14, 18, 30, 30)];
         [self addSubview:_headImg];
         
-        _nameLbl = [UILabel labelWithFrame:CGRectMake(60, 14.5, 100, 14) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#333333")];
+        _nameLbl = [UILabel labelWithFrame:CGRectMake(60, 14.5, 100, 14) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor([TLUser TextFieldTextColor])];
         
         [self addSubview:_nameLbl];
         
@@ -35,15 +35,15 @@
         [self addSubview:_stateLbl];
         
         
-        _timeLbl = [UILabel labelWithFrame:CGRectMake(60, 43.5, 0, 11) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(11) textColor:kHexColor(@"#333333")];
+        _timeLbl = [UILabel labelWithFrame:CGRectMake(60, 43.5, 0, 11) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(11) textColor:kHexColor([TLUser TextFieldTextColor])];
         [self addSubview:_timeLbl];
         
         
         _stateLbl2 = [UILabel labelWithFrame:CGRectMake(_timeLbl.xx, 40, SCREEN_WIDTH - _timeLbl.xx- 15, 15) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(11) textColor:kHexColor(@"#999999")];
         [self addSubview:_stateLbl2];
         
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 65, SCREEN_WIDTH - 30, 1)];
-        lineView.backgroundColor = kLineColor;
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 65.5, SCREEN_WIDTH - 30, 0.5)];
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];;
         [self addSubview:lineView];
         
     }
@@ -116,7 +116,7 @@
         }
         
         _stateLbl.font = FONT(14);
-        _stateLbl.textColor = kHexColor(@"#333333");
+        _stateLbl.textColor = kHexColor([TLUser TextFieldTextColor]);
         
         _timeLbl.text = [models.createDatetime convertToDetailDate];
         [_timeLbl sizeToFit];
@@ -147,7 +147,7 @@
             _stateLbl.text = [LangSwitcher switchLang:@"平台取消订单" key:nil];
         }
         _stateLbl.font = FONT(12);
-        _stateLbl.textColor = kHexColor(@"#999999");
+        _stateLbl.textColor = kHexColor([TLUser TextFieldPlacColor]);
         
         _timeLbl.text = [models.createDatetime convertToDetailDate];
         [_timeLbl sizeToFit];
@@ -155,7 +155,7 @@
         
         _stateLbl2.text = @"已取消";
         _stateLbl2.frame = CGRectMake(_timeLbl.xx, 40, SCREEN_WIDTH - _timeLbl.xx- 15, 15);
-        _stateLbl2.textColor = kHexColor(@"#999999");
+        _stateLbl2.textColor = kHexColor([TLUser TextFieldPlacColor]);
 
         
     }
@@ -169,7 +169,7 @@
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
         _stateLbl.text = @"订单超时";
         _stateLbl.font = FONT(12);
-        _stateLbl.textColor = kHexColor(@"#999999");
+        _stateLbl.textColor = kHexColor([TLUser TextFieldPlacColor]);
         
         _timeLbl.text = [models.createDatetime convertToDetailDate];
         [_timeLbl sizeToFit];
@@ -177,7 +177,7 @@
         
         _stateLbl2.text = @"已取消";
         _stateLbl2.frame = CGRectMake(_timeLbl.xx, 40, SCREEN_WIDTH - _timeLbl.xx- 15, 15);
-        _stateLbl2.textColor = kHexColor(@"#999999");
+        _stateLbl2.textColor = kHexColor([TLUser TextFieldPlacColor]);
 
     }
     
@@ -211,7 +211,7 @@
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
         _stateLbl.text = @"订单超时";
         _stateLbl.font = FONT(12);
-        _stateLbl.textColor = kHexColor(@"#999999");
+        _stateLbl.textColor = kHexColor([TLUser TextFieldPlacColor]);
         
         _timeLbl.text = [orderModels.createDatetime convertToDetailDate];
         [_timeLbl sizeToFit];
@@ -219,7 +219,7 @@
         
         _stateLbl2.text = @"已取消";
         _stateLbl2.frame = CGRectMake(_timeLbl.xx, 40, SCREEN_WIDTH - _timeLbl.xx- 15, 15);
-        _stateLbl2.textColor = kHexColor(@"#999999");
+        _stateLbl2.textColor = kHexColor([TLUser TextFieldPlacColor]);
     }
     
 }

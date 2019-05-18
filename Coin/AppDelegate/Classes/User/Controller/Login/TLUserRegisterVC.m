@@ -67,7 +67,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
-//    [self navigationTransparentClearColor];
+//    
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }

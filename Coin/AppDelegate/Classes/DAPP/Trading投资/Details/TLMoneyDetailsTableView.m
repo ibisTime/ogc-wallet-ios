@@ -338,6 +338,7 @@
         
         NSArray *nameArray = @[@"购买属性",@"赎回属性",@"说明书"];
         UIButton *headButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[section - 2] key:nil] titleColor:kHexColor(@"#464646") backgroundColor:kClearColor titleFont:16];
+        [headButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         headButton.titleLabel.font = HGboldfont(16);
         headButton.frame = CGRectMake(15, 0, SCREEN_WIDTH - 45, 40);
         headButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

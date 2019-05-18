@@ -47,7 +47,7 @@
     
     OrderRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderRecord forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     cell.models = self.models[indexPath.row];
 //    if (cell.dataArray.count > 0) {
 //        cell.dataArray = self.dataArray;

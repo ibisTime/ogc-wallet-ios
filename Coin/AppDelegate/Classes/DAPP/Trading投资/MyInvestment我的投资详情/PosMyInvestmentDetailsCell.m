@@ -15,11 +15,13 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
-        lineView.backgroundColor = kBackgroundColor;
+        [lineView theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
         [self addSubview:lineView];
 
-        UILabel *timeLabel = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH, 10, 0, 45) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(13) textColor:kHexColor(@"#999999")];
+        UILabel *timeLabel = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH, 10, 0, 45) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(13) textColor:nil];
         self.timeLabel = timeLabel;
         timeLabel.text = @"";
 
@@ -27,6 +29,7 @@
 
         UIButton *nameButton = [UIButton buttonWithTitle:@"" titleColor:kHexColor(@"#464646") backgroundColor:kClearColor titleFont:14];
         self.nameButton = nameButton;
+        [nameButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         nameButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [self addSubview:nameButton];
 
@@ -35,7 +38,7 @@
         [self addSubview:_stateLabel];
 
         UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(15, 55, kScreenWidth - 30, 1)];
-        lineView1.backgroundColor = kLineColor;
+        [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView1];
 
 
@@ -51,8 +54,8 @@
         [self addSubview:nameLabel];
 
         UIView *line = [[UIView alloc]initWithFrame:CGRectMake(numberLabel.xx + 38, 75, 1, 39)];
-        line.backgroundColor = kLineColor;
         self.line = line;
+        [line theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:line];
 
 
@@ -68,7 +71,10 @@
         self.earningsLabel = earningsLabel;
 
         [self addSubview:earningsLabel];
-
+        
+        UIView *lineView2 = [[UIView alloc]initWithFrame:CGRectMake(0, self.earningsLabel.yy + 14.5, SCREEN_WIDTH, 0.5)];
+        [lineView2 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];;
+        [self addSubview:lineView2];
 
     }
     return self;
@@ -121,8 +127,8 @@
     {
 
         _stateLabel.text = [LangSwitcher switchLang:@"已回款" key:nil];
-        kViewBorderRadius(_stateLabel, 3, 0.5, [UIColor grayColor]);
-        _stateLabel.textColor = [UIColor grayColor];
+        kViewBorderRadius(_stateLabel, 3, 0.5, kHexColor([TLUser TextFieldPlacColor]));
+        [_stateLabel theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
 
 
     }else if ([model.status integerValue] == 3)
@@ -170,7 +176,7 @@
     NSString *shareStr2 = [NSString stringWithFormat:@"%@  %@%@",[LangSwitcher switchLang:@"持有份额" key:nil],avmount,model.productInfo[@"symbol"]];
 
     NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc] initWithString:shareStr2];
-    [attriStr addAttribute:NSForegroundColorAttributeName value:kHexColor(@"#999999") range:NSMakeRange(0, shareStr1.length)];
+    [attriStr addAttribute:NSForegroundColorAttributeName value:kHexColor([TLUser TextFieldPlacColor]) range:NSMakeRange(0, shareStr1.length)];
     self.shareLabel.attributedText = attriStr;
 
     NSString *earningsLabel1 = [LangSwitcher switchLang:@"预期年化收益" key:nil];
@@ -178,7 +184,7 @@
     NSString *str = [NSString stringWithFormat:@"%.2f%%",[model.productInfo[@"expectYield"] floatValue]*100];
     NSString *earningsLabel2 = [NSString stringWithFormat:@"%@  %@",[LangSwitcher switchLang:@"预期年化收益" key:nil],str];
     NSMutableAttributedString * attriStr1 = [[NSMutableAttributedString alloc] initWithString:earningsLabel2];
-    [attriStr1 addAttribute:NSForegroundColorAttributeName value:kHexColor(@"#999999") range:NSMakeRange(0, earningsLabel1.length)];
+    [attriStr1 addAttribute:NSForegroundColorAttributeName value:kHexColor([TLUser TextFieldPlacColor]) range:NSMakeRange(0, earningsLabel1.length)];
     self.earningsLabel.attributedText = attriStr1;
     self.earningsLabel.numberOfLines = 2;
     [self.earningsLabel sizeToFit];

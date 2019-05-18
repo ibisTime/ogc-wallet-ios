@@ -102,13 +102,19 @@
 
     UIView *headView = [[UIView alloc]init];
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 45)];
-    backView.backgroundColor = kWhiteColor;
+    [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [headView addSubview:backView];
+    
+    UIView *lineView2 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.5)];
+    [lineView2 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];;
+    [backView addSubview:lineView2];
+    
     NSArray *nameArray = @[@"已申购",@"已持有",@"已回款"];
     for (int i = 0; i < 3; i ++) {
         UIButton *headButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:nameArray[i] key:nil] titleColor:kHexColor(@"#464646") backgroundColor:kClearColor titleFont:16];
         headButton.titleLabel.font = FONT(15);
         headButton.frame = CGRectMake(i % 3 * SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, 45);
+        [headButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         [headButton addTarget:self action:@selector(headButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
         [headButton SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:6 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(@"Oval1") forState:(UIControlStateNormal)];

@@ -49,7 +49,7 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
     
     
     AddressBookCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AddressBookCell" forIndexPath:indexPath];
-    [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = self.models[indexPath.row];
     return cell;

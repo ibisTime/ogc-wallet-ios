@@ -27,7 +27,7 @@
         self.tableView.showsHorizontalScrollIndicator = YES;
 
         self.tableView.refreshDelegate = self;
-        self.tableView.defaultNoDataImage = kImage(@"暂无订单");
+        self.tableView.defaultNoDataImage = kImage(@"暂无好友");
         self.tableView.defaultNoDataText = [LangSwitcher switchLang:@"暂无好友" key:nil];
     }
     return _tableView;

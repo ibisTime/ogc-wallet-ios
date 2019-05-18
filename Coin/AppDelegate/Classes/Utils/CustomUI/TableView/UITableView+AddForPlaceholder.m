@@ -107,7 +107,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
         [view addGestureRecognizer:tap];
         
         [view addSubview:self.defaultNoDataNoticeImageView];
-        [view addSubview:self.defaultNoDataNoticeLabel];
+//        [view addSubview:self.defaultNoDataNoticeLabel];
         
         [self layoutDefaultView:view];
         
@@ -122,16 +122,16 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 - (void)layoutDefaultView:(UIView *)defaultView {
     
     UIImageView *imageView = self.defaultNoDataNoticeImageView;
-    UIImage *image = self.defaultNoDataImage ? : [UIImage imageNamed:@"UITableViewPlaceholder.bundle/TableViewNoData"];
-    imageView.image = image;
+//    [imageView theme_setImageIdentifier:@"暂无记录" moduleName:ImgAddress];
+    UIImage *image =  kImage(@"暂无好友");
     CGFloat X = (self.bounds.size.width - image.size.width - self.contentInset.left - self.contentInset.right) / 2;
     CGFloat Y = (self.bounds.size.height - image.size.height - self.contentInset.top - self.contentInset.bottom) / 2 - 50;
     imageView.frame = CGRectMake(X, Y, image.size.width, image.size.height);
     
     // 提示语不用太长，不考虑换行的情况，也不计算文字的宽高了
-    UILabel *label = self.defaultNoDataNoticeLabel;
-    label.text = self.defaultNoDataText ? : label.text;
-    label.frame = CGRectMake(0, imageView.frame.origin.y + imageView.bounds.size.height + 10, self.bounds.size.width, 30);
+//    UILabel *label = self.defaultNoDataNoticeLabel;
+//    label.text = self.defaultNoDataText ? : label.text;
+//    label.frame = CGRectMake(0, imageView.frame.origin.y + imageView.bounds.size.height + 10, self.bounds.size.width, 30);
 }
 
 - (void)tt_tapDefalutNoDataView:(UITapGestureRecognizer *)tap {
@@ -184,24 +184,43 @@ void swizzMethod(SEL oriSel, SEL newSel) {
 }
 
 // 默认的label
-- (UILabel *)defaultNoDataNoticeLabel {
-    UILabel *label = objc_getAssociatedObject(self, _cmd);
-    if (!label) {
-        label = [[UILabel alloc] init];
-//        label.text = self.defaultNoDataText ? : [LangSwitcher switchLang:@"暂无数据" key:nil];
-        label.font = [UIFont systemFontOfSize:11];
-        label.textAlignment = NSTextAlignmentCenter;
-        objc_setAssociatedObject(self, _cmd, label, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
-    return label;
-}
+//- (UILabel *)defaultNoDataNoticeLabel {
+//    UILabel *label = objc_getAssociatedObject(self, _cmd);
+//    if (!label) {
+//        label = [[UILabel alloc] init];
+//        [label theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+//        if (self.defaultNoDataText) {
+//            label.text = [LangSwitcher switchLang:@"暂无数据" key:nil];
+//        }else if([self.defaultNoDataText isEqualToString:@"暂无好友"])
+//        {
+//            label.text = @"暂无好友";
+//        }else
+//        {
+//            label.text = @"";
+//        }
+//        label.text = [LangSwitcher switchLang:@"暂无数据" key:nil];
+//        label.font = [UIFont systemFontOfSize:11];
+//        label.textAlignment = NSTextAlignmentCenter;
+//        objc_setAssociatedObject(self, _cmd, label, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//    }
+//    return label;
+//}
 
 // 默认的imageView
 - (UIImageView *)defaultNoDataNoticeImageView {
     UIImageView *imageView = objc_getAssociatedObject(self, _cmd);
     if (!imageView) {
         imageView = [[UIImageView alloc] init];
-        imageView.image = self.defaultNoDataImage ? : [UIImage imageNamed:@"UITableViewPlaceholder.bundle/TableViewNoData"];
+        if ([self.defaultNoDataText isEqualToString:@"暂无好友"]) {
+
+            [imageView theme_setImageIdentifier:@"暂无好友" moduleName:ImgAddress];
+        }else if(self.defaultNoDataText)
+        {
+            [imageView theme_setImageIdentifier:@"暂无记录" moduleName:ImgAddress];
+        }else
+        {
+            [imageView theme_setImageIdentifier:@"" moduleName:ImgAddress];
+        }
         imageView.contentMode = UIViewContentModeCenter;
         objc_setAssociatedObject(self, _cmd, imageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }

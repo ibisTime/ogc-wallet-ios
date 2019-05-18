@@ -51,8 +51,10 @@
             eyesButton.selected = NO;
         }
         [eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:11 imagePositionBlock:^(UIButton *button) {
-            [button setImage:kImage(@"眼睛") forState:(UIControlStateNormal)];
-            [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
+//            [button setImage:kImage(@"眼睛") forState:(UIControlStateNormal)];
+//            [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
+            [eyesButton theme_setImageIdentifier:@"张眼" forState:(UIControlStateNormal) moduleName:ImgAddress];
+            [eyesButton theme_setImageIdentifier:@"闭眼-白" forState:(UIControlStateSelected) moduleName:ImgAddress];
         }];
 
         
@@ -110,8 +112,8 @@
         earningsPrice2.text = [NSString stringWithFormat:@"%@ %@",TotalIncome,symbolStr];
     }
     [self.eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {
-        [button setImage:kImage(@"张眼") forState:(UIControlStateNormal)];
-        [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
+        [self.eyesButton theme_setImageIdentifier:@"张眼" forState:(UIControlStateNormal) moduleName:ImgAddress];
+        [self.eyesButton theme_setImageIdentifier:@"闭眼-白" forState:(UIControlStateSelected) moduleName:ImgAddress];
     }];
 }
 
@@ -184,8 +186,8 @@
     }
     
     [self.eyesButton SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:15 imagePositionBlock:^(UIButton *button) {
-        [button setImage:kImage(@"张眼") forState:(UIControlStateNormal)];
-        [button setImage:kImage(@"闭眼-白") forState:(UIControlStateSelected)];
+        [self.eyesButton theme_setImageIdentifier:@"张眼" forState:(UIControlStateNormal) moduleName:ImgAddress];
+        [self.eyesButton theme_setImageIdentifier:@"闭眼-白" forState:(UIControlStateSelected) moduleName:ImgAddress];
     }];
 }
 

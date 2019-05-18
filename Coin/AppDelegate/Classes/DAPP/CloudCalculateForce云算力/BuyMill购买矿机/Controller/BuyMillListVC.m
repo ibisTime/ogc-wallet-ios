@@ -9,10 +9,12 @@
 #import "BuyMillListVC.h"
 #import "BuyMillListTableView.h"
 #import "BuyMillDetaiilsVC.h"
-
+#import "BuyMillListModel.h"
 @interface BuyMillListVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)BuyMillListTableView *tableView;
+
+@property (nonatomic , strong)NSMutableArray <BuyMillListModel *>*models;
 
 @end
 
@@ -24,6 +26,7 @@
     self.titleText.text = @"购买矿机";
     self.navigationItem.titleView = self.titleText;
     [self initTableView];
+    [self LoadData];
 }
 
 - (void)initTableView {
@@ -36,8 +39,66 @@
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BuyMillDetaiilsVC *vc = [BuyMillDetaiilsVC new];
+    vc.model = self.models[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+-(void)LoadData
+{
+    __weak typeof(self) weakSelf = self;
+    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+    helper.tableView = self.tableView;
+    helper.code = @"610005";
+    [helper modelClass:[BuyMillListModel class]];
+    
+    [self.tableView addRefreshAction:^{
+        
+        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.models = objs;
+            
+            weakSelf.tableView.models = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+            
+            [weakSelf addPlaceholderView];
+            
+        }];
+    }];
+    
+    [self.tableView beginRefreshing];
+    
+    [self.tableView addLoadMoreAction:^{
+        
+        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.models = objs;
+            
+            weakSelf.tableView.models = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+            
+            [weakSelf addPlaceholderView];
+            
+        }];
+        
+    }];
+    
+    [self.tableView endRefreshingWithNoMoreData_tl];
+}
+
 
 /*
 #pragma mark - Navigation

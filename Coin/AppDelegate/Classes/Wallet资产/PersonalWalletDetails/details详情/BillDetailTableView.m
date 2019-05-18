@@ -43,6 +43,7 @@ static NSString *identifierCell = @"BillDetailCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     cell = [tableView dequeueReusableCellWithIdentifier:identifierCell];
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     NSArray *textArr = @[
                          [LangSwitcher switchLang:@"变动前金额" key:nil],
                           [LangSwitcher switchLang:@"变动后金额" key:nil],

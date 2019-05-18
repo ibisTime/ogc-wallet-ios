@@ -61,38 +61,6 @@
     pageView.defaultSubscript = 0;
     [self.view addSubview:pageView];
     
-//    [self test];
-    
-    
-    
-//    UIViewController *v = [UIViewController new];
-//    [self.navigationController setNavigationBarHidden:YES animated:NO];
-//    [v.view addSubview:];
-//    [self showViewController:v sender:nil];
-    
-    
-    
-    
-    
-    
-//    [self segmentStyle];
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    segment = [[JXSegment alloc] initWithFrame:CGRectMake(70, kStatusBarHeight, SCREEN_WIDTH - 140, 44)];
-//    [segment updateChannels:self.channelArray];
-//
-//    segment.delegate = self;
-//    [self.view addSubview:segment];
-//
-//
-//
-//    pageView =[[JXPageView alloc] initWithFrame:CGRectMake(0, kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
-//    pageView.datasource = self;
-//    pageView.delegate = self;
-//
-//    [pageView changeToItemAtIndex:0];
-//    [self.view addSubview:pageView];
-//    [pageView reloadData];
-    
     
     
     UIButton *rightButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -131,14 +99,6 @@
 }
 
 - (void)segmentStyle {
-//    _channelArray = @[@"推荐",
-//             @"美容瘦身",
-//                      @"科技",@"推荐",
-//                      @"美容瘦身",
-//                      @"科技",@"推荐",
-//                      @"美容瘦身",
-//                      @"科技"
-//             ];
     
     _style = SegmentHeadStyleLine;
     _layout = MLMSegmentLayoutCenter;

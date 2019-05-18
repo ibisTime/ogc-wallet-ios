@@ -42,6 +42,8 @@
         amountField.clearButtonMode = UITextFieldViewModeWhileEditing;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(amounttextFieldTextDidChangeOneCI:) name:UITextFieldTextDidChangeNotification
                                                   object:amountField];
+        amountField.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [amountField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         [amountBox addSubview:amountField];
         
         
@@ -68,6 +70,8 @@
         numberField.clearButtonMode = UITextFieldViewModeWhileEditing;
         numberField.tag = 10001;
         numberField.delegate = self;
+        numberField.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [numberField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         self.numberField = numberField;
         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(numbertextFieldTextDidChangeOneCI:) name:UITextFieldTextDidChangeNotification
                                                   object:numberField];

@@ -7,11 +7,11 @@
 //
 
 #import "TLBaseVC.h"
-
+#import "BuyMillListModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BuyMillBuyVC : TLBaseVC
-
+@property (nonatomic , strong)BuyMillListModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

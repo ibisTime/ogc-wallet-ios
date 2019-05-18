@@ -11,11 +11,11 @@
 #import "APICodeMacro.h"
 #import "UIScrollView+TLAdd.h"
 #import "APPLanguage.h"
-@interface HTMLStrVC ()<WKNavigationDelegate>
+@interface HTMLStrVC ()<UIWebViewDelegate>
 
 @property (nonatomic, copy) NSString *htmlStr;
 
-@property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, strong) UIWebView *webView;
 
 @property (nonatomic, strong) UIView *bgView;
 
@@ -33,7 +33,7 @@
 
 @property (nonatomic, strong) UIButton *backButton;
 
-@property (nonatomic, strong) UILabel *nameLable;
+
 
 @property (nonatomic, strong)  UIView *line;
 
@@ -98,15 +98,9 @@
     self.bgImage.userInteractionEnabled = YES;
     self.bgImage.image = kImage(@"我的 背景");
     [self.view  addSubview:self.bgImage];
-
     
-    self.nameLable = [[UILabel alloc]init];
-//    self.nameLable.text = [LangSwitcher switchLang:@"帮助中心" key:nil];
-    self.nameLable.textAlignment = NSTextAlignmentCenter;
-    self.nameLable.font = Font(16);
-    self.nameLable.textColor = kTextBlack;
-    self.navigationItem.titleView = self.nameLable;
-//    [self.bgImage addSubview:self.nameLable];
+    self.titleText.text = [LangSwitcher switchLang:@"帮助中心" key:nil];
+    self.navigationItem.titleView = self.titleText;
 
     NSString *name = @"";
     NSString *ckey = @"";
@@ -121,7 +115,7 @@
         case HTMLTypeAboutUs: {
             ckey = [NSString stringWithFormat:@"questions_%@",[APPLanguage currentLanguage].currentLange];
             name = [LangSwitcher switchLang:@"关于我们" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
             
@@ -134,7 +128,7 @@
             }
             
             name = [LangSwitcher switchLang:@"注册协议" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
             
         }
@@ -143,7 +137,7 @@
             
              ckey = [NSString stringWithFormat:@"questions_%@",[APPLanguage currentLanguage].currentLange];
             name = [LangSwitcher switchLang: @"帮助中心" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
 
             break;
         }
@@ -153,7 +147,7 @@
             ckey = @"service";
             
             name =  [LangSwitcher switchLang:@"联系客服" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
             
@@ -162,7 +156,7 @@
             ckey = @"trade_remind";
             
             name = [LangSwitcher switchLang:@"交易提醒" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
             
         }
@@ -170,28 +164,28 @@
             ckey = [NSString stringWithFormat:@"mnemonic_%@",[APPLanguage currentLanguage].currentLange];
             
             name = [LangSwitcher switchLang:@"什么是助记词" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
         case HTMLTypeCreate_wallet: {
             ckey = [NSString stringWithFormat:@"create_wallet_%@",[APPLanguage currentLanguage].currentLange];
             
             name = [LangSwitcher switchLang:@"创建钱包流程" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
         case HTMLTypeMnemonic_backup: {
             ckey = [NSString stringWithFormat:@"mnemonic_backup_%@",[APPLanguage currentLanguage].currentLange];
             
             name = [LangSwitcher switchLang:@"如何备份钱包" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
         case HTMLTypeRed_packet_rule: {
             ckey = [NSString stringWithFormat:@"red_packet_rule_%@",[APPLanguage currentLanguage].currentLange];
             
             name = [LangSwitcher switchLang:@"红包规则" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
         case HTMLTypePrivacy: {
@@ -200,29 +194,7 @@
             name = [LangSwitcher switchLang:@"隐私政策" key:nil];
             break;
         }
-//        case HTMLTypeGlobal_master: {
-//            ckey = [NSString stringWithFormat:@"global_master_%@",[APPLanguage currentLanguage].currentLange];
-//            name = [LangSwitcher switchLang:@"首创玩法" key:nil];
-//            self.htmlStr = self.des;
-//
-//            [self initWebView];
-//            self.nameLable.text = name;
-//
-//            return;
-//            break;
-//        }
-//        case HTMLTypeYubibao: {
-//            ckey = [NSString stringWithFormat:@"yubibao_%@",[APPLanguage currentLanguage].currentLange];
-//
-//            name = [LangSwitcher switchLang:@"余币宝" key:nil];
-//            self.htmlStr = self.des;
-//
-//            [self initWebView];
-//            self.nameLable.text = name;
-//
-//            return;
-//            break;
-//        }
+
         case HTMLTypeQuantitativeFinance: {
 //            ckey = [NSString stringWithFormat:@"pop_protocol_%@",[APPLanguage currentLanguage].currentLange];
             if ([[APPLanguage currentLanguage].currentLange hasPrefix:@"ZH"]) {
@@ -232,12 +204,12 @@
                 ckey = @"pop_protocol_en";
             }
             name = [LangSwitcher switchLang:@"量化理财" key:nil];
-            self.nameLable.text = name;
+            self.titleText.text = name;
             break;
         }
 
         case HTMLTypeOther: {
-            self.nameLable.text = self.name;
+            self.titleText.text = self.name;
             [self initWebView];
             return;
             break;
@@ -248,11 +220,7 @@
             break;
 
     }
-
-
-
-
-    self.nameLable.text = name;
+    self.titleText.text = name;
 
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
@@ -274,36 +242,17 @@
 #pragma mark - Init
 - (void)buttonClick
 {
-    
     [self.navigationController popViewControllerAnimated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)initWebView {
-
-
-    NSString *jS = [NSString stringWithFormat:@"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'); meta.setAttribute('width', %lf); document.getElementsByTagName('head')[0].appendChild(meta);",kScreenWidth];
-    
-    WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:jS injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-    
-    WKUserContentController *wkUCC = [WKUserContentController new];
-    
-    [wkUCC addUserScript:wkUserScript];
-    
-    WKWebViewConfiguration *wkConfig = [WKWebViewConfiguration new];
-    
-    wkConfig.userContentController = wkUCC;
-    
-    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(15, kNavigationBarHeight + 15, kScreenWidth-30, kSuperViewHeight - 40) configuration:wkConfig];
-    
-    _webView.backgroundColor = kWhiteColor;
-    
-    _webView.navigationDelegate = self;
-    
-    _webView.allowsBackForwardNavigationGestures = YES;
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(15, kNavigationBarHeight + 15, kScreenWidth-30, kSuperViewHeight - 40)];
+    [_webView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    _webView.delegate = self;
     [_webView.scrollView adjustsContentInsets];
     [self.bgImage addSubview:_webView];
     if (self.des) {
-        self.nameLable.text = self.name;
+        self.titleText.text = self.name;
         [_webView loadHTMLString:self.des baseURL:nil];
     }else{
         [self loadWebWithString:self.htmlStr];
@@ -319,14 +268,29 @@
     [_webView loadHTMLString:html baseURL:nil];
 }
 
-#pragma mark - WKWebViewDelegate
+#pragma mark -
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
     
-    [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable string, NSError * _Nullable error) {
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        //字体颜色
         
-        [self changeWebViewHeight:string];
-    }];
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#ffffff'"];
+        
+        //页面背景色
+        
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#282A2E'"];
+    }else
+    {
+        //字体颜色
+        
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#282A2E'"];
+        
+        //页面背景色
+        
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#f8f8f8'"];
+    }
     
 }
 

@@ -65,13 +65,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self navigationTransparentClearColor];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self navigationwhiteColor];
+    
 }
 
 -(MyAssetsHeadView *)headView

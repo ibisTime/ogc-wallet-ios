@@ -24,20 +24,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    UILabel *titleText = [[UILabel alloc] initWithFrame: CGRectMake(kScreenWidth/2-60, 0, 120, 50)];
-    titleText.textAlignment = NSTextAlignmentCenter;
-    titleText.backgroundColor = [UIColor clearColor];
- 
-    [titleText setFont:[UIFont systemFontOfSize:17.0]];
-    [titleText setText:[LangSwitcher switchLang:@"投资账单" key:nil]];
-    self.navigationItem.titleView=titleText;
+    self.titleText.text= [LangSwitcher switchLang:@"投资账单" key:nil];
+    self.navigationItem.titleView=self.titleText;
 
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -10;
     UIButton *_RightButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:_RightButton]];
     [_RightButton addTarget:self action:@selector(myRecodeClick) forControlEvents:(UIControlEventTouchUpInside)];
-    [_RightButton setImage:kImage(@"ic_calendar") forState:(UIControlStateNormal)];
+    [_RightButton theme_setImageIdentifier:@"ic_calendar" forState:(UIControlStateNormal) moduleName:ColorName];
 
     [self initTableView];
     [self LoadData:self.tableView.date];

@@ -23,11 +23,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kHeight(130) - kNavigationBarHeight)];
-        topView.backgroundColor = kTabbarColor;
+//        topView.backgroundColor = kTabbarColor;
         [self addSubview:topView];
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(kWidth(15), kHeight(84) - kNavigationBarHeight, SCREEN_WIDTH - kWidth(30), kHeight(561))];
-        backView.backgroundColor = kWhiteColor;
+        [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         backView.layer.cornerRadius = 10;
         backView.layer.shadowOpacity = 0.22;// 阴影透明度
         backView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
@@ -36,6 +36,7 @@
         [self addSubview:backView];
         
         UIButton *stateBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"待支付" key:nil] titleColor:kHexColor(@"#333333 ") backgroundColor:kClearColor titleFont:17];
+        [stateBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         [stateBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
             [stateBtn setImage:kImage(@"待支付-详情") forState:(UIControlStateNormal)];
         }];
@@ -71,7 +72,7 @@
 
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(kWidth(15), kHeight(145), SCREEN_WIDTH - kWidth(60), 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [backView addSubview:lineView];
         
         
@@ -107,6 +108,7 @@
         
         UILabel *promptName = [UILabel labelWithFrame:CGRectMake(5, 0,  WIDTH - kWidth(27) - 10, kHeight(27)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kHexColor(@"#FA7D0E")];
         promptName.text = [LangSwitcher switchLang:@"请按以下方式付款，转账请务必填写转账附言码" key:nil];
+        promptName.textColor = kBlackColor;;
         promptName.numberOfLines = 2;
         [promptView addSubview:promptName];
         
@@ -143,8 +145,8 @@
             contentLbl.tag = 100 + i;
             [bottomIV addSubview:contentLbl];
             
-            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight(50) - 1, WIDTH - kWidth(29), 1)];
-            lineView.backgroundColor = kLineColor;
+            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, kHeight(50) - 1, WIDTH - kWidth(29), 0.5)];
+            [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
             [bottomIV addSubview:lineView];
             
         }

@@ -54,12 +54,12 @@
 {
     
     [super viewWillAppear:animated];
-    [self navigationTransparentClearColor];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self navigationwhiteColor];
+    
 }
 
 - (void)viewDidLoad {

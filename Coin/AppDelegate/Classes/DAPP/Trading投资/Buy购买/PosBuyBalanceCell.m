@@ -16,25 +16,27 @@
     if (self) {
         
         
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         
-        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 0, kScreenWidth - 15 - 64 - 25, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kHexColor(@"#333333")];
+        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 0, kScreenWidth - 15 - 64 - 25, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:nil];
         self.nameLabel = nameLabel;
 
         [self addSubview:nameLabel];
 
 
-        UIButton *intoButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"转入资金" key:nil] titleColor:kHexColor(@"#3C5CD1") backgroundColor:kClearColor titleFont:12];
+        UIButton *intoButton = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"转入资金" key:nil] titleColor:kTabbarColor backgroundColor:kClearColor titleFont:12];
         self.intoButton = intoButton;
         intoButton.frame = CGRectMake(kScreenWidth - 15 - 64, 12, 64, 26);
-        kViewBorderRadius(intoButton, 2, 1, kHexColor(@"#3C5CD1"));
+        kViewBorderRadius(intoButton, 2, 1, kTabbarColor);
         [self addSubview:intoButton];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
-        lineView.backgroundColor = kLineColor;
+//        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
         
         UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(0, 49, SCREEN_WIDTH, 1)];
-        lineView1.backgroundColor = kLineColor;
+        [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView1];
     }
     return self;

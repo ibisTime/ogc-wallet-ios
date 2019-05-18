@@ -54,7 +54,8 @@
         
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 30, 590/2)];
-        backView.backgroundColor = kWhiteColor;
+//        backView.backgroundColor = kWhiteColor;
+        [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         kViewRadius(backView, 8);
         [self addSubview:backView];
         
@@ -68,7 +69,8 @@
         titleLabel.font = FONT(12);
         titleLabel.text = [NSString stringWithFormat:@"%@BTC",[LangSwitcher switchLang:@"卖出" key:nil]];
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = kTextColor2;
+//        titleLabel.textColor = kTextColor2;
+        [titleLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
         [self addSubview:titleLabel];
         
         // 横线
@@ -93,7 +95,8 @@
         UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
         cancelButton.frame = CGRectMake(0, BGViewH - 50, BGViewW / 2, 50);
         [cancelButton setTitle:[LangSwitcher switchLang:@"取消" key:nil] forState:UIControlStateNormal];
-        [cancelButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
+//        [cancelButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
+        [cancelButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cancelButton];
@@ -102,17 +105,18 @@
         UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
         sureButton.frame = CGRectMake(cancelButton.xx, BGViewH - 50, BGViewW / 2, 50);
         [sureButton setTitle:[LangSwitcher switchLang:@"确定" key:nil] forState:UIControlStateNormal];
-        [sureButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
+        [sureButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [sureButton addTarget:self action:@selector(sureButtonAction) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:sureButton];
         
         UIView *lineHView = [[UIView alloc] initWithFrame:CGRectMake(BGViewW/2 - 0.5, BGViewH - 50, 1, 50)];
-        lineHView.backgroundColor = kLineColor;
+//        lineHView.backgroundColor = kLineColor;
+        [lineHView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineHView];
         
         UIView *lineWView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - 50, BGViewW, 1)];
-        lineWView.backgroundColor = kLineColor;
+        [lineWView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineWView];
         
         // 密码框

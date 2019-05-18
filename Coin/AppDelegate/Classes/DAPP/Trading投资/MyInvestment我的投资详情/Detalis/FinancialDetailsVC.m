@@ -14,24 +14,6 @@
 
 @implementation FinancialDetailsVC
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self navigationSetDefault];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-    
-}
-//
-//如果仅设置当前页导航透明，需加入下面方法
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self navigationwhiteColor];
-    //    self.navigationController.navigationBar.translucent = NO;
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-    
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,8 +24,10 @@
     self.navigationItem.titleView = self.titleText;
     
     
+    
     FinancialDetailsView *backView = [[FinancialDetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
     backView.model = self.model;
+//    [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     [self.view addSubview:backView];
     
 }

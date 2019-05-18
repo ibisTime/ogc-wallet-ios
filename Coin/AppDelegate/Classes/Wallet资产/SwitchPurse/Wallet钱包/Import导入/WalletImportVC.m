@@ -57,12 +57,12 @@
 {
     
     [super viewWillAppear:animated];
-    [self navigationSetDefault];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self navigationwhiteColor];
+    
 }
 
 
@@ -362,7 +362,7 @@
             }else
             {
                 [self.navigationController popToRootViewControllerAnimated:YES];
-                NSNotification *notification =[NSNotification notificationWithName:@"PrivateKeyWalletCreat" object:nil userInfo:nil];
+                NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
             }
             

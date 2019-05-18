@@ -64,7 +64,8 @@
     
     whiteView.frame = CGRectMake(24, kHeight(194), kScreenWidth - 48, kHeight(240));
     kViewRadius(whiteView, 8);
-    whiteView.backgroundColor = kWhiteColor;
+//    whiteView.backgroundColor = kWhiteColor;
+    [whiteView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [exitBtn setBackgroundImage:kImage(@"红包 删除") forState:UIControlStateNormal];
     [exitBtn addTarget:self action:@selector(hideSelf) forControlEvents:UIControlEventTouchUpInside];
@@ -83,6 +84,7 @@
         sureLab.text = [LangSwitcher switchLang:@"请输入交易密码" key:nil];
 
     }
+    [sureLab theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     [whiteView addSubview:sureLab];
     [sureLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(whiteView.mas_top).offset(50);
@@ -94,7 +96,7 @@
     self.password.elementCount = 6;
     self.password.textField.secureTextEntry=YES;
     self.password.textField.enabled = NO;
-    self.password.elementColor=kLineColor;
+    self.password.elementColor = kHexColor([TLUser LineColor]);
     [whiteView addSubview:self.password];
     CoinWeakSelf
     self.password.passwordBlock = ^(NSString *password) {
@@ -121,7 +123,7 @@
     [whiteView addSubview:sureButton];
     [sureButton setTitle:[LangSwitcher switchLang:@"忘记密码?" key:nil] forState:UIControlStateNormal];
     [sureButton addTarget:self action:@selector(payMoney) forControlEvents:UIControlEventTouchUpInside];
-    
+    [sureButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(whiteView.mas_bottom).offset(-15);
         make.left.equalTo(whiteView.mas_left).offset(20);

@@ -21,32 +21,31 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+        
         backImage = [[UIImageView alloc]initWithFrame:CGRectMake(15, 13, SCREEN_WIDTH - 30, 160)];
 //        backImage.image = kImage(@"邮政银行");
         [self addSubview:backImage];
-        
-//        UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(24, 24, 40, 40)];
-//        kViewRadius(bottomView, 20);
-//        bottomView.backgroundColor = kWhiteColor;
-//        [backImage addSubview:bottomView];
-//
+
         
         iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(24, 24, 40, 40)];
-//        iconImg.image = kImage(@"邮政银行");
+
         [backImage addSubview:iconImg];
         
         bankNameLbl = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, 24, SCREEN_WIDTH - 115, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:kWhiteColor];
         bankNameLbl.text = [LangSwitcher switchLang:@"中国邮政储蓄银行" key:nil];
+        bankNameLbl.textColor = kWhiteColor;
         [backImage addSubview:bankNameLbl];
         
         
         bankTypeLbl = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, bankNameLbl.yy + 1, SCREEN_WIDTH - 115, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:kWhiteColor];
         bankTypeLbl.text = [LangSwitcher switchLang:@"银行卡" key:nil];
+        bankTypeLbl.textColor = kWhiteColor;
         [backImage addSubview:bankTypeLbl];
         
         
         bankNumberLbl = [UILabel labelWithFrame:CGRectMake(10, bankTypeLbl.yy + 25, SCREEN_WIDTH - 60, 33.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(24) textColor:kWhiteColor];
-        
+        bankNumberLbl.textColor = kWhiteColor;
         [backImage addSubview:bankNumberLbl];
         
         

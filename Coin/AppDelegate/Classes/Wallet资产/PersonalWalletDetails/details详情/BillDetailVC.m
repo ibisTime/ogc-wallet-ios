@@ -21,12 +21,12 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [self navigationSetDefault];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [self navigationwhiteColor];
+    
 }
 
 - (void)viewDidLoad {
@@ -64,7 +64,7 @@
 
     UIView *topView = [[UIView alloc] init];
     [self.view addSubview:topView];
-    topView.backgroundColor = kTabbarColor;
+//    topView.backgroundColor = kTabbarColor;
     
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -75,7 +75,8 @@
     }];
     
     self.headerView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.headerView.image = kImage(@"背景");
+//    self.headerView.image = kImage(@"背景");
+    [self.headerView theme_setImageIdentifier:@"BTC背景" moduleName:ImgAddress];
     [self.view addSubview:self.headerView];
     
     
@@ -111,11 +112,11 @@
     if (money > 0) {
         
         moneyStr = [NSString stringWithFormat:@"+%@%@", onlyCountStr, _bill.currency];
-        
+        textLbl.text = @"收款";
     } else if (money <= 0) {
         
         moneyStr = [NSString stringWithFormat:@"%@%@", onlyCountStr, _bill.currency];
-        
+        textLbl.text = @"转出";
     }
     
     //金额
@@ -129,13 +130,11 @@
     [textLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(self.headerView.mas_top).offset(29);
-//        make.centerX.equalTo(self.headerView.mas_centerX);
         make.left.equalTo(self.headerView.mas_left).offset(15);
         make.right.equalTo(self.headerView.mas_right).offset(-15);
         make.height.equalTo(@(20));
     }];
-    
-    //
+
     [amountLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(textLbl.mas_bottom).offset(2);
