@@ -338,18 +338,18 @@
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentDirectory = [paths objectAtIndex:0];
-        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"JMQBWALLET.db"];
         NSLog(@"dbPath = %@",dbPath);
         FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
         
         
         if ([dataBase open])
         {
-            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS ChengWallet (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,wallet text)"];
+            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS JMQBWALLET (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,wallet text)"];
         }
         [dataBase close];
         [dataBase open];
-        [dataBase executeUpdate:@"INSERT INTO ChengWallet (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
+        [dataBase executeUpdate:@"INSERT INTO JMQBWALLET (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
         [dataBase close];
         
         

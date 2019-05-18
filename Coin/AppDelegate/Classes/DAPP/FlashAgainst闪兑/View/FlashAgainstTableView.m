@@ -93,4 +93,5 @@ static NSString *identifierCell = @"FlashAgainstCell";
     
     return [UIView new];
 }
+
 @end

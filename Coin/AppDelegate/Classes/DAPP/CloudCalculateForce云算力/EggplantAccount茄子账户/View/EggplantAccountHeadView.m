@@ -9,6 +9,9 @@
 #import "EggplantAccountHeadView.h"
 
 @implementation EggplantAccountHeadView
+{
+    UILabel *numberLbl;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -24,7 +27,7 @@
         nameLbl.text = @"茄子余额";
         [backImg addSubview:nameLbl];
         
-        UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(35, nameLbl.yy + 9 , 100, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:nil];
+        numberLbl = [UILabel labelWithFrame:CGRectMake(35, nameLbl.yy + 9 , 100, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:nil];
         
         NSString *text = @"51个";
         NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
@@ -51,6 +54,16 @@
         
     }
     return self;
+}
+
+-(void)setAmount:(NSString *)amount
+{
+    NSString *text = [NSString stringWithFormat:@"%.2f个",[amount floatValue]/100];
+    NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
+    [attributeStr addAttribute:NSFontAttributeName
+                         value:FONT(14)
+                         range:NSMakeRange(text.length - 1, 1)];
+    numberLbl.attributedText = attributeStr;
 }
 
 @end

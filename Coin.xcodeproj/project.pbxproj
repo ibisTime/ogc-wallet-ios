@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F023B6A228FCCA80028CB45 /* BuyMillListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F023B69228FCCA80028CB45 /* BuyMillListModel.m */; };
 		1F023B6E229010A60028CB45 /* MyMillModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F023B6D229010A60028CB45 /* MyMillModel.m */; };
+		1F023B71229043F90028CB45 /* MyMillDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F023B70229043F90028CB45 /* MyMillDetailsModel.m */; };
 		1F02F98A228558BD003AF7F1 /* AlertsDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */; };
 		1F02F99322856606003AF7F1 /* MarketTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F99222856606003AF7F1 /* MarketTableView.m */; };
 		1F02F9962285666D003AF7F1 /* MarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F02F9952285666D003AF7F1 /* MarketCell.m */; };
@@ -708,6 +709,8 @@
 		1F023B69228FCCA80028CB45 /* BuyMillListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMillListModel.m; sourceTree = "<group>"; };
 		1F023B6C229010A60028CB45 /* MyMillModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillModel.h; sourceTree = "<group>"; };
 		1F023B6D229010A60028CB45 /* MyMillModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillModel.m; sourceTree = "<group>"; };
+		1F023B6F229043F90028CB45 /* MyMillDetailsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMillDetailsModel.h; sourceTree = "<group>"; };
+		1F023B70229043F90028CB45 /* MyMillDetailsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMillDetailsModel.m; sourceTree = "<group>"; };
 		1F02F988228558BD003AF7F1 /* AlertsDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsDetailsVC.h; sourceTree = "<group>"; };
 		1F02F989228558BD003AF7F1 /* AlertsDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsDetailsVC.m; sourceTree = "<group>"; };
 		1F02F99122856606003AF7F1 /* MarketTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketTableView.h; sourceTree = "<group>"; };
@@ -3412,6 +3415,8 @@
 			children = (
 				1F824522228D0FF500B3C2AF /* MyMillDetailsVC.h */,
 				1F824523228D0FF500B3C2AF /* MyMillDetailsVC.m */,
+				1F023B6F229043F90028CB45 /* MyMillDetailsModel.h */,
+				1F023B70229043F90028CB45 /* MyMillDetailsModel.m */,
 				1F824525228D102A00B3C2AF /* MyMillDetailsTableView.h */,
 				1F824526228D102A00B3C2AF /* MyMillDetailsTableView.m */,
 				1F824528228D104900B3C2AF /* MyMillDetailsCell.h */,
@@ -6400,6 +6405,7 @@
 				1F76697721D4A34D00006B41 /* pwd2key.c in Sources */,
 				211CEF141FCBBF90000FB0C4 /* SelectScrollView.m in Sources */,
 				B8E08BED212594FF00348AD4 /* TLMoneyDeailVC.m in Sources */,
+				1F023B71229043F90028CB45 /* MyMillDetailsModel.m in Sources */,
 				7A07F837216DAA8D0026EB7A /* MyIncomeModel.m in Sources */,
 				B80D54CB210C84CA005303D5 /* APPLanguage.m in Sources */,
 				B8CAA14921158FF200695BC3 /* LPDPhotoPickerController.m in Sources */,
@@ -6828,7 +6834,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7004,7 +7010,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

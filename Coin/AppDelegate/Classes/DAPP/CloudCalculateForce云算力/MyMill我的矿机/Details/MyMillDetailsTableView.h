@@ -7,11 +7,13 @@
 //
 
 #import "TLTableView.h"
-
+#import "MyMillModel.h"
+#import "MyMillDetailsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MyMillDetailsTableView : TLTableView
-
+@property (nonatomic , strong)MyMillModel *model;
+@property (nonatomic , strong)NSMutableArray <MyMillDetailsModel *>*models;
 @end
 
 NS_ASSUME_NONNULL_END

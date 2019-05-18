@@ -253,7 +253,7 @@ NSString *const kCNY = @"CNY";
 + (void)refreshOpenCoinList:(RefreshOpenCoinListBlock)block
                     failure:(RefreshOpenCoinListFailureBlock)failure{
     TLNetworking *http = [TLNetworking new];
-    http.code = @"802007";
+    http.code = @"802013";
     http.parameters[@"status"] = @"0";
     http.isUploadToken = NO;
     [http postWithSuccess:^(id responseObject) {

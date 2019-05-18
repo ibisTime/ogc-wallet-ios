@@ -44,7 +44,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         return 2;
     }
     
-    return 10;
+    return self.models.count;
     
 }
 
@@ -56,10 +56,14 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         
         if (indexPath.section == 0) {
             NSArray *leftAry = @[@"矿机型号",@"台数",@"今日算力",@"运行情况"];
-            NSArray *rightAry = @[@"HEY 007D",@"7台",@"0.1%*7台=0.7%",@"运行中（2019-01-07 20:00:00失效）"];
+            NSArray *rightAry = @[self.model.machine[@"name"],
+                                  self.model.quantity,
+                                  [NSString stringWithFormat:@"%@%%*%@=%.2f%%",self.model.continueOutput,self.model.quantity,[self.model.continueOutput floatValue]*[self.model.quantity floatValue]],
+                                  self.model.statussStr];
             cell.leftLbl.text = leftAry[indexPath.row];
             cell.rightLbl.text = rightAry[indexPath.row];
-            if (indexPath.row == 3) {
+            if (indexPath.row == 3)
+            {
                 cell.lineView.hidden = YES;
             }else
             {
@@ -68,7 +72,20 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         }
         if (indexPath.section == 1) {
             NSArray *leftAry = @[@"加速情况",@"连存状态"];
-            NSArray *rightAry = @[@"已加速0天",@"将在24:00:00开启连存"];
+            NSString *EvenState;
+            if ([self.model.continueStatus isEqualToString:@"0"]) {
+                
+                EvenState = @"未连存";
+            }
+            if ([self.model.continueStatus isEqualToString:@"1"]) {
+                EvenState = @"连存中";
+            }
+            if ([self.model.continueStatus isEqualToString:@"2"]) {
+                EvenState = @"连存失效";
+            }
+            
+            NSArray *rightAry = @[[NSString stringWithFormat:@"已加速%@天",self.model.speedDays],
+                                  EvenState];
             cell.leftLbl.text = leftAry[indexPath.row];
             cell.rightLbl.text = rightAry[indexPath.row];
             if (indexPath.row == 1) {
@@ -84,9 +101,54 @@ static NSString *MyAsstes = @"EggplantAccountCell";
     OreRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OreRecordCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    cell.model = self.models[indexPath.row];
     return cell;
     
 }
+
+-(NSInteger)dateTimeDifferenceWithStartTime:(NSString *)startTime
+
+{
+    
+    
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *startDate =[formatter dateFromString:startTime];
+    
+    
+    NSDate *now = [NSDate date];
+    NSString *nowstr = [formatter stringFromDate:now];
+    NSDate *nowDate = [formatter dateFromString:nowstr];
+    
+    
+    
+    NSTimeInterval start = [startDate timeIntervalSince1970]*1;
+    NSTimeInterval end = [nowDate timeIntervalSince1970]*1;
+    NSTimeInterval value = start - end;
+    
+    
+    
+    int second = (int)value %60;//秒
+    
+    int minute = (int)value /60%60;
+    
+    int house = (int)value / (24 * 3600)%3600;
+    
+    int day = (int)value / (24 * 3600);
+    
+    NSString *str;
+    
+    NSInteger time;//剩余时间为多少分钟
+    
+    
+    time = day*24*60*60 + house*60*60 + minute*60 + second;
+    
+    return time;
+    
+}
+
 
 -(void)MyAsstesButton:(UIButton *)sender
 {

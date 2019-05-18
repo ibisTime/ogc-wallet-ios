@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BillModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EggplantAccountCell : UITableViewCell
+
+@property (nonatomic , strong)BillModel *model;
 
 @end
 

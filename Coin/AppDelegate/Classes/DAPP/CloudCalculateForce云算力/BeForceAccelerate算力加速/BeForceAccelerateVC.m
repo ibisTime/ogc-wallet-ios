@@ -43,12 +43,12 @@
     [backView addSubview:calculateNameLbl];
     
     UILabel *calculateNumberLbl = [UILabel labelWithFrame:CGRectMake(0, calculateNameLbl.yy + 9, SCREEN_WIDTH - 30, 33.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(24) textColor:nil];
-    calculateNumberLbl.text = @"*51";
+    calculateNumberLbl.text = @"0";
     [backView addSubview:calculateNumberLbl];
     
     UILabel *directDriveNameLbl = [UILabel labelWithFrame:CGRectMake(0, calculateNumberLbl.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [directDriveNameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    directDriveNameLbl.text = @"当前算力";
+    directDriveNameLbl.text = @"当前购买矿机的直推用户：0";
     [backView addSubview:directDriveNameLbl];
     
     UILabel *introduceLbl1 = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 17, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];

@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MyMillDetailsModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OreRecordCell : UITableViewCell
 
 @property (nonatomic , strong)UIView *lineView;
-
+@property (nonatomic , strong)MyMillDetailsModel *model;
 @end
 
 NS_ASSUME_NONNULL_END

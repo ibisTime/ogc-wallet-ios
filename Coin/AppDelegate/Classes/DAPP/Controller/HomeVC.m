@@ -235,10 +235,9 @@
     }
     if ([self.dataArray[tag].action isEqualToString:@"1"])
     {
-        CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+        
+        lookingForwardVC *vc = [lookingForwardVC new];
         [self.navigationController pushViewController:vc animated:YES];
-//        lookingForwardVC *vc = [lookingForwardVC new];
-//        [self.navigationController pushViewController:vc animated:YES];
     }
     if ([self.dataArray[tag].action isEqualToString:@"2"])
     {
@@ -270,6 +269,10 @@
             
             
         }
+        if ([self.dataArray[tag].url isEqualToString:@"3"]) {
+            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
 }
 
@@ -286,10 +289,10 @@
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
         {
-            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-//            lookingForwardVC *vc = [lookingForwardVC new];
+//            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
 //            [self.navigationController pushViewController:vc animated:YES];
+            lookingForwardVC *vc = [lookingForwardVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
         if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
         {
@@ -319,6 +322,10 @@
                 [self.navigationController pushViewController:vc animated:YES];
                 
                 
+            }
+            if ([self.GameModel[indexPath.row].url isEqualToString:@"3"]) {
+                CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+                [self.navigationController pushViewController:vc animated:YES];
             }
         }
     }

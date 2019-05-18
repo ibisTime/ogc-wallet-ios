@@ -32,7 +32,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
 
 #pragma mark - UITableViewDataSource;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.bills.count;
     
 }
 
@@ -41,7 +41,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
-    
+    cell.model = self.bills[indexPath.row];
     return cell;
 }
 

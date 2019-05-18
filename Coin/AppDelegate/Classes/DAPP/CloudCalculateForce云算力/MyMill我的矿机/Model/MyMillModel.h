@@ -13,26 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MyMillModel : NSObject
 
 //amount = 1000;
-//code = MO20190518121936637791903;
-//continueEndTime = "May 20, 2019 12:00:00 AM";
-//continueFlag = 0;
-//continueLifeTime = 7;
-//continueOutput = 0;
-//continueStartTime = "May 19, 2019 12:00:00 AM";
-//continueStatus = 0;
-//createTime = "May 18, 2019 12:00:00 AM";
-//endTime = "May 25, 2019 12:00:00 AM";
-//incomeActual = "6e+23";
-//investAmount = 5000;
-//investCount = 5000;
-//machineCode = M20190516171044433208998;
-//quantity = 5;
-//speedDays = 0;
-//speedEndTime = "May 25, 2019 12:00:00 AM";
-//startTime = "May 19, 2019 12:00:00 AM";
-//status = 0;
-//symbol = ETH;
-//userId = U20190510134951698572996;
+
 
 
 @property (nonatomic ,copy)NSString *amount;
@@ -54,8 +35,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic ,copy)NSString *speedEndTime;
 @property (nonatomic ,copy)NSString *startTime;
 @property (nonatomic ,copy)NSString *status;
+@property (nonatomic ,copy)NSString *statussStr;
 @property (nonatomic ,copy)NSString *symbol;
 @property (nonatomic ,copy)NSString *userId;
+@property (nonatomic ,copy)NSDictionary *machine;
 
 @end
 

@@ -127,8 +127,37 @@
     
     
     UIImageView *QrCode = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 80 - 15, contactLbl.yy + 64, 80, 80)];
-    NSString *address = @"http:www.baidu.com";
-    QrCode.image = [SGQRCodeGenerateManager generateWithDefaultQRCodeData:address imageViewWidth:170];
+    
+    
+    
+    TLNetworking *http = [TLNetworking new];
+    http.showView = self.view;
+    http.code = @"630047";
+    
+    http.parameters[@"ckey"] = @"invite_url";
+    
+    [http postWithSuccess:^(id responseObject) {
+        NSString *h5String = responseObject[@"data"][@"cvalue"];
+        
+        NSString *lang;
+        LangType type = [LangSwitcher currentLangType];
+        if (type == LangTypeSimple || type == LangTypeTraditional) {
+            lang = @"ZH_CN";
+        }else if (type == LangTypeKorean)
+        {
+            lang = @"KO";
+        }else{
+            lang = @"EN";
+            
+        }
+        
+         NSString *address = [NSString stringWithFormat:@"%@?inviteCode=%@&lang=%@",h5String,[TLUser user].userId,lang];
+        QrCode.image = [SGQRCodeGenerateManager generateWithDefaultQRCodeData:address imageViewWidth:170];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
     [backView1 addSubview:QrCode];
     
     

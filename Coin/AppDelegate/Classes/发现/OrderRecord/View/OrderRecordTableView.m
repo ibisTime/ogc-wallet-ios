@@ -45,8 +45,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     
-    OrderRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderRecord forIndexPath:indexPath];
+    
+    NSString *CellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,indexPath.row];
+    // 通过不同标识创建cell实例
+    OrderRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[OrderRecordCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+//    OrderRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderRecord forIndexPath:indexPath];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     cell.models = self.models[indexPath.row];
 //    if (cell.dataArray.count > 0) {

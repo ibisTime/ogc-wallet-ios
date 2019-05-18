@@ -107,7 +107,7 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
+    [self.refreshDelegate refreshTableView:self didSelectRowAtIndexPath:indexPath];
     
 }
 

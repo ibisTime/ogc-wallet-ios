@@ -42,7 +42,7 @@
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [paths objectAtIndex:0];
-    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"JMQBWALLET.db"];
     FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
     
   
@@ -55,7 +55,7 @@
 
     
     if ([dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"select * from ChengWallet where userid like '%@'",[TLUser user].userId];
+        NSString *sql = [NSString stringWithFormat:@"select * from JMQBWALLET where userid like '%@'",[TLUser user].userId];
         FMResultSet *set = [dataBase executeQuery:sql];
         while ([set next])
         {

@@ -21,6 +21,10 @@
     UILabel *dueTimeNameLbl;
     UILabel *earningsNameLbl;
     UIView *lineView;
+    UIImageView *timeImg;
+    
+    NSTimer *_countDownTimer;
+    NSInteger secondsCountDown;
 }
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -55,21 +59,17 @@
         [backView addSubview:timeLbl];
         
         
-        depositLbl = [UILabel labelWithFrame:CGRectMake(timeLbl.xx, nameLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        NSString *text = @"24:00:00后可连存";
-        [depositLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-        NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
-        [attributeStr addAttribute:NSForegroundColorAttributeName
-                             value:kHexColor(@"#F49671")
-                             range:NSMakeRange(0, 8)];
-        depositLbl.attributedText = attributeStr;
+        depositLbl = [UILabel labelWithFrame:CGRectMake(timeLbl.xx, nameLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         
-        [depositLbl sizeToFit];
-        depositLbl.frame = CGRectMake(SCREEN_WIDTH - 30 - 15 - depositLbl.width, nameLbl.yy + 5, depositLbl.width, 20);
+        [depositLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
+        
+        
+        
+        
         [backView addSubview:depositLbl];
         
         
-        UIImageView *timeImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12)];
+        timeImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12)];
         timeImg.image = kImage(@"时间");
         [backView addSubview:timeImg];
         
@@ -126,7 +126,67 @@
 
 -(void)setModel:(MyMillModel *)model
 {
-    stateLbl.text = [NSString stringWithFormat:@"%@ 矿机",model.symbol];
+    
+    stateLbl.text = model.statussStr;
+    if ([model.status isEqualToString:@"0"]) {
+        stateLbl.textColor = kHexColor(@"#1EC153");
+    }
+    if ([model.status isEqualToString:@"1"]) {
+        stateLbl.textColor = kHexColor(@"#1EC153");
+    }
+    if ([model.status isEqualToString:@"2"]) {
+        [stateLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
+    }
+    
+    if ([model.continueFlag isEqualToString:@"1"]) {
+        stateLbl.frame = CGRectMake(nameLbl.xx, 10, (SCREEN_WIDTH - 60)/2, 20);
+        depositLbl.hidden = NO;
+        timeImg.hidden = NO;
+        depositLbl.frame = CGRectMake(timeLbl.xx, nameLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 20);
+        
+        
+        
+        secondsCountDown = [self dateTimeDifferenceWithStartTime:[model.continueStartTime convertToDetailDate]];
+
+        if (secondsCountDown >0) {
+            [_countDownTimer invalidate];
+            _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownAction) userInfo:nil repeats:YES];
+            NSString *str_hour = [NSString stringWithFormat:@"%02ld",secondsCountDown/3600];
+            NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];
+            NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
+            
+            NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可连存",str_hour,str_minute,str_second];
+            NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
+            [attributeStr addAttribute:NSForegroundColorAttributeName
+                                 value:kHexColor(@"#F49671")
+                                 range:NSMakeRange(0, str_hour.length + str_minute.length + str_minute.length + 2)];
+            depositLbl.attributedText = attributeStr;
+            [depositLbl sizeToFit];
+            depositLbl.frame = CGRectMake(SCREEN_WIDTH - 30 - 15 - depositLbl.width, nameLbl.yy + 5, depositLbl.width, 20);
+            timeImg.frame = CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12);
+        }else
+        {
+            NSString *text = @"连存失效";
+            NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
+            [attributeStr addAttribute:NSForegroundColorAttributeName
+                                 value:kHexColor(@"#F49671")
+                                 range:NSMakeRange(0, 0)];
+            depositLbl.attributedText = attributeStr;
+            [depositLbl sizeToFit];
+            depositLbl.frame = CGRectMake(SCREEN_WIDTH - 30 - 15 - depositLbl.width, nameLbl.yy + 5, depositLbl.width, 20);
+            timeImg.frame = CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12);
+        }
+        
+        
+        
+    }else
+    {
+        stateLbl.frame =CGRectMake(nameLbl.xx, 10, (SCREEN_WIDTH - 60)/2, 45);
+        depositLbl.hidden = YES;
+        timeImg.hidden = YES;
+    }
+    
+    
     timeLbl.text = [model.createTime convertDate];
     amountLbl.text = [NSString stringWithFormat:@"%.2fCNY",[model.amount floatValue]*[model.quantity integerValue]];
 //    earningsLbl.text = [NSString stringWithFormat:@"%.2f",[model.incomeActual floatValue]];
@@ -136,6 +196,7 @@
         dueTimeLbl.frame = CGRectMake(earningsNameLbl.xx, lineView.yy + 19, (SCREEN_WIDTH - 30)/3, 22.5);
         dueTimeNameLbl.frame = CGRectMake(earningsLbl.xx, dueTimeLbl.yy + 4, (SCREEN_WIDTH - 30)/3, 16.5);
         numberDaysLbl.hidden = NO;
+        
     }else
     {
         dueTimeLbl.frame = CGRectMake(earningsNameLbl.xx, lineView.yy + 26, (SCREEN_WIDTH - 30)/3, 22.5);
@@ -143,7 +204,91 @@
         numberDaysLbl.hidden = YES;
     }
     
+    numberDaysLbl.frame = CGRectMake(earningsNameLbl.xx , dueTimeNameLbl.yy + 4, (SCREEN_WIDTH - 30)/3, 16.5);
+    
 }
+
+
+-(void)countDownAction{
+    //倒计时-1
+    secondsCountDown--;
+    
+    //重新计算 时/分/秒
+    NSString *str_hour = [NSString stringWithFormat:@"%02ld",secondsCountDown/3600];
+    
+    NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];
+    
+    NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
+    
+    NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可连存",str_hour,str_minute,str_second];
+    NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
+    [attributeStr addAttribute:NSForegroundColorAttributeName
+                         value:kHexColor(@"#F49671")
+                         range:NSMakeRange(0, 8)];
+    depositLbl.attributedText = attributeStr;
+    [depositLbl sizeToFit];
+    depositLbl.frame = CGRectMake(SCREEN_WIDTH - 30 - 15 - depositLbl.width, nameLbl.yy + 5, depositLbl.width, 20);
+    timeImg.frame = CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12);
+    
+    //    NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_minute,str_second];
+    //修改倒计时标签及显示内容
+//    self.stateLbl.text = [NSString stringWithFormat:@"剩余付款时间：%@分%@秒",str_minute,str_second];
+    
+    
+    
+    
+}
+
+
+
+
+//计算日期
+-(NSInteger)dateTimeDifferenceWithStartTime:(NSString *)startTime
+
+{
+    
+    
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *startDate =[formatter dateFromString:startTime];
+    
+    
+    NSDate *now = [NSDate date];
+    NSString *nowstr = [formatter stringFromDate:now];
+    NSDate *nowDate = [formatter dateFromString:nowstr];
+    
+    
+    
+    NSTimeInterval start = [startDate timeIntervalSince1970]*1;
+    NSTimeInterval end = [nowDate timeIntervalSince1970]*1;
+    NSTimeInterval value = start - end;
+    
+    
+    
+    int second = (int)value %60;//秒
+    
+    int minute = (int)value /60%60;
+    
+    int house = (int)value / (24 * 3600)%3600;
+    
+    int day = (int)value / (24 * 3600);
+    
+    NSString *str;
+    
+    NSInteger time;//剩余时间为多少分钟
+
+    
+    time = day*24*60*60 + house*60*60 + minute*60 + second;
+    
+    return time;
+    
+}
+
+
+
+
 
 
 - (void)awakeFromNib {

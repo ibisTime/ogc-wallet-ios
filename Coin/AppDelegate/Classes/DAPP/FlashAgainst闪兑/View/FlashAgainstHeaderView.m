@@ -19,7 +19,6 @@
     
     UILabel *balanceLbl;
     UIButton *allBtn;
-    UILabel *poundageLbl;
     BOOL isHaveDian;
     NSString *ritAmount;
     
@@ -69,6 +68,7 @@
         [self addSubview:leftView];
         
         
+        
         leftLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 50)];
         leftLbl.font = FONT(14);
         [leftLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
@@ -92,6 +92,12 @@
         
         rightImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - rightLbl.width/2 - 20, 10, 30, 30)];
         [rightView addSubview:rightImg];
+        
+        
+        _chooseBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        _chooseBtn.frame = CGRectMake(15, 140, SCREEN_WIDTH - 30, 50);
+        [self addSubview:_chooseBtn];
+        
         
         
         UIView *leftNumberView = [[UIView alloc]initWithFrame:CGRectMake(15, 205, (SCREEN_WIDTH - 45)/2, 45)];
@@ -142,11 +148,11 @@
         [allBtn addTarget:self action:@selector(allBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
         [self addSubview:allBtn];
 
-        poundageLbl = [[UILabel alloc]initWithFrame:CGRectMake(16, 250 + 20.5, 0, 16.5)];
-        poundageLbl.font = FONT(12);
-        poundageLbl.numberOfLines = 2;
-        [poundageLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-        [self addSubview:poundageLbl];
+        _poundageLbl = [[UILabel alloc]initWithFrame:CGRectMake(16, 250 + 20.5, 0, 16.5)];
+        _poundageLbl.font = FONT(12);
+        _poundageLbl.numberOfLines = 2;
+        [_poundageLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
+        [self addSubview:_poundageLbl];
         
         UIButton *exchangeBtn = [[UIButton alloc]initWithFrame:CGRectMake(15, allBtn.yy + 35, SCREEN_WIDTH - 30, 48)];
         [exchangeBtn setTitle:@"兑换" forState:(UIControlStateNormal)];
@@ -155,18 +161,32 @@
         kViewRadius(exchangeBtn, 4);
         exchangeBtn.titleLabel.font = FONT(16);
         [self addSubview:exchangeBtn];
-        
     }
     return self;
 }
 
 -(void)allBtnClick
 {
-//    NSString *amount = [CoinUtil convertToRealCoin:_platforms.amount coin:_platforms.currency];
-//    NSString *rightAmount = [CoinUtil convertToRealCoin:_platforms.frozenAmount coin:_platforms.currency];
-//    NSString *ritAmount = [amount subNumber:rightAmount];
+
     _leftNumberTf.text = [NSString stringWithFormat:@"%@",ritAmount];
-    _rightNumberTf.text = [NSString stringWithFormat:@"%.8f",[_InPrice floatValue] / ([_OutPrice floatValue] - [poundage floatValue]) * [_leftNumberTf.text floatValue]];
+    //    输入价格l
+    CGFloat allPic = [_leftNumberTf.text floatValue];
+    //    比例
+    CGFloat proportion = [_model.feeRate floatValue]/100;
+    //    手续费
+    CGFloat free = allPic * proportion;
+    //    价格比例
+    CGFloat proportionPic = [_InPrice floatValue] / [_OutPrice floatValue];
+    
+    poundage = [CoinUtil mult1:[NSString stringWithFormat:@"%f",free] mult2:@"1" scale:8];
+    NSLog(@"ssssss %@",_leftNumberTf.text);
+    if (allPic != 0) {
+        _rightNumberTf.text = [NSString stringWithFormat:@"%.8f",proportionPic * (allPic - free)];
+    }
+    else
+    {
+        _rightNumberTf.text = @"";
+    }
     [self textField];
 }
 
@@ -174,11 +194,7 @@
 {
     
     UITextField *textfield=[notification object];
-    
-//    CGFloat free;
-//    CGFloat proportion;
-//    CGFloat outPic;
-//    CGFloat inPic;
+
 //    输入价格l
     CGFloat allPic = [textfield.text floatValue];
 //    比例
@@ -213,7 +229,14 @@
     CGFloat B1 = [_OutPrice floatValue];
 
     A = B * B1 / (A1 * (1 - fee));
+    
+    
+    
+    
     _leftNumberTf.text = [NSString stringWithFormat:@"%.8f",A];
+    if ([_leftNumberTf.text floatValue] == 0) {
+        _leftNumberTf.text = @"";
+    }
     poundage = [CoinUtil mult1:[NSString stringWithFormat:@"%f",A * [_model.feeRate floatValue]/100] mult2:@"1" scale:8];
     [self textField];
 }
@@ -223,9 +246,9 @@
 //    [CoinUtil mult1:[NSString stringWithFormat:@"%f",[_leftNumberTf.text floatValue]*[_model.feeRate floatValue]/100] mult2:@"1" scale:8];
     
     
-    poundageLbl.text = [NSString stringWithFormat:@"手续费：≈%@%@",poundage,_model.symbolOut];
-    poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
-    [poundageLbl sizeToFit];
+    _poundageLbl.text = [NSString stringWithFormat:@"手续费：≈%@%@",poundage,_model.symbolOut];
+    _poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
+    [_poundageLbl sizeToFit];
 }
 
 
@@ -249,8 +272,8 @@
     balanceLbl.frame = CGRectMake(16, 250 + 20.5, balanceLbl.width, 16.5);
     allBtn.frame = CGRectMake(balanceLbl.xx + 20, 250 + 15, 50, 27);
     
-    [poundageLbl sizeToFit];
-    poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
+    [_poundageLbl sizeToFit];
+    _poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
     
 }
 

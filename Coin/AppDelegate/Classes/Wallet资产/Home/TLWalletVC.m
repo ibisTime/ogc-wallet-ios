@@ -182,22 +182,6 @@
 }
 
 
-//- (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel
-//{
-//    CoinWeakSelf;
-//    //    实名认证成功后，判断是否设置资金密码
-//    if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-//        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-//        vc.titleString = @"设置交易密码";
-//        [weakSelf.navigationController pushViewController:vc animated:YES];
-//        return;
-//    }
-//    WithdrawalsCoinVC *coinVC = [WithdrawalsCoinVC new];
-//    coinVC.currency = currencyModel;
-//    coinVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:coinVC animated:YES];
-//}
-
 - (void)addNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userlogin) name:kUserLoginNotification object:nil];
@@ -214,9 +198,6 @@
             {
                 [weakSelf saveLocalWalletData];
             }
-            
-//            [weakSelf queryCenterTotalAmount];
-            
         } failure:^{
             [weakSelf.tableView endRefreshHeader];
         }];
@@ -267,7 +248,7 @@
     //                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
     //            }
     //        }
-    NSMutableArray *arr = [[CoinModel coin] getOpenCoinList];
+    NSMutableArray <CoinModel *>*arr = [[CoinModel coin] getOpenCoinList];
     NSMutableArray *muArray = [NSMutableArray array];
     
     NSArray *array = [CustomFMDB FMDBqueryMnemonics];
@@ -276,53 +257,52 @@
             _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:array[i]];
         }
     }
-    
-    
-    
     for (int i = 0; i < arr.count; i++) {
-        CoinModel *model = arr[i];
-        NSArray *array = [_fmdbModel.mnemonics componentsSeparatedByString:@" "];
-        BTCMnemonic *mnemonic1 =  [MnemonicUtil importMnemonic:array];
-        if ([AppConfig config].runEnv == 0)
-        {
-            mnemonic1.keychain.network = [BTCNetwork mainnet];
-        }else{
-            mnemonic1.keychain.network = [BTCNetwork testnet];
-        }
-        NSString *prikey = [MnemonicUtil getPrivateKeyWithMnemonics:_fmdbModel.mnemonics];
-        
-        NSString *address;
-        
-        
-        if ([model.type isEqualToString:@"0"] || [model.type isEqualToString:@"0T"])
-        {
-            address = [MnemonicUtil getAddressWithPrivateKey:prikey];
-        }
-        else if ([model.type isEqualToString:@"1"] || [model.type isEqualToString:@"3"])
-        {
-            address = [MnemonicUtil getBtcAddress:mnemonic1];
-        }else if ([model.type isEqualToString:@"2"] || [model.type isEqualToString:@"2T"])
-        {
-            address = [MnemonicUtil getAddressWithPrivateKey:prikey];
-        }else if ([model.type isEqualToString:@"4"])
-        {
-            TWWalletType type = TWWalletCold;
-            NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
-            NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
-            //    TWWalletAccountClient *client = [[TWWalletAccountClient alloc] initWithGenKey:YES type:type];
-            TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
-            [client store:dic[@"pwd"]];
+        if ([arr[i].symbol isEqualToString:@"ET"]) {
             
-            //    [client store:password];
+        }else
+        {
+            CoinModel *model = arr[i];
+            NSArray *array = [_fmdbModel.mnemonics componentsSeparatedByString:@" "];
+            BTCMnemonic *mnemonic1 =  [MnemonicUtil importMnemonic:array];
+            if ([AppConfig config].runEnv == 0)
+            {
+                mnemonic1.keychain.network = [BTCNetwork mainnet];
+            }else{
+                mnemonic1.keychain.network = [BTCNetwork testnet];
+            }
+            NSString *prikey = [MnemonicUtil getPrivateKeyWithMnemonics:_fmdbModel.mnemonics];
             
-            //    NSString *str = [self base58CheckOwnerAddress];
-            address = [client base58OwnerAddress];
+            NSString *address;
+            
+            
+            if ([model.type isEqualToString:@"0"] || [model.type isEqualToString:@"0T"])
+            {
+                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+            }
+            else if ([model.type isEqualToString:@"1"] || [model.type isEqualToString:@"3"])
+            {
+                address = [MnemonicUtil getBtcAddress:mnemonic1];
+            }else if ([model.type isEqualToString:@"2"] || [model.type isEqualToString:@"2T"])
+            {
+                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
+            }else if ([model.type isEqualToString:@"4"])
+            {
+                TWWalletType type = TWWalletCold;
+                NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+                NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
+                
+                TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
+                [client store:dic[@"pwd"]];
+                address = [client base58OwnerAddress];
+            }
+            [arr[i] setValue:address forKey:@"address"];
+            NSDictionary *coinDic = @{@"symbol":model.symbol,
+                                      @"address":address,
+                                      };
+            [muArray addObject:coinDic];
         }
-        [arr[i] setValue:address forKey:@"address"];
-        NSDictionary *coinDic = @{@"symbol":model.symbol,
-                                  @"address":address,
-                                  };
-        [muArray addObject:coinDic];
+        
     }
     self.addressArray = muArray;
     

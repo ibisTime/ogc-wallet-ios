@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong)UITextField *leftNumberTf;
 @property (nonatomic , strong)UITextField *rightNumberTf;
+@property (nonatomic , strong)UILabel *poundageLbl;
+@property (nonatomic , strong)UIButton *chooseBtn;
+
 @end
 
 NS_ASSUME_NONNULL_END

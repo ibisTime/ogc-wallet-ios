@@ -606,7 +606,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:8]];
     [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+//    NSString *dateString = [dateFormatter stringFromDate:currentDate];
     
 
     NSTimeInterval starttime =  24 * 60 * 60 * 30;

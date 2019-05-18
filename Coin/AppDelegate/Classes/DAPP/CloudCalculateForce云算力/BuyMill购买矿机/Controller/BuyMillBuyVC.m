@@ -7,12 +7,13 @@
 //
 
 #import "BuyMillBuyVC.h"
-
+#import "FlashAgainstVC.h"
 @interface BuyMillBuyVC ()<UITextFieldDelegate>
 {
     CGFloat rmbPrice;
     CGFloat sellerPrice;
     UILabel *orderInformationLbl;
+
 }
 
 @property (nonatomic , strong)UITextField *numberTextField;;
@@ -184,12 +185,20 @@
 
 -(void)exchangeBtnClick
 {
-    
+    FlashAgainstVC *vc = [FlashAgainstVC new];
+    vc.symbol = @"ET";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //购买 
 -(void)determineBtnClick
 {
+    
+    if ([_numberTextField.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入购买台数"];
+        return;
+    }
+    
     TLNetworking *http = [TLNetworking new];
     http.code = @"610100";
     http.parameters[@"userId"] = [TLUser user].userId;
@@ -198,7 +207,7 @@
     http.parameters[@"investCount"] = [NSString stringWithFormat:@"%.f",rmbPrice *[_numberTextField.text floatValue]/sellerPrice];
     [http postWithSuccess:^(id responseObject) {
         
-        [TLAlert alertWithSucces:@"兑换成功"];
+        [TLAlert alertWithSucces:@"购买成功"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });

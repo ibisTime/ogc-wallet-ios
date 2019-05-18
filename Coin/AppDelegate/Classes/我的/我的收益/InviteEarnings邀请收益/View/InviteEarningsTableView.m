@@ -49,7 +49,7 @@ static NSString *identifierCell = @"AccumulatedEarningsCell";
 
     InviteEarningCell *cell = [tableView dequeueReusableCellWithIdentifier:InviteEarning forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     NSArray *array = self.array[indexPath.section];
     if (array.count > 0) {
         cell.model = [InviteEarningsModel mj_objectWithKeyValues:array[indexPath.row]];

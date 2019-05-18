@@ -10,4 +10,18 @@
 
 @implementation MyMillModel
 
+-(NSString *)statussStr
+{
+    if ([_status isEqualToString:@"0"]) {
+        _statussStr = @"待挖矿";
+    }
+    if ([_status isEqualToString:@"1"]) {
+        _statussStr = @"挖矿中";
+    }
+    if ([_status isEqualToString:@"2"]) {
+        _statussStr = @"已失效";
+    }
+    return _statussStr;
+}
+
 @end

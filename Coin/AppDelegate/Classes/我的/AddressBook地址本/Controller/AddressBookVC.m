@@ -50,7 +50,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"addaddress" object:nil];
 }
 
-
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIPasteboard *pasteBoard = [UIPasteboard generalPasteboard];
+    pasteBoard.string = self.models[indexPath.row].address;
+    
+    
+    if (pasteBoard == nil) {
+        
+        [TLAlert alertWithError:[LangSwitcher switchLang:@"复制失败, 请重新复制" key:nil]];
+        
+    } else {
+        
+        [TLAlert alertWithSucces:[LangSwitcher switchLang:@"复制成功" key:nil]];
+    }
+}
 
 
 #pragma mark -- 接收到通知

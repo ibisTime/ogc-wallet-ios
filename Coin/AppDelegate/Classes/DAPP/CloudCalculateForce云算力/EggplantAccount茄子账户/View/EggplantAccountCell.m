@@ -9,21 +9,25 @@
 #import "EggplantAccountCell.h"
 
 @implementation EggplantAccountCell
-
+{
+    UILabel *nameLbl;
+    UILabel *timeLbl;
+    UILabel *priceLbl;
+}
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(15, 17.5, SCREEN_WIDTH - 130, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
+        nameLbl = [UILabel labelWithFrame:CGRectMake(15, 17.5, SCREEN_WIDTH - 130, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
         nameLbl.text=  @"兑换所得";
         [self addSubview:nameLbl];
         
-        UILabel *timeLbl = [UILabel labelWithFrame:CGRectMake(15, nameLbl.yy + 5, SCREEN_WIDTH - 130, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        timeLbl = [UILabel labelWithFrame:CGRectMake(15, nameLbl.yy + 5, SCREEN_WIDTH - 130, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         timeLbl.text=  @"兑换所得";
         [self addSubview:timeLbl];
         
-        UILabel *priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(nameLbl.xx, 0, 100, 75)];
+        priceLbl = [[UILabel alloc] initWithFrame:CGRectMake(nameLbl.xx, 0, 100, 75)];
         priceLbl.textAlignment = NSTextAlignmentRight;
         priceLbl.font = FONT(12);
         priceLbl.textColor = kHexColor(@"#FF6464");
@@ -37,4 +41,35 @@
     }
     return self;
 }
+
+-(void)setModel:(BillModel *)model
+{
+    NSString *countStr = [CoinUtil convertToRealCoin:model.transAmountString
+                                                coin:model.currency];
+    CGFloat money = [countStr doubleValue];
+    
+    //    CoinModel *coin = [CoinUtil getCoinModel:billModel.currency];
+    NSString *moneyStr;
+    if (money > 0) {
+        
+        moneyStr = [NSString stringWithFormat:@"+%@ %@",countStr , model.currency];
+        priceLbl.textColor = kHexColor(@"#47D047");
+        
+       
+        
+        //        [self.iconIV sd_setImageWithURL:[NSURL URLWithString:[coin.pic2 convertImageUrl]]];
+        
+    } else {
+        priceLbl.textColor = kHexColor(@"#FE4F4F");
+        
+        moneyStr = [NSString stringWithFormat:@"%@ %@", countStr, model.currency];
+        
+        
+    }
+    nameLbl.text = model.bizNote;
+    priceLbl.text = moneyStr;
+    
+    timeLbl.text = [model.createDatetime convertRedDate];
+}
+
 @end

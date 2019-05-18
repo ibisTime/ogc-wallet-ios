@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface EggplantAccountHeadView : UIView
 
 @property (nonatomic , strong)UIButton *exchangeBtn;
-
+@property (nonatomic , strong)NSString *amount;
 @end
 
 NS_ASSUME_NONNULL_END

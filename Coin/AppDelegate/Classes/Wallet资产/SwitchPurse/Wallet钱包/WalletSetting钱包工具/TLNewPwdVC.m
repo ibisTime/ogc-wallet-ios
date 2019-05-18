@@ -241,7 +241,7 @@
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [paths objectAtIndex:0];
-    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"ChengWallet.db"];
+    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"JMQBWALLET.db"];
     FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
     
 //    TLDataBase *dataBase = [TLDataBase sharedManager];
@@ -269,7 +269,7 @@
 //
 //    TLDataBase *db = [TLDataBase sharedManager];
     if ([dataBase open]) {
-        NSString *sql = [NSString stringWithFormat:@"UPDATE ChengWallet SET pwd = '%@' WHERE userid = '%@'",self.rePwdTf.text,[TLUser user].userId];
+        NSString *sql = [NSString stringWithFormat:@"UPDATE JMQBWALLET SET pwd = '%@' WHERE userid = '%@'",self.rePwdTf.text,[TLUser user].userId];
         BOOL sucess = [dataBase executeUpdate:sql];
 
         if (sucess == YES) {
