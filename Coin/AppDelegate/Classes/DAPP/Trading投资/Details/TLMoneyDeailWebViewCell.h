@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TLMoneyDeailWebViewCell : UITableViewCell<UIWebViewDelegate>
+
 @property (nonatomic , strong)UIWebView *web;
+
 @end

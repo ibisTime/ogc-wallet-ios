@@ -28,7 +28,6 @@
 
 -(void)setDataArray:(NSMutableArray<FindTheGameModel *> *)dataArray
 {
-    
     self.scrollView.contentSize = CGSizeMake((SCREEN_WIDTH - 50)/3 * dataArray.count, 0);
     for (int i = 0; i < dataArray.count; i ++) {
         
@@ -37,7 +36,8 @@
         backBtn.frame = CGRectMake(i % dataArray.count * (SCREEN_WIDTH - 50)/3, 0, (SCREEN_WIDTH - 50)/3, 110);
         [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
         backBtn.tag = i;
-        [backBtn theme_setBackgroundColorIdentifier:HeaderColor moduleName:ColorName];
+//        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
+        [backBtn theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [self.scrollView addSubview:backBtn];
         
         UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 50)/3/2 - 30, 10, 60, 60)];

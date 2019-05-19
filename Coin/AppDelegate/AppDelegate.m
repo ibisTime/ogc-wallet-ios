@@ -78,6 +78,8 @@
     
     
     [MTThemeManager initializeWithDefaultThemePath:themePath];
+    
+    
     CFAbsoluteTime themeEndTime = CFAbsoluteTimeGetCurrent();
     MTTheme_Log(@"[During]主题注册事件 during in %f seconds.", (themeStartTime - themeEndTime));
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
@@ -87,7 +89,7 @@
     NSString *fontPath = [path stringByAppendingPathComponent:@"Font/Font1"];
     [MTFontManager initializeWithDefaultFontPath:fontPath];
     CFAbsoluteTime fontEndTime = CFAbsoluteTimeGetCurrent();
-//    MTTheme_Log(@"[During]字体注册事件 during in %f seconds.", (fontStartTime - fontEndTime));
+    MTTheme_Log(@"[During]字体注册事件 during in %f seconds.", (fontStartTime - fontEndTime));
     
     
     NSLog(@"================= %@",NSHomeDirectory());

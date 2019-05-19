@@ -16,16 +16,15 @@
     if (self) {
         
         [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
-        
-        
+
         self.web = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
         self.web.delegate = self;
         self.web.scrollView.bounces=NO;
-        self.web.scrollView.showsHorizontalScrollIndicator = NO;
-        self.web.scrollView.scrollEnabled = NO;
+//        self.web.scrollView.showsHorizontalScrollIndicator = NO;
+//        self.web.scrollView.scrollEnabled = NO;
         self.web.backgroundColor = kWhiteColor;
-        self.web.dataDetectorTypes=UIDataDetectorTypeNone;
-        [self.web theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+//        self.web.dataDetectorTypes=UIDataDetectorTypeNone;
+//        [self.web theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [self addSubview:self.web];
     }
     return self;

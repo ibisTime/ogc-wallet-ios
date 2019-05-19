@@ -68,32 +68,22 @@
     }];
 }
 
-
 //购买
 -(void)continBtnClick
 {
-
-    
     TLNetworking *http = [[TLNetworking alloc] init];
     http.showView = self.view;
     http.code = @"625513";
     http.parameters[@"productCode"] = self.moneyModel.code;
     http.parameters[@"userId"] = [TLUser user].userId;
     [http postWithSuccess:^(id responseObject) {
-        
-        
         if ([responseObject[@"data"][@"max"]  integerValue] == 0) {
             [TLAlert alertWithMsg:[LangSwitcher switchLang:@"购买已达上限" key:nil]];
             return;
         }
-        
         PosBuyVC *vc= [PosBuyVC new];
         vc.moneyModel = self.moneyModel;
-        
-        
         [self.navigationController pushViewController:vc animated:YES];
-
-        
     } failure:^(NSError *error) {
         
         
@@ -103,42 +93,42 @@
 
 -(void)refreshTableView:(TLTableView *)refreshTableview scrollView:(UIScrollView *)scroll
 {
-    CGFloat height = (250 - 64 + kNavigationBarHeight);
-////    导航栏
-    if (self.tableView.contentOffset.y <= (250 - kNavigationBarHeight)) {
-        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:64/255.0 green:100/255.0 blue:230/255.0 alpha:self.tableView.contentOffset.y / (250 - kNavigationBarHeight)]] forBarMetrics:UIBarMetricsDefault];
-        
-    }else
-    {
-        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:kTabbarColor] forBarMetrics:UIBarMetricsDefault];
-    }
+//    CGFloat height = (250 - 64 + kNavigationBarHeight);
+//////    导航栏
+//    if (self.tableView.contentOffset.y <= (250 - kNavigationBarHeight)) {
+//        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:64/255.0 green:100/255.0 blue:230/255.0 alpha:self.tableView.contentOffset.y / (250 - kNavigationBarHeight)]] forBarMetrics:UIBarMetricsDefault];
 //
-//    // 获取到tableView偏移量
-    CGFloat Offset_y = scroll.contentOffset.y;
-    // 下拉 纵向偏移量变小 变成负的
-    if ( Offset_y < 0) {
-        // 拉伸后图片的高度
-        CGFloat totalOffset = height - Offset_y;
-        // 图片放大比例
-        CGFloat scale = totalOffset / height;
-        CGFloat width = SCREEN_WIDTH;
-        // 拉伸后图片位置
-        self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);
-    }
+//    }else
+//    {
+//        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:kTabbarColor] forBarMetrics:UIBarMetricsDefault];
+//    }
+////
+////    // 获取到tableView偏移量
+//    CGFloat Offset_y = scroll.contentOffset.y;
+//    // 下拉 纵向偏移量变小 变成负的
+//    if ( Offset_y < 0) {
+//        // 拉伸后图片的高度
+//        CGFloat totalOffset = height - Offset_y;
+//        // 图片放大比例
+//        CGFloat scale = totalOffset / height;
+//        CGFloat width = SCREEN_WIDTH;
+//        // 拉伸后图片位置
+//        self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);
+//    }
 }
 
 
--(UIImage *)imageWithBgColor:(UIColor *)color {
-
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
+//-(UIImage *)imageWithBgColor:(UIColor *)color {
+//
+//    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+//    UIGraphicsBeginImageContext(rect.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    CGContextSetFillColorWithColor(context, [color CGColor]);
+//    CGContextFillRect(context, rect);
+//    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return image;
+//}
 
 
 - (void)viewDidLoad {
@@ -146,29 +136,29 @@
    
     [self initTableView];
 
-    UILabel *nameLable = [[UILabel alloc]init];
-    nameLable.textAlignment = NSTextAlignmentCenter;
-    nameLable.font = Font(18);
-    nameLable.textColor = [UIColor whiteColor];
-    self.navigationItem.titleView = nameLable;
-
-    switch ([LangSwitcher currentLangType]) {
-        case LangTypeEnglish:
-            nameLable.text = self.moneyModel.nameEn;
-            
-            break;
-        case LangTypeKorean:
-            nameLable.text = self.moneyModel.nameKo;
-            
-            break;
-        case LangTypeSimple:
-            nameLable.text = self.moneyModel.nameZhCn;
-            
-            break;
-            
-        default:
-            break;
-    }
+//    UILabel *nameLable = [[UILabel alloc]init];
+//    nameLable.textAlignment = NSTextAlignmentCenter;
+//    nameLable.font = Font(18);
+//    nameLable.textColor = [UIColor whiteColor];
+//    self.navigationItem.titleView = nameLable;
+//
+//    switch ([LangSwitcher currentLangType]) {
+//        case LangTypeEnglish:
+//            nameLable.text = self.moneyModel.nameEn;
+//
+//            break;
+//        case LangTypeKorean:
+//            nameLable.text = self.moneyModel.nameKo;
+//
+//            break;
+//        case LangTypeSimple:
+//            nameLable.text = self.moneyModel.nameZhCn;
+//
+//            break;
+//
+//        default:
+//            break;
+//    }
 
 
     UIButton *continBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"购买" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16];
