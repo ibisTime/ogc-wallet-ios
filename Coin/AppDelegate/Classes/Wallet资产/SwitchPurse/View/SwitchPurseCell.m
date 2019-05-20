@@ -31,7 +31,7 @@
         
         
         allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        allAssetsLbl.text= [LangSwitcher switchLang:@"私钥钱包 总资产（¥）" key:nil];
+        allAssetsLbl.text= [NSString stringWithFormat:@"私钥钱包 总资产（%@）",[TLUser TheTitleSymbol]];
         [whiteView addSubview:allAssetsLbl];
         
         
@@ -52,7 +52,7 @@
 
 -(void)setWalletDic:(NSDictionary *)walletDic
 {
-    allAssetsLbl.text = [NSString stringWithFormat:@"%@ 总资产（¥）",walletDic[@"walletName"]];
+    allAssetsLbl.text = [NSString stringWithFormat:@"%@ 总资产（%@）",walletDic[@"walletName"],[TLUser TheTitleSymbol]];
 }
 
 -(void)setPrice:(NSDictionary *)price

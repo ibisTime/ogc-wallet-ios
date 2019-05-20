@@ -47,7 +47,6 @@
 - (void)initHeaderView {
     UIView *topView = [[UIView alloc] init];
     [self.view addSubview:topView];
-    topView.backgroundColor = kTabbarColor;
     
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -58,27 +57,17 @@
     }];
     
     self.headerView = [[UIView alloc] init];
-    self.headerView = [[UIView alloc] init];
-    self.headerView.layer.cornerRadius=5;
-    self.headerView.layer.shadowOpacity = 0.22;// 阴影透明度
-    self.headerView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-    self.headerView.layer.shadowRadius=3;// 阴影扩散的范围控制
-    self.headerView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
-    self.headerView.backgroundColor = kWhiteColor;
     [self.view addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left).offset(15);
-        make.right.equalTo(self.view.mas_right).offset(-15);
-        make.height.equalTo(@90);
+        make.left.equalTo(self.view.mas_left).offset(5);
+        make.right.equalTo(self.view.mas_right).offset(-5);
+        make.height.equalTo(@110);
     }];
-    //    self.tableView.tableHeaderView = self.headerView;
     UIImageView *icImage = [[UIImageView alloc] init];
     icImage.contentMode = UIViewContentModeScaleToFill;
-    //    icImage.layer.cornerRadius = 25;
-    //    icImage.clipsToBounds = YES;
     [self.headerView addSubview:icImage];
-    icImage.image = kImage(@"提背景");
+    [icImage theme_setImageIdentifier:@"BTC背景" moduleName:ImgAddress];
     
     [icImage mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -116,10 +105,7 @@
 
         }else{
             moneyStr = [NSString stringWithFormat:@"+%@ %@", onlyCountStr, _currentModel.symbol];
-
         }
-        
-        
     } else  {
         if (![_bill.value valid]) {
             onlyCountStr = @"正在打包中,即将到账";
@@ -148,7 +134,7 @@
     
     [textLbl mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(icImage.mas_top).offset(20);
+        make.top.equalTo(icImage.mas_top).offset(30);
         make.centerX.equalTo(icImage.mas_centerX);
         
     }];
@@ -172,22 +158,8 @@
         
     }];
     
-    //    [line mas_makeConstraints:^(MASConstraintMaker *make) {
-    //
-    //        make.top.equalTo(amountLbl.mas_bottom).offset(10);
-    //        make.left.right.equalTo(self.headerView);
-    //        make.height.mas_equalTo(0.5);
-    //
-    //    }];
-    
-    //    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.width.mas_equalTo(SCREEN_WIDTH);
-    //    }];
-    
     [self.headerView layoutIfNeeded];
-    
-    //    self.tableView.tableHeaderView = self.headerView;
-    
+     
 }
 
 - (void)initTableView {

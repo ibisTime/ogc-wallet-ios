@@ -37,6 +37,9 @@
 		1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */; };
 		1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */; };
 		1F2E00C5227EE12000FE79C8 /* Theme in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E00C4227EE11F00FE79C8 /* Theme */; };
+		1F35701922928FF6004A24E7 /* FeedBookDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35701822928FF5004A24E7 /* FeedBookDetailsVC.m */; };
+		1F35701C2292936E004A24E7 /* FeedBookDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35701B2292936E004A24E7 /* FeedBookDetailsTableView.m */; };
+		1F35701F229293A0004A24E7 /* FeedBookDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35701E229293A0004A24E7 /* FeedBookDetailsCell.m */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
 		1F4731C6221A92CB007B5908 /* 1080的.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4731C5221A92C9007B5908 /* 1080的.png */; };
@@ -763,6 +766,12 @@
 		1F1BFFFE21E49391000BEBD3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		1F1BFFFF21E49391000BEBD3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
 		1F2E00C4227EE11F00FE79C8 /* Theme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Theme; sourceTree = "<group>"; };
+		1F35701722928FF5004A24E7 /* FeedBookDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBookDetailsVC.h; sourceTree = "<group>"; };
+		1F35701822928FF5004A24E7 /* FeedBookDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBookDetailsVC.m; sourceTree = "<group>"; };
+		1F35701A2292936E004A24E7 /* FeedBookDetailsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBookDetailsTableView.h; sourceTree = "<group>"; };
+		1F35701B2292936E004A24E7 /* FeedBookDetailsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBookDetailsTableView.m; sourceTree = "<group>"; };
+		1F35701D229293A0004A24E7 /* FeedBookDetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBookDetailsCell.h; sourceTree = "<group>"; };
+		1F35701E229293A0004A24E7 /* FeedBookDetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBookDetailsCell.m; sourceTree = "<group>"; };
 		1F35826421870D8C00F1665B /* NewHelpCentetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHelpCentetVC.m; sourceTree = "<group>"; };
 		1F35826521870D8E00F1665B /* NewHelpCentetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpCentetVC.h; sourceTree = "<group>"; };
 		1F358B3B218ABC4500F1665B /* USDTRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTRecordModel.h; sourceTree = "<group>"; };
@@ -2451,7 +2460,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		1F358B3A218AA43A00F1665B /* ScratchableLatex九宫格 */ = {
+		1F358B3A218AA43A00F1665B /* ScratchableLatex手势密码 */ = {
 			isa = PBXGroup;
 			children = (
 				B88B59272109B2EE00F20D1B /* ZLGestureLockIndicator.h */,
@@ -2461,7 +2470,7 @@
 				B88B59252109B2ED00F20D1B /* ZLGestureLockViewController.h */,
 				B88B59262109B2EE00F20D1B /* ZLGestureLockViewController.m */,
 			);
-			path = "ScratchableLatex九宫格";
+			path = "ScratchableLatex手势密码";
 			sourceTree = "<group>";
 		};
 		1F358B3E218ADFDA00F1665B /* View */ = {
@@ -5218,6 +5227,12 @@
 				B8CAA14F2115FC6B00695BC3 /* QuestionListTableView.m */,
 				B8CAA15A211611D000695BC3 /* questionListCells.h */,
 				B8CAA15B211611D000695BC3 /* questionListCells.m */,
+				1F35701722928FF5004A24E7 /* FeedBookDetailsVC.h */,
+				1F35701822928FF5004A24E7 /* FeedBookDetailsVC.m */,
+				1F35701A2292936E004A24E7 /* FeedBookDetailsTableView.h */,
+				1F35701B2292936E004A24E7 /* FeedBookDetailsTableView.m */,
+				1F35701D229293A0004A24E7 /* FeedBookDetailsCell.h */,
+				1F35701E229293A0004A24E7 /* FeedBookDetailsCell.m */,
 			);
 			path = "Feedback意见反馈";
 			sourceTree = "<group>";
@@ -5452,7 +5467,7 @@
 				B83666F2210EAF470065DF18 /* LocalSettingTableView.m */,
 				211A34F21FB430F900FEB71F /* SettingCell.h */,
 				211A34F31FB430F900FEB71F /* SettingCell.m */,
-				1F358B3A218AA43A00F1665B /* ScratchableLatex九宫格 */,
+				1F358B3A218AA43A00F1665B /* ScratchableLatex手势密码 */,
 				1F76698821D61D0500006B41 /* ChangePhoneAndEmail */,
 				1F76698721D61B5D00006B41 /* ChangePassword */,
 				1F1B000921E49BB8000BEBD3 /* BindingEmail */,
@@ -5585,22 +5600,22 @@
 		B8CAA11B21158FF200695BC3 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				B8CAA11C21158FF200695BC3 /* LPDPhotoPreviewController.m */,
+				B8CAA12821158FF200695BC3 /* NSBundle+LPDImagePicker.h */,
 				B8CAA11D21158FF200695BC3 /* LPDPhotoArrangeCVlLayout.h */,
-				B8CAA11E21158FF200695BC3 /* LPDImageManager.h */,
-				B8CAA11F21158FF200695BC3 /* UIImage+MyBundle.m */,
+				B8CAA12B21158FF200695BC3 /* LPDAssetCell.h */,
 				B8CAA12021158FF200695BC3 /* LPDAssetCell.m */,
 				B8CAA12121158FF200695BC3 /* LPDQuoteImagesView.h */,
 				B8CAA12221158FF200695BC3 /* LPDPhotoPreviewCell.h */,
+				B8CAA12921158FF200695BC3 /* LPDPhotoArrangeCell.m */,
+				B8CAA11F21158FF200695BC3 /* UIImage+MyBundle.m */,
 				B8CAA12321158FF200695BC3 /* UIView+HandyValue.m */,
 				B8CAA12421158FF200695BC3 /* LPDImagePickerController.h */,
 				B8CAA12521158FF200695BC3 /* LPDVideoPlayerController.m */,
 				B8CAA12621158FF200695BC3 /* LPDAssetModel.m */,
 				B8CAA12721158FF200695BC3 /* LPDProgressView.m */,
-				B8CAA12821158FF200695BC3 /* NSBundle+LPDImagePicker.h */,
-				B8CAA12921158FF200695BC3 /* LPDPhotoArrangeCell.m */,
+				B8CAA11E21158FF200695BC3 /* LPDImageManager.h */,
 				B8CAA12A21158FF200695BC3 /* LPDPhotoPickerController.h */,
-				B8CAA12B21158FF200695BC3 /* LPDAssetCell.h */,
+				B8CAA11C21158FF200695BC3 /* LPDPhotoPreviewController.m */,
 				B8CAA12C21158FF200695BC3 /* LPDImagePickerController.bundle */,
 				B8CAA12D21158FF200695BC3 /* LPDImageManager.m */,
 				B8CAA12E21158FF200695BC3 /* UIImage+MyBundle.h */,
@@ -6076,6 +6091,7 @@
 				1F7668F221D4A32700006B41 /* BTCTransaction.m in Sources */,
 				1F6D9E612281716D0057A756 /* TodoModel.m in Sources */,
 				1F7668FA21D4A32700006B41 /* BTCMnemonic.m in Sources */,
+				1F35701F229293A0004A24E7 /* FeedBookDetailsCell.m in Sources */,
 				1F73670F2252FEFA00135F7E /* sha3.c in Sources */,
 				1F76690421D4A32700006B41 /* BTCPriceSource+Tests.m in Sources */,
 				1F76690E21D4A32700006B41 /* BTCProtocolBuffers.m in Sources */,
@@ -6388,12 +6404,14 @@
 				7A2CC664215BBC2900B27E2D /* PosMyInvestmentDetailsVC.m in Sources */,
 				B8F63EE320D397B000556150 /* WalletLocalWebVC.m in Sources */,
 				1F766A2F21DE0F0B00006B41 /* PayFailureVC.m in Sources */,
+				1F35701C2292936E004A24E7 /* FeedBookDetailsTableView.m in Sources */,
 				1F9C80DB22421B3A00DFA9C3 /* CustomFMDB.m in Sources */,
 				1FA56AF3223CD6A70077FE54 /* YYTextArchiver.m in Sources */,
 				1F7669F921DDA5BF00006B41 /* UIColor+Extra.m in Sources */,
 				2129FE6F1FDFBAA3009DA374 /* ChangeLoginPwdVC.m in Sources */,
 				1F7669FF21DDDA8400006B41 /* InvestmentBuyCell.m in Sources */,
 				211A532F1FBFE4CF00CC6294 /* RateDescCell.m in Sources */,
+				1F35701922928FF6004A24E7 /* FeedBookDetailsVC.m in Sources */,
 				1F76692221D4A32700006B41 /* BTCPaymentMethodRequest.m in Sources */,
 				7A07F805216C84F30026EB7A /* SCChart.m in Sources */,
 				1F7669FC21DDA5BF00006B41 /* UIBezierPath+curved.m in Sources */,

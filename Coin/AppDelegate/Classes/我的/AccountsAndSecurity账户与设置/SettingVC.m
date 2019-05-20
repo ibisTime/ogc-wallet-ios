@@ -176,15 +176,29 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
-    if (indexPath.row == 1) {
-        
-    }
     if (indexPath.row == 2) {
+        MyBankCardVC *vc = [[MyBankCardVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 3) {
+        if ([TLUser isBlankString:[TLUser user].idNo] == YES)
+        {
+            ZQOCRScanEngine *engine = [[ZQOCRScanEngine alloc] init];
+            engine.delegate = self;
+            engine.appKey = @"nJXnQp568zYcnBdPQxC7TANqakUUCjRZqZK8TrwGt7";
+            engine.secretKey = @"887DE27B914988C9CF7B2DEE15E3EDF8";
+            [engine startOcrScanIdCardInViewController:self];
+        }
+    }
+//    if (indexPath.row == 3) {
+//        
+//    }
+    if (indexPath.row == 4) {
         TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
         vc.titleString = @"修改登录密码";
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 5) {
         if ([TLUser isBlankString:[TLUser user].email] == YES) {
             BindingEmailVC *vc = [BindingEmailVC new];
             vc.titleStr = @"绑定邮箱";
@@ -196,7 +210,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 6) {
         if ([TLUser isBlankString:[TLUser user].mobile] == YES)
         {
             BindingEmailVC *vc = [BindingEmailVC new];

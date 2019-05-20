@@ -111,7 +111,7 @@
     timeLbl.textAlignment = NSTextAlignmentRight;
     timeLbl.font = FONT(14);
     timeLbl.textColor = kHexColor(@"#999999");
-    timeLbl.text = [self.model.updateDatetime convertToDetailDate];
+    timeLbl.text = self.model.publishDatetime;
     [backView1 addSubview:timeLbl];
     
     

@@ -236,13 +236,7 @@ typedef NS_ENUM(NSInteger, AddressType) {
     
     
     
-    if ([self.currency.currency isEqualToString:@"BTC"]) {
-        [self AcquisitionFeeCurrency:@"btc_withdraw_fee"];
-    }else
-    {
-        [self AcquisitionFeeCurrency:@"usdt_withdraw_fee"];
-    }
-    
+    [self AcquisitionFeeCurrency:[NSString stringWithFormat:@"%@_withdraw_fee",self.currency.currency]];
     
     
     [backView1 addSubview:poundageLabel];

@@ -170,7 +170,7 @@
 
     }
     nameLabel.font = [UIFont systemFontOfSize:14];
-    nameLabel.textColor = kTextColor;
+    [nameLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
    
     
     // 九宫格指示器 小图
@@ -193,7 +193,7 @@
     
     statusLabel.text = self.isCheck == YES ? [LangSwitcher switchLang:@"请输入手势密码" key:nil] :[LangSwitcher switchLang:@"绘制手势密码" key:nil] ;
     statusLabel.font = [UIFont systemFontOfSize:14];
-    statusLabel.textColor = kTextColor2;
+    [statusLabel theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     [self.view addSubview:statusLabel];
     self.statusLabel = statusLabel;
     
@@ -203,7 +203,7 @@
 
     ZLGestureLockView *gestureLockView = [[ZLGestureLockView alloc]initWithFrame:CGRectMake(0, f2, self.view.frame.size.width, self.view.frame.size.width)];
     gestureLockView.delegate = self;
-    
+    [gestureLockView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [self.view addSubview:gestureLockView];
     self.gestureLockView = gestureLockView;
     
@@ -222,24 +222,10 @@
         make.height.equalTo(@20);
     }];
     
-    // 重新绘制按钮
-//     UILabel *resetPswBtn = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:16];
-//
-//    resetPswBtn.text = [LangSwitcher switchLang:@"重新hui'z" key:nil];
-//    [resetPswBtn addTarget:self action:@selector(resetGesturePassword:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.view addSubview:resetPswBtn];
-//    self.resetPswBtn = resetPswBtn;
-    
+
     // 忘记手势密码按钮
      UILabel *forgetPswBtn = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:16];
-//    UIButton *forgetPswBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    forgetPswBtn.frame = CGRectMake(kScreenWidth - 50 - 100, kHeight(600), 80, 17);
-
-//    forgetPswBtn.backgroundColor = kClearColor;
     forgetPswBtn.text = @"忘记密码";
-//    [LangSwitcher switchLang:@"忘记密码" key:nil];
-//
-//    [forgetPswBtn addTarget:self action:@selector(forgetGesturesPassword:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:forgetPswBtn];
     self.forgetPswBtn = forgetPswBtn;
     
@@ -249,6 +235,8 @@
         make.width.equalTo(@80);
         make.height.equalTo(@20);
     }];
+    
+    
     UILabel *lab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:14];
     lab.text = [LangSwitcher switchLang:@"切换登录" key:nil];
     lab.userInteractionEnabled = YES;
@@ -266,23 +254,6 @@
     }];
    }
     
-//    UILabel *lab2 = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor font:14];
-//    lab2.text =[LangSwitcher switchLang:@"忘记手势密码?" key:nil];
-//    lab2.userInteractionEnabled = YES;
-//
-//    lab2.textAlignment = NSTextAlignmentLeft;
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(forgetGesturesPassword:)];
-//    if (self.isCheck == YES) {
-//        [self.view addSubview:lab2];
-//        [lab2 addGestureRecognizer:tap];
-//
-//        [lab2 mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(@20);
-//            make.top.equalTo(self.gestureLockView.mas_bottom).offset(50);
-//            make.width.equalTo(@100);
-//            make.height.equalTo(@40);
-//        }];
-//    }
    
 }
 

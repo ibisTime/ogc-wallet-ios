@@ -96,7 +96,7 @@
 {
     if ([[USERDEFAULTS objectForKey:@"mnemonics"] isEqualToString:@""]) {
         self.nameLable.text = [LangSwitcher switchLang:@"零用钱包" key:nil];
-        allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
+        allAssetsLbl.text= [NSString stringWithFormat:@"零用钱包 总资产（%@）",[TLUser TheTitleSymbol]];
         allAssetsLbl.frame = CGRectMake(35, 44, SCREEN_WIDTH - 60, 20);
         youImg.hidden = YES;
     }else
@@ -108,7 +108,7 @@
             if ([array[i][@"mnemonics"] isEqualToString:[USERDEFAULTS objectForKey:@"mnemonics"]]) {
                 youImg.hidden = NO;
                 _fmdbModel = [CustomFMDBModel mj_objectWithKeyValues:array[i]];
-                allAssetsLbl.text= [NSString stringWithFormat:@"%@ 总资产（¥）",_fmdbModel.walletName];
+                allAssetsLbl.text= [NSString stringWithFormat:@"%@ 总资产（%@）",_fmdbModel.walletName,[TLUser TheTitleSymbol]];
                 [allAssetsLbl sizeToFit];
                 allAssetsLbl.frame = CGRectMake(35, 44, allAssetsLbl.width, 20);
                 youImg.frame = CGRectMake(allAssetsLbl.xx + 5, 44 + 4, 7, 12);

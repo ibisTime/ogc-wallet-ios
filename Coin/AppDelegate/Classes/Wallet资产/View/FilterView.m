@@ -55,8 +55,8 @@
         
         _filterPicker.delegate = self;
         _filterPicker.dataSource = self;
-        
-        _filterPicker.backgroundColor = [UIColor whiteColor];
+        [_filterPicker theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
+//        _filterPicker.backgroundColor = [UIColor whiteColor];
 
 //        [self.pickerView addSubview:_filterPicker];
     }
@@ -75,14 +75,14 @@
     //背景
     self.pickerView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, 250)];
     
-    self.pickerView.backgroundColor = kWhiteColor;
-    
+//    self.pickerView.backgroundColor = kWhiteColor;
+    [self.pickerView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     [self addSubview:self.pickerView];
     //取消
     UIButton *cancelBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"取消" key:nil] titleColor:kTextColor2 backgroundColor:kClearColor titleFont:15.0];
     
     [cancelBtn addTarget:self action:@selector(hide) forControlEvents:UIControlEventTouchUpInside];
-    
+    [cancelBtn theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [self.pickerView addSubview:cancelBtn];
     [cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -115,7 +115,7 @@
     //确定
     UIButton *confirmBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确定" key:nil] 
                                           titleColor:kHexColor(@"108ee9") backgroundColor:kClearColor titleFont:15.0];
-    
+    [confirmBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [confirmBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
     
     [self.pickerView addSubview:confirmBtn];
@@ -130,8 +130,8 @@
     //分割线
     UIView *line = [[UIView alloc] init];
     
-    line.backgroundColor = kLineColor;
-    
+//    line.backgroundColor = kLineColor;
+    [line theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self.pickerView addSubview:line];
     [line mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -271,11 +271,11 @@
     
     if (!pickerLabel){
         pickerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 40)];
-        pickerLabel.textColor = [UIColor colorWithRed:51.0/255
-                                                green:51.0/255
-                                                 blue:51.0/255
-                                                alpha:1.0];
-        
+//        pickerLabel.textColor = [UIColor colorWithRed:51.0/255
+//                                                green:51.0/255
+//                                                 blue:51.0/255
+//                                                alpha:1.0];
+        [pickerLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
 //        pickerLabel.adjustsFontSizeToFitWidth = YES;
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
         [pickerLabel setBackgroundColor:[UIColor clearColor]];

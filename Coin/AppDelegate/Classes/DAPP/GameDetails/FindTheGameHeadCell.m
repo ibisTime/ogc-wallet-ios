@@ -90,11 +90,6 @@
     provenance.text = GameModel.company;
     
     
-//    UIImageView *image1 = [self viewWithTag:1000];
-//    UIImageView *image2 = [self viewWithTag:1001];
-//    UIImageView *image3 = [self viewWithTag:1002];
-//    UIImageView *image4 = [self viewWithTag:1003];
-//    UIImageView *image5 = [self viewWithTag:1004];
     
     
     UILabel *label;
@@ -102,13 +97,11 @@
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(headImage.xx + 15, provenance.yy + 8, SCREEN_WIDTH - headImage.xx - 15, 56)];
     [self addSubview:backView];
     
-//    NSArray *nameArray = @[@"菠菜类",@"雅安成产第三节课",@"哈施法速度发生的",@"全微分",@"安慰和飞机都是服务器和父亲为范围防火墙伍尔夫"];
+
     for (int i = 0; i < GameModel.labelList.count; i ++) {
-//        if (i == 8) {
-//            return;
-//        }
         UILabel *theLabel = [UILabel labelWithFrame:CGRectZero textAligment:(NSTextAlignmentCenter) backgroundColor:RGB(247, 201, 84) font:FONT(12) textColor:kWhiteColor];
-        theLabel.backgroundColor = RGB(220, 220, 220);
+        [theLabel theme_setBackgroundColorIdentifier:@"gamethetitletextColor" moduleName:ColorName];
+        [theLabel theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         theLabel.text = GameModel.labelList[i];
         if (i == 0) {
             [theLabel sizeToFit];

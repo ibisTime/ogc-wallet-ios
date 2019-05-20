@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>gamethetitletextColor</key>
+	<string>0xF5F5F5</string>
 	<key>白色</key>
 	<string></string>
 	<key>cellcolor1</key>

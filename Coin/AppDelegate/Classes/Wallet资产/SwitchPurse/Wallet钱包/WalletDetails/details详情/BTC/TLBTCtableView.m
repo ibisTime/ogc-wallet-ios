@@ -50,6 +50,7 @@ static NSString *identifierCell = @"BTCDetailModel";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     cell = [tableView dequeueReusableCellWithIdentifier:identifierCell];
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     NSArray *textArr = @[
                          [LangSwitcher switchLang:@"收款地址" key:nil],
                          [LangSwitcher switchLang:@"转出地址" key:nil],
@@ -112,10 +113,10 @@ static NSString *identifierCell = @"BTCDetailModel";
         NSString *postAmount = [CoinUtil convertToRealCoin:_bill.txFee coin:_currentModel.symbol];
         
         
-        NSArray *rightArr = @[toAdress, formAdress, postAmount, height,texthash,dateStr,@"  "];
+//        NSArray *rightArr = @[toAdress, formAdress, postAmount, height,texthash,dateStr,@"  "];
         
         [cell localInfoWithData:textArr index:indexPath.row];
-        [cell localInfoWithRightData:rightArr index:indexPath.row];
+//        [cell localInfoWithRightData:rightArr index:indexPath.row];
         cell.titleLbl.frame = CGRectMake(15, 18, 0, 14);
         [cell.titleLbl sizeToFit];
         cell.rightLabel.frame = CGRectMake(cell.titleLbl.xx + 10, 18, SCREEN_WIDTH - cell.titleLbl.xx - 25, 0);

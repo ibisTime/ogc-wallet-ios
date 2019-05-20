@@ -46,7 +46,10 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    if (self.topModel.count > 0) {
+        return 3;
+    }
+    return 2;
 }
 
 
@@ -102,7 +105,7 @@
         return 160 - 64;
     }
     if (indexPath.section == 1) {
-        return 249;
+        return 200;
     }
     return 60;
 
@@ -118,7 +121,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 
     if (section == 2) {
-        return 30;
+        return 50;
     }
     return 0.01;
 }
@@ -141,7 +144,7 @@
         [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [headView addSubview:backView];
 
-        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#333333")];
+        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#333333")];
         nameLabel.text = [LangSwitcher switchLang:@"全球收益榜" key:nil];
         [backView addSubview:nameLabel];
         return headView;

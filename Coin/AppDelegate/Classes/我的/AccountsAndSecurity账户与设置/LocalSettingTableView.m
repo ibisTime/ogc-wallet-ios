@@ -39,7 +39,7 @@ static NSString *identifierCell = @"SettingCell";
     
     
     NSArray *array = self.dataArray[section];
-    return 5;
+    return 7;
 //    if (section == 0) {
 //        if (self.dataArray.count >= 2) {
 //            return 2;
@@ -90,7 +90,7 @@ static NSString *identifierCell = @"SettingCell";
 //
 //    }
     
-    NSArray *array = @[@"交易密码",@"手势密码",@"修改登录密码",@"绑定/修改邮箱",@"绑定/修改手机号"];
+    NSArray *array = @[@"交易密码",@"手势密码",@"我的收款账号",@"身份认证",@"修改登录密码",@"绑定/修改邮箱",@"绑定/修改手机号"];
     NSString *name = array[indexPath.row];
     cell.titleLbl.text = [LangSwitcher switchLang:array[indexPath.row] key:nil];
     
@@ -125,43 +125,43 @@ static NSString *identifierCell = @"SettingCell";
         }
     }
     
-    NSRange rang = NSMakeRange(3, 4);
-    if ([name isEqualToString:@"绑定邮箱"]) {
-        if ([TLUser isBlankString:[TLUser user].email] == NO)
-        {
-            cell.arrowHidden = YES;
-            cell.rightLabel.hidden = NO;
-            
-            
-            if ([TLUser user].email.length>10) {
-                cell.rightLabel.text =[[TLUser user].email stringByReplacingCharactersInRange:rang withString:@"****"];
-            }else
-            {
-                cell.rightLabel.text = [TLUser user].email;
-            }
-        }
-        else
-        {
-            cell.rightLabel.hidden = YES;
-            cell.arrowHidden = NO;
-        }
-    }
-    
-    
-    
-    if ([name isEqualToString:@"绑定手机号码"]) {
-        if ([TLUser isBlankString:[TLUser user].mobile] == NO)
-        {
-            cell.arrowHidden = YES;
-            cell.rightLabel.hidden = NO;
-            cell.rightLabel.text = [[TLUser user].mobile stringByReplacingCharactersInRange:rang withString:@"****"];
-        }
-        else
-        {
-            cell.rightLabel.hidden = YES;
-            cell.arrowHidden = NO;
-        }
-    }
+//    NSRange rang = NSMakeRange(3, 4);
+//    if ([name isEqualToString:@"绑定邮箱"]) {
+//        if ([TLUser isBlankString:[TLUser user].email] == NO)
+//        {
+//            cell.arrowHidden = YES;
+//            cell.rightLabel.hidden = NO;
+//
+//
+//            if ([TLUser user].email.length>10) {
+//                cell.rightLabel.text =[[TLUser user].email stringByReplacingCharactersInRange:rang withString:@"****"];
+//            }else
+//            {
+//                cell.rightLabel.text = [TLUser user].email;
+//            }
+//        }
+//        else
+//        {
+//            cell.rightLabel.hidden = YES;
+//            cell.arrowHidden = NO;
+//        }
+//    }
+//
+//
+//
+//    if ([name isEqualToString:@"绑定手机号码"]) {
+//        if ([TLUser isBlankString:[TLUser user].mobile] == NO)
+//        {
+//            cell.arrowHidden = YES;
+//            cell.rightLabel.hidden = NO;
+//            cell.rightLabel.text = [[TLUser user].mobile stringByReplacingCharactersInRange:rang withString:@"****"];
+//        }
+//        else
+//        {
+//            cell.rightLabel.hidden = YES;
+//            cell.arrowHidden = NO;
+//        }
+//    }
 
     
     

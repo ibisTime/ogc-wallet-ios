@@ -46,7 +46,7 @@ static NSString *identifierCell = @"CommentCell";
     if (!cell) {
         cell = [[CommentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifierCell];
     }
-
+    [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.address = self.address;
     cell.utModel = self.utxis[indexPath.section];

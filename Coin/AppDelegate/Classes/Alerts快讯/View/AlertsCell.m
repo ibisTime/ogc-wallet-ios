@@ -88,7 +88,7 @@
 
 -(void)setModel:(AlertsModel *)model
 {
-    _timeLbl.text = [model.updateDatetime convertToDetailDate];
+    _timeLbl.text = model.publishDatetime;
     NSString *string = model.content;
     NSRange startRange = [string rangeOfString:@"【"];
     NSRange endRange = [string rangeOfString:@"】"];

@@ -64,7 +64,7 @@
 - (void)initHeaderView {
     UIView *topView = [[UIView alloc] init];
     [self.view addSubview:topView];
-    topView.backgroundColor = kTabbarColor;
+//    topView.backgroundColor = kTabbarColor;
     
     [topView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top);
@@ -75,24 +75,19 @@
     }];
 
     self.headerView = [[UIView alloc] init];
-    self.headerView.layer.cornerRadius=5;
-    self.headerView.layer.shadowOpacity = 0.22;// 阴影透明度
-    self.headerView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
-    self.headerView.layer.shadowRadius=3;// 阴影扩散的范围控制
-    self.headerView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
-    self.headerView.backgroundColor = kWhiteColor;
     [self.view addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top).offset(10);
-        make.left.equalTo(self.view.mas_left).offset(15);
-        make.right.equalTo(self.view.mas_right).offset(-15);
-        make.height.equalTo(@90);
+        make.top.equalTo(self.view.mas_top).offset(5);
+        make.left.equalTo(self.view.mas_left).offset(5);
+        make.right.equalTo(self.view.mas_right).offset(-5);
+        make.height.equalTo(@110);
     }];
 
     UIImageView *icImage = [[UIImageView alloc] init];
     icImage.contentMode = UIViewContentModeScaleToFill;
+    [icImage theme_setImageIdentifier:@"BTC背景" moduleName:ImgAddress];
     [self.headerView addSubview:icImage];
-    icImage.image = kImage(@"提背景");
+//    icImage.image = kImage(@"提背景");
     
     [icImage mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -124,7 +119,7 @@
     
     [textLbl mas_makeConstraints:^(MASConstraintMaker *make) {
 
-        make.top.equalTo(icImage.mas_top).offset(20);
+        make.top.equalTo(icImage.mas_top).offset(30);
         make.centerX.equalTo(icImage.mas_centerX);
 
     }];

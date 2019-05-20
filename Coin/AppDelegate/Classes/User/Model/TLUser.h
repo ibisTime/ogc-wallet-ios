@@ -142,7 +142,7 @@
 + (NSString *)TextFieldTextColor;
 + (NSString *)LineColor;
 //+ (NSString *)stringByNotRounding:(double)price afterPoint:(int)position;
-
++(NSString *)TheTitleSymbol;
 @end
 
 FOUNDATION_EXTERN  NSString *const kUserLoginNotification;

@@ -38,7 +38,7 @@
     [self addSubview:self.nameLab];
 
     self.stateLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:14];
-    self.stateLab.frame = CGRectMake(self.nameLab.xx, 16, SCREEN_WIDTH - 44 - self.nameLab.xx, 22.5);
+    self.stateLab.frame = CGRectMake(self.nameLab.xx, 16, SCREEN_WIDTH - 37 - self.nameLab.xx, 22.5 + 21.5);
     self.stateLab.textAlignment = NSTextAlignmentRight;
     [self addSubview:self.stateLab];
 
@@ -47,11 +47,11 @@
     [self addSubview:self.timeLab];
     
 
-    self.desLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor2 font:11];
-    self.desLab.numberOfLines = 0;
-    self.desLab.frame = CGRectMake(self.timeLab.xx , self.nameLab.yy + 5, SCREEN_WIDTH - 44 - self.timeLab.xx, 16.5);
-    self.desLab.textAlignment = NSTextAlignmentRight;
-    [self addSubview:self.desLab];
+//    self.desLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor2 font:11];
+//    self.desLab.numberOfLines = 0;
+//    self.desLab.frame = CGRectMake(self.timeLab.xx , self.nameLab.yy + 5, SCREEN_WIDTH - 44 - self.timeLab.xx, 16.5);
+//    self.desLab.textAlignment = NSTextAlignmentRight;
+//    [self addSubview:self.desLab];
     
     self.moreButton = [UIButton buttonWithTitle:@"" titleColor:kClearColor backgroundColor:kClearColor titleFont:12];
     self.moreButton.frame = CGRectMake(SCREEN_WIDTH - 15 - 7, 75/2 - 6, 7, 12);
@@ -79,100 +79,25 @@
 {
     _model = model;
     self.nameLab.text = [TLUser user].nickname;
+    self.timeLab.text = [model.commitDatetime convertRedDate];
     if ([model.status isEqualToString:@"0"]) {
         self.stateLab.text = [LangSwitcher switchLang:@"待确认" key:nil];
-//        self.stateLab.textColor = kHexColor(@"#007AFF ");
-        self.desLab.text = [LangSwitcher switchLang:@"奖励确认中" key:nil];
-        self.timeLab.text = [model.commitDatetime convertRedDate];
     }else if ([model.status isEqualToString:@"1"])
     {
-        
-        self.stateLab.text = [LangSwitcher switchLang:@"已确认,待奖励" key:nil];
-        self.stateLab.textColor = kTextColor2;
-        NSString *type ;
-        if ([self.model.level isEqualToString:@"1"]) {
-            type = [LangSwitcher switchLang:@"严重缺陷" key:nil];
-        }else if ([self.model.level isEqualToString:@"2"])
-        {
-            type = [LangSwitcher switchLang:@"一般缺陷" key:nil];
-
-        }else{
-            type = [LangSwitcher switchLang:@"优化缺陷" key:nil];
-
-        }
-
-        self.desLab.text = [LangSwitcher switchLang:@"奖励发放中" key:nil];
-        self.timeLab.text = [model.commitDatetime convertRedDate];
-        
+        self.stateLab.text = [LangSwitcher switchLang:@"问题解决中" key:nil];
     }else if ([model.status isEqualToString:@"2"])
     {
-        
-        self.stateLab.text = [LangSwitcher switchLang:@"复现不成功" key:nil];
-        self.stateLab.textColor = kHexColor(@"#FE4F4F");
-        self.desLab.text = [LangSwitcher switchLang:@"奖励0" key:nil];
-        self.timeLab.text = [model.commitDatetime convertRedDate];
-        
-    }
-    else
+        self.stateLab.text = [LangSwitcher switchLang:@"反馈失败" key:nil];
+    }else
     {
-        
-        self.stateLab.text = [LangSwitcher switchLang:@"已领取" key:nil];
-        self.stateLab.textColor = kTextColor2;
-        NSString *type ;
-        if ([self.model.level isEqualToString:@"1"]) {
-            type = [LangSwitcher switchLang:@"严重缺陷" key:nil];
-        }else if ([self.model.level isEqualToString:@"2"])
-        {
-            type = [LangSwitcher switchLang:@"一般缺陷" key:nil];
-            
-        }else{
-            type = [LangSwitcher switchLang:@"优化缺陷" key:nil];
-            
-        }
-        
-        CoinModel *currentCoin = [CoinUtil getCoinModel:@"WAN"];
-        
-//        NSString *leftAmount = [model.payAmount subNumber:currentCoin.withdrawFeeString];
-        NSString *text =  [CoinUtil convertToRealCoin:model.payAmount coin:@"WAN"];
-
-        
-        NSString *str = [NSString stringWithFormat:@"%@%.2fwan-%@,,%@%@%@",[LangSwitcher switchLang:@"奖励" key:nil],[text floatValue],type,[LangSwitcher switchLang:@"已于" key:nil],model.repairVersionCode,[LangSwitcher switchLang:@"版本修复" key:nil]];
-        
-     
-//        NSString *text1 =  [CoinUtil convertToRealCoin:model.payAmount coin:@"wan"];
-
-//
-        NSString *money = [NSString stringWithFormat:@"%@",text];
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-        if ([LangSwitcher currentLangType] == LangTypeEnglish) {
-            [attrStr addAttribute:NSForegroundColorAttributeName
-                            value:kHexColor(@"#007AFF")
-                            range:NSMakeRange(6, money.length+3)];
-        }else{
-            [attrStr addAttribute:NSForegroundColorAttributeName
-                            value:kHexColor(@"#007AFF")
-                            range:NSMakeRange(2, money.length+3)];
-        }
-//        [attrStr addAttribute:NSForegroundColorAttributeName
-//                        value:kHexColor(@"#007AFF")
-//                        range:NSMakeRange(2, money.length+3)];
-        self.desLab.attributedText = attrStr;
-        
-        self.timeLab.text = [model.commitDatetime convertRedDate];
-        
+        self.stateLab.text = [LangSwitcher switchLang:@"反馈成功" key:nil];
     }
+    
+    
+    
     
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

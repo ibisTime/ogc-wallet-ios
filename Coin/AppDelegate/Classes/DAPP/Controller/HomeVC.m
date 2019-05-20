@@ -488,9 +488,12 @@
 {
     
     NSString *url = [[self.bannerRoom objectAtIndex:index] url];
-    GeneralWebView *vc = [GeneralWebView new];
-    vc.URL = url;
-    [self showViewController:vc sender:self];
+    if ([TLUser isBlankString:url] == NO) {
+        GeneralWebView *vc = [GeneralWebView new];
+        vc.URL = url;
+        [self showViewController:vc sender:self];
+    }
+    
     
 }
 

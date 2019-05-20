@@ -52,8 +52,7 @@
     __weak typeof(self) weakSelf = self;
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     helper.tableView = self.tableView;
-    helper.code = @"628095";
-//    helper.parameters[@"type"] = @"1";
+    helper.code = @"628085";
     helper.parameters[@"status"] = @"1";
     [helper modelClass:[AlertsModel class]];
     

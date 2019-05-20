@@ -19,7 +19,7 @@
     if(self = [super initWithFrame:frame]){
         self.backgroundColor = [UIColor whiteColor];
         _imageThumbnail = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.lpd_width, self.lpd_height)];
-        _imageThumbnail.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+//        _imageThumbnail.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
         _imageThumbnail.contentMode = UIViewContentModeScaleToFill;
         _imageThumbnail.layer.cornerRadius = 4;
         _imageThumbnail.layer.borderColor = [[UIColor groupTableViewBackgroundColor] CGColor];

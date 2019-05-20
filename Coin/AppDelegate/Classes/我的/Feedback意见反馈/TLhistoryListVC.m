@@ -11,6 +11,7 @@
 #import "QuestionModel.h"
 #import "QiestionDetailVC.h"
 #import "TLPlaceholderView.h"
+#import "FeedBookDetailsVC.h"
 @interface TLhistoryListVC ()<RefreshDelegate>
 
 @property (nonatomic ,strong) QuestionListTableView *tableView;
@@ -106,9 +107,10 @@
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    QiestionDetailVC *d = [QiestionDetailVC new];
-    d.code = self.questions[indexPath.row].code;
-    [self.navigationController pushViewController:d animated:YES];
+//    QiestionDetailVC *d = [QiestionDetailVC new];
+    FeedBookDetailsVC *vc = [FeedBookDetailsVC new];
+    vc.code = self.questions[indexPath.row].code;
+    [self.navigationController pushViewController:vc animated:YES];
     
 }
 

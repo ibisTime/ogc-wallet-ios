@@ -109,22 +109,24 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-  LPDPhotoArrangeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LPDPhotoArrangeCell" forIndexPath:indexPath];
-  cell.videoThumbnail.hidden = YES;
-  if(_selectedPhotos.count<_maxSelectedCount) {
-    if (indexPath.row == _selectedPhotos.count) {
-      [cell.imageThumbnail setImage:[UIImage imageNamedFromMyBundle:@"AlbumAddBtn.png"]];
-      cell.imageThumbnail.layer.borderWidth = 2;
-      cell.nookDeleteBtn.hidden = YES;
+    LPDPhotoArrangeCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LPDPhotoArrangeCell" forIndexPath:indexPath];
+    cell.videoThumbnail.hidden = YES;
+    [cell.imageThumbnail theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    if(_selectedPhotos.count<_maxSelectedCount) {
+        
+        if (indexPath.row == _selectedPhotos.count) {
+        [cell.imageThumbnail setImage:[UIImage imageNamedFromMyBundle:@"AlbumAddBtn.png"]];
+        cell.imageThumbnail.layer.borderWidth = 2;
+        cell.nookDeleteBtn.hidden = YES;
       
     } else {
-      cell.imageThumbnail.image = _selectedPhotos[indexPath.row];
-      cell.asset = _selectedAssets[indexPath.row];
-      cell.imageThumbnail.layer.borderWidth = 0;
-      cell.nookDeleteBtn.hidden = NO;
+        cell.imageThumbnail.image = _selectedPhotos[indexPath.row];
+        cell.asset = _selectedAssets[indexPath.row];
+        cell.imageThumbnail.layer.borderWidth = 0;
+        cell.nookDeleteBtn.hidden = NO;
       
     }
-  }else {
+   }else {
     cell.imageThumbnail.image = _selectedPhotos[indexPath.row];
     cell.asset = _selectedAssets[indexPath.row];
     cell.imageThumbnail.layer.borderWidth = 0;

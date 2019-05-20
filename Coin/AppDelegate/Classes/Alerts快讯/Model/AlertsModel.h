@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy)NSString *remark;
 @property (nonatomic , copy)NSString *type;
 @property (nonatomic , copy)NSString *showDatetime;
-@property (nonatomic , copy)NSString *updateDatetime;
+@property (nonatomic , copy)NSString *publishDatetime;
 @property (nonatomic , copy)NSString *updater;
 
 

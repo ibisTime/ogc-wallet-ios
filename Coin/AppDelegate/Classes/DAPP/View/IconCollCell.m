@@ -40,7 +40,7 @@
         [backBtn theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [self.scrollView addSubview:backBtn];
         
-        UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3/2 - 30, 10, 60, 60)];
+        UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3/2 - 20, 20, 40, 40)];
         [backBtn addSubview:iconImage];
         self.iconImage = iconImage;
         

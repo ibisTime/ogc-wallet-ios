@@ -53,12 +53,7 @@
 @property (nonatomic ,strong) TLCaptchaView *captchaView;
 @property (nonatomic ,strong)  UIImageView *pic;
 
-//@property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
-
 @property (nonatomic, copy) NSString *code;
-
-//@property (nonatomic, strong) CountryModel *model;
-
 
 @end
 
@@ -80,137 +75,7 @@
 
     [self setUpUI];
 
-    
-    
-    
-    
-    
-//    [self.view theme_setBackgroundColorIdentifier:TableViewColor moduleName:@"homepage"];
-    
-    
-//    [self loadData];
-
-//    [self changeCodeLogin];
 }
-
-
-
-//- (void)configData{
-//    NSString *money ;
-//    //获取缓存的国家
-//    NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-//    //有缓存加载缓存国家
-//    if (data) {
-//        CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//
-//        //如果国家编号不为空，说明是1.7.0之后缓存的，直接设置即可
-//        if ([model.code isNotBlank]) {
-//
-//            NSString *url = [model.pic convertImageUrl];
-//
-//            [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//
-//            self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//
-//        }
-//        //如果国家编号为空，说明是1.7.0之前缓存的，需要移除
-//        else {
-//
-//            CountryModel *defaultCountry = [self.countrys objectAtIndex:0];
-//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:defaultCountry];
-//            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"chooseModel"];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//            NSString *url = [defaultCountry.pic convertImageUrl];
-//            [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//            self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[defaultCountry.interCode substringFromIndex:2]];
-//            if ([defaultCountry.interSimpleCode isEqualToString:@"CN"] ||[defaultCountry.interSimpleCode isEqualToString:@"HK"] ||[model.interSimpleCode isEqualToString:@"TW"] || [defaultCountry.interSimpleCode isEqualToString:@"MO"]) {
-//                [LangSwitcher changLangType:LangTypeSimple];
-//                money = @"CNY";
-//            }else if ([defaultCountry.interSimpleCode isEqualToString:@"KR"] || [defaultCountry.interSimpleCode isEqualToString:@"KO"] )
-//            {
-//                [LangSwitcher changLangType:LangTypeKorean];
-//                money = @"KRW";
-//            }else{
-//
-//                [LangSwitcher changLangType:LangTypeEnglish];
-//                money = @"USD";
-//
-//            }
-//        }
-//
-//    }
-//    //没有缓存加载网络请求国家中的中国
-//    else {
-//
-//        CountryModel *defaultCountry = [self.countrys objectAtIndex:0];
-//        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:defaultCountry];
-//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"chooseModel"];
-//        [[NSUserDefaults standardUserDefaults] synchronize];
-//
-//        NSString *url = [defaultCountry.pic convertImageUrl];
-//        [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//        self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[defaultCountry.interCode substringFromIndex:2]];
-//        if ([defaultCountry.interSimpleCode isEqualToString:@"CN"] ||[defaultCountry.interSimpleCode isEqualToString:@"HK"] ||[defaultCountry.interSimpleCode isEqualToString:@"TW"] || [defaultCountry.interSimpleCode isEqualToString:@"MO"]) {
-//            [LangSwitcher changLangType:LangTypeSimple];
-//            money = @"CNY";
-//        }else if ([defaultCountry.interSimpleCode isEqualToString:@"KR"] || [defaultCountry.interSimpleCode isEqualToString:@"KO"] )
-//        {
-//            [LangSwitcher changLangType:LangTypeKorean];
-//            money = @"KRW";
-//        }else{
-//            [LangSwitcher changLangType:LangTypeEnglish];
-//            money = @"USD";
-//        }
-//    }
-//    [[NSUserDefaults standardUserDefaults] setObject:money forKey:KLocalMoney];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-//}
-
-//- (void)configData_bak{
-//
-//    BOOL isChoose =  [[NSUserDefaults standardUserDefaults] boolForKey:@"chooseCoutry"];
-//
-//    if (isChoose == YES) {
-//
-//        NSData *data   =  [[NSUserDefaults standardUserDefaults] objectForKey:@"chooseModel"];
-//        CountryModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//        if ([model.code isNotBlank]) {
-//            NSString *url = [model.pic convertImageUrl];
-//
-//            [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//            self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//        }else {
-//            for (CountryModel *country in self.countrys) {
-//                if ([country.interCode isEqualToString:model.interCode]) {
-//                    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:country];
-//                    [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"chooseModel"];
-//                    [[NSUserDefaults standardUserDefaults] synchronize];
-//                    NSString *url = [country.pic convertImageUrl];
-//
-//                    [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//                    self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[country.interCode substringFromIndex:2]];
-//                }
-//            }
-//        }
-//
-//    }else{
-//
-//            CountryModel *model = self.countrys[0];
-//            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:model];
-//            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"chooseModel"];
-//            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"chooseCoutry"];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//            NSString *url = [model.pic convertImageUrl];
-//
-//            [self.pic sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:kImage(@"中国国旗")];
-//            self.PhoneCode.text = [NSString stringWithFormat:@"+%@",[model.interCode substringFromIndex:2]];
-//
-//
-//
-//    }
-//}
-
 
 
 - (void)setUpUI {
@@ -222,7 +87,7 @@
 //    logoView.image = kImage(@"邀请-logo");
     
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, 170 - 64 + kNavigationBarHeight - 35, SCREEN_WIDTH - 30, 360)];
-    backView.backgroundColor = kWhiteColor;
+    [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     backView.layer.cornerRadius=10;
     backView.layer.shadowOpacity = 0.22;// 阴影透明度
     backView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
@@ -231,9 +96,8 @@
     [self.view addSubview:backView];
     
     UILabel *promptLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 45, SCREEN_WIDTH - 30 - 70, 35)];
-    promptLabel.textColor = kTextColor;
+    [promptLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
     promptLabel.font = HGboldfont(27);
-//    UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(20, 45, SCREEN_WIDTH - 30 - 70, 35) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(27) textColor:kTextColor];
     promptLabel.text = [LangSwitcher switchLang:@"欢迎回来" key:nil];
     [backView addSubview:promptLabel];
     
@@ -242,12 +106,14 @@
     [phoneTextField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
     phoneTextField.font = FONT(14);
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    phoneTextField.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [phoneTextField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     self.phoneTf = phoneTextField;
 
     [backView addSubview:phoneTextField];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(20, 150, SCREEN_WIDTH - 70, 1)];
-    lineView.backgroundColor = kLineColor;
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [backView addSubview:lineView];
     
     
@@ -255,18 +121,23 @@
     passWordTextField.placeholder = [LangSwitcher switchLang:@"请输入密码（6~16个字符或字母组成）" key:nil];
     [passWordTextField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
     passWordTextField.font = FONT(14);
+    passWordTextField.textColor = kHexColor([TLUser TextFieldTextColor]);
+    [passWordTextField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     self.pwdTf = passWordTextField;
     [backView addSubview:passWordTextField];
     passWordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     passWordTextField.secureTextEntry = YES;
+    
+    
     UIView *lineView1 = [[UIView alloc]initWithFrame:CGRectMake(20, 210, SCREEN_WIDTH - 70, 1)];
-    lineView1.backgroundColor = kLineColor;
+    [lineView1 theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [backView addSubview:lineView1];
     
     
     UIButton *loginBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"登录" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:17.0 cornerRadius:5];
     loginBtn.frame = CGRectMake(15, passWordTextField.yy + 35, SCREEN_WIDTH - 60, 45);
     [loginBtn addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
+    
     [backView addSubview:loginBtn];
     
     
@@ -274,6 +145,7 @@
     registeredBtn.frame = CGRectMake(20, loginBtn.yy + 20, (SCREEN_WIDTH - 80)/2, 20);
     registeredBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [registeredBtn addTarget:self action:@selector(goReg:) forControlEvents:UIControlEventTouchUpInside];
+    [registeredBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [backView addSubview:registeredBtn];
     
     
@@ -282,10 +154,9 @@
     forgetPwdBtn.frame = CGRectMake(registeredBtn.xx, loginBtn.yy + 20, (SCREEN_WIDTH - 80)/2, 20);
     forgetPwdBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
     [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [forgetPwdBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [backView addSubview:forgetPwdBtn];
 }
-
-//HTMLTypeRegProtocol
 
 -(void)forgetPwdBtnClick:(UIButton *)btn
 {
@@ -336,9 +207,6 @@
 
 - (void)findPwd {
     
-//    TLUserFindPwdVC *vc = [[TLUserFindPwdVC alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
-    
 }
 
 
@@ -373,11 +241,6 @@
 
     
     [http postWithSuccess:^(id responseObject) {
-        
-        
-//        ChooseWalletVC *tab   = [[ChooseWalletVC alloc] init];
-//        [self.navigationController pushViewController:tab animated:YES];
-//        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
         [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
         NSLog(@"%@",responseObject[@"data"][@"userId"]);
         [self requesUserInfoWithResponseObject:responseObject];
@@ -434,13 +297,6 @@
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
         }
-        
-        
-//        TLUpdateVC *tab   = [[TLUpdateVC alloc] init];
-//        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
-//
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
-//        [self.navigationController popToRootViewControllerAnimated:YES];
         
     } failure:^(NSError *error) {
         

@@ -188,7 +188,7 @@
     }
     for (UIButton *button in self.subviews) {
         
-            UIView *btn =[button viewWithTag:button.tag+100];
+//            UIView *btn =[button viewWithTag:button.tag+100];
             //            UIView *center = [UIView new];
         if (button.isSelected == YES) {
             [self.selectBtns addObject:button];

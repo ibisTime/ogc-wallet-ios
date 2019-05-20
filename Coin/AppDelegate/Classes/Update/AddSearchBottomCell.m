@@ -35,9 +35,6 @@
         [self.selectedBtn setTitle:@"test1" forState:UIControlStateSelected];
         
         self.selectedBtn.enabled = NO;
-//        self.selectedBtn.layer.cornerRadius = 4.0;
-//        self.selectedBtn.layer.borderColor = kLineColor.CGColor;
-//        self.selectedBtn.layer.borderWidth = 0.5;
         self.selectedBtn.frame = self.bounds;
         
     }

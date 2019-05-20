@@ -114,7 +114,7 @@
             [self theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
             self.web1 = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
             self.web1.delegate = self;
-            self.web1.scrollView.bounces=NO;
+            self.web1.scrollView.bounces = NO;
             //        self.web.backgroundColor = kWhiteColor;
             [_cell1 addSubview:self.web1];
             

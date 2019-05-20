@@ -119,12 +119,12 @@
     pwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
     [pwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [pwdTf theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+    pwdTf.secureTextEntry = YES;
     [self.view addSubview:pwdTf];
     self.pwdTf = pwdTf;
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(15, pwdTf.yy + 10, SCREEN_WIDTH - 30, 0.5)];
     [self.view addSubview:lineView2];
-    
     [lineView2 theme_setBackgroundColorIdentifier:GaryLabelColor moduleName:ColorName];
     
     //re密码
@@ -146,7 +146,7 @@
     rePwdTf.font = FONT(18);
     rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
     [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
-    
+    rePwdTf.secureTextEntry = YES;
     [self.view addSubview:rePwdTf];
     self.rePwdTf = rePwdTf;
     
@@ -259,9 +259,15 @@
         return;
     }
     
+    
     if (([self.pwdTf.text isBlank])) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入密码" key:nil]];
         
+        return;
+    }
+    
+    if (self.pwdTf.text.length < 8 || self.pwdTf.text.length > 16) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为8~16个字符或数字组成" key:nil]];
         return;
     }
     

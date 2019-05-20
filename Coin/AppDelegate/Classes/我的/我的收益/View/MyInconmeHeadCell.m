@@ -44,12 +44,15 @@
             {
                 peiceLabel.frame = CGRectMake(SCREEN_WIDTH/4*3 - peiceLabel.frame.size.width/2,  40, peiceLabel.frame.size.width, 30);
 
+                
+                
                 UIButton *earningsButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
                 earningsButton.titleLabel.font = FONT(13);
+                [earningsButton setTitle:@"获得总收益" forState:(UIControlStateNormal)];
                 [earningsButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
                 self.earningsButton = earningsButton;
                 earningsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//                earningsButton.alpha = 0.6;
+                earningsButton.alpha = 0.6;
                 [self addSubview:earningsButton];
 
 
@@ -91,6 +94,7 @@
     NSMutableAttributedString *attrString1 = [[NSMutableAttributedString alloc] initWithString:label2Str];
     [attrString1 addAttribute:NSFontAttributeName value:FONT(15) range:NSMakeRange(label2Str.length - 5,5)];
     label2.attributedText = attrString1;
+    
     [label2 sizeToFit];
     if (label2.frame.size.width > SCREEN_WIDTH/2 - 20) {
         label2.frame = CGRectMake(10 + SCREEN_WIDTH/2,  40, SCREEN_WIDTH/2 - 20, 30);

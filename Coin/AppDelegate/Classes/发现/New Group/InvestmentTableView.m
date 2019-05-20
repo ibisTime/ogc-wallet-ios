@@ -163,15 +163,17 @@
             [btn setTitle:btnArray[i] forState:(UIControlStateNormal)];
             btn.titleLabel.font = FONT(16);
             [btn theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
-            [btn theme_setTitleColorIdentifier:@"selectbuttoncolor" forState:(UIControlStateSelected) moduleName:ColorName];
+            
             if (i == 0) {
                 if (selectTag == 100) {
+                    [btn  setTitleColor: kHexColor(@"#4064E6") forState:(UIControlStateSelected)];
                     btn.selected = YES;
                 }
             }
             
             if (i == 1) {
                 if (selectTag == 101) {
+                    [btn  setTitleColor: kHexColor(@"#FA7D0E") forState:(UIControlStateSelected)];
                     btn.selected = YES;
                 }
             }

@@ -58,6 +58,16 @@ NSString *const kGoogleAuthClose = @"0";
 }
 
 
++(NSString *)TheTitleSymbol
+{
+    if ([[TLUser user].localMoney isEqualToString:@"USD"]) {
+        return @"$";
+        
+    }
+    else{
+        return @"¥";
+    }
+}
 
 #pragma mark - Setting
 

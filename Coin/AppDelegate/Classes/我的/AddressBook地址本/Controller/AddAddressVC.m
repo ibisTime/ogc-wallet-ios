@@ -107,6 +107,24 @@
     UITextField *textField1 = [self.view viewWithTag:100];
     UITextField *textField2 = [self.view viewWithTag:101];
     UITextField *textField3 = [self.view viewWithTag:102];
+    
+    
+    if ([textField1.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入地址名称"];
+        return;
+    }
+    if ([textField2.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请选择地址类型"];
+        return;
+    }
+    if ([textField3.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入地址"];
+        return;
+    }
+    
+    
+    
+    
     TLNetworking *http = [TLNetworking new];
     http.code = @"802010";
     http.showView = self.view;

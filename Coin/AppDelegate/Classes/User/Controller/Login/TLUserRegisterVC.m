@@ -267,20 +267,9 @@
 #pragma mark - Events
 - (void)sendCaptcha:(UIButton *)sender {
     
-   
-    
-    
-    if (selectBtn.tag == 100) {
-        if (![self.phoneTf.text isPhoneNum]) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
-            return;
-        }
-    }else
-    {
-        if (![self.phoneTf.text isPhoneNum]) {
-            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入邮箱" key:nil]];
-            return;
-        }
+    if (![self.phoneTf.text isPhoneNum]) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
+        return;
     }
     
     
@@ -291,21 +280,7 @@
     http.code = CAPTCHA_CODE;
     http.parameters[@"mobile"] = self.phoneTf.text;
     http.parameters[@"bizType"] = @"805045";
-//    if (selectBtn.tag == 100) {
-//        http.code = CAPTCHA_CODE;
-//        http.parameters[@"mobile"] = self.phoneTf.text;
-//        http.parameters[@"bizType"] = USER_REG_CODE;
-//    }else
-//    {
-//        http.code = @"630093";
-//        http.parameters[@"email"] = self.phoneTf.text;
-//        http.parameters[@"bizType"] = @"805043";
-//    }
-    
     http.parameters[@"client"] = @"ios";
-    
-   
-    
     [http postWithSuccess:^(id responseObject) {
         
         [TLAlert alertWithSucces:[LangSwitcher switchLang:@"验证码已发送,请注意查收" key:nil]];
@@ -332,13 +307,13 @@
         return;
     }
 
-    if (![self.phoneTf.text isPhoneNum]) {
+    if ([self.phoneTf.text isEqualToString:@""]) {
         
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的手机号" key:nil]];
         
         return;
     }
-    if (!self.codeTf.text) {
+    if ([self.codeTf.text isEqualToString:@""]) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的验证码" key:nil]];
         
         return;
@@ -347,12 +322,13 @@
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邀请码" key:nil]];
         return;
     }
+    
     if (self.pwdTf.text.length < 6 || self.pwdTf.text.length > 16) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为6~16个字符或数字组成" key:nil]];
         return;
     }
     
-    if ((!self.pwdTf.text )) {
+    if ([self.pwdTf.text isEqualToString:@""]) {
         
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入密码" key:nil]];
         return;

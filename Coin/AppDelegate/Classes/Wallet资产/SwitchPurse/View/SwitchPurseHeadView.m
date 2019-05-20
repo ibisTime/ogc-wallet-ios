@@ -47,7 +47,7 @@
         
         
         allAssetsLbl = [UILabel labelWithFrame:CGRectMake(35, 44, SCREEN_WIDTH - 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        allAssetsLbl.text= [LangSwitcher switchLang:@"零用钱包 总资产（¥）" key:nil];
+        allAssetsLbl.text= [NSString stringWithFormat:@"零用钱包 总资产（%@）",[TLUser TheTitleSymbol]];
         [whiteView addSubview:allAssetsLbl];
         
         

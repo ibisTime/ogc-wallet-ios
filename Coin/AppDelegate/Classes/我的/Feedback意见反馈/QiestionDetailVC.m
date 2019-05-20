@@ -84,7 +84,6 @@
         make.left.equalTo(self.view.mas_left).offset(15);
         make.right.equalTo(self.view.mas_right).offset(-15);
         make.height.equalTo(@90);
-        
     }];
     
     UILabel *blance = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextColor3 font:14];

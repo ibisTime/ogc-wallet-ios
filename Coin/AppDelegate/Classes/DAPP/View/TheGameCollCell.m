@@ -52,9 +52,14 @@
 
 -(void)setGameModel:(FindTheGameModel *)GameModel
 {
-    
     IntroductionLabel.text = GameModel.desc;
     nameLbl.text = GameModel.name;
+    if ([TLUser isBlankString:GameModel.desc] == YES) {
+        nameLbl.frame = CGRectMake(gameImg.xx + 11 , 12.5, (SCREEN_WIDTH - 30)/2 - gameImg.xx - 21, 22.5 + 23);
+    }else
+    {
+        nameLbl.frame = CGRectMake(gameImg.xx + 11 , 12.5, (SCREEN_WIDTH - 30)/2 - gameImg.xx - 21, 22.5);
+    }
     [gameImg sd_setImageWithURL:[NSURL URLWithString:[GameModel.picList convertImageUrl]]];
     
 //    UIImageView *image1 = [self viewWithTag:1000];

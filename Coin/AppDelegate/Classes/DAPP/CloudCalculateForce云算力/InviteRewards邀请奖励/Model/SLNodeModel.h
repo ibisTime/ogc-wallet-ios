@@ -1,16 +1,9 @@
-//
-//  SLNodeModel.h
-//  MultilevelList
-//
-//  Created by 王双龙 on 2019/1/11.
-//  Copyright © 2019年 https://www.jianshu.com/u/e15d1f644bea. All rights reserved.
-//
+
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-//每个结点信息，采用的是树状结构模型 关于树状结构不了解的可以看看我的这篇文章 https://www.jianshu.com/p/c545c93f2585
 
 @interface SLNodeModel : NSObject
 

@@ -110,6 +110,7 @@
         
         
         _filterPicker = [[FilterView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+//        [_filterPicker theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         _filterPicker.selectBlock = ^(NSInteger index) {
             
             weakSelf.helper.parameters[@"bizType"] = typeArr[index];

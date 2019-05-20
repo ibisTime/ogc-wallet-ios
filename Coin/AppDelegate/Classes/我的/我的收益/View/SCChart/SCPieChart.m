@@ -48,8 +48,8 @@
     self = [self initWithFrame:frame];
     if(self){
         _items = [NSArray arrayWithArray:items];
-        _outerCircleRadius  = kWidth(90);
-        _innerCircleRadius  = kWidth(90) - kWidth(15);
+        _outerCircleRadius  = 60;
+        _innerCircleRadius  = 40;
         
         _descriptionTextColor = [UIColor whiteColor];
         _descriptionTextFont  = [UIFont fontWithName:@"Avenir-Medium" size:18.0];

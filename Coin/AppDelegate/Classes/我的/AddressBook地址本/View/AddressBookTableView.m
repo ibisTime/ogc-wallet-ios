@@ -83,19 +83,23 @@ static NSString *MyFriendCell = @"MyFriendCellCell";
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
     //删除
     UITableViewRowAction *deleteRowAction = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"删除" handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
-        TLNetworking *http = [TLNetworking new];
-        http.code = @"802011";
-        http.showView = self;
-        http.parameters[@"id"] = self.models[indexPath.row].ID;
-        
-        [http postWithSuccess:^(id responseObject) {
+        [TLAlert alertWithTitle:@"提示" msg:@"确认删除该地址" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
             
-            //        [self.navigationController popViewControllerAnimated:YES];
-            //删除数据，和删除动画
-            [self.models removeObjectAtIndex:indexPath.row];
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
-        } failure:^(NSError *error) {
+        } confirm:^(UIAlertAction *action) {
+            TLNetworking *http = [TLNetworking new];
+            http.code = @"802011";
+            http.showView = self;
+            http.parameters[@"id"] = self.models[indexPath.row].ID;
             
+            [http postWithSuccess:^(id responseObject) {
+                
+                //        [self.navigationController popViewControllerAnimated:YES];
+                //删除数据，和删除动画
+                [self.models removeObjectAtIndex:indexPath.row];
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:indexPath.row inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            } failure:^(NSError *error) {
+                
+            }];
         }];
     }];
     //编辑

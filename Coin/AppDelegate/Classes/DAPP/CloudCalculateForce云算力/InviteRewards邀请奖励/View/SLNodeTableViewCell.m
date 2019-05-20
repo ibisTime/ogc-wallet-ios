@@ -85,9 +85,11 @@
 - (void)refreshCell {
 
     if (self.node.expand) {
-        [_expandBtn theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
+//        [_expandBtn theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
+        [_expandBtn setImage:kImage(@"上收") forState:(UIControlStateNormal)];
     }else{
-        [_expandBtn theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
+//        [_expandBtn theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
+        [_expandBtn setImage:kImage(@"下拉") forState:(UIControlStateNormal)];
     }
     
     int testNum = self.node.level;
@@ -116,9 +118,9 @@
 
 - (void)expandBtnClicked:(UIButton *)btn {
     if (!self.node.expand) {
-        [_expandBtn theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];
+        [_expandBtn setImage:kImage(@"上收") forState:(UIControlStateNormal)];
     }else{
-        [_expandBtn theme_setImageIdentifier:@"我的跳转" forState:(UIControlStateNormal) moduleName:ImgAddress];;
+        [_expandBtn setImage:kImage(@"下拉") forState:(UIControlStateNormal)];;
     }
     self.node.expand = !self.node.expand;
     if ([self.delegate respondsToSelector:@selector(nodeTableViewCell:expand:atIndexPath:)]) {

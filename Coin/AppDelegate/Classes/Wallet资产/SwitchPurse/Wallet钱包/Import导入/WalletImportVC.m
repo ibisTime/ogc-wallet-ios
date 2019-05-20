@@ -145,6 +145,7 @@
     UILabel *pwdLbl = [[UILabel alloc]initWithFrame:CGRectMake(15, lineView1.yy + 20, SCREEN_WIDTH - 30, 16.5)];
     pwdLbl.text = @"请输入8～16位数字、字母组合";
     pwdLbl.font = FONT(12);
+    
     [pwdLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     [self.view addSubview:pwdLbl];
     
@@ -152,6 +153,7 @@
     pwdTf.placeholder = [LangSwitcher switchLang:@"请设置钱包密码" key:nil];
     [pwdTf setValue:FONT(18) forKeyPath:@"_placeholderLabel.font"];
     pwdTf.font = FONT(18);
+    pwdTf.secureTextEntry = YES;
     pwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
     [pwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:pwdTf];
@@ -178,6 +180,7 @@
     rePwdTf.font = FONT(18);
     rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
     [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
+    rePwdTf.secureTextEntry = YES;
     [self.view addSubview:rePwdTf];
     self.rePwdTf = rePwdTf;
     
@@ -260,6 +263,11 @@
     if (([self.pwdTf.text  isBlank])) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入密码" key:nil]];
         
+        return;
+    }
+    
+    if (self.pwdTf.text.length < 8 || self.pwdTf.text.length > 16) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为8~16个字符或数字组成" key:nil]];
         return;
     }
     

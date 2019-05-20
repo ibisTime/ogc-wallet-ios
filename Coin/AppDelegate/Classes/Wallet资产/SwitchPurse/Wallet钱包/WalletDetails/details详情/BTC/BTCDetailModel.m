@@ -50,13 +50,14 @@
     UIView *lineView = [UIView new];
 //    self.lineView = lineView
     [self.contentView addSubview:lineView];
-    lineView.backgroundColor = kBackgroundColor;
+//    lineView.backgroundColor = kBackgroundColor;
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).offset(15);
         make.right.equalTo(self.mas_right).offset(-15);
-        make.height.equalTo(@1);
+        make.height.equalTo(@0.5);
         
-        
+         
     }];
     
     return self;

@@ -68,6 +68,7 @@
 
     self.titleText.text = [LangSwitcher switchLang:@"问题反馈" key:nil];
     self.navigationItem.titleView = self.titleText;
+    
     [self initCustomUi];
     [self initBodyView];
     
@@ -407,7 +408,7 @@
 
     
     self.titleText.text = [LangSwitcher switchLang:@"问题反馈" key:nil];
-    self.navigationItem.titleView = self.nameLable;
+    self.navigationItem.titleView = self.titleText;
 
     
     self.historyLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
