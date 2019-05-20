@@ -47,7 +47,7 @@
         [backView addSubview:nameLbl];
         
         stateLbl = [UILabel labelWithFrame:CGRectMake(nameLbl.xx, 10, (SCREEN_WIDTH - 60)/2, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:nil];
-//        stateLbl.text = @"HEY 矿机";
+//        stateLbl.text = @"HEY 水滴型号";
         stateLbl.textColor = kHexColor(@"#FB6B6B");
         [backView addSubview:stateLbl];
         
@@ -155,7 +155,7 @@
             NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];
             NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
             
-            NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可连存",str_hour,str_minute,str_second];
+            NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可涡环",str_hour,str_minute,str_second];
             NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
             [attributeStr addAttribute:NSForegroundColorAttributeName
                                  value:kHexColor(@"#F49671")
@@ -166,7 +166,7 @@
             timeImg.frame = CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12);
         }else
         {
-            NSString *text = @"连存失效";
+            NSString *text = @"涡环失效";
             NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
             [attributeStr addAttribute:NSForegroundColorAttributeName
                                  value:kHexColor(@"#F49671")
@@ -220,7 +220,7 @@
     
     NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
     
-    NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可连存",str_hour,str_minute,str_second];
+    NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可涡环",str_hour,str_minute,str_second];
     NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
     [attributeStr addAttribute:NSForegroundColorAttributeName
                          value:kHexColor(@"#F49671")
@@ -271,9 +271,9 @@
     
     int minute = (int)value /60%60;
     
-    int house = (int)value / (24 * 3600)%3600;
+    int house = (int)value / (3600)%3600;
     
-    int day = (int)value / (24 * 3600);
+    int day = (int)value / (24 * 3600) %(3600 * 24);
     
     NSString *str;
     

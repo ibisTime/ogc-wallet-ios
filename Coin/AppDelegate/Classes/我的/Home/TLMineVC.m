@@ -167,11 +167,16 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row == 2) {
-        AddressBookVC *vc = [AddressBookVC new];
+        GoldenRiceBlessingVC *vc = [GoldenRiceBlessingVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row == 3) {
+        AddressBookVC *vc = [AddressBookVC new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row == 4) {
         [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
                                clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
                              zendeskUrl: @"https://moorebit.zendesk.com"];
@@ -207,12 +212,12 @@
         helpCenter.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:helpCenter animated:YES];
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         TLQusertionVC * vc = [TLQusertionVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 5) {
+    if (indexPath.row == 6) {
         TLMeSetting *vc = [[TLMeSetting alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];

@@ -59,7 +59,7 @@
         
         UIImageView *whiteView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 64, SCREEN_WIDTH - 10 , 170)];
 //        我的资产背景
-        [whiteView theme_setImageIdentifier:@"零用钱包背景" moduleName:ImgAddress];
+        [whiteView theme_setImageIdentifier:@"LYQB" moduleName:ImgAddress];
         [self addSubview:whiteView];
         
 
@@ -120,15 +120,15 @@
     
     if ([[TLUser user].localMoney isEqualToString:@"USD"])
     {
-        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f USD", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f", [[dataDic[@"totalAmountUSD"] convertToSimpleRealMoney] doubleValue]];
     }
     else if ([[TLUser user].localMoney isEqualToString:@"KRW"])
     {
-        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f KRW", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f", [[dataDic[@"totalAmountKRW"] convertToSimpleRealMoney] doubleValue]];
     }
     else
     {
-        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f CNY", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
+        allPriceLbl.text = [NSString stringWithFormat:@"≈%.2f", [[dataDic[@"totalAmountCNY"] convertToSimpleRealMoney] doubleValue]];
     }
 }
 

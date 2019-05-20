@@ -41,6 +41,7 @@
 
 @property (nonatomic,strong) UITextField *phoneTf;
 @property (nonatomic,strong) UITextField *codeTf;
+@property (nonatomic,strong) UITextField *invitationTf;
 @property (nonatomic,strong) UITextField *pwdTf;
 @property (nonatomic,strong) UITextField *rePwdTf;
 
@@ -109,35 +110,11 @@
     [self.view addSubview:nameLabel];
     
     
-//    phoneRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"手机注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:20];
-//    phoneRegister.frame = CGRectMake(30, nameLabel.yy + 30, 0, 25);
-//    [phoneRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
-//    [phoneRegister sizeToFit];
-//    phoneRegister.selected = YES;
-//    selectBtn = phoneRegister;
-//    [phoneRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
-//    phoneRegister.tag = 100;
-//    [self.view addSubview:phoneRegister];
+
+    NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入邀请码",@"请输入密码",@"请确认密码"];
     
-    
-//    emailRegister = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"邮箱注册" key:nil] titleColor:kTextColor backgroundColor:kClearColor titleFont:18];
-//    emailRegister.frame = CGRectMake(phoneRegister.xx + 35, nameLabel.yy + 30, 0, 25);
-//    [emailRegister setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
-//    [emailRegister sizeToFit];
-//    [emailRegister addTarget:self action:@selector(phoneAndEmailRegister:) forControlEvents:(UIControlEventTouchUpInside)];
-//    emailRegister.tag = 101;
-//    [self.view addSubview:emailRegister];
-    
-    
-//    chooseView = [[UIView alloc]initWithFrame:CGRectMake(nameLabel.x, nameLabel.yy + 6, phoneRegister.width, 2)];
-//    chooseView.backgroundColor = kTabbarColor;
-//    [self.view addSubview:chooseView];
-//    rePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
-//    [rePwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
-    NSArray *array = @[@"请输入手机号",@"请输入验证码",@"请输入密码",@"请确认密码"];
-    
-    for (int i = 0 ; i < 4; i ++) {
-        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, nameLabel.yy + 40 + i% 4 * 60, SCREEN_WIDTH - 60, 50)];
+    for (int i = 0 ; i < 5; i ++) {
+        UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(30, nameLabel.yy + 40 + i% 5 * 60, SCREEN_WIDTH - 60, 50)];
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
         [textField setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         textField.font = FONT(14);
@@ -175,12 +152,18 @@
                 break;
             case 2:
             {
+                self.invitationTf = textField;
+                
+            }
+                break;
+            case 3:
+            {
                 self.pwdTf = textField;
                 textField.secureTextEntry = YES;
                 
             }
                 break;
-            case 3:
+            case 4:
             {
                 self.rePwdTf = textField;
                 textField.secureTextEntry = YES;
@@ -307,7 +290,7 @@
     
     http.code = CAPTCHA_CODE;
     http.parameters[@"mobile"] = self.phoneTf.text;
-    http.parameters[@"bizType"] = USER_REG_CODE;
+    http.parameters[@"bizType"] = @"805045";
 //    if (selectBtn.tag == 100) {
 //        http.code = CAPTCHA_CODE;
 //        http.parameters[@"mobile"] = self.phoneTf.text;
@@ -360,7 +343,10 @@
         
         return;
     }
-    
+    if ([self.invitationTf.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请输入正确的邀请码" key:nil]];
+        return;
+    }
     if (self.pwdTf.text.length < 6 || self.pwdTf.text.length > 16) {
         [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为6~16个字符或数字组成" key:nil]];
         return;
@@ -385,11 +371,11 @@
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
     
-    http.code = USER_REG_CODE;
+    http.code = @"805045";
     http.parameters[@"mobile"] = self.phoneTf.text;
     http.parameters[@"loginPwd"] = self.pwdTf.text;
     http.parameters[@"smsCaptcha"] = self.codeTf.text;
-    
+    http.parameters[@"inviteCode"] = self.invitationTf.text;
     http.parameters[@"kind"] = APP_KIND;
     http.parameters[@"client"] = @"ios";
     

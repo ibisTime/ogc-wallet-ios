@@ -8,9 +8,9 @@
 
 #import "GoldenRiceBlessingVC.h"
 #import <WebKit/WebKit.h>
-@interface GoldenRiceBlessingVC ()
+@interface GoldenRiceBlessingVC ()<UIWebViewDelegate>
 
-@property (nonatomic , strong)WKWebView *webView;
+@property (nonatomic , strong)UIWebView *webView;
 
 @end
 
@@ -19,8 +19,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    
 }
 
 - (void)viewDidLoad {
@@ -36,28 +34,28 @@
     
     UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(30, 20, SCREEN_WIDTH - 90, (SCREEN_WIDTH - 30)/2/3) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:RGB(174, 184, 239)];
     nameLbl.text = @"我的福分";
+    nameLbl.textColor = kWhiteColor;
     [topImage addSubview:nameLbl];
     
     
     UILabel *numbernLbl = [UILabel labelWithFrame:CGRectMake(30, (SCREEN_WIDTH - 30)/2/3, SCREEN_WIDTH, (SCREEN_WIDTH - 30)/2/3) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(30) textColor:kWhiteColor];
     numbernLbl.text = @"0";
+    numbernLbl.textColor = kWhiteColor;
     [topImage addSubview:numbernLbl];
     
     
     UILabel *blessing = [UILabel labelWithFrame:CGRectMake(30, (SCREEN_WIDTH - 30)/2/3*2- 20, SCREEN_WIDTH, (SCREEN_WIDTH - 30)/2/3) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kWhiteColor];
     blessing.text = @"我的团队：0人";
+    blessing.textColor = kWhiteColor;
     [topImage addSubview:blessing];
     
     
     
     TLNetworking *http = [TLNetworking new];
-    //    http.showView = self.view;
+    http.showView = self.view;
     http.code = @"805913";
     http.parameters[@"userId"] = [TLUser user].userId;
-    //    http.parameters[@"parentCode"] = @"DH201810120023250400000";
-    //    DH201810120023250401000
-    
-    
+
     
     [http postWithSuccess:^(id responseObject) {
         numbernLbl.text = [NSString stringWithFormat:@"%.2f",[responseObject[@"data"][@"totalAward"] floatValue]/100000000];
@@ -67,14 +65,11 @@
     
     
     TLNetworking *http1 = [TLNetworking new];
-    //    http.showView = self.view;
+    http1.showView = self.view;
     http1.code = @"805123";
     http1.showView = self.view;
     http1.parameters[@"userId"] = [TLUser user].userId;
-    //    http.parameters[@"parentCode"] = @"DH201810120023250400000";
-    //    DH201810120023250401000
     [http1 postWithSuccess:^(id responseObject) {
-//        nameLbl.text = [NSString stringWithFormat:@"我的团队：%ld人",[responseObject[@"data"][@"refrereeCount"] integerValue]];
         blessing.text = [NSString stringWithFormat:@"我的团队：%ld人",[responseObject[@"data"][@"refrereeCount"] integerValue]];
     } failure:^(NSError *error) {
         
@@ -90,55 +85,65 @@
     rulesLbl.text = @"福分规则";
     [self.view addSubview:rulesLbl];
     
-//    UILabel *rulesLbl1 = [UILabel labelWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:kHexColor(@"#999999")];
+    UILabel *rulesDetailsLbl = [UILabel labelWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:kTextColor];
+//    rulesLbl.text = @"福分规则";
+    rulesDetailsLbl.numberOfLines = 0;
+    [rulesDetailsLbl sizeToFit];
+    [self.view addSubview:rulesDetailsLbl];
+    
+    
+//    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) ];
+//    _webView.delegate = self;
+//    [_webView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+//    [self.view addSubview:_webView];
 //
-//    rulesLbl1.attributedText = [UserModel ReturnsTheDistanceBetween:@"1.邀请人A可从一级好友B（B注册一年内）和二级好友C的年化出借额中获得不同合伙人级别对应返现比例的奖励。\n2.返现奖励逐月发放，散标将在好友还款日当日发放，智选服务在好友进入服务期限的次月当日发放。"];
-//    rulesLbl1.numberOfLines = 0;
-//    [rulesLbl1 sizeToFit];
-//    [self.view addSubview:rulesLbl1];
-    
-    
-    
-    NSString *jS = [NSString stringWithFormat:@"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'); meta.setAttribute('width', %lf); document.getElementsByTagName('head')[0].appendChild(meta);",kScreenWidth];
-    
-    WKUserScript *wkUserScript = [[WKUserScript alloc] initWithSource:jS injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-    
-    WKUserContentController *wkUCC = [WKUserContentController new];
-    
-    [wkUCC addUserScript:wkUserScript];
-    
-    WKWebViewConfiguration *wkConfig = [WKWebViewConfiguration new];
-    
-    wkConfig.userContentController = wkUCC;
-    
-    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) configuration:wkConfig];
-    
-    _webView.backgroundColor = kWhiteColor;
-    
-//    _webView.navigationDelegate = self;
-    
-    _webView.allowsBackForwardNavigationGestures = YES;
-//    [_webView.scrollView adjustsContentInsets];
-    [self.view addSubview:_webView];
-    
-    
+//
     TLNetworking *http2 = [TLNetworking new];
     http2.showView = self.view;
     http2.code = USER_CKEY_CVALUE;
-    
+
     http2.parameters[SYS_KEY] = @"activety_notice";
-    
+
     [http2 postWithSuccess:^(id responseObject) {
-        
-//        self.htmlStr = ;
-//        [_webView loadWebWithString:responseObject[@"data"][@"cvalue"]];
-        [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
+
+        NSRange startRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"<p>"];
+        NSRange endRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"</p>"];
+        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+        NSString * con = [responseObject[@"data"][@"cvalue"] substringWithRange:range];
+        rulesDetailsLbl.attributedText = [UserModel ReturnsTheDistanceBetween:con];
+        [rulesDetailsLbl sizeToFit];
+//        [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
     } failure:^(NSError *error) {
-        
+
     }];
     
     
 }
+
+
+//-(void)webViewDidFinishLoad:(UIWebView *)webView
+//{
+//
+//    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+//        //字体颜色
+//
+//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#ffffff'"];
+//
+//        //页面背景色
+//
+//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#282A2E'"];
+//    }else
+//    {
+//        //字体颜色
+//
+//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#282A2E'"];
+//
+//        //页面背景色
+//
+//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#f8f8f8'"];
+//    }
+//
+//}
 
 
 @end

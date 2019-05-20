@@ -55,7 +55,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         
         if (indexPath.section == 0) {
-            NSArray *leftAry = @[@"矿机型号",@"台数",@"今日算力",@"运行情况"];
+            NSArray *leftAry = @[@"水滴型号型号",@"滴数",@"今日热量",@"运行情况"];
             NSArray *rightAry = @[self.model.machine[@"name"],
                                   self.model.quantity,
                                   [NSString stringWithFormat:@"%@%%*%@=%.2f%%",self.model.continueOutput,self.model.quantity,[self.model.continueOutput floatValue]*[self.model.quantity floatValue]],
@@ -71,17 +71,17 @@ static NSString *MyAsstes = @"EggplantAccountCell";
             }
         }
         if (indexPath.section == 1) {
-            NSArray *leftAry = @[@"加速情况",@"连存状态"];
+            NSArray *leftAry = @[@"加速情况",@"涡环状态"];
             NSString *EvenState;
             if ([self.model.continueStatus isEqualToString:@"0"]) {
                 
-                EvenState = @"未连存";
+                EvenState = @"未涡环";
             }
             if ([self.model.continueStatus isEqualToString:@"1"]) {
-                EvenState = @"连存中";
+                EvenState = @"涡环中";
             }
             if ([self.model.continueStatus isEqualToString:@"2"]) {
-                EvenState = @"连存失效";
+                EvenState = @"涡环失效";
             }
             
             NSArray *rightAry = @[[NSString stringWithFormat:@"已加速%@天",self.model.speedDays],
@@ -178,9 +178,9 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         [backView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         [headView addSubview:backView];
         
-        UILabel *titleLbl = [UILabel labelWithFrame:CGRectMake(15, 20, 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
+        UILabel *titleLbl = [UILabel labelWithFrame:CGRectMake(15, 20, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
         [titleLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-        titleLbl.text = @"出矿记录";
+        titleLbl.text = @"电子雨滴分解记录";
         [backView addSubview:titleLbl];
         
         

@@ -163,7 +163,7 @@
     
     UIButton *shareBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
     shareBtn.frame = CGRectMake(15, QrCode.yy - 20, SCREEN_WIDTH - 100, 20);
-    [shareBtn setTitle:@"分享来自 Ticp APP" forState:(UIControlStateNormal)];
+    [shareBtn setTitle:@"分享来自 金米钱包" forState:(UIControlStateNormal)];
     [shareBtn setTitleColor:kHexColor(@"#999999") forState:(UIControlStateNormal)];
     shareBtn.titleLabel.font = FONT(12);
     shareBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;

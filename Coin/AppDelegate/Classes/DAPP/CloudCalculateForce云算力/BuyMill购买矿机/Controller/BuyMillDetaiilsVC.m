@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleText.text = @"矿机详情";
+    self.titleText.text = @"水滴型号详情";
     self.navigationItem.titleView = self.titleText;
     
     [self.topView theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
@@ -31,7 +31,7 @@
     [self.view addSubview:backView1];
     
     
-    NSArray *leftArray = @[@"矿机型号",@"每日产能",@"锁仓期限",@"总产能"];
+    NSArray *leftArray = @[@"水滴型号",@"每日产能",@"锁仓期限",@"总产能"];
     NSArray *rightArray = @[_model.name,
                             [NSString stringWithFormat:@"%@%%",_model.dailyOutput],
                             [NSString stringWithFormat:@"%@天",_model.daysLimit],
@@ -52,9 +52,9 @@
     }
     
     
-    NSArray *leftArray1 = @[@"总矿机数量",@"剩余矿机数量"];
-    NSArray *rightArray1 = @[[NSString stringWithFormat:@"%ld台",[_model.stockTotal integerValue]],
-                             [NSString stringWithFormat:@"%ld台",[_model.stockTotal integerValue] - [_model.stockOut integerValue]]];
+    NSArray *leftArray1 = @[@"总水滴型号数量",@"剩余水滴型号数量"];
+    NSArray *rightArray1 = @[[NSString stringWithFormat:@"%ld滴",[_model.stockTotal integerValue]],
+                             [NSString stringWithFormat:@"%ld滴",[_model.stockTotal integerValue] - [_model.stockOut integerValue]]];
     for (int i = 0; i < 2; i ++) {
         if (i == 1) {
             UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, i % 2 * 50, SCREEN_WIDTH, 0.5)];
@@ -63,7 +63,7 @@
         }
         
         
-        UILabel *leftLbl = [UILabel labelWithFrame:CGRectMake(15, i % 2 * 50, 100, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
+        UILabel *leftLbl = [UILabel labelWithFrame:CGRectMake(15, i % 2 * 50, 120, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
         [leftLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         leftLbl.text = leftArray1[i];
         [backView1 addSubview:leftLbl];

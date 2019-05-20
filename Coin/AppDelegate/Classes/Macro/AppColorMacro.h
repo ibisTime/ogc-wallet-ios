@@ -15,7 +15,7 @@
 #pragma mark - UIMacros
 
 #define ColorName @"homepage"
-#define ImgAddress @"untitled folder"
+#define ImgAddress @"homepage"
 //
 #define CellBackColor @"cell.back"
 #define BackColor @"self.view.back"

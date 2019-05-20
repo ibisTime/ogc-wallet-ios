@@ -98,7 +98,7 @@
             [MTThemeManager.manager setThemePath:path];
             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
             
-            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"white" style:UIBarButtonItemStylePlain target:nil action:nil];
+            UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
             weakSelf.navigationController.navigationBar.tintColor = [UIColor whiteColor];
             
             

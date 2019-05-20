@@ -16,7 +16,7 @@
     if (self) {
         
         UILabel *allLbl = [UILabel labelWithFrame:CGRectMake(15 , 16.5, SCREEN_WIDTH - 150 - 30 , 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:nil];
-        allLbl.text = @"总矿机：10台";
+        allLbl.text = @"总水滴型号：10滴";
         [self addSubview:allLbl];
         
         

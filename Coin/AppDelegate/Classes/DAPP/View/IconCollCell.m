@@ -28,23 +28,23 @@
 
 -(void)setDataArray:(NSMutableArray<FindTheGameModel *> *)dataArray
 {
-    self.scrollView.contentSize = CGSizeMake((SCREEN_WIDTH - 50)/3 * dataArray.count, 0);
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH/3 * dataArray.count, 0);
     for (int i = 0; i < dataArray.count; i ++) {
         
         UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [backBtn theme_setBackgroundImageIdentifier:BackColor forState:(UIControlStateNormal) moduleName:ColorName];
-        backBtn.frame = CGRectMake(i % dataArray.count * (SCREEN_WIDTH - 50)/3, 0, (SCREEN_WIDTH - 50)/3, 110);
+        backBtn.frame = CGRectMake(i % dataArray.count * SCREEN_WIDTH/3, 0, SCREEN_WIDTH/3, 110);
         [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
         backBtn.tag = i;
 //        [cell theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [backBtn theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
         [self.scrollView addSubview:backBtn];
         
-        UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 50)/3/2 - 30, 10, 60, 60)];
+        UIImageView *iconImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3/2 - 30, 10, 60, 60)];
         [backBtn addSubview:iconImage];
         self.iconImage = iconImage;
         
-        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, iconImage.yy + 10, (SCREEN_WIDTH - 50)/3, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kTextBlack];
+        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, iconImage.yy + 10, SCREEN_WIDTH/3, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kTextBlack];
         [backBtn addSubview:nameLbl];
         self.nameLbl = nameLbl;
         

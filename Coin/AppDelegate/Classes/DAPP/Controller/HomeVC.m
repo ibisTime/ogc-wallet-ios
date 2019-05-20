@@ -171,7 +171,7 @@
 -(void)initNavigationNar
 {
     UILabel *nameLable = [[UILabel alloc]initWithFrame:CGRectMake(15, kStatusBarHeight, 100, 44)];
-    nameLable.text = [LangSwitcher switchLang:@"DAPP" key:nil];
+    nameLable.text = [LangSwitcher switchLang:@"应用" key:nil];
     nameLable.textAlignment = NSTextAlignmentLeft;
     self.nameLable = nameLable;
     nameLable.font = Font(24);

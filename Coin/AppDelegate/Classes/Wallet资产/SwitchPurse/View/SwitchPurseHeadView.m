@@ -40,7 +40,7 @@
         
         UIImageView *whiteView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 64, SCREEN_WIDTH - 10 , 170)];
         //        我的资产背景
-        [whiteView theme_setImageIdentifier:@"零用钱包背景" moduleName:ImgAddress];
+        [whiteView theme_setImageIdentifier:@"LYQB" moduleName:ImgAddress];
         [self addSubview:whiteView];
         
         

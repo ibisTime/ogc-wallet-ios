@@ -69,12 +69,12 @@ static MTThemeManager *manager;
 
 #pragma mark - Public
 + (MTThemeManager *)manager {
-    NSAssert(manager != nil, @"MTThemeManager 未初始化");
+//    NSAssert(manager != nil, @"MTThemeManager 未初始化");
     return manager;
 }
 
 + (void)initializeWithDefaultThemePath:(NSString *)themePath {
-    NSAssert(manager == nil, @"MTThemeManager 已经初始化");
+//    NSAssert(manager == nil, @"MTThemeManager 已经初始化");
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         manager = [MTThemeManager new];

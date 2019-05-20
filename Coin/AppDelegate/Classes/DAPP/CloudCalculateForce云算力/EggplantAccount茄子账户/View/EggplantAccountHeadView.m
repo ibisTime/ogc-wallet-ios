@@ -19,12 +19,12 @@
     if (self) {
         
         UIImageView *backImg = [[UIImageView alloc]initWithFrame:CGRectMake(5, 10, SCREEN_WIDTH - 10, 120)];
-        [backImg theme_setImageIdentifier:@"茄子账户背景" moduleName:ImgAddress];
+        [backImg theme_setImageIdentifier:@"氢气账户背景" moduleName:ImgAddress];
         
         [self addSubview:backImg];
         
         UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(35, 31, 100, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        nameLbl.text = @"茄子余额";
+        nameLbl.text = @"氢气余额";
         [backImg addSubview:nameLbl];
         
         numberLbl = [UILabel labelWithFrame:CGRectMake(35, nameLbl.yy + 9 , 100, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:nil];
@@ -48,7 +48,7 @@
         
         
         UILabel *runningWaterLbl = [UILabel labelWithFrame:CGRectMake(15, 140, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
-        runningWaterLbl.text = @"茄子账户流水";
+        runningWaterLbl.text = @"氢气账户流水";
         [runningWaterLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [backImg addSubview:runningWaterLbl];
         

@@ -38,7 +38,7 @@
         [backView addSubview:nameLbl];
         
         symbolLbl = [UILabel labelWithFrame:CGRectMake(nameLbl.xx, 0, (SCREEN_WIDTH - 60)/2, 50) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:nil];
-        symbolLbl.text = @"HEY 矿机";
+        symbolLbl.text = @"HEY 水滴型号";
         [backView addSubview:symbolLbl];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH - 30, 1)];
@@ -67,7 +67,7 @@
         kViewRadius(progressView, 2.5);
         [progressBackView addSubview:progressView];
         
-        NSArray *numberAry = @[@"1000CNY",@"7天",@"100台"];
+        NSArray *numberAry = @[@"1000CNY",@"7天",@"100滴"];
         NSArray *nameAry = @[@"起购",@"期限",@"剩余"];
         for (int i = 0; i < 3; i ++) {
             UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(0 + i % 3 * (SCREEN_WIDTH - 30)/3, progressBackView.yy + 21.5, (SCREEN_WIDTH - 30)/3, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(16) textColor:nil];
@@ -89,7 +89,7 @@
 -(void)setModel:(BuyMillListModel *)model
 {
     nameLbl.text = model.name;
-    symbolLbl.text = [NSString stringWithFormat:@"%@ 矿机",model.symbol];
+    symbolLbl.text = [NSString stringWithFormat:@"%@ 水滴型号",model.symbol];
     nissanCanLbl.text = [NSString stringWithFormat:@"%@%%日产能",model.dailyOutput];
     progressView.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 60)/2 * [model.stockOut integerValue] / [model.stockTotal integerValue], 5);
     
@@ -98,7 +98,7 @@
     UILabel *label3 = [self viewWithTag:102];
     label1.text = [NSString stringWithFormat:@"%@CNY起购",model.amount];
     label2.text = [NSString stringWithFormat:@"%@天",model.daysLimit];
-    label3.text = [NSString stringWithFormat:@"%ld台",[model.stockTotal integerValue] - [model.stockOut integerValue]];
+    label3.text = [NSString stringWithFormat:@"%ld滴",[model.stockTotal integerValue] - [model.stockOut integerValue]];
 }
 
 - (void)awakeFromNib {

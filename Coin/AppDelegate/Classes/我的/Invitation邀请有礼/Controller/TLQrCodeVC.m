@@ -222,12 +222,21 @@
     [backView addSubview:nameLabel];
     
     UILabel *introduceLbl = [UILabel labelWithFrame:CGRectMake(0, nameLabel.yy + kHeight(8), SCREEN_WIDTH, kHeight(20)) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(14) textColor:kWhiteColor];
-    introduceLbl.text = [LangSwitcher switchLang:@"邀请您加入TICP" key:nil];
-    introduceLbl.textColor = kWhiteColor;
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_info_dict_key"];
+    introduceLbl.text = [NSString stringWithFormat:@"您的专属邀请码：%@",dict[@"inviteCode"]];
+    introduceLbl.textColor = [UIColor whiteColor];
+//    introduceLbl.backgroundColor = [UIColor redColor];
+    [introduceLbl sizeToFit];
+    introduceLbl.frame = CGRectMake(SCREEN_WIDTH/2 - introduceLbl.width/2 - 6 - 30, nameLabel.yy + kHeight(8), introduceLbl.width, kHeight(20));
     [backView addSubview:introduceLbl];
     
     
-
+    UIButton *copyBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"复制" key:nil] titleColor:kWhiteColor backgroundColor:kClearColor titleFont:12];
+    copyBtn.frame = CGRectMake(introduceLbl.xx + 12 , nameLabel.yy + kHeight(7), 60, kHeight(22));
+    kViewBorderRadius(copyBtn, 2, 1, kWhiteColor);
+    [copyBtn addTarget:self action:@selector(copyBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [backView addSubview:copyBtn];
+    
 
     UIView *codeView = [UIView new];
     [self.view addSubview:codeView];
@@ -260,6 +269,7 @@
      address = [NSString stringWithFormat:@"%@?inviteCode=%@&lang=%@",self.h5String,[TLUser user].userId,lang];
 
 
+    
 
     
     qrIV.image = [SGQRCodeGenerateManager generateWithDefaultQRCodeData:address imageViewWidth:170];
@@ -292,26 +302,22 @@
     [copyButton addTarget:self action:@selector(copyButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:copyButton];
     
-    
-    
-    
-    
 }
+
+-(void)copyBtnClick
+{
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_info_dict_key"];
+    [TLAlert alertWithSucces:[LangSwitcher switchLang:@"复制成功!" key:nil]];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = dict[@"inviteCode"];
+}
+
 
 -(void)copyButtonClick
 {
-    //    _bouncedView.frame = CGRectMake(kWidth(25), kHeight(140), SCREEN_WIDTH - kWidth(50), _bouncedView.pasteButton.yy + kHeight(30));
-    //    [self showPopAnimationWithAnimationStyle:8];
-    //    [TLAlert alertWithSucces:[LangSwitcher switchLang:@"复制成功!" key:nil]];
-    //    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    
     [TLAlert alertWithSucces:[LangSwitcher switchLang:@"复制成功!" key:nil]];
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    //    NSString *lang;
-    //    LangType type = [LangSwitcher currentLangType];
     pasteboard.string = address;
-    
-//    pasteboard.string = self.bouncedView.informationLabel.text;
 }
 
 -(void)downloadBtnClick

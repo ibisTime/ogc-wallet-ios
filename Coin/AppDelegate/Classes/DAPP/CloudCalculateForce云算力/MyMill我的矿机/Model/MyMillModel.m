@@ -13,10 +13,10 @@
 -(NSString *)statussStr
 {
     if ([_status isEqualToString:@"0"]) {
-        _statussStr = @"待挖矿";
+        _statussStr = @"待分解";
     }
     if ([_status isEqualToString:@"1"]) {
-        _statussStr = @"挖矿中";
+        _statussStr = @"分解中";
     }
     if ([_status isEqualToString:@"2"]) {
         _statussStr = @"已失效";

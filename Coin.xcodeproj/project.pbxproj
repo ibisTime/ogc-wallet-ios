@@ -595,7 +595,6 @@
 		7AD659F1215F691C002F747E /* MoneyAndTreasureHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD659F0215F691C002F747E /* MoneyAndTreasureHeadView.m */; };
 		7AE970522170C4970066B66C /* InviteEarningsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE970512170C4970066B66C /* InviteEarningsModel.m */; };
 		7AE9705521742D140066B66C /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE9705421742D130066B66C /* NSBundle+Language.m */; };
-		7AE970582175C23B0066B66C /* TLMoneyDeailWebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE970572175C23B0066B66C /* TLMoneyDeailWebViewCell.m */; };
 		7AFBAE31216DD32A006CF464 /* MyIncomeTopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AFBAE30216DD32A006CF464 /* MyIncomeTopModel.m */; };
 		B8086538211F19BF00755158 /* TLBillBTCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B8086537211F19BF00755158 /* TLBillBTCVC.m */; };
 		B808653B211F1B6000755158 /* TLBTCtableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B808653A211F1B6000755158 /* TLBTCtableView.m */; };
@@ -1954,8 +1953,6 @@
 		7AE970512170C4970066B66C /* InviteEarningsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InviteEarningsModel.m; sourceTree = "<group>"; };
 		7AE9705321742D130066B66C /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
 		7AE9705421742D130066B66C /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
-		7AE970562175C23B0066B66C /* TLMoneyDeailWebViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLMoneyDeailWebViewCell.h; sourceTree = "<group>"; };
-		7AE970572175C23B0066B66C /* TLMoneyDeailWebViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLMoneyDeailWebViewCell.m; sourceTree = "<group>"; };
 		7AFBAE2F216DD32A006CF464 /* MyIncomeTopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyIncomeTopModel.h; sourceTree = "<group>"; };
 		7AFBAE30216DD32A006CF464 /* MyIncomeTopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyIncomeTopModel.m; sourceTree = "<group>"; };
 		8863748C5281F9DC1DDF8EEA /* Pods-Coin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coin/Pods-Coin.release.xcconfig"; sourceTree = "<group>"; };
@@ -5251,8 +5248,6 @@
 				7A2CC64C215B772C00B27E2D /* TLMoneyDeailCell.m */,
 				7A2CC64E215B829F00B27E2D /* TLMoneyDetailsAttributesCell.h */,
 				7A2CC64F215B829F00B27E2D /* TLMoneyDetailsAttributesCell.m */,
-				7AE970562175C23B0066B66C /* TLMoneyDeailWebViewCell.h */,
-				7AE970572175C23B0066B66C /* TLMoneyDeailWebViewCell.m */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -6515,7 +6510,6 @@
 				7A2CC6B9215DC88C00B27E2D /* PGDatePicker+MinuteAndSecond.m in Sources */,
 				1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */,
 				1FA56AFD223CD6A70077FE54 /* GameIntroducedCell.m in Sources */,
-				7AE970582175C23B0066B66C /* TLMoneyDeailWebViewCell.m in Sources */,
 				1F93618421EF0C85007E522A /* MyBankCardModel.m in Sources */,
 				1F76691A21D4A32700006B41 /* BTCKeychain+Tests.m in Sources */,
 				1F76699221D771C700006B41 /* MyFriendTableView.m in Sources */,

@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleText.text = @"我的矿机";
+    self.titleText.text = @"我的水滴";
     self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData];

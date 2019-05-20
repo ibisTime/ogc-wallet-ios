@@ -18,7 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.titleText.text = @"算力加速";
+    self.titleText.text = @"热量值";
     self.navigationItem.titleView = self.titleText;
     
     
@@ -39,7 +39,7 @@
     
     UILabel *calculateNameLbl = [UILabel labelWithFrame:CGRectMake(0, 31, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [calculateNameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    calculateNameLbl.text = @"当前算力";
+    calculateNameLbl.text = @"当前热量";
     [backView addSubview:calculateNameLbl];
     
     UILabel *calculateNumberLbl = [UILabel labelWithFrame:CGRectMake(0, calculateNameLbl.yy + 9, SCREEN_WIDTH - 30, 33.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(24) textColor:nil];
@@ -48,17 +48,17 @@
     
     UILabel *directDriveNameLbl = [UILabel labelWithFrame:CGRectMake(0, calculateNumberLbl.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [directDriveNameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    directDriveNameLbl.text = @"当前购买矿机的直推用户：0";
+    directDriveNameLbl.text = @"当前购买水滴型号的直推用户：0";
     [backView addSubview:directDriveNameLbl];
     
     UILabel *introduceLbl1 = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 17, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [introduceLbl1 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    introduceLbl1.text = @"每2个直推用户购买矿机，获得1天加速";
+    introduceLbl1.text = @"每2个直推用户购买水滴型号，获得1天加速";
     [self.view addSubview:introduceLbl1];
     
     UILabel *introduceLbl2 = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 42, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [introduceLbl2 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    introduceLbl2.text = @"*加速仅针对30天（含）以上的矿机类型";
+    introduceLbl2.text = @"*加速仅针对30天（含）以上的水滴型号类型";
     [self.view addSubview:introduceLbl2];
     
     UIButton *buyBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];

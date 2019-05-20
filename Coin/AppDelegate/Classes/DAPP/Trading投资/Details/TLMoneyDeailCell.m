@@ -92,51 +92,51 @@
 
     }else if ([moneyModel.timeStatus isEqualToString:@"1"])
     {
-        kViewBorderRadius(label22, 10, 1, kHexColor(@"#0064FF"));
+        kViewBorderRadius(label22, 10, 1, kTabbarColor);
         kViewBorderRadius(label23, 10, 1, kHexColor([TLUser TextFieldPlacColor]));
         kViewBorderRadius(label24, 10, 1, kHexColor([TLUser TextFieldPlacColor]));
-        label22.textColor = kHexColor(@"#0064FF");
+        label22.textColor = kTabbarColor;
         label23.textColor = kHexColor([TLUser TextFieldPlacColor]);
         label24.textColor = kHexColor([TLUser TextFieldPlacColor]);
-        label33.textColor = kHexColor(@"#0064FF");
+        label33.textColor = kTabbarColor;
         label34.textColor = kHexColor([TLUser TextFieldPlacColor]);
         label35.textColor = kHexColor([TLUser TextFieldPlacColor]);
-        label11.textColor = kHexColor(@"#0064FF");
+        label11.textColor = kTabbarColor;
         label12.textColor = kHexColor([TLUser TextFieldPlacColor]);
         label13.textColor = kHexColor([TLUser TextFieldPlacColor]);
         lineImage1.image = kImage(@"线 灰色");
         lineImage2.image = kImage(@"线 灰色");
     }else if ([moneyModel.timeStatus isEqualToString:@"2"])
     {
-        kViewBorderRadius(label22, 10, 1, kHexColor(@"#0064FF"));
-        kViewBorderRadius(label23, 10, 1, kHexColor(@"#0064FF"));
+        kViewBorderRadius(label22, 10, 1, kTabbarColor);
+        kViewBorderRadius(label23, 10, 1, kTabbarColor);
         kViewBorderRadius(label24, 10, 1, kHexColor([TLUser TextFieldPlacColor]));
-        label22.textColor = kHexColor(@"#0064FF");
-        label23.textColor = kHexColor(@"#0064FF");
+        label22.textColor = kTabbarColor;
+        label23.textColor = kTabbarColor;
         label24.textColor = kHexColor([TLUser TextFieldPlacColor]);
-        label33.textColor = kHexColor(@"#0064FF");
-        label34.textColor = kHexColor(@"#0064FF");
+        label33.textColor = kTabbarColor;
+        label34.textColor = kTabbarColor;
         label35.textColor = kHexColor([TLUser TextFieldPlacColor]);
-        label11.textColor = kHexColor(@"#0064FF");
-        label12.textColor = kHexColor(@"#0064FF");
+        label11.textColor = kTabbarColor;
+        label12.textColor = kTabbarColor;
         label13.textColor = kHexColor([TLUser TextFieldPlacColor]);
         lineImage1.image = kImage(@"线 蓝色");
         lineImage2.image = kImage(@"线 灰色");
     }
     else if ([moneyModel.timeStatus isEqualToString:@"3"])
     {
-        kViewBorderRadius(label22, 10, 1, kHexColor(@"#0064FF"));
-        kViewBorderRadius(label23, 10, 1, kHexColor(@"#0064FF"));
-        kViewBorderRadius(label24, 10, 1, kHexColor(@"#0064FF"));
-        label22.textColor = kHexColor(@"#0064FF");
-        label23.textColor = kHexColor(@"#0064FF");
-        label24.textColor = kHexColor(@"#0064FF");
-        label33.textColor = kHexColor(@"#0064FF");
-        label34.textColor = kHexColor(@"#0064FF");
-        label35.textColor = kHexColor(@"#0064FF");
-        label11.textColor = kHexColor(@"#0064FF");
-        label12.textColor = kHexColor(@"#0064FF");
-        label13.textColor = kHexColor(@"#0064FF");
+        kViewBorderRadius(label22, 10, 1, kTabbarColor);
+        kViewBorderRadius(label23, 10, 1, kTabbarColor);
+        kViewBorderRadius(label24, 10, 1, kTabbarColor);
+        label22.textColor = kTabbarColor;
+        label23.textColor = kTabbarColor;
+        label24.textColor = kTabbarColor;
+        label33.textColor = kTabbarColor;
+        label34.textColor = kTabbarColor;
+        label35.textColor = kTabbarColor;
+        label11.textColor = kTabbarColor;
+        label12.textColor = kTabbarColor;
+        label13.textColor = kTabbarColor;
         lineImage1.image = kImage(@"线 蓝色");
         lineImage2.image = kImage(@"线 蓝色");
     }

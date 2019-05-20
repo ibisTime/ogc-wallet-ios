@@ -43,7 +43,7 @@ static NSString *Cell3 = @"MyCell3";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (section == 1) {
-        return 6;
+        return 7;
     }
 //    if (section == 2) {
 //        return 3;
@@ -70,7 +70,7 @@ static NSString *Cell3 = @"MyCell3";
     cell.backgroundColor = kClearColor;
     
     if (indexPath.section == 1) {
-        NSArray *array = @[@"账户与安全",@"我的收益",@"地址本",@"帮助中心",@"问题反馈",@"设置"];
+        NSArray *array = @[@"账户与安全",@"我的收益",@"金米福分",@"地址本",@"帮助中心",@"问题反馈",@"设置"];
         [cell.iconImg theme_setImageIdentifier:array[indexPath.row] moduleName:ImgAddress];
         cell.iconLbl.text = array[indexPath.row];
         [cell.iconLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];

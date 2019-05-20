@@ -43,7 +43,7 @@
     
     UILabel *promptLbl = [UILabel labelWithFrame:CGRectMake(15, 17.5, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [promptLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    promptLbl.text = @"请输入购买台数（台）";
+    promptLbl.text = @"请输入购买滴数（滴）";
     [backView addSubview:promptLbl];
     
     UITextField *textField = [[UITextField alloc]initWithFrame:CGRectMake(15, promptLbl.yy + 7, SCREEN_WIDTH - 30, 33.5)];
@@ -61,7 +61,7 @@
     
     UILabel *maintenanceFeeLbl = [UILabel labelWithFrame:CGRectMake(15, textField.yy + 9.5, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [maintenanceFeeLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    maintenanceFeeLbl.text = @"所需维护费：6个茄子";
+    maintenanceFeeLbl.text = @"所需维护费：6个氢气";
     [backView addSubview:maintenanceFeeLbl];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 115, SCREEN_WIDTH, 0.5)];
@@ -70,7 +70,7 @@
     
     UILabel *balanceLbl = [UILabel labelWithFrame:CGRectMake(15, lineView.yy + 22, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
     [balanceLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    balanceLbl.text = @"当前茄子余额：5个";
+    balanceLbl.text = @"当前氢气余额：5个";
     [balanceLbl sizeToFit];
     balanceLbl.frame = CGRectMake(15, lineView.yy + 22, balanceLbl.width, 20);
     [backView addSubview :balanceLbl];
@@ -195,7 +195,7 @@
 {
     
     if ([_numberTextField.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:@"请输入购买台数"];
+        [TLAlert alertWithInfo:@"请输入购买滴数"];
         return;
     }
     

@@ -44,12 +44,12 @@
         
         
         UILabel *allmMillLbl = [UILabel labelWithFrame:CGRectMake(15, phoneLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        allmMillLbl.text = @"总矿机：10台";
+        allmMillLbl.text = @"总水滴型号：10滴";
         [allmMillLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [self addSubview:allmMillLbl];
         
         UILabel *yesterdayMillLbl = [UILabel labelWithFrame:CGRectMake(15, allmMillLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        yesterdayMillLbl.text = @"昨日矿机：8台";
+        yesterdayMillLbl.text = @"昨日水滴型号：8滴";
         [yesterdayMillLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [self addSubview:yesterdayMillLbl];
         
