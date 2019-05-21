@@ -63,7 +63,18 @@
     
     
     UILabel *priceLbl = [UILabel labelWithFrame:CGRectMake(0, priceNameLbl.yy, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(24) textColor:nil];
-    priceLbl.text = @"1000HEY";
+    NSString *nodeAmount;
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_info_dict_key"];
+    if ([dict[@"nodeAmount"] floatValue] == 0) {
+        nodeAmount = @"0";
+    }else
+    {
+        nodeAmount = [CoinUtil convertToRealCoin:dict[@"nodeAmount"]
+                                             coin:@"HEY"];
+    }
+    
+    
+    priceLbl.text = [NSString stringWithFormat:@"%@HEY",nodeAmount];
     [backView addSubview:priceLbl];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 219 , SCREEN_WIDTH, 1)];
@@ -119,6 +130,9 @@
     
     self.vc1.y = 220;
     self.vc2.y = 220;
+    
+    self.vc2.MaxLevel = 10;
+    
     //指定该控制器为其子控制器
     [self addChildViewController:_vc1];
     [self addChildViewController:_vc2];

@@ -36,10 +36,12 @@
 		1F1B000E21E49BF6000BEBD3 /* BindingEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B000D21E49BF6000BEBD3 /* BindingEmailVC.m */; };
 		1F1B001221E5EF26000BEBD3 /* FinancialDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001121E5EF26000BEBD3 /* FinancialDetailsVC.m */; };
 		1F1B001521E5EF36000BEBD3 /* FinancialDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B001421E5EF36000BEBD3 /* FinancialDetailsView.m */; };
-		1F2E00C5227EE12000FE79C8 /* Theme in Resources */ = {isa = PBXBuildFile; fileRef = 1F2E00C4227EE11F00FE79C8 /* Theme */; };
 		1F35701922928FF6004A24E7 /* FeedBookDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35701822928FF5004A24E7 /* FeedBookDetailsVC.m */; };
 		1F35701C2292936E004A24E7 /* FeedBookDetailsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35701B2292936E004A24E7 /* FeedBookDetailsTableView.m */; };
 		1F35701F229293A0004A24E7 /* FeedBookDetailsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35701E229293A0004A24E7 /* FeedBookDetailsCell.m */; };
+		1F3570D022942671004A24E7 /* BlackTheme in Resources */ = {isa = PBXBuildFile; fileRef = 1F3570CE2294266F004A24E7 /* BlackTheme */; };
+		1F3570D122942671004A24E7 /* WhiteTheme in Resources */ = {isa = PBXBuildFile; fileRef = 1F3570CF22942670004A24E7 /* WhiteTheme */; };
+		1F3570D42294569F004A24E7 /* TeamPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3570D32294569F004A24E7 /* TeamPerformanceModel.m */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
 		1F4731C6221A92CB007B5908 /* 1080的.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4731C5221A92C9007B5908 /* 1080的.png */; };
@@ -765,13 +767,16 @@
 		1F1BFFFD21E49391000BEBD3 /* Resource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resource.bundle; sourceTree = "<group>"; };
 		1F1BFFFE21E49391000BEBD3 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		1F1BFFFF21E49391000BEBD3 /* libjpeg.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libjpeg.a; sourceTree = "<group>"; };
-		1F2E00C4227EE11F00FE79C8 /* Theme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Theme; sourceTree = "<group>"; };
 		1F35701722928FF5004A24E7 /* FeedBookDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBookDetailsVC.h; sourceTree = "<group>"; };
 		1F35701822928FF5004A24E7 /* FeedBookDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBookDetailsVC.m; sourceTree = "<group>"; };
 		1F35701A2292936E004A24E7 /* FeedBookDetailsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBookDetailsTableView.h; sourceTree = "<group>"; };
 		1F35701B2292936E004A24E7 /* FeedBookDetailsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBookDetailsTableView.m; sourceTree = "<group>"; };
 		1F35701D229293A0004A24E7 /* FeedBookDetailsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedBookDetailsCell.h; sourceTree = "<group>"; };
 		1F35701E229293A0004A24E7 /* FeedBookDetailsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedBookDetailsCell.m; sourceTree = "<group>"; };
+		1F3570CE2294266F004A24E7 /* BlackTheme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BlackTheme; sourceTree = "<group>"; };
+		1F3570CF22942670004A24E7 /* WhiteTheme */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WhiteTheme; sourceTree = "<group>"; };
+		1F3570D22294569F004A24E7 /* TeamPerformanceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TeamPerformanceModel.h; sourceTree = "<group>"; };
+		1F3570D32294569F004A24E7 /* TeamPerformanceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TeamPerformanceModel.m; sourceTree = "<group>"; };
 		1F35826421870D8C00F1665B /* NewHelpCentetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewHelpCentetVC.m; sourceTree = "<group>"; };
 		1F35826521870D8E00F1665B /* NewHelpCentetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpCentetVC.h; sourceTree = "<group>"; };
 		1F358B3B218ABC4500F1665B /* USDTRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTRecordModel.h; sourceTree = "<group>"; };
@@ -2284,6 +2289,8 @@
 		1F0E151C228D4DD400AEE094 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1F3570D22294569F004A24E7 /* TeamPerformanceModel.h */,
+				1F3570D32294569F004A24E7 /* TeamPerformanceModel.m */,
 				1F0E151D228D4DE500AEE094 /* SLNodeModel.h */,
 				1F0E151E228D4DE500AEE094 /* SLNodeModel.m */,
 			);
@@ -4935,8 +4942,9 @@
 		2EA584B61FA813C900C7106C /* Coin */ = {
 			isa = PBXGroup;
 			children = (
+				1F3570CF22942670004A24E7 /* WhiteTheme */,
+				1F3570CE2294266F004A24E7 /* BlackTheme */,
 				1F7F6F38227EE571003AEBA7 /* MTTheme */,
-				1F2E00C4227EE11F00FE79C8 /* Theme */,
 				1F1BFFFB21E49391000BEBD3 /* OCR */,
 				1F76692C21D4A34C00006B41 /* ValidationSDK */,
 				1F76695D21D4A34C00006B41 /* WechatSDK1.8.2 */,
@@ -5751,7 +5759,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F2E00C5227EE12000FE79C8 /* Theme in Resources */,
 				7A2CC6C2215DC88C00B27E2D /* PGDatePicker.bundle in Resources */,
 				1F76697C21D4A34D00006B41 /* README.txt in Resources */,
 				1F76696921D4A34D00006B41 /* MSADefaultImages.bundle in Resources */,
@@ -5759,6 +5766,7 @@
 				B88B59172109AEC400F20D1B /* country.plist in Resources */,
 				B819BAAA20C6DD7800CEEC5E /* LaunchScreen.storyboard in Resources */,
 				1F76696621D4A34D00006B41 /* MSADefaultLocale.bundle in Resources */,
+				1F3570D122942671004A24E7 /* WhiteTheme in Resources */,
 				2EFFE6AA1FF4829100BFCC40 /* Localizable.strings in Resources */,
 				7A2CC6D4215DC89200B27E2D /* LICENSE in Resources */,
 				1FA56B11223CDDD90077FE54 /* 启动页.png in Resources */,
@@ -5769,6 +5777,7 @@
 				1F73670C2252FEFA00135F7E /* secp256k1.table in Resources */,
 				1F76696B21D4A34D00006B41 /* LICENSE.txt in Resources */,
 				1F76696721D4A34D00006B41 /* yw_1222_0335.jpg in Resources */,
+				1F3570D022942671004A24E7 /* BlackTheme in Resources */,
 				1FA41B46223D4B7400B746D8 /* SLBannerView.xib in Resources */,
 				7A40B101217CAEA8004B9830 /* Assets.xcassets in Resources */,
 				1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */,
@@ -5989,6 +5998,7 @@
 				1F93618021EEDBD3007E522A /* LYSToolObject.m in Sources */,
 				1F7F6F5C227EE572003AEBA7 /* MTBaseTable.m in Sources */,
 				1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */,
+				1F3570D42294569F004A24E7 /* TeamPerformanceModel.m in Sources */,
 				B88B092A20C8ED77005C2D2F /* JoinModel.m in Sources */,
 				B88B59232109AEF500F20D1B /* CountryModel.m in Sources */,
 				1F76697321D4A34D00006B41 /* aescrypt.c in Sources */,

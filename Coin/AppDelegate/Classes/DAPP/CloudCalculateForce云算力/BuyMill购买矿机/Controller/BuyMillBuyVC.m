@@ -175,6 +175,13 @@
     InHttp.showView = self.view;
     InHttp.parameters[@"type"] = @"0";
     InHttp.parameters[@"symbol"] = self.model.symbol;
+    
+    
+    
+    
+    
+    
+    
     [InHttp postWithSuccess:^(id responseObject) {
         sellerPrice = [responseObject[@"data"][@"sellerPrice"] floatValue];
         
@@ -201,10 +208,11 @@
     
     TLNetworking *http = [TLNetworking new];
     http.code = @"610100";
+    http.showView = self.view;
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"machineCode"] = self.model.code;
     http.parameters[@"quantity"] = _numberTextField.text;
-    http.parameters[@"investCount"] = [NSString stringWithFormat:@"%.f",rmbPrice *[_numberTextField.text floatValue]/sellerPrice];
+    http.parameters[@"investCount"] = [CoinUtil convertToRealCoin:[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[_numberTextField.text floatValue]/sellerPrice] mult2:@"1" scale:8] coin:_model.symbol];
     [http postWithSuccess:^(id responseObject) {
         
         [TLAlert alertWithSucces:@"购买成功"];

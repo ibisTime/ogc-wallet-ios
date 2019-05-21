@@ -191,10 +191,10 @@
     InHttp.parameters[@"type"] = @"0";
     InHttp.parameters[@"symbol"] = model.symbolIn;
     [InHttp postWithSuccess:^(id responseObject) {
-        NSString *sellerPrice = responseObject[@"data"][@"sellerPrice"];
+        NSString *sellerPrice = responseObject[@"data"][@"buyPrice"];
         self.headView.OutPrice = sellerPrice;
-
     } failure:^(NSError *error) {
+        
     }];
     
 
@@ -203,7 +203,7 @@
     OutHttp.parameters[@"type"] = @"0";
     OutHttp.parameters[@"symbol"] = model.symbolOut;
     [OutHttp postWithSuccess:^(id responseObject) {
-        NSString *buyPrice = responseObject[@"data"][@"buyPrice"];
+        NSString *buyPrice = responseObject[@"data"][@"sellerPrice"];
         self.headView.InPrice = buyPrice;
 
         

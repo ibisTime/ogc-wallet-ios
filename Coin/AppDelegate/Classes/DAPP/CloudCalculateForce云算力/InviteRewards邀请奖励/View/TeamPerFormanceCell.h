@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TeamPerformanceModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TeamPerFormanceCell : UITableViewCell
+
+@property (nonatomic , strong)TeamPerformanceModel *model;
 
 @end
 

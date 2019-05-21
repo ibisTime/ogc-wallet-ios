@@ -53,7 +53,7 @@
         
         
         
-        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 30, 590/2)];
+        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 30, 590/2 - 50)];
 //        backView.backgroundColor = kWhiteColor;
         [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         kViewRadius(backView, 8);
@@ -92,32 +92,32 @@
 //        [BGView addSubview:downLineView];
         
         // 取消按钮
-        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.frame = CGRectMake(0, BGViewH - 50, BGViewW / 2, 50);
-        [cancelButton setTitle:[LangSwitcher switchLang:@"取消" key:nil] forState:UIControlStateNormal];
-//        [cancelButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
-        [cancelButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
-        cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        [cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:cancelButton];
-        
-        // 确定按钮
-        UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        sureButton.frame = CGRectMake(cancelButton.xx, BGViewH - 50, BGViewW / 2, 50);
-        [sureButton setTitle:[LangSwitcher switchLang:@"确定" key:nil] forState:UIControlStateNormal];
-        [sureButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
-        sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        [sureButton addTarget:self action:@selector(sureButtonAction) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:sureButton];
-        
-        UIView *lineHView = [[UIView alloc] initWithFrame:CGRectMake(BGViewW/2 - 0.5, BGViewH - 50, 1, 50)];
-//        lineHView.backgroundColor = kLineColor;
-        [lineHView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-        [self addSubview:lineHView];
-        
-        UIView *lineWView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - 50, BGViewW, 1)];
-        [lineWView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-        [self addSubview:lineWView];
+//        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        cancelButton.frame = CGRectMake(0, BGViewH - 50, BGViewW / 2, 50);
+//        [cancelButton setTitle:[LangSwitcher switchLang:@"取消" key:nil] forState:UIControlStateNormal];
+////        [cancelButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
+//        [cancelButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+//        cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:cancelButton];
+//
+//        // 确定按钮
+//        UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        sureButton.frame = CGRectMake(cancelButton.xx, BGViewH - 50, BGViewW / 2, 50);
+//        [sureButton setTitle:[LangSwitcher switchLang:@"确定" key:nil] forState:UIControlStateNormal];
+//        [sureButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+//        sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
+//        [sureButton addTarget:self action:@selector(sureButtonAction) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:sureButton];
+//
+//        UIView *lineHView = [[UIView alloc] initWithFrame:CGRectMake(BGViewW/2 - 0.5, BGViewH - 50, 1, 50)];
+////        lineHView.backgroundColor = kLineColor;
+//        [lineHView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+//        [self addSubview:lineHView];
+//
+//        UIView *lineWView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - 50, BGViewW, 1)];
+//        [lineWView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+//        [self addSubview:lineWView];
         
         // 密码框
         CGFloat passwordTextFieldY = promptLabel.yy + 15;
@@ -208,12 +208,19 @@
     if (textField.text.length == kPasswordCount) {
 //        NSLog(@"输入完毕,密码为%@", textField.text);
     }
+    if (textField.text.length == 6) {
+        if ([self.delegate respondsToSelector:@selector(sureActionWithAlertPasswordView:password:)]) {
+            [self.delegate sureActionWithAlertPasswordView:self password:textField.text];
+            [self clearUpPassword];
+        }
+    }
 }
 
 #pragma mark - 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [super touchesBegan:touches withEvent:event];
-    
+//    [self clearUpPassword];
+    [[UserModel user].cusPopView dismiss];
     [self endEditing:YES];
 }
 

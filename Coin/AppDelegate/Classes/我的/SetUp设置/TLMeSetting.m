@@ -76,7 +76,7 @@
     self.tableView.SwitchBlock = ^(NSInteger switchBlock) {
         if (switchBlock == 0) {
             NSString *path = [NSBundle mainBundle].bundlePath;
-            path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+            path = [path stringByAppendingPathComponent:@"WhiteTheme"];
             [MTThemeManager.manager setThemePath:path];
             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
             
@@ -95,9 +95,11 @@
             
             
             NSString *path = [NSBundle mainBundle].bundlePath;
-            path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+            path = [path stringByAppendingPathComponent:@"BlackTheme"];
             
             [MTThemeManager.manager setThemePath:path];
+        
+            
             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
             
             UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -108,9 +110,6 @@
             weakSelf.navigationController.navigationBar.shadowImage = [UIImage new];
             [[NSUserDefaults standardUserDefaults] setObject:BLACK forKey:COLOR];
         }
-        
-        NSNotification *notification =[NSNotification notificationWithName:@"ModifyBackground" object:nil userInfo:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
         
     };
     [self.view addSubview:self.tableView];

@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , assign)CGFloat y;
 
+@property (nonatomic , assign)NSInteger MaxLevel;
+
 @end
 
 NS_ASSUME_NONNULL_END

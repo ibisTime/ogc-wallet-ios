@@ -24,7 +24,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 //动画时间
-#define MTTheme_animatedDuration 0.2
+#define MTTheme_animatedDuration 2
 
 //动画类型
 #define MTTheme_UIViewKeyframeAnimationOption UIViewKeyframeAnimationOptionCalculationModeLinear

@@ -26,4 +26,7 @@
 
 @property (nonatomic , strong)UILabel *priceLabel;
 
+-(void)clearUpPassword;
+
+
 @end

@@ -70,10 +70,10 @@
     NSString *themePath;
     
     if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
-        themePath = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+        themePath = [path stringByAppendingPathComponent:@"BlackTheme"];
     }else
     {
-        themePath = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+        themePath = [path stringByAppendingPathComponent:@"WhiteTheme"];
     }
     
     
@@ -81,7 +81,7 @@
     
     
     CFAbsoluteTime themeEndTime = CFAbsoluteTimeGetCurrent();
-    MTTheme_Log(@"[During]主题注册事件 during in %f seconds.", (themeStartTime - themeEndTime));
+//    MTTheme_Log(@"[During]主题注册事件 during in %f seconds.", (themeStartTime - themeEndTime));
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
 //    字体模块初始化
@@ -89,7 +89,7 @@
     NSString *fontPath = [path stringByAppendingPathComponent:@"Font/Font1"];
     [MTFontManager initializeWithDefaultFontPath:fontPath];
     CFAbsoluteTime fontEndTime = CFAbsoluteTimeGetCurrent();
-    MTTheme_Log(@"[During]字体注册事件 during in %f seconds.", (fontStartTime - fontEndTime));
+//    MTTheme_Log(@"[During]字体注册事件 during in %f seconds.", (fontStartTime - fontEndTime));
     
     
     NSLog(@"================= %@",NSHomeDirectory());

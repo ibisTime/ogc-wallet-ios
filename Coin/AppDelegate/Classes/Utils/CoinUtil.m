@@ -23,6 +23,7 @@ NSString *const kCNY = @"CNY";
 
 + (NSString *)convertToRealCoin:(NSString *)count coin:(NSString *)coin {
     
+    
     if (![count valid]) {
         return @"";
     }

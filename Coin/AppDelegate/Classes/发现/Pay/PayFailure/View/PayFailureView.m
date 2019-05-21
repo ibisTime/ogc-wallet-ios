@@ -156,7 +156,13 @@
         }else
         {
             [stateBtn setTitle:[LangSwitcher switchLang:@"已完成" key:nil] forState:(UIControlStateNormal)];
-             stateLbl.text = [LangSwitcher switchLang:@"币已转入您的钱包账户，交易完成" key:nil];
+            if ([models.type isEqualToString:@"0"]) {
+                stateLbl.text = [LangSwitcher switchLang:@"币已转入您的钱包账户，交易完成" key:nil];
+            }else
+            {
+                stateLbl.text = [LangSwitcher switchLang:@"币已转入您的收款账户，交易完成" key:nil];
+            }
+            
         }
         [stateBtn SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
             [stateBtn setImage:kImage(@"已完成-详情") forState:(UIControlStateNormal)];

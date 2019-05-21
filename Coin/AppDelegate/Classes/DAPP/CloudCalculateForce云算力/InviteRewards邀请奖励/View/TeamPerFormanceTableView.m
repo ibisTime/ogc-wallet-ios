@@ -39,7 +39,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     
-    return 10;
+    return self.models.count;
     
 }
 
@@ -49,6 +49,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
     TeamPerFormanceCell *cell = [tableView dequeueReusableCellWithIdentifier:MyAsstes forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    cell.model = self.models[indexPath.row];
     return cell;
     
 }

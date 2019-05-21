@@ -11,21 +11,21 @@
 #import "SLNodeModel.h"
 #import "SLNodeTableViewCell.h"
 
-static int const MaxLevel = 10; //最大的层级数
+//static int const MaxLevel = 10; //最大的层级数
 
 @interface ResultsDistributionVC () <UITableViewDelegate, UITableViewDataSource,SLNodeTableViewCellDelegate>
 @property (strong, nonatomic) NSMutableArray * dataSource;
 @property (strong, nonatomic) NSMutableArray * selectedSource;
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) TLTableView *tableView;
 
 @end
 
 @implementation ResultsDistributionVC
 
--(UITableView *)tableView
+-(TLTableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - self.y) style:(UITableViewStyleGrouped)];
+        _tableView = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - self.y) style:(UITableViewStyleGrouped)];
         [_tableView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -39,27 +39,69 @@ static int const MaxLevel = 10; //最大的层级数
     [self.view addSubview:self.tableView];
     self.dataSource = [NSMutableArray array];
     self.selectedSource = [NSMutableArray array];
-    [self setDataSOurce];
+//    [self setDataSurce];
+    
+    CoinWeakSelf;
+    [_tableView addRefreshAction:^{
+        [weakSelf LoadData];
+    }];
+    [_tableView beginRefreshing];
+    
 }
 
+
+-(void)LoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"610148";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    [http postWithSuccess:^(id responseObject) {
+        self.dataSource = [NSMutableArray array];
+        NSArray *dataArray = responseObject[@"data"];
+        for (int i = 0; i < dataArray.count; i++) {
+            SLNodeModel * node = [[SLNodeModel alloc] init];
+            node.parentID = @"";
+            node.childrenID = @"";
+            node.level = 1;
+            node.name = [NSString stringWithFormat:@"第%d级结点",node.level];
+            node.leaf = 0;
+            node.root = YES;
+            node.expand = NO;
+            node.selected = NO;
+            node.totalIncome = dataArray[i][@"totalIncome"];
+            node.mobile = dataArray[i][@"mobile"];
+            node.totalPerformance = dataArray[i][@"totalPerformance"];
+            node.yesterdayPerformance = dataArray[i][@"yesterdayPerformance"];
+            node.yesterdayIncome = dataArray[i][@"yesterdayIncome"];
+            node.teamList = dataArray[i][@"teamList"];
+            [self.dataSource addObject:node];
+        }
+        [self.tableView endRefreshHeader];
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        [self.tableView endRefreshHeader];
+    }];
+}
 
 #pragma mark - DataSouce
 
 // 获取并初始化 树根结点数组
-- (void)setDataSOurce {
-    for (int i = 0; i < 4; i++) {
-        SLNodeModel * node = [[SLNodeModel alloc] init];
-        node.parentID = @"";
-        node.childrenID = @"";
-        node.level = 1;
-        node.name = [NSString stringWithFormat:@"第%d级结点",node.level];
-        node.leaf = 0;
-        node.root = YES;
-        node.expand = NO;
-        node.selected = NO;
-        [self.dataSource addObject:node];
-    }
-}
+//- (void)setDataSOurce {
+//    for (int i = 0; i < 4; i++) {
+//        SLNodeModel * node = [[SLNodeModel alloc] init];
+//        node.parentID = @"";
+//        node.childrenID = @"";
+//        node.level = 1;
+//        node.name = [NSString stringWithFormat:@"第%d级结点",node.level];
+//        node.leaf = 0;
+//        node.root = YES;
+//        node.expand = NO;
+//        node.selected = NO;
+//        [self.dataSource addObject:node];
+//    }
+//}
 
 /**
  获取并展开父结点的子结点数组 数量随机产生
@@ -71,17 +113,27 @@ static int const MaxLevel = 10; //最大的层级数
     SLNodeModel * nodeModel = self.dataSource[indexPath.row];
     NSMutableArray * insertNodeRows = [NSMutableArray array];
     int insertLocation = (int)indexPath.row + 1;
-    for (int i = 0; i < 3; i++) {
+    
+    
+    
+    for (int i = 0; i < nodeModel.teamList.count; i++) {
         SLNodeModel * node = [[SLNodeModel alloc] init];
         node.parentID = @"";
         node.childrenID = @"";
         node.level = level + 1;
         node.name = [NSString stringWithFormat:@"%d代",node.level];
-        node.leaf = (node.level < MaxLevel) ? NO : YES;
+        node.leaf = (node.level < _MaxLevel) ? NO : YES;
         node.root = NO;
         node.expand = NO;
         node.selected = nodeModel.selected;
+        node.totalIncome = nodeModel.teamList[i][@"totalIncome"];
+        node.mobile = nodeModel.teamList[i][@"mobile"];
+        node.totalPerformance = nodeModel.teamList[i][@"totalPerformance"];
+        node.yesterdayPerformance = nodeModel.teamList[i][@"yesterdayPerformance"];
+        node.yesterdayIncome = nodeModel.teamList[i][@"yesterdayIncome"];
+        node.teamList = nodeModel.teamList[i][@"teamList"];
         [self.dataSource insertObject:node atIndex:insertLocation + i];
+        
         [insertNodeRows addObject:[NSIndexPath indexPathForRow:insertLocation + i inSection:0]];
     }
     //插入cell
@@ -172,6 +224,8 @@ static int const MaxLevel = 10; //最大的层级数
     SLNodeModel * node = self.dataSource[indexPath.row];
     
     cell.node = node;
+    
+    
     if (node.level == 1) {
         [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     }else

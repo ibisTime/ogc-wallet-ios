@@ -94,7 +94,7 @@
                 number = self.bankModel.bankcardNumber;
             }
             if ([self.bankModel.bankName isEqualToString:@"支付宝"]) {
-                [cell.payBtn setTitle:[NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"支付宝" key:nil],[LangSwitcher switchLang:@"尾号为" key:nil],number] forState:(UIControlStateNormal)];
+                [cell.payBtn setTitle:[NSString stringWithFormat:@"%@:%@",[LangSwitcher switchLang:@"支付宝" key:nil],self.bankModel.bankcardNumber] forState:(UIControlStateNormal)];
             }else
             {
                 [cell.payBtn setTitle:[NSString stringWithFormat:@"%@%@%@",[LangSwitcher switchLang:@"银行卡" key:nil],[LangSwitcher switchLang:@"尾号为" key:nil],number] forState:(UIControlStateNormal)];

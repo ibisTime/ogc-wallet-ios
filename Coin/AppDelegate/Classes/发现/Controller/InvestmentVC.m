@@ -79,6 +79,7 @@
 
 
 
+
 -(HBAlertPasswordView *)passWordView
 {
     if (!_passWordView) {
@@ -145,6 +146,7 @@
 //    self.passwordLabel.text = [NSString stringWithFormat:@"输入的密码为:%@", password];
 }
 
+//查询余额
 - (void)queryCenterTotalAmount {
     
     TLNetworking *http = [TLNetworking new];
@@ -222,6 +224,7 @@
     [self.view addSubview:_promptView];
     type = @"0";
     CoinWeakSelf;
+    
     [self.tableView addRefreshAction:^{
         [weakSelf loadData:type];
         [weakSelf loadDataPrice];
@@ -423,9 +426,6 @@
     
     UITextField *textField1 = [self.view viewWithTag:10000];
     UITextField *textField2 = [self.view viewWithTag:10001];
-    
-
-    
     if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
         [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
         return ;
@@ -499,7 +499,10 @@
         [[UserModel user].cusPopView dismiss];
         self.passWordView.priceLabel.text = [NSString stringWithFormat:@"%@ %@",textField2.text,self.symbol];
         [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.passWordView];
-        
+        [UserModel user].cusPopView.dismissComplete = ^{
+            NSLog(@"移除完成");
+            [_passWordView clearUpPassword];
+        };
 
     }
     
@@ -548,48 +551,53 @@
         
     }else
     {
-        if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
-            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
-            vc.titleString = @"设置交易密码";
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        if (indexBtnTag == 0)
+        {
+            
+        }else
+        {
+            if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+                TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+                vc.titleString = @"设置交易密码";
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
+            }
+        }
+        
+        UITextField *textField1 = [self.view viewWithTag:10000];
+        UITextField *textField2 = [self.view viewWithTag:10001];
+        
+        
+        
+        if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
+            [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
+            return ;
+        }
+        if ([textField1.text floatValue] > [accept_order_max_cny_amount floatValue]) {
+            [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额不得大于" key:nil],accept_order_max_cny_amount]];
+            return ;
+        }
+        if ([textField2.text floatValue] == 0) {
+            [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
+            return ;
+        }
+        if (indexBtnTag == 0) {
+            
+            
         }else
         {
             
-            
-            
-            UITextField *textField1 = [self.view viewWithTag:10000];
-            UITextField *textField2 = [self.view viewWithTag:10001];
-            
-            
-            
-            if ([textField1.text floatValue] < [accept_order_min_cny_amount floatValue]) {
-                [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额必须大于" key:nil],accept_order_min_cny_amount]];
+            if ([TLUser isBlankString:self.bankModel.code] == YES) {
+                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
                 return ;
             }
-            if ([textField1.text floatValue] > [accept_order_max_cny_amount floatValue]) {
-                [TLAlert alertWithInfo:[NSString stringWithFormat:@"%@%@",[LangSwitcher switchLang:@"购买金额不得大于" key:nil],accept_order_max_cny_amount]];
-                return ;
-            }
-            if ([textField2.text floatValue] == 0) {
-                [TLAlert alertWithInfo:[LangSwitcher switchLang:@"购买数量必须大于0" key:nil]];
-                return ;
-            }
-            if (indexBtnTag == 0) {
-                
-            }else
-            {
-                
-                if ([TLUser isBlankString:self.bankModel.code] == YES) {
-                    [TLAlert alertWithInfo:[LangSwitcher switchLang:@"请选择银行卡" key:nil]];
-                    return ;
-                }
-            }
-            
-            [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.promptView];
         }
+        
+        [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.promptView];
     }
-    
 //    [[UserModel user] showPopAnimationWithAnimationStyle:1 showView:self.promptView];
 }
 

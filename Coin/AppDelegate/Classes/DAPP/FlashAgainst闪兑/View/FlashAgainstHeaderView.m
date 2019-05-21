@@ -57,12 +57,12 @@
         [symbolLbl2 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [borderView addSubview:symbolLbl2];
         
-        UIButton *conversionBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+//        UIButton *conversionBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
 //        [conversionBtn setImage:kImage(@"切换") forState:(UIControlStateNormal)];
-        conversionBtn.frame = CGRectMake(SCREEN_WIDTH/2 - 20, borderView.yy + 20, 40, 40);
-        [self addSubview:conversionBtn];
+//        conversionBtn.frame = CGRectMake(SCREEN_WIDTH/2 - 20, borderView.yy + 20, 40, 40);
+//        [self addSubview:conversionBtn];
         
-        UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(15, 140, SCREEN_WIDTH/2 - 47.5, 50)];
+        UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(15, 140, (SCREEN_WIDTH - 45)/2, 50)];
         [leftView theme_setBackgroundColorIdentifier:@"FlashAgainstConversionColor" moduleName:ColorName];
         kViewRadius(leftView, 2);
         [self addSubview:leftView];
@@ -75,12 +75,12 @@
         
         [leftView addSubview:leftLbl];
         
-        leftImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - leftLbl.width/2 - 20, 10, 30, 30)];
+        leftImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 45)/2- leftLbl.width/2 - 20, 10, 30, 30)];
 //        leftImg.image = kImage(@"BTC");
         [leftView addSubview:leftImg];
         
         
-        UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(conversionBtn.xx + 12.5, 140, SCREEN_WIDTH/2 - 47.5, 50)];
+        UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(leftView.xx + 15, 140, (SCREEN_WIDTH - 45)/2, 50)];
         [rightView theme_setBackgroundColorIdentifier:@"FlashAgainstConversionColor" moduleName:ColorName];
         kViewRadius(rightView, 2);
         [self addSubview:rightView];
@@ -90,7 +90,7 @@
         [rightLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [rightView addSubview:rightLbl];
         
-        rightImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - rightLbl.width/2 - 20, 10, 30, 30)];
+        rightImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 45)/2 - rightLbl.width/2 - 20, 10, 30, 30)];
         [rightView addSubview:rightImg];
         
         
@@ -151,6 +151,7 @@
         _poundageLbl = [[UILabel alloc]initWithFrame:CGRectMake(16, 250 + 20.5, 0, 16.5)];
         _poundageLbl.font = FONT(12);
         _poundageLbl.numberOfLines = 2;
+        _poundageLbl.text = @"手续费：0";
         [_poundageLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [self addSubview:_poundageLbl];
         
@@ -272,7 +273,8 @@
     balanceLbl.frame = CGRectMake(16, 250 + 20.5, balanceLbl.width, 16.5);
     allBtn.frame = CGRectMake(balanceLbl.xx + 20, 250 + 15, 50, 27);
     
-    [_poundageLbl sizeToFit];
+    
+//    [_poundageLbl sizeToFit];
     _poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
     
 }
@@ -283,16 +285,17 @@
     CoinModel *InCoin = [CoinUtil getCoinModel:model.symbolOut];
     leftLbl.text = model.symbolOut;
     [leftLbl sizeToFit];
-    leftLbl.frame = CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - leftLbl.width/2 + 20, 0, leftLbl.width, 50);
+    leftLbl.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - leftLbl.width/2 + 20, 0, leftLbl.width, 50);
     [leftImg sd_setImageWithURL:[NSURL URLWithString:[InCoin.pic1 convertImageUrl]] placeholderImage:kImage(@"")];
-    leftImg.frame = CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - leftLbl.width/2 - 20, 10, 30, 30);
+    leftImg.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - leftLbl.width/2 - 20, 10, 30, 30);
+    
     
     CoinModel *OutCoin = [CoinUtil getCoinModel:model.symbolIn];
     rightLbl.text = model.symbolIn;
     [rightLbl sizeToFit];
-    rightLbl.frame = CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - rightLbl.width/2 + 20, 0, rightLbl.width, 50);
+    rightLbl.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - rightLbl.width/2 + 20, 0, rightLbl.width, 50);
     [rightImg sd_setImageWithURL:[NSURL URLWithString:[OutCoin.pic1 convertImageUrl]] placeholderImage:kImage(@"BTC")];
-    rightImg.frame = CGRectMake((SCREEN_WIDTH/2 - 47.5)/2 - rightLbl.width/2 - 20, 10, 30, 30);
+    rightImg.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - rightLbl.width/2 - 20, 10, 30, 30);
     
     
 }

@@ -44,7 +44,7 @@
         [backImage addSubview:bankTypeLbl];
         
         
-        bankNumberLbl = [UILabel labelWithFrame:CGRectMake(10, bankTypeLbl.yy + 25, SCREEN_WIDTH - 60, 33.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(24) textColor:kWhiteColor];
+        bankNumberLbl = [UILabel labelWithFrame:CGRectMake(iconImg.xx + 12, bankTypeLbl.yy + 25, SCREEN_WIDTH - iconImg.xx - 12 - 30, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(24) textColor:kWhiteColor];
         bankNumberLbl.textColor = kWhiteColor;
         [backImage addSubview:bankNumberLbl];
         
@@ -80,19 +80,21 @@
     bankNameLbl.text = models.bankName;
     if ([models.bankName isEqualToString:@"支付宝"]) {
         bankTypeLbl.text = @"";
+        bankNumberLbl.text = models.bankcardNumber;
     }
     else
     {
         bankTypeLbl.text = @"银行卡";
+        NSString *number;
+        if (models.bankcardNumber.length > 4) {
+            number = [models.bankcardNumber substringFromIndex:models.bankcardNumber.length - 4];
+        }else
+        {
+            number = models.bankcardNumber;
+        }
+        bankNumberLbl.text = [NSString stringWithFormat:@"****  ****  ****  %@",number];
     }
-    NSString *number;
-    if (models.bankcardNumber.length > 4) {
-        number = [models.bankcardNumber substringFromIndex:models.bankcardNumber.length - 4];
-    }else
-    {
-        number = models.bankcardNumber;
-    }
-    bankNumberLbl.text = [NSString stringWithFormat:@"****  ****  ****  %@",number];
+    
     if ([models.isDefault isEqualToString:@"1"]) {
         self.defaultBtn.selected = YES;
     }else

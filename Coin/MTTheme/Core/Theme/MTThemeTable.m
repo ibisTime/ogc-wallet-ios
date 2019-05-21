@@ -97,11 +97,16 @@
                                    moduleName:(NSString *)moduleName {
 //    [UIView animateKeyframesWithDuration:MTTheme_animatedDuration delay:0 options:MTTheme_UIViewKeyframeAnimationOption animations:^{
         [self executeElementWithElementModels:self.imageElements handler:^(MTElementModel *element) {
-            if (![imageStrs containsObject:element.identifier]) {
-                return;
-            }
-            NSString *imagePath = [moduleName stringByAppendingPathComponent:element.identifier];
-            UIImage *image = [UIImage imageNamed:imagePath inBundle:[NSBundle bundleWithPath:bundlePath] compatibleWithTraitCollection:nil];
+//            if (![imageStrs containsObject:element.identifier]) {
+//                return;
+//            }
+            NSString *imagePath = [moduleName stringByAppendingPathComponent:[NSString stringWithFormat:@"%@@3x.png",element.identifier]];
+//            UIImage *image = [UIImage imageNamed:imagePath inBundle:[NSBundle bundleWithPath:bundlePath] compatibleWithTraitCollection:nil];
+            
+            UIImage *image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",bundlePath,imagePath]];
+            
+//            NSString *imagePath = [[NSBundle bundleWithPath:bundlePath] pathForResource:[NSString stringWithFormat:@"%@/%@@2x",moduleName,element.identifier] ofType:@"png"];
+//            UIImage *image = kImage(imagePath);
             
             [MTThemePerformSelector performSelector:element.selector view:element.view object:image extendObj:element.extendObj];
         }];

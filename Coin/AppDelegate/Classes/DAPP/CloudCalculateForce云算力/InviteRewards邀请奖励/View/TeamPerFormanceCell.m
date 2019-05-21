@@ -9,19 +9,24 @@
 #import "TeamPerFormanceCell.h"
 
 @implementation TeamPerFormanceCell
+{
+    UILabel *allLbl;
+    UILabel *timeLbl;
+    UILabel *commissionLbl;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        UILabel *allLbl = [UILabel labelWithFrame:CGRectMake(15 , 16.5, SCREEN_WIDTH - 150 - 30 , 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:nil];
-        allLbl.text = @"总水滴型号：10滴";
+        allLbl = [UILabel labelWithFrame:CGRectMake(15 , 16.5, SCREEN_WIDTH - 150 - 30 , 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(16) textColor:nil];
+        
         [self addSubview:allLbl];
         
         
         
-        UILabel *timeLbl = [UILabel labelWithFrame:CGRectMake(15, allLbl.yy + 5, SCREEN_WIDTH - 150 - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        timeLbl = [UILabel labelWithFrame:CGRectMake(15, allLbl.yy + 5, SCREEN_WIDTH - 150 - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         [timeLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         timeLbl.text = @"06-19 10:25";
         [self addSubview:timeLbl];
@@ -29,7 +34,7 @@
         
         
         
-        UILabel *commissionLbl = [UILabel labelWithFrame:CGRectMake(timeLbl.xx , 0, 150 , 75) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(16) textColor:nil];
+        commissionLbl = [UILabel labelWithFrame:CGRectMake(timeLbl.xx , 0, 150 , 75) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(16) textColor:nil];
         [commissionLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         commissionLbl.text = @"提成：3HEY";
         [self addSubview:commissionLbl];
@@ -39,6 +44,15 @@
         [self addSubview:lineView];
     }
     return self;
+}
+
+-(void)setModel:(TeamPerformanceModel *)model
+{
+    allLbl.text = [NSString stringWithFormat:@"总水滴型号：%@滴",model.totalPerformance];
+    timeLbl.text = [model.dateTime convertToDetailDate];
+    NSString *countStr = [CoinUtil convertToRealCoin:model.totalIncome
+                                                coin:@"HEY"];
+    commissionLbl.text = [NSString stringWithFormat:@"提成：%@HEY",countStr];
 }
 
 - (void)awakeFromNib {

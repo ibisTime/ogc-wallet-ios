@@ -85,17 +85,17 @@
     rulesLbl.text = @"福分规则";
     [self.view addSubview:rulesLbl];
     
-    UILabel *rulesDetailsLbl = [UILabel labelWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:kTextColor];
-//    rulesLbl.text = @"福分规则";
-    rulesDetailsLbl.numberOfLines = 0;
-    [rulesDetailsLbl sizeToFit];
-    [self.view addSubview:rulesDetailsLbl];
+//    UILabel *rulesDetailsLbl = [UILabel labelWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:kTextColor];
+////    rulesLbl.text = @"福分规则";
+//    rulesDetailsLbl.numberOfLines = 0;
+//    [rulesDetailsLbl sizeToFit];
+//    [self.view addSubview:rulesDetailsLbl];
     
     
-//    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) ];
-//    _webView.delegate = self;
-//    [_webView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
-//    [self.view addSubview:_webView];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) ];
+    _webView.delegate = self;
+    [_webView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    [self.view addSubview:_webView];
 //
 //
     TLNetworking *http2 = [TLNetworking new];
@@ -106,13 +106,13 @@
 
     [http2 postWithSuccess:^(id responseObject) {
 
-        NSRange startRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"<p>"];
-        NSRange endRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"</p>"];
-        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-        NSString * con = [responseObject[@"data"][@"cvalue"] substringWithRange:range];
-        rulesDetailsLbl.attributedText = [UserModel ReturnsTheDistanceBetween:con];
-        [rulesDetailsLbl sizeToFit];
-//        [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
+//        NSRange startRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"<p>"];
+//        NSRange endRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"</p>"];
+//        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+//        NSString * con = [responseObject[@"data"][@"cvalue"] substringWithRange:range];
+//        rulesDetailsLbl.attributedText = [UserModel ReturnsTheDistanceBetween:con];
+//        [rulesDetailsLbl sizeToFit];
+        [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
     } failure:^(NSError *error) {
 
     }];
@@ -121,29 +121,29 @@
 }
 
 
-//-(void)webViewDidFinishLoad:(UIWebView *)webView
-//{
-//
-//    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
-//        //字体颜色
-//
-//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#ffffff'"];
-//
-//        //页面背景色
-//
-//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#282A2E'"];
-//    }else
-//    {
-//        //字体颜色
-//
-//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#282A2E'"];
-//
-//        //页面背景色
-//
-//        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#f8f8f8'"];
-//    }
-//
-//}
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        //字体颜色
+
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#ffffff'"];
+
+        //页面背景色
+
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#282A2E'"];
+    }else
+    {
+        //字体颜色
+
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#282A2E'"];
+
+        //页面背景色
+
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#f8f8f8'"];
+    }
+
+}
 
 
 @end

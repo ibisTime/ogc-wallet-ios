@@ -128,7 +128,13 @@
         number = models.receiveCardNo;
     }
     
-    label5.text = [NSString stringWithFormat:@"%@ (%@%@)",models.receiveBank,[LangSwitcher switchLang:@"尾号为：" key:nil],number];
+    if ([models.receiveBank isEqualToString:@"支付宝"]) {
+        label5.text = [NSString stringWithFormat:@"%@ (%@)",models.receiveBank,models.receiveCardNo];
+    }else
+    {
+        label5.text = [NSString stringWithFormat:@"%@ (%@%@)",models.receiveBank,[LangSwitcher switchLang:@"尾号为：" key:nil],number];
+    }
+    
     
     
     NSString *leftAmount = [CoinUtil convertToRealCoin:models.count coin:models.tradeCoin];

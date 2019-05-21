@@ -86,6 +86,7 @@
     self.vc2 = [[ResultsDistributionVC alloc]init];
     self.vc1.y = 50;
     self.vc2.y = 50;
+    self.vc2.MaxLevel = 7;
     
     //指定该控制器为其子控制器
     [self addChildViewController:_vc1];

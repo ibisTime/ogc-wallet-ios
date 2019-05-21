@@ -74,7 +74,7 @@
     if ([models.status isEqualToString:@"0"]) {
         self.headImg.image = kImage(@"待支付-订单");
         
-
+        
         
         _stateLbl.frame = CGRectMake(_nameLbl.xx, 11.5, SCREEN_WIDTH - _nameLbl.xx- 15, 16.5);
 

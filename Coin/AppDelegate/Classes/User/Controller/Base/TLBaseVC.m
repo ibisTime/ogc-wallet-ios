@@ -99,7 +99,7 @@
     if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
         
         NSString *path = [NSBundle mainBundle].bundlePath;
-        path = [path stringByAppendingPathComponent:@"Theme/Theme2"];
+        path = [path stringByAppendingPathComponent:@"BlackTheme"];
         
         [MTThemeManager.manager setThemePath:path];
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -116,7 +116,7 @@
     {
         
         NSString *path = [NSBundle mainBundle].bundlePath;
-        path = [path stringByAppendingPathComponent:@"Theme/Theme1"];
+        path = [path stringByAppendingPathComponent:@"WhiteTheme"];
         [MTThemeManager.manager setThemePath:path];
         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
         

@@ -40,7 +40,7 @@
 #import "IntegralVC.h"
 //我的收益
 #import "MyIncomeVC.h"
-
+#import "InviteRewardsVC.h"
 #import "TLQrCodeVC.h"
 
 #import "MyFriendViewController.h"
@@ -142,7 +142,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (index == 1) {
-        MyFriendViewController *vc = [MyFriendViewController new];
+//        MyFriendViewController *vc = [MyFriendViewController new];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+        InviteRewardsVC *vc = [InviteRewardsVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
