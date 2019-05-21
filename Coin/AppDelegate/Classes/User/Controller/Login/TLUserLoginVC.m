@@ -81,10 +81,10 @@
 - (void)setUpUI {
     
     
-//    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];
-//    logoView.contentMode = UIViewContentModeScaleToFill;
-//    [self.view addSubview:logoView];
-//    logoView.image = kImage(@"邀请-logo");
+    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];
+    logoView.contentMode = UIViewContentModeScaleToFill;
+    [self.view addSubview:logoView];
+    [logoView theme_setImageIdentifier:@"版本更新" moduleName:ImgAddress];
     
     UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(15, 170 - 64 + kNavigationBarHeight - 35, SCREEN_WIDTH - 30, 360)];
     [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];

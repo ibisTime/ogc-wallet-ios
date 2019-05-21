@@ -107,6 +107,8 @@
     return _headView;
 }
 
+
+
 -(void)SwitchPurseClick
 {
     SwitchPurseVC *vc = [SwitchPurseVC new];

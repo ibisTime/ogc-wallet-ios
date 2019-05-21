@@ -88,6 +88,8 @@
             weakSelf.navigationItem.backBarButtonItem = item;
             weakSelf.navigationController.navigationBar.shadowImage = [UIImage new];
             [[NSUserDefaults standardUserDefaults] setObject:WHITE forKey:COLOR];
+            
+            
         }else
         {
             
@@ -106,6 +108,10 @@
             weakSelf.navigationController.navigationBar.shadowImage = [UIImage new];
             [[NSUserDefaults standardUserDefaults] setObject:BLACK forKey:COLOR];
         }
+        
+        NSNotification *notification =[NSNotification notificationWithName:@"ModifyBackground" object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        
     };
     [self.view addSubview:self.tableView];
 }

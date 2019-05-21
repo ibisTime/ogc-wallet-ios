@@ -14,4 +14,5 @@
 @property (nonatomic , strong)UILabel *nameLable;
 @property (nonatomic , strong)UIButton *SwitchPurse;
 @property (nonatomic , strong)UIButton *backBtn;
+@property (nonatomic , strong)UIImageView *whiteView;
 @end

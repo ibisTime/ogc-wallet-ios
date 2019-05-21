@@ -71,7 +71,7 @@
 
             if ([dataArray[i][@"name"] isEqualToString:@"DAPP"]) {
                 [VCNamesArray addObject:@"HomeVC"];
-                [titleArray addObject:@"DAPP"];
+                [titleArray addObject:@"应用"];
                 [imageNamesArray addObject:@"DAPP-未点击"];
                 [selectedImageNames addObject:@"DAPP-点击"];
                 [self addChildVCWithTitle:titleArray[i]

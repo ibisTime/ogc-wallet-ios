@@ -64,7 +64,7 @@
 - (void)data {
     
     
-    self.iconImageView.image = [UIImage imageNamed:@"版本-logo"];
+    [self.iconImageView theme_setImageIdentifier:@"版本更新" moduleName:ImgAddress];
     self.versionLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"%@  V%@",[LangSwitcher switchLang:@"版本号" key:nil],[NSString appVersionString]] key:nil];
 //    self.versionLbl.text = [LangSwitcher switchLang:@"钱包是一款全新的数字货币钱包" key:nil];
     self.versionLbl2.text = [NSString stringWithFormat:@"2019%@",[LangSwitcher switchLang:@"金米钱包版权所有" key:nil]];
@@ -236,35 +236,7 @@
         make.centerX.equalTo(self.bgImage);
 
     }];
-//    [self.versionLbl3 mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.top.equalTo(self.versionLbl2.mas_bottom).offset(17);
-//        make.centerX.equalTo(self.bgImage);
-//
-//    }];
-//
-//    [self.phoneView mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.top.equalTo(self.versionLbl3.mas_bottom).offset(40);
-//        make.height.equalTo(@50);
-//        make.width.equalTo(@(kScreenWidth));
-//        make.centerX.equalTo(self.bgImage);
-//
-//    }];
-//    [self.banQuanLbl mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.left.equalTo(self.phoneView.mas_left).offset(15);
-//        make.centerY.equalTo(self.phoneView);
-//
-//    }];
-//    [self.phoneNumber mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.right.equalTo(self.phoneView.mas_right).offset(-15);
-//        make.centerY.equalTo(self.phoneView);
-//
-//    }];
-//
-    
+
 }
 
 

@@ -141,6 +141,8 @@
 + (NSString *)TextFieldPlacColor;
 + (NSString *)TextFieldTextColor;
 + (NSString *)LineColor;
+
++ (UIImage *)GetPhoto:(NSString *)photo;
 //+ (NSString *)stringByNotRounding:(double)price afterPoint:(int)position;
 +(NSString *)TheTitleSymbol;
 @end
