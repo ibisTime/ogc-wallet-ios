@@ -54,18 +54,29 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         
+        
+        NSString *continueOutput;
+        if ([_model.continueStatus isEqualToString:@"1"]) {
+            continueOutput = self.model.continueOutput;
+        }else
+        {
+            continueOutput = self.model.machine[@"dailyOutput"];
+        }
+        
         if (indexPath.section == 0) {
             NSArray *leftAry = @[@"水滴型号型号",@"滴数",@"今日热量",@"运行情况"];
             NSArray *rightAry = @[self.model.machine[@"name"],
                                   self.model.quantity,
-                                  [NSString stringWithFormat:@"%@%%*%@=%.2f%%",self.model.continueOutput,self.model.quantity,[self.model.continueOutput floatValue]*[self.model.quantity floatValue]],
+                                  [NSString stringWithFormat:@"%.2f%%",[continueOutput floatValue] * 100],
                                   self.model.statussStr];
             cell.leftLbl.text = leftAry[indexPath.row];
             cell.rightLbl.text = rightAry[indexPath.row];
+            
             if (indexPath.row == 3)
             {
                 cell.lineView.hidden = YES;
-            }else
+            }
+            else
             {
                 cell.lineView.hidden = NO;
             }

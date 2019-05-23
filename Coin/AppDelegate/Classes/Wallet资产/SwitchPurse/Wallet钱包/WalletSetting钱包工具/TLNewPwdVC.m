@@ -71,10 +71,6 @@
     
     CGFloat btnMargin = 15;
    
-    
-    
-  
-    
     TLTextField *pwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin,  10, w, h) leftTitle:[LangSwitcher switchLang:@"旧密码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入密码" key:nil]];
     //    pwdTf.keyboardType = UIKeyboardTypePhonePad;
 //    pwdTf.returnKeyType = UIReturnKeyNext;
@@ -83,12 +79,15 @@
     [pwdTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
     [self.view addSubview:pwdTf];
     self.pwdTf = pwdTf;
+    
+    
     UIView *phone3 = [[UIView alloc] init];
     [self.view addSubview:phone3];
     phone3.backgroundColor = kLineColor;
     phone3.frame = CGRectMake(btnMargin, pwdTf.yy, w-30, 1);
     
-    TLTextField *rePwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, pwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"新密码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入密码" key:nil]];
+    
+    TLTextField *rePwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, pwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"新密码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入8～16位数字、字母组合" key:nil]];
     //    rePwdTf.keyboardType = UIKeyboardTypePhonePad;
     rePwdTf.secureTextEntry = YES;
 
@@ -104,7 +103,7 @@
     phone4.backgroundColor = kLineColor;
     phone4.frame = CGRectMake(btnMargin, rePwdTf.yy, w-30, 1);
     
-    TLTextField *surePwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, rePwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"确认密码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请输入密码" key:nil]];
+    TLTextField *surePwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(margin, rePwdTf.yy + 1, w, h) leftTitle:[LangSwitcher switchLang:@"确认密码" key:nil] titleWidth:80 placeholder:[LangSwitcher switchLang:@"请确认密码" key:nil]];
     //    rePwdTf.keyboardType = UIKeyboardTypePhonePad;
     surePwdTf.secureTextEntry = YES;
     surePwdTf.textColor = kHexColor([TLUser TextFieldTextColor]);
@@ -217,6 +216,16 @@
     
     if (![self.pwdTf.text isEqualToString:pwd]) {
         [TLAlert alertWithError:[LangSwitcher switchLang:@"交易密码错误" key:nil]];
+        return;
+    }
+    
+    if (self.pwdTf.text.length < 8 || self.pwdTf.text.length > 16) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为8~16个字符" key:nil]];
+        return;
+    }
+    
+    if ([UserModel isStringContainNumberWith:self.pwdTf.text] == NO) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为字符或数字组成" key:nil]];
         return;
     }
     

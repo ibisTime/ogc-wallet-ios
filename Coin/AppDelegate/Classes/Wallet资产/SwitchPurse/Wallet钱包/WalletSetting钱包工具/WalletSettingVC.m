@@ -101,7 +101,7 @@
     
     CoinWeakSelf;
     
-    //资金密码
+    //交易密码
     
     SettingModel *walletName = [SettingModel new];
     

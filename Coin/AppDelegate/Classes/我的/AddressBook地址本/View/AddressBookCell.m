@@ -48,7 +48,7 @@
 {
     _nameLabel.text = model.label;
     _timeLabel.text = [model.createDatetime convertToDetailDate];
-    _addressLabel.text = model.address;
+    _addressLabel.text = [NSString stringWithFormat:@"%@地址：%@",model.symbol,model.address];
 }
 
 @end

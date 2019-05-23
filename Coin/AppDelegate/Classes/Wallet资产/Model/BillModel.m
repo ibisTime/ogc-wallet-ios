@@ -15,12 +15,12 @@
 
 + (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName {
     
-    if ([propertyName isEqualToString:@"Hashs"]) {
-        return @"hash";
-    }
-    if ([propertyName isEqualToString:@"txHash"]) {
-        return @"blockHash";
-    }
+//    if ([propertyName isEqualToString:@"Hashs"]) {
+//        return @"hash";
+//    }
+//    if ([propertyName isEqualToString:@"txHash"]) {
+//        return @"blockHash";
+//    }
     return propertyName;
 }
 

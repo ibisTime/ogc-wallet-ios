@@ -78,7 +78,17 @@ static NSString *identifierCell = @"BTCDetailModel";
 
         }
     }
-    NSString *texthash = _bill.txHash;
+    NSString *texthash;
+    if ([TLUser isBlankString:_bill.txHash] == NO) {
+        texthash = _bill.txHash;
+    }else if ([TLUser isBlankString:_bill.hash] == NO)
+    {
+        texthash = _bill.hash;
+    }else if ([TLUser isBlankString:_bill.Hashs] == NO)
+    {
+        texthash = _bill.Hashs;
+    }
+
     if (indexPath.row == 0) {
         [cell localInfoWithData:textArr index:indexPath.row];
 
@@ -88,7 +98,7 @@ static NSString *identifierCell = @"BTCDetailModel";
         self.tableView.address = self.address;
         [cell addSubview:self.tableView];
         self.tableView.owHeight = 40;
-        self.tableView.utxis = _bill.vout;
+        self.tableView.utxis = [utxoModel mj_objectArrayWithKeyValuesArray:_bill.vout];
         [self.tableView reloadData];
         [cell setNeedsLayout];
         
@@ -104,7 +114,7 @@ static NSString *identifierCell = @"BTCDetailModel";
         self.outTableView.address = self.address;
 
         self.outTableView.owHeight = 40;
-        self.outTableView.utxis = _bill.vin;
+        self.outTableView.utxis = [utxoModel mj_objectArrayWithKeyValuesArray:_bill.vin];
         [self.outTableView reloadData];
         [cell setNeedsLayout];
 
@@ -113,10 +123,10 @@ static NSString *identifierCell = @"BTCDetailModel";
         NSString *postAmount = [CoinUtil convertToRealCoin:_bill.txFee coin:_currentModel.symbol];
         
         
-//        NSArray *rightArr = @[toAdress, formAdress, postAmount, height,texthash,dateStr,@"  "];
+        NSArray *rightArr = @[toAdress, formAdress, postAmount, height,texthash,dateStr,@"  "];
         
         [cell localInfoWithData:textArr index:indexPath.row];
-//        [cell localInfoWithRightData:rightArr index:indexPath.row];
+        [cell localInfoWithRightData:rightArr index:indexPath.row];
         cell.titleLbl.frame = CGRectMake(15, 18, 0, 14);
         [cell.titleLbl sizeToFit];
         cell.rightLabel.frame = CGRectMake(cell.titleLbl.xx + 10, 18, SCREEN_WIDTH - cell.titleLbl.xx - 25, 0);

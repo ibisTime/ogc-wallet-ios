@@ -389,41 +389,7 @@
 //            NSLog(@"插入地址私钥%d",sucess);
 //        }
         
-        NSArray *array = [CustomFMDB FMDBqueryMnemonics];
-        NSMutableArray *wallet = [NSMutableArray array];
-        [wallet addObjectsFromArray:array];
         
-        NSDictionary *dic = @{
-                              @"mnemonics":self.titleWord,
-                              @"pwd":self.pwd,
-                              @"walletName":self.name
-                              };
-        [wallet addObject:dic];
-        
-
-        NSError *err = nil;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:wallet options:NSJSONWritingPrettyPrinted error:&err];
-        NSString *jsonStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-
-        
-        
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentDirectory = [paths objectAtIndex:0];
-        NSString *dbPath = [documentDirectory stringByAppendingPathComponent:@"JMQBWALLET.db"];
-        NSLog(@"dbPath = %@",dbPath);
-        FMDatabase *dataBase = [FMDatabase databaseWithPath:dbPath];
-        
-        
-        if ([dataBase open])
-        {
-            [dataBase executeUpdate:@"CREATE TABLE IF  NOT EXISTS JMQBWALLET (rowid INTEGER PRIMARY KEY AUTOINCREMENT, userid text,wallet text)"];
-        }
-        [dataBase close];
-        [dataBase open];
-        [dataBase executeUpdate:@"INSERT INTO JMQBWALLET (userid,wallet) VALUES (?,?)",[TLUser user].userId,jsonStr];
-        [dataBase close];
-        
-        [USERDEFAULTS setObject:self.titleWord forKey:@"mnemonics"];
         
         [TLAlert alertWithTitle:[LangSwitcher switchLang:@"提示" key:nil] message:[LangSwitcher switchLang:@"助记词顺序验证通过,请妥善保管助记词" key:nil] confirmAction:^{
             
@@ -433,8 +399,8 @@
             }else
             {
                 [self.navigationController popToRootViewControllerAnimated:YES];
-                NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
-                [[NSNotificationCenter defaultCenter] postNotification:notification];
+//                NSNotification *notification =[NSNotification notificationWithName:@"SwitchThePurse" object:nil userInfo:nil];
+//                [[NSNotificationCenter defaultCenter] postNotification:notification];
             }
             
         }];

@@ -8,7 +8,10 @@
 
 #import "BuyMillBuyVC.h"
 #import "FlashAgainstVC.h"
-@interface BuyMillBuyVC ()<UITextFieldDelegate>
+#import "WaterDropModelView.h"
+#import "WaterDropModelPasswordView.h"
+#import "MyMillVC.h"
+@interface BuyMillBuyVC ()<UITextFieldDelegate,HBAlertPasswordViewDelegate>
 {
     CGFloat rmbPrice;
     CGFloat sellerPrice;
@@ -18,9 +21,87 @@
 
 @property (nonatomic , strong)UITextField *numberTextField;;
 @property (nonatomic , strong)NSMutableArray <CurrencyModel *>*models;
+
+@property (nonatomic , strong)WaterDropModelView *payOneView;
+@property (nonatomic , strong)WaterDropModelPasswordView *payTwoView;
+@property (nonatomic , strong)UILabel *maintenanceFeeLbl;
+
 @end
 
 @implementation BuyMillBuyVC
+
+-(WaterDropModelView *)payOneView
+{
+    if (!_payOneView) {
+        _payOneView = [[WaterDropModelView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 60, 305)];
+        _payOneView.model = self.model;
+        [_payOneView.confirm addTarget:self action:@selector(confirmClick) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _payOneView;
+    
+}
+
+-(void)confirmClick
+{
+    [[UserModel user].cusPopView dismiss];
+    [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.payTwoView];
+    [UserModel user].cusPopView.dismissComplete = ^{
+        NSLog(@"移除完成");
+        [_payTwoView clearUpPassword];
+    };
+}
+
+-(WaterDropModelPasswordView *)payTwoView
+{
+    if (!_payTwoView) {
+        _payTwoView = [[WaterDropModelPasswordView alloc]initWithFrame:CGRectMake(15, SCREEN_HEIGHT/2 - 240 - 100, SCREEN_WIDTH - 30, 240 + 200)];
+        [_payTwoView.forgotPassword addTarget:self action:@selector(forgotPasswordClick) forControlEvents:(UIControlEventTouchUpInside)];
+        _payTwoView.delegate = self;
+    }
+    return _payTwoView;
+}
+
+-(void)forgotPasswordClick
+{
+    [[UserModel user].cusPopView dismiss];
+    TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+    vc.titleString = @"修改交易密码";
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - <HBAlertPasswordViewDelegate>
+- (void)sureActionWithAlertPasswordView:(WaterDropModelPasswordView *)alertPasswordView password:(NSString *)password {
+    
+    
+    [[UserModel user].cusPopView dismiss];
+    [self.payTwoView clearUpPassword];
+    
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"610100";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"machineCode"] = self.model.code;
+    http.parameters[@"quantity"] = _numberTextField.text;
+    http.parameters[@"tradePwd"] = password;
+    http.parameters[@"investCount"] = [CoinUtil convertToRealCoin:[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[_numberTextField.text floatValue]/sellerPrice] mult2:@"1" scale:8] coin:_model.symbol];
+    [http postWithSuccess:^(id responseObject) {
+        
+        [TLAlert alertWithSucces:@"购买成功"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self.navigationController popViewControllerAnimated:YES];
+            
+            MyMillVC *vc = [MyMillVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        });
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,7 +142,9 @@
     
     UILabel *maintenanceFeeLbl = [UILabel labelWithFrame:CGRectMake(15, textField.yy + 9.5, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [maintenanceFeeLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    maintenanceFeeLbl.text = @"所需维护费：6个氢气";
+    
+    self.maintenanceFeeLbl = maintenanceFeeLbl;
+    self.maintenanceFeeLbl.text = @"所需维护费：0个茄子";
     [backView addSubview:maintenanceFeeLbl];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 115, SCREEN_WIDTH, 0.5)];
@@ -70,9 +153,6 @@
     
     UILabel *balanceLbl = [UILabel labelWithFrame:CGRectMake(15, lineView.yy + 22, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
     [balanceLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    balanceLbl.text = @"当前氢气余额：5个";
-    [balanceLbl sizeToFit];
-    balanceLbl.frame = CGRectMake(15, lineView.yy + 22, balanceLbl.width, 20);
     [backView addSubview :balanceLbl];
     
     
@@ -89,6 +169,32 @@
     orderInformationLbl.font = FONT(14);
     [backView addSubview:orderInformationLbl];
     
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"802304";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"currency"] = @"ET";
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        balanceLbl.text = [NSString stringWithFormat:@"当前氢气余额：%.2f个",[responseObject[@"data"][0][@"amount"] floatValue]/100];
+        [balanceLbl sizeToFit];
+        balanceLbl.frame = CGRectMake(15, lineView.yy + 22, balanceLbl.width, 20);
+        exchangeBtn.frame = CGRectMake(balanceLbl.xx + 17, lineView.yy + 19.5, 64, 25);
+       
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+    
+    
+    
+    
+    
     UIButton *determineBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"确定" key:nil] titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16.0 cornerRadius:5];
     determineBtn.frame = CGRectMake(15, backView.yy + 150, SCREEN_WIDTH - 30, 48);
     [determineBtn addTarget:self action:@selector(determineBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -104,6 +210,27 @@
     UITextField *textfield=[notification object];
     
     orderInformationLbl.text = [NSString stringWithFormat:@"订单总额：%.2f元，所需%@%@",[textfield.text floatValue]*[self.model.amount floatValue],[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[textfield.text floatValue]/sellerPrice] mult2:@"1" scale:8],self.model.symbol];
+    self.payOneView.orderInformation = [NSString stringWithFormat:@"%@%@",[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[textfield.text floatValue]/sellerPrice] mult2:@"1" scale:8],self.model.symbol];
+    
+    
+    if ([textfield.text isEqualToString:@""] || [textfield.text floatValue] == 0) {
+        self.maintenanceFeeLbl.text = @"所需维护费：0个茄子";
+        return;
+    }
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"610008";
+    http.parameters[@"quantity"] = textfield.text;
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        
+        self.maintenanceFeeLbl.text = [NSString stringWithFormat:@"所需维护费：%@个%@",[CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:responseObject[@"data"][@"fee"]] coin:responseObject[@"data"][@"coin"][@"symbol"]],responseObject[@"data"][@"coin"][@"cname"]];
+        
+    } failure:^(NSError *error) {
+        
+    }];
     
 }
 
@@ -152,17 +279,12 @@
     http.parameters[@"userId"] = [TLUser user].userId;
     http.parameters[@"token"] = [TLUser user].token;
     [http postWithSuccess:^(id responseObject) {
-        
-        
         self.models = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
- 
         for (int i = 0; i< self.models.count; i ++) {
             if ([self.models[i].currency isEqualToString:self.model.symbol]) {
                 rmbPrice = [self.models[i].priceCNY floatValue];
             }
         }
-        
-        
     } failure:^(NSError *error) {
 
     }];
@@ -175,13 +297,6 @@
     InHttp.showView = self.view;
     InHttp.parameters[@"type"] = @"0";
     InHttp.parameters[@"symbol"] = self.model.symbol;
-    
-    
-    
-    
-    
-    
-    
     [InHttp postWithSuccess:^(id responseObject) {
         sellerPrice = [responseObject[@"data"][@"sellerPrice"] floatValue];
         
@@ -201,28 +316,14 @@
 -(void)determineBtnClick
 {
     
+    
+    
     if ([_numberTextField.text isEqualToString:@""]) {
         [TLAlert alertWithInfo:@"请输入购买滴数"];
         return;
     }
+    [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.payOneView];
     
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"610100";
-    http.showView = self.view;
-    http.parameters[@"userId"] = [TLUser user].userId;
-    http.parameters[@"machineCode"] = self.model.code;
-    http.parameters[@"quantity"] = _numberTextField.text;
-    http.parameters[@"investCount"] = [CoinUtil convertToRealCoin:[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[_numberTextField.text floatValue]/sellerPrice] mult2:@"1" scale:8] coin:_model.symbol];
-    [http postWithSuccess:^(id responseObject) {
-        
-        [TLAlert alertWithSucces:@"购买成功"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-        
-    } failure:^(NSError *error) {
-        
-    }];
 }
 
 /*

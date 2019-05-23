@@ -91,7 +91,7 @@
     nameLbl.text = model.name;
     symbolLbl.text = [NSString stringWithFormat:@"%@ 水滴型号",model.symbol];
     nissanCanLbl.text = [NSString stringWithFormat:@"%@%%日产能",model.dailyOutput];
-    progressView.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 60)/2 * [model.stockOut integerValue] / [model.stockTotal integerValue], 5);
+    progressView.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 23 - 53 - 30) * [model.stockOut integerValue] / [model.stockTotal integerValue], 5);
     
     UILabel *label1 = [self viewWithTag:100];
     UILabel *label2 = [self viewWithTag:101];

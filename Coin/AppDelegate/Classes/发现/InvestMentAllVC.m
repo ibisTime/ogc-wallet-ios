@@ -52,9 +52,10 @@
     
     HYPageView *pageView = [[HYPageView alloc] initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH , SCREEN_HEIGHT - kStatusBarHeight) withTitles:_channelArray withViewControllers:[self vcArr:_channelArray.count] withParameters:nil];
     pageView.pageViewStyle = HYPageViewStyleB;
-    [pageView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
-    pageView.leftSpace = 70;
-    pageView.rightSpace = 70;
+    pageView.backgroundColor = [UIColor redColor];
+//    [pageView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    pageView.leftSpace = 100;
+    pageView.rightSpace = 100;
         pageView.isShowTopTabBottomLine = YES;
     pageView.isTranslucent = NO;
     pageView.selectedColor = kTabbarColor;

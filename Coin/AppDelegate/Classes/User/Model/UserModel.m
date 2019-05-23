@@ -96,6 +96,20 @@
 }
 
 
++ (BOOL)isStringContainNumberWith:(NSString *)str {
+    NSRegularExpression *numberRegular = [NSRegularExpression regularExpressionWithPattern:@"[A-Za-z]" options:NSRegularExpressionCaseInsensitive error:nil];
+    NSInteger count = [numberRegular numberOfMatchesInString:str options:NSMatchingReportProgress range:NSMakeRange(0, str.length)];//count是str中包含[A-Za-z]字母的个数，只要count>0，说明str中包含字母
+    if (count > 0)
+    {return YES;
+        
+    }
+    return NO;
+    
+}
+    
+
+
+
 
 - (void)showPopAnimationWithAnimationStyle1:(NSInteger)style showView:(UIView *)showView
 {

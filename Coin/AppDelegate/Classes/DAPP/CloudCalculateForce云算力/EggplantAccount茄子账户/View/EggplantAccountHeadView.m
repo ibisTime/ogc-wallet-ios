@@ -29,7 +29,7 @@
         
         numberLbl = [UILabel labelWithFrame:CGRectMake(35, nameLbl.yy + 9 , 100, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:nil];
         
-        NSString *text = @"51个";
+        NSString *text = @"0个";
         NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
         [attributeStr addAttribute:NSFontAttributeName
                                      value:FONT(14)

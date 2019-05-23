@@ -43,6 +43,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
     
     [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     cell.model = self.models[indexPath.row];
+    cell.cvalue = self.cvalue;
     return cell;
 }
 

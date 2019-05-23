@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MyMillTableView : TLTableView
 @property (nonatomic , strong)NSMutableArray <MyMillModel *>*models;
+@property (nonatomic , copy)NSString *cvalue;
+
 @end
 
 NS_ASSUME_NONNULL_END

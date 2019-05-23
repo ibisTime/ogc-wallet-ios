@@ -90,7 +90,7 @@
 
 //Token
 @property (nonatomic, copy) NSString *Hashs;
-//@property (nonatomic, copy) NSString *hash;
+@property (nonatomic, copy) NSString *hash;
 @property (nonatomic, copy) NSString *contractAddress;
 
 @property (nonatomic, copy) NSString *tokenName;

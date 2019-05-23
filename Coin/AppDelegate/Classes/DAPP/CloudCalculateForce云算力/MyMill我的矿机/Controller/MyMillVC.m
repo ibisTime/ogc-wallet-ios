@@ -54,6 +54,21 @@
     
     [self.tableView addRefreshAction:^{
         
+        
+        //    machine_mine_symbol 产矿币种
+        TLNetworking *http2 = [TLNetworking new];
+        http2.showView = weakSelf.view;
+        http2.code = USER_CKEY_CVALUE;
+        http2.parameters[SYS_KEY] = @"machine_mine_symbol";
+        [http2 postWithSuccess:^(id responseObject) {
+            
+            self.tableView.cvalue = responseObject[@"data"][@"cvalue"];
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
         [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
             
             if (weakSelf.tl_placeholderView.superview != nil) {

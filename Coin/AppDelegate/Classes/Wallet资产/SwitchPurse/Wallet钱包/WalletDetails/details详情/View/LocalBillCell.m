@@ -139,7 +139,7 @@
         self.moneyLbl.textColor = kHexColor(@"#FE4F4F");
     }
     
-    self.introduceLab.text = [NSString stringWithFormat:@"%@",trxModel.Hashs];
+    self.introduceLab.text = [NSString stringWithFormat:@"%@",trxModel.hash];
     self.timeLbl.text = [trxModel.timestamp convertRedDate];
     
 }
@@ -163,14 +163,10 @@
                                                             coin:self.currencyModel.symbol];
                 self.moneyLbl.text = [NSString stringWithFormat:@"+%@ %@",countStr , self.currencyModel.symbol];
             }
-          
-
         }
-        
         self.introduceLab.text = [NSString stringWithFormat:@"%@",billModel.from];
         if ([self.currencyModel.symbol isEqualToString:@"BTC"]) {
             self.introduceLab.text = [NSString stringWithFormat:@"%@",billModel.txHash];
-
         }
         
     } else
@@ -225,6 +221,8 @@
          self.detailLbl.text = [LangSwitcher switchLang:[NSString stringWithFormat:@"收款"] key:nil]; ;
         self.iconIV.image  = kImage(@"收款");
     }
+    
+    self.introduceLab.text = self.billModel.txHash;
     [self layoutSubviews];
     _billModel.dHeightValue = self.detailLbl.frame.size.height == 1 ? 0: self.detailLbl.height;
 }

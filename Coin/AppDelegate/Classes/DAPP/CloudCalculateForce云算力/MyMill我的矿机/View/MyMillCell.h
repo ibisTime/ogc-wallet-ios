@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @property (nonatomic , strong)MyMillModel *model;
-
+@property (nonatomic , copy)NSString *cvalue;
 @end
 
 NS_ASSUME_NONNULL_END

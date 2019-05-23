@@ -24,8 +24,8 @@
 //    self.web.scalesPageToFit = YES;
     [self.view addSubview:self.web];
     self.web.delegate = self;
-    TLDataBase *dataBase = [TLDataBase sharedManager];
-    NSString *type = self.currentModel.type;
+//    TLDataBase *dataBase = [TLDataBase sharedManager];
+//    NSString *type = self.currentModel.type;
     CoinModel *coin = [CoinUtil getCoinModel:self.currentModel.symbol];
     self.currentModel.type = coin.type;
 //    if ([dataBase.dataBase open]) {

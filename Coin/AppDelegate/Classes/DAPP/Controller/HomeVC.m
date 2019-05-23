@@ -41,7 +41,7 @@
 #import "FindTheGameModel.h"
 
 #import "FlashAgainstVC.h"
-
+#import "AIQuantitativeVC.h"
 #import "CloudCalculateForceVC.h"
 @interface HomeVC ()<RefreshDelegate,UIViewControllerPreviewingDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,ClassificationDelegate,IconCollDelegate>
 {
@@ -140,6 +140,7 @@
     http.parameters[@"language"] = lang;
     http.parameters[@"start"] = [NSString stringWithFormat:@"%ld",start];
     http.parameters[@"limit"] = @"10";
+    http.parameters[@"location"] = @"0";
     http.parameters[@"category"] = @(category);
     
     [http postWithSuccess:^(id responseObject) {
@@ -228,108 +229,101 @@
 
 -(void)IconCollDelegateSelectBtn:(NSInteger)tag
 {
-    if ([self.dataArray[tag].action isEqualToString:@"0"]) {
+    [self PageJump:self.dataArray[tag]];
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) {
+        [self PageJump:self.GameModel[indexPath.row]];
+    }
+}
+
+-(void)PageJump:(FindTheGameModel *)model
+{
+    if ([model.action isEqualToString:@"0"]) {
         GeneralWebView *vc = [GeneralWebView new];
-        vc.URL = self.dataArray[tag].url;
+        vc.URL = model.url;
         [self showViewController:vc sender:self];
     }
-    if ([self.dataArray[tag].action isEqualToString:@"1"])
+    if ([model.action isEqualToString:@"1"])
     {
-        
+//        暂未开发
         lookingForwardVC *vc = [lookingForwardVC new];
         [self.navigationController pushViewController:vc animated:YES];
+//        AIQuantitativeVC *vc = [AIQuantitativeVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
-    if ([self.dataArray[tag].action isEqualToString:@"2"])
+    if ([model.action isEqualToString:@"2"])
     {
         GeneralWebView *vc = [GeneralWebView new];
-        vc.URL = self.dataArray[tag].url;
+        vc.URL = model.url;
         [self showViewController:vc sender:self];
     }
-    if ([self.dataArray[tag].action isEqualToString:@"3"])
+    if ([model.action isEqualToString:@"3"])
     {
         FindTheGameVC *vc = [FindTheGameVC new];
-//        vc.url = self.dataArray[tag].url;
-        vc.GameModel= self.dataArray[tag];
+        vc.GameModel= model;
         [self showViewController:vc sender:self];
     }
-    if ([self.dataArray[tag].action isEqualToString:@"4"])
+    if ([model.action isEqualToString:@"4"])
     {
-
-        if ([self.dataArray[tag].url isEqualToString:@"1"]) {
-            //                量化理财
+        
+        if ([model.url isEqualToString:@"1"]) {
+            //                屯币宝
             PosMiningVC *vc = [PosMiningVC new];
             [self.navigationController pushViewController:vc animated:YES];
         }
-
-        if ([self.dataArray[tag].url isEqualToString:@"2"]) {
-
+        
+        if ([model.url isEqualToString:@"2"]) {
+            
             //                闪兑
             FlashAgainstVC *vc = [FlashAgainstVC new];
             [self.navigationController pushViewController:vc animated:YES];
             
             
         }
-        if ([self.dataArray[tag].url isEqualToString:@"3"]) {
-            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-    }
-}
-
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 2) {
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"0"])
-        {
-            NSString *url = self.GameModel[indexPath.row].url;
-            GeneralWebView *vc = [GeneralWebView new];
-            vc.URL = url;
-            [self showViewController:vc sender:self];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"1"])
-        {
-//            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
-//            [self.navigationController pushViewController:vc animated:YES];
-            lookingForwardVC *vc = [lookingForwardVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"2"])
-        {
-            NSString *url = self.GameModel[indexPath.row].url;
-            GeneralWebView *vc = [GeneralWebView new];
-            vc.URL = url;
-            [self showViewController:vc sender:self];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"3"])
-        {
-            FindTheGameVC *vc = [FindTheGameVC new];
-            vc.GameModel = self.GameModel[indexPath.row];
-            [self showViewController:vc sender:self];
-        }
-        if ([self.GameModel[indexPath.row].action isEqualToString:@"4"])
-        {
-            if ([self.GameModel[indexPath.row].url isEqualToString:@"1"]) {
-                //                量化理财
-                PosMiningVC *vc = [PosMiningVC new];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+        if ([model.url isEqualToString:@"3"]) {
             
-            if ([self.GameModel[indexPath.row].url isEqualToString:@"2"]) {
+            TLNetworking *http = [TLNetworking new];
+            http.code = @"802301";
+            http.showView = self.view;
+            http.parameters[@"userId"] = [TLUser user].userId;
+            http.parameters[@"token"] = [TLUser user].token;
+            [http postWithSuccess:^(id responseObject) {
                 
-                //                闪兑
-                FlashAgainstVC *vc = [FlashAgainstVC new];
-                [self.navigationController pushViewController:vc animated:YES];
+                
+                NSMutableArray <CurrencyModel *>*AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
                 
                 
-            }
-            if ([self.GameModel[indexPath.row].url isEqualToString:@"3"]) {
-                CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+                for (int i = 0; i < AssetsListModel.count; i ++) {
+                    if ([AssetsListModel[i].currency isEqualToString:@"HEY"]) {
+                        NSString *amount = [CoinUtil convertToRealCoin:AssetsListModel[i].amount coin:AssetsListModel[i].currency];
+                        NSString *rightAmount = [CoinUtil convertToRealCoin:AssetsListModel[i].frozenAmount coin:AssetsListModel[i].currency];
+                        NSString *ritAmount = [amount subNumber:rightAmount];
+                        if ([ritAmount floatValue]< 20000) {
+                            [TLAlert alertWithInfo:@"您的HTY余额达到2000才能进入此应用"];
+                            return;
+                        }else
+                        {
+                            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+                            [self.navigationController pushViewController:vc animated:YES];
+                        }
+                    }
+                }
+                
+            } failure:^(NSError *error) {
+               
+            }];
+            
+            
         }
     }
 }
+
+
+
+
 
 -(void)classification
 {

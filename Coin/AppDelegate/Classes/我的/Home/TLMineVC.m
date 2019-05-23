@@ -346,33 +346,33 @@
     [http postWithSuccess:^(id responseObject) {
         
         NSArray *array = responseObject[@"data"];
-        NSMutableArray *dataArray = [NSMutableArray array];
-        NSMutableArray *array1 = [NSMutableArray array];
-        NSMutableArray *array2 = [NSMutableArray array];
-        NSMutableArray *array3 = [NSMutableArray array];
-        for (int i = 0; i < array.count; i ++) {
-            if ([array[i][@"name"] isEqualToString:@"账户与安全"] || [array[i][@"name"] isEqualToString:@"金米钱包"]) {
-                [array1 addObject:array[i]];
-            }
-            if ([array[i][@"name"] isEqualToString:@"我的好友"] || [array[i][@"name"] isEqualToString:@"邀请有礼"] || [array[i][@"name"] isEqualToString:@"金米福分"]) {
-                [array2 addObject:array[i]];
-            }
-            if ([array[i][@"name"] isEqualToString:@"加入社群"] || [array[i][@"name"] isEqualToString:@"帮助中心"] || [array[i][@"name"] isEqualToString:@"设置"]) {
-                [array3 addObject:array[i]];
-            }
-        }
+//        NSMutableArray *dataArray = [NSMutableArray array];
+//        NSMutableArray *array1 = [NSMutableArray array];
+//        NSMutableArray *array2 = [NSMutableArray array];
+//        NSMutableArray *array3 = [NSMutableArray array];
+//        for (int i = 0; i < array.count; i ++) {
+//            if ([array[i][@"name"] isEqualToString:@"账户与安全"] || [array[i][@"name"] isEqualToString:@"金米钱包"]) {
+//                [array1 addObject:array[i]];
+//            }
+//            if ([array[i][@"name"] isEqualToString:@"我的好友"] || [array[i][@"name"] isEqualToString:@"邀请有礼"] || [array[i][@"name"] isEqualToString:@"金米福分"]) {
+//                [array2 addObject:array[i]];
+//            }
+//            if ([array[i][@"name"] isEqualToString:@"加入社群"] || [array[i][@"name"] isEqualToString:@"帮助中心"] || [array[i][@"name"] isEqualToString:@"设置"]) {
+//                [array3 addObject:array[i]];
+//            }
+//        }
+//
+//        if (array1.count>0) {
+//            [dataArray addObject:array1];
+//        }
+//        if (array2.count>0) {
+//            [dataArray addObject:array2];
+//        }
+//        if (array3.count>0) {
+//            [dataArray addObject:array3];
+//        }
         
-        if (array1.count>0) {
-            [dataArray addObject:array1];
-        }
-        if (array2.count>0) {
-            [dataArray addObject:array2];
-        }
-        if (array3.count>0) {
-            [dataArray addObject:array3];
-        }
-        
-        self.tableView.dataArray =  dataArray;
+        self.tableView.dataArray =  array;
         [self.tableView reloadData];
         
     } failure:^(NSError *error) {

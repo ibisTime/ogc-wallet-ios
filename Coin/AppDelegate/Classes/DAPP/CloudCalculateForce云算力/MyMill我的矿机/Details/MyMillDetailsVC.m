@@ -47,11 +47,18 @@
     [http postWithSuccess:^(id responseObject) {
         
         self.tableView.models = [MyMillDetailsModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+        
+        
         [self.tableView reloadData];
         
     } failure:^(NSError *error) {
         
     }];
+    
+
+    
+    
     
 }
 

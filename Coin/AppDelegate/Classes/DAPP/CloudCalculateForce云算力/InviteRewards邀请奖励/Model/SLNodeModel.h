@@ -7,11 +7,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SLNodeModel : NSObject
 
-@property (nonatomic, strong) NSString *parentID; // 父结点ID 即当前结点所属的的父结点ID
+@property (nonatomic, copy) NSString *parentID; // 父结点ID 即当前结点所属的的父结点ID
 
-@property (nonatomic, strong) NSString *childrenID; //子结点ID 即当前结点的ID
+@property (nonatomic, copy) NSString *childrenID; //子结点ID 即当前结点的ID
 
-@property (nonatomic, strong) NSString *name; //结点名字
+@property (nonatomic, copy) NSString *name; //结点名字
 
 @property (nonatomic, assign) int level; // 结点层级 从1开始
 
@@ -23,11 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL selected; // 是否选中
 
-@property (nonatomic, strong) NSString *totalIncome;
-@property (nonatomic, strong) NSString *mobile;
-@property (nonatomic, strong) NSString *totalPerformance;
-@property (nonatomic, strong) NSString *yesterdayPerformance;
-@property (nonatomic, strong) NSString *yesterdayIncome;
+@property (nonatomic, assign) NSNumber *totalIncome;
+@property (nonatomic, copy) NSString *mobile;
+@property (nonatomic, copy) NSString *totalPerformance;
+@property (nonatomic, copy) NSString *yesterdayPerformance;
+@property (nonatomic, assign) NSNumber *yesterdayIncome;
 @property (nonatomic, strong) NSArray *teamList;
 
 

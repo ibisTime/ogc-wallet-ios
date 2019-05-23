@@ -201,7 +201,7 @@
     
     CGFloat f2 = self.isCheck == YES ? kHeight(150) : statusLabel.yy;
 
-    ZLGestureLockView *gestureLockView = [[ZLGestureLockView alloc]initWithFrame:CGRectMake(0, f2, self.view.frame.size.width, self.view.frame.size.width)];
+    ZLGestureLockView *gestureLockView = [[ZLGestureLockView alloc]initWithFrame:CGRectMake(15, statusLabel.yy, SCREEN_WIDTH - 30, SCREEN_WIDTH - 30)];
     gestureLockView.delegate = self;
     [gestureLockView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [self.view addSubview:gestureLockView];

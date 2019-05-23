@@ -151,11 +151,11 @@
                 }else if ([model.type isEqualToString:@"4"])
                 {
                     TWWalletType type = TWWalletCold;
-                    NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
-                    NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:dic[@"mnemonics"]];
+//                    NSDictionary *dic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
+                    NSString *prikey   =[MnemonicUtil getPrivateKeyWithMnemonics:_fmdbModel.mnemonics];
                     //    TWWalletAccountClient *client = [[TWWalletAccountClient alloc] initWithGenKey:YES type:type];
                     TWWalletAccountClient *client = [[TWWalletAccountClient alloc]initWithPriKeyStr:prikey type:type];
-                    [client store:dic[@"pwd"]];
+                    [client store:_fmdbModel.pwd];
                     
                     //    [client store:password];
                     

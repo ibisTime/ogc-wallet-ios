@@ -58,7 +58,31 @@
 
     
     [http postWithSuccess:^(id responseObject) {
-        numbernLbl.text = [NSString stringWithFormat:@"%.2f",[responseObject[@"data"][@"totalAward"] floatValue]/100000000];
+        
+        NSDictionary *dataDic = responseObject[@"data"];
+        
+        TLNetworking *http3 = [TLNetworking new];
+        http3.showView = self.view;
+        http3.code = USER_CKEY_CVALUE;
+        
+        http3.parameters[SYS_KEY] = @"reg_cuser_ref_symbol";
+        
+        [http3 postWithSuccess:^(id responseObject) {
+            
+            
+            NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+            
+            
+            
+            numbernLbl.text = [CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:dataDic[@"totalAward"]] coin:responseObject[@"data"][@"cvalue"]];
+            
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
+//        numbernLbl.text = [NSString stringWithFormat:@"%.2f",[responseObject[@"data"][@"totalAward"] floatValue]/100000000];
     } failure:^(NSError *error) {
         
     }];
@@ -85,18 +109,13 @@
     rulesLbl.text = @"福分规则";
     [self.view addSubview:rulesLbl];
     
-//    UILabel *rulesDetailsLbl = [UILabel labelWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(13) textColor:kTextColor];
-////    rulesLbl.text = @"福分规则";
-//    rulesDetailsLbl.numberOfLines = 0;
-//    [rulesDetailsLbl sizeToFit];
-//    [self.view addSubview:rulesDetailsLbl];
     
     
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(20, rulesLbl.yy + 15, SCREEN_WIDTH - 40, SCREEN_HEIGHT - kNavigationBarHeight - rulesLbl.yy - 25) ];
     _webView.delegate = self;
     [_webView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
     [self.view addSubview:_webView];
-//
+//reg_cuser_ref_symbol
 //
     TLNetworking *http2 = [TLNetworking new];
     http2.showView = self.view;
@@ -105,13 +124,6 @@
     http2.parameters[SYS_KEY] = @"activety_notice";
 
     [http2 postWithSuccess:^(id responseObject) {
-
-//        NSRange startRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"<p>"];
-//        NSRange endRange = [responseObject[@"data"][@"cvalue"] rangeOfString:@"</p>"];
-//        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-//        NSString * con = [responseObject[@"data"][@"cvalue"] substringWithRange:range];
-//        rulesDetailsLbl.attributedText = [UserModel ReturnsTheDistanceBetween:con];
-//        [rulesDetailsLbl sizeToFit];
         [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
     } failure:^(NSError *error) {
 

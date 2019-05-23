@@ -109,7 +109,7 @@
         _leftNumberTf.placeholder = [LangSwitcher switchLang:@"兑换数量" key:nil];
         [_leftNumberTf setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         _leftNumberTf.font = FONT(14);
-        _leftNumberTf.keyboardType =  UIKeyboardTypeNumberPad;
+//        _leftNumberTf.keyboardType =  UIKeyboardTypeNumberPad;
         _leftNumberTf.textColor = kHexColor([TLUser TextFieldTextColor]);
         [_leftNumberTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         _leftNumberTf.delegate = self;
@@ -126,7 +126,7 @@
         _rightNumberTf.placeholder = [LangSwitcher switchLang:@"收到数量" key:nil];
         [_rightNumberTf setValue:FONT(14) forKeyPath:@"_placeholderLabel.font"];
         _rightNumberTf.font = FONT(14);
-        _rightNumberTf.keyboardType =  UIKeyboardTypeNumberPad;
+//        _rightNumberTf.keyboardType =  UIKeyboardTypeNumberPad;
         _rightNumberTf.textColor = kHexColor([TLUser TextFieldTextColor]);
         [_rightNumberTf setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         _rightNumberTf.delegate = self;
@@ -257,6 +257,12 @@
 -(void)setCurrenctModel:(NSMutableArray<CurrencyModel *> *)currenctModel
 {
     _currenctModel = currenctModel;
+    [self GetTheBalance];
+    
+}
+
+-(void)GetTheBalance
+{
     for (int i = 0; i < _currenctModel.count; i ++) {
         
         _platforms = _currenctModel[i];
@@ -272,11 +278,7 @@
     [balanceLbl sizeToFit];
     balanceLbl.frame = CGRectMake(16, 250 + 20.5, balanceLbl.width, 16.5);
     allBtn.frame = CGRectMake(balanceLbl.xx + 20, 250 + 15, 50, 27);
-    
-    
-//    [_poundageLbl sizeToFit];
     _poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
-    
 }
 
 -(void)setModel:(FlashAgainstModel *)model
@@ -297,7 +299,7 @@
     [rightImg sd_setImageWithURL:[NSURL URLWithString:[OutCoin.pic1 convertImageUrl]] placeholderImage:kImage(@"BTC")];
     rightImg.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - rightLbl.width/2 - 20, 10, 30, 30);
     
-    
+    [self GetTheBalance];
 }
 
 

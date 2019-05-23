@@ -267,7 +267,12 @@
     }
     
     if (self.pwdTf.text.length < 8 || self.pwdTf.text.length > 16) {
-        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为8~16个字符或数字组成" key:nil]];
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为8~16个字符" key:nil]];
+        return;
+    }
+    
+    if ([UserModel isStringContainNumberWith:self.pwdTf.text] == NO) {
+        [TLAlert alertWithInfo:[LangSwitcher switchLang:@"密码必须为字符或数字组成" key:nil]];
         return;
     }
     

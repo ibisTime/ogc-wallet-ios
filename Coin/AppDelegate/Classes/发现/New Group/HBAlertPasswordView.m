@@ -38,23 +38,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
-        // 背景颜色
-//        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
-        
-        // 输入安全密码的背景View
-//        UIView *BGView = [[UIView alloc] initWithFrame:CGRectMake(0 , 0, SCREEN_WIDTH - 30  , 590/2)];
-//        BGView.backgroundColor = [UIColor whiteColor];
-//        BGView.layer.cornerRadius = 10;
-//
-//        BGView.layer.masksToBounds = YES;
-//        [self addSubview:BGView];
-//        self.BGView = BGView;
-//        BGView.center = self.center;
-        
-        
-        
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 30, 590/2 - 50)];
-//        backView.backgroundColor = kWhiteColor;
         [backView theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         kViewRadius(backView, 8);
         [self addSubview:backView];
@@ -62,71 +46,46 @@
         
         
         CGFloat BGViewW = (SCREEN_WIDTH - 30);
-        CGFloat BGViewH = 590/2;
-        // 请输入安全密码的Label
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, kHeight(56)/2, BGViewW, 12)];
         titleLabel.font = FONT(12);
-        titleLabel.text = [NSString stringWithFormat:@"%@BTC",[LangSwitcher switchLang:@"卖出" key:nil]];
+        titleLabel.text = [NSString stringWithFormat:@"%@",[LangSwitcher switchLang:@"卖出" key:nil]];
         titleLabel.textAlignment = NSTextAlignmentCenter;
 //        titleLabel.textColor = kTextColor2;
         [titleLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
         [self addSubview:titleLabel];
-        
-        // 横线
-//        UIView *topLineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleLabel.frame), BGViewW, 1)];
-//        topLineView.backgroundColor = kLineColor;
-//        [BGView addSubview:topLineView];
+
         
         
         UILabel *priceLabel = [UILabel labelWithFrame:CGRectMake(0, titleLabel.yy + 15, BGViewW, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(20) textColor:kTextBlack];
-//        priceLabel.text = @"26.3BTC";
         self.priceLabel = priceLabel;
         [self addSubview:priceLabel];
         
         UILabel *promptLabel = [UILabel labelWithFrame:CGRectMake(0, priceLabel.yy + 30, BGViewW, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:kTextColor2];
         promptLabel.text = [LangSwitcher switchLang:@"请输入交易密码" key:nil];
         [self addSubview:promptLabel];
-//        UIView *downLineView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - kButtonHeight - 1, BGViewW, 1)];
-//        downLineView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
-//        [BGView addSubview:downLineView];
-        
-        // 取消按钮
-//        UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        cancelButton.frame = CGRectMake(0, BGViewH - 50, BGViewW / 2, 50);
-//        [cancelButton setTitle:[LangSwitcher switchLang:@"取消" key:nil] forState:UIControlStateNormal];
-////        [cancelButton setTitleColor:kTextColor2 forState:UIControlStateNormal];
-//        [cancelButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
-//        cancelButton.titleLabel.font = [UIFont systemFontOfSize:14];
-//        [cancelButton addTarget:self action:@selector(cancelButtonAction) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:cancelButton];
-//
-//        // 确定按钮
-//        UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        sureButton.frame = CGRectMake(cancelButton.xx, BGViewH - 50, BGViewW / 2, 50);
-//        [sureButton setTitle:[LangSwitcher switchLang:@"确定" key:nil] forState:UIControlStateNormal];
-//        [sureButton theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
-//        sureButton.titleLabel.font = [UIFont systemFontOfSize:14];
-//        [sureButton addTarget:self action:@selector(sureButtonAction) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:sureButton];
-//
-//        UIView *lineHView = [[UIView alloc] initWithFrame:CGRectMake(BGViewW/2 - 0.5, BGViewH - 50, 1, 50)];
-////        lineHView.backgroundColor = kLineColor;
-//        [lineHView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-//        [self addSubview:lineHView];
-//
-//        UIView *lineWView = [[UIView alloc] initWithFrame:CGRectMake(0, BGViewH - 50, BGViewW, 1)];
-//        [lineWView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
-//        [self addSubview:lineWView];
         
         // 密码框
         CGFloat passwordTextFieldY = promptLabel.yy + 15;
         UITextField *passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, passwordTextFieldY , SCREEN_WIDTH - 60, 53)];
-        passwordTextField.backgroundColor = kBackgroundColor;
-        // 输入的文字颜色为白色
-        passwordTextField.textColor = kBackgroundColor;
-        // 输入框光标的颜色为白色
-        passwordTextField.tintColor = kBackgroundColor;
+        if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+            passwordTextField.backgroundColor = kHexColor(@"#52565D");
+            // 输入的文字颜色为白色
+            passwordTextField.textColor = kHexColor(@"#52565D");
+            // 输入框光标的颜色为白色
+            passwordTextField.tintColor = kHexColor(@"#52565D");
+        }else
+        {
+            passwordTextField.backgroundColor = kHexColor(@"#FFFFFF");
+            // 输入的文字颜色为白色
+            passwordTextField.textColor = kHexColor(@"#FFFFFF");
+            // 输入框光标的颜色为白色
+            passwordTextField.tintColor = kHexColor(@"#FFFFFF");
+        }
+        
+        
+        //        0x282A2E
+        //        0xCFD7E6
         passwordTextField.delegate = self;
         passwordTextField.keyboardType = UIKeyboardTypeNumberPad;
         passwordTextField.layer.borderColor = kLineColor.CGColor;
@@ -140,7 +99,7 @@
         // 生产分割线
         for (NSInteger i = 0; i < 5; i++) {
             UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15 + (SCREEN_WIDTH - 60)/6 + i % 5*(SCREEN_WIDTH - 60)/6, passwordTextFieldY, 1, 53)];
-            lineView.backgroundColor = kLineColor;
+            [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
             [self addSubview:lineView];
         }
         
@@ -149,7 +108,8 @@
         // 生成中间的点
         for (NSInteger i = 0; i < 6; i++) {
             UIView *pointView = [[UIView alloc] initWithFrame:CGRectMake( 15 + (SCREEN_WIDTH - 60)/6/2 - 4 + i % 6*(SCREEN_WIDTH - 60)/6 ,  passwordTextFieldY + 53 /2 - 4, 8, 8)];
-            pointView.backgroundColor = kTextBlack;
+            //            pointView.backgroundColor = kTextBlack;
+            [pointView theme_setBackgroundColorIdentifier:LabelColor moduleName:ColorName];
             pointView.layer.cornerRadius = 4;
             pointView.layer.masksToBounds = YES;
             // 先隐藏
@@ -158,10 +118,7 @@
             // 把创建的黑点加入到数组中
             [self.pointArr addObject:pointView];
         }
-        
-        // 监听键盘的高度
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+
     }
     return self;
 }
@@ -241,19 +198,5 @@
         [self clearUpPassword];
     }
 }
-
-#pragma mark - 键盘的出现和收回的监听方法
-//- (void)keyboardWillShow:(NSNotification *)aNotification {
-//    // 获取键盘的高度
-//    NSDictionary *userInfo = [aNotification userInfo];
-//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-//    CGRect keyboardRect = [aValue CGRectValue];
-//    CGFloat keyboardHeight = keyboardRect.size.height;
-//    self.BGView.frame = CGRectMake(self.BGView.frame.origin.x, HB_ScreenH - keyboardHeight - self.BGView.frame.size.height - 30, self.BGView.frame.size.width, self.BGView.frame.size.height);
-//}
-
-//- (void)keyboardWillHide:(NSNotification *)aNotification {
-//    self.BGView.center = CGPointMake(self.BGView.center.x, self.center.y);
-//}
 
 @end

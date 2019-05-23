@@ -21,6 +21,8 @@
 
 @property (nonatomic , strong)NSMutableArray <FlashAgainstModel *>*models;
 
+@property (nonatomic , strong)NSMutableArray <FlashAgainstModel *>*addmModels;
+
 @end
 
 @implementation FlashAgainstVC
@@ -75,13 +77,26 @@
 
 -(void)chooseBtnClick
 {
-    if ([self.symbol isEqualToString:@"ET"]) {
-        return;
-    }
+//    if ([self.symbol isEqualToString:@"ET"]) {
+//        return;
+//    }
     NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0;  i < self.models.count; i ++) {
-        [array addObject:[[SelectedListModel alloc] initWithSid:i Title:[NSString stringWithFormat:@"%@ 兑 %@",self.models[i].symbolOut,self.models[i].symbolIn]]];
+    
+    
+    
+    if ([self.symbol isEqualToString:@"ET"]) {
+        for (int i = 0;  i < self.addmModels.count; i ++) {
+            [array addObject:[[SelectedListModel alloc] initWithSid:i Title:[NSString stringWithFormat:@"%@ 兑 %@",self.addmModels[i].symbolOut,self.addmModels[i].symbolIn]]];
+        }
+    }else
+    {
+        for (int i = 0;  i < self.models.count; i ++) {
+            [array addObject:[[SelectedListModel alloc] initWithSid:i Title:[NSString stringWithFormat:@"%@ 兑 %@",self.models[i].symbolOut,self.models[i].symbolIn]]];
+        }
+        
     }
+    
+    
     SelectedListView *view = [[SelectedListView alloc] initWithFrame:CGRectMake(0, 0, 280, 0) style:UITableViewStylePlain];
     view.isSingle = YES;
     view.array = array;
@@ -89,8 +104,16 @@
         [LEEAlert closeWithCompletionBlock:^{
             NSLog(@"选中的%@" , array);
             SelectedListModel *model = array[0];
-            self.headView.model = self.models[model.sid];
-            [self loadDataPrice:self.headView.model];
+            if ([self.symbol isEqualToString:@"ET"]) {
+                self.headView.model = self.addmModels[model.sid];
+                [self loadDataPrice:self.headView.model];
+            }else
+            {
+                self.headView.model = self.models[model.sid];
+                [self loadDataPrice:self.headView.model];
+            }
+            
+            
             self.headView.rightNumberTf.text = @"";
             self.headView.leftNumberTf.text = @"";
             self.headView.poundageLbl.text = @"";
@@ -138,9 +161,13 @@
         
         self.models = [FlashAgainstModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         if ([self.symbol isEqualToString:@"ET"]) {
+            self.addmModels = [NSMutableArray array];
             for (int i = 0 ; i < self.models.count; i ++) {
                 if ([self.models[i].symbolIn isEqualToString:self.symbol]) {
-                    self.headView.model = self.models[i];
+                    
+                    
+                    [self.addmModels addObject:self.models[i]];
+                    self.headView.model = self.addmModels[0];
                     [self loadDataPrice:self.headView.model];
                 }
                 

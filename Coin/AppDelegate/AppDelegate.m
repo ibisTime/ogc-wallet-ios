@@ -245,15 +245,6 @@
 - (void)loginOut {
 
     [[TLUser user] loginOut];
-    
-    
-//    UITabBarController *tabbarContrl = (UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-//    if ([tabbarContrl isKindOfClass:[UINavigationController class]]) {
-//        return;
-//    }
-//    if ([tabbarContrl isKindOfClass:[BuildWalletMineVC class]]) {
-//        return;
-//    }
     TLUpdateVC *tab = [[TLUpdateVC alloc] init];
     TLUserLoginVC *login = [TLUserLoginVC new];
     [USERDEFAULTS setObject:@"" forKey:@"mnemonics"];

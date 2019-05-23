@@ -45,34 +45,34 @@
 -(void)changePwd
 {
     
-//    UITextField *textField1 = [self.view viewWithTag:100];
-//    UITextField *textField2 = [self.view viewWithTag:101];
-//
-//    if ([textField1.text isEqualToString:@""]) {
-//        [TLAlert alertWithInfo:@"请输入账号"];
-//        return;
-//    }
-//    if ([textField2.text isEqualToString:@""]) {
-//        [TLAlert alertWithInfo:@"请输入密码"];
-//        return;
-//    }
-//
-//    TLNetworking *http = [TLNetworking new];
-//    http.code = @"805097";
-//    http.showView = self.view;
-//    http.parameters[@"userId"] = [TLUser user].userId;
-//    http.parameters[@"logName"] = textField1.text;
-//    http.parameters[@"nodePwd"] = textField2.text;
-//    [http postWithSuccess:^(id responseObject) {
+    UITextField *textField1 = [self.view viewWithTag:100];
+    UITextField *textField2 = [self.view viewWithTag:101];
+
+    if ([textField1.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入账号"];
+        return;
+    }
+    if ([textField2.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入密码"];
+        return;
+    }
+
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"805097";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"logName"] = textField1.text;
+    http.parameters[@"nodePwd"] = textField2.text;
+    [http postWithSuccess:^(id responseObject) {
     
         
         NodesSummarizedVC *vc = [NodesSummarizedVC new];
         [self.navigationController pushViewController:vc animated:YES];
         
         
-//    } failure:^(NSError *error) {
-//
-//    }];
+    } failure:^(NSError *error) {
+
+    }];
     
     
 }

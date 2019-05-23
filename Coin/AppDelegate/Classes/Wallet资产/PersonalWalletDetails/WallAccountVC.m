@@ -83,8 +83,8 @@
 //                             [LangSwitcher switchLang:@"红包退回" key:nil],
 //                             [LangSwitcher switchLang:@"抢红包" key:nil],
 //                             [LangSwitcher switchLang:@"发红包" key:nil],
-//                             [LangSwitcher switchLang:@"量化理财投资" key:nil],
-//                             [LangSwitcher switchLang:@"量化理财还款" key:nil],
+//                             [LangSwitcher switchLang:@"屯币宝投资" key:nil],
+//                             [LangSwitcher switchLang:@"屯币宝还款" key:nil],
 //                             [LangSwitcher switchLang:@"积分抽奖" key:nil]
 //                             ];
 //
@@ -325,7 +325,7 @@
 - (void)clickWithdrawWithCurrency:(CurrencyModel *)currencyModel {
 
     CoinWeakSelf;
-//    实名认证成功后，判断是否设置资金密码
+//    实名认证成功后，判断是否设置交易密码
     if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
 
         

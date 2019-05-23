@@ -43,19 +43,15 @@
         [self addSubview:backView];
         
         nameLbl = [UILabel labelWithFrame:CGRectMake(15, 10, (SCREEN_WIDTH - 60)/2, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
-        nameLbl.text = @"HEY 007D型";
         [backView addSubview:nameLbl];
         
         stateLbl = [UILabel labelWithFrame:CGRectMake(nameLbl.xx, 10, (SCREEN_WIDTH - 60)/2, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:nil];
-//        stateLbl.text = @"HEY 水滴型号";
         stateLbl.textColor = kHexColor(@"#FB6B6B");
         [backView addSubview:stateLbl];
         
         
         timeLbl = [UILabel labelWithFrame:CGRectMake(15, nameLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         [timeLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-//        timeLbl.text = @"2018-12-26 11:03:34";
-        
         [backView addSubview:timeLbl];
         
         
@@ -90,12 +86,12 @@
         
         earningsLbl = [UILabel labelWithFrame:CGRectMake(amountLbl.xx, lineView.yy + 26, (SCREEN_WIDTH - 30)/3, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:HGboldfont(16) textColor:nil];
 //        earningsLbl.text = @"70hHEY";
-        earningsLbl.text = @"0.00CNY";
+        earningsLbl.text = @"0.00";
         [backView addSubview:earningsLbl];
         
         earningsNameLbl = [UILabel labelWithFrame:CGRectMake(amountLbl.xx, earningsLbl.yy + 4, (SCREEN_WIDTH - 30)/3, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         [earningsNameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-        earningsNameLbl.text = @"总收益";
+        earningsNameLbl.text = @"已获得收益";
         [backView addSubview:earningsNameLbl];
         
         
@@ -126,7 +122,8 @@
 
 -(void)setModel:(MyMillModel *)model
 {
-    
+    _model = model;
+    nameLbl.text = model.machine[@"name"];
     stateLbl.text = model.statussStr;
     if ([model.status isEqualToString:@"0"]) {
         stateLbl.textColor = kHexColor(@"#1EC153");
@@ -143,9 +140,6 @@
         depositLbl.hidden = NO;
         timeImg.hidden = NO;
         depositLbl.frame = CGRectMake(timeLbl.xx, nameLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 20);
-        
-        
-        
         secondsCountDown = [self dateTimeDifferenceWithStartTime:[model.continueStartTime convertToDetailDate]];
 
         if (secondsCountDown >0) {
@@ -156,6 +150,7 @@
             NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
             
             NSString *text = [NSString stringWithFormat:@"%@:%@:%@后可涡环",str_hour,str_minute,str_second];
+            
             NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];
             [attributeStr addAttribute:NSForegroundColorAttributeName
                                  value:kHexColor(@"#F49671")
@@ -188,8 +183,9 @@
     
     
     timeLbl.text = [model.createTime convertDate];
+    
     amountLbl.text = [NSString stringWithFormat:@"%.2fCNY",[model.amount floatValue]*[model.quantity integerValue]];
-//    earningsLbl.text = [NSString stringWithFormat:@"%.2f",[model.incomeActual floatValue]];
+//
     dueTimeLbl.text = [model.endTime convertDate];
     if ([model.speedDays integerValue] > 0) {
         numberDaysLbl.text = [NSString stringWithFormat:@"已加速%@天",model.speedDays];
@@ -205,9 +201,28 @@
     }
     
     numberDaysLbl.frame = CGRectMake(earningsNameLbl.xx , dueTimeNameLbl.yy + 4, (SCREEN_WIDTH - 30)/3, 16.5);
-    
+    [self EarnedIncome];
 }
 
+//numbernLbl.text = [CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:dataDic[@"totalAward"]] coin:responseObject[@"data"][@"cvalue"]];
+
+-(void)setCvalue:(NSString *)cvalue
+{
+    _cvalue = cvalue;
+    [self EarnedIncome];
+}
+
+-(void)EarnedIncome
+{
+//    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//    if (_model.incomeActual > 0) {
+        earningsLbl.text = [NSString stringWithFormat:@"%@%@",[CoinUtil convertToRealCoin:_model.incomeActual coin:_cvalue],_cvalue];
+//    }
+//    else
+//    {
+//        earningsLbl.text = [NSString stringWithFormat:@"0%@",_cvalue];
+//    }
+}
 
 -(void)countDownAction{
     //倒计时-1
@@ -229,13 +244,6 @@
     [depositLbl sizeToFit];
     depositLbl.frame = CGRectMake(SCREEN_WIDTH - 30 - 15 - depositLbl.width, nameLbl.yy + 5, depositLbl.width, 20);
     timeImg.frame = CGRectMake(SCREEN_WIDTH - 45 - 8 - 12 - depositLbl.width, nameLbl.yy + 9, 12, 12);
-    
-    //    NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_minute,str_second];
-    //修改倒计时标签及显示内容
-//    self.stateLbl.text = [NSString stringWithFormat:@"剩余付款时间：%@分%@秒",str_minute,str_second];
-    
-    
-    
     
 }
 

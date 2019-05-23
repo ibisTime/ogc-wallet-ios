@@ -111,7 +111,6 @@
     FeedBookDetailsVC *vc = [FeedBookDetailsVC new];
     vc.code = self.questions[indexPath.row].code;
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,10 +119,10 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
 
-    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
-
-    }
+//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//
+//    }
 
     [super viewWillDisappear:animated];
     

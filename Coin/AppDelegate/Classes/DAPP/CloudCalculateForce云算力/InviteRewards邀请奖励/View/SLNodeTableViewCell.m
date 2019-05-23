@@ -101,7 +101,7 @@
         [_expandBtn setImage:kImage(@"下拉") forState:(UIControlStateNormal)];
     }
     
-    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     phoneLbl.text = self.node.mobile;
     allmMillLbl.text = [NSString stringWithFormat:@"总水滴型号：%@滴",self.node.totalPerformance];
     yesterdayMillLbl.text = [NSString stringWithFormat:@"昨日水滴型号：%@滴",self.node.yesterdayPerformance];
@@ -110,7 +110,7 @@
         totalIncome = @"0";
     }else
     {
-        totalIncome = [CoinUtil convertToRealCoin:self.node.totalIncome
+        totalIncome = [CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:self.node.totalIncome]
                                              coin:@"HEY"];
     }
     NSString *yesterdayIncome;
@@ -118,7 +118,7 @@
         yesterdayIncome = @"0";
     }else
     {
-        yesterdayIncome = [CoinUtil convertToRealCoin:self.node.yesterdayIncome
+        yesterdayIncome = [CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:self.node.yesterdayIncome]
                                                  coin:@"HEY"];
     }
     

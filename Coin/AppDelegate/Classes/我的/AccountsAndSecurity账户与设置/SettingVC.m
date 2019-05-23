@@ -227,9 +227,6 @@
 }
 
 //-(void)refreshTableView:(TLTableView *)refreshTableview setCurrencyModel:(CurrencyModel *)model setTitle:(NSString *)title{
-//
-//
-//
 //    if ([title isEqualToString:@"交易密码"]) {
 //        if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
 //            TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];

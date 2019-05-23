@@ -47,7 +47,7 @@ void TLLog(NSString *format, ...) {
             
         case RunEnvTest: {
             
-            self.addr = @"http://120.26.6.213:6801";
+            self.addr = @"http://api.ticptoken.com/";
             self.ethHash = @"https://rinkeby.etherscan.io/tx";
             self.wanHash = @"http://47.104.61.26/block/trans";
             self.btcHash = @"https://testnet.blockchain.info";

@@ -69,7 +69,6 @@
 
 #pragma mark -- 接收到通知
 - (void)InfoNotificationAction:(NSNotification *)notification{
-
     [self LoadData];
 }
 

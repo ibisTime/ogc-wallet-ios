@@ -70,6 +70,19 @@
     [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:buyBtn];
     
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"610107";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    [http postWithSuccess:^(id responseObject) {
+        
+        calculateNumberLbl.text = [NSString stringWithFormat:@"%ld",[responseObject[@"data"][@"currentSpeedDays"] integerValue]];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
 }
 
 -(void)buyBtnClick
