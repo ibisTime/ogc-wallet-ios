@@ -120,7 +120,7 @@
         
         for (int i = 0; i < arr.count; i++) {
             CoinModel *model = arr[i];
-            if ([arr[i].symbol isEqualToString:@"ET"]) {
+            if ([arr[i].symbol isEqualToString:@"H"]) {
                 
             }else
             {

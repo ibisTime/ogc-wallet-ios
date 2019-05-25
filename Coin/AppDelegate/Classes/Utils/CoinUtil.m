@@ -63,9 +63,9 @@ NSString *const kCNY = @"CNY";
 //    if (![count valid]) {
 //        count = @"";
 //    }
-//    if (![coin valid]) {
-//        coin = @"";
-//    }
+    if (![coin valid]) {
+        coin = @"";
+    }
 
     
     return [self mult1:count mult2:[[self getCardinality:coin] stringValue]];

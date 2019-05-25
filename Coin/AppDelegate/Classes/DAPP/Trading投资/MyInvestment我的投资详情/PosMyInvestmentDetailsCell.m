@@ -80,6 +80,7 @@
     return self;
 }
 
+
 -(void)setModel:(PosMyInvestmentModel *)model
 {
 

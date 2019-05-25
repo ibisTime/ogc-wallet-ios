@@ -33,9 +33,9 @@
     
     NSArray *leftArray = @[@"水滴型号",@"每日产能",@"锁仓期限",@"总产能"];
     NSArray *rightArray = @[_model.name,
-                            [NSString stringWithFormat:@"%@%%",_model.dailyOutput],
+                            [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * 10],
                             [NSString stringWithFormat:@"%@天",_model.daysLimit],
-                            [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * [_model.daysLimit integerValue]]];
+                            [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * [_model.daysLimit integerValue] * 100]];
     for (int i = 0; i < 4; i ++) {
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, i % 4 * 50, SCREEN_WIDTH, 0.5)];
         [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];

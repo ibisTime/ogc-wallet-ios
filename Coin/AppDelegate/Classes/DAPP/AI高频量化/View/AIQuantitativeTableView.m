@@ -33,7 +33,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
 
 #pragma mark - UITableViewDataSource;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.models.count;
     
 }
 
@@ -42,6 +42,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    cell.model = self.models[indexPath.row];
     
     return cell;
 }

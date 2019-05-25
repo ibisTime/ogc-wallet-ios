@@ -26,6 +26,11 @@
 @property (nonatomic , strong)WaterDropModelPasswordView *payTwoView;
 @property (nonatomic , strong)UILabel *maintenanceFeeLbl;
 
+@property (nonatomic , strong)UILabel *timeLab;
+@property (nonatomic , strong)UIView *view3;
+@property (nonatomic , assign)NSInteger time;
+
+@property (nonatomic , strong)NSTimer *timeOut;
 @end
 
 @implementation BuyMillBuyVC
@@ -44,7 +49,10 @@
 -(void)confirmClick
 {
     [[UserModel user].cusPopView dismiss];
+    
+    
     [[UserModel user] showPopAnimationWithAnimationStyle:3 showView:self.payTwoView];
+    
     [UserModel user].cusPopView.dismissComplete = ^{
         NSLog(@"移除完成");
         [_payTwoView clearUpPassword];
@@ -84,23 +92,148 @@
     http.parameters[@"machineCode"] = self.model.code;
     http.parameters[@"quantity"] = _numberTextField.text;
     http.parameters[@"tradePwd"] = password;
-    http.parameters[@"investCount"] = [CoinUtil convertToRealCoin:[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[_numberTextField.text floatValue]/sellerPrice] mult2:@"1" scale:8] coin:_model.symbol];
+    http.parameters[@"investCount"] = [CoinUtil convertToSysCoin:[CoinUtil mult1:[NSString stringWithFormat:@"%.8f",[self.model.amount floatValue] *[_numberTextField.text floatValue]/sellerPrice] mult2:@"1" scale:8] coin:_model.symbol];
     [http postWithSuccess:^(id responseObject) {
         
-        [TLAlert alertWithSucces:@"购买成功"];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [TLAlert alertWithSucces:@"购买成功"];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //            [self.navigationController popViewControllerAnimated:YES];
             
-            MyMillVC *vc = [MyMillVC new];
-            [self.navigationController pushViewController:vc animated:YES];
-            
-        });
+//            MyMillVC *vc = [MyMillVC new];
+//            [self.navigationController pushViewController:vc animated:YES];
+//
+//        });
+        [self showBuySucess];
         
     } failure:^(NSError *error) {
         
     }];
     
 }
+
+
+
+- (void)showBuySucess
+{
+    UIView * view3 = [UIView new];
+    self.view3 = view3;
+    self.view3.hidden = NO;
+    view3.frame =CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    view3.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.45];
+    UIWindow *keyWindow = [[[UIApplication sharedApplication] delegate] window];
+    [keyWindow addSubview:view3];
+    UIView *whiteView = [UIView new];
+    [view3 addSubview:whiteView];
+    
+    whiteView.frame = CGRectMake(24, 194, kScreenWidth - 48, 300);
+    whiteView.layer.cornerRadius=5;
+    whiteView.layer.shadowOpacity = 0.22;// 阴影透明度
+    whiteView.layer.shadowColor = [UIColor grayColor].CGColor;// 阴影的颜色
+    whiteView.layer.shadowRadius=3;// 阴影扩散的范围控制
+    whiteView.layer.shadowOffset=CGSizeMake(1, 1);// 阴影的范围
+    [whiteView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    
+    UIButton *exitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [exitBtn setBackgroundImage:kImage(@"红包 删除") forState:UIControlStateNormal];
+    [exitBtn addTarget:self action:@selector(hideSelf) forControlEvents:UIControlEventTouchUpInside];
+    [whiteView addSubview:exitBtn];
+    [exitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(whiteView.mas_top).offset(10);
+        make.right.equalTo(whiteView.mas_right).offset(-15);
+        make.width.height.equalTo(@22.5);
+    }];
+    
+    UIImageView *bgImage = [[UIImageView alloc] init];
+    [bgImage theme_setImageIdentifier:@"钱包新建成功" moduleName:ImgAddress];
+    [whiteView addSubview:bgImage];
+    
+    [bgImage mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(whiteView.mas_top).offset(35);
+        make.centerX.equalTo(whiteView.mas_centerX);
+        make.width.height.equalTo(@(kHeight(60)));
+    }];
+    
+    UILabel *sureLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kTextBlack font:20];
+    [whiteView addSubview:sureLab];
+    sureLab.text = [LangSwitcher switchLang:@"购买成功" key:nil];
+    [sureLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(bgImage.mas_bottom).offset(18);
+        
+        make.centerX.equalTo(whiteView.mas_centerX);
+        
+    }];
+    
+    UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sureButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
+    [whiteView addSubview:sureButton];
+    sureButton.titleLabel.font = FONT(13);
+    [sureButton setTitle:[LangSwitcher switchLang:@"查看购买记录" key:nil] forState:UIControlStateNormal];
+    [sureButton addTarget:self action:@selector(payMoneyNowRecode) forControlEvents:UIControlEventTouchUpInside];
+    
+    [sureButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(sureLab.mas_bottom).offset(18);
+        make.centerX.equalTo(whiteView.mas_centerX);
+        
+        make.width.equalTo(@150);
+        make.height.equalTo(@32);
+        
+    }];
+    
+    sureButton.layer.borderWidth = 0.5;
+    sureButton.layer.borderColor = kPlaceholderColor.CGColor;
+    sureButton.layer.cornerRadius = 4;
+    sureButton.clipsToBounds = YES;
+    self.time = 5;
+    
+    UILabel *timeLab = [UILabel labelWithBackgroundColor:kClearColor textColor:kPlaceholderColor font:12];
+    self.timeLab = timeLab;
+    [whiteView addSubview:timeLab];
+    NSString * t  = [NSString stringWithFormat:@"%ld",self.time];
+    timeLab.text = [NSString stringWithFormat:@"%@%@",t,[LangSwitcher switchLang:@"秒钟自动跳转" key:nil]];
+    [timeLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(sureButton.mas_bottom).offset(18);
+        
+        make.centerX.equalTo(whiteView.mas_centerX);
+        
+    }];
+    self.timeOut = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timeAction) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.timeOut forMode:NSRunLoopCommonModes];
+}
+
+-(void)hideSelf
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.view3.hidden = YES;
+    }];
+    
+}
+
+- (void)timeAction{
+    
+    self.time --;
+    NSString * t  = [NSString stringWithFormat:@"%ld",self.time];
+    _timeLab.text = [NSString stringWithFormat:@"%@%@",t,[LangSwitcher switchLang:@"秒钟自动跳转" key:nil]];
+    
+    if (self.time == 0) {
+        
+        [self.timeOut invalidate];
+        self.timeOut = nil;
+        self.view3.hidden = YES;
+        MyMillVC *vc = [MyMillVC new];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+- (void)payMoneyNowRecode
+{
+    [self.timeOut invalidate];
+    self.timeOut = nil;
+    self.view3.hidden = YES;
+    MyMillVC *vc = [MyMillVC new];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
 
 
 - (void)viewDidLoad {
@@ -174,7 +307,7 @@
     http.code = @"802304";
     http.showView = self.view;
     http.parameters[@"userId"] = [TLUser user].userId;
-    http.parameters[@"currency"] = @"ET";
+    http.parameters[@"currency"] = @"H";
     [http postWithSuccess:^(id responseObject) {
         
         
@@ -308,7 +441,7 @@
 -(void)exchangeBtnClick
 {
     FlashAgainstVC *vc = [FlashAgainstVC new];
-    vc.symbol = @"ET";
+    vc.symbol = @"H";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -316,7 +449,12 @@
 -(void)determineBtnClick
 {
     
-    
+    if ([[TLUser user].tradepwdFlag isEqualToString:@"0"]) {
+        TLUserForgetPwdVC *vc = [TLUserForgetPwdVC new];
+        vc.titleString = @"设置交易密码";
+        [self.navigationController pushViewController:vc animated:YES];
+        return;
+    }
     
     if ([_numberTextField.text isEqualToString:@""]) {
         [TLAlert alertWithInfo:@"请输入购买滴数"];

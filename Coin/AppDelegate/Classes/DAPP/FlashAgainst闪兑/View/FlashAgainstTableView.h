@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlashAgainstTableView : TLTableView
 
 @property (nonatomic , strong)FlashAgainstModel *model;
-
+@property (nonatomic , strong)NSMutableArray <FlashAgainstModel *>*recordModels;
 @end
 
 NS_ASSUME_NONNULL_END

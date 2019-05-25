@@ -260,7 +260,7 @@
         }
     }
     for (int i = 0; i < arr.count; i++) {
-        if ([arr[i].symbol isEqualToString:@"ET"]) {
+        if ([arr[i].symbol isEqualToString:@"H"]) {
             
         }else
         {

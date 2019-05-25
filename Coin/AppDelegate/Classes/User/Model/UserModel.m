@@ -77,7 +77,7 @@
     self.cusPopView = _popView;
     _popView.isClickBGDismiss = ![showView isKindOfClass:[UIView class]];
     //    移除
-    _popView.isClickBGDismiss = YES;
+//    _popView.isClickBGDismiss = YES;
     // 2.2 显示时背景的透明度
     _popView.popBGAlpha = 0.5f;
     

@@ -262,6 +262,14 @@
 		1F8E0DB72296922C000F33F0 /* WaterDropModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DB62296922B000F33F0 /* WaterDropModelView.m */; };
 		1F8E0DBA2296976C000F33F0 /* WaterDropModelPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DB92296976C000F33F0 /* WaterDropModelPasswordView.m */; };
 		1F8E0DC12298277A000F33F0 /* AIQuantitativeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DC02298277A000F33F0 /* AIQuantitativeModel.m */; };
+		1F8E0DC422991A3F000F33F0 /* BuyProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DC322991A3F000F33F0 /* BuyProfileView.m */; };
+		1F8E0DC722992330000F33F0 /* ImportPurchaseAmountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DC622992330000F33F0 /* ImportPurchaseAmountVC.m */; };
+		1F8E0DCB2299604A000F33F0 /* AIQuantitativeRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DCA2299604A000F33F0 /* AIQuantitativeRecordVC.m */; };
+		1F8E0DCE22996AA0000F33F0 /* AIQuantitativeRecordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DCD22996AA0000F33F0 /* AIQuantitativeRecordTableView.m */; };
+		1F8E0DD122996B7C000F33F0 /* AIQuantitativeRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD022996B7C000F33F0 /* AIQuantitativeRecordModel.m */; };
+		1F8E0DD422996E67000F33F0 /* AIQuantitativeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD322996E67000F33F0 /* AIQuantitativeRecordCell.m */; };
+		1F8E0DD72299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD62299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m */; };
+		1F8E0DDA2299A92F000F33F0 /* FlashAgainstRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD92299A92F000F33F0 /* FlashAgainstRecordCell.m */; };
 		1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF2228572830045D62B /* MarketDetailsVC.m */; };
 		1F8E2CF62285733C0045D62B /* MarketDetaiilsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */; };
 		1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */; };
@@ -273,7 +281,6 @@
 		1F8E2DF422893F340045D62B /* FlashAgainstHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */; };
 		1F8E2E04228978FE0045D62B /* HYPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E02228978FE0045D62B /* HYPageView.m */; };
 		1F8E2E08228A558A0045D62B /* AlertsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E07228A558A0045D62B /* AlertsModel.m */; };
-		1F8E2E0B228A6DD90045D62B /* FlashAgainstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E0A228A6DD90045D62B /* FlashAgainstCell.m */; };
 		1F8E2E11228A6FC10045D62B /* CloudCalculateForceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */; };
 		1F8E2E1C228A941A0045D62B /* EggplantAccountVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E1B228A941A0045D62B /* EggplantAccountVC.m */; };
 		1F8E2E29228A98680045D62B /* EggplantAccountTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2E28228A98680045D62B /* EggplantAccountTableView.m */; };
@@ -1309,6 +1316,22 @@
 		1F8E0DB92296976C000F33F0 /* WaterDropModelPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDropModelPasswordView.m; sourceTree = "<group>"; };
 		1F8E0DBF2298277A000F33F0 /* AIQuantitativeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeModel.h; sourceTree = "<group>"; };
 		1F8E0DC02298277A000F33F0 /* AIQuantitativeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeModel.m; sourceTree = "<group>"; };
+		1F8E0DC222991A3F000F33F0 /* BuyProfileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyProfileView.h; sourceTree = "<group>"; };
+		1F8E0DC322991A3F000F33F0 /* BuyProfileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyProfileView.m; sourceTree = "<group>"; };
+		1F8E0DC522992330000F33F0 /* ImportPurchaseAmountVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportPurchaseAmountVC.h; sourceTree = "<group>"; };
+		1F8E0DC622992330000F33F0 /* ImportPurchaseAmountVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImportPurchaseAmountVC.m; sourceTree = "<group>"; };
+		1F8E0DC92299604A000F33F0 /* AIQuantitativeRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeRecordVC.h; sourceTree = "<group>"; };
+		1F8E0DCA2299604A000F33F0 /* AIQuantitativeRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeRecordVC.m; sourceTree = "<group>"; };
+		1F8E0DCC22996AA0000F33F0 /* AIQuantitativeRecordTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeRecordTableView.h; sourceTree = "<group>"; };
+		1F8E0DCD22996AA0000F33F0 /* AIQuantitativeRecordTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeRecordTableView.m; sourceTree = "<group>"; };
+		1F8E0DCF22996B7C000F33F0 /* AIQuantitativeRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeRecordModel.h; sourceTree = "<group>"; };
+		1F8E0DD022996B7C000F33F0 /* AIQuantitativeRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeRecordModel.m; sourceTree = "<group>"; };
+		1F8E0DD222996E67000F33F0 /* AIQuantitativeRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeRecordCell.h; sourceTree = "<group>"; };
+		1F8E0DD322996E67000F33F0 /* AIQuantitativeRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeRecordCell.m; sourceTree = "<group>"; };
+		1F8E0DD52299A464000F33F0 /* AIQuantitativeRecordDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeRecordDetailsVC.h; sourceTree = "<group>"; };
+		1F8E0DD62299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeRecordDetailsVC.m; sourceTree = "<group>"; };
+		1F8E0DD82299A92F000F33F0 /* FlashAgainstRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstRecordCell.h; sourceTree = "<group>"; };
+		1F8E0DD92299A92F000F33F0 /* FlashAgainstRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstRecordCell.m; sourceTree = "<group>"; };
 		1F8E2CF1228572830045D62B /* MarketDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetailsVC.h; sourceTree = "<group>"; };
 		1F8E2CF2228572830045D62B /* MarketDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetailsVC.m; sourceTree = "<group>"; };
 		1F8E2CF42285733C0045D62B /* MarketDetaiilsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsTableView.h; sourceTree = "<group>"; };
@@ -1331,8 +1354,6 @@
 		1F8E2E03228978FE0045D62B /* HYPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPageView.h; sourceTree = "<group>"; };
 		1F8E2E06228A558A0045D62B /* AlertsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlertsModel.h; sourceTree = "<group>"; };
 		1F8E2E07228A558A0045D62B /* AlertsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlertsModel.m; sourceTree = "<group>"; };
-		1F8E2E09228A6DD90045D62B /* FlashAgainstCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstCell.h; sourceTree = "<group>"; };
-		1F8E2E0A228A6DD90045D62B /* FlashAgainstCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstCell.m; sourceTree = "<group>"; };
 		1F8E2E0F228A6FC00045D62B /* CloudCalculateForceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudCalculateForceVC.h; sourceTree = "<group>"; };
 		1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudCalculateForceVC.m; sourceTree = "<group>"; };
 		1F8E2E1A228A941A0045D62B /* EggplantAccountVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EggplantAccountVC.h; sourceTree = "<group>"; };
@@ -3473,10 +3494,11 @@
 		1F8E0D9A22953B66000F33F0 /* AI高频量化 */ = {
 			isa = PBXGroup;
 			children = (
-				1F8E0DA62295523D000F33F0 /* Details */,
 				1F8E0D9C22953C0D000F33F0 /* Controller */,
 				1F8E0DBE2298275F000F33F0 /* Model */,
 				1F8E0D9B22953C0B000F33F0 /* View */,
+				1F8E0DC822995FB2000F33F0 /* AIQuantitativeRecord记录 */,
+				1F8E0DA62295523D000F33F0 /* Details */,
 			);
 			path = "AI高频量化";
 			sourceTree = "<group>";
@@ -3519,6 +3541,10 @@
 				1F8E0DB0229553EA000F33F0 /* ProductDetailsCell.m */,
 				1F8E0DB2229556C1000F33F0 /* ProductIntroductionCell.h */,
 				1F8E0DB3229556C1000F33F0 /* ProductIntroductionCell.m */,
+				1F8E0DC522992330000F33F0 /* ImportPurchaseAmountVC.h */,
+				1F8E0DC622992330000F33F0 /* ImportPurchaseAmountVC.m */,
+				1F8E0DC222991A3F000F33F0 /* BuyProfileView.h */,
+				1F8E0DC322991A3F000F33F0 /* BuyProfileView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3539,6 +3565,23 @@
 				1F8E0DC02298277A000F33F0 /* AIQuantitativeModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1F8E0DC822995FB2000F33F0 /* AIQuantitativeRecord记录 */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E0DC92299604A000F33F0 /* AIQuantitativeRecordVC.h */,
+				1F8E0DCA2299604A000F33F0 /* AIQuantitativeRecordVC.m */,
+				1F8E0DCF22996B7C000F33F0 /* AIQuantitativeRecordModel.h */,
+				1F8E0DD022996B7C000F33F0 /* AIQuantitativeRecordModel.m */,
+				1F8E0DCC22996AA0000F33F0 /* AIQuantitativeRecordTableView.h */,
+				1F8E0DCD22996AA0000F33F0 /* AIQuantitativeRecordTableView.m */,
+				1F8E0DD222996E67000F33F0 /* AIQuantitativeRecordCell.h */,
+				1F8E0DD322996E67000F33F0 /* AIQuantitativeRecordCell.m */,
+				1F8E0DD52299A464000F33F0 /* AIQuantitativeRecordDetailsVC.h */,
+				1F8E0DD62299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m */,
+			);
+			path = "AIQuantitativeRecord记录";
 			sourceTree = "<group>";
 		};
 		1F8E2CF0228572610045D62B /* MarketDetails */ = {
@@ -3577,8 +3620,8 @@
 				1F8E2DED22893CAC0045D62B /* FlashAgainstTableView.m */,
 				1F8E2DF222893F340045D62B /* FlashAgainstHeaderView.h */,
 				1F8E2DF322893F340045D62B /* FlashAgainstHeaderView.m */,
-				1F8E2E09228A6DD90045D62B /* FlashAgainstCell.h */,
-				1F8E2E0A228A6DD90045D62B /* FlashAgainstCell.m */,
+				1F8E0DD82299A92F000F33F0 /* FlashAgainstRecordCell.h */,
+				1F8E0DD92299A92F000F33F0 /* FlashAgainstRecordCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6040,7 +6083,6 @@
 				B8CAA14D2115DE6300695BC3 /* TLhistoryListVC.m in Sources */,
 				1F8E2DEE22893CAC0045D62B /* FlashAgainstTableView.m in Sources */,
 				1F9361B021EF0F7F007E522A /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
-				1F8E2E0B228A6DD90045D62B /* FlashAgainstCell.m in Sources */,
 				7A2CC6BF215DC88C00B27E2D /* PGDatePicker+TimeAndSecond.m in Sources */,
 				7A07F803216C84F30026EB7A /* SCBar.m in Sources */,
 				21A821171FDA690700AE59F2 /* GoogleAuthVC.m in Sources */,
@@ -6137,6 +6179,7 @@
 				1F76691B21D4A32700006B41 /* BTCKey+Tests.m in Sources */,
 				B88B093320C908DC005C2D2F /* ResiseTextFiled.m in Sources */,
 				B89F07DF211B06E20057E781 /* TLinviteVC.m in Sources */,
+				1F8E0DC422991A3F000F33F0 /* BuyProfileView.m in Sources */,
 				1F9C8FBB2244DF2100DFA9C3 /* BTCPoundage.m in Sources */,
 				1F6D9E762281D0160057A756 /* AlertsTableView.m in Sources */,
 				1FA566EE223CD4B90077FE54 /* ClassificationCollCell.m in Sources */,
@@ -6209,6 +6252,7 @@
 				1FA56AE7223CD6A70077FE54 /* YYTextContainerView.m in Sources */,
 				B8BBA64020C7FB4600DC4D5F /* WallAccountHeadView.m in Sources */,
 				1F7668F221D4A32700006B41 /* BTCTransaction.m in Sources */,
+				1F8E0DCE22996AA0000F33F0 /* AIQuantitativeRecordTableView.m in Sources */,
 				1F6D9E612281716D0057A756 /* TodoModel.m in Sources */,
 				1F7668FA21D4A32700006B41 /* BTCMnemonic.m in Sources */,
 				1F35701F229293A0004A24E7 /* FeedBookDetailsCell.m in Sources */,
@@ -6316,6 +6360,7 @@
 				21A7F3211FB2E2F900FAA0A2 /* AccountTf.m in Sources */,
 				2EB039AD1FE8EDE300589D8E /* UserInfo.m in Sources */,
 				1F76696C21D4A34D00006B41 /* unzip.c in Sources */,
+				1F8E0DD72299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m in Sources */,
 				1F76696D21D4A34D00006B41 /* zip.c in Sources */,
 				1F766A1621DDF42F00006B41 /* PayTreasureVC.m in Sources */,
 				B8CA7D4920CBA22800A0E93C /* WalletImportVC.m in Sources */,
@@ -6488,12 +6533,14 @@
 				211DE6C01FB58B4C002FCF3D /* NSObject+Extension.m in Sources */,
 				1F8E0D9F22953C38000F33F0 /* AIQuantitativeVC.m in Sources */,
 				211DE6C71FB58B4C002FCF3D /* HttpRequestObject.m in Sources */,
+				1F8E0DD422996E67000F33F0 /* AIQuantitativeRecordCell.m in Sources */,
 				1FA56AF0223CD6A70077FE54 /* YYTextRunDelegate.m in Sources */,
 				1F76697121D4A34D00006B41 /* aeskey.c in Sources */,
 				1F7667EB21D07A0B00006B41 /* MyAssetsHeadView.m in Sources */,
 				1F76699521D771E200006B41 /* MyFriendCellCell.m in Sources */,
 				211DE6BD1FB58B4C002FCF3D /* NSString+Date.m in Sources */,
 				B8C2057320CF9E8800952765 /* WalletLocalAddressVC.m in Sources */,
+				1F8E0DCB2299604A000F33F0 /* AIQuantitativeRecordVC.m in Sources */,
 				7A2CC6AF215DC88B00B27E2D /* NSBundle+PGDatePicker.m in Sources */,
 				211DE6C31FB58B4C002FCF3D /* HttpRequestTool.m in Sources */,
 				1F73663122520A7000135F7E /* SecureData.m in Sources */,
@@ -6504,6 +6551,7 @@
 				2EE950C31FB05B4500429257 /* TLWalletVC.m in Sources */,
 				211DE6A51FB58B4C002FCF3D /* TLProgressHUD.m in Sources */,
 				7A2CC6C7215DC88C00B27E2D /* UIColor+PGHex.m in Sources */,
+				1F8E0DD122996B7C000F33F0 /* AIQuantitativeRecordModel.m in Sources */,
 				B88B092D20C8F878005C2D2F /* WalletSettingVC.m in Sources */,
 				1FA568C2223CD5750077FE54 /* GeneralWebView.m in Sources */,
 				7A07F80D216C84F30026EB7A /* SCTool.m in Sources */,
@@ -6514,6 +6562,7 @@
 				1F0E1525228D586000AEE094 /* TeamPerFormanceTableView.m in Sources */,
 				1F6F2BB0222CEB9800298FB3 /* InvestmentHeadCell.m in Sources */,
 				1F7668F721D4A32700006B41 /* BTCBlockchainInfo.m in Sources */,
+				1F8E0DC722992330000F33F0 /* ImportPurchaseAmountVC.m in Sources */,
 				1F9C8FC82246183D00DFA9C3 /* PrivateKeyWalletCell.m in Sources */,
 				1F7F6F66227EE572003AEBA7 /* UILabel+MTTheme.m in Sources */,
 				7A2CC677215CD41100B27E2D /* AccumulatedEarningsTableView.m in Sources */,
@@ -6577,6 +6626,7 @@
 				1F8E0DAB22955268000F33F0 /* AIQuantitativeDetailsVC.m in Sources */,
 				1F7F6F5B227EE572003AEBA7 /* MTElementModel.m in Sources */,
 				1F82452D228D3A9E00B3C2AF /* OreRecordCell.m in Sources */,
+				1F8E0DDA2299A92F000F33F0 /* FlashAgainstRecordCell.m in Sources */,
 				1F7668F921D4A32700006B41 /* BTCScriptMachine.m in Sources */,
 				1F7367122252FEFA00135F7E /* pbkdf2.c in Sources */,
 				1F82451D228D01AD00B3C2AF /* MyMillTableView.m in Sources */,

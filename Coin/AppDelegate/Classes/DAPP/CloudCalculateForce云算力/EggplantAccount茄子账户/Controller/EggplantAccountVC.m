@@ -38,7 +38,7 @@
 -(void)exchangeBtnClick
 {
     FlashAgainstVC *vc = [FlashAgainstVC new];
-    vc.symbol = @"ET";
+    vc.symbol = @"H";
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -81,7 +81,7 @@
     http.code = @"802304";
     http.showView = self.view;
     http.parameters[@"userId"] = [TLUser user].userId;
-    http.parameters[@"currency"] = @"ET";
+    http.parameters[@"currency"] = @"H";
     [http postWithSuccess:^(id responseObject) {
         
         self.headView.amount = responseObject[@"data"][0][@"amount"];

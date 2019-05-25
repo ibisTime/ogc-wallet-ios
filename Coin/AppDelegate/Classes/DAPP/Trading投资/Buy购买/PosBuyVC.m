@@ -26,7 +26,7 @@
 
 @property (nonatomic , strong)UIView *view2;
 @property (nonatomic , strong)UIView *view3;
-
+@property (nonatomic , assign)NSInteger time;
 
 @property (nonatomic , strong)NSTimer *timeOut;
 
@@ -39,7 +39,7 @@
 @property (nonatomic , strong)UILabel *coinLab;
 @property (nonatomic , copy)NSString *payCount;
 @property (nonatomic , strong)PayModel *payModel;
-@property (nonatomic , assign)NSInteger time;
+
 @property (nonatomic , strong)UILabel *timeLab;
 
 @property (nonatomic , strong)NSDictionary *dataDic;
@@ -563,8 +563,6 @@
     }];
 
     UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [sureButton setBackgroundColor:kClearColor forState:UIControlStateNormal];
-//    [sureButton setTitleColor:kTextColor forState:UIControlStateNormal];
     [sureButton theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
     [whiteView addSubview:sureButton];
     sureButton.titleLabel.font = FONT(13);

@@ -122,10 +122,18 @@
         
         
     } failure:^(NSError *error) {
-        [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
-        } confirm:^(UIAlertAction *action) {
-            [self configurationLoadData];
-        }];
+        NSString *dic = error.description;
+        if ([dic containsString:@"token"])
+        {
+        }
+        else
+        {
+            [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+            } confirm:^(UIAlertAction *action) {
+                [self configurationLoadData];
+            }];
+        }
+        
     }];
     
     

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AIQuantitativeModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AIQuantitativeCell : UITableViewCell
+
+@property (nonatomic , strong)AIQuantitativeModel *model;
 
 @end
 

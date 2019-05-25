@@ -25,7 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , copy)NSString *updater;
 @property (nonatomic , copy)NSString *status;
 @property (nonatomic , copy)NSString *min;
-
+@property (nonatomic , copy)NSString *countOutTotal;
+@property (nonatomic , copy)NSString *fee;
+@property (nonatomic , copy)NSString *valueCnyOut;
+@property (nonatomic , copy)NSString *valueCnyIn;
 //"id" : 1,
 //"symbolIn" : "ETH",
 //"feeRate" : 10,

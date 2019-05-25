@@ -10,6 +10,7 @@
 #import "AIQuantitativeTableView.h"
 #import "AIQuantitativeDetailsVC.h"
 #import "AIQuantitativeModel.h"
+#import "AIQuantitativeRecordVC.h"
 @interface AIQuantitativeVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)AIQuantitativeTableView *tableView;
@@ -27,7 +28,21 @@
     self.navigationItem.titleView = self.titleText;
     [self initTableView];
     [self LoadData];
+
+    [self.RightButton setTitle:@"我的投资" forState:(UIControlStateNormal)];
+    [self.RightButton addTarget:self action:@selector(RightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    negativeSpacer.width = -10;
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
     
+}
+
+
+
+-(void)RightButtonClick
+{
+    AIQuantitativeRecordVC *vc = [AIQuantitativeRecordVC new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)initTableView {
@@ -42,7 +57,7 @@
     __weak typeof(self) weakSelf = self;
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     helper.tableView = self.tableView;
-    helper.code = @"610305";
+    helper.code = @"610306";
     [helper modelClass:[AIQuantitativeModel class]];
     
     [self.tableView addRefreshAction:^{
@@ -91,6 +106,7 @@
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AIQuantitativeDetailsVC *vc = [AIQuantitativeDetailsVC new];
+    vc.model = self.models[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

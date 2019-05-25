@@ -55,6 +55,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
     if (indexPath.section == 0) {
         AIQuantitativeCell *cell = [tableView dequeueReusableCellWithIdentifier:MyAsstes forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.model = self.model;
         [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         return cell;
     }
@@ -65,7 +66,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
         [cell theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
         NSArray *nameAry = @[@"产品名称",@"认购币种",@"购买方式"];
         cell.nameLbl.text = nameAry[indexPath.row];
-        NSArray *detailsAry = @[@"币币加BTC第一期",@"BTC",@"期满自动转入个人账户"];
+        NSArray *detailsAry = @[self.model.name,self.model.symbolBuy,@"期满自动转入个人账户"];
         cell.detailsLbl.text = detailsAry[indexPath.row];
         
         return cell;
@@ -78,7 +79,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     _cell = cell;
-    
+    _cell.detailsLbl.text = self.model.Description;
     return cell;
 }
 

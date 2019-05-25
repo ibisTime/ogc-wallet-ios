@@ -90,7 +90,7 @@
 {
     nameLbl.text = model.name;
     symbolLbl.text = [NSString stringWithFormat:@"%@ 水滴型号",model.symbol];
-    nissanCanLbl.text = [NSString stringWithFormat:@"%@%%日产能",model.dailyOutput];
+    nissanCanLbl.text = [NSString stringWithFormat:@"%.2f%%日产能",[model.dailyOutput floatValue]*100];
     progressView.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 23 - 53 - 30) * [model.stockOut integerValue] / [model.stockTotal integerValue], 5);
     percentageLbl.text = [NSString stringWithFormat:@"%.1f%%",[model.stockOut floatValue] / [model.stockTotal floatValue] * 100];
     UILabel *label1 = [self viewWithTag:100];

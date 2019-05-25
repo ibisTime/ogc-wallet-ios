@@ -261,8 +261,7 @@
         vc.URL = model.url;
         [self showViewController:vc sender:self];
         
-//        AIQuantitativeVC *vc = [AIQuantitativeVC new];
-//        [self.navigationController pushViewController:vc animated:YES];
+        
         
         
     }
@@ -323,6 +322,10 @@
             }];
             
             
+        }
+        if ([model.url isEqualToString:@"4"]) {
+            AIQuantitativeVC *vc = [AIQuantitativeVC new];
+            [self.navigationController pushViewController:vc animated:YES];
         }
     }
 }

@@ -13,6 +13,7 @@
 #import "SelectedListModel.h"
 #import "SelectedListView.h"
 #import "LEEAlert.h"
+#import "FlashAgainstModel.h"
 @interface FlashAgainstVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)FlashAgainstTableView *tableView;
@@ -22,6 +23,8 @@
 @property (nonatomic , strong)NSMutableArray <FlashAgainstModel *>*models;
 
 @property (nonatomic , strong)NSMutableArray <FlashAgainstModel *>*addmModels;
+
+@property (nonatomic , strong)NSMutableArray <FlashAgainstModel *>*recordModels;
 
 @end
 
@@ -84,14 +87,14 @@
 
 -(void)chooseBtnClick
 {
-//    if ([self.symbol isEqualToString:@"ET"]) {
+//    if ([self.symbol isEqualToString:@"H"]) {
 //        return;
 //    }
     NSMutableArray *array = [NSMutableArray array];
     
     
     
-    if ([self.symbol isEqualToString:@"ET"]) {
+    if ([self.symbol isEqualToString:@"H"]) {
         for (int i = 0;  i < self.addmModels.count; i ++) {
             [array addObject:[[SelectedListModel alloc] initWithSid:i Title:[NSString stringWithFormat:@"%@ 兑 %@",self.addmModels[i].symbolOut,self.addmModels[i].symbolIn]]];
         }
@@ -111,7 +114,7 @@
         [LEEAlert closeWithCompletionBlock:^{
             NSLog(@"选中的%@" , array);
             SelectedListModel *model = array[0];
-            if ([self.symbol isEqualToString:@"ET"]) {
+            if ([self.symbol isEqualToString:@"H"]) {
                 self.headView.model = self.addmModels[model.sid];
                 [self loadDataPrice:self.headView.model];
             }else
@@ -146,17 +149,74 @@
     [self initTableView];
     [self LoadData];
     [self queryCenterTotalAmount];
+    [self RecordLoadData];
+    [self.view addSubview:self.headView];
     
 }
 
 - (void)initTableView {
-    self.tableView = [[FlashAgainstTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[FlashAgainstTableView alloc] initWithFrame:CGRectMake(0, 402, kScreenWidth, kScreenHeight - kNavigationBarHeight - 402) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.tableView theme_setBackgroundColorIdentifier:@"headerViewColor" moduleName:ColorName];
     [self.view addSubview:self.tableView];
-    self.tableView.tableHeaderView = self.headView;
+//    self.tableView.tableHeaderView = self.headView;
 }
 
+-(void)RecordLoadData
+{
+    CoinWeakSelf;
+    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+    helper.code = @"802930";
+    helper.parameters[@"userId"] = [TLUser user].userId;
+    helper.isCurrency = YES;
+    helper.tableView = self.tableView;
+    [helper modelClass:[FlashAgainstModel class]];
+    
+    [self.tableView addRefreshAction:^{
+       
+        
+        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            //            NSMutableArray <AIQuantitativeRecordModel *> *shouldDisplayCoins = [[AIQuantitativeRecordModel alloc] init];
+            //            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            //                AIQuantitativeRecordModel *model = (AIQuantitativeRecordModel *)obj;
+            //                [shouldDisplayCoins addObject:model];
+            //            }];
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            
+            weakSelf.recordModels = objs;
+            weakSelf.tableView.recordModels = objs;
+            [weakSelf.tableView reloadData_tl];
+        } failure:^(NSError *error) {
+            
+        }];
+    }];
+    [self.tableView addLoadMoreAction:^{
+        
+        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            NSLog(@" ==== %@",objs);
+            //            NSMutableArray <AIQuantitativeRecordModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
+            //            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            //
+            //                AIQuantitativeRecordModel *model = (AIQuantitativeRecordModel *)obj;
+            //                [shouldDisplayCoins addObject:model];
+            //            }];
+            if (weakSelf.tl_placeholderView.superview != nil) {
+                
+                [weakSelf removePlaceholderView];
+            }
+            weakSelf.recordModels = objs;
+            
+            weakSelf.tableView.recordModels = objs;
+            [weakSelf.tableView reloadData_tl];
+            
+        } failure:^(NSError *error) {
+        }];
+    }];
+    [self.tableView beginRefreshing];
+}
 
 //交易对列表查询
 -(void)LoadData
@@ -167,7 +227,7 @@
     [http postWithSuccess:^(id responseObject) {
         
         self.models = [FlashAgainstModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        if ([self.symbol isEqualToString:@"ET"]) {
+        if ([self.symbol isEqualToString:@"H"]) {
             self.addmModels = [NSMutableArray array];
             for (int i = 0 ; i < self.models.count; i ++) {
                 if ([self.models[i].symbolIn isEqualToString:self.symbol]) {
