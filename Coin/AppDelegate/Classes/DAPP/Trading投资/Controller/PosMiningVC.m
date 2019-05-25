@@ -134,7 +134,7 @@
 
 -(void)navigativeView
 {
-    self.titleText.text = [LangSwitcher switchLang:@"屯币宝" key:nil];
+    self.titleText.text = [LangSwitcher switchLang:@"囤币宝" key:nil];
     self.navigationItem.titleView = self.titleText;
 
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];

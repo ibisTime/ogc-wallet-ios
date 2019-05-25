@@ -83,8 +83,8 @@
 //                             [LangSwitcher switchLang:@"红包退回" key:nil],
 //                             [LangSwitcher switchLang:@"抢红包" key:nil],
 //                             [LangSwitcher switchLang:@"发红包" key:nil],
-//                             [LangSwitcher switchLang:@"屯币宝投资" key:nil],
-//                             [LangSwitcher switchLang:@"屯币宝还款" key:nil],
+//                             [LangSwitcher switchLang:@"囤币宝投资" key:nil],
+//                             [LangSwitcher switchLang:@"囤币宝还款" key:nil],
 //                             [LangSwitcher switchLang:@"积分抽奖" key:nil]
 //                             ];
 //

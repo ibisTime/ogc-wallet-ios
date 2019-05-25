@@ -177,7 +177,7 @@
     //    手续费
     CGFloat free = allPic * proportion;
     //    价格比例
-    CGFloat proportionPic = [_InPrice floatValue] / [_OutPrice floatValue];
+    CGFloat proportionPic = _OutPrice / _InPrice;
     
     poundage = [CoinUtil mult1:[NSString stringWithFormat:@"%f",free] mult2:@"1" scale:8];
     NSLog(@"ssssss %@",_leftNumberTf.text);
@@ -203,7 +203,7 @@
 //    手续费
     CGFloat free = allPic * proportion;
 //    价格比例
-    CGFloat proportionPic = [_InPrice floatValue] / [_OutPrice floatValue];
+    CGFloat proportionPic = _OutPrice / _InPrice;
     
     poundage = [CoinUtil mult1:[NSString stringWithFormat:@"%f",free] mult2:@"1" scale:8];
     NSLog(@"ssssss %@",textfield.text);
@@ -225,13 +225,10 @@
     
     CGFloat fee = [_model.feeRate floatValue]/100;
     CGFloat A;
-    CGFloat A1 = [_InPrice floatValue];
+    CGFloat A1 = _OutPrice;
     CGFloat B = [textfield.text floatValue];
-    CGFloat B1 = [_OutPrice floatValue];
-
+    CGFloat B1 = _InPrice;
     A = B * B1 / (A1 * (1 - fee));
-    
-    
     
     
     _leftNumberTf.text = [NSString stringWithFormat:@"%.8f",A];
@@ -244,15 +241,10 @@
 
 -(void)textField
 {
-//    [CoinUtil mult1:[NSString stringWithFormat:@"%f",[_leftNumberTf.text floatValue]*[_model.feeRate floatValue]/100] mult2:@"1" scale:8];
-    
-    
     _poundageLbl.text = [NSString stringWithFormat:@"手续费：≈%@%@",poundage,_model.symbolOut];
     _poundageLbl.frame = CGRectMake(allBtn.xx + 30, 250 + 20.5,SCREEN_WIDTH - allBtn.xx - 45, 16.5);
     [_poundageLbl sizeToFit];
 }
-
-
 
 -(void)setCurrenctModel:(NSMutableArray<CurrencyModel *> *)currenctModel
 {
@@ -303,16 +295,17 @@
 }
 
 
--(void)setInPrice:(NSString *)InPrice
+-(void)setInPrice:(CGFloat)InPrice
 {
     _InPrice = InPrice;
-    symbolLbl1.text = [NSString stringWithFormat:@"1%@=%@CNY",_model.symbolOut,InPrice];
+    symbolLbl2.text = [NSString stringWithFormat:@"1%@=%.2fCNY",_model.symbolIn,InPrice];
+    
 }
 
--(void)setOutPrice:(NSString *)OutPrice
+-(void)setOutPrice:(CGFloat)OutPrice
 {
     _OutPrice = OutPrice;
-    symbolLbl2.text = [NSString stringWithFormat:@"1%@=%@CNY",_model.symbolIn,OutPrice];
+    symbolLbl1.text = [NSString stringWithFormat:@"1%@=%.2fCNY",_model.symbolOut,OutPrice];
 }
 
 

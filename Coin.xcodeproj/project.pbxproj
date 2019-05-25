@@ -261,6 +261,7 @@
 		1F8E0DB4229556C1000F33F0 /* ProductIntroductionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DB3229556C1000F33F0 /* ProductIntroductionCell.m */; };
 		1F8E0DB72296922C000F33F0 /* WaterDropModelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DB62296922B000F33F0 /* WaterDropModelView.m */; };
 		1F8E0DBA2296976C000F33F0 /* WaterDropModelPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DB92296976C000F33F0 /* WaterDropModelPasswordView.m */; };
+		1F8E0DC12298277A000F33F0 /* AIQuantitativeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DC02298277A000F33F0 /* AIQuantitativeModel.m */; };
 		1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF2228572830045D62B /* MarketDetailsVC.m */; };
 		1F8E2CF62285733C0045D62B /* MarketDetaiilsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */; };
 		1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */; };
@@ -1306,6 +1307,8 @@
 		1F8E0DB62296922B000F33F0 /* WaterDropModelView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDropModelView.m; sourceTree = "<group>"; };
 		1F8E0DB82296976C000F33F0 /* WaterDropModelPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterDropModelPasswordView.h; sourceTree = "<group>"; };
 		1F8E0DB92296976C000F33F0 /* WaterDropModelPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaterDropModelPasswordView.m; sourceTree = "<group>"; };
+		1F8E0DBF2298277A000F33F0 /* AIQuantitativeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AIQuantitativeModel.h; sourceTree = "<group>"; };
+		1F8E0DC02298277A000F33F0 /* AIQuantitativeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeModel.m; sourceTree = "<group>"; };
 		1F8E2CF1228572830045D62B /* MarketDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetailsVC.h; sourceTree = "<group>"; };
 		1F8E2CF2228572830045D62B /* MarketDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetailsVC.m; sourceTree = "<group>"; };
 		1F8E2CF42285733C0045D62B /* MarketDetaiilsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsTableView.h; sourceTree = "<group>"; };
@@ -3472,6 +3475,7 @@
 			children = (
 				1F8E0DA62295523D000F33F0 /* Details */,
 				1F8E0D9C22953C0D000F33F0 /* Controller */,
+				1F8E0DBE2298275F000F33F0 /* Model */,
 				1F8E0D9B22953C0B000F33F0 /* View */,
 			);
 			path = "AI高频量化";
@@ -3526,6 +3530,15 @@
 				1F8E0DAA22955268000F33F0 /* AIQuantitativeDetailsVC.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F8E0DBE2298275F000F33F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E0DBF2298277A000F33F0 /* AIQuantitativeModel.h */,
+				1F8E0DC02298277A000F33F0 /* AIQuantitativeModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1F8E2CF0228572610045D62B /* MarketDetails */ = {
@@ -6652,6 +6665,7 @@
 				1F0725B42280097E0008EADA /* SwitchPurseTableView.m in Sources */,
 				2EA2526E1FF09B52007FF9A2 /* CoinUtil.m in Sources */,
 				1F6D9E602281716D0057A756 /* MessageVC.m in Sources */,
+				1F8E0DC12298277A000F33F0 /* AIQuantitativeModel.m in Sources */,
 				1F7367012252FEFA00135F7E /* bip39.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -101,29 +101,35 @@
         [_expandBtn setImage:kImage(@"下拉") forState:(UIControlStateNormal)];
     }
     
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    phoneLbl.text = self.node.mobile;
-    allmMillLbl.text = [NSString stringWithFormat:@"总水滴型号：%@滴",self.node.totalPerformance];
-    yesterdayMillLbl.text = [NSString stringWithFormat:@"昨日水滴型号：%@滴",self.node.yesterdayPerformance];
-    NSString *totalIncome;
-    if ([self.node.totalIncome floatValue] == 0) {
-        totalIncome = @"0";
-    }else
-    {
-        totalIncome = [CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:self.node.totalIncome]
-                                             coin:@"HEY"];
-    }
-    NSString *yesterdayIncome;
-    if ([self.node.yesterdayIncome floatValue] == 0) {
-        yesterdayIncome = @"0";
-    }else
-    {
-        yesterdayIncome = [CoinUtil convertToRealCoin:[numberFormatter stringFromNumber:self.node.yesterdayIncome]
-                                                 coin:@"HEY"];
+    
+    
+    if ([TLUser isBlankString:self.node.mobile] == NO) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        phoneLbl.text = self.node.mobile;
+        allmMillLbl.text = [NSString stringWithFormat:@"总水滴型号：%@滴",self.node.totalPerformance];
+        yesterdayMillLbl.text = [NSString stringWithFormat:@"昨日水滴型号：%@滴",self.node.yesterdayPerformance];
+        NSString *totalIncome;
+//        if ([self.node.totalIncome floatValue] == 0) {
+//            totalIncome = @"0";
+//        }else
+//        {
+//            totalIncome = [CoinUtil convertToRealCoin:self.node.totalIncome
+//                                                 coin:@"HEY"];
+//        }
+//        NSString *yesterdayIncome;
+//        if ([self.node.yesterdayIncome floatValue] == 0) {
+//            yesterdayIncome = @"0";
+//        }else
+//        {
+//            yesterdayIncome = [CoinUtil convertToRealCoin:self.node.yesterdayIncome
+//                                                     coin:@"HEY"];
+//        }
+
+        allCommissionLbl.text = [NSString stringWithFormat:@"总提成：%.1fHEY",[self.node.totalIncome floatValue]/1000000000000000000];
+        yesterdayCommissionLbl.text = [NSString stringWithFormat:@"昨日提成：%.1fHEY",[self.node.yesterdayIncome floatValue]/1000000000000000000];
     }
     
-    allCommissionLbl.text = [NSString stringWithFormat:@"总提成：%@HEY",totalIncome];
-    yesterdayCommissionLbl.text = [NSString stringWithFormat:@"昨日提成：%@HEY",yesterdayIncome];
+    
     
     
     int testNum = self.node.level;

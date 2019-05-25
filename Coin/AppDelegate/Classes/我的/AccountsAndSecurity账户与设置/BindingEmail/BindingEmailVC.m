@@ -11,6 +11,9 @@
 @interface BindingEmailVC ()
 @property (nonatomic,strong) UITextField *phoneTf;
 @property (nonatomic,strong) UITextField *codeTf;
+
+
+
 @end
 
 @implementation BindingEmailVC

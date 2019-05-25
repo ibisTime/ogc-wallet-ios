@@ -23,11 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL selected; // 是否选中
 
-@property (nonatomic, assign) NSNumber *totalIncome;
+@property (nonatomic, copy) NSString *totalIncome;
 @property (nonatomic, copy) NSString *mobile;
 @property (nonatomic, copy) NSString *totalPerformance;
 @property (nonatomic, copy) NSString *yesterdayPerformance;
-@property (nonatomic, assign) NSNumber *yesterdayIncome;
+@property (nonatomic, copy) NSString *yesterdayIncome;
 @property (nonatomic, strong) NSArray *teamList;
 
 

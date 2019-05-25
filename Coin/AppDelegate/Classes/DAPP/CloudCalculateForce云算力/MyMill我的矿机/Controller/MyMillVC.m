@@ -62,8 +62,8 @@
         http2.parameters[SYS_KEY] = @"machine_mine_symbol";
         [http2 postWithSuccess:^(id responseObject) {
             
-            self.tableView.cvalue = responseObject[@"data"][@"cvalue"];
-            [self.tableView reloadData];
+            weakSelf.tableView.cvalue = responseObject[@"data"][@"cvalue"];
+            [weakSelf.tableView reloadData];
         } failure:^(NSError *error) {
             
         }];

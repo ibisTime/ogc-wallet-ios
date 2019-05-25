@@ -242,6 +242,8 @@
 -(void)PageJump:(FindTheGameModel *)model
 {
     if ([model.action isEqualToString:@"0"]) {
+        
+        
         GeneralWebView *vc = [GeneralWebView new];
         vc.URL = model.url;
         [self showViewController:vc sender:self];
@@ -251,14 +253,18 @@
 //        暂未开发
         lookingForwardVC *vc = [lookingForwardVC new];
         [self.navigationController pushViewController:vc animated:YES];
-//        AIQuantitativeVC *vc = [AIQuantitativeVC new];
-//        [self.navigationController pushViewController:vc animated:YES];
+        
     }
     if ([model.action isEqualToString:@"2"])
     {
         GeneralWebView *vc = [GeneralWebView new];
         vc.URL = model.url;
         [self showViewController:vc sender:self];
+        
+//        AIQuantitativeVC *vc = [AIQuantitativeVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
+        
+        
     }
     if ([model.action isEqualToString:@"3"])
     {
@@ -270,7 +276,7 @@
     {
         
         if ([model.url isEqualToString:@"1"]) {
-            //                屯币宝
+            //                囤币宝
             PosMiningVC *vc = [PosMiningVC new];
             [self.navigationController pushViewController:vc animated:YES];
         }
@@ -301,8 +307,8 @@
                         NSString *amount = [CoinUtil convertToRealCoin:AssetsListModel[i].amount coin:AssetsListModel[i].currency];
                         NSString *rightAmount = [CoinUtil convertToRealCoin:AssetsListModel[i].frozenAmount coin:AssetsListModel[i].currency];
                         NSString *ritAmount = [amount subNumber:rightAmount];
-                        if ([ritAmount floatValue]< 20000) {
-                            [TLAlert alertWithInfo:@"您的HTY余额达到2000才能进入此应用"];
+                        if ([ritAmount floatValue] < 2000) {
+                            [TLAlert alertWithInfo:@"您的HEY余额达到2000才能进入此应用"];
                             return;
                         }else
                         {

@@ -39,7 +39,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 #pragma mark - UITableViewDataSource;
@@ -78,6 +78,7 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     _cell = cell;
+    
     return cell;
 }
 
@@ -88,10 +89,13 @@ static NSString *MyAsstes = @"AIQuantitativeCell";
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 155;
+    }
     if (indexPath.section == 1) {
         return 55;
     }
-    return 155;
+    return _cell.detailsLbl.yy;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

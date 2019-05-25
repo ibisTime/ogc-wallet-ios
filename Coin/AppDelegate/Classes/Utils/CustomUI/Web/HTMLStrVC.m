@@ -203,7 +203,7 @@
             {
                 ckey = @"pop_protocol_en";
             }
-            name = [LangSwitcher switchLang:@"屯币宝" key:nil];
+            name = [LangSwitcher switchLang:@"囤币宝" key:nil];
             self.titleText.text = name;
             break;
         }

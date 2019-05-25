@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProductIntroductionCell : UITableViewCell
 
+@property (nonatomic , strong) UILabel *detailsLbl;
+
 @end
 
 NS_ASSUME_NONNULL_END

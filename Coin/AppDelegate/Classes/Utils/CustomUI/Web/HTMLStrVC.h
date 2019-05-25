@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, HTMLType) {
     HTMLTypePrivacy,    //隐私政策
 //    HTMLTypeGlobal_master,    // 首创玩法
 //    HTMLTypeYubibao,    //余币宝
-    HTMLTypeQuantitativeFinance, //屯币宝
+    HTMLTypeQuantitativeFinance, //囤币宝
     HTMLTypeOther //其他
 
     

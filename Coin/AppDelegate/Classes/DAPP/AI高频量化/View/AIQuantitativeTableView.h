@@ -7,10 +7,13 @@
 //
 
 #import "TLTableView.h"
-
+#import "AIQuantitativeModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AIQuantitativeTableView : TLTableView
+
+
+@property (nonatomic , strong)NSMutableArray <AIQuantitativeModel *>*models;
 
 @end
 

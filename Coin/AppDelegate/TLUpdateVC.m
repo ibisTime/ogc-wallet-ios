@@ -45,6 +45,11 @@
     bgIV.contentMode = UIViewContentModeScaleAspectFill;
     bgIV.image = [UIImage imageNamed:@"Launch"];
 
+    
+    
+
+    
+    
     [self configurationLoadData];
 
 //    由于无法通过，审核。如果为强制更新
@@ -56,48 +61,76 @@
 
 -(void)configurationLoadData
 {
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"630508";
-    http.parameters[@"status"] = @"1";
-    http.parameters[@"parentCode"] = @"DH201810120023250000000";
-    [http postWithSuccess:^(id responseObject) {
+    
+    
+    
+    TLNetworking *http1 = [TLNetworking new];
+    http1.code = @"630047";
+    http1.parameters[SYS_KEY] = @"qiniu_domain";
+    [http1 postWithSuccess:^(id responseObject) {
         
-//        [self UiNavigationandTabBar];
-         TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
-
-        ZLGestureLockViewController *vc = [ZLGestureLockViewController new];
-        vc.isCheck = YES;
-
-        UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
-//        BOOL isLanch  = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLanch"];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLanch"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-
-        NSString *word = [ZLGestureLockViewController gesturesPassword];
-        if (word.length >0) {
-            [self presentViewController:na animated:YES completion:nil];
-            vc.CheckSucessBlock = ^{
+        
+        [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"http://%@", responseObject[@"data"][@"cvalue"]] forKey:Get_Seven_Cattle_Address];
+        
+        [AppConfig config].qiniuDomain = [NSString stringWithFormat:@"http://%@", responseObject[@"data"][@"cvalue"]];
+        
+        
+        
+        TLNetworking *http = [TLNetworking new];
+        http.code = @"630508";
+        http.parameters[@"status"] = @"1";
+        http.parameters[@"parentCode"] = @"DH201810120023250000000";
+        [http postWithSuccess:^(id responseObject) {
+            
+            //        [self UiNavigationandTabBar];
+            TLTabBarController *tabBarCtrl = [[TLTabBarController alloc] init];
+            
+            ZLGestureLockViewController *vc = [ZLGestureLockViewController new];
+            vc.isCheck = YES;
+            
+            UINavigationController *na = [[UINavigationController alloc] initWithRootViewController:vc];
+            //        BOOL isLanch  = [[NSUserDefaults standardUserDefaults] boolForKey:@"isLanch"];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isLanch"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            NSString *word = [ZLGestureLockViewController gesturesPassword];
+            if (word.length >0) {
+                [self presentViewController:na animated:YES completion:nil];
+                vc.CheckSucessBlock = ^{
+                    [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
+                    
+                };
+            }else{
                 [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
-
-            };
-        }else{
-            [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
-        }
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
-//        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
-    } failure:^(NSError *error) {
-        NSString *dic = error.description;
-        if ([dic containsString:@"token"])
-        {
-        }
-        else
-        {
-            [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TABBAR" object:@{@"data":responseObject}];
+            //        [UIApplication sharedApplication].keyWindow.rootViewController = tab;
+        } failure:^(NSError *error) {
+            NSString *dic = error.description;
+            if ([dic containsString:@"token"])
+            {
+            }
+            else
+            {
+                [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
                 } confirm:^(UIAlertAction *action) {
                     [self configurationLoadData];
-            }];
-        }
+                }];
+            }
+        }];
+        
+        
+        
+    } failure:^(NSError *error) {
+        [TLAlert alertWithTitle:@"提示" msg:@"获取配置失败，是否重新获取" confirmMsg:@"确定" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+        } confirm:^(UIAlertAction *action) {
+            [self configurationLoadData];
+        }];
     }];
+    
+    
+    
+    
 }
 
 -(NSDictionary *)convertToDictionary:(NSString *)jsonStr

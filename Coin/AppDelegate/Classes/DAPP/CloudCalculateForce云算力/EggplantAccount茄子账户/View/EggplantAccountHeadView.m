@@ -27,7 +27,7 @@
         nameLbl.text = @"氢气余额";
         [backImg addSubview:nameLbl];
         
-        numberLbl = [UILabel labelWithFrame:CGRectMake(35, nameLbl.yy + 9 , 100, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:nil];
+        numberLbl = [UILabel labelWithFrame:CGRectMake(35, nameLbl.yy + 9 , SCREEN_WIDTH - 40 - 81 - 40, 33.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(24) textColor:nil];
         
         NSString *text = @"0个";
         NSMutableAttributedString*attributeStr = [[NSMutableAttributedString alloc]initWithString:text];

@@ -144,7 +144,7 @@
     [maintenanceFeeLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     
     self.maintenanceFeeLbl = maintenanceFeeLbl;
-    self.maintenanceFeeLbl.text = @"所需维护费：0个茄子";
+    self.maintenanceFeeLbl.text = @"所需维护费：0个氢气";
     [backView addSubview:maintenanceFeeLbl];
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 115, SCREEN_WIDTH, 0.5)];
@@ -214,7 +214,7 @@
     
     
     if ([textfield.text isEqualToString:@""] || [textfield.text floatValue] == 0) {
-        self.maintenanceFeeLbl.text = @"所需维护费：0个茄子";
+        self.maintenanceFeeLbl.text = @"所需维护费：0个氢气";
         return;
     }
     

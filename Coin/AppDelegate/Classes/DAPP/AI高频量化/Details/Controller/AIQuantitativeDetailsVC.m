@@ -8,7 +8,7 @@
 
 #import "AIQuantitativeDetailsVC.h"
 #import "AIQuantitativeDetailsTableView.h"
-@interface AIQuantitativeDetailsVC ()
+@interface AIQuantitativeDetailsVC ()<RefreshDelegate>
 
 @property (nonatomic , strong)AIQuantitativeDetailsTableView *tableView;
 
@@ -26,9 +26,25 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[AIQuantitativeDetailsTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight ) style:UITableViewStyleGrouped];
+    self.tableView = [[AIQuantitativeDetailsTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavigationBarHeight - 90) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
+    
+    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - 90, SCREEN_WIDTH, 1)];
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+    [self.view addSubview:lineView];
+    
+    UIButton *shoppingBtn = [UIButton buttonWithTitle:@"购买" titleColor:kWhiteColor backgroundColor:kTabbarColor titleFont:16 cornerRadius:2];
+    shoppingBtn.frame = CGRectMake(15, lineView.yy + 20, SCREEN_WIDTH - 30, 50);
+    [shoppingBtn addTarget:self action:@selector(shoppingBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:shoppingBtn];
+    
+    
+    
+}
+
+-(void)shoppingBtnClick
+{
     
 }
 

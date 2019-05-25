@@ -41,7 +41,14 @@
 -(void)exchangeBtnClick
 {
     
-    
+    if ([self.headView.leftNumberTf.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入兑换数量"];
+        return;
+    }
+    if ([self.headView.rightNumberTf.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入收到数量"];
+        return;
+    }
     
     TLNetworking *http = [TLNetworking new];
     http.code = @"802920";
@@ -56,8 +63,8 @@
     http.parameters[@"countIn"] = inPic;
     http.parameters[@"countOutTotal"] = outPic;
     
-    http.parameters[@"valueCnyIn"] = self.headView.OutPrice;
-    http.parameters[@"valueCnyOut"] = self.headView.InPrice;
+    http.parameters[@"valueCnyIn"] = @(self.headView.InPrice);
+    http.parameters[@"valueCnyOut"] = @(self.headView.OutPrice);
     
     [http postWithSuccess:^(id responseObject) {
         [TLAlert alertWithSucces:@"兑换成功"];
@@ -218,8 +225,8 @@
     InHttp.parameters[@"type"] = @"0";
     InHttp.parameters[@"symbol"] = model.symbolIn;
     [InHttp postWithSuccess:^(id responseObject) {
-        NSString *sellerPrice = responseObject[@"data"][@"buyPrice"];
-        self.headView.OutPrice = sellerPrice;
+//        NSString *sellerPrice = responseObject[@"data"][@"buyPrice"];
+        self.headView.InPrice = [responseObject[@"data"][@"buyPrice"] floatValue];
     } failure:^(NSError *error) {
         
     }];
@@ -230,8 +237,8 @@
     OutHttp.parameters[@"type"] = @"0";
     OutHttp.parameters[@"symbol"] = model.symbolOut;
     [OutHttp postWithSuccess:^(id responseObject) {
-        NSString *buyPrice = responseObject[@"data"][@"sellerPrice"];
-        self.headView.InPrice = buyPrice;
+//        NSString *buyPrice = ;
+        self.headView.OutPrice = [responseObject[@"data"][@"sellerPrice"] floatValue];
 
         
     } failure:^(NSError *error) {

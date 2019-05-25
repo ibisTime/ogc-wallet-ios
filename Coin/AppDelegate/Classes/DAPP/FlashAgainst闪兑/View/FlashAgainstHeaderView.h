@@ -14,8 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlashAgainstHeaderView : UIView<UITextFieldDelegate>
 @property (nonatomic , strong)FlashAgainstModel *model;
 @property (nonatomic , strong)NSMutableArray <CurrencyModel *>*currenctModel;
-@property (nonatomic , assign)NSString *InPrice;
-@property (nonatomic , assign)NSString *OutPrice;
+@property (nonatomic , assign)CGFloat InPrice;
+@property (nonatomic , assign)CGFloat OutPrice;
+
 @property (nonatomic , strong)CurrencyModel *platforms;
 @property (nonatomic , strong)UIButton *exchangeBtn;
 @property (nonatomic , strong)NSDictionary *dataDic;
