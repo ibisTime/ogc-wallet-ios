@@ -31,7 +31,7 @@
         [self addSubview:intoButton];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
-//        lineView.backgroundColor = kLineColor;
+//        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
         

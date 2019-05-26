@@ -53,7 +53,7 @@
         [self.view addSubview:textField];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, textField.yy, SCREEN_WIDTH - 30, 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self.view addSubview:lineView];
         
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -72,6 +72,14 @@
                 codeBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - codeBtn.width - 30, textField.y + 10, codeBtn.width + 30, 30);
                 kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
                 [codeBtn addTarget:self action:@selector(sendCaptcha:) forControlEvents:(UIControlEventTouchUpInside)];
+                [codeBtn theme_setTitleColorIdentifier:@"tabbarselectcolor" forState:(UIControlStateNormal) moduleName:ColorName];
+                if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+                    kViewBorderRadius(codeBtn, 2, 1, kHexColor(@"#FFFFFF"));
+                    
+                }else
+                {
+                    kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
+                }
                 [self.view addSubview:codeBtn];
                 
                 textField.frame = CGRectMake(15, 20 + i% 4 * 60, SCREEN_WIDTH - 30 - codeBtn.width - 10, 50);

@@ -62,7 +62,7 @@
         
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(kWidth(15), kHeight(145), SCREEN_WIDTH - kWidth(60), 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [backView addSubview:lineView];
         
         

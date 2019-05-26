@@ -26,7 +26,13 @@
         textField.placeholder = [LangSwitcher switchLang:array[i] key:nil];
         [textField setValue:FONT(16) forKeyPath:@"_placeholderLabel.font"];
         textField.font = FONT(16);
+        
         textField.tag = 100 + i;
+        if (i == 0) {
+            textField.text = [TLUser user].mobile;
+            textField.enabled = YES;
+        }
+        
         textField.textColor = kHexColor([TLUser TextFieldTextColor]);
         [textField setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         [self.view addSubview:textField];

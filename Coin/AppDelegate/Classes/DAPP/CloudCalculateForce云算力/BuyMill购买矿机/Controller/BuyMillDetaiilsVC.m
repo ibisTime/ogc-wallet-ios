@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.titleText.text = @"水滴型号详情";
+    self.titleText.text = @"水滴详情";
     self.navigationItem.titleView = self.titleText;
     
     [self.topView theme_setBackgroundColorIdentifier:WhiteBlackColor moduleName:ColorName];
@@ -31,9 +31,9 @@
     [self.view addSubview:backView1];
     
     
-    NSArray *leftArray = @[@"水滴型号",@"每日产能",@"锁仓期限",@"总产能"];
+    NSArray *leftArray = @[@"水滴",@"每日产能",@"锁仓期限",@"总产能"];
     NSArray *rightArray = @[_model.name,
-                            [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * 10],
+                            [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * 100],
                             [NSString stringWithFormat:@"%@天",_model.daysLimit],
                             [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * [_model.daysLimit integerValue] * 100]];
     for (int i = 0; i < 4; i ++) {
@@ -52,7 +52,7 @@
     }
     
     
-    NSArray *leftArray1 = @[@"总水滴型号数量",@"剩余水滴型号数量"];
+    NSArray *leftArray1 = @[@"总水滴数量",@"剩余水滴数量"];
     NSArray *rightArray1 = @[[NSString stringWithFormat:@"%ld滴",[_model.stockTotal integerValue]],
                              [NSString stringWithFormat:@"%ld滴",[_model.stockTotal integerValue] - [_model.stockOut integerValue]]];
     for (int i = 0; i < 2; i ++) {

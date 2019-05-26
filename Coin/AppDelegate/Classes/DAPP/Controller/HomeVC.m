@@ -503,10 +503,7 @@
 #pragma mark - Data
 - (void)requestBannerList {
     
-//    [TLProgressHUD show];
-
     TLNetworking *http = [TLNetworking new];
-//    http.showView = self.view;
     http.isUploadToken = NO;
     http.code = @"630506";
     http.parameters[@"location"] = @"app_home";
@@ -518,8 +515,6 @@
 
     } failure:^(NSError *error) {
         
-//        [_collectionView.mj_footer endRefreshing];
-//        [_collectionView.mj_header endRefreshing];
         
     }];
     

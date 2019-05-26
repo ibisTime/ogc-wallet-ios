@@ -9,6 +9,9 @@
 #import "BeForceAccelerateVC.h"
 #import "TLQrCodeVC.h"
 @interface BeForceAccelerateVC ()
+{
+    UILabel *directDriveNameLbl;
+}
 
 @end
 
@@ -46,19 +49,19 @@
     calculateNumberLbl.text = @"0";
     [backView addSubview:calculateNumberLbl];
     
-    UILabel *directDriveNameLbl = [UILabel labelWithFrame:CGRectMake(0, calculateNumberLbl.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+    directDriveNameLbl = [UILabel labelWithFrame:CGRectMake(0, calculateNumberLbl.yy + 14, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [directDriveNameLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    directDriveNameLbl.text = @"当前购买水滴型号的直推用户：0";
+    
     [backView addSubview:directDriveNameLbl];
     
     UILabel *introduceLbl1 = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 17, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [introduceLbl1 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    introduceLbl1.text = @"每2个直推用户购买水滴型号，获得1天加速";
+    introduceLbl1.text = @"每2个直推用户购买水滴，获得1天加速";
     [self.view addSubview:introduceLbl1];
     
     UILabel *introduceLbl2 = [UILabel labelWithFrame:CGRectMake(15, backView.yy + 42, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
     [introduceLbl2 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-    introduceLbl2.text = @"*加速仅针对30天（含）以上的水滴型号类型";
+    introduceLbl2.text = @"*加速仅针对30天（含）以上的水滴类型";
     [self.view addSubview:introduceLbl2];
     
     UIButton *buyBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -81,8 +84,28 @@
     } failure:^(NSError *error) {
         
     }];
+     
+     
+     [self LoadData];
     
-    
+}
+
+
+-(void)LoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"610148";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    [http postWithSuccess:^(id responseObject) {
+        
+        NSArray *dataArray = responseObject[@"data"];
+        
+   directDriveNameLbl.text = [NSString stringWithFormat:@"当前购买水滴的直推用户：%ld",dataArray.count];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)buyBtnClick

@@ -47,22 +47,21 @@
         kViewBorderRadius(borderView, 2, 0.5, kHexColor([TLUser TextFieldPlacColor]));
         [self addSubview:borderView];
         
-        symbolLbl1 = [UILabel labelWithFrame:CGRectMake(11, 0, SCREEN_WIDTH/2 - 26, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+        symbolLbl1 = [UILabel labelWithFrame:CGRectMake(11, 0, SCREEN_WIDTH - 26 - 30, 45) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:FONT(12) textColor:nil];
         [symbolLbl1 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-//        symbolLbl1.text = @"1MGC=0.001036196 ETH";
         [borderView addSubview:symbolLbl1];
         
-        symbolLbl2 = [UILabel labelWithFrame:CGRectMake(symbolLbl1.xx, 0, SCREEN_WIDTH/2 - 26, 45) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-//        symbolLbl2.text = @"1MGC=0.023 USD";
-        [symbolLbl2 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
-        [borderView addSubview:symbolLbl2];
+//        symbolLbl2 = [UILabel labelWithFrame:CGRectMake(symbolLbl1.xx, 0, SCREEN_WIDTH/2 - 26 - 20, 45) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(12) textColor:nil];
+////        symbolLbl2.text = @"1MGC=0.023 USD";
+//        [symbolLbl2 theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
+//        [borderView addSubview:symbolLbl2];
         
-//        UIButton *conversionBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//        [conversionBtn setImage:kImage(@"切换") forState:(UIControlStateNormal)];
-//        conversionBtn.frame = CGRectMake(SCREEN_WIDTH/2 - 20, borderView.yy + 20, 40, 40);
-//        [self addSubview:conversionBtn];
+        UIButton *conversionBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [conversionBtn setImage:kImage(@"切换") forState:(UIControlStateNormal)];
+        conversionBtn.frame = CGRectMake(SCREEN_WIDTH/2 - 20, borderView.yy + 20, 40, 40);
+        [self addSubview:conversionBtn];
         
-        UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(15, 140, (SCREEN_WIDTH - 45)/2, 50)];
+        UIView *leftView = [[UIView alloc]initWithFrame:CGRectMake(15, 140, (SCREEN_WIDTH - 45)/2 - 30, 50)];
         [leftView theme_setBackgroundColorIdentifier:@"FlashAgainstConversionColor" moduleName:ColorName];
         kViewRadius(leftView, 2);
         [self addSubview:leftView];
@@ -75,12 +74,12 @@
         
         [leftView addSubview:leftLbl];
         
-        leftImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 45)/2- leftLbl.width/2 - 20, 10, 30, 30)];
+        leftImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 45)/2 - 30 - leftLbl.width/2 - 20, 10, 30, 30)];
 //        leftImg.image = kImage(@"BTC");
         [leftView addSubview:leftImg];
         
         
-        UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(leftView.xx + 15, 140, (SCREEN_WIDTH - 45)/2, 50)];
+        UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(leftView.xx + 80, 140, (SCREEN_WIDTH - 45)/2 - 30, 50)];
         [rightView theme_setBackgroundColorIdentifier:@"FlashAgainstConversionColor" moduleName:ColorName];
         kViewRadius(rightView, 2);
         [self addSubview:rightView];
@@ -90,7 +89,7 @@
         [rightLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [rightView addSubview:rightLbl];
         
-        rightImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 45)/2 - rightLbl.width/2 - 20, 10, 30, 30)];
+        rightImg = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH - 45)/2 - 30 - rightLbl.width/2 - 20, 10, 30, 30)];
         [rightView addSubview:rightImg];
         
         
@@ -279,17 +278,17 @@
     CoinModel *InCoin = [CoinUtil getCoinModel:model.symbolOut];
     leftLbl.text = model.symbolOut;
     [leftLbl sizeToFit];
-    leftLbl.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - leftLbl.width/2 + 20, 0, leftLbl.width, 50);
+    leftLbl.frame = CGRectMake(((SCREEN_WIDTH - 45)/2 - 30)/2 - leftLbl.width/2 + 20, 0, leftLbl.width, 50);
     [leftImg sd_setImageWithURL:[NSURL URLWithString:[InCoin.pic1 convertImageUrl]] placeholderImage:kImage(@"")];
-    leftImg.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - leftLbl.width/2 - 20, 10, 30, 30);
+    leftImg.frame = CGRectMake(((SCREEN_WIDTH - 45)/2 - 30)/2 - leftLbl.width/2 - 20, 10, 30, 30);
     
     
     CoinModel *OutCoin = [CoinUtil getCoinModel:model.symbolIn];
     rightLbl.text = model.symbolIn;
     [rightLbl sizeToFit];
-    rightLbl.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - rightLbl.width/2 + 20, 0, rightLbl.width, 50);
+    rightLbl.frame = CGRectMake(((SCREEN_WIDTH - 45)/2 - 30)/2 - rightLbl.width/2 + 20, 0, rightLbl.width, 50);
     [rightImg sd_setImageWithURL:[NSURL URLWithString:[OutCoin.pic1 convertImageUrl]] placeholderImage:kImage(@"BTC")];
-    rightImg.frame = CGRectMake((SCREEN_WIDTH - 45)/2/2 - rightLbl.width/2 - 20, 10, 30, 30);
+    rightImg.frame = CGRectMake(((SCREEN_WIDTH - 45)/2 - 30)/2 - rightLbl.width/2 - 20, 10, 30, 30);
     
     [self GetTheBalance];
 }
@@ -298,16 +297,23 @@
 -(void)setInPrice:(CGFloat)InPrice
 {
     _InPrice = InPrice;
-    symbolLbl2.text = [NSString stringWithFormat:@"1%@=%.2fCNY",_model.symbolIn,InPrice];
-    
+//    symbolLbl2.text = [NSString stringWithFormat:@"1%@=%.2fCNY",_model.symbolIn,InPrice];
+    [self topView];
 }
 
 -(void)setOutPrice:(CGFloat)OutPrice
 {
     _OutPrice = OutPrice;
-    symbolLbl1.text = [NSString stringWithFormat:@"1%@=%.2fCNY",_model.symbolOut,OutPrice];
+    [self topView];
 }
 
+-(void)topView
+{
+    if (_OutPrice > 0  && _InPrice > 0) {
+        symbolLbl1.text = [NSString stringWithFormat:@"1%@=%.8f%@",_model.symbolOut,_OutPrice/_InPrice,_model.symbolIn];
+    }
+    
+}
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
 

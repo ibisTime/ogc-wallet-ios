@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlashAgainstModel : NSObject
 
 
-
+@property (nonatomic , copy)NSString *countIn;
 @property (nonatomic , copy)NSString *symbolIn;
 @property (nonatomic , copy)NSString *feeRate;
 @property (nonatomic , copy)NSString *updaterName;

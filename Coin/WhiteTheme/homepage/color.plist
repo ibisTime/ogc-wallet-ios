@@ -19,7 +19,7 @@
 	<key>tabbarcolor</key>
 	<string>0x282A2E</string>
 	<key>tabbarselectcolor</key>
-	<string>#6F99EC</string>
+	<string>0x6F99EC</string>
 	<key>whiteblackColor</key>
 	<string>0xFFFFFF</string>
 	<key>garyLabel.text</key>

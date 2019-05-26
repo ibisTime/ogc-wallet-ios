@@ -47,7 +47,8 @@
             
             //            [ClassificationBtn theme_setTitleColorIdentifier:LabelColor forState:(UIControlStateNormal) moduleName:ColorName];
             [ClassificationBtn theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
-            [ClassificationBtn setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
+//            [ClassificationBtn setTitleColor:kTabbarColor forState:(UIControlStateSelected)];
+            [ClassificationBtn theme_setTitleColorIdentifier:@"tabbarselectcolor" forState:(UIControlStateSelected) moduleName:ColorName];
             ClassificationBtn.titleLabel.font = HGboldfont(16);
             if (i == 0) {
                 ClassificationBtn.selected = YES;
@@ -62,7 +63,8 @@
             ClassificationBtn.tag = 200 + i;
             if (i == 0) {
                 blueView = [[UIView alloc]initWithFrame:CGRectMake(ClassificationBtn.centerX - 12.5, 48 - 1.5 + 5, 25, 3)];
-                blueView.backgroundColor = kTabbarColor;
+//                blueView.backgroundColor = kTabbarColor;
+                [blueView theme_setBackgroundColorIdentifier:@"tabbarselectcolor" moduleName:ColorName];
                 [self addSubview:blueView];
             }
             [self addSubview:ClassificationBtn];

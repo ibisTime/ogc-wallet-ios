@@ -53,7 +53,7 @@
         [self.view addSubview:textField];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, textField.yy, SCREEN_WIDTH - 30, 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self.view addSubview:lineView];
         
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -76,9 +76,19 @@
                 self.codeTf = textField;
                 
                 UIButton *codeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"获取验证码" key:nil] titleColor:kTabbarColor backgroundColor:kClearColor titleFont:13];
+                
                 [codeBtn sizeToFit];
                 codeBtn.frame = CGRectMake(SCREEN_WIDTH - 15 - codeBtn.width - 30, textField.y + 10, codeBtn.width + 30, 30);
-                kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
+                
+                [codeBtn theme_setTitleColorIdentifier:@"tabbarselectcolor" forState:(UIControlStateNormal) moduleName:ColorName];
+                if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+                    kViewBorderRadius(codeBtn, 2, 1, kHexColor(@"#FFFFFF"));
+                    
+                }else
+                {
+                    kViewBorderRadius(codeBtn, 2, 1, kTabbarColor);
+                }
+                
                 [codeBtn addTarget:self action:@selector(sendCaptcha:) forControlEvents:(UIControlEventTouchUpInside)];
                 [self.view addSubview:codeBtn];
                 

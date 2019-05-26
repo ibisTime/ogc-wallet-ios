@@ -106,7 +106,7 @@
         }
         if (i != platforms.count - 1) {
             UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 80 + i % platforms.count * 80, SCREEN_WIDTH - 30, 1)];
-            lineView.backgroundColor = kLineColor;
+            [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
             [whiteView addSubview:lineView];
         }
     }

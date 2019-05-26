@@ -51,12 +51,12 @@
         
         
         allmMillLbl = [UILabel labelWithFrame:CGRectMake(15, phoneLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        allmMillLbl.text = @"总水滴型号：10滴";
+        allmMillLbl.text = @"总水滴：10滴";
         [allmMillLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [self addSubview:allmMillLbl];
         
         yesterdayMillLbl = [UILabel labelWithFrame:CGRectMake(15, allmMillLbl.yy + 5, (SCREEN_WIDTH - 60)/2, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(12) textColor:nil];
-        yesterdayMillLbl.text = @"昨日水滴型号：8滴";
+        yesterdayMillLbl.text = @"昨日水滴：8滴";
         [yesterdayMillLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
         [self addSubview:yesterdayMillLbl];
         
@@ -106,8 +106,8 @@
     if ([TLUser isBlankString:self.node.mobile] == NO) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         phoneLbl.text = self.node.mobile;
-        allmMillLbl.text = [NSString stringWithFormat:@"总水滴型号：%@滴",self.node.totalPerformance];
-        yesterdayMillLbl.text = [NSString stringWithFormat:@"昨日水滴型号：%@滴",self.node.yesterdayPerformance];
+        allmMillLbl.text = [NSString stringWithFormat:@"总水滴：%@滴",self.node.totalPerformance];
+        yesterdayMillLbl.text = [NSString stringWithFormat:@"昨日水滴：%@滴",self.node.yesterdayPerformance];
         NSString *totalIncome;
 //        if ([self.node.totalIncome floatValue] == 0) {
 //            totalIncome = @"0";

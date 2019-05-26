@@ -48,7 +48,7 @@
 
 -(void)setModel:(TeamPerformanceModel *)model
 {
-    allLbl.text = [NSString stringWithFormat:@"总水滴型号：%@滴",model.totalPerformance];
+    allLbl.text = [NSString stringWithFormat:@"总水滴：%@滴",model.totalPerformance];
     timeLbl.text = [model.dateTime convertToDetailDate];
     NSString *countStr = [CoinUtil convertToRealCoin:model.totalIncome
                                                 coin:@"HEY"];

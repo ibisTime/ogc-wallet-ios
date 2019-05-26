@@ -33,7 +33,7 @@
     
     
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 95, SCREEN_WIDTH - 30, 1)];
-    lineView.backgroundColor = kLineColor;
+    [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self.view addSubview:lineView];
     
     UILabel *detailsLbl = [UILabel labelWithFrame:CGRectMake(15, 111, SCREEN_WIDTH - 30, SCREEN_HEIGHT - 111 - kNavigationBarHeight) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kHexColor(@"#333333")];

@@ -33,7 +33,7 @@
         [self addSubview:_priceLabel];
 
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(50, 59, SCREEN_WIDTH - 50 - 15 , 1)];
-        lineView.backgroundColor = kLineColor;
+        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self addSubview:lineView];
 
     }

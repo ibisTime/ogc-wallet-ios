@@ -90,7 +90,7 @@
 
 
     self.lineView = [UIView new];
-    self.lineView.backgroundColor = kLineColor;
+    [self.lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [self addSubview:self.lineView];
     //布局
     [self setSubviewLayout];
@@ -145,7 +145,7 @@
         make.right.equalTo(@-15);
         make.height.equalTo(@0.5);
     }];
-    self.lineView.backgroundColor = kLineColor;
+    [self.lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
 }
 
 #pragma mark - Setting

@@ -124,7 +124,7 @@
         [self.view addSubview:textField];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(30, textField.yy, SCREEN_WIDTH - 60, 1)];
-//        lineView.backgroundColor = kLineColor;
+//        [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
         [self.view addSubview:lineView];
         

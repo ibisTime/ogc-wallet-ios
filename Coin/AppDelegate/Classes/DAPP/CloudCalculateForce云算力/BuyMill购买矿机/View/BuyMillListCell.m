@@ -38,7 +38,7 @@
         [backView addSubview:nameLbl];
         
         symbolLbl = [UILabel labelWithFrame:CGRectMake(nameLbl.xx, 0, (SCREEN_WIDTH - 60)/2, 50) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:FONT(14) textColor:nil];
-        symbolLbl.text = @"HEY 水滴型号";
+        symbolLbl.text = @"HEY 水滴";
         [backView addSubview:symbolLbl];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH - 30, 1)];
@@ -89,7 +89,7 @@
 -(void)setModel:(BuyMillListModel *)model
 {
     nameLbl.text = model.name;
-    symbolLbl.text = [NSString stringWithFormat:@"%@ 水滴型号",model.symbol];
+    symbolLbl.text = [NSString stringWithFormat:@"%@ 水滴",model.symbol];
     nissanCanLbl.text = [NSString stringWithFormat:@"%.2f%%日产能",[model.dailyOutput floatValue]*100];
     progressView.frame = CGRectMake(0, 0, (SCREEN_WIDTH - 23 - 53 - 30) * [model.stockOut integerValue] / [model.stockTotal integerValue], 5);
     percentageLbl.text = [NSString stringWithFormat:@"%.1f%%",[model.stockOut floatValue] / [model.stockTotal floatValue] * 100];

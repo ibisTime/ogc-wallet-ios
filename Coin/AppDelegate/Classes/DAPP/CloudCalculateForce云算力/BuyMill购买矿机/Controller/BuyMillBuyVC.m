@@ -16,6 +16,9 @@
     CGFloat rmbPrice;
     CGFloat sellerPrice;
     UILabel *orderInformationLbl;
+    UIView *lineView;
+    UILabel *balanceLbl;
+    UIButton *exchangeBtn;
 
 }
 
@@ -280,16 +283,16 @@
     self.maintenanceFeeLbl.text = @"所需维护费：0个氢气";
     [backView addSubview:maintenanceFeeLbl];
     
-    UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 115, SCREEN_WIDTH, 0.5)];
+    lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 115, SCREEN_WIDTH, 0.5)];
     [lineView theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
     [backView addSubview:lineView];
     
-    UILabel *balanceLbl = [UILabel labelWithFrame:CGRectMake(15, lineView.yy + 22, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
+    balanceLbl = [UILabel labelWithFrame:CGRectMake(15, lineView.yy + 22, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:FONT(14) textColor:nil];
     [balanceLbl theme_setTextColorIdentifier:GaryLabelColor moduleName:ColorName];
     [backView addSubview :balanceLbl];
     
     
-    UIButton *exchangeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"立即兑换" key:nil] titleColor:kTabbarColor backgroundColor:nil titleFont:12.0 cornerRadius:2];
+    exchangeBtn = [UIButton buttonWithTitle:[LangSwitcher switchLang:@"立即兑换" key:nil] titleColor:kTabbarColor backgroundColor:nil titleFont:12.0 cornerRadius:2];
     kViewBorderRadius(exchangeBtn, 2, 1, kTabbarColor);
     exchangeBtn.frame = CGRectMake(balanceLbl.xx + 17, lineView.yy + 19.5, 64, 25);
     [exchangeBtn addTarget:self action:@selector(exchangeBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -303,23 +306,7 @@
     [backView addSubview:orderInformationLbl];
     
     
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"802304";
-    http.showView = self.view;
-    http.parameters[@"userId"] = [TLUser user].userId;
-    http.parameters[@"currency"] = @"H";
-    [http postWithSuccess:^(id responseObject) {
-        
-        
-        balanceLbl.text = [NSString stringWithFormat:@"当前氢气余额：%.2f个",[responseObject[@"data"][0][@"amount"] floatValue]/100];
-        [balanceLbl sizeToFit];
-        balanceLbl.frame = CGRectMake(15, lineView.yy + 22, balanceLbl.width, 20);
-        exchangeBtn.frame = CGRectMake(balanceLbl.xx + 17, lineView.yy + 19.5, 64, 25);
-       
-        
-    } failure:^(NSError *error) {
-        
-    }];
+    
     
     
     
@@ -336,6 +323,44 @@
     
     [self queryCenterTotalAmount];
     [self TheMarket];
+    [self LoadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(InfoNotificationAction:) name:@"FlashAgain" object:nil];
+}
+
+
+
+
+#pragma mark -- 接收到通知
+- (void)InfoNotificationAction:(NSNotification *)notification{
+    [self LoadData];
+    
+}
+
+-(void)LoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"802304";
+    http.showView = self.view;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"currency"] = @"H";
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        balanceLbl.text = [NSString stringWithFormat:@"当前氢气余额：%.2f个",[responseObject[@"data"][0][@"amount"] floatValue]/100];
+        [balanceLbl sizeToFit];
+        balanceLbl.frame = CGRectMake(15, lineView.yy + 22, balanceLbl.width, 20);
+        exchangeBtn.frame = CGRectMake(balanceLbl.xx + 17, lineView.yy + 19.5, 64, 25);
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark -- 删除通知
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"FlashAgain" object:nil];
 }
 
 -(void)numberTextFieldDidChangeOneCI:(NSNotification *)notification

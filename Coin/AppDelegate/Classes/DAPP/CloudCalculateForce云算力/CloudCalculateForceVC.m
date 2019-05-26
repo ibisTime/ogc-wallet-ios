@@ -25,7 +25,7 @@
     self.titleText.text = @"水滴模型";
     self.navigationItem.titleView = self.titleText;
     
-    NSArray *array = @[@"氢气账户",@"购买水滴型号",@"我的水滴",@"热量值",@"邀请奖励",@"节点登录"];
+    NSArray *array = @[@"氢气账户",@"购买水滴",@"我的水滴",@"热量值",@"邀请奖励",@"节点登录"];
     for (int i = 0; i < 6 ; i ++) {
         UIButton *iconBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         iconBtn.frame = CGRectMake(15 + i % 2 * (SCREEN_WIDTH - 15)/2, 15 + i / 2 * 150, (SCREEN_WIDTH - 45)/2, 130);

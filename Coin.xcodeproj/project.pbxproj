@@ -270,6 +270,10 @@
 		1F8E0DD422996E67000F33F0 /* AIQuantitativeRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD322996E67000F33F0 /* AIQuantitativeRecordCell.m */; };
 		1F8E0DD72299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD62299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m */; };
 		1F8E0DDA2299A92F000F33F0 /* FlashAgainstRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DD92299A92F000F33F0 /* FlashAgainstRecordCell.m */; };
+		1F8E0DDE229A8B5A000F33F0 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0DDD229A8B59000F33F0 /* GuideView.m */; };
+		1F8E0F15229A9957000F33F0 /* FeEqualize.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F14229A9957000F33F0 /* FeEqualize.m */; };
+		1F8E0F18229A996F000F33F0 /* UIColor+flat.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F16229A996F000F33F0 /* UIColor+flat.m */; };
+		1F8E0F1B229A9E66000F33F0 /* FeThreeDotGlow.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F1A229A9E66000F33F0 /* FeThreeDotGlow.m */; };
 		1F8E2CF3228572830045D62B /* MarketDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF2228572830045D62B /* MarketDetailsVC.m */; };
 		1F8E2CF62285733C0045D62B /* MarketDetaiilsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF52285733C0045D62B /* MarketDetaiilsTableView.m */; };
 		1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E2CF8228573520045D62B /* MarketDetaiilsHeadView.m */; };
@@ -1332,6 +1336,14 @@
 		1F8E0DD62299A464000F33F0 /* AIQuantitativeRecordDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AIQuantitativeRecordDetailsVC.m; sourceTree = "<group>"; };
 		1F8E0DD82299A92F000F33F0 /* FlashAgainstRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlashAgainstRecordCell.h; sourceTree = "<group>"; };
 		1F8E0DD92299A92F000F33F0 /* FlashAgainstRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlashAgainstRecordCell.m; sourceTree = "<group>"; };
+		1F8E0DDC229A8B58000F33F0 /* GuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
+		1F8E0DDD229A8B59000F33F0 /* GuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
+		1F8E0F13229A9957000F33F0 /* FeEqualize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeEqualize.h; sourceTree = "<group>"; };
+		1F8E0F14229A9957000F33F0 /* FeEqualize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeEqualize.m; sourceTree = "<group>"; };
+		1F8E0F16229A996F000F33F0 /* UIColor+flat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+flat.m"; sourceTree = "<group>"; };
+		1F8E0F17229A996F000F33F0 /* UIColor+flat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+flat.h"; sourceTree = "<group>"; };
+		1F8E0F19229A9E65000F33F0 /* FeThreeDotGlow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeThreeDotGlow.h; sourceTree = "<group>"; };
+		1F8E0F1A229A9E66000F33F0 /* FeThreeDotGlow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeThreeDotGlow.m; sourceTree = "<group>"; };
 		1F8E2CF1228572830045D62B /* MarketDetailsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetailsVC.h; sourceTree = "<group>"; };
 		1F8E2CF2228572830045D62B /* MarketDetailsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketDetailsVC.m; sourceTree = "<group>"; };
 		1F8E2CF42285733C0045D62B /* MarketDetaiilsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketDetaiilsTableView.h; sourceTree = "<group>"; };
@@ -4769,6 +4781,14 @@
 				B88B59042109AEC300F20D1B /* TLTabBarController.m */,
 				1F0725B922800CDB0008EADA /* LWSkinTool.h */,
 				1F0725B822800CDB0008EADA /* LWSkinTool.m */,
+				1F8E0DDC229A8B58000F33F0 /* GuideView.h */,
+				1F8E0DDD229A8B59000F33F0 /* GuideView.m */,
+				1F8E0F17229A996F000F33F0 /* UIColor+flat.h */,
+				1F8E0F16229A996F000F33F0 /* UIColor+flat.m */,
+				1F8E0F13229A9957000F33F0 /* FeEqualize.h */,
+				1F8E0F14229A9957000F33F0 /* FeEqualize.m */,
+				1F8E0F19229A9E65000F33F0 /* FeThreeDotGlow.h */,
+				1F8E0F1A229A9E66000F33F0 /* FeThreeDotGlow.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -6252,6 +6272,7 @@
 				1FA56AE7223CD6A70077FE54 /* YYTextContainerView.m in Sources */,
 				B8BBA64020C7FB4600DC4D5F /* WallAccountHeadView.m in Sources */,
 				1F7668F221D4A32700006B41 /* BTCTransaction.m in Sources */,
+				1F8E0F15229A9957000F33F0 /* FeEqualize.m in Sources */,
 				1F8E0DCE22996AA0000F33F0 /* AIQuantitativeRecordTableView.m in Sources */,
 				1F6D9E612281716D0057A756 /* TodoModel.m in Sources */,
 				1F7668FA21D4A32700006B41 /* BTCMnemonic.m in Sources */,
@@ -6511,6 +6532,7 @@
 				7A2CC6C3215DC88C00B27E2D /* PGDatePicker.m in Sources */,
 				2ED651CF200F34280065A1B0 /* TLCoinWithdrawOrderCell.m in Sources */,
 				1F736650225211EF00135F7E /* NSData+AES128.m in Sources */,
+				1F8E0F18229A996F000F33F0 /* UIColor+flat.m in Sources */,
 				1F7667EE21D07F1C00006B41 /* MyAsstesCell.m in Sources */,
 				1FA566F4223CD4B90077FE54 /* HomeFindModel.m in Sources */,
 				1F6D9B8C22801A3C0057A756 /* SwitchPurseCell.m in Sources */,
@@ -6597,6 +6619,7 @@
 				1F8E2E3B228ABBE30045D62B /* BuyMillDetaiilsVC.m in Sources */,
 				B8D938D22116C85200B2AA88 /* QuestionDetail.m in Sources */,
 				1F8E2DF122893D390045D62B /* FlashAgainstVC.m in Sources */,
+				1F8E0DDE229A8B5A000F33F0 /* GuideView.m in Sources */,
 				1F7668ED21D4A32700006B41 /* BTCProtocolSerialization+Tests.m in Sources */,
 				B8CAA13B21158FF200695BC3 /* LPDPhotoPreviewController.m in Sources */,
 				1F8E2CF9228573520045D62B /* MarketDetaiilsHeadView.m in Sources */,
@@ -6665,6 +6688,7 @@
 				2EB949541FDE6D6D00CE4B94 /* LangChooseVC.m in Sources */,
 				21A7F3191FB2E2F900FAA0A2 /* TLAccountBaseVC.m in Sources */,
 				216F5AFD206CD3A800F2C832 /* GengXinModel.m in Sources */,
+				1F8E0F1B229A9E66000F33F0 /* FeThreeDotGlow.m in Sources */,
 				1F19AC26221116450090BF84 /* utxoModel.m in Sources */,
 				B8F63EDA20D3639900556150 /* LocalBillCell.m in Sources */,
 				2ED651C9200F2F6F0065A1B0 /* TLCoinWithdrawOrderVC.m in Sources */,

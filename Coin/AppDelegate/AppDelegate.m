@@ -19,7 +19,7 @@
 #import "ZMChineseConvert.h"
 #import "SettingModel.h"
 #import "TLUpdateVC.h"
-
+#import "GuideView.h"
 #import "LangSwitcher.h"
 #import "RespHandler.h"
 #import <NBHTTP/NBNetwork.h>
@@ -56,9 +56,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    研发
-//    [AppConfig config].runEnv = RunEnvDev;
+    [AppConfig config].runEnv = RunEnvDev;
 //    测试
-    [AppConfig config].runEnv = RunEnvTest;
+//    [AppConfig config].runEnv = RunEnvTest;
 //    正式
 //    [AppConfig config].runEnv = RunEnvRelease;
     
@@ -293,20 +293,28 @@
 
 - (void)configRootViewController {
     
+    
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    if ([TLUser user].isLogin == NO) {
-        TLUserLoginVC *updateVC = [[TLUserLoginVC alloc] init];
-        TLNavigationController *na = [[TLNavigationController alloc] initWithRootViewController:updateVC];
-        if ([TLUser user].checkLogin == NO) {
-            
-        }
-        self.window.rootViewController = na;
-    }else{
-        TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
-        self.window.rootViewController = tabBarCtrl;
-    }
+    GuideView *guide = [[GuideView alloc]init];
+    [guide showGuideViewWithImageArray:@[] WindowRootController:nil];
+    self.window.rootViewController = guide;
+//    if ([TLUser user].isLogin == NO) {
+//        TLUserLoginVC *updateVC = [[TLUserLoginVC alloc] init];
+//        TLNavigationController *na = [[TLNavigationController alloc] initWithRootViewController:updateVC];
+//
+//        self.window.rootViewController = na;
+//    }else{
+//        TLUpdateVC *tabBarCtrl = [[TLUpdateVC alloc] init];
+//
+//        self.window.rootViewController = tabBarCtrl;
+//    }
+    
+    
+    
     
 }
 

@@ -71,9 +71,13 @@
     
     [http postWithSuccess:^(id responseObject) {
         [TLAlert alertWithSucces:@"兑换成功"];
+        
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 
-            [self.navigationController popViewControllerAnimated:YES];
+            [self RecordLoadData];
+            
+//            [self.navigationController popViewControllerAnimated:YES];
             NSNotification *notification =[NSNotification notificationWithName:@"FlashAgain" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         });
@@ -147,8 +151,8 @@
     self.titleText.text = @"闪兑";
     self.navigationItem.titleView = self.titleText;
     [self initTableView];
-    [self LoadData];
-    [self queryCenterTotalAmount];
+//    [self LoadData];
+//    [self queryCenterTotalAmount];
     [self RecordLoadData];
     [self.view addSubview:self.headView];
     
@@ -159,7 +163,6 @@
     self.tableView.refreshDelegate = self;
     [self.tableView theme_setBackgroundColorIdentifier:@"headerViewColor" moduleName:ColorName];
     [self.view addSubview:self.tableView];
-//    self.tableView.tableHeaderView = self.headView;
 }
 
 -(void)RecordLoadData
@@ -174,13 +177,11 @@
     
     [self.tableView addRefreshAction:^{
        
+        [weakSelf LoadData];
+        [weakSelf queryCenterTotalAmount];
+        
         
         [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-            //            NSMutableArray <AIQuantitativeRecordModel *> *shouldDisplayCoins = [[AIQuantitativeRecordModel alloc] init];
-            //            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            //                AIQuantitativeRecordModel *model = (AIQuantitativeRecordModel *)obj;
-            //                [shouldDisplayCoins addObject:model];
-            //            }];
             if (weakSelf.tl_placeholderView.superview != nil) {
                 
                 [weakSelf removePlaceholderView];
@@ -197,12 +198,6 @@
         
         [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
             NSLog(@" ==== %@",objs);
-            //            NSMutableArray <AIQuantitativeRecordModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-            //            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            //
-            //                AIQuantitativeRecordModel *model = (AIQuantitativeRecordModel *)obj;
-            //                [shouldDisplayCoins addObject:model];
-            //            }];
             if (weakSelf.tl_placeholderView.superview != nil) {
                 
                 [weakSelf removePlaceholderView];

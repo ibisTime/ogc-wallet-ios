@@ -64,7 +64,7 @@ static NSString *MyAsstes = @"EggplantAccountCell";
         }
         
         if (indexPath.section == 0) {
-            NSArray *leftAry = @[@"水滴型号型号",@"滴数",@"今日热量",@"运行情况"];
+            NSArray *leftAry = @[@"型号水滴",@"滴数",@"今日热量",@"运行情况"];
             NSArray *rightAry = @[self.model.machine[@"name"],
                                   self.model.quantity,
                                   [NSString stringWithFormat:@"%.2f%%",[continueOutput floatValue] * 100],

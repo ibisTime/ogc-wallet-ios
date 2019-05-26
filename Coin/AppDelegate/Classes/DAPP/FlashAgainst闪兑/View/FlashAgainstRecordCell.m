@@ -55,10 +55,8 @@
 -(void)setModel:(FlashAgainstModel *)model
 {
     smybolNameLbl.text = [NSString stringWithFormat:@"%@兑%@",model.symbolOut,model.symbolIn];
-    obtainPriceLbl.text = [NSString stringWithFormat:@"+%@%@",[CoinUtil convertToRealCoin:model.countOutTotal coin:model.symbolOut],model.symbolOut];
+    obtainPriceLbl.text = [NSString stringWithFormat:@"+%@%@",[CoinUtil convertToRealCoin:model.countIn coin:model.symbolIn],model.symbolIn];
     
-//    NSString *countIn = [CoinUtil convertToRealCoin:model.valueCnyIn coin:model.symbolIn];
-//    NSString *countOut = [CoinUtil convertToRealCoin:model.valueCnyOut coin:model.symbolOut];
     NSString *rightPic = [NSString stringWithFormat:@"%.8f",[model.valueCnyOut floatValue]/[model.valueCnyIn floatValue]];
     
     smybolPriceLbl.text = [NSString stringWithFormat:@"1%@=%@%@",model.symbolOut,[CoinUtil mult1:rightPic mult2:@"1" scale:8],model.symbolIn];

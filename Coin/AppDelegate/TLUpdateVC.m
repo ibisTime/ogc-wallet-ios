@@ -18,16 +18,17 @@
 #import "CountryModel.h"
 #import "ZLGestureLockViewController.h"
 #import "NSString+Check.h"
-
+#import "FeThreeDotGlow.h"
 #import "TLWalletVC.h"
 #import "HomeVC.h"
 #import "MarketVC.h"
 #import "AlertsVC.h"
 #import "TLMineVC.h"
-
+#import "FeEqualize.h"
 @interface TLUpdateVC ()
 @property (nonatomic,strong) NSMutableArray <CountryModel *>*countrys;
-
+@property (strong, nonatomic) FeEqualize *equalizer;
+@property (strong, nonatomic) FeThreeDotGlow *threeDot;
 @end
 
 @implementation TLUpdateVC
@@ -40,15 +41,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImageView *bgIV = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:bgIV];
-    bgIV.contentMode = UIViewContentModeScaleAspectFill;
-    bgIV.image = [UIImage imageNamed:@"Launch"];
+//    UIImageView *bgIV = [[UIImageView alloc] initWithFrame:self.view.bounds];
+//    [self.view addSubview:bgIV];
+//    bgIV.contentMode = UIViewContentModeScaleAspectFill;
+//    bgIV.image = [UIImage imageNamed:@"Launch"];
 
     
-    
+//    _equalizer = [[FeEqualize alloc] initWithView:self.view title:@"LOADING"];
+//    [self.view addSubview:_equalizer];
+//
+//    [_equalizer showWhileExecutingBlock:^{
+//        [self myTask];
+//    } completion:^{
+//
+//    }];
 
-    
+//    _threeDot = [[FeThreeDotGlow alloc] initWithView:self.view blur:NO];
+//    [self.view addSubview:_threeDot];
+//
+//    // Start
+//    [_threeDot showWhileExecutingBlock:^{
+//        [self myTask];
+//    } completion:^{
+////        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }];
     
     [self configurationLoadData];
 
@@ -56,6 +72,11 @@
 }
 
 
+- (void)myTask
+{
+    // Do something usefull in here instead of sleeping ...
+    sleep(100);
+}
 
 
 
@@ -66,6 +87,8 @@
     
     TLNetworking *http1 = [TLNetworking new];
     http1.code = @"630047";
+//    http1.showView = self.view;
+    [TLProgressHUD showWithStatus:@"正在获取配置信息"];
     http1.parameters[SYS_KEY] = @"qiniu_domain";
     [http1 postWithSuccess:^(id responseObject) {
         
@@ -78,6 +101,7 @@
         
         TLNetworking *http = [TLNetworking new];
         http.code = @"630508";
+        [TLProgressHUD showWithStatus:@"正在获取配置信息"];
         http.parameters[@"status"] = @"1";
         http.parameters[@"parentCode"] = @"DH201810120023250000000";
         [http postWithSuccess:^(id responseObject) {
