@@ -2007,8 +2007,13 @@ typedef NS_ENUM(NSInteger, LEEBackgroundStyle) {
         if (!action.title) action.title = @"按钮";
         
         if (!action.titleColor) action.titleColor = [UIColor colorWithRed:21/255.0f green:123/255.0f blue:245/255.0f alpha:1.0f];
+        if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+            if (!action.backgroundColor) action.backgroundColor = kHexColor(@"#CFD7E6");
+        }else
+        {
+            
+        }
         
-        if (!action.backgroundColor) action.backgroundColor = self.config.modelHeaderColor;
         
         if (!action.backgroundHighlightColor) action.backgroundHighlightColor = action.backgroundHighlightColor = [UIColor colorWithWhite:0.97 alpha:1.0f];
         

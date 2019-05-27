@@ -397,6 +397,7 @@
     }
     SelectedListView *view = [[SelectedListView alloc] initWithFrame:CGRectMake(0, 0, 280, 0) style:UITableViewStylePlain];
     view.isSingle = YES;
+    [view theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
     view.array = array;
     view.selectedBlock = ^(NSArray<SelectedListModel *> *array) {
         [LEEAlert closeWithCompletionBlock:^{
@@ -408,6 +409,8 @@
         }];
     };
     [LEEAlert alert].config
+
+    .LeeHeaderColor(kHexColor(@""))
     .LeeTitle(@"选择")
     .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
     .LeeCustomView(view)

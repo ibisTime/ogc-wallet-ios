@@ -28,7 +28,7 @@
     if (self) {
         
         //初始化数据
-        
+        [self theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
         [self initData];
     }
     
@@ -39,7 +39,9 @@
 
 - (void)initData{
     
-    self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [UIColor clearColor];
+    
+    
     
     self.delegate = self;
     
@@ -51,7 +53,7 @@
     
     self.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
     
-    self.separatorColor = [[UIColor grayColor] colorWithAlphaComponent:0.2f];
+//    self.separatorColor = [[UIColor grayColor] colorWithAlphaComponent:0.2f];
     
     self.dataArray = [NSMutableArray array];
     
@@ -112,7 +114,10 @@
     
     cell.textLabel.text = model.title;
     
-    cell.backgroundColor = [UIColor clearColor];
+    [cell theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
+    
+    [cell.textLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
+//    cell.backgroundColor = [UIColor clearColor];
     
     cell.selectedBackgroundView = [UIView new];
     

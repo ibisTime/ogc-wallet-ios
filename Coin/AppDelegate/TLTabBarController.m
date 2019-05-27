@@ -175,7 +175,7 @@
                                          NSForegroundColorAttributeName : kTabbarColor
                                          } forState:UIControlStateSelected];
     [tabBarItem setTitleTextAttributes:@{
-                                         NSForegroundColorAttributeName : kTextColor
+                                         NSForegroundColorAttributeName : kHexColor(@"#ADB2C1")
                                          } forState:UIControlStateNormal];
     vc.tabBarItem = tabBarItem;
     TLNavigationController *navigationController = [[TLNavigationController alloc] initWithRootViewController:vc];
