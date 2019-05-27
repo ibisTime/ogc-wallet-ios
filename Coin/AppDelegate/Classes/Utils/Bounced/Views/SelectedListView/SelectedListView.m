@@ -53,7 +53,7 @@
     
     self.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
     
-//    self.separatorColor = [[UIColor grayColor] colorWithAlphaComponent:0.2f];
+    self.separatorColor = [[UIColor grayColor] colorWithAlphaComponent:0.2f];
     
     self.dataArray = [NSMutableArray array];
     
@@ -115,7 +115,7 @@
     cell.textLabel.text = model.title;
     
     [cell theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.textLabel theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
 //    cell.backgroundColor = [UIColor clearColor];
     

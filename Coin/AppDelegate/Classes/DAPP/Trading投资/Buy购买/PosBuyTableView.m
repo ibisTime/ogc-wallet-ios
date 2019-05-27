@@ -64,14 +64,25 @@
 
         return cell;
     }
-    PosBuyIntroduceCell *cell = [tableView dequeueReusableCellWithIdentifier:PosBuyIntroduce forIndexPath:indexPath];
-    cell.delegate = self;
+    
+    // 定义cell标识  每个cell对应一个自己的标识
+    NSString *CellIdentifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,indexPath.row];
+    // 通过不同标识创建cell实例
+    PosBuyIntroduceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
+    if (!cell) {
+        cell = [[PosBuyIntroduceCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+//    PosBuyIntroduceCell *cell = [tableView dequeueReusableCellWithIdentifier:PosBuyIntroduce forIndexPath:indexPath];
+    cell.delegate = self;
+    
     cell.moneyModel = self.moneyModel;
     if ([TLUser isBlankString:self.dataDic[@"code"]] == NO) {
         cell.dataDic = self.dataDic;
     }
-
 
     return cell;
 

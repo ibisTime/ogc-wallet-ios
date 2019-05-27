@@ -637,14 +637,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    self.navigationController.navigationBar.translucent = YES;
-
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    self.navigationItem.backBarButtonItem = item;
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
 
 }
 
@@ -652,15 +644,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
-//    self.navigationController.navigationBar.translucent = NO;
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:nil];
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.barTintColor = kTabbarColor;
-//    self.navigationItem.backBarButtonItem = item;
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
     [self.pwdView.password clearText];
     [self.pwdView.password.textField resignFirstResponder];
 

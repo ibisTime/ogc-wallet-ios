@@ -150,7 +150,8 @@
     if (!_titleLabel) {
         UILabel *label = [[UILabel alloc]init];
         [self addSubview:label];
-        label.textColor = [UIColor pg_colorWithHexString:@"#848484"];
+//        label.textColor = [UIColor pg_colorWithHexString:@"#848484"];
+        [label theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
         label.font = [UIFont boldSystemFontOfSize:17];
         [label addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
         _titleLabel = label;
@@ -161,7 +162,8 @@
 - (UIView *)middleLineView {
     if (!_middleLineView) {
         UIView *view = [[UIView alloc]init];
-        view.backgroundColor = [UIColor lightGrayColor];
+        [view theme_setBackgroundColorIdentifier:LineViewColor moduleName:ColorName];
+//        view.backgroundColor = [UIColor lightGrayColor];
         [self addSubview:view];
         _middleLineView = view;
     }
@@ -180,6 +182,7 @@
 - (UIButton *)cancelButton {
     if (!_cancelButton) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button theme_setTitleColorIdentifier:GaryLabelColor forState:(UIControlStateNormal) moduleName:ColorName];
         [self addSubview:button];
         _cancelButton = button;
     }

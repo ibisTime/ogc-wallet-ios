@@ -92,14 +92,28 @@
 //            [self.tableView reloadData];
         }];
     };
-    [LEEAlert alert].config
-    .LeeTitle(@"选择")
-    .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
-    .LeeCustomView(view)
-    .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
-    .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
-    .LeeClickBackgroundClose(YES)
-    .LeeShow();
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        [LEEAlert alert].config
+        .LeeHeaderColor(kHexColor(@"52565D"))
+        .LeeTitle(@"选择")
+        .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+        .LeeCustomView(view)
+        .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+        .LeeClickBackgroundClose(YES)
+        .LeeShow();
+    }else
+    {
+        [LEEAlert alert].config
+        .LeeHeaderColor(kHexColor(@"#ffffff"))
+        .LeeTitle(@"选择")
+        .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+        .LeeCustomView(view)
+        .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+        .LeeClickBackgroundClose(YES)
+        .LeeShow();
+    }
 }
 
 -(void)confirmBtnClick:(UIButton *)sender

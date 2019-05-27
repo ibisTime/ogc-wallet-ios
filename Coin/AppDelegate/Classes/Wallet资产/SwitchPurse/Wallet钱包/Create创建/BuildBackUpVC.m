@@ -375,7 +375,7 @@
     
     checkVC.bottomtitles = self.bottomNames;
     checkVC.isSave = self.isSave;
-    checkVC.state = @"100";
+    checkVC.state = self.state;
     checkVC.titleWord = self.mnemonics;
     
     [self.navigationController pushViewController:checkVC animated:YES];

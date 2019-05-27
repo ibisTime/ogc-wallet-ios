@@ -387,6 +387,7 @@
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
 		1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */; };
 		1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */; };
+		1FE6D0C1229BDFE1004B76D3 /* DropletModelProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6D0C0229BDFE1004B76D3 /* DropletModelProtocolView.m */; };
 		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
 		1FFB8EB0225B4BAF00B72F31 /* MLMSegmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */; };
 		1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA6225B4BAF00B72F31 /* MLMSegmentHead.m */; };
@@ -1571,6 +1572,8 @@
 		1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvestMentAllVC.m; sourceTree = "<group>"; };
 		1FDD171B2223C15600E74D74 /* USDTInvestmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTInvestmentVC.h; sourceTree = "<group>"; };
 		1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTInvestmentVC.m; sourceTree = "<group>"; };
+		1FE6D0BF229BDFE1004B76D3 /* DropletModelProtocolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropletModelProtocolView.h; sourceTree = "<group>"; };
+		1FE6D0C0229BDFE1004B76D3 /* DropletModelProtocolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropletModelProtocolView.m; sourceTree = "<group>"; };
 		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
 		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
 		1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentManager.m; sourceTree = "<group>"; };
@@ -3661,6 +3664,8 @@
 			children = (
 				1F8E2E0F228A6FC00045D62B /* CloudCalculateForceVC.h */,
 				1F8E2E10228A6FC00045D62B /* CloudCalculateForceVC.m */,
+				1FE6D0BF229BDFE1004B76D3 /* DropletModelProtocolView.h */,
+				1FE6D0C0229BDFE1004B76D3 /* DropletModelProtocolView.m */,
 				1F8E2E12228A93320045D62B /* EggplantAccount茄子账户 */,
 				1F8E2E17228A93690045D62B /* BuyMill购买矿机 */,
 				1F8E2E16228A93660045D62B /* MyMill我的矿机 */,
@@ -6537,6 +6542,7 @@
 				1FA566F4223CD4B90077FE54 /* HomeFindModel.m in Sources */,
 				1F6D9B8C22801A3C0057A756 /* SwitchPurseCell.m in Sources */,
 				1F76692921D4A32700006B41 /* BTCErrors.m in Sources */,
+				1FE6D0C1229BDFE1004B76D3 /* DropletModelProtocolView.m in Sources */,
 				1F9031D22247A8680093C38D /* JXSegment.m in Sources */,
 				1F6D9E692281BD310057A756 /* AddressBookVC.m in Sources */,
 				1F6D9E6F2281BD650057A756 /* AddressBookCell.m in Sources */,

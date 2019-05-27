@@ -13,17 +13,54 @@
 #import "BeForceAccelerateVC.h"
 #import "InviteRewardsVC.h"
 #import "NodeLoginVC.h"
+#import "DropletModelProtocolView.h"
 @interface CloudCalculateForceVC ()
+
+@property (nonatomic ,strong)DropletModelProtocolView *protocolView;
 
 @end
 
 @implementation CloudCalculateForceVC
+
+
+-(DropletModelProtocolView *)protocolView
+{
+    if (!_protocolView) {
+        _protocolView = [[DropletModelProtocolView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 76, 444)];
+        [_protocolView.cancelBtn addTarget:self action:@selector(cancelBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _protocolView;
+    
+}
+
+-(void)cancelBtnClick
+{
+    [[UserModel user].cusPopView dismiss];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.titleText.text = @"水滴模型";
     self.navigationItem.titleView = self.titleText;
+    
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630047";
+    http.showView = self.view;
+    http.parameters[SYS_KEY] = @"machine_protocol";
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.protocolView.contact = responseObject[@"data"][@"cvalue"];
+        [[UserModel user]showPopAnimationWithAnimationStyle:6 showView:self.protocolView];
+        
+        
+    } failure:^(NSError *error) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    
     
     NSArray *array = @[@"氢气账户",@"购买水滴",@"我的水滴",@"热量值",@"邀请奖励",@"节点登录"];
     for (int i = 0; i < 6 ; i ++) {

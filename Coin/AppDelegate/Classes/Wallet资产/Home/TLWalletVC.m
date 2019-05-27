@@ -250,6 +250,7 @@
     //                address = [MnemonicUtil getAddressWithPrivateKey:prikey];
     //            }
     //        }
+    
     NSMutableArray <CoinModel *>*arr = [[CoinModel coin] getOpenCoinList];
     NSMutableArray *muArray = [NSMutableArray array];
     

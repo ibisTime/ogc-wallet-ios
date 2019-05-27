@@ -301,19 +301,36 @@
                 NSMutableArray <CurrencyModel *>*AssetsListModel = [CurrencyModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"accountList"]];
                 
                 
-                for (int i = 0; i < AssetsListModel.count; i ++) {
+                for (int i = 0; i < AssetsListModel.count; i ++)
+                {
                     if ([AssetsListModel[i].currency isEqualToString:@"HEY"]) {
                         NSString *amount = [CoinUtil convertToRealCoin:AssetsListModel[i].amount coin:AssetsListModel[i].currency];
                         NSString *rightAmount = [CoinUtil convertToRealCoin:AssetsListModel[i].frozenAmount coin:AssetsListModel[i].currency];
                         NSString *ritAmount = [amount subNumber:rightAmount];
-                        if ([ritAmount floatValue] < 2000) {
-                            [TLAlert alertWithInfo:@"您的HEY余额达到2000才能进入此应用"];
-                            return;
-                        }else
-                        {
-                            CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
-                            [self.navigationController pushViewController:vc animated:YES];
-                        }
+                        
+                        TLNetworking *http = [TLNetworking new];
+                        http.code = @"630047";
+                        http.parameters[SYS_KEY] = @"machine_account_hey_min";
+                        [http postWithSuccess:^(id responseObject) {
+                            
+                            if ([ritAmount floatValue] < [responseObject[@"data"][@"cvalue"] floatValue]) {
+                                [TLAlert alertWithInfo:[NSString stringWithFormat:@"您的HEY余额达到%@才能进入此应用",responseObject[@"data"][@"cvalue"]]];
+                                return;
+                            }else
+                            {
+                                CloudCalculateForceVC *vc = [CloudCalculateForceVC new];
+                                [self.navigationController pushViewController:vc animated:YES];
+                            }
+                            
+                            
+                            
+                        } failure:^(NSError *error) {
+                            
+                        }];
+                        
+                        
+                        
+                        
                     }
                 }
                 

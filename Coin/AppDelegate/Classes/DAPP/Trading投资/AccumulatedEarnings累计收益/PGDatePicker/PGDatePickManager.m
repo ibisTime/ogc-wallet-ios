@@ -21,6 +21,9 @@
         self.modalPresentationStyle = UIModalPresentationCustom;
         [self setupDismissViewTapHandler];
         [self headerViewButtonHandler];
+        
+//        [self.view theme_setBackgroundColorIdentifier:TabbarColor moduleName:ColorName];
+        
     }
     return self;
 }
@@ -40,8 +43,14 @@
     [super viewWillLayoutSubviews];
     
     self.headerView.style = self.style;
+    
     self.dismissView.frame = self.view.bounds;
     self.contentView.backgroundColor = self.datePicker.backgroundColor;
+    [self.headerView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    [self.contentView theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+//    self.contentView.backgroundColor = [UIColor redColor];
+    [self.datePicker theme_setBackgroundColorIdentifier:BackColor moduleName:ColorName];
+    
     if (self.style == PGDatePickManagerStyle1) {
         [self setupStyle1];
     }else if (self.style == PGDatePickManagerStyle2) {
@@ -120,7 +129,7 @@
                                         contentViewHeight);
     self.headerView.frame = headerViewFrame;
     self.datePicker.frame = datePickerFrame;
-    self.headerView.backgroundColor = self.headerViewBackgroundColor;
+//    self.headerView.backgroundColor = self.headerViewBackgroundColor;
     [UIView animateWithDuration:0.2 animations:^{
         if (self.isShadeBackgroud) {
             self.dismissView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
@@ -194,16 +203,18 @@
 
 - (void)setIsShadeBackgroud:(BOOL)isShadeBackgroud {
     _isShadeBackgroud = isShadeBackgroud;
-    if (isShadeBackgroud) {
-        self.dismissView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
-    }else {
-        self.dismissView.backgroundColor = [UIColor clearColor];
-    }
+//    if (isShadeBackgroud) {
+//        self.dismissView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
+//    }else {
+//        self.dismissView.backgroundColor = [UIColor clearColor];
+//    }
+    self.dismissView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)setCancelButtonFont:(UIFont *)cancelButtonFont {
     _cancelButtonFont = cancelButtonFont;
     self.headerView.cancelButtonFont = cancelButtonFont;
+    
 }
 
 - (void)setCancelButtonText:(NSString *)cancelButtonText {

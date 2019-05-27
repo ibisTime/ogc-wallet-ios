@@ -178,7 +178,7 @@ typedef NS_ENUM(NSInteger, LEEBackgroundStyle) {
     return ^(NSString *str){
         
         return weakSelf.LeeAddTitle(^(UILabel *label) {
-            
+            [label theme_setTextColorIdentifier:LabelColor moduleName:ColorName];
             label.text = str;
         });
         

@@ -108,7 +108,7 @@
     TLNetworking *http = [[TLNetworking alloc] init];
     http.showView = weakSelf.view;
     http.code = @"625271";
-    http.parameters[@"count"] = @([textField2.text floatValue] * 100000000);
+    http.parameters[@"count"] = [CoinUtil convertToSysCoin:textField2.text coin:self.symbol];
     http.parameters[@"bankCardCode"] = self.bankModel.code;
     http.parameters[@"tradeAmount"] = textField1.text;
     http.parameters[@"tradeCurrency"] = @"CNY";
@@ -168,11 +168,10 @@
     
     if (!_tableView) {
         
-        _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - kTabBarHeight - 220) style:UITableViewStyleGrouped];
+        _tableView = [[InvestmentTableView alloc] initWithFrame:CGRectMake(0, 220 , SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight - kTabBarHeight - 220 - 50) style:UITableViewStyleGrouped];
         _tableView.symbol = self.symbol;
         _tableView.refreshDelegate = self;
-//        _tableView.backgroundColor = kBackgroundColor;
-        //        [self.view addSubview:_tableView];
+
     }
     return _tableView;
 }
@@ -408,16 +407,31 @@
             [self.tableView reloadData];
         }];
     };
-    [LEEAlert alert].config
-
-    .LeeHeaderColor(kHexColor(@""))
-    .LeeTitle(@"选择")
-    .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
-    .LeeCustomView(view)
-    .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
-    .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
-    .LeeClickBackgroundClose(YES)
-    .LeeShow();
+    
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        [LEEAlert alert].config
+        .LeeHeaderColor(kHexColor(@"52565D"))
+        .LeeTitle(@"选择")
+        .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+        .LeeCustomView(view)
+        .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+        .LeeClickBackgroundClose(YES)
+        .LeeShow();
+    }else
+    {
+        [LEEAlert alert].config
+        .LeeHeaderColor(kHexColor(@"#ffffff"))
+        .LeeTitle(@"选择")
+        .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+        .LeeCustomView(view)
+        .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+        .LeeClickBackgroundClose(YES)
+        .LeeShow();
+    }
+    
+    
 }
 
 
@@ -448,7 +462,7 @@
         TLNetworking *http = [[TLNetworking alloc] init];
         http.showView = weakSelf.view;
         http.code = @"625270";
-        http.parameters[@"count"] = @([textField2.text floatValue] * 100000000);
+        http.parameters[@"count"] = [CoinUtil convertToSysCoin:textField2.text coin:self.symbol];
         http.parameters[@"receiveType"] = _payWayDic[@"type"];
         http.parameters[@"tradeAmount"] = textField1.text;
         http.parameters[@"tradeCurrency"] = @"CNY";
@@ -457,7 +471,6 @@
         http.parameters[@"tradeCoin"] = self.symbol;
         
         [http postWithSuccess:^(id responseObject) {
-            
             
             CoinWeakSelf;
             TLNetworking *http1 = [[TLNetworking alloc] init];

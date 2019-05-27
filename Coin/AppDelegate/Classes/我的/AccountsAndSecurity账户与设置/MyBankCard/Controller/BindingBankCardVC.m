@@ -80,9 +80,12 @@
         [nameTextFid setValue:FONT(15) forKeyPath:@"_placeholderLabel.font"];
         nameTextFid.font = FONT(15);
         nameTextFid.tag = 1000 + i;
+        
         nameTextFid.placeholder = [LangSwitcher switchLang:placArray[i] key:nil];
         [self.view addSubview:nameTextFid];
         
+        nameTextFid.textColor = kHexColor([TLUser TextFieldTextColor]);
+        [nameTextFid setValue:kHexColor([TLUser TextFieldPlacColor]) forKeyPath:@"_placeholderLabel.color"];
         
         UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, i% 4 * 55 + 54, SCREEN_WIDTH - 30, 1)];
         lineView.tag = 10000 + i;
@@ -165,14 +168,28 @@
             }
         }];
     };
-    [LEEAlert alert].config
-    .LeeTitle([LangSwitcher switchLang:@"选择" key:nil])
-    .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
-    .LeeCustomView(view)
-    .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
-    .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
-    .LeeClickBackgroundClose(YES)
-    .LeeShow();
+    if ([[USERDEFAULTS objectForKey:COLOR] isEqualToString:BLACK]) {
+        [LEEAlert alert].config
+        .LeeHeaderColor(kHexColor(@"52565D"))
+        .LeeTitle(@"选择")
+        .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+        .LeeCustomView(view)
+        .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+        .LeeClickBackgroundClose(YES)
+        .LeeShow();
+    }else
+    {
+        [LEEAlert alert].config
+        .LeeHeaderColor(kHexColor(@"#ffffff"))
+        .LeeTitle(@"选择")
+        .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+        .LeeCustomView(view)
+        .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+        .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+        .LeeClickBackgroundClose(YES)
+        .LeeShow();
+    }
 }
 
 

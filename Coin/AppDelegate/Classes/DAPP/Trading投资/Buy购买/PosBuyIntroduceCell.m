@@ -77,6 +77,7 @@
         numberTextField.textAlignment = NSTextAlignmentCenter;
         numberTextField.textColor = kHexColor([TLUser TextFieldTextColor]);
         numberTextField.font = FONT(24);
+        numberTextField.text = @"1";
         numberTextField.keyboardType = UIKeyboardTypeNumberPad;
         self.numberTextField = numberTextField;
         self.numberTextField.tag = 1212;
@@ -165,6 +166,8 @@
     NSString *avilAmount = [CoinUtil convertToRealCoin:moneyModel.avilAmount coin:moneyModel.symbol];
     NSString *increAmount = [CoinUtil convertToRealCoin:moneyModel.increAmount coin:moneyModel.symbol];
 
+    
+    
     UILabel *label1 = [self viewWithTag:123];
     label1.text = [NSString stringWithFormat:@"%@：%.0f%@",[LangSwitcher switchLang:@"剩余额度" key:nil],[avilAmount floatValue]/[increAmount floatValue],[LangSwitcher switchLang:@"份" key:nil]];
     UILabel *label2 = [self viewWithTag:124];
@@ -178,14 +181,19 @@
 -(void)setDataDic:(NSDictionary *)dataDic
 {
     dic = dataDic;
-    self.mySlider.value = [dataDic[@"min"] floatValue];
+    
     //最小边界值
     self.mySlider.minimumValue = [dataDic[@"min"] floatValue];
     self.mySlider.maximumValue = [dataDic[@"max"] floatValue];
     //    份额
     self.sinceLabel.text = [NSString stringWithFormat:@"%ld%@",[dataDic[@"min"]  integerValue],[LangSwitcher switchLang:@"份" key:nil]];
     self.finalLabel.text = [NSString stringWithFormat:@"%ld%@",[dataDic[@"max"]  integerValue],[LangSwitcher switchLang:@"份" key:nil]];
-    self.numberTextField.text = [NSString stringWithFormat:@"%ld",[dataDic[@"min"]  integerValue]];
+    
+    if ([self.numberTextField.text isEqualToString:@""]) {
+        self.numberTextField.text = [NSString stringWithFormat:@"%ld",[dataDic[@"min"]  integerValue]];
+        self.mySlider.value = [dataDic[@"min"] floatValue];
+    }
+    
 
 //    [self.sinceLabel sizeToFit];
 //    self.finalLabel.frame = CGRectMake(35, 261, 0, 14);
@@ -223,7 +231,8 @@
             NSLog(@"00000  %@",toBeString);
             if ([toBeString integerValue] > [dic[@"max"]  integerValue]) {
                 return NO;
-            }else
+            }
+            else
             {
                 return YES;
             }
@@ -240,6 +249,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     if ([textField.text floatValue] == 0) {
+        
         self.numberTextField.text = [NSString stringWithFormat:@"%ld",[dic[@"min"]  integerValue]];
         NSString *increAmount = [CoinUtil convertToRealCoin:model.increAmount coin:model.symbol];
         self.priceLabel.text = [NSString stringWithFormat:@"(%.2f%@)",[increAmount floatValue],model.symbol];

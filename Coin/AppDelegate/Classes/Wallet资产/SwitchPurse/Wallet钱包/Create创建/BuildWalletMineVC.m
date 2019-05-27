@@ -307,7 +307,7 @@
     BuildSucessVC *sucess = [[BuildSucessVC alloc] init];
     sucess.name = self.nameTf.text;
     sucess.PWD = self.rePwdTf.text;
-    sucess.state = @"100";
+//    sucess.state = @"100";
     [self.navigationController pushViewController:sucess animated:YES];
     
 
