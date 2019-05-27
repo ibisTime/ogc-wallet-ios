@@ -56,6 +56,7 @@
 
 -(void)setModel:(BuyMillListModel *)model
 {
+    _model = model;
     UILabel *label1 = [self viewWithTag:100];
     
     
@@ -71,15 +72,23 @@
     NSString * startDate = [dateFormatter stringFromDate:startYear];
     
     UILabel *label3 = [self viewWithTag:102];
-    UILabel *label4 = [self viewWithTag:103];
+    
+    
     label1.text = model.name;
     label3.text = startDate;
+    
+    
+    
+    
 }
 
 -(void)setOrderInformation:(NSString *)orderInformation
 {
     UILabel *label2 = [self viewWithTag:101];
     label2.text = orderInformation;
+    
+    UILabel *label4 = [self viewWithTag:103];
+    label4.text = [NSString stringWithFormat:@"%.2f%%",[_model.dailyOutput floatValue] * [_model.daysLimit integerValue] * [orderInformation floatValue]];
     
 }
 

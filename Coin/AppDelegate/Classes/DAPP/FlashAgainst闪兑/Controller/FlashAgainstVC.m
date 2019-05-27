@@ -72,9 +72,12 @@
     [http postWithSuccess:^(id responseObject) {
         [TLAlert alertWithSucces:@"兑换成功"];
         
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-
+            
+            self.headView.leftNumberTf.text = @"";
+            self.headView.rightNumberTf.text = @"";
+            self.headView.poundageLbl.text = @"手续费：0";
+            
             [self RecordLoadData];
             
 //            [self.navigationController popViewControllerAnimated:YES];
