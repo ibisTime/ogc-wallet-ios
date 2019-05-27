@@ -78,7 +78,7 @@
 {
     if (!_headView) {
         _headView = [[MyAssetsHeadView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, 87 - 64 + kNavigationBarHeight - 10 + 180)];
-        _headView.nameLable.text = @"金米钱包";
+        _headView.nameLable.text = @"TICP";
     }
     return _headView;
 }

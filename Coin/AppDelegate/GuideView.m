@@ -43,8 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - kStatusBarHeight)];
-    img.image = kImage(@"启动页.png");
+    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    img.image = kImage(@"1080.png");
     [self.view addSubview:img];
     
     TLNetworking *http1 = [TLNetworking new];

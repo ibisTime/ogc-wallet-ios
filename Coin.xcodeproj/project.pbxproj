@@ -44,7 +44,6 @@
 		1F3570D42294569F004A24E7 /* TeamPerformanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3570D32294569F004A24E7 /* TeamPerformanceModel.m */; };
 		1F35826621870D8F00F1665B /* NewHelpCentetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F35826421870D8C00F1665B /* NewHelpCentetVC.m */; };
 		1F358B3D218ABC4500F1665B /* USDTRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F358B3C218ABC4500F1665B /* USDTRecordModel.m */; };
-		1F4731C6221A92CB007B5908 /* 1080的.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4731C5221A92C9007B5908 /* 1080的.png */; };
 		1F5F8BBA21CCC7C900A7D0F2 /* AssetsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5F8BB921CCC7C900A7D0F2 /* AssetsHeadView.m */; };
 		1F6D9B8922801A0F0057A756 /* SwitchPurseHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9B8822801A0F0057A756 /* SwitchPurseHeadView.m */; };
 		1F6D9B8C22801A3C0057A756 /* SwitchPurseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D9B8B22801A3C0057A756 /* SwitchPurseCell.m */; };
@@ -381,13 +380,13 @@
 		1FA56B0B223CD7610077FE54 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA56B05223CD7600077FE54 /* NSTimer+addition.m */; };
 		1FA56B0C223CD7610077FE54 /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA56B08223CD7600077FE54 /* WYWebProgressLayer.m */; };
 		1FA56B0F223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA56B0D223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.m */; };
-		1FA56B11223CDDD90077FE54 /* 启动页.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA56B10223CDDD80077FE54 /* 启动页.png */; };
 		1FC390EE21E328840070E153 /* MyBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390ED21E328840070E153 /* MyBankCardVC.m */; };
 		1FC390F121E349FA0070E153 /* MyBankCardTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F021E349FA0070E153 /* MyBankCardTableView.m */; };
 		1FC390F421E34A230070E153 /* MyBankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC390F321E34A230070E153 /* MyBankCardCell.m */; };
 		1FDD171A2223C12D00E74D74 /* InvestMentAllVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD17192223C12D00E74D74 /* InvestMentAllVC.m */; };
 		1FDD171D2223C15600E74D74 /* USDTInvestmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */; };
 		1FE6D0C1229BDFE1004B76D3 /* DropletModelProtocolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE6D0C0229BDFE1004B76D3 /* DropletModelProtocolView.m */; };
+		1FE6D0C5229C0656004B76D3 /* 1080.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE6D0C4229C0655004B76D3 /* 1080.png */; };
 		1FF6396D21EC237200F5FF68 /* BindingBankCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */; };
 		1FFB8EB0225B4BAF00B72F31 /* MLMSegmentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */; };
 		1FFB8EB1225B4BAF00B72F31 /* MLMSegmentHead.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EA6225B4BAF00B72F31 /* MLMSegmentHead.m */; };
@@ -803,7 +802,6 @@
 		1F35826521870D8E00F1665B /* NewHelpCentetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewHelpCentetVC.h; sourceTree = "<group>"; };
 		1F358B3B218ABC4500F1665B /* USDTRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = USDTRecordModel.h; sourceTree = "<group>"; };
 		1F358B3C218ABC4500F1665B /* USDTRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTRecordModel.m; sourceTree = "<group>"; };
-		1F4731C5221A92C9007B5908 /* 1080的.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1080的.png"; sourceTree = "<group>"; };
 		1F5F8BB821CCC7C900A7D0F2 /* AssetsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AssetsHeadView.h; sourceTree = "<group>"; };
 		1F5F8BB921CCC7C900A7D0F2 /* AssetsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AssetsHeadView.m; sourceTree = "<group>"; };
 		1F6D9B8722801A0F0057A756 /* SwitchPurseHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwitchPurseHeadView.h; sourceTree = "<group>"; };
@@ -1561,7 +1559,6 @@
 		1FA56B08223CD7600077FE54 /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
 		1FA56B0D223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+NSURLRequestSSLY.m"; sourceTree = "<group>"; };
 		1FA56B0E223CD7F20077FE54 /* NSURLRequest+NSURLRequestSSLY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+NSURLRequestSSLY.h"; sourceTree = "<group>"; };
-		1FA56B10223CDDD80077FE54 /* 启动页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "启动页.png"; sourceTree = "<group>"; };
 		1FC390EC21E328840070E153 /* MyBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardVC.h; sourceTree = "<group>"; };
 		1FC390ED21E328840070E153 /* MyBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyBankCardVC.m; sourceTree = "<group>"; };
 		1FC390EF21E349FA0070E153 /* MyBankCardTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyBankCardTableView.h; sourceTree = "<group>"; };
@@ -1574,6 +1571,7 @@
 		1FDD171C2223C15600E74D74 /* USDTInvestmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = USDTInvestmentVC.m; sourceTree = "<group>"; };
 		1FE6D0BF229BDFE1004B76D3 /* DropletModelProtocolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropletModelProtocolView.h; sourceTree = "<group>"; };
 		1FE6D0C0229BDFE1004B76D3 /* DropletModelProtocolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropletModelProtocolView.m; sourceTree = "<group>"; };
+		1FE6D0C4229C0655004B76D3 /* 1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080.png; sourceTree = "<group>"; };
 		1FF6396B21EC237200F5FF68 /* BindingBankCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindingBankCardVC.h; sourceTree = "<group>"; };
 		1FF6396C21EC237200F5FF68 /* BindingBankCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindingBankCardVC.m; sourceTree = "<group>"; };
 		1FFB8EA5225B4BAF00B72F31 /* MLMSegmentManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLMSegmentManager.m; sourceTree = "<group>"; };
@@ -5127,8 +5125,7 @@
 				216F5AEE206CC6F600F2C832 /* AppDelegate */,
 				2E394FA31FB0546E00BA0829 /* Classes */,
 				7A40B100217CAEA6004B9830 /* Assets.xcassets */,
-				1FA56B10223CDDD80077FE54 /* 启动页.png */,
-				1F4731C5221A92C9007B5908 /* 1080的.png */,
+				1FE6D0C4229C0655004B76D3 /* 1080.png */,
 				1F0BF770222E2885003FA1A5 /* Info.plist */,
 				B8DAD14920E2208B00AF4CD4 /* InfoPlist.strings */,
 				2EE361351FFB7D4500A5C3EB /* README.md */,
@@ -5943,9 +5940,9 @@
 				1F3570D122942671004A24E7 /* WhiteTheme in Resources */,
 				2EFFE6AA1FF4829100BFCC40 /* Localizable.strings in Resources */,
 				7A2CC6D4215DC89200B27E2D /* LICENSE in Resources */,
-				1FA56B11223CDDD90077FE54 /* 启动页.png in Resources */,
 				2EB9495B1FDF6B1A00CE4B94 /* SimplifiedCode.txt in Resources */,
 				2EE361361FFB7D4500A5C3EB /* README.md in Resources */,
+				1FE6D0C5229C0656004B76D3 /* 1080.png in Resources */,
 				1F770ED721904D7D00E2889F /* langImg.png in Resources */,
 				B8DAD14720E2208B00AF4CD4 /* InfoPlist.strings in Resources */,
 				1F73670C2252FEFA00135F7E /* secp256k1.table in Resources */,
@@ -5956,7 +5953,6 @@
 				7A40B101217CAEA8004B9830 /* Assets.xcassets in Resources */,
 				1F1B000521E49392000BEBD3 /* Resource.bundle in Resources */,
 				1F76697E21D4A34D00006B41 /* read_me.txt in Resources */,
-				1F4731C6221A92CB007B5908 /* 1080的.png in Resources */,
 				2EB9495C1FDF6B1A00CE4B94 /* TraditionalCode.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -6893,6 +6889,7 @@
 			baseConfigurationReference = AB34D27FC9725550E9092EC2 /* Pods-Coin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -7052,7 +7049,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -7069,6 +7066,7 @@
 			baseConfigurationReference = 8863748C5281F9DC1DDF8EEA /* Pods-Coin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -7228,7 +7226,7 @@
 					"-weak_framework",
 					"\"UserNotifications\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ChengWallet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.ticpWallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

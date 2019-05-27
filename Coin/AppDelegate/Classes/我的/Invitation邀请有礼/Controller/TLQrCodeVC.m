@@ -203,13 +203,13 @@
     
     
     UIImageView *iconImageView = [[UIImageView alloc] init];
-    iconImageView.image = [UIImage imageNamed:@"邀请-logo"];
+    iconImageView.image = [UIImage imageNamed:@"版本更新"];
     [backView  addSubview:iconImageView];
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
 
         make.top.equalTo(backView.mas_top).offset(157.5);
-        make.width.mas_equalTo(@(kHeight(120)));
-        make.height.mas_equalTo(@(kHeight(60)));
+        make.width.mas_equalTo(@(kHeight(60)));
+        make.height.mas_equalTo(@(kHeight(70)));
 
         make.centerX.equalTo(backView.mas_centerX);
 

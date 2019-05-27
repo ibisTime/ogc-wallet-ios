@@ -39,7 +39,7 @@ static NSString *identifierCell = @"SettingCell";
     
     
     NSArray *array = self.dataArray[section];
-    return 7;
+    return 6;
 //    if (section == 0) {
 //        if (self.dataArray.count >= 2) {
 //            return 2;
@@ -90,7 +90,7 @@ static NSString *identifierCell = @"SettingCell";
 //
 //    }
     
-    NSArray *array = @[@"交易密码",@"手势密码",@"我的收款账号",@"身份认证",@"修改登录密码",@"绑定/修改邮箱",@"绑定/修改手机号"];
+    NSArray *array = @[@"交易密码",@"手势密码",@"身份认证",@"修改登录密码",@"绑定/修改邮箱",@"绑定/修改手机号"];
     NSString *name = array[indexPath.row];
     cell.titleLbl.text = [LangSwitcher switchLang:array[indexPath.row] key:nil];
     

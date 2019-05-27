@@ -142,12 +142,12 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (index == 1) {
-//        MyFriendViewController *vc = [MyFriendViewController new];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-        InviteRewardsVC *vc = [InviteRewardsVC new];
+        MyFriendViewController *vc = [MyFriendViewController new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+//        InviteRewardsVC *vc = [InviteRewardsVC new];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     if (index == 2) {
         TLQrCodeVC *vc = [TLQrCodeVC new];
@@ -169,17 +169,17 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
+//    if (indexPath.row == 2) {
+//        GoldenRiceBlessingVC *vc = [GoldenRiceBlessingVC new];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
     if (indexPath.row == 2) {
-        GoldenRiceBlessingVC *vc = [GoldenRiceBlessingVC new];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (indexPath.row == 3) {
         AddressBookVC *vc = [AddressBookVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         [ZDKZendesk initializeWithAppId: @"3006217d048e0c25c210e014be2cc72bdfad90c96709835f"
                                clientId: @"mobile_sdk_client_e92fbb186a7406874c6b"
                              zendeskUrl: @"https://moorebit.zendesk.com"];
@@ -215,12 +215,12 @@
         helpCenter.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:helpCenter animated:YES];
     }
-    if (indexPath.row == 5) {
+    if (indexPath.row == 4) {
         TLQusertionVC * vc = [TLQusertionVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    if (indexPath.row == 6) {
+    if (indexPath.row == 5) {
         TLMeSetting *vc = [[TLMeSetting alloc] init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -291,7 +291,7 @@
 //        vc.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:vc animated:YES];
 //    }
-//    else if([title isEqualToString:@"金米钱包"])
+//    else if([title isEqualToString:@"TICP"])
 //    {
 //        NSDictionary *walletDic = [CustomFMDB FMDBqueryUseridMnemonicsPwdWalletName];
 //        if ([TLUser isBlankString:walletDic[@"mnemonics"]] == NO) {
@@ -351,7 +351,7 @@
 //        NSMutableArray *array2 = [NSMutableArray array];
 //        NSMutableArray *array3 = [NSMutableArray array];
 //        for (int i = 0; i < array.count; i ++) {
-//            if ([array[i][@"name"] isEqualToString:@"账户与安全"] || [array[i][@"name"] isEqualToString:@"金米钱包"]) {
+//            if ([array[i][@"name"] isEqualToString:@"账户与安全"] || [array[i][@"name"] isEqualToString:@"TICP"]) {
 //                [array1 addObject:array[i]];
 //            }
 //            if ([array[i][@"name"] isEqualToString:@"我的好友"] || [array[i][@"name"] isEqualToString:@"邀请有礼"] || [array[i][@"name"] isEqualToString:@"金米福分"]) {

@@ -81,7 +81,7 @@
 - (void)setUpUI {
     
     
-    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 60,  kStatusBarHeight + 25, 120, 60)];
+    UIImageView *logoView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 30,  kStatusBarHeight + 20, 60, 70)];
     logoView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:logoView];
     [logoView theme_setImageIdentifier:@"版本更新" moduleName:ImgAddress];

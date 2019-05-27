@@ -17,18 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="启动页.png" translatesAutoresizingMaskIntoConstraints="NO" id="EX2-u4-g9b">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="EX2-u4-g9b" firstAttribute="top" secondItem="N9z-HA-c7K" secondAttribute="top" id="Dcz-Ba-qDb"/>
-                            <constraint firstItem="N9z-HA-c7K" firstAttribute="trailing" secondItem="EX2-u4-g9b" secondAttribute="trailing" id="Kwk-0l-X7u"/>
-                            <constraint firstItem="EX2-u4-g9b" firstAttribute="leading" secondItem="N9z-HA-c7K" secondAttribute="leading" id="nAy-53-iAe"/>
-                            <constraint firstItem="N9z-HA-c7K" firstAttribute="bottom" secondItem="EX2-u4-g9b" secondAttribute="bottom" id="tdz-Cl-xgh"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="N9z-HA-c7K"/>
                     </view>
                 </viewController>
@@ -37,7 +26,4 @@
             <point key="canvasLocation" x="106" y="54"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="启动页.png" width="1080" height="1920"/>
-    </resources>
 </document>

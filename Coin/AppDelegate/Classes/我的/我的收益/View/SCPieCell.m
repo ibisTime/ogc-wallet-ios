@@ -29,7 +29,7 @@
 //        [self addSubview:backView];
         
         NSArray *colorArray = @[kHexColor(@"#6BAFFF"),kHexColor(@"#FFDA6B")];
-        NSArray *nameArray = @[@"投资收银  详情 ",@"邀请收益  详情"];
+        NSArray *nameArray = @[@"投资收益  详情 ",@"邀请收益  详情"];
         for (int i = 0; i < 2; i ++) {
             UIView *pointView = [[UIView alloc]initWithFrame:CGRectMake(205, 44 + i % 4 * 68, 10, 10)];
             pointView.backgroundColor = colorArray[i];
